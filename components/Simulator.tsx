@@ -96,6 +96,9 @@ export function Simulator() {
             onChange={setTyranAmp}
           />
         </div>
+
+        <div className="border-2 my-2" />
+
         <CharacterStatsForm
           characterStats={characterStats}
           onChange={setCharacterStats}

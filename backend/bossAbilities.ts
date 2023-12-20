@@ -30,6 +30,16 @@ export const shatteredEarth: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=204666/shattered-earth',
 }
 
+export const crushingGrip: BossAbility = {
+  name: 'Crushing Grip',
+  boss: 'Oakheart',
+  dungeon: 'Darkheart Thicket',
+  damage: 109862,
+  isAoe: true,
+  iconName: 'ability_warrior_titansgrip',
+  wowheadLink: 'https://www.wowhead.com/spell=204611/crushing-grip',
+}
+
 export const earthshakingRoar: BossAbility = {
   name: 'Earthshaking Roar',
   boss: 'Dresaron',
@@ -121,6 +131,7 @@ export const dreadEssence: BossAbility = {
 }
 
 export const bossAbilities: BossAbility[] = [
+  crushingGrip,
   shatteredEarth,
   earthshakingRoar,
   nightmareBolt,

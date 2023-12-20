@@ -16,10 +16,6 @@ export class Header extends Component {
           </div>
           <GitHubButton href="https://github.com/acornellier/not_even_close" />
         </div>
-        <span className="text-l font-bold">
-          Disclaimer: WIP. Many assumptions, for example it assumes all damage
-          is magic.
-        </span>
       </div>
     )
   }
