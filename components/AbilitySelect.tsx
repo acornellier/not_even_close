@@ -1,7 +1,6 @@
 ﻿import { classAbilities, WowClass } from '../simulator/classes'
 import { Ability } from '../simulator/abilities'
 import Image from 'next/image'
-import { Fragment } from 'react'
 
 interface Props {
   wowClass: WowClass
@@ -38,10 +37,13 @@ export function AbilitySelect({
   return (
     <div className="flex gap-2">
       {classAbilities[wowClass].map((ability) => (
-        <div
+        <a
           key={ability.name}
-          className="cursor-pointer"
-          onClick={() => toggleAbility(ability)}
+          href={`https://www.wowhead.com/spell=${ability.spellId}`}
+          onClick={(e) => {
+            e.preventDefault()
+            toggleAbility(ability)
+          }}
         >
           {isAbilitySelected(ability) && (
             <svg
@@ -64,7 +66,7 @@ export function AbilitySelect({
             src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}
             alt={ability.name}
           />
-        </div>
+        </a>
       ))}
     </div>
   )

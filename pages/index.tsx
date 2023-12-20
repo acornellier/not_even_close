@@ -11,10 +11,11 @@ import { Dropdown } from '../components/Dropdown'
 import { classAbilities, classes, WowClass } from '../simulator/classes'
 import { Ability } from '../simulator/abilities'
 import { AbilitySelect } from '../components/AbilitySelect'
+import Script from 'next/script'
 
 const defaultCharacterStats: CharacterStats = {
   stamina: 40_000,
-  versatilityPercent: 10,
+  versatilityDrPercent: 5,
 }
 
 export default function Home() {
@@ -65,17 +66,25 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Script src="/wowheadtooltips.js" />
+
       <main className="min-h-screen py-8 flex flex-col gap-8">
-        <div className="flex justify-between items-center">
-          <div className="flex items-end gap-4">
-            <h1 className="text-6xl font-bold text-center text-teal-500">
-              Not Even Close
-            </h1>
-            <h1 className="font-bold text-center text-teal-500">
-              {"by Ortemist-Zul'jin"}
-            </h1>
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-between items-center">
+            <div className="flex items-end gap-4">
+              <h1 className="text-6xl font-bold text-center text-teal-500">
+                Not Even Close
+              </h1>
+              <h1 className="font-bold text-center text-teal-500">
+                {"by Ortemist-Zul'jin"}
+              </h1>
+            </div>
+            <GitHubButton href="https://github.com/acornellier/not_even_close" />
           </div>
-          <GitHubButton href="https://github.com/acornellier/not_even_close" />
+          <span className="text-l font-bold">
+            Disclaimer: WIP. Many assumptions, for example it assumes all damage
+            is magic damage.
+          </span>
         </div>
 
         <div className="flex gap-12">

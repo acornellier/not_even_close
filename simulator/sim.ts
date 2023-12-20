@@ -30,7 +30,7 @@ function getScalingFactor(
 ) {
   let scalingFactor = 1
   for (let i = 3; i <= keyLevel; ++i) {
-    scalingFactor *= i < 10 ? 1.08 : 1.1
+    scalingFactor *= i <= 10 ? 1.08 : 1.1
   }
 
   if (fortAmp) {
@@ -62,7 +62,7 @@ function getDamageReduction(
 ) {
   let inverseDr = 1
 
-  const versatilityDr = characterStats.versatilityPercent / 100 / 2
+  const versatilityDr = characterStats.versatilityDrPercent / 100
   inverseDr *= 1 - versatilityDr
 
   for (const ability of abilities) {

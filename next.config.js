@@ -3,7 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    remotePatterns: [{ hostname: 'wow.zamimg.com' }],
+    remotePatterns: [
+      { hostname: 'wow.zamimg.com' },
+      { hostname: 'www.wowhead.com' },
+    ],
   },
 }
 

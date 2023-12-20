@@ -22,9 +22,9 @@ export function CharacterStatsForm({ characterStats, onChange }: Props) {
         onChange={onChangeStat('stamina')}
       />
       <NumericInput
-        label="Versatility (dmg %)"
-        value={characterStats.versatilityPercent}
-        onChange={onChangeStat('versatilityPercent')}
+        label="Versatility (dr %)"
+        value={characterStats.versatilityDrPercent}
+        onChange={onChangeStat('versatilityDrPercent')}
       />
     </div>
   )
