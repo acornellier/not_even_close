@@ -1,6 +1,5 @@
 ﻿import { CharacterStats } from './characterStats'
-import { WowClass } from './classes'
-import { Ability } from './abilities'
+import { Ability } from './ability'
 
 export interface Result {
   damageScaling: number
@@ -15,7 +14,6 @@ export interface Result {
 
 interface Input {
   characterStats: CharacterStats
-  wowClass: WowClass | null
   abilities: Ability[]
   baseDamage: number
   keyLevel: number
@@ -46,10 +44,25 @@ function getStartingHealth(
   characterStats: CharacterStats,
   abilities: Ability[]
 ) {
-  let startingHealth = characterStats.stamina * 20
+  const baseStamina = characterStats.stamina
+  let stamina = baseStamina
+
+  for (const ability of abilities) {
+    if (ability.staminaIncrease) {
+      stamina += baseStamina * ability.staminaIncrease
+    }
+  }
+
+  const baseHealth = stamina * 20
+  let startingHealth = baseHealth
+
   for (const ability of abilities) {
     if (ability.healthIncrease) {
-      startingHealth *= 1 + ability.healthIncrease
+      startingHealth += baseHealth * ability.healthIncrease
+    }
+
+    if (ability.absorb) {
+      startingHealth += ability.absorb
     }
   }
 
@@ -66,7 +79,9 @@ function getDamageReduction(
   inverseDr *= 1 - versatilityDr
 
   for (const ability of abilities) {
-    inverseDr *= 1 - ability.dr
+    if (ability.dr) {
+      inverseDr *= 1 - ability.dr
+    }
   }
 
   return 1 - inverseDr
@@ -74,7 +89,6 @@ function getDamageReduction(
 
 export function simulate({
   characterStats,
-  wowClass,
   abilities,
   keyLevel,
   fortAmp,

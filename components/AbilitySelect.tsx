@@ -1,17 +1,16 @@
-﻿import { classAbilities, WowClass } from '../simulator/classes'
-import { Ability } from '../simulator/abilities'
-import Image from 'next/image'
+﻿import Image from 'next/image'
+import { Ability } from '../backend/ability'
 
 interface Props {
-  wowClass: WowClass
+  allAbilities: Ability[]
   selectedAbilities: Ability[]
-  setAbilities: (abilities: Ability[]) => void
+  setSelectedAbilities: (abilities: Ability[]) => void
 }
 
 export function AbilitySelect({
-  wowClass,
+  allAbilities,
   selectedAbilities,
-  setAbilities,
+  setSelectedAbilities,
 }: Props) {
   const isAbilitySelected = (ability: Ability) =>
     selectedAbilities.some(
@@ -24,22 +23,22 @@ export function AbilitySelect({
     const isSelected = isAbilitySelected(ability)
 
     if (isSelected) {
-      setAbilities(
+      setSelectedAbilities(
         selectedAbilities.filter(
           (selectedAbility) => selectedAbility.name !== ability.name
         )
       )
     } else {
-      setAbilities([...selectedAbilities, ability])
+      setSelectedAbilities([...selectedAbilities, ability])
     }
   }
 
   return (
     <div className="flex gap-2">
-      {classAbilities[wowClass].map((ability) => (
+      {allAbilities.map((ability) => (
         <a
           key={ability.name}
-          href={`https://www.wowhead.com/spell=${ability.spellId}`}
+          href={ability.wowheadLink}
           onClick={(e) => {
             e.preventDefault()
             toggleAbility(ability)

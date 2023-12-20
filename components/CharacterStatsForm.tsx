@@ -1,6 +1,6 @@
-﻿import { CharacterStats } from '../simulator/characterStats'
+﻿import { CharacterStats } from '../backend/characterStats'
 import { NumericInput } from './NumericInput'
-import { roundTo } from '../simulator/utils'
+import { roundTo } from '../backend/utils'
 
 interface Props {
   characterStats: CharacterStats

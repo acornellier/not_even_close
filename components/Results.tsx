@@ -1,13 +1,17 @@
-﻿import { Result } from '../simulator/sim'
-import { roundTo } from '../simulator/utils'
+﻿import { Result } from '../backend/sim'
+import { roundTo } from '../backend/utils'
 
-export function Results(props: { result: Result | undefined }) {
+interface Props {
+  result: Result | null
+}
+
+export function Results({ result }: Props) {
   return (
     <>
-      {props.result && (
+      {result && (
         <div>
           <div className="font-bold text-4xl">
-            {props.result.survival ? (
+            {result.survival ? (
               <span>
                 You will <span className="text-green-500">survive</span>
               </span>
@@ -17,26 +21,40 @@ export function Results(props: { result: Result | undefined }) {
               </span>
             )}
           </div>
-          <div>Damage scaling: {props.result.damageScaling}</div>
-          <div>Scaled damage: {props.result.scaledDamage}</div>
           <div>
-            Damage reduction: {roundTo(props.result.damageReduction * 100, 2)}%
+            Damage scaling: {result.damageScaling.toLocaleString('en-US')}
           </div>
-          <div>Mitigated damage: {props.result.mitigatedDamage}</div>
-          <div>Actual damage taken: {props.result.actualDamageTaken}</div>
-          <div>Starting health: {props.result.startingHealth}</div>
-          {props.result.survival ? (
+          <div>
+            Scaled damage: {result.scaledDamage.toLocaleString('en-US')}
+          </div>
+          <div>
+            Damage reduction:{' '}
+            {roundTo(result.damageReduction * 100, 2).toLocaleString('en-US')}%
+          </div>
+          <div>
+            Mitigated damage: {result.mitigatedDamage.toLocaleString('en-US')}
+          </div>
+          <div>
+            Actual damage taken:{' '}
+            {result.actualDamageTaken.toLocaleString('en-US')}
+          </div>
+          <div>
+            Starting health: {result.startingHealth.toLocaleString('en-US')}
+          </div>
+          {result.survival ? (
             <div>
-              Health remaining: {props.result.healthRemaining} (
+              Health remaining: {result.healthRemaining.toLocaleString('en-US')}{' '}
+              (
               {roundTo(
-                (props.result.healthRemaining / props.result.startingHealth) *
-                  100,
+                (result.healthRemaining / result.startingHealth) * 100,
                 2
-              )}
+              ).toLocaleString('en-US')}
               %)
             </div>
           ) : (
-            <div>Overkill: {-props.result.healthRemaining}</div>
+            <div>
+              Overkill: {(-result.healthRemaining).toLocaleString('en-US')}
+            </div>
           )}
         </div>
       )}

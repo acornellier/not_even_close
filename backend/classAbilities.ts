@@ -1,25 +1,18 @@
-﻿export type Ability = {
-  name: string
-  alwaysOn?: boolean
-  dr: number
-  healthIncrease?: number
-  iconName: string
-  spellId: number
-}
+﻿import { Ability } from './ability'
 
 export const demonicWards: Ability = {
   name: 'Demonic Wards',
   alwaysOn: true,
   dr: 0.15,
   iconName: 'inv_belt_leather_demonhunter_a_01',
-  spellId: 320381,
+  wowheadLink: 'https://www.wowhead.com/spell=320381/demonic-wards',
 }
 
 export const blur: Ability = {
   name: 'Blur',
   dr: 0.2,
   iconName: 'ability_demonhunter_blur',
-  spellId: 198589,
+  wowheadLink: 'https://www.wowhead.com/spell=212800/blur',
 }
 
 export const calmingPresence: Ability = {
@@ -27,21 +20,22 @@ export const calmingPresence: Ability = {
   alwaysOn: true,
   dr: 0.06,
   iconName: 'inv_misc_orb_01',
-  spellId: 388664,
+  wowheadLink:
+    'https://www.wowhead.com/spell=388664/calming-presence?spellModifier=428200',
 }
 
 export const dampenHarm: Ability = {
   name: 'Dampen Harm',
   dr: 0.5,
   iconName: 'ability_monk_dampenharm',
-  spellId: 122278,
+  wowheadLink: 'https://www.wowhead.com/spell=122278/dampen-harm',
 }
 
 export const diffuseMagic: Ability = {
   name: 'Diffuse Magic',
   dr: 0.6,
   iconName: 'spell_monk_diffusemagic',
-  spellId: 122783,
+  wowheadLink: 'https://www.wowhead.com/spell=122783/diffuse-magic',
 }
 
 export const fortBrew: Ability = {
@@ -49,5 +43,5 @@ export const fortBrew: Ability = {
   dr: 0.2,
   healthIncrease: 0.2,
   iconName: 'ability_monk_fortifyingale_new',
-  spellId: 388917,
+  wowheadLink: 'https://www.wowhead.com/spell=388917/fortifying-brew',
 }

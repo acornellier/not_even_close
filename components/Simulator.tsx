@@ -1,14 +1,15 @@
-﻿import { CharacterStats } from '../simulator/characterStats'
-import { Ability } from '../simulator/abilities'
-import { Result, simulate } from '../simulator/sim'
+﻿import { CharacterStats } from '../backend/characterStats'
+import { Result, simulate } from '../backend/sim'
 import { NumericInput } from './NumericInput'
 import { Toggle } from './Toggle'
 import { CharacterStatsForm } from './CharacterStatsForm'
 import { Dropdown } from './Dropdown'
-import { classAbilities, classes, WowClass } from '../simulator/classes'
+import { classAbilities, classes, WowClass } from '../backend/classes'
 import { AbilitySelect } from './AbilitySelect'
 import { Results } from './Results'
 import { useEffect, useState } from 'react'
+import { Ability } from '../backend/ability'
+import { groupAbilities } from '../backend/groupAbilities'
 
 const defaultCharacterStats: CharacterStats = {
   stamina: 40_000,
@@ -17,18 +18,23 @@ const defaultCharacterStats: CharacterStats = {
 
 export function Simulator() {
   const [characterStats, setCharacterStats] = useState(defaultCharacterStats)
-  const [wowClass, setClass] = useState<WowClass | null>('Monk')
-  const [abilities, setAbilities] = useState<Ability[]>([])
+  const [wowClass, setClass] = useState<WowClass | null>('Monk (Mistweaver)')
+  const [selectedClassAbilities, setSelectedClassAbilities] = useState<
+    Ability[]
+  >([])
+  const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<
+    Ability[]
+  >([])
 
   const [baseDamage, setBaseDamage] = useState(100_000)
   const [keyLevel, setKeyLevel] = useState(25)
   const [fortAmp, setFortAmp] = useState(false)
   const [tyranAmp, setTyranAmp] = useState(true)
 
-  const [result, setResult] = useState<Result>()
+  const [result, setResult] = useState<Result | null>(null)
 
   useEffect(() => {
-    setAbilities(
+    setSelectedClassAbilities(
       wowClass
         ? classAbilities[wowClass].filter(({ alwaysOn }) => alwaysOn)
         : []
@@ -38,8 +44,7 @@ export function Simulator() {
   useEffect(() => {
     const newResult = simulate({
       characterStats,
-      wowClass,
-      abilities,
+      abilities: [...selectedClassAbilities, ...selectedGroupAbilities],
       baseDamage,
       keyLevel,
       fortAmp,
@@ -52,8 +57,8 @@ export function Simulator() {
     keyLevel,
     fortAmp,
     tyranAmp,
-    wowClass,
-    abilities,
+    selectedClassAbilities,
+    selectedGroupAbilities,
   ])
 
   return (
@@ -74,11 +79,11 @@ export function Simulator() {
           />
         </div>
         <div className="flex gap-4 flex-wrap">
-          <Toggle
-            label="Fort amplifier"
-            checked={fortAmp}
-            onChange={setFortAmp}
-          />
+          {/*<Toggle*/}
+          {/*  label="Fort amplifier"*/}
+          {/*  checked={fortAmp}*/}
+          {/*  onChange={setFortAmp}*/}
+          {/*/>*/}
           <Toggle
             label="Tyran amplifier"
             checked={tyranAmp}
@@ -100,11 +105,22 @@ export function Simulator() {
 
           {wowClass && (
             <AbilitySelect
-              wowClass={wowClass}
-              selectedAbilities={abilities}
-              setAbilities={setAbilities}
+              allAbilities={classAbilities[wowClass]}
+              selectedAbilities={selectedClassAbilities}
+              setSelectedAbilities={setSelectedClassAbilities}
             />
           )}
+        </div>
+
+        <div className="flex gap-4 items-center">
+          <div className="text-white bg-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-teal-600">
+            Group buffs
+          </div>
+          <AbilitySelect
+            allAbilities={groupAbilities}
+            selectedAbilities={selectedGroupAbilities}
+            setSelectedAbilities={setSelectedGroupAbilities}
+          />
         </div>
 
         <div>
