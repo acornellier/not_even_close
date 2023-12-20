@@ -70,6 +70,16 @@ export const nightmareBolt: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=200185/nightmare-bolt',
 }
 
+export const wrackingPain: BossAbility = {
+  name: 'Wracking Pain',
+  boss: 'Yazma',
+  dungeon: "Atal'Dazar",
+  damage: 82369,
+  isAoe: false,
+  iconName: 'ability_warlock_improvedsoulleech',
+  wowheadLink: 'https://www.wowhead.com/spell=250096/wracking-pain',
+}
+
 export const soulrend: BossAbility = {
   name: 'Soulrend',
   boss: 'Yazma',
@@ -140,6 +150,7 @@ export const bossAbilities: BossAbility[] = [
   shadowBoltVolley,
   focusedTempest,
   shockBlast,
+  wrackingPain,
   soulrend,
   dreadEssence,
 ]
