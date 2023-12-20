@@ -1,4 +1,6 @@
 ﻿import { CharacterStats } from './characterStats'
+import { WowClass } from './classes'
+import { Ability } from './abilities'
 
 export interface Result {
   damageScaling: number
@@ -13,7 +15,8 @@ export interface Result {
 
 interface Input {
   characterStats: CharacterStats
-  drs: number[]
+  wowClass: WowClass | null
+  abilities: Ability[]
   baseDamage: number
   keyLevel: number
   fortAmp: boolean
@@ -39,8 +42,40 @@ function getScalingFactor(
   return Math.round(scalingFactor * 100) / 100
 }
 
+function getStartingHealth(
+  characterStats: CharacterStats,
+  abilities: Ability[]
+) {
+  let startingHealth = characterStats.stamina * 20
+  for (const ability of abilities) {
+    if (ability.healthIncrease) {
+      startingHealth *= 1 + ability.healthIncrease
+    }
+  }
+
+  return startingHealth
+}
+
+function getDamageReduction(
+  characterStats: CharacterStats,
+  abilities: Ability[]
+) {
+  let inverseDr = 1
+
+  const versatilityDr = characterStats.versatilityPercent / 100 / 2
+  inverseDr *= 1 - versatilityDr
+
+  for (const ability of abilities) {
+    inverseDr *= 1 - ability.dr
+  }
+
+  return 1 - inverseDr
+}
+
 export function simulate({
   characterStats,
+  wowClass,
+  abilities,
   keyLevel,
   fortAmp,
   tyranAmp,
@@ -49,10 +84,9 @@ export function simulate({
   const damageScaling = getScalingFactor(keyLevel, fortAmp, tyranAmp)
   const scaledDamage = Math.round(baseDamage * damageScaling)
 
-  const startingHealth = characterStats.stamina * 20
+  const startingHealth = getStartingHealth(characterStats, abilities)
 
-  const versatilityDr = characterStats.versatilityPercent / 100 / 2
-  const damageReduction = 1 - (1 - versatilityDr)
+  const damageReduction = getDamageReduction(characterStats, abilities)
   const mitigatedDamage = Math.round(scaledDamage * damageReduction)
   const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
 
