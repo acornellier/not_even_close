@@ -55,7 +55,7 @@ export const chiCocoon: Ability = {
   absorb: 160_000,
   iconName: 'inv_pet_crane',
   wowheadLink: 'https://www.wowhead.com/spell=406220/chi-cocoon',
-  notes: "Assumes ~160K absorb. In reality varies based on Monk's HP and vers.",
+  notes: "Assumes 160K absorb. In reality varies based on Monk's HP and vers.",
 }
 
 export const groupAbilities: Ability[] = [
