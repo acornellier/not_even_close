@@ -104,7 +104,7 @@ export function Simulator() {
           onChange={setCharacterStats}
         />
 
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
           <Dropdown
             options={classes}
             label="Class"
@@ -121,7 +121,7 @@ export function Simulator() {
           )}
         </div>
 
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
           <div className="text-white bg-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-teal-600">
             Other buffs
           </div>
