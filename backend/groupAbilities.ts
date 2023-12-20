@@ -1,5 +1,13 @@
 ﻿import { Ability } from './ability'
 
+export const icyPreservation: Ability = {
+  name: 'Icy Preservation',
+  spellId: 191326,
+  dr: 0.06,
+  iconName: 'inv_10_alchemy_bottle_shape2_blue',
+  wowheadLink: 'https://www.wowhead.com/item=191326/phial-of-icy-preservation',
+}
+
 export const fortitude: Ability = {
   name: 'Power Word: Fortitude',
   spellId: 21562,
@@ -51,6 +59,7 @@ export const chiCocoon: Ability = {
 }
 
 export const groupAbilities: Ability[] = [
+  icyPreservation,
   fortitude,
   generousPour,
   blackAttunement,
