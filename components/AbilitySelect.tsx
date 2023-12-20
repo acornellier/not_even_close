@@ -1,5 +1,6 @@
 ﻿import Image from 'next/image'
 import { Ability } from '../backend/ability'
+import { Tooltip } from 'react-tooltip'
 
 interface Props {
   allAbilities: Ability[]
@@ -14,7 +15,7 @@ export function AbilitySelect({
 }: Props) {
   const isAbilitySelected = (ability: Ability) =>
     selectedAbilities.some(
-      (selectedAbility) => selectedAbility.name === ability.name
+      (selectedAbility) => selectedAbility.spellId === ability.spellId
     )
 
   const toggleAbility = (ability: Ability) => {
@@ -25,7 +26,7 @@ export function AbilitySelect({
     if (isSelected) {
       setSelectedAbilities(
         selectedAbilities.filter(
-          (selectedAbility) => selectedAbility.name !== ability.name
+          (selectedAbility) => selectedAbility.spellId !== ability.spellId
         )
       )
     } else {
@@ -34,16 +35,34 @@ export function AbilitySelect({
   }
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 flex-wrap">
       {allAbilities.map((ability) => (
-        <a
+        <div
           key={ability.name}
-          href={ability.wowheadLink}
+          data-tooltip-id={`ability-tooltip-${ability.spellId}`}
+          className="cursor-pointer select-none"
           onClick={(e) => {
             e.preventDefault()
             toggleAbility(ability)
           }}
         >
+          <Tooltip id={`ability-tooltip-${ability.spellId}`} style={{}}>
+            <div className="flex flex-col">
+              <span className="text-xl">{ability.name}</span>
+              {ability.dr && <span>{ability.dr * 100}% DR</span>}
+              {ability.avoidance && (
+                <span>{ability.avoidance * 100}% avoidance</span>
+              )}
+              {ability.healthIncrease && (
+                <span>{ability.healthIncrease * 100}% HP</span>
+              )}
+              {ability.staminaIncrease && (
+                <span>{ability.staminaIncrease * 100}% stamina</span>
+              )}
+              {ability.absorb && <span>{ability.absorb} absorb</span>}
+              {ability.notes && <span>{ability.notes}</span>}
+            </div>
+          </Tooltip>
           {isAbilitySelected(ability) && (
             <svg
               className="absolute"
@@ -65,7 +84,7 @@ export function AbilitySelect({
             src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}
             alt={ability.name}
           />
-        </a>
+        </div>
       ))}
     </div>
   )

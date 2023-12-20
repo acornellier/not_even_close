@@ -5,6 +5,7 @@
   dampenHarm,
   diffuseMagic,
   fortBrew,
+  deflectingDance,
 } from './classAbilities'
 import { Ability } from './ability'
 
@@ -28,7 +29,7 @@ export type WowClass = typeof classes[number]
 
 export const classAbilities: Record<WowClass, Ability[]> = {
   // 'Death Knight': [],
-  'Demon Hunter (Havoc)': [demonicWards, blur],
+  'Demon Hunter (Havoc)': [demonicWards, blur, deflectingDance],
   // Druid: [],
   // Evoker: [],
   // Hunter: [],

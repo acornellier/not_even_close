@@ -10,10 +10,12 @@ import { Results } from './Results'
 import { useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { groupAbilities } from '../backend/groupAbilities'
+import { BossAbilities } from './BossAbilities'
 
 const defaultCharacterStats: CharacterStats = {
   stamina: 40_000,
   versatilityDrPercent: 5,
+  avoidancePercent: 0,
 }
 
 export function Simulator() {
@@ -28,6 +30,7 @@ export function Simulator() {
 
   const [baseDamage, setBaseDamage] = useState(100_000)
   const [keyLevel, setKeyLevel] = useState(25)
+  const [isAoe, setIsAoe] = useState(false)
   const [fortAmp, setFortAmp] = useState(false)
   const [tyranAmp, setTyranAmp] = useState(true)
 
@@ -47,6 +50,7 @@ export function Simulator() {
       abilities: [...selectedClassAbilities, ...selectedGroupAbilities],
       baseDamage,
       keyLevel,
+      isAoe,
       fortAmp,
       tyranAmp,
     })
@@ -55,6 +59,7 @@ export function Simulator() {
     characterStats,
     baseDamage,
     keyLevel,
+    isAoe,
     fortAmp,
     tyranAmp,
     selectedClassAbilities,
@@ -66,7 +71,7 @@ export function Simulator() {
       <div className="flex flex-col gap-4">
         <div className="flex gap-4 flex-wrap">
           <NumericInput
-            label="Base Damage"
+            label="Base Damage taken"
             onChange={setBaseDamage}
             value={baseDamage}
           />
@@ -84,6 +89,7 @@ export function Simulator() {
           {/*  checked={fortAmp}*/}
           {/*  onChange={setFortAmp}*/}
           {/*/>*/}
+          <Toggle label="AoE damage" checked={isAoe} onChange={setIsAoe} />
           <Toggle
             label="Tyran amplifier"
             checked={tyranAmp}
@@ -123,14 +129,14 @@ export function Simulator() {
           />
         </div>
 
-        <div>
-          <div>Shadow Bolt base damage: 106831</div>
-          <div>Shattered Earth base damage: 115355</div>
-          <div>Earthshaking Roar base damage: 109862</div>
-          <div>Soulrend base damage: 100304</div>
-          <div>Shock Blast damage: 129087</div>
-          <div>Apocalyptic Nightmare base damage: 137327</div>
-        </div>
+        <div className="border-2 my-2" />
+
+        <BossAbilities
+          onSelect={(ability) => {
+            setIsAoe(ability.isAoe)
+            setBaseDamage(ability.damage)
+          }}
+        />
       </div>
 
       <Results result={result} />

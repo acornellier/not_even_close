@@ -10,7 +10,7 @@ export function Results({ result }: Props) {
     <>
       {result && (
         <div>
-          <div className="font-bold text-4xl">
+          <div className="font-bold text-4xl mb-2">
             {result.survival ? (
               <span>
                 You will <span className="text-green-500">survive</span>

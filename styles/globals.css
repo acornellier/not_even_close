@@ -7,3 +7,8 @@
         color-scheme: dark;
     }
 }
+
+:root {
+    --rt-transition-show-delay: 0.01s !important;
+    --rt-transition-closing-delay: 0.01s !important;
+}

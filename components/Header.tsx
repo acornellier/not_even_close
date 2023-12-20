@@ -18,7 +18,7 @@ export class Header extends Component {
         </div>
         <span className="text-l font-bold">
           Disclaimer: WIP. Many assumptions, for example it assumes all damage
-          is magic damage.
+          is magic.
         </span>
       </div>
     )

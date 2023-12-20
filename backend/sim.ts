@@ -17,6 +17,7 @@ interface Input {
   abilities: Ability[]
   baseDamage: number
   keyLevel: number
+  isAoe: boolean
   fortAmp: boolean
   tyranAmp: boolean
 }
@@ -71,16 +72,25 @@ function getStartingHealth(
 
 function getDamageReduction(
   characterStats: CharacterStats,
-  abilities: Ability[]
+  abilities: Ability[],
+  damageIsAoe: boolean
 ) {
   let inverseDr = 1
 
   const versatilityDr = characterStats.versatilityDrPercent / 100
   inverseDr *= 1 - versatilityDr
 
+  if (damageIsAoe) {
+    inverseDr *= 1 - characterStats.avoidancePercent / 100
+  }
+
   for (const ability of abilities) {
     if (ability.dr) {
       inverseDr *= 1 - ability.dr
+    }
+
+    if (ability.avoidance && damageIsAoe) {
+      inverseDr *= 1 - ability.avoidance
     }
   }
 
@@ -91,6 +101,7 @@ export function simulate({
   characterStats,
   abilities,
   keyLevel,
+  isAoe,
   fortAmp,
   tyranAmp,
   baseDamage,
@@ -100,7 +111,7 @@ export function simulate({
 
   const startingHealth = getStartingHealth(characterStats, abilities)
 
-  const damageReduction = getDamageReduction(characterStats, abilities)
+  const damageReduction = getDamageReduction(characterStats, abilities, isAoe)
   const mitigatedDamage = Math.round(scaledDamage * damageReduction)
   const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
 
