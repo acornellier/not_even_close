@@ -58,6 +58,14 @@ export const chiCocoon: Ability = {
   notes: "Assumes 160K absorb. In reality varies based on Monk's HP and vers.",
 }
 
+export const blessingOfSacrifice: Ability = {
+  name: 'Blessing of Sacrifice',
+  spellId: 6940,
+  dr: 0.3,
+  iconName: 'spell_holy_sealofsacrifice',
+  wowheadLink: 'https://www.wowhead.com/spell=6940/blessing-of-sacrifice',
+}
+
 export const groupAbilities: Ability[] = [
   icyPreservation,
   fortitude,
@@ -66,4 +74,5 @@ export const groupAbilities: Ability[] = [
   aspectsFavor,
   zephyr,
   chiCocoon,
+  blessingOfSacrifice,
 ]
