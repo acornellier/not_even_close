@@ -6,6 +6,7 @@
   diffuseMagic,
   fortBrew,
   deflectingDance,
+  obsidianScales,
 } from './classAbilities'
 import { Ability } from './ability'
 
@@ -13,7 +14,7 @@ export const classes = [
   // 'Death Knight',
   'Demon Hunter (Havoc)',
   // 'Druid',
-  // 'Evoker',
+  'Evoker',
   // 'Hunter',
   // 'Mage',
   'Monk (Mistweaver)',
@@ -31,7 +32,7 @@ export const classAbilities: Record<WowClass, Ability[]> = {
   // 'Death Knight': [],
   'Demon Hunter (Havoc)': [demonicWards, blur, deflectingDance],
   // Druid: [],
-  // Evoker: [],
+  Evoker: [obsidianScales],
   // Hunter: [],
   // Mage: [],
   'Monk (Mistweaver)': [calmingPresence, dampenHarm, diffuseMagic, fortBrew],
