@@ -41,7 +41,7 @@ export function Dropdown({ options, label, value, onChange }: DropdownProps) {
       </button>
 
       {open && (
-        <div className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+        <div className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700">
           <ul
             className="py-2 text-sm text-gray-700 dark:text-gray-200"
             aria-labelledby="dropdownDefaultButton"

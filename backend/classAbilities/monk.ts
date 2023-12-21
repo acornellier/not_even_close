@@ -16,7 +16,7 @@ export const dampenHarm: Ability = {
   dr: 0.4,
   iconName: 'ability_monk_dampenharm',
   wowheadLink: 'https://www.wowhead.com/spell=122278/dampen-harm',
-  notes: 'Assumes always 40% DR, but in reality varies from 20-50%',
+  notes: 'Assumes 40% DR, but in reality varies from 20-50%',
 }
 
 export const diffuseMagic: Ability = {
