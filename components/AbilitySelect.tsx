@@ -8,6 +8,8 @@ interface Props {
   setSelectedAbilities: (abilities: Ability[]) => void
 }
 
+const iconSize = 40
+
 export function AbilitySelect({
   allAbilities,
   selectedAbilities,
@@ -59,6 +61,9 @@ export function AbilitySelect({
               {ability.staminaIncrease && (
                 <span>{ability.staminaIncrease * 100}% stamina</span>
               )}
+              {ability.versIncrease && (
+                <span>{ability.versIncrease * 100}% versatility</span>
+              )}
               {ability.absorb && <span>{ability.absorb} absorb</span>}
               {ability.notes && <span>{ability.notes}</span>}
             </div>
@@ -67,8 +72,8 @@ export function AbilitySelect({
             <svg
               className="absolute"
               xmlns="http://www.w3.org/2000/svg"
-              width="48"
-              height="48"
+              width={iconSize}
+              height={iconSize}
               viewBox="0 0 24 24"
             >
               <path
@@ -79,8 +84,8 @@ export function AbilitySelect({
           )}
           <Image
             className="rounded border-2 border-gray-500"
-            height={48}
-            width={48}
+            height={iconSize}
+            width={iconSize}
             src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}
             alt={ability.name}
           />

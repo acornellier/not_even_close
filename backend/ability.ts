@@ -5,6 +5,7 @@
   dr?: number
   avoidance?: number
   staminaIncrease?: number
+  versIncrease?: number
   healthIncrease?: number
   absorb?: number
   iconName: string

@@ -9,8 +9,9 @@ import { AbilitySelect } from './AbilitySelect'
 import { Results } from './Results'
 import { useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
-import { groupAbilities } from '../backend/groupAbilities'
 import { BossAbilities } from './BossAbilities'
+import { GroupBuffs } from './GroupBuffs'
+import { groupActives, groupBuffs, otherBuffs } from '../backend/groupActives'
 
 const defaultCharacterStats: CharacterStats = {
   stamina: 40_000,
@@ -67,7 +68,7 @@ export function Simulator() {
   ])
 
   return (
-    <div className="flex gap-12">
+    <div className="flex gap-4">
       <div className="flex flex-col gap-4">
         <div className="flex gap-4 flex-wrap">
           <NumericInput
@@ -97,7 +98,7 @@ export function Simulator() {
           />
         </div>
 
-        <div className="border-2 my-2" />
+        <div className="border-2 " />
 
         <CharacterStatsForm
           characterStats={characterStats}
@@ -121,18 +122,28 @@ export function Simulator() {
           )}
         </div>
 
-        <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
-          <div className="text-white bg-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-teal-600">
-            Other buffs
-          </div>
-          <AbilitySelect
-            allAbilities={groupAbilities}
-            selectedAbilities={selectedGroupAbilities}
-            setSelectedAbilities={setSelectedGroupAbilities}
-          />
-        </div>
+        <GroupBuffs
+          label="Group buffs"
+          options={groupBuffs}
+          selectedGroupAbilities={selectedGroupAbilities}
+          setSelectedGroupAbilities={setSelectedGroupAbilities}
+        />
 
-        <div className="border-2 my-2" />
+        <GroupBuffs
+          label="Group actives"
+          options={groupActives}
+          selectedGroupAbilities={selectedGroupAbilities}
+          setSelectedGroupAbilities={setSelectedGroupAbilities}
+        />
+
+        <GroupBuffs
+          label="Other buffs"
+          options={otherBuffs}
+          selectedGroupAbilities={selectedGroupAbilities}
+          setSelectedGroupAbilities={setSelectedGroupAbilities}
+        />
+
+        <div className="border-2" />
 
         <BossAbilities
           onSelect={(ability) => {
@@ -141,6 +152,8 @@ export function Simulator() {
           }}
         />
       </div>
+
+      <div className="border-2 mx-2" />
 
       <Results result={result} />
     </div>

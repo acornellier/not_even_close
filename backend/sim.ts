@@ -77,7 +77,13 @@ function getDamageReduction(
 ) {
   let inverseDr = 1
 
-  const versatilityDr = characterStats.versatilityDrPercent / 100
+  let versatilityDr = characterStats.versatilityDrPercent / 100
+  for (const ability of abilities) {
+    if (ability.versIncrease) {
+      versatilityDr += ability.versIncrease / 2
+    }
+  }
+
   inverseDr *= 1 - versatilityDr
 
   if (damageIsAoe) {

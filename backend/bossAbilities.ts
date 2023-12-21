@@ -95,7 +95,7 @@ export const focusedTempest: BossAbility = {
   boss: "Lady Naz'jar",
   dungeon: 'Throne of Tides',
   damage: 96129,
-  isAoe: true,
+  isAoe: false,
   iconName: 'spell_shaman_thunderstorm',
   wowheadLink: 'https://www.wowhead.com/spell=428376/focused-tempest',
 }
