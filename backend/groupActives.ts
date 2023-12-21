@@ -55,6 +55,7 @@ export const aspectsFavor: Ability = {
   healthIncrease: 0.02,
   iconName: 'ability_evoker_aspectsfavor',
   wowheadLink: 'https://www.wowhead.com/spell=407243/aspects-favor?rank=2',
+  notes: 'Assumes you already have Black Attunement',
 }
 
 export const zephyr: Ability = {
@@ -94,9 +95,10 @@ export const rallyingCry: Ability = {
 export const auraMastery: Ability = {
   name: 'Aura Mastery',
   spellId: 31821,
-  dr: 0.12,
+  dr: 0.09,
   iconName: 'spell_holy_auramastery',
   wowheadLink: 'https://www.wowhead.com/spell=31821/aura-mastery',
+  notes: 'Assumes you already have 3% devo aura',
 }
 
 export const powerWordBarrier: Ability = {
@@ -121,6 +123,7 @@ export const blessingOfSacrifice: Ability = {
   dr: 0.3,
   iconName: 'spell_holy_sealofsacrifice',
   wowheadLink: 'https://www.wowhead.com/spell=6940/blessing-of-sacrifice',
+  notes: 'Wrong for holy paladin where it is actually 32%',
 }
 
 export const ironBark: Ability = {

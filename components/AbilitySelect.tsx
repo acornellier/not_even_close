@@ -48,7 +48,7 @@ export function AbilitySelect({
             toggleAbility(ability)
           }}
         >
-          <Tooltip id={`ability-tooltip-${ability.spellId}`} style={{}}>
+          <Tooltip id={`ability-tooltip-${ability.spellId}`} opacity={1}>
             <div className="flex flex-col">
               <span className="text-xl">{ability.name}</span>
               {ability.dr && <span>{ability.dr * 100}% DR</span>}
