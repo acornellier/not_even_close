@@ -1,14 +1,7 @@
-﻿import {
-  demonicWards,
-  blur,
-  calmingPresence,
-  dampenHarm,
-  diffuseMagic,
-  fortBrew,
-  deflectingDance,
-  obsidianScales,
-} from './classAbilities'
+﻿import { havocAbilities } from './classAbilities/demonHunter'
 import { Ability } from './ability'
+import { evokerAbilities } from './classAbilities/evoker'
+import { monkAbilities } from './classAbilities/monk'
 
 export const classes = [
   // 'Death Knight',
@@ -30,12 +23,12 @@ export type WowClass = typeof classes[number]
 
 export const classAbilities: Record<WowClass, Ability[]> = {
   // 'Death Knight': [],
-  'Demon Hunter (Havoc)': [demonicWards, blur, deflectingDance],
+  'Demon Hunter (Havoc)': havocAbilities,
   // Druid: [],
-  Evoker: [obsidianScales],
+  Evoker: evokerAbilities,
   // Hunter: [],
   // Mage: [],
-  'Monk (Mistweaver)': [calmingPresence, dampenHarm, diffuseMagic, fortBrew],
+  'Monk (Mistweaver)': monkAbilities,
   // Paladin: [],
   // Priest: [],
   // Rogue: [],
