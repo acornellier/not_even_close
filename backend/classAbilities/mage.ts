@@ -1,5 +1,13 @@
 import { Ability } from '../ability'
 
+export const arcaneWarding: Ability = {
+  name: 'Arcane Warding',
+  dr: 0.04,
+  alwaysOn: true,
+  spellId: 383092,
+  iconName: 'spell_arcane_arcaneresilience',
+}
+
 export const barrier: Ability = {
   name: 'Barrier',
   absorb: 200_000,
@@ -34,6 +42,7 @@ export const greaterInvisibility: Ability = {
 }
 
 export const mageAbilities = [
+  arcaneWarding,
   barrier,
   mirrorImage,
   greaterInvisibility,
