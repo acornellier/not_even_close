@@ -5,6 +5,7 @@ export const arcaneWarding: Ability = {
   dr: 0.04,
   alwaysOn: true,
   spellId: 383092,
+  wowheadLink: 'https://www.wowhead.com/spell=383092/arcane-warding',
   iconName: 'spell_arcane_arcaneresilience',
 }
 
