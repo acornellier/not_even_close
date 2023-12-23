@@ -2,11 +2,19 @@
   label: string
   max?: number
   min?: number
+  step?: number
   onChange: (newValue: number) => void
   value: number
 }
 
-export function NumericInput({ label, max, min, onChange, value }: Props) {
+export function NumericInput({
+  label,
+  max,
+  min,
+  step = 1,
+  onChange,
+  value,
+}: Props) {
   return (
     <div className="flex flex-col">
       <label className="block font-bold mb-1 pr-4">{label}</label>
@@ -16,6 +24,7 @@ export function NumericInput({ label, max, min, onChange, value }: Props) {
           type="number"
           min={min}
           max={max}
+          step={step}
           onChange={(e) => onChange(Number(e.target.value))}
           value={value}
         />

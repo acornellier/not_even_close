@@ -1,6 +1,5 @@
 ﻿import { CharacterStats } from '../backend/characterStats'
 import { NumericInput } from './NumericInput'
-import { roundTo } from '../backend/utils'
 
 interface Props {
   characterStats: CharacterStats
@@ -20,6 +19,7 @@ export function CharacterStatsForm({ characterStats, onChange }: Props) {
         label="Stamina"
         value={characterStats.stamina}
         onChange={onChangeStat('stamina')}
+        step={500}
       />
       <NumericInput
         label="Versatility (dr %)"

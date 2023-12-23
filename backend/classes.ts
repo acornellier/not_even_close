@@ -3,6 +3,7 @@ import { Ability } from './ability'
 import { evokerAbilities } from './classAbilities/evoker'
 import { monkAbilities } from './classAbilities/monk'
 import { mageAbilities } from './classAbilities/mage'
+import { shamanAbilities } from './classAbilities/shaman'
 
 export const classes = [
   // 'Death Knight',
@@ -15,7 +16,7 @@ export const classes = [
   // 'Paladin',
   // 'Priest',
   // 'Rogue',
-  // 'Shaman',
+  'Shaman (Enh)',
   // 'Warlock',
   // 'Warrior',
 ] as const
@@ -33,7 +34,7 @@ export const classAbilities: Record<WowClass, Ability[]> = {
   // Paladin: [],
   // Priest: [],
   // Rogue: [],
-  // Shaman: [],
+  'Shaman (Enh)': shamanAbilities,
   // Warlock: [],
   // Warrior: [],
 }
