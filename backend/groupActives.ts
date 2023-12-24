@@ -52,10 +52,10 @@ export const markOfTheWild: Ability = {
 export const aspectsFavor: Ability = {
   name: "Aspects' Favor",
   spellId: 407243,
-  healthIncrease: 0.02,
+  healthIncrease: 0.04,
   iconName: 'ability_evoker_aspectsfavor',
   wowheadLink: 'https://www.wowhead.com/spell=407243/aspects-favor?rank=2',
-  notes: 'Assumes you already have Black Attunement',
+  notes: 'Assumes you already have Black Attunement selected',
 }
 
 export const zephyr: Ability = {
