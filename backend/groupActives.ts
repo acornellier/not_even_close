@@ -49,6 +49,15 @@ export const markOfTheWild: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=1126/mark-of-the-wild',
 }
 
+export const atrophicPoison: Ability = {
+  name: 'Atrophic Poison',
+  dr: 0.03,
+  spellId: 381637,
+  wowheadLink: 'https://www.wowhead.com/spell=381637/atrophic-poison',
+  iconName: 'ability_rogue_nervesofsteel',
+  notes: 'Does not necessarily work on all abilities',
+}
+
 export const aspectsFavor: Ability = {
   name: "Aspects' Favor",
   spellId: 407243,
@@ -148,6 +157,7 @@ export const groupBuffs: Ability[] = [
   generousPour,
   fortitude,
   markOfTheWild,
+  atrophicPoison,
 ]
 
 export const groupActives: Ability[] = [
