@@ -3,7 +3,7 @@ import { Ability } from '../ability'
 export const arcaneWarding: Ability = {
   name: 'Arcane Warding',
   dr: 0.04,
-  alwaysOn: true,
+  onByDefault: true,
   spellId: 383092,
   wowheadLink: 'https://www.wowhead.com/spell=383092/arcane-warding',
   iconName: 'spell_arcane_arcaneresilience',

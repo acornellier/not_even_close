@@ -21,8 +21,6 @@ export function AbilitySelect({
     )
 
   const toggleAbility = (ability: Ability) => {
-    if (ability.alwaysOn) return
-
     const isSelected = isAbilitySelected(ability)
 
     if (isSelected) {
@@ -40,7 +38,7 @@ export function AbilitySelect({
     <div className="flex gap-2 flex-wrap">
       {allAbilities.map((ability) => (
         <div
-          key={ability.name}
+          key={ability.spellId}
           data-tooltip-id={`ability-tooltip-${ability.spellId}`}
           className="cursor-pointer select-none"
           onClick={(e) => {

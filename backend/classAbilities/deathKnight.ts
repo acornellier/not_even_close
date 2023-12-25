@@ -3,7 +3,7 @@ import { Ability } from '../ability'
 export const veteranOfTheThirdWar: Ability = {
   name: 'Veteran of the Third War',
   staminaIncrease: 0.2,
-  alwaysOn: true,
+  onByDefault: true,
   spellId: 48263,
   iconName: 'spell_misc_warsongfocus',
 }

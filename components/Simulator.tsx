@@ -32,18 +32,19 @@ export function Simulator() {
   const [baseDamage, setBaseDamage] = useState(100_000)
   const [keyLevel, setKeyLevel] = useState(28)
   const [isAoe, setIsAoe] = useState(false)
-  const [fortAmp, setFortAmp] = useState(false)
+  const [fortAmp, _setFortAmp] = useState(false)
   const [tyranAmp, setTyranAmp] = useState(true)
 
   const [result, setResult] = useState<Result | null>(null)
 
-  useEffect(() => {
+  const changeClass = (newClass: WowClass) => {
+    setClass(newClass)
     setSelectedClassAbilities(
-      wowClass
-        ? classAbilities[wowClass].filter(({ alwaysOn }) => alwaysOn)
+      newClass
+        ? classAbilities[newClass].filter(({ onByDefault }) => onByDefault)
         : []
     )
-  }, [wowClass])
+  }
 
   useEffect(() => {
     const newResult = simulate({
@@ -87,7 +88,7 @@ export function Simulator() {
           {/*<Toggle*/}
           {/*  label="Fort amplifier"*/}
           {/*  checked={fortAmp}*/}
-          {/*  onChange={setFortAmp}*/}
+          {/*  onChange={_setFortAmp}*/}
           {/*/>*/}
           <Toggle label="AoE damage" checked={isAoe} onChange={setIsAoe} />
           <Toggle
@@ -108,7 +109,7 @@ export function Simulator() {
           <Dropdown
             options={classes}
             label="Class"
-            onChange={(value) => setClass(value as WowClass)}
+            onChange={(value) => changeClass(value as WowClass)}
             value={wowClass}
           />
 

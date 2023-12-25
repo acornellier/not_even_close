@@ -3,7 +3,7 @@ import { Ability } from '../ability'
 export const elementalWarding: Ability = {
   name: 'Elemental Warding',
   healthIncrease: 0.08,
-  alwaysOn: true,
+  onByDefault: true,
   spellId: 381689,
   wowheadLink: 'https://www.wowhead.com/spell=381689/brimming-with-life',
   iconName: 'inv_jewelry_talisman_06',
@@ -12,7 +12,7 @@ export const elementalWarding: Ability = {
 export const brimmingWithLife: Ability = {
   name: 'Brimming With Life',
   dr: 0.06,
-  alwaysOn: true,
+  onByDefault: true,
   spellId: 381650,
   wowheadLink: 'https://www.wowhead.com/spell=381650/elemental-warding',
   iconName: 'inv_10_elementalcombinedfoozles_primordial',
@@ -21,7 +21,7 @@ export const brimmingWithLife: Ability = {
 export const ancestralDefense: Ability = {
   name: 'Ancestral Defense',
   avoidance: 0.02,
-  alwaysOn: true,
+  onByDefault: true,
   spellId: 382947,
   wowheadLink: 'https://www.wowhead.com/spell=382947/ancestral-defense',
   iconName: 'ability_earthen_pillar',

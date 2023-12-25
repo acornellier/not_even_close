@@ -3,7 +3,7 @@ import { Ability } from '../ability'
 export const calmingPresence: Ability = {
   name: 'Calming Presence',
   spellId: 388664,
-  alwaysOn: true,
+  onByDefault: true,
   dr: 0.06,
   iconName: 'inv_misc_orb_01',
   wowheadLink:

@@ -3,7 +3,7 @@
 export const demonicWards: Ability = {
   name: 'Demonic Wards',
   spellId: 203513,
-  alwaysOn: true,
+  onByDefault: true,
   dr: 0.1,
   iconName: 'inv_belt_leather_demonhunter_a_01',
   wowheadLink: 'https://www.wowhead.com/spell=320381/demonic-wards',
@@ -12,7 +12,7 @@ export const demonicWards: Ability = {
 export const illidariKnowledge: Ability = {
   name: 'Illidari Knowledge',
   spellId: 389696,
-  alwaysOn: true,
+  onByDefault: true,
   dr: 0.05,
   iconName: 'spell_mage_overpowered',
   wowheadLink: 'https://www.wowhead.com/spell=389696/illidari-knowledge',
@@ -21,7 +21,7 @@ export const illidariKnowledge: Ability = {
 export const willOfTheIllidari: Ability = {
   name: 'Will of the Illidari',
   spellId: 389695,
-  alwaysOn: true,
+  onByDefault: true,
   healthIncrease: 0.05,
   iconName: 'ability_demonhunter_spectank',
   wowheadLink: 'https://www.wowhead.com/spell=389695/will-of-the-illidari',

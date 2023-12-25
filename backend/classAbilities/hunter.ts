@@ -3,7 +3,7 @@ import { Ability } from '../ability'
 export const rejuvenatingWind: Ability = {
   name: 'Rejuvenating Wind',
   healthIncrease: 0.08,
-  alwaysOn: true,
+  onByDefault: true,
   spellId: 385539,
   iconName: 'ability_druid_galewinds',
 }
@@ -11,7 +11,7 @@ export const rejuvenatingWind: Ability = {
 export const huntersAvoidance: Ability = {
   name: "Hunter's Avoidance",
   avoidance: 0.06,
-  alwaysOn: true,
+  onByDefault: true,
   spellId: 384799,
   iconName: 'rogue_burstofspeed',
 }

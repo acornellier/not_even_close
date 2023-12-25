@@ -3,7 +3,7 @@ import { Ability } from '../ability'
 export const thickHide: Ability = {
   name: 'Thick Hide',
   dr: 0.06,
-  alwaysOn: true,
+  onByDefault: true,
   spellId: 16931,
   iconName: 'inv_misc_pelt_bear_03',
 }
