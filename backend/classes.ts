@@ -14,6 +14,7 @@ import {
   paladinHolyAbilities,
   paladinRetAbilities,
 } from './classAbilities/paladin'
+import { warlockAbilities } from './classAbilities/warlock'
 
 export const classes = [
   'Death Knight',
@@ -28,7 +29,7 @@ export const classes = [
   'Priest',
   'Rogue',
   'Shaman (Enh)',
-  // 'Warlock',
+  'Warlock',
   'Warrior',
 ] as const
 
@@ -47,6 +48,6 @@ export const classAbilities: Record<WowClass, Ability[]> = {
   Priest: priestAbilities,
   Rogue: rogueAbilities,
   'Shaman (Enh)': shamanAbilities,
-  // Warlock: [],
+  Warlock: warlockAbilities,
   Warrior: warriorAbilities,
 }
