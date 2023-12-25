@@ -14,9 +14,9 @@ import { GroupBuffs } from './GroupBuffs'
 import { groupActives, groupBuffs, otherBuffs } from '../backend/groupActives'
 
 const defaultCharacterStats: CharacterStats = {
-  stamina: 40_000,
+  stamina: 41_000,
   versatilityDrPercent: 5,
-  avoidancePercent: 0,
+  avoidancePercent: 3,
 }
 
 export function Simulator() {
@@ -30,7 +30,7 @@ export function Simulator() {
   >([])
 
   const [baseDamage, setBaseDamage] = useState(100_000)
-  const [keyLevel, setKeyLevel] = useState(25)
+  const [keyLevel, setKeyLevel] = useState(28)
   const [isAoe, setIsAoe] = useState(false)
   const [fortAmp, setFortAmp] = useState(false)
   const [tyranAmp, setTyranAmp] = useState(true)
@@ -78,7 +78,6 @@ export function Simulator() {
           />
           <NumericInput
             label="Key Level"
-            max={30}
             min={2}
             onChange={setKeyLevel}
             value={keyLevel}
