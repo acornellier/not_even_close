@@ -1,5 +1,44 @@
 import { Ability } from '../ability'
 
+export const felArmor: Ability = {
+  name: 'Fel Armor',
+  dr: 0.03,
+  onByDefault: true,
+  spellId: 386124,
+  iconName: 'spell_shadow_felarmour',
+}
+
+export const demonicEmbrace: Ability = {
+  name: 'Demonic Embrace',
+  staminaIncrease: 0.1,
+  onByDefault: true,
+  spellId: 288843,
+  iconName: 'spell_shadow_metamorphosis',
+}
+
+export const demonicFortitude: Ability = {
+  name: 'Demonic Fortitude',
+  healthIncrease: 0.05,
+  onByDefault: true,
+  spellId: 386617,
+  iconName: 'spell_warlock_summonimpoutland',
+}
+
+export const soulLink: Ability = {
+  name: 'Soul Link',
+  dr: 0.1,
+  onByDefault: true,
+  spellId: 108415,
+  iconName: 'ability_warlock_soullink',
+}
+
+export const soulLeech: Ability = {
+  name: 'Soul Leech',
+  healthIncrease: 0.15,
+  spellId: 108370,
+  iconName: 'warlock_siphonlife',
+}
+
 export const darkPact: Ability = {
   name: 'Dark Pact',
   absorb: 550_000,
@@ -16,4 +55,12 @@ export const unendingResolve: Ability = {
   iconName: 'spell_shadow_demonictactics',
 }
 
-export const warlockAbilities = [darkPact, unendingResolve]
+export const warlockAbilities = [
+  felArmor,
+  demonicEmbrace,
+  demonicFortitude,
+  soulLink,
+  soulLeech,
+  darkPact,
+  unendingResolve,
+]
