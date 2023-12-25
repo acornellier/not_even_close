@@ -9,6 +9,6 @@
   healthIncrease?: number
   absorb?: number
   iconName: string
-  wowheadLink: string
+  wowheadLink?: string
   notes?: string
 }
