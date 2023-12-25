@@ -9,6 +9,7 @@ import { priestAbilities } from './classAbilities/priest'
 import { hunterAbilities } from './classAbilities/hunter'
 import { deathKnightAbilities } from './classAbilities/deathKnight'
 import { druidAbilities } from './classAbilities/druid'
+import { warriorAbilities } from './classAbilities/warrior'
 
 export const classes = [
   'Death Knight',
@@ -23,7 +24,7 @@ export const classes = [
   'Rogue',
   'Shaman (Enh)',
   // 'Warlock',
-  // 'Warrior',
+  'Warrior',
 ] as const
 
 export type WowClass = typeof classes[number]
@@ -41,5 +42,5 @@ export const classAbilities: Record<WowClass, Ability[]> = {
   Rogue: rogueAbilities,
   'Shaman (Enh)': shamanAbilities,
   // Warlock: [],
-  // Warrior: [],
+  Warrior: warriorAbilities,
 }
