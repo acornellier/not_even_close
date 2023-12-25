@@ -52,6 +52,7 @@ export function AbilitySelect({
             id={`ability-tooltip-${ability.spellId}`}
             opacity={1}
             place="right"
+            style={{ zIndex: 100 }}
           >
             <div className="flex flex-col">
               <span className="text-xl">{ability.name}</span>
