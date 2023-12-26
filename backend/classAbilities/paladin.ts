@@ -8,18 +8,8 @@ export const obduracy: Ability = {
   iconName: 'ability_paladin_speedoflight',
 }
 
-export const sanctifiedPlatesHoly: Ability = {
-  name: 'Obduracy',
-  staminaIncrease: 0.05,
-  avoidance: 0.05,
-  onByDefault: true,
-  spellId: 402964,
-  iconName: 'inv_chest_plate_raidpaladin_s_01',
-}
-
-export const sanctifiedPlatesRet: Ability = {
-  name: 'Obduracy',
-  staminaIncrease: 0.45,
+export const sanctifiedPlates: Ability = {
+  name: 'Sanctified Plates',
   avoidance: 0.05,
   onByDefault: true,
   spellId: 402964,
@@ -34,10 +24,8 @@ export const divineProtectionHoly: Ability = {
 }
 
 export const divineProtectionRet: Ability = {
-  name: 'Divine Protection',
+  ...divineProtectionHoly,
   dr: 0.3,
-  spellId: 498,
-  iconName: 'spell_holy_divineprotection',
 }
 
 export const shieldOfVengeance: Ability = {
@@ -51,13 +39,13 @@ export const shieldOfVengeance: Ability = {
 
 export const paladinHolyAbilities = [
   obduracy,
-  sanctifiedPlatesHoly,
+  sanctifiedPlates,
   divineProtectionHoly,
 ]
 
 export const paladinRetAbilities = [
   obduracy,
-  sanctifiedPlatesRet,
+  sanctifiedPlates,
   divineProtectionRet,
   shieldOfVengeance,
 ]

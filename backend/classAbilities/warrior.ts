@@ -1,12 +1,5 @@
 import { Ability } from '../ability'
 
-export const enduranceTraining: Ability = {
-  name: 'Endurance Training',
-  staminaIncrease: 0.05,
-  spellId: 391997,
-  iconName: 'spell_nature_unyeildingstamina',
-}
-
 export const defensiveStance: Ability = {
   name: 'Defensive Stance',
   dr: 0.15,
@@ -36,7 +29,6 @@ export const dieByTheSword: Ability = {
 }
 
 export const warriorAbilities = [
-  enduranceTraining,
   defensiveStance,
   spellReflection,
   enragedRegeneration,

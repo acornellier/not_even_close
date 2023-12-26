@@ -52,7 +52,7 @@ export function Dropdown({ options, label, value, onChange }: DropdownProps) {
                 className="cursor-pointer"
                 onClick={() => handleChange(option)}
               >
-                <a className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                <a className="block px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                   {option}
                 </a>
               </li>

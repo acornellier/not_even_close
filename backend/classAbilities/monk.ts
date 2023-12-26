@@ -1,6 +1,6 @@
 import { Ability } from '../ability'
 
-export const calmingPresence: Ability = {
+export const calmingPresenceMistweaver: Ability = {
   name: 'Calming Presence',
   spellId: 388664,
   onByDefault: true,
@@ -8,6 +8,11 @@ export const calmingPresence: Ability = {
   iconName: 'inv_misc_orb_01',
   wowheadLink:
     'https://www.wowhead.com/spell=388664/calming-presence?spellModifier=428200',
+}
+
+export const calmingPresenceWindwalker: Ability = {
+  ...calmingPresenceMistweaver,
+  dr: 0.03,
 }
 
 export const dampenHarm: Ability = {
@@ -36,8 +41,15 @@ export const fortBrew: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=388917/fortifying-brew',
 }
 
-export const monkAbilities = [
-  calmingPresence,
+export const monkMistweaverAbilities = [
+  calmingPresenceMistweaver,
+  dampenHarm,
+  diffuseMagic,
+  fortBrew,
+]
+
+export const monkWindwalkerAbilities = [
+  calmingPresenceWindwalker,
   dampenHarm,
   diffuseMagic,
   fortBrew,

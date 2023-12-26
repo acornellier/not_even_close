@@ -8,14 +8,6 @@ export const felArmor: Ability = {
   iconName: 'spell_shadow_felarmour',
 }
 
-export const demonicEmbrace: Ability = {
-  name: 'Demonic Embrace',
-  staminaIncrease: 0.1,
-  onByDefault: true,
-  spellId: 288843,
-  iconName: 'spell_shadow_metamorphosis',
-}
-
 export const demonicFortitude: Ability = {
   name: 'Demonic Fortitude',
   healthIncrease: 0.05,
@@ -57,7 +49,6 @@ export const unendingResolve: Ability = {
 
 export const warlockAbilities = [
   felArmor,
-  demonicEmbrace,
   demonicFortitude,
   soulLink,
   soulLeech,

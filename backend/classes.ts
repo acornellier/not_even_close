@@ -1,9 +1,18 @@
 ﻿import { havocAbilities } from './classAbilities/demonHunter'
 import { Ability } from './ability'
-import { evokerAbilities } from './classAbilities/evoker'
-import { monkAbilities } from './classAbilities/monk'
+import {
+  evokerDevAbilities,
+  evokerAugPresAbilities,
+} from './classAbilities/evoker'
+import {
+  monkMistweaverAbilities,
+  monkWindwalkerAbilities,
+} from './classAbilities/monk'
 import { mageAbilities } from './classAbilities/mage'
-import { shamanAbilities } from './classAbilities/shaman'
+import {
+  shamanEnhAbilities,
+  shamanEleRestoAbilities,
+} from './classAbilities/shaman'
 import { rogueAbilities } from './classAbilities/rogue'
 import { priestAbilities } from './classAbilities/priest'
 import { hunterAbilities } from './classAbilities/hunter'
@@ -18,36 +27,43 @@ import { warlockAbilities } from './classAbilities/warlock'
 
 export const classes = [
   'Death Knight',
-  'Demon Hunter (Havoc)',
+  'Demon Hunter',
   'Druid',
-  'Evoker',
+  'Evoker (Aug/Pres)',
+  'Evoker (Devastation)',
   'Hunter',
   'Mage',
   'Monk (Mistweaver)',
+  'Monk (Windwalker)',
   'Paladin (Holy)',
-  'Paladin (Ret)',
+  'Paladin (Retribution)',
   'Priest',
   'Rogue',
-  'Shaman (Enh)',
+  'Shaman (Enhancement)',
+  'Shaman (Ele/Resto)',
   'Warlock',
   'Warrior',
 ] as const
 
 export type WowClass = typeof classes[number]
 
-export const classAbilities: Record<WowClass, Ability[]> = {
+export let classAbilities: Record<WowClass, Ability[]>
+classAbilities = {
   'Death Knight': deathKnightAbilities,
-  'Demon Hunter (Havoc)': havocAbilities,
+  'Demon Hunter': havocAbilities,
   Druid: druidAbilities,
-  Evoker: evokerAbilities,
+  'Evoker (Aug/Pres)': evokerAugPresAbilities,
+  'Evoker (Devastation)': evokerDevAbilities,
   Hunter: hunterAbilities,
   Mage: mageAbilities,
-  'Monk (Mistweaver)': monkAbilities,
+  'Monk (Mistweaver)': monkMistweaverAbilities,
+  'Monk (Windwalker)': monkWindwalkerAbilities,
   'Paladin (Holy)': paladinHolyAbilities,
-  'Paladin (Ret)': paladinRetAbilities,
+  'Paladin (Retribution)': paladinRetAbilities,
   Priest: priestAbilities,
   Rogue: rogueAbilities,
-  'Shaman (Enh)': shamanAbilities,
+  'Shaman (Enhancement)': shamanEnhAbilities,
+  'Shaman (Ele/Resto)': shamanEleRestoAbilities,
   Warlock: warlockAbilities,
   Warrior: warriorAbilities,
 }

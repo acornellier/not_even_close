@@ -1,13 +1,5 @@
 import { Ability } from '../ability'
 
-export const veteranOfTheThirdWar: Ability = {
-  name: 'Veteran of the Third War',
-  staminaIncrease: 0.2,
-  onByDefault: true,
-  spellId: 48263,
-  iconName: 'spell_misc_warsongfocus',
-}
-
 export const antiMagicShell: Ability = {
   name: 'Anti-Magic Shell',
   absorb: 500_000,
@@ -23,8 +15,4 @@ export const iceboundFortitude: Ability = {
   iconName: 'spell_deathknight_iceboundfortitude',
 }
 
-export const deathKnightAbilities = [
-  veteranOfTheThirdWar,
-  antiMagicShell,
-  iceboundFortitude,
-]
+export const deathKnightAbilities = [antiMagicShell, iceboundFortitude]
