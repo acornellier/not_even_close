@@ -10,7 +10,7 @@ export const rejuvenatingWind: Ability = {
 
 export const huntersAvoidance: Ability = {
   name: "Hunter's Avoidance",
-  avoidance: 0.06,
+  aoeDr: 0.06,
   onByDefault: true,
   spellId: 384799,
   iconName: 'rogue_burstofspeed',

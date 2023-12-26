@@ -1,17 +1,18 @@
-﻿import { CharacterStats } from '../backend/characterStats'
+﻿import { CharacterStats, CharacterStatsInput } from '../backend/characterStats'
 import { NumericInput } from './NumericInput'
 
 interface Props {
-  characterStats: CharacterStats
-  onChange: (characterStats: CharacterStats) => void
+  characterStats: CharacterStatsInput
+  onChange: (characterStats: CharacterStatsInput) => void
 }
 
 export function CharacterStatsForm({ characterStats, onChange }: Props) {
-  const onChangeStat = (field: keyof CharacterStats) => (value: number) =>
-    onChange({
-      ...characterStats,
-      [field]: value,
-    })
+  const onChangeStat =
+    (field: keyof CharacterStatsInput) => (value: number | undefined) =>
+      onChange({
+        ...characterStats,
+        [field]: value,
+      })
 
   return (
     <div className="flex gap-4 flex-wrap">

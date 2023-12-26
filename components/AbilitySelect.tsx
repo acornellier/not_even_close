@@ -55,9 +55,7 @@ export function AbilitySelect({
             <div className="flex flex-col">
               <span className="text-xl">{ability.name}</span>
               {ability.dr && <span>{ability.dr * 100}% DR</span>}
-              {ability.avoidance && (
-                <span>{ability.avoidance * 100}% avoidance</span>
-              )}
+              {ability.aoeDr && <span>{ability.aoeDr * 100}% AoE DR</span>}
               {ability.healthIncrease && (
                 <span>{ability.healthIncrease * 100}% HP</span>
               )}
@@ -67,7 +65,10 @@ export function AbilitySelect({
               {ability.versIncrease && (
                 <span>{ability.versIncrease * 100}% versatility</span>
               )}
-              {ability.absorb && <span>{ability.absorb} absorb</span>}
+              {ability.absorbHealthMultiplier && (
+                <span>{ability.absorbHealthMultiplier * 100}% HP absorb</span>
+              )}
+              {ability.rawAbsorb && <span>{ability.rawAbsorb} HP</span>}
               {ability.notes && <span>{ability.notes}</span>}
             </div>
           </Tooltip>

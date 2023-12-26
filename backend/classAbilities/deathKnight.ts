@@ -2,10 +2,10 @@ import { Ability } from '../ability'
 
 export const antiMagicShell: Ability = {
   name: 'Anti-Magic Shell',
-  absorb: 500_000,
+  absorbHealthMultiplier: 0.483,
   spellId: 48707,
   iconName: 'spell_shadow_antimagicshell',
-  notes: "Assumes 500K absorb. In reality varies based on DK's HP and vers.",
+  notes: 'Assumes you have Anti-Magic Barrier and Gloom Ward',
 }
 
 export const iceboundFortitude: Ability = {

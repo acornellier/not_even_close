@@ -11,11 +11,10 @@ export const arcaneWarding: Ability = {
 
 export const barrier: Ability = {
   name: 'Barrier',
-  absorb: 200_000,
+  absorbHealthMultiplier: 0.2,
   spellId: 382791,
   wowheadLink: 'https://www.wowhead.com/spell=382791/molten-barrier',
   iconName: 'ability_mage_moltenarmor',
-  notes: "Assumes 200K absorb. In reality varies based on Mage's HP and vers.",
 }
 
 export const iceCold: Ability = {

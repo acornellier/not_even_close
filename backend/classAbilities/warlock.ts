@@ -33,11 +33,11 @@ export const soulLeech: Ability = {
 
 export const darkPact: Ability = {
   name: 'Dark Pact',
-  absorb: 550_000,
+  absorbHealthMultiplier: 0.6,
   spellId: 108416,
   iconName: 'spell_shadow_deathpact',
   notes:
-    "Assumes 550K absorb. In reality varies based on Warlock's HP and Int.",
+    "HACK. Actually 20% HP + 2.5 * spell power but I haven't implemented spell power",
 }
 
 export const unendingResolve: Ability = {
@@ -45,6 +45,7 @@ export const unendingResolve: Ability = {
   dr: 0.4,
   spellId: 104773,
   iconName: 'spell_shadow_demonictactics',
+  notes: 'Assumes you have Strength of Will',
 }
 
 export const warlockAbilities = [

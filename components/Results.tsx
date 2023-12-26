@@ -24,11 +24,8 @@ export function Results({ result }: Props) {
       <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
       <div>Scaled damage: {result.scaledDamage.toLocaleString('en-US')}</div>
       <div>
-        Damage reduction:{' '}
-        {roundTo(result.damageReduction * 100, 2).toLocaleString('en-US')}%
-      </div>
-      <div>
-        Mitigated damage: {result.mitigatedDamage.toLocaleString('en-US')}
+        Mitigated damage: {result.mitigatedDamage.toLocaleString('en-US')} (
+        {roundTo(result.damageReduction * 100, 2).toLocaleString('en-US')}%)
       </div>
       <div>
         Actual damage taken: {result.actualDamageTaken.toLocaleString('en-US')}
@@ -36,6 +33,8 @@ export function Results({ result }: Props) {
       <div>
         Starting health: {result.startingHealth.toLocaleString('en-US')}
       </div>
+      <div>Absorbs: {result.absorbs.toLocaleString('en-US')}</div>
+      <div>Total health: {result.totalHealth.toLocaleString('en-US')}</div>
       {result.survival ? (
         <div>
           Health remaining: {result.healthRemaining.toLocaleString('en-US')} (

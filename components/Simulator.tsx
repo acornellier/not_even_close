@@ -1,4 +1,4 @@
-﻿import { CharacterStats } from '../backend/characterStats'
+﻿import { CharacterStatsInput } from '../backend/characterStats'
 import { Result, simulate } from '../backend/sim'
 import { NumericInput } from './NumericInput'
 import { Toggle } from './Toggle'
@@ -13,7 +13,7 @@ import { BossAbilities } from './BossAbilities'
 import { GroupBuffs } from './GroupBuffs'
 import { groupActives, groupBuffs, otherBuffs } from '../backend/groupActives'
 
-const defaultCharacterStats: CharacterStats = {
+const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
   versatilityDrPercent: 5,
   avoidancePercent: 3,
@@ -48,7 +48,11 @@ export function Simulator() {
 
   useEffect(() => {
     const newResult = simulate({
-      characterStats,
+      characterStats: {
+        stamina: characterStats.stamina ?? 0,
+        versatilityDr: (characterStats.versatilityDrPercent ?? 0) / 100,
+        avoidance: (characterStats.avoidancePercent ?? 0) / 100,
+      },
       abilities: [...selectedClassAbilities, ...selectedGroupAbilities],
       baseDamage,
       keyLevel,
@@ -74,13 +78,13 @@ export function Simulator() {
         <div className="flex gap-4 flex-wrap">
           <NumericInput
             label="Base Damage taken"
-            onChange={setBaseDamage}
+            onChange={(val) => setBaseDamage(val ?? 0)}
             value={baseDamage}
           />
           <NumericInput
             label="Key Level"
             min={2}
-            onChange={setKeyLevel}
+            onChange={(val) => setKeyLevel(val ?? 0)}
             value={keyLevel}
           />
         </div>

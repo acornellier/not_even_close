@@ -19,7 +19,7 @@ export const fortitude: Ability = {
 export const generousPour: Ability = {
   name: 'Generous Pour',
   spellId: 389575,
-  avoidance: 0.04,
+  aoeDr: 0.04,
   iconName: 'inv_misc_food_legion_goocaramel_bottle',
   wowheadLink:
     'https://www.wowhead.com/spell=389575/generous-pour?def=106502&rank=2',
@@ -78,7 +78,7 @@ export const zephyr: Ability = {
 export const chiCocoon: Ability = {
   name: 'Chi Cocoon',
   spellId: 406220,
-  absorb: 170_000,
+  rawAbsorb: 170_000,
   iconName: 'inv_pet_crane',
   wowheadLink: 'https://www.wowhead.com/spell=406220/chi-cocoon',
   notes: "Assumes 170K absorb. In reality varies based on Monk's HP and vers.",
@@ -87,7 +87,7 @@ export const chiCocoon: Ability = {
 export const massBarrier: Ability = {
   name: 'Mass Barrier',
   spellId: 414660,
-  absorb: 200_000,
+  rawAbsorb: 200_000,
   iconName: 'ability_racial_magicalresistance',
   wowheadLink: 'https://www.wowhead.com/spell=414660/mass-barrier',
   notes: "Assumes 200K absorb. In reality varies based on Mage's HP and vers.",
@@ -173,7 +173,7 @@ export const groupActives: Ability[] = [
 
 export const otherBuffs: Ability[] = [
   icyPreservation,
-  blessingOfSacrifice,
   ironBark,
+  blessingOfSacrifice,
   painSuppression,
 ]

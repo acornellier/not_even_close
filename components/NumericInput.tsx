@@ -3,8 +3,8 @@
   max?: number
   min?: number
   step?: number
-  onChange: (newValue: number) => void
-  value: number
+  onChange: (newValue: number | undefined) => void
+  value: number | undefined
 }
 
 export function NumericInput({
@@ -25,8 +25,10 @@ export function NumericInput({
           min={min}
           max={max}
           step={step}
-          onChange={(e) => onChange(Number(e.target.value))}
-          value={value}
+          onChange={({ target: { value } }) => {
+            onChange(value === '' ? undefined : Number(value))
+          }}
+          value={value ?? ''}
         />
       </div>
     </div>

@@ -8,6 +8,8 @@ export interface Result {
   mitigatedDamage: number
   actualDamageTaken: number
   startingHealth: number
+  absorbs: number
+  totalHealth: number
   healthRemaining: number
   survival: boolean
 }
@@ -41,33 +43,66 @@ function getScalingFactor(
   return Math.round(scalingFactor * 100) / 100
 }
 
+function getAdjustedStats(
+  characterStats: CharacterStats,
+  abilities: Ability[]
+) {
+  let adjustedStats = { ...characterStats }
+
+  const baseStamina = characterStats.stamina
+
+  for (const ability of abilities) {
+    if (ability.staminaIncrease) {
+      adjustedStats.stamina += baseStamina * ability.staminaIncrease
+    }
+  }
+
+  for (const ability of abilities) {
+    if (ability.versIncrease) {
+      adjustedStats.versatilityDr += ability.versIncrease / 2
+    }
+  }
+
+  return adjustedStats
+}
+
 function getStartingHealth(
   characterStats: CharacterStats,
   abilities: Ability[]
 ) {
-  const baseStamina = characterStats.stamina
-  let stamina = baseStamina
-
-  for (const ability of abilities) {
-    if (ability.staminaIncrease) {
-      stamina += baseStamina * ability.staminaIncrease
-    }
-  }
-
-  const baseHealth = stamina * 20
+  const baseHealth = characterStats.stamina * 20
   let startingHealth = baseHealth
 
   for (const ability of abilities) {
     if (ability.healthIncrease) {
       startingHealth += baseHealth * ability.healthIncrease
     }
-
-    if (ability.absorb) {
-      startingHealth += ability.absorb
-    }
   }
 
   return startingHealth
+}
+
+function getAbsorbs(
+  characterStats: CharacterStats,
+  abilities: Ability[],
+  startingHealth: number
+) {
+  let absorbs = 0
+
+  for (const ability of abilities) {
+    if (ability.absorbHealthMultiplier) {
+      absorbs +=
+        ability.absorbHealthMultiplier *
+        startingHealth *
+        (1 + characterStats.versatilityDr * 2)
+    }
+
+    if (ability.rawAbsorb) {
+      absorbs += ability.rawAbsorb
+    }
+  }
+
+  return absorbs
 }
 
 function getDamageReduction(
@@ -75,19 +110,10 @@ function getDamageReduction(
   abilities: Ability[],
   damageIsAoe: boolean
 ) {
-  let inverseDr = 1
-
-  let versatilityDr = characterStats.versatilityDrPercent / 100
-  for (const ability of abilities) {
-    if (ability.versIncrease) {
-      versatilityDr += ability.versIncrease / 2
-    }
-  }
-
-  inverseDr *= 1 - versatilityDr
+  let inverseDr = 1 - characterStats.versatilityDr
 
   if (damageIsAoe) {
-    inverseDr *= 1 - characterStats.avoidancePercent / 100
+    inverseDr *= 1 - characterStats.avoidance
   }
 
   for (const ability of abilities) {
@@ -95,8 +121,8 @@ function getDamageReduction(
       inverseDr *= 1 - ability.dr
     }
 
-    if (ability.avoidance && damageIsAoe) {
-      inverseDr *= 1 - ability.avoidance
+    if (ability.aoeDr && damageIsAoe) {
+      inverseDr *= 1 - ability.aoeDr
     }
   }
 
@@ -115,13 +141,16 @@ export function simulate({
   const damageScaling = getScalingFactor(keyLevel, fortAmp, tyranAmp)
   const scaledDamage = Math.round(baseDamage * damageScaling)
 
-  const startingHealth = getStartingHealth(characterStats, abilities)
+  const adjustedStats = getAdjustedStats(characterStats, abilities)
+  const startingHealth = getStartingHealth(adjustedStats, abilities)
+  const absorbs = getAbsorbs(adjustedStats, abilities, startingHealth)
+  const effectiveHealth = startingHealth + absorbs
 
-  const damageReduction = getDamageReduction(characterStats, abilities, isAoe)
+  const damageReduction = getDamageReduction(adjustedStats, abilities, isAoe)
   const mitigatedDamage = Math.round(scaledDamage * damageReduction)
   const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
 
-  const healthRemaining = startingHealth - actualDamageTaken
+  const healthRemaining = effectiveHealth - actualDamageTaken
   const survival = healthRemaining > 0
 
   return {
@@ -131,6 +160,8 @@ export function simulate({
     mitigatedDamage,
     actualDamageTaken,
     startingHealth,
+    absorbs,
+    totalHealth: effectiveHealth,
     healthRemaining,
     survival,
   }

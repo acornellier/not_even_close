@@ -2,7 +2,7 @@ import { Ability } from '../ability'
 
 export const feint: Ability = {
   name: 'Feint',
-  avoidance: 0.4,
+  aoeDr: 0.4,
   spellId: 1966,
   wowheadLink: 'https://www.wowhead.com/spell=1966/feint',
   iconName: 'ability_rogue_feint',
