@@ -11,7 +11,7 @@ export class Header extends Component {
               Not Even Close
             </span>
             <span className="font-bold text-center text-teal-500">
-              by Ortemist-Zul'jin
+              {"by Ortemist-Zul'jin"}
             </span>
           </div>
           <GitHubButton href="https://github.com/acornellier/not_even_close" />
