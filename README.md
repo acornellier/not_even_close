@@ -1,3 +1,4 @@
-## Mistweaver Damage Sim
+## Not Even Close
 
-Contact me on Discord at Ortemis
+Live link: https://not-even-close.vercel.app/
+Discord community: https://discord.com/invite/Ykb6AbYHHZ
