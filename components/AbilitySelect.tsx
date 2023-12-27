@@ -56,9 +56,7 @@ export function AbilitySelect({
               <span className="text-xl">{ability.name}</span>
               {ability.dr && <span>{ability.dr * 100}% DR</span>}
               {ability.aoeDr && <span>{ability.aoeDr * 100}% AoE DR</span>}
-              {ability.healthIncrease && (
-                <span>{ability.healthIncrease * 100}% HP</span>
-              )}
+              {ability.healthIncrease && <span>{ability.healthIncrease * 100}% HP</span>}
               {ability.staminaIncrease && (
                 <span>{ability.staminaIncrease * 100}% stamina</span>
               )}
@@ -68,7 +66,9 @@ export function AbilitySelect({
               {ability.absorbHealthMultiplier && (
                 <span>{ability.absorbHealthMultiplier * 100}% HP absorb</span>
               )}
-              {ability.rawAbsorb && <span>{ability.rawAbsorb} HP absorb</span>}
+              {ability.rawAbsorb && (
+                <span>{ability.rawAbsorb.toLocaleString('en-US')} HP absorb</span>
+              )}
               {ability.notes && <span>{ability.notes}</span>}
             </div>
           </Tooltip>
