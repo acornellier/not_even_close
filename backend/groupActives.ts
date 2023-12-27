@@ -151,6 +151,14 @@ export const painSuppression: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=33206/pain-suppression',
 }
 
+export const lifeCocoon: Ability = {
+  name: 'Life Cocoon',
+  spellId: 116849,
+  rawAbsorb: 1_000_000,
+  iconName: 'ability_monk_chicocoon',
+  notes: "Assumes 1M absorb. In reality varies based on monk's HP and vers",
+}
+
 export const groupBuffs: Ability[] = [
   blackAttunement,
   devotionAura,
@@ -176,4 +184,5 @@ export const otherBuffs: Ability[] = [
   ironBark,
   blessingOfSacrifice,
   painSuppression,
+  lifeCocoon,
 ]

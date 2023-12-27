@@ -68,7 +68,7 @@ export function AbilitySelect({
               {ability.absorbHealthMultiplier && (
                 <span>{ability.absorbHealthMultiplier * 100}% HP absorb</span>
               )}
-              {ability.rawAbsorb && <span>{ability.rawAbsorb} HP</span>}
+              {ability.rawAbsorb && <span>{ability.rawAbsorb} HP absorb</span>}
               {ability.notes && <span>{ability.notes}</span>}
             </div>
           </Tooltip>

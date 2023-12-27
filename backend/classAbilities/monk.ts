@@ -41,6 +41,13 @@ export const fortBrew: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=388917/fortifying-brew',
 }
 
+export const touchOfKarma: Ability = {
+  name: 'Touch of Karma',
+  spellId: 122470,
+  absorbHealthMultiplier: 0.5,
+  iconName: 'ability_monk_touchofkarma',
+}
+
 export const monkMistweaverAbilities = [
   calmingPresenceMistweaver,
   dampenHarm,
@@ -53,4 +60,5 @@ export const monkWindwalkerAbilities = [
   dampenHarm,
   diffuseMagic,
   fortBrew,
+  touchOfKarma,
 ]
