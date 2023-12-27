@@ -1,5 +1,6 @@
 ﻿import { Component } from 'react'
-import GitHubButton from 'react-github-btn'
+import { DiscordButton } from './DiscordButton'
+import { GitHubButton } from './GithubButton'
 
 export class Header extends Component {
   render() {
@@ -14,14 +15,14 @@ export class Header extends Component {
               {"by Ortemist-Zul'jin"}
             </span>
           </div>
-          <GitHubButton href="https://github.com/acornellier/not_even_close" />
+          <div className="flex items-center">
+            <DiscordButton href="https://discord.com/invite/Ykb6AbYHHZ" />
+            <GitHubButton href="https://github.com/acornellier/not_even_close" />
+          </div>
         </div>
         <span className="font-bold text-teal-500">
           Disclaimer: WIP! Expect errors and bugs. Only magic damage is
           supported.{' '}
-          <a className="text-blue-500" href="https://discord.gg/Ykb6AbYHHZ">
-            Click here to join my Discord community to give feedback
-          </a>
         </span>
       </div>
     )

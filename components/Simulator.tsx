@@ -21,13 +21,9 @@ const defaultCharacterStats: CharacterStatsInput = {
 
 export function Simulator() {
   const [characterStats, setCharacterStats] = useState(defaultCharacterStats)
-  const [wowClass, setClass] = useState<WowClass | null>('Monk (Mistweaver)')
-  const [selectedClassAbilities, setSelectedClassAbilities] = useState<
-    Ability[]
-  >([])
-  const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<
-    Ability[]
-  >([])
+  const [wowClass, setClass] = useState<WowClass | null>(null)
+  const [selectedClassAbilities, setSelectedClassAbilities] = useState<Ability[]>([])
+  const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<Ability[]>([])
 
   const [baseDamage, setBaseDamage] = useState(100_000)
   const [keyLevel, setKeyLevel] = useState(28)
@@ -40,11 +36,13 @@ export function Simulator() {
   const changeClass = (newClass: WowClass) => {
     setClass(newClass)
     setSelectedClassAbilities(
-      newClass
-        ? classAbilities[newClass].filter(({ onByDefault }) => onByDefault)
-        : []
+      newClass ? classAbilities[newClass].filter(({ onByDefault }) => onByDefault) : []
     )
   }
+
+  useEffect(() => {
+    changeClass('Monk (Mistweaver)')
+  }, [])
 
   useEffect(() => {
     const newResult = simulate({
@@ -95,11 +93,7 @@ export function Simulator() {
           {/*  onChange={_setFortAmp}*/}
           {/*/>*/}
           <Toggle label="AoE damage" checked={isAoe} onChange={setIsAoe} />
-          <Toggle
-            label="Tyran amplifier"
-            checked={tyranAmp}
-            onChange={setTyranAmp}
-          />
+          <Toggle label="Tyran amplifier" checked={tyranAmp} onChange={setTyranAmp} />
         </div>
 
         <div className="border-2 " />
