@@ -70,7 +70,7 @@ export const aspectsFavor: Ability = {
 export const zephyr: Ability = {
   name: 'Zephyr',
   spellId: 374227,
-  dr: 0.2,
+  aoeDr: 0.2,
   iconName: 'ability_evoker_hoverblack',
   wowheadLink: 'https://www.wowhead.com/spell=374227/zephyr',
 }

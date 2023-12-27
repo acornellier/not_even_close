@@ -21,6 +21,7 @@ export const survivalOfTheFittest: Ability = {
   dr: 0.4,
   spellId: 264735,
   iconName: 'spell_nature_spiritarmor',
+  notes: "Assumes you have Nature's Endurance",
 }
 
 export const fortitudeOfTheBear: Ability = {

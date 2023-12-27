@@ -17,9 +17,10 @@ export class Header extends Component {
           <GitHubButton href="https://github.com/acornellier/not_even_close" />
         </div>
         <span className="font-bold text-teal-500">
-          Disclaimer: Very WIP! Expect errors and bugs.{' '}
+          Disclaimer: WIP! Expect errors and bugs. Only magic damage is
+          supported.{' '}
           <a className="text-blue-500" href="https://discord.gg/Ykb6AbYHHZ">
-            Click here to join my Discord community for feedback
+            Click here to join my Discord community to give feedback
           </a>
         </span>
       </div>
