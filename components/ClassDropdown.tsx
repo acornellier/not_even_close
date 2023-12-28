@@ -1,15 +1,15 @@
 ﻿import { useState } from 'react'
-import { classes, WowClass } from '../backend/classes'
+import { classSpecAbilities, WowClass, WowClassSpec } from '../backend/classes'
 
 export interface DropdownProps {
-  value: WowClass | null
-  onChange: (value: WowClass) => void
+  selectedClassSpec: WowClassSpec
+  onChange: (value: WowClassSpec) => void
 }
 
-export function ClassDropdown({ value, onChange }: DropdownProps) {
+export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
   const [open, setOpen] = useState(false)
 
-  const handleChange = (option: WowClass) => {
+  const handleChange = (option: WowClassSpec) => {
     onChange(option)
     setOpen(false)
   }
@@ -21,7 +21,7 @@ export function ClassDropdown({ value, onChange }: DropdownProps) {
         type="button"
         onClick={() => setOpen(!open)}
       >
-        {value ?? 'Class'}
+        {selectedClassSpec.class} ({selectedClassSpec.spec})
         <svg
           className="w-2.5 h-2.5 ml-2"
           aria-hidden="true"
@@ -40,17 +40,22 @@ export function ClassDropdown({ value, onChange }: DropdownProps) {
       </button>
 
       {open && (
-        <div className="absolute w-96 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-          <div className="grid grid-cols-2 py-2 text-sm text-gray-700 dark:text-gray-200">
-            {classes.map((option) => (
-              <div
-                key={option}
-                className="cursor-pointer"
-                onClick={() => handleChange(option)}
-              >
-                <a className="block px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                  {option}
-                </a>
+        <div className="absolute w-[600px] z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+          <div className="grid grid-cols-4 gap-4 px-4 py-2 text-sm text-gray-700 dark:text-gray-200">
+            {(Object.keys(classSpecAbilities) as WowClass[]).map((wowClass) => (
+              <div className="p-1">
+                <div className="font-bold pl-1 mb-1">{wowClass}</div>
+                {Object.keys(classSpecAbilities[wowClass]).map((wowSpec) => (
+                  <div
+                    key={wowClass}
+                    className="cursor-pointer"
+                    onClick={() => handleChange({ class: wowClass, spec: wowSpec })}
+                  >
+                    <a className="block p-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                      {wowSpec}
+                    </a>
+                  </div>
+                ))}
               </div>
             ))}
           </div>

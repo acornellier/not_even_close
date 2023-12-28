@@ -4,7 +4,7 @@ import { NumericInput } from './NumericInput'
 import { Toggle } from './Toggle'
 import { CharacterStatsForm } from './CharacterStatsForm'
 import { ClassDropdown } from './ClassDropdown'
-import { classAbilities, classes, WowClass } from '../backend/classes'
+import { classSpecAbilities, WowClassSpec } from '../backend/classes'
 import { AbilitySelect } from './AbilitySelect'
 import { Results } from './Results'
 import { useEffect, useState } from 'react'
@@ -21,7 +21,10 @@ const defaultCharacterStats: CharacterStatsInput = {
 
 export function Simulator() {
   const [characterStats, setCharacterStats] = useState(defaultCharacterStats)
-  const [wowClass, setClass] = useState<WowClass | null>('Monk (Mistweaver)')
+  const [classSpec, setClass] = useState<WowClassSpec>({
+    class: 'Monk',
+    spec: 'Mistweaver',
+  })
   const [selectedClassAbilities, setSelectedClassAbilities] = useState<Ability[]>([])
   const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<Ability[]>([])
 
@@ -33,11 +36,12 @@ export function Simulator() {
 
   const [result, setResult] = useState<Result | null>(null)
 
+  // @ts-ignore
+  const specAbilities = classSpecAbilities[classSpec.class][classSpec.spec] as Ability[]
+
   useEffect(() => {
-    setSelectedClassAbilities(
-      wowClass ? classAbilities[wowClass].filter(({ onByDefault }) => onByDefault) : []
-    )
-  }, [wowClass])
+    setSelectedClassAbilities(specAbilities.filter(({ onByDefault }) => onByDefault))
+  }, [classSpec])
 
   useEffect(() => {
     const newResult = simulate({
@@ -99,15 +103,12 @@ export function Simulator() {
         />
 
         <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
-          <ClassDropdown onChange={setClass} value={wowClass} />
-
-          {wowClass && (
-            <AbilitySelect
-              allAbilities={classAbilities[wowClass]}
-              selectedAbilities={selectedClassAbilities}
-              setSelectedAbilities={setSelectedClassAbilities}
-            />
-          )}
+          <ClassDropdown onChange={setClass} selectedClassSpec={classSpec} />
+          <AbilitySelect
+            allAbilities={specAbilities}
+            selectedAbilities={selectedClassAbilities}
+            setSelectedAbilities={setSelectedClassAbilities}
+          />
         </div>
 
         <GroupBuffs

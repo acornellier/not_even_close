@@ -37,66 +37,68 @@ import {
   rogueSubAbilities,
 } from './classAbilities/rogue'
 
-export const classes = [
-  'Death Knight',
-  'Demon Hunter',
-  'Druid (Balance)',
-  'Druid (Feral)',
-  'Druid (Restoration)',
-  'Evoker (Augmentation)',
-  'Evoker (Devastation)',
-  'Evoker (Preservation)',
-  'Hunter',
-  'Mage (Arcane)',
-  'Mage (Fire)',
-  'Mage (Frost)',
-  'Monk (Mistweaver)',
-  'Monk (Windwalker)',
-  'Paladin (Holy)',
-  'Paladin (Retribution)',
-  'Priest (Disc)',
-  'Priest (Holy)',
-  'Priest (Shadow)',
-  'Rogue (Assassination)',
-  'Rogue (Outlaw)',
-  'Rogue (Subtlety)',
-  'Shaman (Enhancement)',
-  'Shaman (Elemental)',
-  'Shaman (Restoration)',
-  'Warlock',
-  'Warrior (Arms)',
-  'Warrior (Fury)',
-] as const
+export const classSpecAbilities = {
+  'Death Knight': {
+    Frost: deathKnightAbilities,
+    Unholy: deathKnightAbilities,
+  },
+  'Demon Hunter': {
+    Havoc: havocAbilities,
+  },
+  Druid: {
+    Balance: druidBalanceAbilities,
+    Feral: druidFeralAbilities,
+    Restoration: druidRestoAbilities,
+  },
+  Evoker: {
+    Augmentation: evokerAugAbilities,
+    Devastation: evokerDevAbilities,
+    Preservation: evokerPresAbilities,
+  },
+  Hunter: {
+    'Beast Mastery': hunterAbilities,
+    Marksmanship: hunterAbilities,
+    Survival: hunterAbilities,
+  },
+  Mage: {
+    Arcane: mageArcaneAbilities,
+    Fire: mageFireAbilities,
+    Frost: mageFrostAbilities,
+  },
+  Monk: {
+    Mistweaver: monkMistweaverAbilities,
+    Windwalker: monkWindwalkerAbilities,
+  },
+  Paladin: {
+    Holy: paladinHolyAbilities,
+    Retribution: paladinRetAbilities,
+  },
+  Priest: {
+    Discipline: priestDiscAbilities,
+    Holy: priestHolyAbilities,
+    Shadow: priestShadowAbilities,
+  },
+  Rogue: {
+    Assassination: rogueAssAbilities,
+    Outlaw: rogueOutlawAbilities,
+    Subtlety: rogueSubAbilities,
+  },
+  Shaman: {
+    Enhancement: shamanEnhAbilities,
+    Elemental: shamanEleAbilities,
+    Restoration: shamanRestoAbilities,
+  },
+  Warlock: {
+    Affliction: warlockAbilities,
+    Demonology: warlockAbilities,
+    Destruction: warlockAbilities,
+  },
+  Warrior: {
+    Arms: warriorArmsAbilities,
+    Fury: warriorFuryAbilities,
+  },
+} as const
 
-export type WowClass = typeof classes[number]
-
-export const classAbilities: Record<WowClass, Ability[]> = {
-  'Death Knight': deathKnightAbilities,
-  'Demon Hunter': havocAbilities,
-  'Druid (Balance)': druidBalanceAbilities,
-  'Druid (Feral)': druidFeralAbilities,
-  'Druid (Restoration)': druidRestoAbilities,
-  'Evoker (Augmentation)': evokerAugAbilities,
-  'Evoker (Devastation)': evokerDevAbilities,
-  'Evoker (Preservation)': evokerPresAbilities,
-  Hunter: hunterAbilities,
-  'Mage (Arcane)': mageArcaneAbilities,
-  'Mage (Fire)': mageFireAbilities,
-  'Mage (Frost)': mageFrostAbilities,
-  'Monk (Mistweaver)': monkMistweaverAbilities,
-  'Monk (Windwalker)': monkWindwalkerAbilities,
-  'Paladin (Holy)': paladinHolyAbilities,
-  'Paladin (Retribution)': paladinRetAbilities,
-  'Priest (Disc)': priestDiscAbilities,
-  'Priest (Holy)': priestHolyAbilities,
-  'Priest (Shadow)': priestShadowAbilities,
-  'Rogue (Assassination)': rogueAssAbilities,
-  'Rogue (Outlaw)': rogueOutlawAbilities,
-  'Rogue (Subtlety)': rogueSubAbilities,
-  'Shaman (Enhancement)': shamanEnhAbilities,
-  'Shaman (Elemental)': shamanEleAbilities,
-  'Shaman (Restoration)': shamanRestoAbilities,
-  Warlock: warlockAbilities,
-  'Warrior (Arms)': warriorArmsAbilities,
-  'Warrior (Fury)': warriorFuryAbilities,
-}
+export type WowClass = keyof typeof classSpecAbilities
+export type WowSpec = string
+export type WowClassSpec = { class: WowClass; spec: WowSpec }
