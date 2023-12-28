@@ -16,6 +16,15 @@ export const sanctifiedPlates: Ability = {
   iconName: 'inv_chest_plate_raidpaladin_s_01',
 }
 
+export const blessingOfDusk: Ability = {
+  name: 'Blessing of Dusk',
+  dr: 0.05,
+  onByDefault: true,
+  spellId: 385126,
+  iconName: 'achievement_zone_newshadowmoonvalley',
+  notes: 'Blessing of Dusk is usually active, but not always',
+}
+
 export const divineProtectionHoly: Ability = {
   name: 'Divine Protection',
   dr: 0.2,
@@ -33,11 +42,13 @@ export const shieldOfVengeance: Ability = {
   absorbHealthMultiplier: 0.4,
   spellId: 184662,
   iconName: 'ability_paladin_shieldofthetemplar',
+  notes: 'Assumes you have Aegis of Protection',
 }
 
 export const paladinHolyAbilities = [
   obduracy,
   sanctifiedPlates,
+  blessingOfDusk,
   divineProtectionHoly,
 ]
 

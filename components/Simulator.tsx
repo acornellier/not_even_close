@@ -3,7 +3,7 @@ import { Result, simulate } from '../backend/sim'
 import { NumericInput } from './NumericInput'
 import { Toggle } from './Toggle'
 import { CharacterStatsForm } from './CharacterStatsForm'
-import { Dropdown } from './Dropdown'
+import { ClassDropdown } from './ClassDropdown'
 import { classAbilities, classes, WowClass } from '../backend/classes'
 import { AbilitySelect } from './AbilitySelect'
 import { Results } from './Results'
@@ -11,17 +11,17 @@ import { useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { BossAbilities } from './BossAbilities'
 import { GroupBuffs } from './GroupBuffs'
-import { groupActives, groupBuffs, otherBuffs } from '../backend/groupActives'
+import { groupActives, groupBuffs, otherBuffs } from '../backend/groupBuffs'
 
 const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
-  versatilityDrPercent: 5,
+  versatilityPercent: 5,
   avoidancePercent: 3,
 }
 
 export function Simulator() {
   const [characterStats, setCharacterStats] = useState(defaultCharacterStats)
-  const [wowClass, setClass] = useState<WowClass | null>(null)
+  const [wowClass, setClass] = useState<WowClass | null>('Monk (Mistweaver)')
   const [selectedClassAbilities, setSelectedClassAbilities] = useState<Ability[]>([])
   const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<Ability[]>([])
 
@@ -33,22 +33,17 @@ export function Simulator() {
 
   const [result, setResult] = useState<Result | null>(null)
 
-  const changeClass = (newClass: WowClass) => {
-    setClass(newClass)
-    setSelectedClassAbilities(
-      newClass ? classAbilities[newClass].filter(({ onByDefault }) => onByDefault) : []
-    )
-  }
-
   useEffect(() => {
-    changeClass('Monk (Mistweaver)')
-  }, [])
+    setSelectedClassAbilities(
+      wowClass ? classAbilities[wowClass].filter(({ onByDefault }) => onByDefault) : []
+    )
+  }, [wowClass])
 
   useEffect(() => {
     const newResult = simulate({
       characterStats: {
         stamina: characterStats.stamina ?? 0,
-        versatilityDr: (characterStats.versatilityDrPercent ?? 0) / 100,
+        versatility: (characterStats.versatilityPercent ?? 0) / 100,
         avoidance: (characterStats.avoidancePercent ?? 0) / 100,
       },
       abilities: [...selectedClassAbilities, ...selectedGroupAbilities],
@@ -104,12 +99,7 @@ export function Simulator() {
         />
 
         <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
-          <Dropdown
-            options={classes}
-            label="Class"
-            onChange={(value) => changeClass(value as WowClass)}
-            value={wowClass}
-          />
+          <ClassDropdown onChange={setClass} value={wowClass} />
 
           {wowClass && (
             <AbilitySelect

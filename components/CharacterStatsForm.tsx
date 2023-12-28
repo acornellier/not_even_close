@@ -23,9 +23,9 @@ export function CharacterStatsForm({ characterStats, onChange }: Props) {
         step={500}
       />
       <NumericInput
-        label="Versatility (dr %)"
-        value={characterStats.versatilityDrPercent}
-        onChange={onChangeStat('versatilityDrPercent')}
+        label="Versatility (%)"
+        value={characterStats.versatilityPercent}
+        onChange={onChangeStat('versatilityPercent')}
       />
       <NumericInput
         label="Avoidance (%)"

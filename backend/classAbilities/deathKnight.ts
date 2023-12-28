@@ -15,4 +15,11 @@ export const iceboundFortitude: Ability = {
   iconName: 'spell_deathknight_iceboundfortitude',
 }
 
-export const deathKnightAbilities = [antiMagicShell, iceboundFortitude]
+export const lichborne: Ability = {
+  name: 'Lichborne',
+  dr: 0.15,
+  spellId: 49039,
+  iconName: 'spell_shadow_raisedead',
+}
+
+export const deathKnightAbilities = [antiMagicShell, iceboundFortitude, lichborne]

@@ -28,9 +28,19 @@ export const dieByTheSword: Ability = {
   iconName: 'ability_warrior_challange',
 }
 
-export const warriorAbilities = [
+export const warpaint: Ability = {
+  name: 'Warpaint',
+  dr: 0.1,
+  spellId: 208154,
+  iconName: 'ability_rogue_preparation',
+  notes: 'Enrage is usually active, but not always',
+}
+
+export const warriorArmsAbilities = [defensiveStance, spellReflection, dieByTheSword]
+
+export const warriorFuryAbilities = [
   defensiveStance,
   spellReflection,
   enragedRegeneration,
-  dieByTheSword,
+  warpaint,
 ]

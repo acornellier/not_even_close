@@ -29,13 +29,24 @@ export const twinGuardian: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=370888/twin-guardian',
 }
 
-export const evokerAugPresAbilities = [
+export const rushOfVitality: Ability = {
+  name: 'Rush of Vitality',
+  healthIncrease: 0.2,
+  spellId: 377086,
+  iconName: 'trade_enchanting_greatermysteriousessence',
+}
+
+export const evokerAugAbilities = [
   inherentResistanceAugPres,
   obsidianScales,
   twinGuardian,
 ]
-export const evokerDevAbilities = [
-  inherentResistanceDev,
+
+export const evokerDevAbilities = [inherentResistanceDev, obsidianScales, twinGuardian]
+
+export const evokerPresAbilities = [
+  inherentResistanceAugPres,
   obsidianScales,
   twinGuardian,
+  rushOfVitality,
 ]

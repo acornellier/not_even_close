@@ -21,8 +21,7 @@ export const generousPour: Ability = {
   spellId: 389575,
   aoeDr: 0.04,
   iconName: 'inv_misc_food_legion_goocaramel_bottle',
-  wowheadLink:
-    'https://www.wowhead.com/spell=389575/generous-pour?def=106502&rank=2',
+  wowheadLink: 'https://www.wowhead.com/spell=389575/generous-pour?def=106502&rank=2',
 }
 
 export const blackAttunement: Ability = {
@@ -51,11 +50,11 @@ export const markOfTheWild: Ability = {
 
 export const atrophicPoison: Ability = {
   name: 'Atrophic Poison',
-  dr: 0.03,
+  dr: 0.036,
   spellId: 381637,
   wowheadLink: 'https://www.wowhead.com/spell=381637/atrophic-poison',
   iconName: 'ability_rogue_nervesofsteel',
-  notes: 'Does not necessarily work on all abilities',
+  notes: 'Assumes you have Master Poisoner.\nDoes not necessarily work on all abilities',
 }
 
 export const aspectsFavor: Ability = {
@@ -126,6 +125,13 @@ export const antiMagicZone: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=51052/anti-magic-zone',
 }
 
+export const spiritLinkTotem: Ability = {
+  name: 'Spirit Link Totem',
+  spellId: 98008,
+  dr: 0.1,
+  iconName: 'spell_shaman_spiritlink',
+}
+
 export const blessingOfSacrifice: Ability = {
   name: 'Blessing of Sacrifice',
   spellId: 6940,
@@ -133,6 +139,14 @@ export const blessingOfSacrifice: Ability = {
   iconName: 'spell_holy_sealofsacrifice',
   wowheadLink: 'https://www.wowhead.com/spell=6940/blessing-of-sacrifice',
   notes: 'Wrong for holy paladin where it is actually 32%',
+}
+
+export const blessingOfProtection: Ability = {
+  name: 'Blessing of Protection',
+  spellId: 1022,
+  dr: 0.15,
+  iconName: 'spell_holy_sealofprotection',
+  notes: 'Requires a holy paladin with Echoing Blessings',
 }
 
 export const ironBark: Ability = {
@@ -175,6 +189,7 @@ export const groupActives: Ability[] = [
   massBarrier,
   rallyingCry,
   auraMastery,
+  spiritLinkTotem,
   powerWordBarrier,
   antiMagicZone,
 ]
@@ -183,6 +198,7 @@ export const otherBuffs: Ability[] = [
   icyPreservation,
   ironBark,
   blessingOfSacrifice,
+  blessingOfProtection,
   painSuppression,
   lifeCocoon,
 ]

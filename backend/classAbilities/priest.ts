@@ -1,5 +1,12 @@
 import { Ability } from '../ability'
 
+export const spellWarding: Ability = {
+  name: 'Spell Warding',
+  dr: 0.03,
+  spellId: 390667,
+  iconName: 'spell_holy_spellwarding',
+}
+
 export const protectiveLight: Ability = {
   name: 'Protective Light',
   dr: 0.1,
@@ -23,7 +30,7 @@ export const desperatePrayer: Ability = {
 
 export const lightsInspiration: Ability = {
   name: "Light's Inspiration",
-  healthIncrease: 0.08,
+  healthIncrease: 0.15,
   spellId: 373450,
   iconName: 'spell_holy_restoration',
   notes: 'Assumes you already have Desperate Prayer selected',
@@ -43,7 +50,24 @@ export const dispersion: Ability = {
   iconName: 'spell_shadow_dispersion',
 }
 
-export const priestAbilities = [
+export const priestDiscAbilities = [
+  spellWarding,
+  protectiveLight,
+  fade,
+  desperatePrayer,
+  lightsInspiration,
+]
+
+export const priestHolyAbilities = [
+  spellWarding,
+  protectiveLight,
+  fade,
+  desperatePrayer,
+  lightsInspiration,
+]
+
+export const priestShadowAbilities = [
+  spellWarding,
   protectiveLight,
   fade,
   desperatePrayer,

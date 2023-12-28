@@ -1,11 +1,11 @@
 ﻿export interface CharacterStatsInput {
   stamina: number | undefined
-  versatilityDrPercent: number | undefined
+  versatilityPercent: number | undefined
   avoidancePercent: number | undefined
 }
 
 export interface CharacterStats {
   stamina: number
-  versatilityDr: number
+  versatility: number
   avoidance: number
 }

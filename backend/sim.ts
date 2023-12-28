@@ -24,11 +24,7 @@ interface Input {
   tyranAmp: boolean
 }
 
-function getScalingFactor(
-  keyLevel: number,
-  fortAmp: boolean,
-  tyranAmp: boolean
-) {
+function getScalingFactor(keyLevel: number, fortAmp: boolean, tyranAmp: boolean) {
   let scalingFactor = 1
   for (let i = 3; i <= keyLevel; ++i) {
     scalingFactor *= i <= 10 ? 1.08 : 1.1
@@ -43,10 +39,7 @@ function getScalingFactor(
   return Math.round(scalingFactor * 100) / 100
 }
 
-function getAdjustedStats(
-  characterStats: CharacterStats,
-  abilities: Ability[]
-) {
+function getAdjustedStats(characterStats: CharacterStats, abilities: Ability[]) {
   let adjustedStats = { ...characterStats }
 
   const baseStamina = characterStats.stamina
@@ -59,17 +52,14 @@ function getAdjustedStats(
 
   for (const ability of abilities) {
     if (ability.versIncrease) {
-      adjustedStats.versatilityDr += ability.versIncrease / 2
+      adjustedStats.versatility += ability.versIncrease
     }
   }
 
   return adjustedStats
 }
 
-function getStartingHealth(
-  characterStats: CharacterStats,
-  abilities: Ability[]
-) {
+function getStartingHealth(characterStats: CharacterStats, abilities: Ability[]) {
   const baseHealth = characterStats.stamina * 20
   let startingHealth = baseHealth
 
@@ -92,9 +82,7 @@ function getAbsorbs(
   for (const ability of abilities) {
     if (ability.absorbHealthMultiplier) {
       absorbs +=
-        ability.absorbHealthMultiplier *
-        startingHealth *
-        (1 + characterStats.versatilityDr * 2)
+        ability.absorbHealthMultiplier * startingHealth * (1 + characterStats.versatility)
     }
 
     if (ability.rawAbsorb) {
@@ -110,7 +98,7 @@ function getDamageReduction(
   abilities: Ability[],
   damageIsAoe: boolean
 ) {
-  let inverseDr = 1 - characterStats.versatilityDr
+  let inverseDr = 1 - characterStats.versatility / 2
 
   if (damageIsAoe) {
     inverseDr *= 1 - characterStats.avoidance

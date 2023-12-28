@@ -1,6 +1,7 @@
 ﻿import Image from 'next/image'
 import { Ability } from '../backend/ability'
 import { Tooltip } from 'react-tooltip'
+import { roundTo } from '../backend/utils'
 
 interface Props {
   allAbilities: Ability[]
@@ -54,7 +55,7 @@ export function AbilitySelect({
           >
             <div className="flex flex-col">
               <span className="text-xl">{ability.name}</span>
-              {ability.dr && <span>{ability.dr * 100}% DR</span>}
+              {ability.dr && <span>{roundTo(ability.dr * 100, 2)}% DR</span>}
               {ability.aoeDr && <span>{ability.aoeDr * 100}% AoE DR</span>}
               {ability.healthIncrease && <span>{ability.healthIncrease * 100}% HP</span>}
               {ability.staminaIncrease && (

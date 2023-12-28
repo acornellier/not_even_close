@@ -1,16 +1,15 @@
 ﻿import { useState } from 'react'
+import { classes, WowClass } from '../backend/classes'
 
 export interface DropdownProps {
-  options: readonly string[]
-  label: string
-  value: string | null
-  onChange: (value: string) => void
+  value: WowClass | null
+  onChange: (value: WowClass) => void
 }
 
-export function Dropdown({ options, label, value, onChange }: DropdownProps) {
+export function ClassDropdown({ value, onChange }: DropdownProps) {
   const [open, setOpen] = useState(false)
 
-  const handleChange = (option: string) => {
+  const handleChange = (option: WowClass) => {
     onChange(option)
     setOpen(false)
   }
@@ -22,7 +21,7 @@ export function Dropdown({ options, label, value, onChange }: DropdownProps) {
         type="button"
         onClick={() => setOpen(!open)}
       >
-        {value ?? label}
+        {value ?? 'Class'}
         <svg
           className="w-2.5 h-2.5 ml-2"
           aria-hidden="true"
@@ -41,13 +40,10 @@ export function Dropdown({ options, label, value, onChange }: DropdownProps) {
       </button>
 
       {open && (
-        <div className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-52 dark:bg-gray-700">
-          <ul
-            className="py-2 text-sm text-gray-700 dark:text-gray-200"
-            aria-labelledby="dropdownDefaultButton"
-          >
-            {options.map((option) => (
-              <li
+        <div className="absolute w-96 z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+          <div className="grid grid-cols-2 py-2 text-sm text-gray-700 dark:text-gray-200">
+            {classes.map((option) => (
+              <div
                 key={option}
                 className="cursor-pointer"
                 onClick={() => handleChange(option)}
@@ -55,9 +51,9 @@ export function Dropdown({ options, label, value, onChange }: DropdownProps) {
                 <a className="block px-4 py-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                   {option}
                 </a>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </div>

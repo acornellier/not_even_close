@@ -1,0 +1,31 @@
+Added
+- Lichborne
+- Rising Light, Falling Night
+- Heart of the Wild
+- Protective Growth
+- Inner Peace (resto tranq DR)
+- Spell Warding
+- Spirit Link Totem
+- Earthern Harmony
+- Evasion Elusiveness
+- Atrophic Poison with Master Poisoner
+- Warpaint
+- Blessing of Dusk
+- Prismatic Barrier
+- Ice Barrier (apparently it's 22% HP instead of the regular 20%)
+- Fade to Nothing 
+- Cloaked in Shadows 
+- Precision Shot (5% DR)
+
+TODO:
+- Prismatic barrier 15% dr on group + Improved Prismatic Barrier
+- Change some talents to be passive modifiers for other talents, like Ursine Vigor
+
+Not planning on doing for now
+- All tank spells
+- Physical damage. It's a lot of work
+- Aug mastery: hard to calculate, and nobody plays around it (it's used on cd for dps). Quite powerful tho
+- Chrono ward: same as above
+- Matted fur: hard to calculate and is very small absorb
+- Light's Protection: hard to play around and not really worth it for 2% DR
+- Echoing Blessings on Sac: not worth it for 2% DR (32% instead of 30%)

@@ -38,6 +38,7 @@ export const astralShift: Ability = {
   spellId: 108271,
   wowheadLink: 'https://www.wowhead.com/spell=108271/astral-shift',
   iconName: 'ability_shaman_astralshift',
+  notes: 'Assumes you have Astral Bulwark',
 }
 
 export const earthElemental: Ability = {
@@ -48,6 +49,13 @@ export const earthElemental: Ability = {
   iconName: 'spell_nature_earthelemental_totem',
 }
 
+export const earthenHarmony: Ability = {
+  name: 'Earthen Harmony',
+  dr: 0.06,
+  spellId: 382020,
+  iconName: 'spell_shaman_improvedearthshield',
+}
+
 export const shamanEnhAbilities = [
   elementalWardingEnh,
   brimmingWithLife,
@@ -56,10 +64,19 @@ export const shamanEnhAbilities = [
   earthElemental,
 ]
 
-export const shamanEleRestoAbilities = [
+export const shamanEleAbilities = [
   elementalWardingEleResto,
   brimmingWithLife,
   ancestralDefense,
+  astralShift,
+  earthElemental,
+]
+
+export const shamanRestoAbilities = [
+  elementalWardingEleResto,
+  brimmingWithLife,
+  ancestralDefense,
+  earthenHarmony,
   astralShift,
   earthElemental,
 ]

@@ -2,68 +2,101 @@
 import { Ability } from './ability'
 import {
   evokerDevAbilities,
-  evokerAugPresAbilities,
+  evokerAugAbilities,
+  evokerPresAbilities,
 } from './classAbilities/evoker'
+import { monkMistweaverAbilities, monkWindwalkerAbilities } from './classAbilities/monk'
 import {
-  monkMistweaverAbilities,
-  monkWindwalkerAbilities,
-} from './classAbilities/monk'
-import { mageAbilities } from './classAbilities/mage'
+  mageArcaneAbilities,
+  mageFireAbilities,
+  mageFrostAbilities,
+} from './classAbilities/mage'
 import {
   shamanEnhAbilities,
-  shamanEleRestoAbilities,
+  shamanEleAbilities,
+  shamanRestoAbilities,
 } from './classAbilities/shaman'
-import { rogueAbilities } from './classAbilities/rogue'
-import { priestAbilities } from './classAbilities/priest'
+import {
+  priestDiscAbilities,
+  priestHolyAbilities,
+  priestShadowAbilities,
+} from './classAbilities/priest'
 import { hunterAbilities } from './classAbilities/hunter'
 import { deathKnightAbilities } from './classAbilities/deathKnight'
-import { druidAbilities } from './classAbilities/druid'
-import { warriorAbilities } from './classAbilities/warrior'
-import {
-  paladinHolyAbilities,
-  paladinRetAbilities,
-} from './classAbilities/paladin'
+import { warriorArmsAbilities, warriorFuryAbilities } from './classAbilities/warrior'
+import { paladinHolyAbilities, paladinRetAbilities } from './classAbilities/paladin'
 import { warlockAbilities } from './classAbilities/warlock'
+import {
+  druidBalanceAbilities,
+  druidFeralAbilities,
+  druidRestoAbilities,
+} from './classAbilities/druid'
+import {
+  rogueAssAbilities,
+  rogueOutlawAbilities,
+  rogueSubAbilities,
+} from './classAbilities/rogue'
 
 export const classes = [
   'Death Knight',
   'Demon Hunter',
-  'Druid',
-  'Evoker (Aug/Pres)',
+  'Druid (Balance)',
+  'Druid (Feral)',
+  'Druid (Restoration)',
+  'Evoker (Augmentation)',
   'Evoker (Devastation)',
+  'Evoker (Preservation)',
   'Hunter',
-  'Mage',
+  'Mage (Arcane)',
+  'Mage (Fire)',
+  'Mage (Frost)',
   'Monk (Mistweaver)',
   'Monk (Windwalker)',
   'Paladin (Holy)',
   'Paladin (Retribution)',
-  'Priest',
-  'Rogue',
+  'Priest (Disc)',
+  'Priest (Holy)',
+  'Priest (Shadow)',
+  'Rogue (Assassination)',
+  'Rogue (Outlaw)',
+  'Rogue (Subtlety)',
   'Shaman (Enhancement)',
-  'Shaman (Ele/Resto)',
+  'Shaman (Elemental)',
+  'Shaman (Restoration)',
   'Warlock',
-  'Warrior',
+  'Warrior (Arms)',
+  'Warrior (Fury)',
 ] as const
 
 export type WowClass = typeof classes[number]
 
-export let classAbilities: Record<WowClass, Ability[]>
-classAbilities = {
+export const classAbilities: Record<WowClass, Ability[]> = {
   'Death Knight': deathKnightAbilities,
   'Demon Hunter': havocAbilities,
-  Druid: druidAbilities,
-  'Evoker (Aug/Pres)': evokerAugPresAbilities,
+  'Druid (Balance)': druidBalanceAbilities,
+  'Druid (Feral)': druidFeralAbilities,
+  'Druid (Restoration)': druidRestoAbilities,
+  'Evoker (Augmentation)': evokerAugAbilities,
   'Evoker (Devastation)': evokerDevAbilities,
+  'Evoker (Preservation)': evokerPresAbilities,
   Hunter: hunterAbilities,
-  Mage: mageAbilities,
+  'Mage (Arcane)': mageArcaneAbilities,
+  'Mage (Fire)': mageFireAbilities,
+  'Mage (Frost)': mageFrostAbilities,
   'Monk (Mistweaver)': monkMistweaverAbilities,
   'Monk (Windwalker)': monkWindwalkerAbilities,
   'Paladin (Holy)': paladinHolyAbilities,
   'Paladin (Retribution)': paladinRetAbilities,
-  Priest: priestAbilities,
-  Rogue: rogueAbilities,
+  'Priest (Disc)': priestDiscAbilities,
+  'Priest (Holy)': priestHolyAbilities,
+  'Priest (Shadow)': priestShadowAbilities,
+  'Rogue (Assassination)': rogueAssAbilities,
+  'Rogue (Outlaw)': rogueOutlawAbilities,
+  'Rogue (Subtlety)': rogueSubAbilities,
   'Shaman (Enhancement)': shamanEnhAbilities,
-  'Shaman (Ele/Resto)': shamanEleRestoAbilities,
+  'Shaman (Elemental)': shamanEleAbilities,
+  'Shaman (Restoration)': shamanRestoAbilities,
   Warlock: warlockAbilities,
-  Warrior: warriorAbilities,
+  'Warrior (Arms)': warriorArmsAbilities,
+  'Warrior (Fury)': warriorFuryAbilities,
 }
