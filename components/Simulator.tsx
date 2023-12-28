@@ -4,7 +4,7 @@ import { NumericInput } from './NumericInput'
 import { Toggle } from './Toggle'
 import { CharacterStatsForm } from './CharacterStatsForm'
 import { ClassDropdown } from './ClassDropdown'
-import { classSpecAbilities, WowClassSpec } from '../backend/classes'
+import { classSpecs, WowClassSpec } from '../backend/classes'
 import { AbilitySelect } from './AbilitySelect'
 import { Results } from './Results'
 import { useEffect, useState } from 'react'
@@ -36,12 +36,11 @@ export function Simulator() {
 
   const [result, setResult] = useState<Result | null>(null)
 
-  // @ts-ignore
-  const specAbilities = classSpecAbilities[classSpec.class][classSpec.spec] as Ability[]
+  const specAbilities = classSpecs[classSpec.class][classSpec.spec].abilities
 
   useEffect(() => {
     setSelectedClassAbilities(specAbilities.filter(({ onByDefault }) => onByDefault))
-  }, [classSpec])
+  }, [classSpec, specAbilities])
 
   useEffect(() => {
     const newResult = simulate({

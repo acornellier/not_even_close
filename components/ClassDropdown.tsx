@@ -1,5 +1,6 @@
 ﻿import { useState } from 'react'
-import { classSpecAbilities, WowClass, WowClassSpec } from '../backend/classes'
+import { classColors, classSpecs, WowClass, WowClassSpec } from '../backend/classes'
+import Image from 'next/image'
 
 export interface DropdownProps {
   selectedClassSpec: WowClassSpec
@@ -21,7 +22,16 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
         type="button"
         onClick={() => setOpen(!open)}
       >
-        {selectedClassSpec.class} ({selectedClassSpec.spec})
+        <Image
+          className="rounded mr-1 -ml-1"
+          src={`https://wow.zamimg.com/images/wow/icons/medium/${
+            classSpecs[selectedClassSpec.class][selectedClassSpec.spec].icon
+          }.jpg`}
+          height={20}
+          width={20}
+          alt={selectedClassSpec.spec}
+        />
+        {selectedClassSpec.spec} {selectedClassSpec.class}
         <svg
           className="w-2.5 h-2.5 ml-2"
           aria-hidden="true"
@@ -40,19 +50,31 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
       </button>
 
       {open && (
-        <div className="absolute w-[600px] z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-          <div className="grid grid-cols-4 gap-4 px-4 py-2 text-sm text-gray-700 dark:text-gray-200">
-            {(Object.keys(classSpecAbilities) as WowClass[]).map((wowClass) => (
+        <div className="absolute z-10  divide-y divide-gray-100 rounded-lg shadow bg-gray-700">
+          <div className="grid grid-cols-4 gap-2 px-4 py-2 text-sm text-gray-200">
+            {(Object.keys(classSpecs) as WowClass[]).map((wowClass) => (
               <div className="p-1" key={wowClass}>
-                <div className="font-bold pl-1 mb-1">{wowClass}</div>
-                {Object.keys(classSpecAbilities[wowClass]).map((wowSpec) => (
+                <div
+                  className="font-bold pl-1 mb-1"
+                  style={{ color: classColors[wowClass] }}
+                >
+                  {wowClass}
+                </div>
+                {Object.keys(classSpecs[wowClass]).map((wowSpec) => (
                   <div
                     key={wowSpec}
-                    className="cursor-pointer"
+                    className="cursor-pointer "
                     onClick={() => handleChange({ class: wowClass, spec: wowSpec })}
                   >
-                    <a className="block p-1 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                      {wowSpec}
+                    <a className="flex items-center pl-1 rounded hover:bg-gray-600 dark:hover:text-white">
+                      <Image
+                        className="rounded"
+                        src={`https://wow.zamimg.com/images/wow/icons/medium/${classSpecs[wowClass][wowSpec].icon}.jpg`}
+                        height={20}
+                        width={20}
+                        alt={wowSpec}
+                      />
+                      <div className="p-1">{wowSpec}</div>
                     </a>
                   </div>
                 ))}

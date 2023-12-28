@@ -5,7 +5,7 @@ import { Simulator } from '../components/Simulator'
 
 export default function Home() {
   return (
-    <div className="px-8 lg:px-16">
+    <div className="px-8 lg:px-16 xl:px-32 dark:bg-gray-950">
       <Head>
         <title>Not Even Close</title>
         <link rel="icon" href="/favicon.ico" />

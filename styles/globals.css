@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@media (prefers-color-scheme: dark) {
-    html {
-        color-scheme: dark;
-    }
-}
-
 :root {
     --rt-transition-show-delay: 0.01s !important;
     --rt-transition-closing-delay: 0.01s !important;
