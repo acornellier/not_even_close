@@ -106,7 +106,7 @@ export const auraMastery: Ability = {
   dr: 0.09,
   iconName: 'spell_holy_auramastery',
   wowheadLink: 'https://www.wowhead.com/spell=31821/aura-mastery',
-  notes: 'Assumes you already have 3% devo aura',
+  notes: 'Assumes you already have 3% devo aura selected',
 }
 
 export const powerWordBarrier: Ability = {

@@ -43,11 +43,11 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
         <div className="absolute w-[600px] z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
           <div className="grid grid-cols-4 gap-4 px-4 py-2 text-sm text-gray-700 dark:text-gray-200">
             {(Object.keys(classSpecAbilities) as WowClass[]).map((wowClass) => (
-              <div className="p-1">
+              <div className="p-1" key={wowClass}>
                 <div className="font-bold pl-1 mb-1">{wowClass}</div>
                 {Object.keys(classSpecAbilities[wowClass]).map((wowSpec) => (
                   <div
-                    key={wowClass}
+                    key={wowSpec}
                     className="cursor-pointer"
                     onClick={() => handleChange({ class: wowClass, spec: wowSpec })}
                   >
