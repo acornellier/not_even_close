@@ -41,8 +41,9 @@ export const shieldOfVengeance: Ability = {
 }
 
 export const aegisOfProtection: Ability = {
-  name: 'Aegos of Protection',
+  name: 'Aegis of Protection',
   spellId: 403654,
+  onByDefault: true,
   iconName: 'spell_holy_holyprotection',
   abilityAugmentations: [
     {
