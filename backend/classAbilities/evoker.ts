@@ -23,7 +23,7 @@ export const obsidianScales: Ability = {
 
 export const twinGuardian: Ability = {
   name: 'Twin Guardian (Rescue)',
-  healthIncrease: 0.3,
+  absorbHealthMultiplier: 0.3,
   spellId: 370888,
   iconName: 'ability_skyreach_shielded',
   wowheadLink: 'https://www.wowhead.com/spell=370888/twin-guardian',

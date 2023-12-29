@@ -38,7 +38,7 @@ export const lightsInspiration: Ability = {
 
 export const mentalFortitude: Ability = {
   name: 'Mental Fortitude',
-  healthIncrease: 0.1,
+  absorbHealthMultiplier: 0.1,
   spellId: 377065,
   iconName: 'ability_priest_clarityofpower',
 }

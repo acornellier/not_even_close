@@ -38,7 +38,7 @@ export const blur: Ability = {
 export const deflectingDance: Ability = {
   name: 'Deflecting Dance',
   spellId: 427776,
-  healthIncrease: 0.15,
+  absorbHealthMultiplier: 0.15,
   iconName: 'ability_ironmaidens_bladerush',
   wowheadLink: 'https://www.wowhead.com/spell=427776/deflecting-dance',
 }

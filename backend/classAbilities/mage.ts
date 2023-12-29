@@ -12,6 +12,7 @@ export const arcaneWarding: Ability = {
 export const blazingBarrier: Ability = {
   name: 'Blazing Barrier',
   absorbHealthMultiplier: 0.2,
+  absorbVersAffected: true,
   spellId: 382791,
   wowheadLink: 'https://www.wowhead.com/spell=382791/molten-barrier',
   iconName: 'ability_mage_moltenarmor',
@@ -20,6 +21,7 @@ export const blazingBarrier: Ability = {
 export const iceBarrier: Ability = {
   name: 'Ice Barrier',
   absorbHealthMultiplier: 0.22,
+  absorbVersAffected: true,
   spellId: 382791,
   iconName: 'spell_ice_lament',
 }
@@ -27,6 +29,7 @@ export const iceBarrier: Ability = {
 export const prismaticBarrier: Ability = {
   name: 'Prismatic Barrier',
   absorbHealthMultiplier: 0.2,
+  absorbVersAffected: true,
   dr: 0.15,
   spellId: 235450,
   iconName: 'spell_magearmor',

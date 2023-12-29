@@ -40,6 +40,7 @@ export const divineProtectionRet: Ability = {
 export const shieldOfVengeance: Ability = {
   name: 'Divine Protection',
   absorbHealthMultiplier: 0.4,
+  absorbVersAffected: true,
   spellId: 184662,
   iconName: 'ability_paladin_shieldofthetemplar',
   notes: 'Assumes you have Aegis of Protection',

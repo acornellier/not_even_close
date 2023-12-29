@@ -81,8 +81,8 @@ function getAbsorbs(
 
   for (const ability of abilities) {
     if (ability.absorbHealthMultiplier) {
-      absorbs +=
-        ability.absorbHealthMultiplier * startingHealth * (1 + characterStats.versatility)
+      const versMultiplier = ability.absorbVersAffected ? characterStats.versatility : 0
+      absorbs += ability.absorbHealthMultiplier * startingHealth * (1 + versMultiplier)
     }
 
     if (ability.rawAbsorb) {

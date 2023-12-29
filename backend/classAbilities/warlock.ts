@@ -26,7 +26,7 @@ export const soulLink: Ability = {
 
 export const soulLeech: Ability = {
   name: 'Soul Leech',
-  healthIncrease: 0.15,
+  absorbHealthMultiplier: 0.15,
   spellId: 108370,
   iconName: 'warlock_siphonlife',
 }

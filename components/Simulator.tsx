@@ -125,7 +125,7 @@ export function Simulator() {
         />
 
         <GroupBuffs
-          label="Other buffs"
+          label="Externals"
           options={otherBuffs}
           selectedGroupAbilities={selectedGroupAbilities}
           setSelectedGroupAbilities={setSelectedGroupAbilities}

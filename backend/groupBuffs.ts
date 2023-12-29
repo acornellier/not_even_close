@@ -173,6 +173,14 @@ export const lifeCocoon: Ability = {
   notes: "Assumes 1M absorb. In reality varies based on monk's HP and vers",
 }
 
+export const twinGuardian: Ability = {
+  name: 'Twin Guardian (Rescue)',
+  rawAbsorb: 300_000,
+  spellId: 370888999,
+  iconName: 'ability_skyreach_shielded',
+  notes: "Assumes 300K absorb but in reality depends on evoker's HP",
+}
+
 export const groupBuffs: Ability[] = [
   blackAttunement,
   devotionAura,
@@ -196,6 +204,7 @@ export const groupActives: Ability[] = [
 
 export const otherBuffs: Ability[] = [
   icyPreservation,
+  twinGuardian,
   ironBark,
   blessingOfSacrifice,
   blessingOfProtection,

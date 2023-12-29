@@ -8,6 +8,7 @@
   versIncrease?: number
   healthIncrease?: number
   absorbHealthMultiplier?: number
+  absorbVersAffected?: boolean
   rawAbsorb?: number
   iconName: string
   wowheadLink?: string
