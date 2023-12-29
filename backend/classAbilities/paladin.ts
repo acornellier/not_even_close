@@ -25,37 +25,50 @@ export const blessingOfDusk: Ability = {
   notes: 'Blessing of Dusk is usually active, but not always',
 }
 
-export const divineProtectionHoly: Ability = {
+export const divineProtection: Ability = {
   name: 'Divine Protection',
   dr: 0.2,
   spellId: 498,
   iconName: 'spell_holy_divineprotection',
 }
 
-export const divineProtectionRet: Ability = {
-  ...divineProtectionHoly,
-  dr: 0.3,
-}
-
 export const shieldOfVengeance: Ability = {
-  name: 'Divine Protection',
-  absorbHealthMultiplier: 0.4,
+  name: 'Shield of Vengeance',
+  absorbHealthMultiplier: 0.3,
   absorbVersAffected: true,
   spellId: 184662,
   iconName: 'ability_paladin_shieldofthetemplar',
-  notes: 'Assumes you have Aegis of Protection',
+}
+
+export const aegisOfProtection: Ability = {
+  name: 'Aegos of Protection',
+  spellId: 403654,
+  iconName: 'spell_holy_holyprotection',
+  abilityAugmentations: [
+    {
+      otherSpellId: 498, // Divine Protection
+      field: 'dr',
+      value: 0.1,
+    },
+    {
+      otherSpellId: 184662, // Shield of Vengeance
+      field: 'absorbHealthMultiplier',
+      value: 0.1,
+    },
+  ],
 }
 
 export const paladinHolyAbilities = [
   obduracy,
   sanctifiedPlates,
   blessingOfDusk,
-  divineProtectionHoly,
+  divineProtection,
 ]
 
 export const paladinRetAbilities = [
   obduracy,
   sanctifiedPlates,
-  divineProtectionRet,
+  divineProtection,
   shieldOfVengeance,
+  aegisOfProtection,
 ]

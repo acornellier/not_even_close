@@ -105,11 +105,11 @@ function getDamageReduction(
   }
 
   for (const ability of abilities) {
-    if (ability.dr) {
+    if (ability.dr && ability.aoeDr && damageIsAoe) {
+      inverseDr *= 1 - Math.max(ability.dr, ability.aoeDr)
+    } else if (ability.dr) {
       inverseDr *= 1 - ability.dr
-    }
-
-    if (ability.aoeDr && damageIsAoe) {
+    } else if (ability.aoeDr && damageIsAoe) {
       inverseDr *= 1 - ability.aoeDr
     }
   }

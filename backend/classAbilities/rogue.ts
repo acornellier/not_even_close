@@ -1,5 +1,24 @@
 import { Ability } from '../ability'
 
+export const elusiveness: Ability = {
+  name: 'Elusiveness',
+  spellId: 79008,
+  wowheadLink: 'https://www.wowhead.com/spell=79008/elusiveness',
+  iconName: 'ability_rogue_turnthetables',
+  abilityAugmentations: [
+    {
+      otherSpellId: 1966, // Feint
+      field: 'dr',
+      value: 0.2,
+    },
+    {
+      otherSpellId: 5277, // Evasion
+      field: 'dr',
+      value: 0.2,
+    },
+  ],
+}
+
 export const feint: Ability = {
   name: 'Feint',
   aoeDr: 0.4,
@@ -8,18 +27,8 @@ export const feint: Ability = {
   iconName: 'ability_rogue_feint',
 }
 
-export const elusiveness: Ability = {
-  name: 'Feint (Elusiveness)',
-  dr: 0.2,
-  spellId: 79008,
-  wowheadLink: 'https://www.wowhead.com/spell=79008/elusiveness',
-  iconName: 'ability_rogue_turnthetables',
-  notes: 'Do not select both this and Feint',
-}
-
 export const evasion: Ability = {
-  name: 'Evasion (Elusiveness)',
-  dr: 0.2,
+  name: 'Evasion',
   spellId: 5277,
   iconName: 'spell_shadow_shadowward',
 }

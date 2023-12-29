@@ -3,14 +3,14 @@ import { Ability } from '../backend/ability'
 
 interface Props {
   label: string
-  options: Ability[]
+  allAbilities: Ability[]
   selectedGroupAbilities: Ability[]
   setSelectedGroupAbilities: (abilities: Ability[]) => void
 }
 
 export function GroupBuffs({
   label,
-  options,
+  allAbilities,
   selectedGroupAbilities,
   setSelectedGroupAbilities,
 }: Props) {
@@ -20,7 +20,7 @@ export function GroupBuffs({
         {label}
       </div>
       <AbilitySelect
-        allAbilities={options}
+        allAbilities={allAbilities}
         selectedAbilities={selectedGroupAbilities}
         setSelectedAbilities={setSelectedGroupAbilities}
       />

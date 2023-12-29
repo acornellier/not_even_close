@@ -32,7 +32,7 @@ export function Results({ result }: Props) {
       <div>Absorbs: {result.absorbs.toLocaleString('en-US')}</div>
       <div>Total health: {result.totalHealth.toLocaleString('en-US')}</div>
       {result.survival ? (
-        <div>
+        <div className="font-bold">
           Health remaining: {result.healthRemaining.toLocaleString('en-US')} (
           {roundTo(
             (result.healthRemaining / result.startingHealth) * 100,

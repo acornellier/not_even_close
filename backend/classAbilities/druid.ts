@@ -26,18 +26,28 @@ export const bearForm: Ability = {
 
 export const ursineVigor: Ability = {
   name: 'Ursine Vigor',
-  healthIncrease: 0.2,
   spellId: 377842,
   iconName: 'ability_druid_markofursol',
-  notes: 'Assumes you already have bear form selected',
+  abilityAugmentations: [
+    {
+      otherSpellId: 5487,
+      field: 'healthIncrease',
+      value: 0.2,
+    },
+  ],
 }
 
 export const heartOfTheWild: Ability = {
   name: 'Heart of the Wild',
-  staminaIncrease: 0.2,
   spellId: 319454,
   iconName: 'spell_holy_blessingofagility',
-  notes: 'Assumes you already have bear form selected',
+  abilityAugmentations: [
+    {
+      otherSpellId: 5487,
+      field: 'staminaIncrease',
+      value: 0.2,
+    },
+  ],
 }
 
 export const barkskin: Ability = {

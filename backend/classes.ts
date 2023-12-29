@@ -123,10 +123,13 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
     Subtlety: { abilities: rogueSubAbilities, icon: 'ability_stealth' },
   },
   Shaman: {
-    Enhancement: { abilities: shamanEnhAbilities, icon: 'spell_nature_lightning' },
+    Enhancement: {
+      abilities: shamanEnhAbilities,
+      icon: 'spell_shaman_improvedstormstrike',
+    },
     Elemental: {
       abilities: shamanEleAbilities,
-      icon: 'spell_shaman_improvedstormstrike',
+      icon: 'spell_nature_lightning',
     },
     Restoration: { abilities: shamanRestoAbilities, icon: 'spell_nature_magicimmunity' },
   },

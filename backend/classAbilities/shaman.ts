@@ -34,11 +34,24 @@ export const ancestralDefense: Ability = {
 
 export const astralShift: Ability = {
   name: 'Astral Shift',
-  dr: 0.4,
+  dr: 0.2,
   spellId: 108271,
   wowheadLink: 'https://www.wowhead.com/spell=108271/astral-shift',
   iconName: 'ability_shaman_astralshift',
-  notes: 'Assumes you have Astral Bulwark',
+}
+
+export const astralBulwark: Ability = {
+  name: 'Astral Bulwark',
+  spellId: 377933,
+  onByDefault: true,
+  iconName: 'spell_shaman_ancestralawakening',
+  abilityAugmentations: [
+    {
+      otherSpellId: 108271,
+      field: 'dr',
+      value: 0.2,
+    },
+  ],
 }
 
 export const earthElemental: Ability = {
@@ -61,6 +74,7 @@ export const shamanEnhAbilities = [
   brimmingWithLife,
   ancestralDefense,
   astralShift,
+  astralBulwark,
   earthElemental,
 ]
 
@@ -69,6 +83,7 @@ export const shamanEleAbilities = [
   brimmingWithLife,
   ancestralDefense,
   astralShift,
+  astralBulwark,
   earthElemental,
 ]
 
@@ -78,5 +93,6 @@ export const shamanRestoAbilities = [
   ancestralDefense,
   earthenHarmony,
   astralShift,
+  astralBulwark,
   earthElemental,
 ]

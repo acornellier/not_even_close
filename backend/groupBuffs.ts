@@ -50,11 +50,25 @@ export const markOfTheWild: Ability = {
 
 export const atrophicPoison: Ability = {
   name: 'Atrophic Poison',
-  dr: 0.036,
+  dr: 0.03,
   spellId: 381637,
   wowheadLink: 'https://www.wowhead.com/spell=381637/atrophic-poison',
   iconName: 'ability_rogue_nervesofsteel',
-  notes: 'Assumes you have Master Poisoner.\nDoes not necessarily work on all abilities',
+  notes: 'Does not necessarily work on all abilities',
+}
+
+export const masterPoisoner: Ability = {
+  name: 'Master Poisoner',
+  spellId: 196864,
+  onByDefault: true,
+  iconName: 'ability_creature_poison_06',
+  abilityAugmentations: [
+    {
+      otherSpellId: 381637, // Atrophic Poison
+      field: 'dr',
+      value: 0.006,
+    },
+  ],
 }
 
 export const aspectsFavor: Ability = {
@@ -188,6 +202,7 @@ export const groupBuffs: Ability[] = [
   fortitude,
   markOfTheWild,
   atrophicPoison,
+  masterPoisoner,
 ]
 
 export const groupActives: Ability[] = [

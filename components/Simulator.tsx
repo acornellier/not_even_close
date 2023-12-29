@@ -13,6 +13,7 @@ import { BossAbilities } from './BossAbilities'
 import { GroupBuffs } from './GroupBuffs'
 import { groupActives, groupBuffs, otherBuffs } from '../backend/groupBuffs'
 import { Warnings } from './Warnings'
+import { augmentAbilities } from '../backend/utils'
 
 const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
@@ -26,7 +27,7 @@ export function Simulator() {
     class: 'Monk',
     spec: 'Mistweaver',
   })
-  const [selectedClassAbilities, setSelectedClassAbilities] = useState<Ability[]>([])
+  const [selectedSpecAbilities, setSelectedSpecAbilities] = useState<Ability[]>([])
   const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<Ability[]>([])
 
   const [baseDamage, setBaseDamage] = useState(100_000)
@@ -40,17 +41,27 @@ export function Simulator() {
   const specAbilities = classSpecs[classSpec.class][classSpec.spec].abilities
 
   useEffect(() => {
-    setSelectedClassAbilities(specAbilities.filter(({ onByDefault }) => onByDefault))
+    setSelectedSpecAbilities(specAbilities.filter(({ onByDefault }) => onByDefault))
   }, [classSpec, specAbilities])
 
   useEffect(() => {
+    const augmentedSelectedAbilities = augmentAbilities(
+      selectedSpecAbilities,
+      selectedSpecAbilities
+    )
+
+    const augmentedSelectedGroupAbilities = augmentAbilities(
+      selectedGroupAbilities,
+      selectedGroupAbilities
+    )
+
     const newResult = simulate({
       characterStats: {
         stamina: characterStats.stamina ?? 0,
         versatility: (characterStats.versatilityPercent ?? 0) / 100,
         avoidance: (characterStats.avoidancePercent ?? 0) / 100,
       },
-      abilities: [...selectedClassAbilities, ...selectedGroupAbilities],
+      abilities: [...augmentedSelectedAbilities, ...augmentedSelectedGroupAbilities],
       baseDamage,
       keyLevel,
       isAoe,
@@ -65,8 +76,8 @@ export function Simulator() {
     isAoe,
     fortAmp,
     tyranAmp,
-    selectedClassAbilities,
     selectedGroupAbilities,
+    selectedSpecAbilities,
   ])
 
   return (
@@ -106,28 +117,28 @@ export function Simulator() {
           <ClassDropdown onChange={setClass} selectedClassSpec={classSpec} />
           <AbilitySelect
             allAbilities={specAbilities}
-            selectedAbilities={selectedClassAbilities}
-            setSelectedAbilities={setSelectedClassAbilities}
+            selectedAbilities={selectedSpecAbilities}
+            setSelectedAbilities={setSelectedSpecAbilities}
           />
         </div>
 
         <GroupBuffs
           label="Group buffs"
-          options={groupBuffs}
+          allAbilities={groupBuffs}
           selectedGroupAbilities={selectedGroupAbilities}
           setSelectedGroupAbilities={setSelectedGroupAbilities}
         />
 
         <GroupBuffs
           label="Group actives"
-          options={groupActives}
+          allAbilities={groupActives}
           selectedGroupAbilities={selectedGroupAbilities}
           setSelectedGroupAbilities={setSelectedGroupAbilities}
         />
 
         <GroupBuffs
           label="Externals"
-          options={otherBuffs}
+          allAbilities={otherBuffs}
           selectedGroupAbilities={selectedGroupAbilities}
           setSelectedGroupAbilities={setSelectedGroupAbilities}
         />

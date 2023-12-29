@@ -37,10 +37,15 @@ export const prismaticBarrier: Ability = {
 
 export const improvedPrismaticBarrier: Ability = {
   name: 'Improved Prismatic Barrier',
-  dr: 0.1,
   spellId: 321745,
   iconName: 'spell_magearmor',
-  notes: 'Assumes you already have Prismatic Barrier selected',
+  abilityAugmentations: [
+    {
+      otherSpellId: 235450,
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
 }
 
 export const iceCold: Ability = {
@@ -70,7 +75,7 @@ export const greaterInvisibility: Ability = {
 export const mageArcaneAbilities = [
   arcaneWarding,
   prismaticBarrier,
-  // improvedPrismaticBarrier,
+  improvedPrismaticBarrier,
   mirrorImage,
   greaterInvisibility,
   iceCold,

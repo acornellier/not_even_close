@@ -30,10 +30,15 @@ export const desperatePrayer: Ability = {
 
 export const lightsInspiration: Ability = {
   name: "Light's Inspiration",
-  healthIncrease: 0.15,
   spellId: 373450,
   iconName: 'spell_holy_restoration',
-  notes: 'Assumes you already have Desperate Prayer selected',
+  abilityAugmentations: [
+    {
+      otherSpellId: 19236, // Desperate Prayer
+      field: 'healthIncrease',
+      value: 0.15,
+    },
+  ],
 }
 
 export const mentalFortitude: Ability = {
