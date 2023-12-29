@@ -9,7 +9,7 @@ export function Results({ result }: Props) {
   if (!result) return null
 
   return (
-    <div className="basis-96">
+    <div>
       <div className="font-bold text-4xl mb-2">
         {result.survival ? (
           <span>
@@ -27,12 +27,8 @@ export function Results({ result }: Props) {
         Mitigated damage: {result.mitigatedDamage.toLocaleString('en-US')} (
         {roundTo(result.damageReduction * 100, 2).toLocaleString('en-US')}%)
       </div>
-      <div>
-        Actual damage taken: {result.actualDamageTaken.toLocaleString('en-US')}
-      </div>
-      <div>
-        Starting health: {result.startingHealth.toLocaleString('en-US')}
-      </div>
+      <div>Actual damage taken: {result.actualDamageTaken.toLocaleString('en-US')}</div>
+      <div>Starting health: {result.startingHealth.toLocaleString('en-US')}</div>
       <div>Absorbs: {result.absorbs.toLocaleString('en-US')}</div>
       <div>Total health: {result.totalHealth.toLocaleString('en-US')}</div>
       {result.survival ? (
@@ -45,7 +41,9 @@ export function Results({ result }: Props) {
           %)
         </div>
       ) : (
-        <div>Overkill: {(-result.healthRemaining).toLocaleString('en-US')}</div>
+        <div className="font-bold">
+          Overkill: {(-result.healthRemaining).toLocaleString('en-US')}
+        </div>
       )}
     </div>
   )

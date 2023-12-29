@@ -7,10 +7,10 @@ export function Header() {
     <div className="flex flex-col gap-2">
       <div className="flex justify-between items-center">
         <div className="flex items-end gap-4">
-          <span className="text-6xl font-bold text-center text-teal-500">
+          <span className="text-4xl font-bold text-center text-teal-500">
             Not Even Close
           </span>
-          <span className="font-bold text-center text-teal-500">
+          <span className="font-bold text-center text-teal-500 hidden md:block">
             {"by Ortemist-Zul'jin"}
           </span>
         </div>
@@ -20,9 +20,6 @@ export function Header() {
           <GitHubButton href="https://github.com/acornellier/not_even_close" />
         </div>
       </div>
-      <span className="font-bold text-teal-500">
-        Disclaimer: WIP! Expect errors and bugs. Only magic damage is supported.{' '}
-      </span>
     </div>
   )
 }

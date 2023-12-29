@@ -12,6 +12,7 @@ import { Ability } from '../backend/ability'
 import { BossAbilities } from './BossAbilities'
 import { GroupBuffs } from './GroupBuffs'
 import { groupActives, groupBuffs, otherBuffs } from '../backend/groupBuffs'
+import { Warnings } from './Warnings'
 
 const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
@@ -143,7 +144,13 @@ export function Simulator() {
 
       <div className="border-2 mx-2" />
 
-      <Results result={result} />
+      <div className="basis-96">
+        <Results result={result} />
+
+        <div className="border-2 my-4" />
+
+        <Warnings />
+      </div>
     </div>
   )
 }

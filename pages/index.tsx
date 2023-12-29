@@ -13,7 +13,7 @@ export default function Home() {
 
       <Script src="/wowheadtooltips.js" />
 
-      <main className="min-h-screen py-8 flex flex-col gap-8">
+      <main className="min-h-screen py-8 flex flex-col gap-4">
         <Header />
         <Simulator />
       </main>
