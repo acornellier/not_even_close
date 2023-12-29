@@ -65,7 +65,10 @@ export function AbilitySelect({
                 <span>{ability.versIncrease * 100}% versatility</span>
               )}
               {ability.absorbHealthMultiplier && (
-                <span>{ability.absorbHealthMultiplier * 100}% HP absorb</span>
+                <span>
+                  {ability.absorbHealthMultiplier * 100}% HP absorb
+                  {ability.absorbVersAffected ? ' (+vers)' : ''}
+                </span>
               )}
               {ability.rawAbsorb && (
                 <span>{ability.rawAbsorb.toLocaleString('en-US')} HP absorb</span>
