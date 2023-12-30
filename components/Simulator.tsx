@@ -12,7 +12,7 @@ import { Ability } from '../backend/ability'
 import { BossAbilities } from './BossAbilities'
 import { GroupBuffs } from './GroupBuffs'
 import { groupActives, groupBuffs, otherBuffs } from '../backend/groupBuffs'
-import { Warnings } from './Warnings'
+import { Instructions } from './Instructions'
 import { augmentAbilities } from '../backend/utils'
 
 const defaultCharacterStats: CharacterStatsInput = {
@@ -160,7 +160,7 @@ export function Simulator() {
 
         <div className="border-2 my-4" />
 
-        <Warnings />
+        <Instructions />
       </div>
     </div>
   )

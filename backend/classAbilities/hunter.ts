@@ -18,10 +18,23 @@ export const huntersAvoidance: Ability = {
 
 export const survivalOfTheFittest: Ability = {
   name: 'Survival of the Fittest',
-  dr: 0.4,
+  dr: 0.2,
   spellId: 264735,
   iconName: 'spell_nature_spiritarmor',
-  notes: "Assumes you have Nature's Endurance",
+}
+
+export const naturesEndurance: Ability = {
+  name: "Nature's Endurance",
+  spellId: 388042,
+  onByDefault: true,
+  iconName: 'spell_nature_protectionformnature',
+  abilityAugmentations: [
+    {
+      otherSpellId: 264735,
+      field: 'dr',
+      value: 0.2,
+    },
+  ],
 }
 
 export const fortitudeOfTheBear: Ability = {
@@ -35,5 +48,6 @@ export const hunterAbilities = [
   rejuvenatingWind,
   huntersAvoidance,
   survivalOfTheFittest,
+  naturesEndurance,
   fortitudeOfTheBear,
 ]

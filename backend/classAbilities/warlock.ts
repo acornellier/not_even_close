@@ -41,10 +41,23 @@ export const darkPact: Ability = {
 
 export const unendingResolve: Ability = {
   name: 'Unending Resolve',
-  dr: 0.4,
+  dr: 0.25,
   spellId: 104773,
   iconName: 'spell_shadow_demonictactics',
-  notes: 'Assumes you have Strength of Will',
+}
+
+export const strengthOfWill: Ability = {
+  name: 'Strength of Will',
+  spellId: 317138,
+  onByDefault: true,
+  iconName: 'spell_shadow_demonictactics',
+  abilityAugmentations: [
+    {
+      otherSpellId: 104773,
+      field: 'dr',
+      value: 0.15,
+    },
+  ],
 }
 
 export const warlockAbilities = [
@@ -54,4 +67,5 @@ export const warlockAbilities = [
   soulLeech,
   darkPact,
   unendingResolve,
+  strengthOfWill,
 ]
