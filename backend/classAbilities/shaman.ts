@@ -69,6 +69,20 @@ export const earthenHarmony: Ability = {
   iconName: 'spell_shaman_improvedearthshield',
 }
 
+export const spiritWolf: Ability = {
+  name: 'Spirit Wolf',
+  dr: 0.2,
+  spellId: 260878,
+  iconName: 'spell_hunter_lonewolf',
+}
+
+export const primordialBond: Ability = {
+  name: 'Primordial Bond',
+  spellId: 381764,
+  dr: 0.05,
+  iconName: 'inv_elemental_primal_earth',
+}
+
 export const shamanEnhAbilities = [
   elementalWardingEnh,
   brimmingWithLife,
@@ -76,6 +90,7 @@ export const shamanEnhAbilities = [
   astralShift,
   astralBulwark,
   earthElemental,
+  spiritWolf,
 ]
 
 export const shamanEleAbilities = [
@@ -85,6 +100,8 @@ export const shamanEleAbilities = [
   astralShift,
   astralBulwark,
   earthElemental,
+  spiritWolf,
+  primordialBond,
 ]
 
 export const shamanRestoAbilities = [
@@ -95,4 +112,5 @@ export const shamanRestoAbilities = [
   astralShift,
   astralBulwark,
   earthElemental,
+  spiritWolf,
 ]
