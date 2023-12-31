@@ -36,7 +36,8 @@ export const darkPact: Ability = {
   absorbHealthMultiplier: 0.6,
   spellId: 108416,
   iconName: 'spell_shadow_deathpact',
-  notes: 'HACK. Actually 20% HP + 2.5 * spell power, but spell power is not implemented',
+  notes:
+    'HACK. Actually 20% HP + 2.5 * spell power, but spell power is not implemented. This estimate is reasonably close with current numbers',
 }
 
 export const unendingResolve: Ability = {

@@ -96,7 +96,9 @@ function getAbsorbs(
 function getDamageReduction(
   characterStats: CharacterStats,
   abilities: Ability[],
-  damageIsAoe: boolean
+  damageIsAoe: boolean,
+  startingHealth: number,
+  damageTaken: number
 ) {
   let inverseDr = 1 - characterStats.versatility / 2
 
@@ -105,7 +107,10 @@ function getDamageReduction(
   }
 
   for (const ability of abilities) {
-    if (ability.dr && ability.aoeDr && damageIsAoe) {
+    if (ability.name === 'Dampen Harm') {
+      const dr = 0.2 + (damageTaken / startingHealth) * 0.3
+      inverseDr *= 1 - Math.min(dr, 0.5)
+    } else if (ability.dr && ability.aoeDr && damageIsAoe) {
       inverseDr *= 1 - Math.max(ability.dr, ability.aoeDr)
     } else if (ability.dr) {
       inverseDr *= 1 - ability.dr
@@ -134,7 +139,13 @@ export function simulate({
   const absorbs = getAbsorbs(adjustedStats, abilities, startingHealth)
   const effectiveHealth = startingHealth + absorbs
 
-  const damageReduction = getDamageReduction(adjustedStats, abilities, isAoe)
+  const damageReduction = getDamageReduction(
+    adjustedStats,
+    abilities,
+    isAoe,
+    startingHealth,
+    scaledDamage
+  )
   const mitigatedDamage = Math.round(scaledDamage * damageReduction)
   const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
 

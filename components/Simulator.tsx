@@ -86,6 +86,7 @@ export function Simulator() {
         <div className="flex gap-4 flex-wrap">
           <NumericInput
             label="Base Damage taken"
+            step={1000}
             onChange={(val) => setBaseDamage(val ?? 0)}
             value={baseDamage}
           />
