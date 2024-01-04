@@ -131,6 +131,22 @@ export const flameShock: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=429048/flame-shock',
 }
 
+export const soulBurst: BossAbility = {
+  name: 'Soul Burst',
+  boss: 'The Amalgam of Souls',
+  dungeon: 'Black Rook Hold',
+  damage: 123594,
+  isAoe: true,
+  iconName: 'ability_bossgorefiend_touchofdoom',
+  wowheadLink: 'https://www.wowhead.com/spell=196587/soul-burst#icon',
+}
+
+export const soulBurstMaxStacks: BossAbility = {
+  ...soulBurst,
+  name: 'Soul Burst (max stacks)',
+  damage: 383141,
+}
+
 export const shadowBolt: BossAbility = {
   name: 'Shadow Bolt',
   boss: 'Ravencrest',
@@ -187,6 +203,8 @@ export const bossAbilities: BossAbility[] = [
   earthshakingRoar,
   nightmareBolt,
   apocalypticNightmare,
+  soulBurst,
+  soulBurstMaxStacks,
   shadowBolt,
   shadowBoltVolley,
   focusedTempest,

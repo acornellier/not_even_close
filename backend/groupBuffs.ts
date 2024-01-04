@@ -192,7 +192,15 @@ export const twinGuardian: Ability = {
   rawAbsorb: 300_000,
   spellId: 370888999,
   iconName: 'ability_skyreach_shielded',
-  notes: "Assumes 300K absorb but in reality depends on evoker's HP",
+  notes: "Assumes 300K absorb but in reality is 30% of the evoker's HP",
+}
+
+export const taintedRageheart: Ability = {
+  name: 'Tainted Rageheart',
+  rawAbsorb: 922_410,
+  spellId: 207174,
+  iconName: 'inv_ragnaros_heart_shadowflame',
+  notes: 'Assumes ilvl 489, Myth 4/4',
 }
 
 export const groupBuffs: Ability[] = [
@@ -219,6 +227,7 @@ export const groupActives: Ability[] = [
 
 export const otherBuffs: Ability[] = [
   icyPreservation,
+  taintedRageheart,
   twinGuardian,
   ironBark,
   blessingOfSacrifice,
