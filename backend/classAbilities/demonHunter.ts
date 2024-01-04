@@ -43,10 +43,18 @@ export const deflectingDance: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=427776/deflecting-dance',
 }
 
+export const demonMuzzle: Ability = {
+  name: 'Demon Muzzle',
+  spellId: 388111,
+  dr: 0.08,
+  iconName: 'spell_fire_fireballgreen',
+}
+
 export const havocAbilities = [
   demonicWards,
   illidariKnowledge,
   willOfTheIllidari,
   blur,
   deflectingDance,
+  demonMuzzle,
 ]

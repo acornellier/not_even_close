@@ -2,8 +2,9 @@
   | 'Black Rook Hold'
   | "Atal'Dazar"
   | 'Darkheart Thicket'
-  | 'Throne of Tides'
+  | 'Throne of the Tides'
   | 'Waycrest Manor'
+  | 'Dawn of the Infinite'
 
 export type BossAbility = {
   name: string
@@ -93,7 +94,7 @@ export const soulrend: BossAbility = {
 export const focusedTempest: BossAbility = {
   name: 'Focused Tempest',
   boss: "Lady Naz'jar",
-  dungeon: 'Throne of Tides',
+  dungeon: 'Throne of the Tides',
   damage: 96129,
   isAoe: false,
   iconName: 'spell_shaman_thunderstorm',
@@ -103,11 +104,31 @@ export const focusedTempest: BossAbility = {
 export const shockBlast: BossAbility = {
   name: 'Shock Blast',
   boss: "Lady Naz'jar",
-  dungeon: 'Throne of Tides',
+  dungeon: 'Throne of the Tides',
   damage: 129087,
   isAoe: true,
   iconName: 'spell_shaman_staticshock',
   wowheadLink: 'https://www.wowhead.com/spell=428041/shock-blast',
+}
+
+export const festeringShockwave: BossAbility = {
+  name: 'Festering Shockwave',
+  boss: 'Commander Ulthok',
+  dungeon: 'Throne of the Tides',
+  damage: 90636,
+  isAoe: true,
+  iconName: 'spell_fire_twilightnova',
+  wowheadLink: 'https://www.wowhead.com/spell=427668/festering-shockwave',
+}
+
+export const flameShock: BossAbility = {
+  name: 'Flame Shock',
+  boss: 'Erunak Stonespeaker',
+  dungeon: 'Throne of the Tides',
+  damage: 82396,
+  isAoe: false,
+  iconName: 'spell_fire_flameshock',
+  wowheadLink: 'https://www.wowhead.com/ptr-2/spell=429048/flame-shock',
 }
 
 export const shadowBolt: BossAbility = {
@@ -140,6 +161,26 @@ export const dreadEssence: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=266181/dread-essence',
 }
 
+export const corrosion: BossAbility = {
+  name: 'Corrosion',
+  boss: 'Blight of Galakrond',
+  dungeon: 'Dawn of the Infinite',
+  damage: 82396,
+  isAoe: false,
+  iconName: 'sha_inv_misc_slime_01',
+  wowheadLink: 'https://www.wowhead.com/ptr-2/spell=407406/corrosion',
+}
+
+export const dividingStrike: BossAbility = {
+  name: 'Dividing Strike',
+  boss: 'Tyr',
+  dungeon: 'Dawn of the Infinite',
+  damage: 109862, // 549308 / 5
+  isAoe: true,
+  iconName: 'inv_trinket_80_titan01d',
+  wowheadLink: 'https://www.wowhead.com/spell=400641/dividing-strike',
+}
+
 export const bossAbilities: BossAbility[] = [
   crushingGrip,
   shatteredEarth,
@@ -150,9 +191,13 @@ export const bossAbilities: BossAbility[] = [
   shadowBoltVolley,
   focusedTempest,
   shockBlast,
+  festeringShockwave,
+  flameShock,
   wrackingPain,
   soulrend,
   dreadEssence,
+  corrosion,
+  dividingStrike,
 ]
 
 export const bossAbilitiesByDungeon: DungeonAbilities[] = bossAbilities
