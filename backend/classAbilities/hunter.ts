@@ -1,5 +1,19 @@
 import { Ability } from '../ability'
 
+export const aspectOfTheBeast: Ability = {
+  name: 'Aspect of the Beast',
+  spellId: 191384,
+  onByDefault: true,
+  iconName: 'ability_deathwing_assualtaspects',
+  abilityAugmentations: [
+    {
+      otherSpellId: 264662,
+      field: 'healthIncrease',
+      value: 0.025,
+    },
+  ],
+}
+
 export const rejuvenatingWind: Ability = {
   name: 'Rejuvenating Wind',
   healthIncrease: 0.08,
@@ -14,6 +28,14 @@ export const huntersAvoidance: Ability = {
   onByDefault: true,
   spellId: 384799,
   iconName: 'rogue_burstofspeed',
+}
+
+export const enduranceTraining: Ability = {
+  name: 'Endurance Training',
+  healthIncrease: 0.05,
+  onByDefault: true,
+  spellId: 264662,
+  iconName: 'ability_hunter_huntervswild',
 }
 
 export const survivalOfTheFittest: Ability = {
@@ -44,10 +66,21 @@ export const fortitudeOfTheBear: Ability = {
   iconName: 'spell_druid_bearhug',
 }
 
-export const hunterAbilities = [
+export const hunterMmSurvAbilities = [
+  naturesEndurance,
   rejuvenatingWind,
   huntersAvoidance,
+  enduranceTraining,
   survivalOfTheFittest,
+  fortitudeOfTheBear,
+]
+
+export const hunterBmAbilities = [
+  aspectOfTheBeast,
   naturesEndurance,
+  rejuvenatingWind,
+  huntersAvoidance,
+  enduranceTraining,
+  survivalOfTheFittest,
   fortitudeOfTheBear,
 ]

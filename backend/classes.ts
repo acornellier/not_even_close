@@ -21,7 +21,7 @@ import {
   priestHolyAbilities,
   priestShadowAbilities,
 } from './classAbilities/priest'
-import { hunterAbilities } from './classAbilities/hunter'
+import { hunterBmAbilities, hunterMmSurvAbilities } from './classAbilities/hunter'
 import { deathKnightAbilities } from './classAbilities/deathKnight'
 import { warriorArmsAbilities, warriorFuryAbilities } from './classAbilities/warrior'
 import { paladinHolyAbilities, paladinRetAbilities } from './classAbilities/paladin'
@@ -87,11 +87,11 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
   },
   Hunter: {
     'Beast Mastery': {
-      abilities: hunterAbilities,
+      abilities: hunterBmAbilities,
       icon: 'ability_hunter_bestialdiscipline',
     },
-    Marksmanship: { abilities: hunterAbilities, icon: 'ability_hunter_focusedaim' },
-    Survival: { abilities: hunterAbilities, icon: 'ability_hunter_camouflage' },
+    Marksmanship: { abilities: hunterMmSurvAbilities, icon: 'ability_hunter_focusedaim' },
+    Survival: { abilities: hunterMmSurvAbilities, icon: 'ability_hunter_camouflage' },
   },
   Mage: {
     Arcane: { abilities: mageArcaneAbilities, icon: 'spell_holy_magicalsentry' },
