@@ -14,7 +14,6 @@ import { GroupBuffs } from './GroupBuffs'
 import { groupActives, groupBuffs, otherBuffs } from '../backend/groupBuffs'
 import { Instructions } from './Instructions'
 import { augmentAbilities } from '../backend/utils'
-import useLocalStorage from './useLocalStorage'
 
 const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
@@ -23,11 +22,8 @@ const defaultCharacterStats: CharacterStatsInput = {
 }
 
 export function Simulator() {
-  const [characterStats, setCharacterStats] = useLocalStorage(
-    'charstats',
-    defaultCharacterStats
-  )
-  const [classSpec, setClass] = useLocalStorage<WowClassSpec>('wowClassSpec', {
+  const [characterStats, setCharacterStats] = useState(defaultCharacterStats)
+  const [classSpec, setClass] = useState<WowClassSpec>({
     class: 'Monk',
     spec: 'Mistweaver',
   })
