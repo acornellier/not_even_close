@@ -199,7 +199,7 @@ export const corrosion: BossAbility = {
 }
 
 export const dividingStrike: BossAbility = {
-  name: 'Dividing Strike',
+  name: 'Dividing Strike (split 5 ways)',
   boss: 'Tyr',
   dungeon: 'Dawn of the Infinite',
   damage: 109862, // 549308 / 5
