@@ -5,6 +5,7 @@
   | 'Throne of the Tides'
   | 'Waycrest Manor'
   | 'Dawn of the Infinite'
+  | 'Everbloom'
 
 export type BossAbility = {
   name: string
@@ -177,6 +178,16 @@ export const dreadEssence: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=266181/dread-essence',
 }
 
+export const chronofade: BossAbility = {
+  name: 'Chronofade',
+  boss: 'Manifested Timeways',
+  dungeon: 'Dawn of the Infinite',
+  damage: 68663,
+  isAoe: true,
+  iconName: 'achievement_challengemode_arakkoaspires_hourglass',
+  wowheadLink: 'https://www.wowhead.com/ptr-2/spell=405448/chronofade',
+}
+
 export const corrosion: BossAbility = {
   name: 'Corrosion',
   boss: 'Blight of Galakrond',
@@ -197,6 +208,26 @@ export const dividingStrike: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=400641/dividing-strike',
 }
 
+export const cinderboltStorm: BossAbility = {
+  name: 'Cinderbolt Storm (4 hits)',
+  boss: 'Archmage Sol',
+  dungeon: 'Everbloom',
+  damage: 175780, // 43945 * 4
+  isAoe: false,
+  iconName: 'spell_fire_meteorstorm',
+  wowheadLink: 'https://www.wowhead.com/spell=427899/cinderbolt-storm',
+}
+
+export const colossalBlow: BossAbility = {
+  name: 'Colossal Blow',
+  boss: 'Yalnu',
+  dungeon: 'Everbloom',
+  damage: 87889,
+  isAoe: true,
+  iconName: 'spell_shaman_earthquake',
+  wowheadLink: 'https://www.wowhead.com/spell=169179/colossal-blow',
+}
+
 export const bossAbilities: BossAbility[] = [
   crushingGrip,
   shatteredEarth,
@@ -214,8 +245,11 @@ export const bossAbilities: BossAbility[] = [
   wrackingPain,
   soulrend,
   dreadEssence,
+  chronofade,
   corrosion,
   dividingStrike,
+  cinderboltStorm,
+  colossalBlow,
 ]
 
 export const bossAbilitiesByDungeon: DungeonAbilities[] = bossAbilities
