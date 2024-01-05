@@ -49,6 +49,8 @@ export function AbilityIcon({
       )
     : null
 
+  const isSelected = isAbilitySelected(ability.spellId, selectedAbilities)
+
   return (
     <div
       key={ability.spellId}
@@ -103,22 +105,14 @@ export function AbilityIcon({
           {ability.notes && <span>{ability.notes}</span>}
         </div>
       </Tooltip>
-      {isAbilitySelected(ability.spellId, selectedAbilities) && (
-        <svg
-          className="absolute"
-          xmlns="http://www.w3.org/2000/svg"
-          width={iconSize}
-          height={iconSize}
-          viewBox="0 0 24 24"
-        >
-          <path
-            fill="green"
-            d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"
-          />
-        </svg>
+      {isSelected && (
+        <div
+          className="absolute rounded border-yellow-300 icon-highlight"
+          style={{ height: iconSize, width: iconSize }}
+        />
       )}
       <Image
-        className="rounded border-2 border-gray-500"
+        className={`rounded border-2 border-gray-600`}
         height={iconSize}
         width={iconSize}
         src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}

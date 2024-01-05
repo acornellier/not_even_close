@@ -5,4 +5,13 @@
 :root {
     --rt-transition-show-delay: 0.01s !important;
     --rt-transition-closing-delay: 0.01s !important;
+    --border-size: 2px;
+    --box-width: 36em;
+    --box-height: 8em;
+    --dash-size: 1em;
+}
+
+.icon-highlight {
+    border-width: 2px;
+    box-shadow: inset 0 0 6px 2px #dbff43;
 }
