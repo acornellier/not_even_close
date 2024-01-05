@@ -15,6 +15,7 @@ import { groupActives, groupBuffs, otherBuffs } from '../backend/groupBuffs'
 import { Instructions } from './Instructions'
 import { augmentAbilities } from '../backend/utils'
 import useLocalStorage from './useLocalStorage'
+import { CustomDrs } from './CustomDrs'
 
 const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
@@ -38,6 +39,7 @@ export function Simulator() {
   )
   const [selectedSpecAbilities, setSelectedSpecAbilities] = useState<Ability[]>([])
   const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<Ability[]>([])
+  const [customDrs, setCustomDrs] = useState('')
 
   const [baseDamage, setBaseDamage] = useState(100_000)
   const [keyLevel, setKeyLevel] = useState(28)
@@ -71,6 +73,10 @@ export function Simulator() {
         avoidance: (characterStats.avoidancePercent ?? 0) / 100,
       },
       abilities: [...augmentedSelectedAbilities, ...augmentedSelectedGroupAbilities],
+      customDrs: customDrs
+        .split(',')
+        .map((v) => Number(v))
+        .filter(Boolean),
       baseDamage,
       keyLevel,
       isAoe,
@@ -80,6 +86,7 @@ export function Simulator() {
     setResult(newResult)
   }, [
     characterStats,
+    customDrs,
     baseDamage,
     keyLevel,
     isAoe,
@@ -152,6 +159,8 @@ export function Simulator() {
           selectedGroupAbilities={selectedGroupAbilities}
           setSelectedGroupAbilities={setSelectedGroupAbilities}
         />
+
+        <CustomDrs customDrs={customDrs} setCustomDrs={setCustomDrs} />
 
         <div className="border-2" />
 

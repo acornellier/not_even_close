@@ -17,6 +17,7 @@ export interface Result {
 interface Input {
   characterStats: CharacterStats
   abilities: Ability[]
+  customDrs: number[]
   baseDamage: number
   keyLevel: number
   isAoe: boolean
@@ -96,6 +97,7 @@ function getAbsorbs(
 function getDamageReduction(
   characterStats: CharacterStats,
   abilities: Ability[],
+  customDrs: number[],
   damageIsAoe: boolean,
   startingHealth: number,
   damageTaken: number
@@ -119,12 +121,17 @@ function getDamageReduction(
     }
   }
 
+  for (const dr of customDrs) {
+    inverseDr *= 1 - dr * 0.01
+  }
+
   return 1 - inverseDr
 }
 
 export function simulate({
   characterStats,
   abilities,
+  customDrs,
   keyLevel,
   isAoe,
   fortAmp,
@@ -142,6 +149,7 @@ export function simulate({
   const damageReduction = getDamageReduction(
     adjustedStats,
     abilities,
+    customDrs,
     isAoe,
     startingHealth,
     scaledDamage
