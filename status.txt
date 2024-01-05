@@ -1,3 +1,6 @@
+TODO:
+- Custom DR
+
 Not planning on doing for now
 - All tank spells
 - Physical damage. It's a lot of work
