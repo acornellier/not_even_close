@@ -18,17 +18,17 @@ function getEffectText(field: AbilityField, value: number) {
     case 'dr':
       return `${roundTo(value * 100, 2)}% DR`
     case 'aoeDr':
-      return `${value * 100}% AoE DR`
+      return `${roundTo(value * 100, 2)}% AoE DR`
     case 'healthIncrease':
-      return `${value * 100}% HP`
+      return `${roundTo(value * 100, 2)}% HP`
     case 'staminaIncrease':
-      return `${value * 100}% stamina`
+      return `${roundTo(value * 100, 2)}% stamina`
     case 'versIncrease':
-      return `${value * 100}% versatility`
+      return `${roundTo(value * 100, 2)}% versatility`
     case 'rawAbsorb':
       return `${value.toLocaleString('en-US')} HP absorb`
     case 'absorbHealthMultiplier':
-      return `${value * 100}% HP absorb`
+      return `${roundTo(value * 100, 2)}% HP absorb`
     default:
       console.error(`Unknown ability field: ${field}`)
       return 'Error'
