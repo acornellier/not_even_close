@@ -208,16 +208,6 @@ export const dividingStrike: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=400641/dividing-strike',
 }
 
-export const cinderboltStorm: BossAbility = {
-  name: 'Cinderbolt Storm (4 hits)',
-  boss: 'Archmage Sol',
-  dungeon: 'Everbloom',
-  damage: 175780, // 43945 * 4
-  isAoe: false,
-  iconName: 'spell_fire_meteorstorm',
-  wowheadLink: 'https://www.wowhead.com/spell=427899/cinderbolt-storm',
-}
-
 export const colossalBlow: BossAbility = {
   name: 'Colossal Blow',
   boss: 'Yalnu',
@@ -248,7 +238,6 @@ export const bossAbilities: BossAbility[] = [
   chronofade,
   corrosion,
   dividingStrike,
-  cinderboltStorm,
   colossalBlow,
 ]
 
