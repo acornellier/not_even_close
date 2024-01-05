@@ -123,7 +123,7 @@ export function Simulator() {
           <Toggle label="Tyran amplifier" checked={tyranAmp} onChange={setTyranAmp} />
         </div>
 
-        <div className="border-2 " />
+        <div className="border-2 dark:border-gray-600" />
 
         <CharacterStatsForm
           characterStats={characterStats}
@@ -162,7 +162,7 @@ export function Simulator() {
 
         <CustomDrs customDrs={customDrs} setCustomDrs={setCustomDrs} />
 
-        <div className="border-2" />
+        <div className="border-2 dark:border-gray-600" />
 
         <BossAbilities
           onSelect={(ability) => {
@@ -172,12 +172,12 @@ export function Simulator() {
         />
       </div>
 
-      <div className="border-2 mx-2" />
+      <div className="border-2 mx-2 dark:border-gray-600" />
 
       <div className="basis-96">
         <Results result={result} />
 
-        <div className="border-2 my-4" />
+        <div className="border-2 my-4 dark:border-gray-600" />
 
         <Instructions />
       </div>

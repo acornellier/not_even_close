@@ -19,7 +19,7 @@ export function CustomDrs({ customDrs, setCustomDrs }: Props) {
         and 20% DR from the dark zone in Manifested Timeways, then write &quot;1, 20&quot;
       </Tooltip>
       <input
-        className="bg-gray-200 border-2 border-gray-200 rounded w-40 py-1.5 px-4 text-gray-700 focus:outline-none focus:bg-white focus:border-teal-500 min-w-[300px]"
+        className="bg-gray-200 dark:bg-zinc-700 border-2 border-gray-200 dark:border-zinc-600 text-black dark:text-white rounded w-40 py-1.5 px-4 focus:outline-none focus:bg-white dark:focus:bg-zinc-800 focus:border-teal-500 dark:focus:border-teal-500 min-w-[300px]"
         placeholder="Comma separated DRs (%)"
         onChange={({ target: { value } }) => setCustomDrs(value)}
         value={customDrs}
