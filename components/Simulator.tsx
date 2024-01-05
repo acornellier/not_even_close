@@ -22,15 +22,20 @@ const defaultCharacterStats: CharacterStatsInput = {
   avoidancePercent: 3,
 }
 
+const defaultClassSpec: WowClassSpec = {
+  class: 'Monk',
+  spec: 'Mistweaver',
+}
+
 export function Simulator() {
   const [characterStats, setCharacterStats] = useLocalStorage(
-    'charstats',
+    'characterStats',
     defaultCharacterStats
   )
-  const [classSpec, setClass] = useLocalStorage<WowClassSpec>('wowClassSpec', {
-    class: 'Monk',
-    spec: 'Mistweaver',
-  })
+  const [classSpec, setClass] = useLocalStorage<WowClassSpec>(
+    'wowClassSpec',
+    defaultClassSpec
+  )
   const [selectedSpecAbilities, setSelectedSpecAbilities] = useState<Ability[]>([])
   const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<Ability[]>([])
 
