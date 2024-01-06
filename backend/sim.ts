@@ -1,7 +1,9 @@
 ﻿import { CharacterStats } from './characterStats'
 import { Ability } from './ability'
+import { BossAbility } from './bossAbilities'
 
 export interface Result {
+  hit: Hit
   damageScaling: number
   scaledDamage: number
   damageReduction: number
@@ -14,15 +16,20 @@ export interface Result {
   survival: boolean
 }
 
+export interface Hit {
+  baseDamage: number
+  isAoe: boolean
+  bossAbility?: BossAbility
+}
+
 interface Input {
   characterStats: CharacterStats
   abilities: Ability[]
   customDrs: number[]
-  baseDamage: number
   keyLevel: number
-  isAoe: boolean
   fortAmp: boolean
   tyranAmp: boolean
+  hits: Hit[]
 }
 
 function getScalingFactor(keyLevel: number, fortAmp: boolean, tyranAmp: boolean) {
@@ -133,43 +140,45 @@ export function simulate({
   abilities,
   customDrs,
   keyLevel,
-  isAoe,
   fortAmp,
   tyranAmp,
-  baseDamage,
-}: Input): Result {
-  const damageScaling = getScalingFactor(keyLevel, fortAmp, tyranAmp)
-  const scaledDamage = Math.round(baseDamage * damageScaling)
+  hits,
+}: Input): Result[] {
+  return hits.map((hit) => {
+    const damageScaling = getScalingFactor(keyLevel, fortAmp, tyranAmp)
+    const scaledDamage = Math.round(hit.baseDamage * damageScaling)
 
-  const adjustedStats = getAdjustedStats(characterStats, abilities)
-  const startingHealth = getStartingHealth(adjustedStats, abilities)
-  const absorbs = getAbsorbs(adjustedStats, abilities, startingHealth)
-  const effectiveHealth = startingHealth + absorbs
+    const adjustedStats = getAdjustedStats(characterStats, abilities)
+    const startingHealth = getStartingHealth(adjustedStats, abilities)
+    const absorbs = getAbsorbs(adjustedStats, abilities, startingHealth)
+    const effectiveHealth = startingHealth + absorbs
 
-  const damageReduction = getDamageReduction(
-    adjustedStats,
-    abilities,
-    customDrs,
-    isAoe,
-    startingHealth,
-    scaledDamage
-  )
-  const mitigatedDamage = Math.round(scaledDamage * damageReduction)
-  const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
+    const damageReduction = getDamageReduction(
+      adjustedStats,
+      abilities,
+      customDrs,
+      hit.isAoe,
+      startingHealth,
+      scaledDamage
+    )
+    const mitigatedDamage = Math.round(scaledDamage * damageReduction)
+    const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
 
-  const healthRemaining = effectiveHealth - actualDamageTaken
-  const survival = healthRemaining > 0
+    const healthRemaining = effectiveHealth - actualDamageTaken
+    const survival = healthRemaining > 0
 
-  return {
-    damageScaling,
-    scaledDamage,
-    damageReduction,
-    mitigatedDamage,
-    actualDamageTaken,
-    startingHealth,
-    absorbs,
-    totalHealth: effectiveHealth,
-    healthRemaining,
-    survival,
-  }
+    return {
+      hit,
+      damageScaling,
+      scaledDamage,
+      damageReduction,
+      mitigatedDamage,
+      actualDamageTaken,
+      startingHealth,
+      absorbs,
+      totalHealth: effectiveHealth,
+      healthRemaining,
+      survival,
+    }
+  })
 }

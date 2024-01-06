@@ -1,12 +1,12 @@
 ﻿import { CharacterStatsInput } from '../backend/characterStats'
-import { Result, simulate } from '../backend/sim'
+import { Hit, Result, simulate } from '../backend/sim'
 import { NumericInput } from './NumericInput'
 import { Toggle } from './Toggle'
 import { CharacterStatsForm } from './CharacterStatsForm'
 import { ClassDropdown } from './ClassDropdown'
 import { classSpecs, WowClassSpec } from '../backend/classes'
 import { AbilitySelect } from './AbilitySelect'
-import { Results } from './Results'
+import { ResultSummary } from './ResultSummary'
 import { useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { BossAbilities } from './BossAbilities'
@@ -16,6 +16,8 @@ import { Instructions } from './Instructions'
 import { augmentAbilities } from '../backend/utils'
 import useLocalStorage from './useLocalStorage'
 import { CustomDrs } from './CustomDrs'
+import { ResultMini } from './ResultMini'
+import { Dungeon } from '../backend/bossAbilities'
 
 const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
@@ -23,10 +25,15 @@ const defaultCharacterStats: CharacterStatsInput = {
   avoidancePercent: 3,
 }
 
-const defaultClassSpec: WowClassSpec = {
-  class: 'Monk',
-  spec: 'Mistweaver',
+const defaultClassSpec: WowClassSpec = { class: 'Monk', spec: 'Mistweaver' }
+
+export interface AbilitySettings {
+  hits: Hit[]
+  selectedDungeon: Dungeon | null
 }
+
+const defaultHit: Hit = { baseDamage: 100_000, isAoe: false }
+const defaultAbilitySettings = { hits: [defaultHit], selectedDungeon: null }
 
 export function Simulator() {
   const [characterStats, setCharacterStats] = useLocalStorage(
@@ -41,15 +48,32 @@ export function Simulator() {
   const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<Ability[]>([])
   const [customDrs, setCustomDrs] = useState('')
 
-  const [baseDamage, setBaseDamage] = useState(100_000)
   const [keyLevel, setKeyLevel] = useState(28)
-  const [isAoe, setIsAoe] = useState(false)
   const [fortAmp, _setFortAmp] = useState(false)
   const [tyranAmp, setTyranAmp] = useState(true)
 
-  const [result, setResult] = useState<Result | null>(null)
+  const [abilitySettings, setAbilitySettings] =
+    useState<AbilitySettings>(defaultAbilitySettings)
 
+  function setHitField<T>(field: keyof Hit) {
+    return (hitIndex: number, value: T) => {
+      setAbilitySettings((prevAbilitySettings) => ({
+        ...prevAbilitySettings,
+        hits: prevAbilitySettings.hits.map((hit, index) =>
+          index === hitIndex ? { ...hit, [field]: value } : hit
+        ),
+      }))
+    }
+  }
+
+  const setBaseDamage = setHitField<number>('baseDamage')
+  const setIsAoe = setHitField<boolean>('isAoe')
+
+  const [results, setResults] = useState<Result[]>([])
   const specAbilities = classSpecs[classSpec.class][classSpec.spec].abilities
+
+  console.log(abilitySettings)
+  console.log(results)
 
   useEffect(() => {
     setSelectedSpecAbilities(specAbilities.filter(({ onByDefault }) => onByDefault))
@@ -66,7 +90,7 @@ export function Simulator() {
       selectedGroupAbilities
     )
 
-    const newResult = simulate({
+    const newResults = simulate({
       characterStats: {
         stamina: characterStats.stamina ?? 0,
         versatility: (characterStats.versatilityPercent ?? 0) / 100,
@@ -77,21 +101,19 @@ export function Simulator() {
         .split(',')
         .map((v) => Number(v))
         .filter(Boolean),
-      baseDamage,
       keyLevel,
-      isAoe,
       fortAmp,
       tyranAmp,
+      hits: abilitySettings.hits,
     })
-    setResult(newResult)
+    setResults(newResults)
   }, [
     characterStats,
     customDrs,
-    baseDamage,
     keyLevel,
-    isAoe,
     fortAmp,
     tyranAmp,
+    abilitySettings.hits,
     selectedGroupAbilities,
     selectedSpecAbilities,
   ])
@@ -99,29 +121,38 @@ export function Simulator() {
   return (
     <div className="flex gap-4">
       <div className="flex flex-col gap-4">
-        <div className="flex gap-4 flex-wrap">
+        <div className="flex gap-4 flex-wrap items-end">
           <NumericInput
-            label="Base Damage taken"
-            step={1000}
-            onChange={(val) => setBaseDamage(val ?? 0)}
-            value={baseDamage}
-          />
-          <NumericInput
-            label="Key Level"
+            label="Key level"
             min={2}
             onChange={(val) => setKeyLevel(val ?? 0)}
             value={keyLevel}
           />
-        </div>
-        <div className="flex gap-4 flex-wrap">
-          {/*<Toggle*/}
-          {/*  label="Fort amplifier"*/}
-          {/*  checked={fortAmp}*/}
-          {/*  onChange={_setFortAmp}*/}
-          {/*/>*/}
-          <Toggle label="AoE damage" checked={isAoe} onChange={setIsAoe} />
           <Toggle label="Tyran amplifier" checked={tyranAmp} onChange={setTyranAmp} />
+          {/*<Toggle label="Fort amplifier" checked={fortAmp} onChange={_setFortAmp} />*/}
         </div>
+
+        {abilitySettings.selectedDungeon ? (
+          <span className="font-bold text-2xl">
+            Dungeon selected: {abilitySettings.selectedDungeon}
+          </span>
+        ) : (
+          abilitySettings.hits.map((hit, hitIndex) => (
+            <div key={hitIndex} className="flex gap-4 flex-wrap items-end">
+              <NumericInput
+                label="Base damage taken"
+                step={1000}
+                onChange={(val) => setBaseDamage(hitIndex, val ?? 0)}
+                value={hit.baseDamage}
+              />
+              <Toggle
+                label="AoE damage"
+                checked={hit.isAoe}
+                onChange={(val) => setIsAoe(hitIndex, val)}
+              />
+            </div>
+          ))
+        )}
 
         <div className="border-2 dark:border-gray-600" />
 
@@ -164,18 +195,22 @@ export function Simulator() {
 
         <div className="border-2 dark:border-gray-600" />
 
-        <BossAbilities
-          onSelect={(ability) => {
-            setIsAoe(ability.isAoe)
-            setBaseDamage(ability.damage)
-          }}
-        />
+        <BossAbilities setAbilitySettings={setAbilitySettings} />
       </div>
 
       <div className="border-2 mx-2 dark:border-gray-600" />
 
       <div className="basis-96">
-        <Results result={result} />
+        {abilitySettings.selectedDungeon ? (
+          <div className="flex flex-col gap-4">
+            <span className="font-bold text-2xl">Results</span>
+            {results.map((result, idx) => (
+              <ResultMini key={idx} result={result} />
+            ))}
+          </div>
+        ) : (
+          results[0] && <ResultSummary result={results[0]} />
+        )}
 
         <div className="border-2 my-4 dark:border-gray-600" />
 

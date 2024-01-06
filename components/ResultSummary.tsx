@@ -2,12 +2,10 @@
 import { roundTo } from '../backend/utils'
 
 interface Props {
-  result: Result | null
+  result: Result
 }
 
-export function Results({ result }: Props) {
-  if (!result) return null
-
+export function ResultSummary({ result }: Props) {
   return (
     <div>
       <div className="font-bold text-4xl mb-2">

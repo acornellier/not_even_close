@@ -1,18 +1,52 @@
-﻿import { bossAbilitiesByDungeon, BossAbility } from '../backend/bossAbilities'
+﻿import {
+  bossAbilitiesByDungeon,
+  BossAbility,
+  DungeonAbilities,
+} from '../backend/bossAbilities'
 import Image from 'next/image'
+import { AbilitySettings } from './Simulator'
 
 interface Props {
-  onSelect: (bossAbility: BossAbility) => void
+  setAbilitySettings: (abilitySettings: AbilitySettings) => void
 }
 
-export function BossAbilities({ onSelect }: Props) {
+export function BossAbilities({ setAbilitySettings }: Props) {
+  const onSelect = (ability: BossAbility) => {
+    setAbilitySettings({
+      selectedDungeon: null,
+      hits: [
+        {
+          baseDamage: ability.damage,
+          isAoe: ability.isAoe,
+          bossAbility: ability,
+        },
+      ],
+    })
+  }
+
+  const onSelectDungeon = (dungeonAbilities: DungeonAbilities) => {
+    setAbilitySettings({
+      selectedDungeon: dungeonAbilities.dungeon,
+      hits: dungeonAbilities.abilities.map((ability) => ({
+        baseDamage: ability.damage,
+        isAoe: ability.isAoe,
+        bossAbility: ability,
+      })),
+    })
+  }
+
   return (
     <div className="flex flex-col items-start gap-2">
-      {bossAbilitiesByDungeon.map(({ dungeon, abilities }) => (
-        <div key={dungeon}>
-          <span className="text-l font-bold">{dungeon}</span>
-          <div className="flex flex-row items-start gap-1 flex-wrap">
-            {abilities.map((ability) => (
+      {bossAbilitiesByDungeon.map((dungeonAbilities) => (
+        <div key={dungeonAbilities.dungeon}>
+          <span
+            className="text-l font-bold cursor-pointer"
+            onClick={() => onSelectDungeon(dungeonAbilities)}
+          >
+            {dungeonAbilities.dungeon}
+          </span>
+          <div className="flex flex-row items-start gap-x-2 gap-y-1 flex-wrap">
+            {dungeonAbilities.abilities.map((ability) => (
               <a
                 key={ability.name}
                 href={ability.wowheadLink}
