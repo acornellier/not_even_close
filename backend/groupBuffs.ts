@@ -203,6 +203,13 @@ export const taintedRageheart: Ability = {
   notes: 'Assumes ilvl 489, Myth 4/4',
 }
 
+export const ancestralVigor: Ability = {
+  name: 'Ancestral Vigor',
+  healthIncrease: 0.1,
+  spellId: 207401,
+  iconName: 'spell_shaman_blessingoftheeternals',
+}
+
 export const groupBuffs: Ability[] = [
   blackAttunement,
   devotionAura,
@@ -229,6 +236,7 @@ export const otherBuffs: Ability[] = [
   icyPreservation,
   taintedRageheart,
   twinGuardian,
+  ancestralVigor,
   ironBark,
   blessingOfSacrifice,
   blessingOfProtection,
