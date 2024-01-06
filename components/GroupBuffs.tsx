@@ -16,9 +16,9 @@ export function GroupBuffs({
 }: Props) {
   return (
     <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
-      <div className="text-white bg-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-teal-600 whitespace-nowrap">
+      <label className="text-white bg-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-teal-600 whitespace-nowrap">
         {label}
-      </div>
+      </label>
       <AbilitySelect
         allAbilities={allAbilities}
         selectedAbilities={selectedGroupAbilities}
