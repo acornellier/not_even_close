@@ -87,30 +87,30 @@ export const shamanEnhAbilities = [
   elementalWardingEnh,
   brimmingWithLife,
   ancestralDefense,
-  astralShift,
   astralBulwark,
   earthElemental,
   spiritWolf,
+  astralShift,
 ]
 
 export const shamanEleAbilities = [
   elementalWardingEleResto,
   brimmingWithLife,
   ancestralDefense,
-  astralShift,
   astralBulwark,
   earthElemental,
-  spiritWolf,
   primordialBond,
+  spiritWolf,
+  astralShift,
 ]
 
 export const shamanRestoAbilities = [
   elementalWardingEleResto,
   brimmingWithLife,
   ancestralDefense,
-  earthenHarmony,
-  astralShift,
   astralBulwark,
+  earthenHarmony,
   earthElemental,
   spiritWolf,
+  astralShift,
 ]

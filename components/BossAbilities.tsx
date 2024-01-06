@@ -11,7 +11,7 @@ export function BossAbilities({ onSelect }: Props) {
       {bossAbilitiesByDungeon.map(({ dungeon, abilities }) => (
         <div key={dungeon}>
           <span className="text-l font-bold">{dungeon}</span>
-          <div className="flex flex-row items-start gap-1 flex-wrap">
+          <div className="flex flex-row items-start gap-x-2 gap-y-1 flex-wrap">
             {abilities.map((ability) => (
               <a
                 key={ability.name}

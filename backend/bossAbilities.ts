@@ -9,7 +9,7 @@
 
 export type BossAbility = {
   name: string
-  boss: string
+  boss?: string
   dungeon: Dungeon
   damage: number
   isAoe: boolean
@@ -218,6 +218,15 @@ export const colossalBlow: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=169179/colossal-blow',
 }
 
+export const chronoburst: BossAbility = {
+  name: 'Chronoburst',
+  dungeon: 'Dawn of the Infinite',
+  damage: 82396,
+  isAoe: true,
+  iconName: 'spell_holy_divineprovidence',
+  wowheadLink: 'https://www.wowhead.com/ptr-2/spell=415769/chronoburst',
+}
+
 export const bossAbilities: BossAbility[] = [
   crushingGrip,
   shatteredEarth,
@@ -235,6 +244,7 @@ export const bossAbilities: BossAbility[] = [
   wrackingPain,
   soulrend,
   dreadEssence,
+  chronoburst,
   chronofade,
   corrosion,
   dividingStrike,

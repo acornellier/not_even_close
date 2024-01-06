@@ -16,6 +16,7 @@ import { Instructions } from './Instructions'
 import { augmentAbilities } from '../backend/utils'
 import useLocalStorage from './useLocalStorage'
 import { CustomDrs } from './CustomDrs'
+import { set } from 'zod'
 
 const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
@@ -44,8 +45,18 @@ export function Simulator() {
   const [baseDamage, setBaseDamage] = useState(100_000)
   const [keyLevel, setKeyLevel] = useState(28)
   const [isAoe, setIsAoe] = useState(false)
-  const [fortAmp, _setFortAmp] = useState(false)
+  const [fortAmp, setFortAmp] = useState(false)
   const [tyranAmp, setTyranAmp] = useState(true)
+
+  const changeTyranAmp = (val: boolean) => {
+    setTyranAmp(val)
+    if (val) setFortAmp(false)
+  }
+
+  const changeFortAmp = (val: boolean) => {
+    setFortAmp(val)
+    if (val) setTyranAmp(false)
+  }
 
   const [result, setResult] = useState<Result | null>(null)
 
@@ -114,13 +125,9 @@ export function Simulator() {
           />
         </div>
         <div className="flex gap-4 flex-wrap">
-          {/*<Toggle*/}
-          {/*  label="Fort amplifier"*/}
-          {/*  checked={fortAmp}*/}
-          {/*  onChange={_setFortAmp}*/}
-          {/*/>*/}
           <Toggle label="AoE damage" checked={isAoe} onChange={setIsAoe} />
-          <Toggle label="Tyran amplifier" checked={tyranAmp} onChange={setTyranAmp} />
+          <Toggle label="Tyran amplifier" checked={tyranAmp} onChange={changeTyranAmp} />
+          <Toggle label="Fort amplifier" checked={fortAmp} onChange={changeFortAmp} />
         </div>
 
         <div className="border-2 dark:border-gray-600" />
