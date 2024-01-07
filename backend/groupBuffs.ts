@@ -195,11 +195,11 @@ export const twinGuardian: Ability = {
   notes: "Assumes 300K absorb but in reality is 30% of the evoker's HP",
 }
 
-export const taintedRageheart: Ability = {
-  name: 'Tainted Rageheart',
-  rawAbsorb: 922_410,
-  spellId: 207174,
-  iconName: 'inv_ragnaros_heart_shadowflame',
+export const leafOfTheAncientProtectors: Ability = {
+  name: 'Leaf of the Ancient Protectors',
+  rawAbsorb: 370_374,
+  spellId: 110009,
+  iconName: 'inv_misc_plant_01',
   notes: 'Assumes ilvl 489, Myth 4/4',
 }
 
@@ -234,7 +234,7 @@ export const groupActives: Ability[] = [
 
 export const otherBuffs: Ability[] = [
   icyPreservation,
-  taintedRageheart,
+  leafOfTheAncientProtectors,
   twinGuardian,
   ancestralVigor,
   ironBark,
