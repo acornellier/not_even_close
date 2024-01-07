@@ -133,6 +133,15 @@ export const flameShock: EnemyAbility = {
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=429048/flame-shock',
 }
 
+export const blottingBarrage: EnemyAbility = {
+  name: 'Blotting Barrage',
+  dungeon: 'Throne of the Tides',
+  damage: 82397,
+  isAoe: true,
+  iconName: 'ability_vehicle_oiljets',
+  wowheadLink: 'https://www.wowhead.com/spell=428405/blotting-barrage',
+}
+
 export const soulBurst: EnemyAbility = {
   name: 'Soul Burst',
   boss: 'The Amalgam of Souls',
@@ -229,7 +238,7 @@ export const chronoburst: EnemyAbility = {
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=415769/chronoburst',
 }
 
-export const bossAbilities: EnemyAbility[] = [
+export const enemyAbilities: EnemyAbility[] = [
   crushingGrip,
   shatteredEarth,
   earthshakingRoar,
@@ -243,6 +252,7 @@ export const bossAbilities: EnemyAbility[] = [
   shockBlast,
   festeringShockwave,
   flameShock,
+  blottingBarrage,
   wrackingPain,
   soulrend,
   dreadEssence,
@@ -253,7 +263,7 @@ export const bossAbilities: EnemyAbility[] = [
   colossalBlow,
 ]
 
-export const bossAbilitiesByDungeon: DungeonAbilities[] = bossAbilities
+export const enemyAbilitiesByDungeon: DungeonAbilities[] = enemyAbilities
   .reduce<DungeonAbilities[]>((acc, ability) => {
     let dungeon = acc.find((v) => v.dungeon === ability.dungeon)
     if (!dungeon) {
