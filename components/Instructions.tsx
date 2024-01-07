@@ -7,7 +7,6 @@ export function Instructions() {
         missing, find the base damage in the dungeon journal.
       </span>
       <span>Only magic damage is supported.</span>
-      <span>Several abilities are simplified, or may have errors</span>
       <span>
         To give feedback or see the changelog, join the discord (link in top right)
       </span>

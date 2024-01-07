@@ -14,18 +14,27 @@ export interface Result {
   survival: boolean
 }
 
+export interface KeyDetails {
+  keyLevel: number
+  isTyran: boolean
+}
+
+export interface EnemyAbilityDetails {
+  baseDamage: number
+  isBossAbility: boolean
+  isAoe: boolean
+}
+
 interface Input {
   characterStats: CharacterStats
   abilities: Ability[]
   customDrs: number[]
-  baseDamage: number
-  keyLevel: number
-  isAoe: boolean
-  isTyran: boolean
-  isBossAbility: boolean
+  customAbsorbs: number[]
+  keyDetails: KeyDetails
+  enemyAbilityDetails: EnemyAbilityDetails
 }
 
-function getScalingFactor(keyLevel: number, isTyran: boolean, isBossAbility: boolean) {
+function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isBossAbility: boolean) {
   let scalingFactor = 1
   for (let i = 3; i <= keyLevel; ++i) {
     scalingFactor *= i <= 10 ? 1.08 : 1.1
@@ -76,6 +85,7 @@ function getStartingHealth(characterStats: CharacterStats, abilities: Ability[])
 function getAbsorbs(
   characterStats: CharacterStats,
   abilities: Ability[],
+  customAbsorbs: number[],
   startingHealth: number
 ) {
   let absorbs = 0
@@ -89,6 +99,10 @@ function getAbsorbs(
     if (ability.rawAbsorb) {
       absorbs += ability.rawAbsorb
     }
+  }
+
+  for (const absorb of customAbsorbs) {
+    absorbs += absorb
   }
 
   return absorbs
@@ -132,18 +146,16 @@ export function simulate({
   characterStats,
   abilities,
   customDrs,
-  keyLevel,
-  isAoe,
-  isTyran,
-  isBossAbility,
-  baseDamage,
+  customAbsorbs,
+  keyDetails,
+  enemyAbilityDetails: { baseDamage, isBossAbility, isAoe },
 }: Input): Result {
-  const damageScaling = getScalingFactor(keyLevel, isTyran, isBossAbility)
+  const damageScaling = getScalingFactor(keyDetails, isBossAbility)
   const scaledDamage = Math.round(baseDamage * damageScaling)
 
   const adjustedStats = getAdjustedStats(characterStats, abilities)
   const startingHealth = getStartingHealth(adjustedStats, abilities)
-  const absorbs = getAbsorbs(adjustedStats, abilities, startingHealth)
+  const absorbs = getAbsorbs(adjustedStats, abilities, customAbsorbs, startingHealth)
   const effectiveHealth = startingHealth + absorbs
 
   const damageReduction = getDamageReduction(

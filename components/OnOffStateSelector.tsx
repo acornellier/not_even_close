@@ -22,7 +22,7 @@ interface Props {
   label1: string
   label2: string
   enabled: boolean
-  setIsEnabled: (value: ((prevState: boolean) => boolean) | boolean) => void
+  setIsEnabled: (value: boolean) => void
 }
 
 export function OnOffStateSelector({

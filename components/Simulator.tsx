@@ -1,7 +1,5 @@
 ﻿import { CharacterStatsInput } from '../backend/characterStats'
-import { Result, simulate } from '../backend/sim'
-import { NumericInput } from './NumericInput'
-import { Toggle } from './Toggle'
+import { EnemyAbilityDetails, KeyDetails, Result, simulate } from '../backend/sim'
 import { CharacterStatsForm } from './CharacterStatsForm'
 import { ClassDropdown } from './ClassDropdown'
 import { classSpecs, WowClassSpec } from '../backend/classes'
@@ -16,8 +14,9 @@ import { Instructions } from './Instructions'
 import { augmentAbilities } from '../backend/utils'
 import useLocalStorage from './useLocalStorage'
 import { CustomDrs } from './CustomDrs'
-import { set } from 'zod'
-import { OnOffStateSelector } from './OnOffStateSelector'
+import { CustomAbsorbs } from './CustomAbsorbs'
+import { KeyDetailsInput } from './KeyDetailsInput'
+import { EnemyAbilityDetailsInput } from './EnemyAbilityDetailsInput'
 
 const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
@@ -25,9 +24,13 @@ const defaultCharacterStats: CharacterStatsInput = {
   avoidancePercent: 3,
 }
 
-const defaultClassSpec: WowClassSpec = {
-  class: 'Monk',
-  spec: 'Mistweaver',
+const defaultClassSpec: WowClassSpec = { class: 'Monk', spec: 'Mistweaver' }
+const defaultKeyDetails: KeyDetails = { keyLevel: 28, isTyran: true }
+
+const defaultEnemyDetails: EnemyAbilityDetails = {
+  baseDamage: 100_000,
+  isAoe: false,
+  isBossAbility: true,
 }
 
 export function Simulator() {
@@ -42,12 +45,13 @@ export function Simulator() {
   const [selectedSpecAbilities, setSelectedSpecAbilities] = useState<Ability[]>([])
   const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<Ability[]>([])
   const [customDrs, setCustomDrs] = useState('')
+  const [customAbsorbs, setCustomAbsorbs] = useState('')
 
-  const [baseDamage, setBaseDamage] = useState(100_000)
-  const [keyLevel, setKeyLevel] = useLocalStorage('keyLevel', 28)
-  const [isAoe, setIsAoe] = useState(false)
-  const [isBossAbility, setIsBossAbility] = useState(true)
-  const [isTyran, setIsTyran] = useLocalStorage('isTyran', true)
+  const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
+  const [enemyAbilityDetails, setEnemyAbilityDetails] = useLocalStorage(
+    'enemyAbilityDetails',
+    defaultEnemyDetails
+  )
 
   const [result, setResult] = useState<Result | null>(null)
 
@@ -75,25 +79,18 @@ export function Simulator() {
         avoidance: (characterStats.avoidancePercent ?? 0) / 100,
       },
       abilities: [...augmentedSelectedAbilities, ...augmentedSelectedGroupAbilities],
-      customDrs: customDrs
-        .split(',')
-        .map((v) => Number(v))
-        .filter(Boolean),
-      baseDamage,
-      keyLevel,
-      isAoe,
-      isBossAbility,
-      isTyran,
+      customDrs: customDrs.split(',').map(Number).filter(Boolean),
+      customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
+      keyDetails,
+      enemyAbilityDetails,
     })
     setResult(newResult)
   }, [
     characterStats,
     customDrs,
-    baseDamage,
-    keyLevel,
-    isAoe,
-    isTyran,
-    isBossAbility,
+    customAbsorbs,
+    keyDetails,
+    enemyAbilityDetails,
     selectedGroupAbilities,
     selectedSpecAbilities,
   ])
@@ -101,37 +98,12 @@ export function Simulator() {
   return (
     <div className="flex flex-col sm:flex-row gap-4">
       <div className="flex flex-col gap-4">
-        <div className="flex gap-4 flex-wrap items-end">
-          <NumericInput
-            label="Key Level"
-            min={2}
-            onChange={(val) => setKeyLevel(val ?? 0)}
-            value={keyLevel}
-          />
-          <OnOffStateSelector
-            label="Affix"
-            label1="Fortified"
-            label2="Tyrannical"
-            enabled={isTyran}
-            setIsEnabled={setIsTyran}
-          />
-        </div>
-        <div className="flex gap-4 flex-wrap items-end">
-          <NumericInput
-            label="Base Damage taken"
-            step={1000}
-            onChange={(val) => setBaseDamage(val ?? 0)}
-            value={baseDamage}
-          />
-          <OnOffStateSelector
-            label="Ability source"
-            label1="Trash"
-            label2="Boss"
-            enabled={isBossAbility}
-            setIsEnabled={setIsBossAbility}
-          />
-          <Toggle label="AoE damage" checked={isAoe} onChange={setIsAoe} />
-        </div>
+        <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
+
+        <EnemyAbilityDetailsInput
+          enemyAbilityDetails={enemyAbilityDetails}
+          setEnemyAbilityDetails={setEnemyAbilityDetails}
+        />
 
         <div className="border-2 dark:border-gray-600" />
 
@@ -171,14 +143,20 @@ export function Simulator() {
         />
 
         <CustomDrs customDrs={customDrs} setCustomDrs={setCustomDrs} />
+        <CustomAbsorbs
+          customAbsorbs={customAbsorbs}
+          setCustomAbsorbs={setCustomAbsorbs}
+        />
 
         <div className="border-2 dark:border-gray-600" />
 
         <EnemyAbilities
-          onSelect={(ability) => {
-            setIsAoe(ability.isAoe)
-            setBaseDamage(ability.damage)
-            setIsBossAbility(!ability.isTrashAbility)
+          onSelect={({ damage, isAoe, isTrashAbility }) => {
+            setEnemyAbilityDetails({
+              baseDamage: damage,
+              isAoe,
+              isBossAbility: !isTrashAbility,
+            })
           }}
         />
       </div>
