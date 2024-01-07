@@ -55,7 +55,7 @@ export function AbilityIcon({
     <div
       key={ability.spellId}
       data-tooltip-id={`ability-tooltip-${ability.spellId}`}
-      className="cursor-pointer select-none"
+      className="cursor-pointer select-none relative"
       onClick={(e) => {
         e.preventDefault()
         toggleAbility(ability.spellId)
@@ -105,6 +105,14 @@ export function AbilityIcon({
           {ability.notes && <span>{ability.notes}</span>}
         </div>
       </Tooltip>
+      {ability.talentPoints && (
+        <div
+          className="absolute rounded bottom-0 right-2 text-white"
+          style={{ WebkitTextStroke: '1px yellow' }}
+        >
+          {ability.talentPoints}
+        </div>
+      )}
       {isSelected && (
         <div
           className="absolute rounded border-yellow-300 icon-highlight"

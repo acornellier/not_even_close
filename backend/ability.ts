@@ -11,6 +11,7 @@
   rawAbsorb?: number
   absorbHealthMultiplier?: number
   absorbVersAffected?: boolean
+  talentPoints?: number
   iconName: string
   wowheadLink?: string
   notes?: string

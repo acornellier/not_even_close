@@ -15,7 +15,7 @@ export function CustomAbsorbs({ customAbsorbs, setCustomAbsorbs }: Props) {
       tooltip={
         <>
           <p>Any missing absorbs can be added here.</p>
-          <p>For example, you can write &quot;50273, 207132&quot;. </p>
+          <p>For example, you can write &quot;50273, 207132&quot;.</p>
         </>
       }
     />

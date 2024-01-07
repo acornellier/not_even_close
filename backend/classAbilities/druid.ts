@@ -24,10 +24,27 @@ export const bearForm: Ability = {
   notes: "Assumes you have 3 points in Lycara's Teachings",
 }
 
-export const ursineVigor: Ability = {
-  name: 'Ursine Vigor',
-  spellId: 377842,
+export const ursineVigorOnePoint: Ability = {
+  name: 'Ursine Vigor (1 point)',
+  talentPoints: 1,
+  spellId: 377842_1,
   iconName: 'ability_druid_markofursol',
+  notes: 'Do NOT select both ursine vigors',
+  abilityAugmentations: [
+    {
+      otherSpellId: 5487,
+      field: 'healthIncrease',
+      value: 0.1,
+    },
+  ],
+}
+
+export const ursineVigorTwoPoints: Ability = {
+  name: 'Ursine Vigor (2 points)',
+  talentPoints: 2,
+  spellId: 377842_2,
+  iconName: 'ability_druid_markofursol',
+  notes: 'Do NOT select both ursine vigors',
   abilityAugmentations: [
     {
       otherSpellId: 5487,
@@ -82,7 +99,8 @@ export const druidBalanceAbilities = [
   thickHide,
   risingLight,
   bearForm,
-  ursineVigor,
+  ursineVigorOnePoint,
+  ursineVigorTwoPoints,
   heartOfTheWild,
   barkskin,
 ]
@@ -91,7 +109,8 @@ export const druidFeralAbilities = [
   thickHide,
   risingLight,
   bearForm,
-  ursineVigor,
+  ursineVigorOnePoint,
+  ursineVigorTwoPoints,
   heartOfTheWild,
   barkskin,
   survivalInsticts,
@@ -102,7 +121,8 @@ export const druidRestoAbilities = [
   thickHide,
   risingLight,
   bearForm,
-  ursineVigor,
+  ursineVigorOnePoint,
+  ursineVigorTwoPoints,
   heartOfTheWild,
   barkskin,
   innerPeace,
