@@ -7,22 +7,23 @@
   | 'Dawn of the Infinite'
   | 'Everbloom'
 
-export type BossAbility = {
+export type EnemyAbility = {
   name: string
   boss?: string
   dungeon: Dungeon
   damage: number
   isAoe: boolean
+  isTrashAbility?: boolean
   iconName: string
   wowheadLink: string
 }
 
 export type DungeonAbilities = {
   dungeon: Dungeon
-  abilities: BossAbility[]
+  abilities: EnemyAbility[]
 }
 
-export const shatteredEarth: BossAbility = {
+export const shatteredEarth: EnemyAbility = {
   name: 'Shattered Earth',
   boss: 'Oakheart',
   dungeon: 'Darkheart Thicket',
@@ -32,7 +33,7 @@ export const shatteredEarth: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=204666/shattered-earth',
 }
 
-export const crushingGrip: BossAbility = {
+export const crushingGrip: EnemyAbility = {
   name: 'Crushing Grip',
   boss: 'Oakheart',
   dungeon: 'Darkheart Thicket',
@@ -42,7 +43,7 @@ export const crushingGrip: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=204611/crushing-grip',
 }
 
-export const earthshakingRoar: BossAbility = {
+export const earthshakingRoar: EnemyAbility = {
   name: 'Earthshaking Roar',
   boss: 'Dresaron',
   dungeon: 'Darkheart Thicket',
@@ -52,7 +53,7 @@ export const earthshakingRoar: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=199389/earthshaking-roar',
 }
 
-export const apocalypticNightmare: BossAbility = {
+export const apocalypticNightmare: EnemyAbility = {
   name: 'Apocalyptic Nightmare',
   boss: 'Xavius',
   dungeon: 'Darkheart Thicket',
@@ -62,7 +63,7 @@ export const apocalypticNightmare: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=204502/apocalyptic-nightmare',
 }
 
-export const nightmareBolt: BossAbility = {
+export const nightmareBolt: EnemyAbility = {
   name: 'Nightmare Bolt',
   boss: 'Xavius',
   dungeon: 'Darkheart Thicket',
@@ -72,7 +73,7 @@ export const nightmareBolt: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=200185/nightmare-bolt',
 }
 
-export const wrackingPain: BossAbility = {
+export const wrackingPain: EnemyAbility = {
   name: 'Wracking Pain',
   boss: 'Yazma',
   dungeon: "Atal'Dazar",
@@ -82,7 +83,7 @@ export const wrackingPain: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=250096/wracking-pain',
 }
 
-export const soulrend: BossAbility = {
+export const soulrend: EnemyAbility = {
   name: 'Soulrend',
   boss: 'Yazma',
   dungeon: "Atal'Dazar",
@@ -92,7 +93,7 @@ export const soulrend: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=259190/soulrend',
 }
 
-export const focusedTempest: BossAbility = {
+export const focusedTempest: EnemyAbility = {
   name: 'Focused Tempest',
   boss: "Lady Naz'jar",
   dungeon: 'Throne of the Tides',
@@ -102,7 +103,7 @@ export const focusedTempest: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=428376/focused-tempest',
 }
 
-export const shockBlast: BossAbility = {
+export const shockBlast: EnemyAbility = {
   name: 'Shock Blast',
   boss: "Lady Naz'jar",
   dungeon: 'Throne of the Tides',
@@ -112,7 +113,7 @@ export const shockBlast: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=428041/shock-blast',
 }
 
-export const festeringShockwave: BossAbility = {
+export const festeringShockwave: EnemyAbility = {
   name: 'Festering Shockwave',
   boss: 'Commander Ulthok',
   dungeon: 'Throne of the Tides',
@@ -122,7 +123,7 @@ export const festeringShockwave: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=427668/festering-shockwave',
 }
 
-export const flameShock: BossAbility = {
+export const flameShock: EnemyAbility = {
   name: 'Flame Shock',
   boss: 'Erunak Stonespeaker',
   dungeon: 'Throne of the Tides',
@@ -132,7 +133,7 @@ export const flameShock: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=429048/flame-shock',
 }
 
-export const soulBurst: BossAbility = {
+export const soulBurst: EnemyAbility = {
   name: 'Soul Burst',
   boss: 'The Amalgam of Souls',
   dungeon: 'Black Rook Hold',
@@ -142,13 +143,13 @@ export const soulBurst: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=196587/soul-burst#icon',
 }
 
-export const soulBurstMaxStacks: BossAbility = {
+export const soulBurstMaxStacks: EnemyAbility = {
   ...soulBurst,
   name: 'Soul Burst (max stacks)',
   damage: 383141,
 }
 
-export const shadowBolt: BossAbility = {
+export const shadowBolt: EnemyAbility = {
   name: 'Shadow Bolt',
   boss: 'Ravencrest',
   dungeon: 'Black Rook Hold',
@@ -158,7 +159,7 @@ export const shadowBolt: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=198833/shadow-bolt',
 }
 
-export const shadowBoltVolley: BossAbility = {
+export const shadowBoltVolley: EnemyAbility = {
   name: 'Shadow Bolt Volley',
   boss: 'Ravencrest',
   dungeon: 'Black Rook Hold',
@@ -168,7 +169,7 @@ export const shadowBoltVolley: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=202019/shadow-bolt-volley',
 }
 
-export const dreadEssence: BossAbility = {
+export const dreadEssence: EnemyAbility = {
   name: 'Dread Essence',
   boss: 'Gorak Tul',
   dungeon: 'Waycrest Manor',
@@ -178,17 +179,17 @@ export const dreadEssence: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=266181/dread-essence',
 }
 
-export const chronofade: BossAbility = {
+export const chronofade: EnemyAbility = {
   name: 'Chronofade',
   boss: 'Manifested Timeways',
   dungeon: 'Dawn of the Infinite',
   damage: 68663,
-  isAoe: true,
+  isAoe: false,
   iconName: 'achievement_challengemode_arakkoaspires_hourglass',
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=405448/chronofade',
 }
 
-export const corrosion: BossAbility = {
+export const corrosion: EnemyAbility = {
   name: 'Corrosion',
   boss: 'Blight of Galakrond',
   dungeon: 'Dawn of the Infinite',
@@ -198,7 +199,7 @@ export const corrosion: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=407406/corrosion',
 }
 
-export const dividingStrike: BossAbility = {
+export const dividingStrike: EnemyAbility = {
   name: 'Dividing Strike (split 5 ways)',
   boss: 'Tyr',
   dungeon: 'Dawn of the Infinite',
@@ -208,7 +209,7 @@ export const dividingStrike: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=400641/dividing-strike',
 }
 
-export const colossalBlow: BossAbility = {
+export const colossalBlow: EnemyAbility = {
   name: 'Colossal Blow',
   boss: 'Yalnu',
   dungeon: 'Everbloom',
@@ -218,16 +219,17 @@ export const colossalBlow: BossAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=169179/colossal-blow',
 }
 
-export const chronoburst: BossAbility = {
+export const chronoburst: EnemyAbility = {
   name: 'Chronoburst',
   dungeon: 'Dawn of the Infinite',
   damage: 82396,
   isAoe: true,
+  isTrashAbility: true,
   iconName: 'spell_holy_divineprovidence',
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=415769/chronoburst',
 }
 
-export const bossAbilities: BossAbility[] = [
+export const bossAbilities: EnemyAbility[] = [
   crushingGrip,
   shatteredEarth,
   earthshakingRoar,

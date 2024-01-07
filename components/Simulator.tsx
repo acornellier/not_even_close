@@ -9,7 +9,7 @@ import { AbilitySelect } from './AbilitySelect'
 import { Results } from './Results'
 import { useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
-import { BossAbilities } from './BossAbilities'
+import { EnemyAbilities } from './EnemyAbilities'
 import { GroupBuffs } from './GroupBuffs'
 import { groupActives, groupBuffs, otherBuffs } from '../backend/groupBuffs'
 import { Instructions } from './Instructions'
@@ -17,6 +17,7 @@ import { augmentAbilities } from '../backend/utils'
 import useLocalStorage from './useLocalStorage'
 import { CustomDrs } from './CustomDrs'
 import { set } from 'zod'
+import { OnOffStateSelector } from './OnOffStateSelector'
 
 const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
@@ -43,20 +44,10 @@ export function Simulator() {
   const [customDrs, setCustomDrs] = useState('')
 
   const [baseDamage, setBaseDamage] = useState(100_000)
-  const [keyLevel, setKeyLevel] = useState(28)
+  const [keyLevel, setKeyLevel] = useLocalStorage('keyLevel', 28)
   const [isAoe, setIsAoe] = useState(false)
-  const [fortAmp, setFortAmp] = useState(false)
-  const [tyranAmp, setTyranAmp] = useState(true)
-
-  const changeTyranAmp = (val: boolean) => {
-    setTyranAmp(val)
-    if (val) setFortAmp(false)
-  }
-
-  const changeFortAmp = (val: boolean) => {
-    setFortAmp(val)
-    if (val) setTyranAmp(false)
-  }
+  const [isBossAbility, setIsBossAbility] = useState(true)
+  const [isTyran, setIsTyran] = useLocalStorage('isTyran', true)
 
   const [result, setResult] = useState<Result | null>(null)
 
@@ -91,8 +82,8 @@ export function Simulator() {
       baseDamage,
       keyLevel,
       isAoe,
-      fortAmp,
-      tyranAmp,
+      isBossAbility,
+      isTyran,
     })
     setResult(newResult)
   }, [
@@ -101,8 +92,8 @@ export function Simulator() {
     baseDamage,
     keyLevel,
     isAoe,
-    fortAmp,
-    tyranAmp,
+    isTyran,
+    isBossAbility,
     selectedGroupAbilities,
     selectedSpecAbilities,
   ])
@@ -110,24 +101,36 @@ export function Simulator() {
   return (
     <div className="flex flex-col sm:flex-row gap-4">
       <div className="flex flex-col gap-4">
-        <div className="flex gap-4 flex-wrap">
-          <NumericInput
-            label="Base Damage taken"
-            step={1000}
-            onChange={(val) => setBaseDamage(val ?? 0)}
-            value={baseDamage}
-          />
+        <div className="flex gap-4 flex-wrap items-end">
           <NumericInput
             label="Key Level"
             min={2}
             onChange={(val) => setKeyLevel(val ?? 0)}
             value={keyLevel}
           />
+          <OnOffStateSelector
+            label="Affix"
+            label1="Fortified"
+            label2="Tyrannical"
+            enabled={isTyran}
+            setIsEnabled={setIsTyran}
+          />
         </div>
-        <div className="flex gap-4 flex-wrap">
+        <div className="flex gap-4 flex-wrap items-end">
+          <NumericInput
+            label="Base Damage taken"
+            step={1000}
+            onChange={(val) => setBaseDamage(val ?? 0)}
+            value={baseDamage}
+          />
+          <OnOffStateSelector
+            label="Ability source"
+            label1="Trash"
+            label2="Boss"
+            enabled={isBossAbility}
+            setIsEnabled={setIsBossAbility}
+          />
           <Toggle label="AoE damage" checked={isAoe} onChange={setIsAoe} />
-          <Toggle label="Tyran amplifier" checked={tyranAmp} onChange={changeTyranAmp} />
-          <Toggle label="Fort amplifier" checked={fortAmp} onChange={changeFortAmp} />
         </div>
 
         <div className="border-2 dark:border-gray-600" />
@@ -171,10 +174,11 @@ export function Simulator() {
 
         <div className="border-2 dark:border-gray-600" />
 
-        <BossAbilities
+        <EnemyAbilities
           onSelect={(ability) => {
             setIsAoe(ability.isAoe)
             setBaseDamage(ability.damage)
+            setIsBossAbility(!ability.isTrashAbility)
           }}
         />
       </div>

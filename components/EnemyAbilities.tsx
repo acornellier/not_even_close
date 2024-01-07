@@ -1,11 +1,11 @@
-﻿import { bossAbilitiesByDungeon, BossAbility } from '../backend/bossAbilities'
+﻿import { bossAbilitiesByDungeon, EnemyAbility } from '../backend/bossAbilities'
 import Image from 'next/image'
 
 interface Props {
-  onSelect: (bossAbility: BossAbility) => void
+  onSelect: (bossAbility: EnemyAbility) => void
 }
 
-export function BossAbilities({ onSelect }: Props) {
+export function EnemyAbilities({ onSelect }: Props) {
   return (
     <div className="flex flex-col items-start gap-2">
       {bossAbilitiesByDungeon.map(({ dungeon, abilities }) => (

@@ -21,19 +21,19 @@ interface Input {
   baseDamage: number
   keyLevel: number
   isAoe: boolean
-  fortAmp: boolean
-  tyranAmp: boolean
+  isTyran: boolean
+  isBossAbility: boolean
 }
 
-function getScalingFactor(keyLevel: number, fortAmp: boolean, tyranAmp: boolean) {
+function getScalingFactor(keyLevel: number, isTyran: boolean, isBossAbility: boolean) {
   let scalingFactor = 1
   for (let i = 3; i <= keyLevel; ++i) {
     scalingFactor *= i <= 10 ? 1.08 : 1.1
   }
 
-  if (fortAmp) {
+  if (!isTyran && !isBossAbility) {
     scalingFactor *= 1.3
-  } else if (tyranAmp) {
+  } else if (isTyran && isBossAbility) {
     scalingFactor *= 1.15
   }
 
@@ -134,11 +134,11 @@ export function simulate({
   customDrs,
   keyLevel,
   isAoe,
-  fortAmp,
-  tyranAmp,
+  isTyran,
+  isBossAbility,
   baseDamage,
 }: Input): Result {
-  const damageScaling = getScalingFactor(keyLevel, fortAmp, tyranAmp)
+  const damageScaling = getScalingFactor(keyLevel, isTyran, isBossAbility)
   const scaledDamage = Math.round(baseDamage * damageScaling)
 
   const adjustedStats = getAdjustedStats(characterStats, abilities)
