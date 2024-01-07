@@ -9,7 +9,7 @@ export function CustomAbsorbs({ customAbsorbs, setCustomAbsorbs }: Props) {
   return (
     <CustomInput
       label="Custom absorbs"
-      placeholder="Comma separated absorbs (%)"
+      placeholder="Comma separated absorbs"
       value={customAbsorbs}
       setValue={setCustomAbsorbs}
       tooltip={
