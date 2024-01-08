@@ -178,12 +178,14 @@ export function Simulator() {
 
       <div className="border-2 mx-2 dark:border-gray-600" />
 
-      <div className="basis-96">
-        <Results result={result} />
+      <div className="basis-96 relative">
+        <div className="sm:sticky sm:top-10">
+          <Results result={result} />
 
-        <div className="border-2 my-4 dark:border-gray-600" />
+          <div className="border-2 my-4 dark:border-gray-600" />
 
-        <Instructions />
+          <Instructions />
+        </div>
       </div>
     </div>
   )
