@@ -54,12 +54,22 @@ export const precisionShot: Ability = {
   iconName: 'inv_legendary_gun',
 }
 
+export const exhilaratingExecution: Ability = {
+  name: 'Exhilarating Execution',
+  healthIncrease: 0.1,
+  spellId: 428486,
+  iconName: 'inv_weapon_hand_04',
+}
+
 export const rogueAssAbilities = [feint, elusiveness, evasion]
+
 export const rogueOutlawAbilities = [feint, elusiveness, evasion, precisionShot]
+
 export const rogueSubAbilities = [
   feint,
   elusiveness,
   evasion,
   fadeToNothing,
   cloakedInShadows,
+  exhilaratingExecution,
 ]
