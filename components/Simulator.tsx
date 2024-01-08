@@ -17,6 +17,7 @@ import { CustomDrs } from './Abilities/CustomDrs'
 import { CustomAbsorbs } from './Abilities/CustomAbsorbs'
 import { KeyDetailsInput } from './Inputs/KeyDetailsInput'
 import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsInput'
+import { MoreLess } from './Abilities/MoreLess'
 
 const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
@@ -44,6 +45,7 @@ export function Simulator() {
   )
   const [selectedSpecAbilities, setSelectedSpecAbilities] = useState<Ability[]>([])
   const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<Ability[]>([])
+  const [moreShown, setMoreShown] = useLocalStorage('moreShown', false)
   const [customDrs, setCustomDrs] = useState('')
   const [customAbsorbs, setCustomAbsorbs] = useState('')
 
@@ -60,6 +62,13 @@ export function Simulator() {
   useEffect(() => {
     setSelectedSpecAbilities(specAbilities.filter(({ onByDefault }) => onByDefault))
   }, [classSpec, specAbilities])
+
+  useEffect(() => {
+    if (!moreShown) {
+      setCustomDrs('')
+      setCustomAbsorbs('')
+    }
+  }, [moreShown])
 
   useEffect(() => {
     const augmentedSelectedAbilities = augmentAbilities(
@@ -97,7 +106,7 @@ export function Simulator() {
 
   return (
     <div className="flex flex-col sm:flex-row gap-4">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col items-start gap-4">
         <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
 
         <EnemyAbilityDetailsInput
@@ -105,7 +114,7 @@ export function Simulator() {
           setEnemyAbilityDetails={setEnemyAbilityDetails}
         />
 
-        <div className="border-2 dark:border-gray-600" />
+        <div className="border-2 w-full dark:border-gray-600" />
 
         <CharacterStatsForm
           characterStats={characterStats}
@@ -142,13 +151,19 @@ export function Simulator() {
           setSelectedGroupAbilities={setSelectedGroupAbilities}
         />
 
-        <CustomDrs customDrs={customDrs} setCustomDrs={setCustomDrs} />
-        <CustomAbsorbs
-          customAbsorbs={customAbsorbs}
-          setCustomAbsorbs={setCustomAbsorbs}
-        />
+        {moreShown && (
+          <>
+            <CustomDrs customDrs={customDrs} setCustomDrs={setCustomDrs} />
+            <CustomAbsorbs
+              customAbsorbs={customAbsorbs}
+              setCustomAbsorbs={setCustomAbsorbs}
+            />
+          </>
+        )}
 
-        <div className="border-2 dark:border-gray-600" />
+        <MoreLess moreShown={moreShown} setMoreShown={setMoreShown} />
+
+        <div className="border-2 w-full dark:border-gray-600" />
 
         <EnemyAbilities
           onSelect={({ damage, isAoe, isTrashAbility }) => {

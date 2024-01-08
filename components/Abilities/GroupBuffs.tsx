@@ -1,5 +1,6 @@
 import { AbilitySelect } from './AbilitySelect'
 import { Ability } from '../../backend/ability'
+import { Label } from '../Inputs/Label'
 
 interface Props {
   label: string
@@ -16,9 +17,7 @@ export function GroupBuffs({
 }: Props) {
   return (
     <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
-      <label className="text-white bg-teal-700 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-teal-600 whitespace-nowrap">
-        {label}
-      </label>
+      <Label>{label}</Label>
       <AbilitySelect
         allAbilities={allAbilities}
         selectedAbilities={selectedGroupAbilities}
