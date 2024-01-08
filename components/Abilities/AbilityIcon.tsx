@@ -1,6 +1,6 @@
-import { Ability, AbilityField, abilityFields } from '../backend/ability'
+import { Ability, AbilityField, abilityFields } from '../../backend/ability'
 import { Tooltip } from 'react-tooltip'
-import { isAbilitySelected, roundTo } from '../backend/utils'
+import { isAbilitySelected, roundTo } from '../../backend/utils'
 import Image from 'next/image'
 import { Fragment } from 'react'
 

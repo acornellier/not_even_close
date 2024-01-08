@@ -1,6 +1,6 @@
 ﻿import { NumericInput } from './NumericInput'
 import { OnOffStateSelector } from './OnOffStateSelector'
-import { KeyDetails } from '../backend/sim'
+import { KeyDetails } from '../../backend/sim'
 
 interface Props {
   keyDetails: KeyDetails

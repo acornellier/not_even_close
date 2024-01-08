@@ -1,5 +1,5 @@
-﻿import { Ability } from '../backend/ability'
-import { augmentAbilities, isAbilitySelected } from '../backend/utils'
+﻿import { Ability } from '../../backend/ability'
+import { augmentAbilities, isAbilitySelected } from '../../backend/utils'
 import { AbilityIcon } from './AbilityIcon'
 
 interface Props {

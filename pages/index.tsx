@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Script from 'next/script'
-import { Header } from '../components/Header'
+import { Header } from '../components/Header/Header'
 import { Simulator } from '../components/Simulator'
 
 export default function Home() {

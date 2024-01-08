@@ -1,4 +1,4 @@
-﻿import { enemyAbilitiesByDungeon, EnemyAbility } from '../backend/enemyAbilities'
+﻿import { enemyAbilitiesByDungeon, EnemyAbility } from '../../backend/enemyAbilities'
 import Image from 'next/image'
 
 interface Props {

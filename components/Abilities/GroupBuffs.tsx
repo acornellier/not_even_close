@@ -1,5 +1,5 @@
 import { AbilitySelect } from './AbilitySelect'
-import { Ability } from '../backend/ability'
+import { Ability } from '../../backend/ability'
 
 interface Props {
   label: string

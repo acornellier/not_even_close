@@ -1,5 +1,5 @@
 ﻿import { CharacterStats, CharacterStatsInput } from '../backend/characterStats'
-import { NumericInput } from './NumericInput'
+import { NumericInput } from './Inputs/NumericInput'
 
 interface Props {
   characterStats: CharacterStatsInput

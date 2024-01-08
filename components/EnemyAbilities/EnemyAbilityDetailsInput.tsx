@@ -1,7 +1,7 @@
-﻿import { NumericInput } from './NumericInput'
-import { OnOffStateSelector } from './OnOffStateSelector'
-import { Toggle } from './Toggle'
-import { EnemyAbilityDetails } from '../backend/sim'
+﻿import { NumericInput } from '../Inputs/NumericInput'
+import { OnOffStateSelector } from '../Inputs/OnOffStateSelector'
+import { Toggle } from '../Inputs/Toggle'
+import { EnemyAbilityDetails } from '../../backend/sim'
 
 interface Props {
   enemyAbilityDetails: EnemyAbilityDetails

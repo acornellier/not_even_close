@@ -1,5 +1,5 @@
 ﻿import { useState } from 'react'
-import { classColors, classSpecs, WowClass, WowClassSpec } from '../backend/classes'
+import { classColors, classSpecs, WowClass, WowClassSpec } from '../../backend/classes'
 import Image from 'next/image'
 
 export interface DropdownProps {
