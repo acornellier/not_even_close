@@ -173,7 +173,7 @@ export const shadowBolt: EnemyAbility = {
   boss: 'Ravencrest',
   dungeon: 'Black Rook Hold',
   damage: 106831,
-  isAoe: false,
+  isAoe: true,
   iconName: 'spell_shadow_shadowbolt',
   wowheadLink: 'https://www.wowhead.com/spell=198833/shadow-bolt',
 }
