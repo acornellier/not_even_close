@@ -8,8 +8,8 @@ export function Instructions() {
         as this tool cannot account for it.
       </span>
       <span>
-        Click a boss ability in the bottom left to set the base damage. If your ability is
-        missing, find the base damage in the dungeon journal.
+        Click an enemy ability in the bottom left to set the base damage. If your ability
+        is missing, find the base damage in the dungeon journal.
       </span>
       <span>Only magic damage is supported.</span>
       <span>
