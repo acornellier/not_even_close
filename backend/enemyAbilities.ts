@@ -93,6 +93,16 @@ export const soulrend: EnemyAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=259190/soulrend',
 }
 
+export const acidBarrage: EnemyAbility = {
+  name: 'Acid Barrage',
+  dungeon: 'Throne of the Tides',
+  damage: 71410,
+  isAoe: true,
+  isTrashAbility: true,
+  iconName: 'inv_ammo_arrow_04',
+  wowheadLink: 'https://www.wowhead.com/ptr-2/spell=426645/acid-barrage',
+}
+
 export const focusedTempest: EnemyAbility = {
   name: 'Focused Tempest',
   boss: "Lady Naz'jar",
@@ -248,6 +258,7 @@ export const enemyAbilities: EnemyAbility[] = [
   soulBurstMaxStacks,
   shadowBolt,
   shadowBoltVolley,
+  acidBarrage,
   focusedTempest,
   shockBlast,
   festeringShockwave,
