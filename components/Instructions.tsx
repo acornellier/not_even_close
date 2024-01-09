@@ -13,7 +13,14 @@ export function Instructions() {
       </span>
       <span>Only magic damage is supported.</span>
       <span>
-        To give feedback or see the changelog, join the discord (link in top right)
+        To give feedback or see the changelog,{' '}
+        <a
+          className="text-blue-600 dark:text-blue-500 hover:underline"
+          href="https://discord.com/invite/Ykb6AbYHHZ"
+        >
+          join the discord
+        </a>
+        .
       </span>
     </div>
   )
