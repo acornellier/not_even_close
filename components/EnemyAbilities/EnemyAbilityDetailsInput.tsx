@@ -24,7 +24,7 @@ export function EnemyAbilityDetailsInput({
   return (
     <div className="flex gap-4 flex-wrap items-end">
       <NumericInput
-        label="Base Damage taken"
+        label="Base damage taken"
         step={1000}
         onChange={(value) => setBaseDamage(value ?? 0)}
         value={enemyAbilityDetails.baseDamage}

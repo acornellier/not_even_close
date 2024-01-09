@@ -14,7 +14,7 @@ export function KeyDetailsInput({ keyDetails, setKeyDetails }: Props) {
   return (
     <div className="flex gap-4 flex-wrap items-end">
       <NumericInput
-        label="Key Level"
+        label="Key level"
         min={2}
         onChange={(val) => setKeyLevel(val ?? 0)}
         value={keyDetails.keyLevel}
