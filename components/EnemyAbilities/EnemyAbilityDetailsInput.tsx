@@ -12,14 +12,12 @@ export function EnemyAbilityDetailsInput({
   enemyAbilityDetails,
   setEnemyAbilityDetails,
 }: Props) {
-  const setBaseDamage = (baseDamage: number) =>
-    setEnemyAbilityDetails({ ...enemyAbilityDetails, baseDamage })
+  const setField =
+    <T extends keyof EnemyAbilityDetails>(field: T) =>
+    (value: EnemyAbilityDetails[T]) =>
+      setEnemyAbilityDetails({ ...enemyAbilityDetails, [field]: value })
 
-  const setIsBossAbility = (isBossAbility: boolean) =>
-    setEnemyAbilityDetails({ ...enemyAbilityDetails, isBossAbility })
-
-  const setIsAoe = (isAoe: boolean) =>
-    setEnemyAbilityDetails({ ...enemyAbilityDetails, isAoe })
+  const setBaseDamage = setField('baseDamage')
 
   return (
     <div className="flex gap-4 flex-wrap items-end">
@@ -34,12 +32,19 @@ export function EnemyAbilityDetailsInput({
         label1="Trash"
         label2="Boss"
         enabled={enemyAbilityDetails.isBossAbility}
-        setIsEnabled={setIsBossAbility}
+        setIsEnabled={setField('isBossAbility')}
+      />
+      <OnOffStateSelector
+        label="Damage type"
+        label1="Magic"
+        label2="Physical"
+        enabled={!!enemyAbilityDetails.isPhysical}
+        setIsEnabled={setField('isPhysical')}
       />
       <Toggle
         label="AoE damage"
         checked={enemyAbilityDetails.isAoe}
-        onChange={setIsAoe}
+        onChange={setField('isAoe')}
       />
     </div>
   )

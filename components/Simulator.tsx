@@ -166,11 +166,12 @@ export function Simulator() {
         <div className="border-2 w-full dark:border-gray-600" />
 
         <EnemyAbilities
-          onSelect={({ damage, isAoe, isTrashAbility }) => {
+          onSelect={({ damage, isAoe, isTrashAbility, isPhysical }) => {
             setEnemyAbilityDetails({
               baseDamage: damage,
               isAoe,
               isBossAbility: !isTrashAbility,
+              isPhysical: isPhysical,
             })
           }}
         />

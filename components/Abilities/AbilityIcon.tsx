@@ -1,4 +1,4 @@
-import { Ability, AbilityField, abilityFields } from '../../backend/ability'
+import { Ability, AbilityField, abilityFields, DamageType } from '../../backend/ability'
 import { Tooltip } from 'react-tooltip'
 import { isAbilitySelected, roundTo } from '../../backend/utils'
 import Image from 'next/image'
@@ -13,10 +13,12 @@ interface AbilityIconProps {
   allAbilities: Ability[]
 }
 
-function getEffectText(field: AbilityField, value: number) {
+function getEffectText(field: AbilityField, value: number, damageType?: DamageType) {
+  const damageTypeText = damageType ? damageType + ' ' : ''
+
   switch (field) {
     case 'dr':
-      return `${roundTo(value * 100, 2)}% DR`
+      return `${roundTo(value * 100, 2)}% ${damageTypeText}DR`
     case 'aoeDr':
       return `${roundTo(value * 100, 2)}% AoE DR`
     case 'healthIncrease':
@@ -26,9 +28,9 @@ function getEffectText(field: AbilityField, value: number) {
     case 'versIncrease':
       return `${roundTo(value * 100, 2)}% versatility`
     case 'rawAbsorb':
-      return `${value.toLocaleString('en-US')} HP absorb`
+      return `${value.toLocaleString('en-US')} HP ${damageTypeText}absorb`
     case 'absorbHealthMultiplier':
-      return `${roundTo(value * 100, 2)}% HP absorb`
+      return `${roundTo(value * 100, 2)}% HP ${damageTypeText}absorb`
     default:
       console.error(`Unknown ability field: ${field}`)
       return 'Error'
@@ -73,7 +75,7 @@ export function AbilityIcon({
             (field) =>
               ability[field] && (
                 <span key={field}>
-                  {getEffectText(field, ability[field]!)}{' '}
+                  {getEffectText(field, ability[field]!, ability.damageType)}{' '}
                   {field === 'absorbHealthMultiplier' &&
                     ability.absorbVersAffected &&
                     ' (+vers)'}

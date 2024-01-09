@@ -14,6 +14,8 @@ export type EnemyAbility = {
   damage: number
   isAoe: boolean
   isTrashAbility?: boolean
+  isPhysical?: boolean
+  isReducedByArmor?: boolean
   iconName: string
   wowheadLink: string
 }
@@ -248,6 +250,26 @@ export const chronoburst: EnemyAbility = {
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=415769/chronoburst',
 }
 
+export const earthShakingStomp: EnemyAbility = {
+  name: 'Earthshaking Stomp',
+  dungeon: 'Black Rook Hold',
+  damage: 96129,
+  isAoe: true,
+  isPhysical: true,
+  iconName: 'ability_warstomp',
+  wowheadLink: 'https://www.wowhead.com/spell=198073/earthshaking-stomp',
+}
+
+export const hatefulCharge: EnemyAbility = {
+  name: 'Hateful Charge',
+  dungeon: 'Black Rook Hold',
+  damage: 123594,
+  isAoe: false,
+  isPhysical: true,
+  iconName: 'ability_monk_clashingoxcharge',
+  wowheadLink: 'https://www.wowhead.com/spell=224188/hateful-charge',
+}
+
 export const enemyAbilities: EnemyAbility[] = [
   crushingGrip,
   shatteredEarth,
@@ -256,6 +278,8 @@ export const enemyAbilities: EnemyAbility[] = [
   apocalypticNightmare,
   soulBurst,
   soulBurstMaxStacks,
+  earthShakingStomp,
+  hatefulCharge,
   shadowBolt,
   shadowBoltVolley,
   acidBarrage,

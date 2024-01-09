@@ -3,6 +3,7 @@ import { Ability } from '../ability'
 export const elementalWardingEnh: Ability = {
   name: 'Elemental Warding',
   dr: 0.06,
+  damageType: 'magic',
   onByDefault: true,
   spellId: 381650,
   wowheadLink: 'https://www.wowhead.com/spell=381650/elemental-warding',
