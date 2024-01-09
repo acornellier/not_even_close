@@ -34,7 +34,7 @@ export const ancestralDefense: Ability = {
 
 export const astralShift: Ability = {
   name: 'Astral Shift',
-  dr: 0.2,
+  dr: 0.4,
   spellId: 108271,
   wowheadLink: 'https://www.wowhead.com/spell=108271/astral-shift',
   iconName: 'ability_shaman_astralshift',
@@ -43,7 +43,7 @@ export const astralShift: Ability = {
 export const astralBulwark: Ability = {
   name: 'Astral Bulwark',
   spellId: 377933,
-  onByDefault: true,
+  onByDefault: false,
   iconName: 'spell_shaman_ancestralawakening',
   abilityAugmentations: [
     {
