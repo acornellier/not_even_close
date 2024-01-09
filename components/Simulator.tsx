@@ -1,4 +1,4 @@
-﻿import { CharacterStatsInput } from '../backend/characterStats'
+import { CharacterStatsInput } from '../backend/characterStats'
 import { EnemyAbilityDetails, KeyDetails, Result, simulate } from '../backend/sim'
 import { CharacterStatsForm } from './CharacterStatsForm'
 import { ClassDropdown } from './Abilities/ClassDropdown'
@@ -18,6 +18,7 @@ import { CustomAbsorbs } from './Abilities/CustomAbsorbs'
 import { KeyDetailsInput } from './Inputs/KeyDetailsInput'
 import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsInput'
 import { MoreLess } from './Abilities/MoreLess'
+import { EnemyAbility } from '../backend/enemyAbilities'
 
 const defaultCharacterStats: CharacterStatsInput = {
   stamina: 41_000,
@@ -50,6 +51,7 @@ export function Simulator() {
   const [customAbsorbs, setCustomAbsorbs] = useState('')
 
   const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
+  const [enemyAbility, setEnemyAbility] = useState<EnemyAbility | null>(null)
   const [enemyAbilityDetails, setEnemyAbilityDetails] = useLocalStorage(
     'enemyAbilityDetails',
     defaultEnemyDetails
@@ -166,11 +168,13 @@ export function Simulator() {
         <div className="border-2 w-full dark:border-gray-600" />
 
         <EnemyAbilities
-          onSelect={({ damage, isAoe, isTrashAbility }) => {
+          onSelect={(enemyAbility) => {
+            setEnemyAbility(enemyAbility)
             setEnemyAbilityDetails({
-              baseDamage: damage,
-              isAoe,
-              isBossAbility: !isTrashAbility,
+              name: enemyAbility.name,
+              baseDamage: enemyAbility.damage,
+              isAoe: enemyAbility.isAoe,
+              isBossAbility: !enemyAbility.isTrashAbility,
             })
           }}
         />
@@ -180,7 +184,11 @@ export function Simulator() {
 
       <div className="basis-96 relative">
         <div className="sm:sticky sm:top-10">
-          <Results result={result} />
+          <Results
+            result={result}
+            enemyAbility={enemyAbility}
+            enemyAbilityDetails={enemyAbilityDetails}
+          />
 
           <div className="border-2 my-4 dark:border-gray-600" />
 

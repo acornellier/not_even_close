@@ -1,12 +1,25 @@
-﻿import { Result } from '../backend/sim'
+﻿import { EnemyAbilityDetails, Result } from '../backend/sim'
 import { roundTo } from '../backend/utils'
+import { EnemyAbility } from '../backend/enemyAbilities'
+import Image from 'next/image'
+import { EnemyAbilityLink } from './EnemyAbilities/EnemyAbilityLink'
 
 interface Props {
   result: Result | null
+  enemyAbility: EnemyAbility | null
+  enemyAbilityDetails: EnemyAbilityDetails | null
 }
 
-export function Results({ result }: Props) {
+export function Results({ result, enemyAbility, enemyAbilityDetails }: Props) {
   if (!result) return null
+
+  const matchesAbility =
+    enemyAbility &&
+    enemyAbilityDetails &&
+    enemyAbilityDetails.name === enemyAbility.name &&
+    enemyAbilityDetails.baseDamage === enemyAbility.damage &&
+    enemyAbilityDetails.isAoe === enemyAbility.isAoe &&
+    enemyAbilityDetails.isBossAbility === !enemyAbility.isTrashAbility
 
   return (
     <div>
@@ -21,6 +34,9 @@ export function Results({ result }: Props) {
           </span>
         )}
       </div>
+      {matchesAbility && (
+        <EnemyAbilityLink key={enemyAbility.name} ability={enemyAbility} />
+      )}
       <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
       <div>Scaled damage: {result.scaledDamage.toLocaleString('en-US')}</div>
       <div>

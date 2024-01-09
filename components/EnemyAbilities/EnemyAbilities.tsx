@@ -1,5 +1,6 @@
 ﻿import { enemyAbilitiesByDungeon, EnemyAbility } from '../../backend/enemyAbilities'
 import Image from 'next/image'
+import { EnemyAbilityLink } from './EnemyAbilityLink'
 
 interface Props {
   onSelect: (bossAbility: EnemyAbility) => void
@@ -13,25 +14,11 @@ export function EnemyAbilities({ onSelect }: Props) {
           <span className="text-l font-bold">{dungeon}</span>
           <div className="flex flex-row items-start gap-x-2 gap-y-1 flex-wrap">
             {abilities.map((ability) => (
-              <a
+              <EnemyAbilityLink
                 key={ability.name}
-                href={ability.wowheadLink}
-                onClick={(e) => {
-                  e.preventDefault()
-                  onSelect(ability)
-                }}
-              >
-                <div className="flex items-center gap-1">
-                  <Image
-                    className="rounded border border-gray-500"
-                    height={24}
-                    width={24}
-                    src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}
-                    alt={ability.name}
-                  />
-                  {ability.name}
-                </div>
-              </a>
+                ability={ability}
+                onSelect={() => onSelect(ability)}
+              />
             ))}
           </div>
         </div>

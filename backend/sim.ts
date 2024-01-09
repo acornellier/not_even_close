@@ -12,6 +12,7 @@ export interface Result {
   totalHealth: number
   healthRemaining: number
   survival: boolean
+  enemyAbilityDetails: EnemyAbilityDetails
 }
 
 export interface KeyDetails {
@@ -20,6 +21,7 @@ export interface KeyDetails {
 }
 
 export interface EnemyAbilityDetails {
+  name?: string
   baseDamage: number
   isBossAbility: boolean
   isAoe: boolean
@@ -148,10 +150,10 @@ export function simulate({
   customDrs,
   customAbsorbs,
   keyDetails,
-  enemyAbilityDetails: { baseDamage, isBossAbility, isAoe },
+  enemyAbilityDetails,
 }: Input): Result {
-  const damageScaling = getScalingFactor(keyDetails, isBossAbility)
-  const scaledDamage = Math.round(baseDamage * damageScaling)
+  const damageScaling = getScalingFactor(keyDetails, enemyAbilityDetails.isBossAbility)
+  const scaledDamage = Math.round(enemyAbilityDetails.baseDamage * damageScaling)
 
   const adjustedStats = getAdjustedStats(characterStats, abilities)
   const startingHealth = getStartingHealth(adjustedStats, abilities)
@@ -162,7 +164,7 @@ export function simulate({
     adjustedStats,
     abilities,
     customDrs,
-    isAoe,
+    enemyAbilityDetails.isAoe,
     startingHealth,
     scaledDamage
   )
@@ -183,5 +185,6 @@ export function simulate({
     totalHealth: effectiveHealth,
     healthRemaining,
     survival,
+    enemyAbilityDetails,
   }
 }
