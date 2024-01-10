@@ -61,15 +61,15 @@ export const exhilaratingExecution: Ability = {
   iconName: 'inv_weapon_hand_04',
 }
 
-export const rogueAssAbilities = [feint, elusiveness, evasion]
+export const rogueAssAbilities = [elusiveness, evasion, feint]
 
-export const rogueOutlawAbilities = [feint, elusiveness, evasion, precisionShot]
+export const rogueOutlawAbilities = [elusiveness, precisionShot, evasion, feint]
 
 export const rogueSubAbilities = [
-  feint,
   elusiveness,
-  evasion,
   fadeToNothing,
-  cloakedInShadows,
   exhilaratingExecution,
+  cloakedInShadows,
+  evasion,
+  feint,
 ]

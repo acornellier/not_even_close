@@ -40,7 +40,7 @@ export const warriorArmsAbilities = [defensiveStance, spellReflection, dieByTheS
 
 export const warriorFuryAbilities = [
   defensiveStance,
+  warpaint,
   spellReflection,
   enragedRegeneration,
-  warpaint,
 ]

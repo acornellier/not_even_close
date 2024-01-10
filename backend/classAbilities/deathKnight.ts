@@ -23,4 +23,4 @@ export const lichborne: Ability = {
   iconName: 'spell_shadow_raisedead',
 }
 
-export const deathKnightAbilities = [antiMagicShell, iceboundFortitude, lichborne]
+export const deathKnightAbilities = [lichborne, antiMagicShell, iceboundFortitude]

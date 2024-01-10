@@ -54,7 +54,7 @@ export const havocAbilities = [
   demonicWards,
   illidariKnowledge,
   willOfTheIllidari,
-  blur,
-  deflectingDance,
   demonMuzzle,
+  deflectingDance,
+  blur,
 ]
