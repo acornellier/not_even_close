@@ -27,6 +27,7 @@ export const diffuseMagic: Ability = {
   name: 'Diffuse Magic',
   spellId: 122783,
   dr: 0.6,
+  drType: 'magic',
   iconName: 'spell_monk_diffusemagic',
   wowheadLink: 'https://www.wowhead.com/spell=122783/diffuse-magic',
 }

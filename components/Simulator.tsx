@@ -175,6 +175,7 @@ export function Simulator() {
               baseDamage: enemyAbility.damage,
               isAoe: enemyAbility.isAoe,
               isBossAbility: !enemyAbility.isTrashAbility,
+              isPhysical: enemyAbility.isPhysical,
             })
           }}
         />

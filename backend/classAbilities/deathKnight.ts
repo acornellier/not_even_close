@@ -2,6 +2,7 @@ import { Ability } from '../ability'
 
 export const antiMagicShell: Ability = {
   name: 'Anti-Magic Shell',
+  drType: 'magic',
   absorbHealthMultiplier: 0.483,
   absorbVersAffected: true,
   spellId: 48707,

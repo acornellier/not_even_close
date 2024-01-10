@@ -139,6 +139,15 @@ export const antiMagicZone: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=51052/anti-magic-zone',
 }
 
+export const stoneskinTotem: Ability = {
+  name: 'Stoneskin Totem',
+  spellId: 383017,
+  dr: 0.1,
+  drType: 'physical',
+  iconName: 'ability_shaman_stoneskintotem',
+  wowheadLink: 'https://www.wowhead.com/spell=383017/stoneskin-totem',
+}
+
 export const spiritLinkTotem: Ability = {
   name: 'Spirit Link Totem',
   spellId: 98008,
@@ -230,6 +239,7 @@ export const groupActives: Ability[] = [
   spiritLinkTotem,
   powerWordBarrier,
   antiMagicZone,
+  stoneskinTotem,
 ]
 
 export const otherBuffs: Ability[] = [

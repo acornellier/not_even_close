@@ -11,7 +11,10 @@ export function Instructions() {
         Click an enemy ability in the bottom left to set the base damage. If your ability
         is missing, find the base damage in the dungeon journal.
       </span>
-      <span>Only magic damage is supported.</span>
+      <span>
+        Physical damage reduced by armor is not supported. Earthshaking Stomp and Hateful
+        Charge are not reduced by Armor
+      </span>
       <span>
         To give feedback or see the changelog,{' '}
         <a

@@ -1,9 +1,13 @@
-﻿export type Ability = {
+﻿export type DamageType = 'magic' | 'physical'
+
+export type Ability = {
   name: string
   spellId: number
   abilityAugmentations?: AbilityAugmentation[]
   onByDefault?: boolean
   dr?: number
+  drType?: DamageType
+  absorbType?: DamageType
   aoeDr?: number
   staminaIncrease?: number
   versIncrease?: number

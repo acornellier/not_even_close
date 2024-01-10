@@ -1,5 +1,6 @@
-﻿import { CharacterStats } from './characterStats'
+import { CharacterStats } from './characterStats'
 import { Ability } from './ability'
+import { EnemyAbility } from './enemyAbilities'
 
 export interface Result {
   damageScaling: number
@@ -25,6 +26,8 @@ export interface EnemyAbilityDetails {
   baseDamage: number
   isBossAbility: boolean
   isAoe: boolean
+  isPhysical?: boolean
+  isReducedByArmor?: boolean
 }
 
 interface Input {
@@ -88,11 +91,19 @@ function getAbsorbs(
   characterStats: CharacterStats,
   abilities: Ability[],
   customAbsorbs: number[],
+  enemyAbilityDetails: EnemyAbilityDetails,
   startingHealth: number
 ) {
   let absorbs = 0
 
   for (const ability of abilities) {
+    if (
+      (ability.absorbType === 'magic' && enemyAbilityDetails.isPhysical) ||
+      (ability.absorbType === 'physical' && !enemyAbilityDetails.isPhysical)
+    ) {
+      continue
+    }
+
     if (ability.absorbHealthMultiplier) {
       const versMultiplier = ability.absorbVersAffected ? characterStats.versatility : 0
       absorbs += ability.absorbHealthMultiplier * startingHealth * (1 + versMultiplier)
@@ -114,25 +125,33 @@ function getDamageReduction(
   characterStats: CharacterStats,
   abilities: Ability[],
   customDrs: number[],
-  damageIsAoe: boolean,
+  enemyAbilityDetails: EnemyAbilityDetails,
   startingHealth: number,
   damageTaken: number
 ) {
   let inverseDr = 1 - characterStats.versatility / 2
 
-  if (damageIsAoe) {
+  if (enemyAbilityDetails.isAoe) {
     inverseDr *= 1 - characterStats.avoidance
   }
 
   for (const ability of abilities) {
+    let dr = ability.dr
+    if (
+      (ability.drType === 'magic' && enemyAbilityDetails.isPhysical) ||
+      (ability.drType === 'physical' && !enemyAbilityDetails.isPhysical)
+    ) {
+      dr = 0
+    }
+
     if (ability.name === 'Dampen Harm') {
-      const dr = 0.2 + (damageTaken / startingHealth) * 0.3
-      inverseDr *= 1 - Math.min(dr, 0.5)
-    } else if (ability.dr && ability.aoeDr && damageIsAoe) {
-      inverseDr *= 1 - Math.max(ability.dr, ability.aoeDr)
-    } else if (ability.dr) {
-      inverseDr *= 1 - ability.dr
-    } else if (ability.aoeDr && damageIsAoe) {
+      const dampenDr = 0.2 + (damageTaken / startingHealth) * 0.3
+      inverseDr *= 1 - Math.min(dampenDr, 0.5)
+    } else if (dr && ability.aoeDr && enemyAbilityDetails.isAoe) {
+      inverseDr *= 1 - Math.max(dr, ability.aoeDr)
+    } else if (dr) {
+      inverseDr *= 1 - dr
+    } else if (ability.aoeDr && enemyAbilityDetails.isAoe) {
       inverseDr *= 1 - ability.aoeDr
     }
   }
@@ -157,14 +176,20 @@ export function simulate({
 
   const adjustedStats = getAdjustedStats(characterStats, abilities)
   const startingHealth = getStartingHealth(adjustedStats, abilities)
-  const absorbs = getAbsorbs(adjustedStats, abilities, customAbsorbs, startingHealth)
+  const absorbs = getAbsorbs(
+    adjustedStats,
+    abilities,
+    customAbsorbs,
+    enemyAbilityDetails,
+    startingHealth
+  )
   const effectiveHealth = startingHealth + absorbs
 
   const damageReduction = getDamageReduction(
     adjustedStats,
     abilities,
     customDrs,
-    enemyAbilityDetails.isAoe,
+    enemyAbilityDetails,
     startingHealth,
     scaledDamage
   )

@@ -3,6 +3,7 @@ import { Ability } from '../ability'
 export const arcaneWarding: Ability = {
   name: 'Arcane Warding',
   dr: 0.04,
+  drType: 'magic',
   onByDefault: true,
   spellId: 383092,
   wowheadLink: 'https://www.wowhead.com/spell=383092/arcane-warding',
@@ -31,6 +32,7 @@ export const prismaticBarrier: Ability = {
   absorbHealthMultiplier: 0.2,
   absorbVersAffected: true,
   dr: 0.15,
+  drType: 'magic',
   spellId: 235450,
   iconName: 'spell_magearmor',
 }

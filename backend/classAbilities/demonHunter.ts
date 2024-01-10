@@ -5,6 +5,7 @@ export const demonicWards: Ability = {
   spellId: 203513,
   onByDefault: true,
   dr: 0.1,
+  drType: 'magic',
   iconName: 'inv_belt_leather_demonhunter_a_01',
   wowheadLink: 'https://www.wowhead.com/spell=320381/demonic-wards',
 }
@@ -14,6 +15,7 @@ export const illidariKnowledge: Ability = {
   spellId: 389696,
   onByDefault: true,
   dr: 0.05,
+  drType: 'magic',
   iconName: 'spell_mage_overpowered',
   wowheadLink: 'https://www.wowhead.com/spell=389696/illidari-knowledge',
 }
@@ -47,12 +49,23 @@ export const demonMuzzle: Ability = {
   name: 'Demon Muzzle',
   spellId: 388111,
   dr: 0.08,
+  drType: 'magic',
   iconName: 'spell_fire_fireballgreen',
+}
+
+export const demonHide: Ability = {
+  name: 'Demon Hide',
+  spellId: 428241,
+  onByDefault: true,
+  dr: 0.05,
+  drType: 'physical',
+  iconName: 'misc_legionfall_demonhunter',
 }
 
 export const havocAbilities = [
   demonicWards,
   illidariKnowledge,
+  demonHide,
   willOfTheIllidari,
   demonMuzzle,
   deflectingDance,

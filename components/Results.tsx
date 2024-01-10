@@ -38,9 +38,9 @@ export function Results({ result, enemyAbility, enemyAbilityDetails }: Props) {
         <EnemyAbilityLink key={enemyAbility.name} ability={enemyAbility} />
       )}
       <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
-      <div>Scaled damage: {result.scaledDamage.toLocaleString('en-US')}</div>
+      <div>Unmitigated damage: {result.scaledDamage.toLocaleString('en-US')}</div>
       <div>
-        Mitigated damage: {result.mitigatedDamage.toLocaleString('en-US')} (
+        Damage mitigated: {result.mitigatedDamage.toLocaleString('en-US')} (
         {roundTo(result.damageReduction * 100, 2).toLocaleString('en-US')}%)
       </div>
       <div>Actual damage taken: {result.actualDamageTaken.toLocaleString('en-US')}</div>
