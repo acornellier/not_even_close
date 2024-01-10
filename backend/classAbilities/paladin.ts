@@ -77,7 +77,8 @@ export const paladinHolyAbilities = [
 export const paladinRetAbilities = [
   obduracy,
   sanctifiedPlatesRetProt,
+  aegisOfProtection,
+  blessingOfDusk,
   divineProtection,
   shieldOfVengeance,
-  aegisOfProtection,
 ]
