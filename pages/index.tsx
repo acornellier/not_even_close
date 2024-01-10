@@ -25,9 +25,6 @@ export default function Home() {
       </Script>
 
       <main className="min-h-screen py-8 flex flex-col gap-4">
-        <span className="text-4xl font-bold text-center text-red-500">
-          BETA BETA BETA BETA BETA BETA BETA BETA BETA
-        </span>
         <Header />
         <Simulator />
       </main>
