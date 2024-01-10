@@ -264,7 +264,7 @@ export const hatefulCharge: EnemyAbility = {
   name: 'Hateful Charge',
   dungeon: 'Black Rook Hold',
   damage: 123594,
-  isAoe: false,
+  isAoe: true,
   isPhysical: true,
   iconName: 'ability_monk_clashingoxcharge',
   wowheadLink: 'https://www.wowhead.com/spell=224188/hateful-charge',
