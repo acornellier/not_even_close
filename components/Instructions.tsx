@@ -13,7 +13,7 @@ export function Instructions() {
       </span>
       <span>
         Physical damage reduced by armor is not supported. Earthshaking Stomp and Hateful
-        Charge are not reduced by Armor
+        Charge are not reduced by armor.
       </span>
       <span>
         To give feedback or see the changelog,{' '}
