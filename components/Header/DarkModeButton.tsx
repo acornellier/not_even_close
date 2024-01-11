@@ -6,7 +6,7 @@ export function DarkModeButton() {
   return (
     <a
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="cursor-pointer inline-flex items-center justify-center w-10 h-10 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1"
+      className="cursor-pointer inline-flex items-center justify-center w-10 h-10 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1 select-none"
     >
       <svg
         viewBox="0 0 24 24"
