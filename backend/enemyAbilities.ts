@@ -69,7 +69,7 @@ export const nightmareBolt: EnemyAbility = {
   name: 'Nightmare Bolt',
   boss: 'Xavius',
   dungeon: 'Darkheart Thicket',
-  damage: 90636,
+  damage: 90636 * 1.02, // upper end of damage variance
   isAoe: false,
   iconName: 'sha_spell_fire_bluepyroblast_nightmare',
   wowheadLink: 'https://www.wowhead.com/spell=200185/nightmare-bolt',
@@ -89,7 +89,7 @@ export const soulrend: EnemyAbility = {
   name: 'Soulrend',
   boss: 'Yazma',
   dungeon: "Atal'Dazar",
-  damage: 100304,
+  damage: 100304 * 1.02, // upper end of damage variance
   isAoe: false,
   iconName: 'ability_demonhunter_soulcleave2',
   wowheadLink: 'https://www.wowhead.com/spell=259190/soulrend',
