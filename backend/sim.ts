@@ -1,8 +1,10 @@
 import { CharacterStats } from './characterStats'
 import { Ability } from './ability'
 import { EnemyAbility } from './enemyAbilities'
+import { ClassSpec } from './classes'
 
 export interface Result {
+  spec: ClassSpec
   damageScaling: number
   scaledDamage: number
   damageReduction: number
@@ -31,6 +33,7 @@ export interface EnemyAbilityDetails {
 }
 
 interface Input {
+  spec: ClassSpec
   characterStats: CharacterStats
   abilities: Ability[]
   customDrs: number[]
@@ -164,6 +167,7 @@ function getDamageReduction(
 }
 
 export function simulate({
+  spec,
   characterStats,
   abilities,
   customDrs,
@@ -200,6 +204,7 @@ export function simulate({
   const survival = healthRemaining > 0
 
   return {
+    spec,
     damageScaling,
     scaledDamage,
     damageReduction,

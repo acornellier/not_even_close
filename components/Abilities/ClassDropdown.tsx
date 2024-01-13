@@ -1,16 +1,16 @@
 ﻿import { useState } from 'react'
-import { classColors, classSpecs, WowClass, WowClassSpec } from '../../backend/classes'
+import { classColors, classSpecs, WowClass, ClassSpec } from '../../backend/classes'
 import Image from 'next/image'
 
 export interface DropdownProps {
-  selectedClassSpec: WowClassSpec
-  onChange: (value: WowClassSpec) => void
+  selectedClassSpec: ClassSpec
+  onChange: (value: ClassSpec) => void
 }
 
 export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
   const [open, setOpen] = useState(false)
 
-  const handleChange = (option: WowClassSpec) => {
+  const handleChange = (option: ClassSpec) => {
     onChange(option)
     setOpen(false)
   }

@@ -52,7 +52,7 @@ export type WowClass =
   | 'Warlock'
   | 'Warrior'
 
-export type WowClassSpec = { class: WowClass; spec: WowSpec }
+export type ClassSpec = { class: WowClass; spec: WowSpec }
 
 export type WowSpec = string
 
@@ -143,6 +143,11 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
     Fury: { abilities: warriorFuryAbilities, icon: 'ability_warrior_innerrage' },
   },
 } as const
+
+export const defaultAbilities = (classSpec: ClassSpec) =>
+  classSpecs[classSpec.class][classSpec.spec].abilities.filter(
+    ({ onByDefault }) => onByDefault
+  )
 
 export const classColors: Record<WowClass, string> = {
   'Death Knight': '#C41E3A',

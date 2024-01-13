@@ -200,6 +200,15 @@ export const dreadEssence: EnemyAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=266181/dread-essence',
 }
 
+export const rottenExpulsion: EnemyAbility = {
+  name: 'Rotten Expulsion',
+  dungeon: 'Waycrest Manor',
+  damage: 105742,
+  isAoe: true,
+  iconName: 'ability_creature_disease_01',
+  wowheadLink: 'https://www.wowhead.com/spell=264694/rotten-expulsion',
+}
+
 export const chronofade: EnemyAbility = {
   name: 'Chronofade',
   boss: 'Manifested Timeways',
@@ -290,6 +299,7 @@ export const enemyAbilities: EnemyAbility[] = [
   blottingBarrage,
   wrackingPain,
   soulrend,
+  rottenExpulsion,
   dreadEssence,
   chronoburst,
   chronofade,

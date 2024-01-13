@@ -1,15 +1,11 @@
-import { CharacterStatsInput } from '../backend/characterStats'
+import { Character } from '../backend/characterStats'
 import { EnemyAbilityDetails, KeyDetails, Result, simulate } from '../backend/sim'
-import { CharacterStatsForm } from './CharacterStatsForm'
-import { ClassDropdown } from './Abilities/ClassDropdown'
-import { classSpecs, WowClassSpec } from '../backend/classes'
-import { AbilitySelect } from './Abilities/AbilitySelect'
 import { Results } from './Results'
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { EnemyAbilities } from './EnemyAbilities/EnemyAbilities'
 import { GroupBuffs } from './Abilities/GroupBuffs'
-import { groupActives, groupBuffs, otherBuffs } from '../backend/groupBuffs'
+import { groupActives, groupBuffs } from '../backend/groupBuffs'
 import { Instructions } from './Instructions'
 import { augmentAbilities } from '../backend/utils'
 import useLocalStorage from './Tools/useLocalStorage'
@@ -19,14 +15,20 @@ import { KeyDetailsInput } from './Inputs/KeyDetailsInput'
 import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsInput'
 import { MoreLess } from './Abilities/MoreLess'
 import { EnemyAbility } from '../backend/enemyAbilities'
+import { Label } from './Inputs/Label'
+import { CharacterComponent } from './CharacterComponent'
+import { ClassSpec, defaultAbilities } from '../backend/classes'
 
-const defaultCharacterStats: CharacterStatsInput = {
-  stamina: 41_000,
-  versatilityPercent: 5,
-  avoidancePercent: 3,
+const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
+const defaultCharacter: Character = {
+  classSpec: defaultClassSpec,
+  stats: { stamina: 41_000, versatilityPercent: 5, avoidancePercent: 3 },
+  abilities: defaultAbilities(defaultClassSpec),
+  externals: [],
 }
 
-const defaultClassSpec: WowClassSpec = { class: 'Monk', spec: 'Mistweaver' }
+const defaultCharacters = [defaultCharacter]
+
 const defaultKeyDetails: KeyDetails = { keyLevel: 28, isTyran: true }
 
 const defaultEnemyDetails: EnemyAbilityDetails = {
@@ -36,16 +38,18 @@ const defaultEnemyDetails: EnemyAbilityDetails = {
 }
 
 export function Simulator() {
-  const [characterStats, setCharacterStats] = useLocalStorage(
-    'characterStats',
-    defaultCharacterStats
-  )
-  const [classSpec, setClass] = useLocalStorage<WowClassSpec>(
-    'wowClassSpec',
-    defaultClassSpec
-  )
-  const [selectedSpecAbilities, setSelectedSpecAbilities] = useState<Ability[]>([])
   const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<Ability[]>([])
+
+  const [characters, setCharacters] = useLocalStorage('characters', defaultCharacters)
+
+  const setCharacterIdx = (index: number) => (newCharacter: Character) =>
+    setCharacters(
+      characters.map((character, index2) => (index2 === index ? newCharacter : character))
+    )
+
+  const removeCharacterIdx = (index: number) => () =>
+    setCharacters(characters.filter((_, index2) => index2 !== index))
+
   const [moreShown, setMoreShown] = useLocalStorage('moreShown', false)
   const [customDrs, setCustomDrs] = useState('')
   const [customAbsorbs, setCustomAbsorbs] = useState('')
@@ -57,13 +61,7 @@ export function Simulator() {
     defaultEnemyDetails
   )
 
-  const [result, setResult] = useState<Result | null>(null)
-
-  const specAbilities = classSpecs[classSpec.class][classSpec.spec].abilities
-
-  useEffect(() => {
-    setSelectedSpecAbilities(specAbilities.filter(({ onByDefault }) => onByDefault))
-  }, [classSpec, specAbilities])
+  const [results, setResults] = useState<Result[]>([])
 
   useEffect(() => {
     if (!moreShown) {
@@ -73,37 +71,43 @@ export function Simulator() {
   }, [moreShown])
 
   useEffect(() => {
-    const augmentedSelectedAbilities = augmentAbilities(
-      selectedSpecAbilities,
-      selectedSpecAbilities
-    )
-
     const augmentedSelectedGroupAbilities = augmentAbilities(
       selectedGroupAbilities,
       selectedGroupAbilities
     )
 
-    const newResult = simulate({
-      characterStats: {
-        stamina: characterStats.stamina ?? 0,
-        versatility: (characterStats.versatilityPercent ?? 0) / 100,
-        avoidance: (characterStats.avoidancePercent ?? 0) / 100,
-      },
-      abilities: [...augmentedSelectedAbilities, ...augmentedSelectedGroupAbilities],
-      customDrs: customDrs.split(',').map(Number).filter(Boolean),
-      customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
-      keyDetails,
-      enemyAbilityDetails,
+    const results = characters.map((character) => {
+      const augmentedSelectedAbilities = augmentAbilities(
+        character.abilities,
+        character.abilities
+      )
+
+      return simulate({
+        spec: character.classSpec,
+        characterStats: {
+          stamina: character.stats.stamina ?? 0,
+          versatility: (character.stats.versatilityPercent ?? 0) / 100,
+          avoidance: (character.stats.avoidancePercent ?? 0) / 100,
+        },
+        abilities: [
+          ...augmentedSelectedAbilities,
+          ...character.externals,
+          ...augmentedSelectedGroupAbilities,
+        ],
+        customDrs: customDrs.split(',').map(Number).filter(Boolean),
+        customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
+        keyDetails,
+        enemyAbilityDetails,
+      })
     })
-    setResult(newResult)
+    setResults(results)
   }, [
-    characterStats,
+    characters,
     customDrs,
     customAbsorbs,
     keyDetails,
     enemyAbilityDetails,
     selectedGroupAbilities,
-    selectedSpecAbilities,
   ])
 
   return (
@@ -118,19 +122,19 @@ export function Simulator() {
 
         <div className="border-2 w-full dark:border-gray-600" />
 
-        <CharacterStatsForm
-          characterStats={characterStats}
-          onChange={setCharacterStats}
-        />
-
-        <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
-          <ClassDropdown onChange={setClass} selectedClassSpec={classSpec} />
-          <AbilitySelect
-            allAbilities={specAbilities}
-            selectedAbilities={selectedSpecAbilities}
-            setSelectedAbilities={setSelectedSpecAbilities}
-          />
-        </div>
+        {characters.map((character, idx) => (
+          <Fragment key={idx}>
+            <CharacterComponent
+              character={character}
+              setCharacter={setCharacterIdx(idx)}
+              canRemove={characters.length > 1}
+              removeCharacter={removeCharacterIdx(idx)}
+            />
+            {characters.length > 1 && (
+              <div className="border-2 w-full dark:border-gray-600" />
+            )}
+          </Fragment>
+        ))}
 
         <GroupBuffs
           label="Group buffs"
@@ -146,13 +150,6 @@ export function Simulator() {
           setSelectedGroupAbilities={setSelectedGroupAbilities}
         />
 
-        <GroupBuffs
-          label="Externals"
-          allAbilities={otherBuffs}
-          selectedGroupAbilities={selectedGroupAbilities}
-          setSelectedGroupAbilities={setSelectedGroupAbilities}
-        />
-
         {moreShown && (
           <>
             <CustomDrs customDrs={customDrs} setCustomDrs={setCustomDrs} />
@@ -163,7 +160,15 @@ export function Simulator() {
           </>
         )}
 
-        <MoreLess moreShown={moreShown} setMoreShown={setMoreShown} />
+        <div className="flex gap-4">
+          <MoreLess moreShown={moreShown} setMoreShown={setMoreShown} />
+          <Label
+            className="py-1 gap-2 cursor-pointer"
+            onClick={() => setCharacters([...characters, defaultCharacter])}
+          >
+            Add a player
+          </Label>
+        </div>
 
         <div className="border-2 w-full dark:border-gray-600" />
 
@@ -186,7 +191,7 @@ export function Simulator() {
       <div className="basis-96 relative">
         <div className="sm:sticky sm:top-10">
           <Results
-            result={result}
+            results={results}
             enemyAbility={enemyAbility}
             enemyAbilityDetails={enemyAbilityDetails}
           />

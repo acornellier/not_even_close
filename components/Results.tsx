@@ -1,17 +1,16 @@
 ﻿import { EnemyAbilityDetails, Result } from '../backend/sim'
 import { roundTo } from '../backend/utils'
 import { EnemyAbility } from '../backend/enemyAbilities'
-import Image from 'next/image'
 import { EnemyAbilityLink } from './EnemyAbilities/EnemyAbilityLink'
 
 interface Props {
-  result: Result | null
+  results: Result[]
   enemyAbility: EnemyAbility | null
   enemyAbilityDetails: EnemyAbilityDetails | null
 }
 
-export function Results({ result, enemyAbility, enemyAbilityDetails }: Props) {
-  if (!result) return null
+export function Results({ results, enemyAbility, enemyAbilityDetails }: Props) {
+  const fullDetails = results.length <= 1
 
   const matchesAbility =
     enemyAbility &&
@@ -22,45 +21,75 @@ export function Results({ result, enemyAbility, enemyAbilityDetails }: Props) {
     enemyAbilityDetails.isBossAbility === !enemyAbility.isTrashAbility
 
   return (
-    <div>
-      <div className="font-bold text-4xl mb-2">
-        {result.survival ? (
-          <span>
-            You will <span className="text-green-500">live</span>
-          </span>
-        ) : (
-          <span>
-            You will <span className="text-red-500">die</span>
-          </span>
-        )}
-      </div>
-      {matchesAbility && (
+    <div className="flex flex-col gap-4">
+      {!fullDetails && matchesAbility && (
         <EnemyAbilityLink key={enemyAbility.name} ability={enemyAbility} />
       )}
-      <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
-      <div>Unmitigated damage: {result.scaledDamage.toLocaleString('en-US')}</div>
-      <div>
-        Damage mitigated: {result.mitigatedDamage.toLocaleString('en-US')} (
-        {roundTo(result.damageReduction * 100, 2).toLocaleString('en-US')}%)
-      </div>
-      <div>Actual damage taken: {result.actualDamageTaken.toLocaleString('en-US')}</div>
-      <div>Starting health: {result.startingHealth.toLocaleString('en-US')}</div>
-      <div>Absorbs: {result.absorbs.toLocaleString('en-US')}</div>
-      <div>Total health: {result.totalHealth.toLocaleString('en-US')}</div>
-      {result.survival ? (
-        <div className="font-bold">
-          Health remaining: {result.healthRemaining.toLocaleString('en-US')} (
-          {roundTo(
-            (result.healthRemaining / result.startingHealth) * 100,
-            2
-          ).toLocaleString('en-US')}
-          %)
+      {results.map((result, idx) => (
+        <div key={idx}>
+          {fullDetails ? (
+            <div>
+              <div className="font-bold mb-2 text-4xl">
+                {result.survival ? (
+                  <span>
+                    You will <span className="text-green-500">live</span>
+                  </span>
+                ) : (
+                  <span>
+                    You will <span className="text-red-500">die</span>
+                  </span>
+                )}
+              </div>
+              {matchesAbility && (
+                <EnemyAbilityLink key={enemyAbility.name} ability={enemyAbility} />
+              )}
+            </div>
+          ) : (
+            <div className="flex gap-1 mt-1">
+              <span className="flex items-center gap-1">
+                {result.spec.spec} {result.spec.class}:
+              </span>
+              <div className="font-bold">
+                {result.survival ? (
+                  <span className="text-green-500">You will live</span>
+                ) : (
+                  <span className="text-red-500">You will die</span>
+                )}
+              </div>
+            </div>
+          )}
+          {fullDetails && (
+            <>
+              <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
+              <div>Unmitigated damage: {result.scaledDamage.toLocaleString('en-US')}</div>
+              <div>
+                Damage mitigated: {result.mitigatedDamage.toLocaleString('en-US')} (
+                {roundTo(result.damageReduction * 100, 2).toLocaleString('en-US')}%)
+              </div>
+              <div>
+                Actual damage taken: {result.actualDamageTaken.toLocaleString('en-US')}
+              </div>
+              <div>Starting health: {result.startingHealth.toLocaleString('en-US')}</div>
+              <div>Absorbs: {result.absorbs.toLocaleString('en-US')}</div>
+              <div>Total health: {result.totalHealth.toLocaleString('en-US')}</div>
+            </>
+          )}
+          {result.survival ? (
+            <div className="font-bold">
+              Health remaining: {result.healthRemaining.toLocaleString('en-US')} (
+              {roundTo(
+                (result.healthRemaining / result.startingHealth) * 100,
+                2
+              ).toLocaleString('en-US')}
+              %)
+            </div>
+          ) : (
+            <div className="font-bold">
+              Overkill: {(-result.healthRemaining).toLocaleString('en-US')}
+            </div>
+          )}
         </div>
-      ) : (
-        <div className="font-bold">
-          Overkill: {(-result.healthRemaining).toLocaleString('en-US')}
-        </div>
-      )}
+      ))}
     </div>
   )
 }
