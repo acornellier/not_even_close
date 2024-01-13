@@ -163,7 +163,8 @@ export function Simulator() {
         <div className="flex gap-4">
           <MoreLess moreShown={moreShown} setMoreShown={setMoreShown} />
           <Label
-            className="py-1 gap-2 cursor-pointer"
+            short
+            className="gap-2 cursor-pointer"
             onClick={() => setCharacters([...characters, defaultCharacter])}
           >
             Add a player

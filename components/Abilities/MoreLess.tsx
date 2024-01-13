@@ -7,7 +7,7 @@ interface Props {
 
 export function MoreLess({ moreShown, setMoreShown }: Props) {
   return (
-    <Label className="py-1 gap-2 cursor-pointer" onClick={() => setMoreShown(!moreShown)}>
+    <Label short className="cursor-pointer" onClick={() => setMoreShown(!moreShown)}>
       {moreShown ? 'Less' : 'More'}
       <svg
         xmlns="http://www.w3.org/2000/svg"
