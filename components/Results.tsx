@@ -74,20 +74,20 @@ export function Results({ results, enemyAbility, enemyAbilityDetails }: Props) {
               <div>Total health: {result.totalHealth.toLocaleString('en-US')}</div>
             </>
           )}
-          {result.survival ? (
-            <div className="font-bold">
-              Health remaining: {result.healthRemaining.toLocaleString('en-US')} (
-              {roundTo(
-                (result.healthRemaining / result.startingHealth) * 100,
-                2
-              ).toLocaleString('en-US')}
-              %)
-            </div>
-          ) : (
-            <div className="font-bold">
-              Overkill: {(-result.healthRemaining).toLocaleString('en-US')}
-            </div>
-          )}
+          <div className={fullDetails ? 'font-bold' : ''}>
+            {result.survival ? (
+              <span>
+                Health remaining: {result.healthRemaining.toLocaleString('en-US')} (
+                {roundTo(
+                  (result.healthRemaining / result.startingHealth) * 100,
+                  2
+                ).toLocaleString('en-US')}
+                %
+              </span>
+            ) : (
+              `Overkill: ${(-result.healthRemaining).toLocaleString('en-US')}`
+            )}
+          </div>
         </div>
       ))}
     </div>
