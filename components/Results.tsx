@@ -82,7 +82,7 @@ export function Results({ results, enemyAbility, enemyAbilityDetails }: Props) {
                   (result.healthRemaining / result.startingHealth) * 100,
                   2
                 ).toLocaleString('en-US')}
-                %
+                %)
               </span>
             ) : (
               `Overkill: ${(-result.healthRemaining).toLocaleString('en-US')}`
