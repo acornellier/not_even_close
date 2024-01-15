@@ -5,7 +5,7 @@ import { Fragment, useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { EnemyAbilities } from './EnemyAbilities/EnemyAbilities'
 import { GroupBuffs } from './Abilities/GroupBuffs'
-import { groupActives, groupBuffs } from '../backend/groupBuffs'
+import { groupBuffs } from '../backend/groupAbilities/groupBuffs'
 import { Instructions } from './Instructions'
 import { augmentAbilities } from '../backend/utils'
 import useLocalStorage from './Tools/useLocalStorage'
@@ -18,6 +18,7 @@ import { EnemyAbility } from '../backend/enemyAbilities'
 import { Label } from './Inputs/Label'
 import { CharacterComponent } from './CharacterComponent'
 import { ClassSpec, defaultAbilities } from '../backend/classes'
+import { groupActives } from '../backend/groupAbilities/groupActives'
 
 const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
 const defaultCharacter: Character = {

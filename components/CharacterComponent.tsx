@@ -4,7 +4,7 @@ import { ClassDropdown } from './Abilities/ClassDropdown'
 import { AbilitySelect } from './Abilities/AbilitySelect'
 import { classSpecs, ClassSpec, defaultAbilities } from '../backend/classes'
 import { GroupBuffs } from './Abilities/GroupBuffs'
-import { otherBuffs } from '../backend/groupBuffs'
+import { externals } from '../backend/groupAbilities/externals'
 
 interface Props {
   character: Character
@@ -76,7 +76,7 @@ export function CharacterComponent({
 
       <GroupBuffs
         label="Externals"
-        allAbilities={otherBuffs}
+        allAbilities={externals}
         selectedGroupAbilities={character.externals}
         setSelectedGroupAbilities={setExternals}
       />
