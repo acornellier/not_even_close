@@ -15,6 +15,13 @@ export const calmingPresenceWindwalker: Ability = {
   dr: 0.03,
 }
 
+export const ancientTeachings: Ability = {
+  name: 'Ancient Teachings',
+  spellId: 388023,
+  staminaIncrease: 0.05,
+  iconName: 'inv_misc_book_07',
+}
+
 export const dampenHarm: Ability = {
   name: 'Dampen Harm',
   spellId: 122278,
@@ -50,6 +57,7 @@ export const touchOfKarma: Ability = {
 
 export const monkMistweaverAbilities = [
   calmingPresenceMistweaver,
+  ancientTeachings,
   dampenHarm,
   diffuseMagic,
   fortBrew,
