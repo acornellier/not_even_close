@@ -1,7 +1,7 @@
 import { Character } from '../backend/characterStats'
 import { EnemyAbilityDetails, KeyDetails, Result, simulate } from '../backend/sim'
 import { ResultsFull } from './Results/ResultsFull'
-import { Fragment, useEffect, useMemo, useState } from 'react'
+import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { EnemyAbilities } from './EnemyAbilities/EnemyAbilities'
 import { GroupBuffs } from './Abilities/GroupBuffs'
@@ -21,6 +21,8 @@ import { ClassSpec, defaultAbilities } from '../backend/classes'
 import { groupActives } from '../backend/groupAbilities/groupActives'
 import { ResultsMini } from './Results/ResultsMini'
 import { SimContext, SimContextProvider } from './Tools/SimContext'
+import { useKeyboardShortcut } from './Tools/useKeyboardShortcut'
+import { isAddonPaste, parseAddon } from './Tools/addon'
 
 const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
 const defaultCharacter: Character = {
@@ -65,6 +67,38 @@ export function Simulator() {
   )
 
   const [result, setResult] = useState<Result | null>(null)
+
+  const handlePaste = async (characterIdx: number) => {
+    const text = await navigator.clipboard.readText()
+
+    if (!isAddonPaste(text)) return
+
+    const addonOutput = parseAddon(text)
+    const specChanges = addonOutput.spec
+      ? {
+          classSpec: addonOutput.spec,
+          abilities: defaultAbilities(addonOutput.spec),
+        }
+      : {}
+
+    setCharacterIdx(characterIdx)({
+      ...characters[characterIdx],
+      ...specChanges,
+      stats: addonOutput.stats,
+    })
+  }
+
+  const handleGlobalPaste = useCallback(async () => {
+    if (characters.length == 1) await handlePaste(0)
+  }, [characters, handlePaste])
+
+  useKeyboardShortcut(
+    [
+      ['ctrl', 'v'],
+      ['meta', 'v'],
+    ],
+    handleGlobalPaste
+  )
 
   useEffect(() => {
     if (!moreShown) {
@@ -112,10 +146,12 @@ export function Simulator() {
           {characters.map((character, idx) => (
             <Fragment key={idx}>
               <CharacterComponent
+                idx={idx}
                 character={character}
                 setCharacter={setCharacterIdx(idx)}
                 canRemove={characters.length > 1}
                 removeCharacter={removeCharacterIdx(idx)}
+                handlePaste={handlePaste}
               />
               {characters.length > 1 && (
                 <div className="border-2 w-full dark:border-gray-600" />

@@ -22,6 +22,14 @@ export const ancientTeachings: Ability = {
   iconName: 'inv_misc_book_07',
 }
 
+export const expelHarm: Ability = {
+  name: 'TFT + Expel Harm',
+  spellId: 322101,
+  absorbHealthMultiplier: 0.16,
+  absorbVersAffected: true,
+  iconName: 'ability_monk_expelharm',
+}
+
 export const dampenHarm: Ability = {
   name: 'Dampen Harm',
   spellId: 122278,
@@ -58,6 +66,7 @@ export const touchOfKarma: Ability = {
 export const monkMistweaverAbilities = [
   calmingPresenceMistweaver,
   ancientTeachings,
+  expelHarm,
   dampenHarm,
   diffuseMagic,
   fortBrew,

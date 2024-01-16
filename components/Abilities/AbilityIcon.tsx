@@ -3,7 +3,7 @@ import { Tooltip } from 'react-tooltip'
 import { isAbilitySelected, roundTo } from '../../backend/utils'
 import Image from 'next/image'
 import { Fragment } from 'react'
-import { findAssociatedCharacter, getHealthMultiplierAbsorb } from '../../backend/sim'
+import { getHealthMultiplierAbsorb } from '../../backend/sim'
 import { useSimContext } from '../Tools/SimContext'
 import { Character } from '../../backend/characterStats'
 import { equalSpecs } from '../../backend/classes'
@@ -73,6 +73,7 @@ export function AbilityIcon({
         )
       : undefined
 
+    if (ability.name == 'TFT + Expel Harm') console.log(result, character, resultChar)
     calculatedAbsorb = getHealthMultiplierAbsorb(
       ability,
       resultChar?.adjustedStats ?? null,

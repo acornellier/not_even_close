@@ -8,6 +8,18 @@ export function Instructions() {
         as this tool cannot account for it.
       </span>
       <span>
+        Use{' '}
+        <a
+          className="text-blue-600 dark:text-blue-500 hover:underline"
+          href="https://www.curseforge.com/wow/addons/not-even-close"
+          target="_blank" rel="noreferrer"
+        >
+          my addon
+        </a>{' '}
+        to quickly output stats. Import them by clicking the paste icon to the right of
+        the character stats, or by pressing ctrl-V/cmd-V if you only have 1 character.
+      </span>
+      <span>
         Click an enemy ability in the bottom left to set the base damage. If your ability
         is missing, find the base damage in the dungeon journal.
       </span>
@@ -20,6 +32,7 @@ export function Instructions() {
         <a
           className="text-blue-600 dark:text-blue-500 hover:underline"
           href="https://discord.com/invite/Ykb6AbYHHZ"
+          target="_blank" rel="noreferrer"
         >
           join the discord
         </a>

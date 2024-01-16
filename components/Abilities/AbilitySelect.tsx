@@ -64,6 +64,7 @@ export function AbilitySelect({
           toggleAbility={toggleAbility}
           selectedAbilities={selectedAbilities}
           allAbilities={allAbilities}
+          character={character}
         />
       ))}
     </div>
