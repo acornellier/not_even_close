@@ -1,12 +1,26 @@
-import { CharacterStats } from './characterStats'
+import { Character, CharacterStats } from './characterStats'
 import { Ability } from './ability'
-import { EnemyAbility } from './enemyAbilities'
-import { ClassSpec } from './classes'
+import { ClassSpec, equalSpecs } from './classes'
+import { augmentAbilities } from './utils'
 
 export interface Result {
-  spec: ClassSpec
   damageScaling: number
   scaledDamage: number
+  enemyAbilityDetails: EnemyAbilityDetails
+  characters: CharacterResult[]
+}
+
+export interface CharacterPartialResult {
+  spec: ClassSpec
+  adjustedStats: CharacterStats
+  abilities: Ability[]
+  startingHealth: number
+}
+
+export interface CharacterResult {
+  spec: ClassSpec
+  adjustedStats: CharacterStats
+  abilities: Ability[]
   damageReduction: number
   mitigatedDamage: number
   actualDamageTaken: number
@@ -14,8 +28,6 @@ export interface Result {
   absorbs: number
   totalHealth: number
   healthRemaining: number
-  survival: boolean
-  enemyAbilityDetails: EnemyAbilityDetails
 }
 
 export interface KeyDetails {
@@ -33,9 +45,8 @@ export interface EnemyAbilityDetails {
 }
 
 interface Input {
-  spec: ClassSpec
-  characterStats: CharacterStats
-  abilities: Ability[]
+  characters: Character[]
+  groupAbilities: Ability[]
   customDrs: number[]
   customAbsorbs: number[]
   keyDetails: KeyDetails
@@ -90,12 +101,66 @@ function getStartingHealth(characterStats: CharacterStats, abilities: Ability[])
   return startingHealth
 }
 
+export function findAssociatedCharacter<T extends { spec: ClassSpec }>(
+  ability: Ability,
+  items: Array<T>
+) {
+  return items.find(
+    ({ spec }) =>
+      (ability.associatedClass && spec.class === ability.associatedClass) ||
+      (ability.associatedSpec && equalSpecs(spec, ability.associatedSpec))
+  )
+}
+
+export function calculateAbsorb(
+  absorbHealthMultiplier: number,
+  absorbVersAffected: boolean,
+  health: number,
+  versatility: number
+) {
+  const versMultiplier = absorbVersAffected ? versatility : 0
+  return Math.round(absorbHealthMultiplier * health * (1 + versMultiplier))
+}
+
+export function getHealthMultiplierAbsorb(
+  ability: Ability,
+  characterStats: CharacterStats | null,
+  startingHealth: number | null,
+  charPartialResults: CharacterPartialResult[]
+) {
+  if (!ability.absorbHealthMultiplier) return 0
+
+  if (ability.associatedClass || ability.associatedSpec) {
+    const associatedCharacter = findAssociatedCharacter(ability, charPartialResults)
+    if (associatedCharacter) {
+      return calculateAbsorb(
+        ability.absorbHealthMultiplier,
+        !!ability.absorbVersAffected,
+        associatedCharacter.startingHealth,
+        associatedCharacter.adjustedStats.versatility
+      )
+    } else if (ability.absorbBackup) {
+      return ability.absorbBackup
+    }
+  } else if (characterStats && startingHealth) {
+    return calculateAbsorb(
+      ability.absorbHealthMultiplier,
+      !!ability.absorbVersAffected,
+      startingHealth,
+      characterStats.versatility
+    )
+  }
+
+  return 0
+}
+
 function getAbsorbs(
   characterStats: CharacterStats,
   abilities: Ability[],
   customAbsorbs: number[],
   enemyAbilityDetails: EnemyAbilityDetails,
-  startingHealth: number
+  startingHealth: number,
+  charPartialResults: CharacterPartialResult[]
 ) {
   let absorbs = 0
 
@@ -107,21 +172,21 @@ function getAbsorbs(
       continue
     }
 
-    if (ability.absorbHealthMultiplier) {
-      const versMultiplier = ability.absorbVersAffected ? characterStats.versatility : 0
-      absorbs += ability.absorbHealthMultiplier * startingHealth * (1 + versMultiplier)
-    }
-
     if (ability.rawAbsorb) {
       absorbs += ability.rawAbsorb
+    } else if (ability.absorbHealthMultiplier) {
+      absorbs += getHealthMultiplierAbsorb(
+        ability,
+        characterStats,
+        startingHealth,
+        charPartialResults
+      )
     }
   }
 
-  for (const absorb of customAbsorbs) {
-    absorbs += absorb
-  }
+  absorbs += customAbsorbs.reduce((acc, val) => acc + val, 0)
 
-  return absorbs
+  return Math.round(absorbs)
 }
 
 function getDamageReduction(
@@ -166,10 +231,43 @@ function getDamageReduction(
   return 1 - inverseDr
 }
 
+function getPartialResults(characters: Character[], groupAbilities: Ability[]) {
+  const augmentedGroupAbilities = augmentAbilities(groupAbilities, groupAbilities)
+
+  return characters.map<CharacterPartialResult>((character) => {
+    const spec = character.classSpec
+    const characterStats = {
+      stamina: character.stats.stamina ?? 0,
+      versatility: (character.stats.versatilityPercent ?? 0) / 100,
+      avoidance: (character.stats.avoidancePercent ?? 0) / 100,
+    }
+
+    const augmentedSelectedAbilities = augmentAbilities(
+      character.abilities,
+      character.abilities
+    )
+
+    const abilities = [
+      ...augmentedSelectedAbilities,
+      ...character.externals,
+      ...augmentedGroupAbilities,
+    ]
+
+    const adjustedStats = getAdjustedStats(characterStats, abilities)
+    const startingHealth = getStartingHealth(adjustedStats, abilities)
+
+    return {
+      spec,
+      abilities,
+      adjustedStats,
+      startingHealth,
+    }
+  })
+}
+
 export function simulate({
-  spec,
-  characterStats,
-  abilities,
+  characters,
+  groupAbilities,
   customDrs,
   customAbsorbs,
   keyDetails,
@@ -178,43 +276,52 @@ export function simulate({
   const damageScaling = getScalingFactor(keyDetails, enemyAbilityDetails.isBossAbility)
   const scaledDamage = Math.round(enemyAbilityDetails.baseDamage * damageScaling)
 
-  const adjustedStats = getAdjustedStats(characterStats, abilities)
-  const startingHealth = getStartingHealth(adjustedStats, abilities)
-  const absorbs = getAbsorbs(
-    adjustedStats,
-    abilities,
-    customAbsorbs,
-    enemyAbilityDetails,
-    startingHealth
-  )
-  const effectiveHealth = startingHealth + absorbs
+  const charPartialResults = getPartialResults(characters, groupAbilities)
 
-  const damageReduction = getDamageReduction(
-    adjustedStats,
-    abilities,
-    customDrs,
-    enemyAbilityDetails,
-    startingHealth,
-    scaledDamage
-  )
-  const mitigatedDamage = Math.round(scaledDamage * damageReduction)
-  const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
+  const charResults = charPartialResults.map<CharacterResult>(
+    ({ spec, startingHealth, adjustedStats, abilities }) => {
+      const absorbs = getAbsorbs(
+        adjustedStats,
+        abilities,
+        customAbsorbs,
+        enemyAbilityDetails,
+        startingHealth,
+        charPartialResults
+      )
+      const totalHealth = startingHealth + absorbs
 
-  const healthRemaining = effectiveHealth - actualDamageTaken
-  const survival = healthRemaining > 0
+      const damageReduction = getDamageReduction(
+        adjustedStats,
+        abilities,
+        customDrs,
+        enemyAbilityDetails,
+        startingHealth,
+        scaledDamage
+      )
+      const mitigatedDamage = Math.round(scaledDamage * damageReduction)
+      const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
+
+      const healthRemaining = totalHealth - actualDamageTaken
+
+      return {
+        spec,
+        adjustedStats,
+        abilities,
+        damageReduction,
+        mitigatedDamage,
+        actualDamageTaken,
+        startingHealth,
+        absorbs,
+        totalHealth,
+        healthRemaining,
+      }
+    }
+  )
 
   return {
-    spec,
     damageScaling,
     scaledDamage,
-    damageReduction,
-    mitigatedDamage,
-    actualDamageTaken,
-    startingHealth,
-    absorbs,
-    totalHealth: effectiveHealth,
-    healthRemaining,
-    survival,
     enemyAbilityDetails,
+    characters: charResults,
   }
 }

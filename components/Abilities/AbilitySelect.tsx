@@ -1,17 +1,20 @@
 ﻿import { Ability } from '../../backend/ability'
 import { augmentAbilities, isAbilitySelected } from '../../backend/utils'
 import { AbilityIcon } from './AbilityIcon'
+import { Character } from '../../backend/characterStats'
 
 interface Props {
   allAbilities: Ability[]
   selectedAbilities: Ability[]
   setSelectedAbilities: (abilities: Ability[]) => void
+  character?: Character
 }
 
 export function AbilitySelect({
   allAbilities,
   selectedAbilities,
   setSelectedAbilities,
+  character,
 }: Props) {
   const augmentedAbilities = augmentAbilities(allAbilities, selectedAbilities)
 
@@ -48,6 +51,7 @@ export function AbilitySelect({
           toggleAbility={toggleAbility}
           selectedAbilities={selectedAbilities}
           allAbilities={allAbilities}
+          character={character}
         />
       ))}
 

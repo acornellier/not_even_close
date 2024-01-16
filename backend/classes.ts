@@ -54,6 +54,9 @@ export type WowClass =
 
 export type ClassSpec = { class: WowClass; spec: WowSpec }
 
+export const equalSpecs = (a: ClassSpec, b: ClassSpec) =>
+  a.class === b.class && a.spec === b.spec
+
 export type WowSpec = string
 
 type SpecDetails = {

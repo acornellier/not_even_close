@@ -21,14 +21,6 @@ export const obsidianScales: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=363916/obsidian-scales',
 }
 
-export const twinGuardian: Ability = {
-  name: 'Twin Guardian (Rescue)',
-  absorbHealthMultiplier: 0.3,
-  spellId: 370888,
-  iconName: 'ability_skyreach_shielded',
-  wowheadLink: 'https://www.wowhead.com/spell=370888/twin-guardian',
-}
-
 export const rushOfVitality: Ability = {
   name: 'Rush of Vitality',
   healthIncrease: 0.2,
@@ -36,17 +28,12 @@ export const rushOfVitality: Ability = {
   iconName: 'trade_enchanting_greatermysteriousessence',
 }
 
-export const evokerAugAbilities = [
-  inherentResistanceAugPres,
-  obsidianScales,
-  twinGuardian,
-]
+export const evokerAugAbilities = [inherentResistanceAugPres, obsidianScales]
 
-export const evokerDevAbilities = [inherentResistanceDev, obsidianScales, twinGuardian]
+export const evokerDevAbilities = [inherentResistanceDev, obsidianScales]
 
 export const evokerPresAbilities = [
   inherentResistanceAugPres,
   obsidianScales,
-  twinGuardian,
   rushOfVitality,
 ]

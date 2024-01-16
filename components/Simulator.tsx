@@ -1,7 +1,7 @@
 import { Character } from '../backend/characterStats'
 import { EnemyAbilityDetails, KeyDetails, Result, simulate } from '../backend/sim'
-import { Results } from './Results'
-import { Fragment, useEffect, useState } from 'react'
+import { ResultsFull } from './Results/ResultsFull'
+import { Fragment, useEffect, useMemo, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { EnemyAbilities } from './EnemyAbilities/EnemyAbilities'
 import { GroupBuffs } from './Abilities/GroupBuffs'
@@ -19,6 +19,8 @@ import { Label } from './Inputs/Label'
 import { CharacterComponent } from './CharacterComponent'
 import { ClassSpec, defaultAbilities } from '../backend/classes'
 import { groupActives } from '../backend/groupAbilities/groupActives'
+import { ResultsMini } from './Results/ResultsMini'
+import { SimContext, SimContextProvider } from './Tools/SimContext'
 
 const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
 const defaultCharacter: Character = {
@@ -62,7 +64,7 @@ export function Simulator() {
     defaultEnemyDetails
   )
 
-  const [results, setResults] = useState<Result[]>([])
+  const [result, setResult] = useState<Result | null>(null)
 
   useEffect(() => {
     if (!moreShown) {
@@ -72,36 +74,15 @@ export function Simulator() {
   }, [moreShown])
 
   useEffect(() => {
-    const augmentedSelectedGroupAbilities = augmentAbilities(
-      selectedGroupAbilities,
-      selectedGroupAbilities
-    )
-
-    const results = characters.map((character) => {
-      const augmentedSelectedAbilities = augmentAbilities(
-        character.abilities,
-        character.abilities
-      )
-
-      return simulate({
-        spec: character.classSpec,
-        characterStats: {
-          stamina: character.stats.stamina ?? 0,
-          versatility: (character.stats.versatilityPercent ?? 0) / 100,
-          avoidance: (character.stats.avoidancePercent ?? 0) / 100,
-        },
-        abilities: [
-          ...augmentedSelectedAbilities,
-          ...character.externals,
-          ...augmentedSelectedGroupAbilities,
-        ],
-        customDrs: customDrs.split(',').map(Number).filter(Boolean),
-        customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
-        keyDetails,
-        enemyAbilityDetails,
-      })
+    const result = simulate({
+      characters,
+      groupAbilities: selectedGroupAbilities,
+      customDrs: customDrs.split(',').map(Number).filter(Boolean),
+      customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
+      keyDetails,
+      enemyAbilityDetails,
     })
-    setResults(results)
+    setResult(result)
   }, [
     characters,
     customDrs,
@@ -112,97 +93,111 @@ export function Simulator() {
   ])
 
   return (
-    <div className="flex flex-col sm:flex-row gap-4">
-      <div className="flex flex-col items-start gap-4">
-        <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
+    <SimContextProvider
+      selectedGroupAbilities={selectedGroupAbilities}
+      characters={characters}
+      result={result}
+    >
+      <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col items-start gap-4">
+          <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
 
-        <EnemyAbilityDetailsInput
-          enemyAbilityDetails={enemyAbilityDetails}
-          setEnemyAbilityDetails={setEnemyAbilityDetails}
-        />
-
-        <div className="border-2 w-full dark:border-gray-600" />
-
-        {characters.map((character, idx) => (
-          <Fragment key={idx}>
-            <CharacterComponent
-              character={character}
-              setCharacter={setCharacterIdx(idx)}
-              canRemove={characters.length > 1}
-              removeCharacter={removeCharacterIdx(idx)}
-            />
-            {characters.length > 1 && (
-              <div className="border-2 w-full dark:border-gray-600" />
-            )}
-          </Fragment>
-        ))}
-
-        <GroupBuffs
-          label="Group buffs"
-          allAbilities={groupBuffs}
-          selectedGroupAbilities={selectedGroupAbilities}
-          setSelectedGroupAbilities={setSelectedGroupAbilities}
-        />
-
-        <GroupBuffs
-          label="Group actives"
-          allAbilities={groupActives}
-          selectedGroupAbilities={selectedGroupAbilities}
-          setSelectedGroupAbilities={setSelectedGroupAbilities}
-        />
-
-        {moreShown && (
-          <>
-            <CustomDrs customDrs={customDrs} setCustomDrs={setCustomDrs} />
-            <CustomAbsorbs
-              customAbsorbs={customAbsorbs}
-              setCustomAbsorbs={setCustomAbsorbs}
-            />
-          </>
-        )}
-
-        <div className="flex gap-4">
-          <MoreLess moreShown={moreShown} setMoreShown={setMoreShown} />
-          <Label
-            short
-            className="gap-2 cursor-pointer"
-            onClick={() => setCharacters([...characters, defaultCharacter])}
-          >
-            Add a player
-          </Label>
-        </div>
-
-        <div className="border-2 w-full dark:border-gray-600" />
-
-        <EnemyAbilities
-          onSelect={(enemyAbility) => {
-            setEnemyAbility(enemyAbility)
-            setEnemyAbilityDetails({
-              name: enemyAbility.name,
-              baseDamage: enemyAbility.damage,
-              isAoe: enemyAbility.isAoe,
-              isBossAbility: !enemyAbility.isTrashAbility,
-              isPhysical: enemyAbility.isPhysical,
-            })
-          }}
-        />
-      </div>
-
-      <div className="border-2 mx-2 dark:border-gray-600" />
-
-      <div className="basis-96 relative">
-        <div className="sm:sticky sm:top-10">
-          <Results
-            results={results}
-            enemyAbility={enemyAbility}
+          <EnemyAbilityDetailsInput
             enemyAbilityDetails={enemyAbilityDetails}
+            setEnemyAbilityDetails={setEnemyAbilityDetails}
           />
 
-          <div className="border-2 my-4 dark:border-gray-600" />
+          <div className="border-2 w-full dark:border-gray-600" />
 
-          <Instructions />
+          {characters.map((character, idx) => (
+            <Fragment key={idx}>
+              <CharacterComponent
+                character={character}
+                setCharacter={setCharacterIdx(idx)}
+                canRemove={characters.length > 1}
+                removeCharacter={removeCharacterIdx(idx)}
+              />
+              {characters.length > 1 && (
+                <div className="border-2 w-full dark:border-gray-600" />
+              )}
+            </Fragment>
+          ))}
+
+          <GroupBuffs
+            label="Group buffs"
+            allAbilities={groupBuffs}
+            selectedGroupAbilities={selectedGroupAbilities}
+            setSelectedGroupAbilities={setSelectedGroupAbilities}
+          />
+
+          <GroupBuffs
+            label="Group actives"
+            allAbilities={groupActives}
+            selectedGroupAbilities={selectedGroupAbilities}
+            setSelectedGroupAbilities={setSelectedGroupAbilities}
+          />
+
+          {moreShown && (
+            <>
+              <CustomDrs customDrs={customDrs} setCustomDrs={setCustomDrs} />
+              <CustomAbsorbs
+                customAbsorbs={customAbsorbs}
+                setCustomAbsorbs={setCustomAbsorbs}
+              />
+            </>
+          )}
+
+          <div className="flex gap-4">
+            <MoreLess moreShown={moreShown} setMoreShown={setMoreShown} />
+            <Label
+              short
+              className="gap-2 cursor-pointer"
+              onClick={() => setCharacters([...characters, defaultCharacter])}
+            >
+              Add a player
+            </Label>
+          </div>
+
+          <div className="border-2 w-full dark:border-gray-600" />
+
+          <EnemyAbilities
+            onSelect={(enemyAbility) => {
+              setEnemyAbility(enemyAbility)
+              setEnemyAbilityDetails({
+                name: enemyAbility.name,
+                baseDamage: enemyAbility.damage,
+                isAoe: enemyAbility.isAoe,
+                isBossAbility: !enemyAbility.isTrashAbility,
+                isPhysical: enemyAbility.isPhysical,
+              })
+            }}
+          />
+        </div>
+
+        <div className="border-2 mx-2 dark:border-gray-600" />
+
+        <div className="basis-96 relative">
+          <div className="sm:sticky sm:top-10">
+            {result === null ? null : result.characters.length === 1 ? (
+              <ResultsFull
+                result={result}
+                enemyAbility={enemyAbility}
+                enemyAbilityDetails={enemyAbilityDetails}
+              />
+            ) : (
+              <ResultsMini
+                result={result}
+                enemyAbility={enemyAbility}
+                enemyAbilityDetails={enemyAbilityDetails}
+              />
+            )}
+
+            <div className="border-2 my-4 dark:border-gray-600" />
+
+            <Instructions />
+          </div>
         </div>
       </div>
-    </div>
+    </SimContextProvider>
   )
 }

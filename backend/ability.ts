@@ -1,4 +1,6 @@
-﻿export type DamageType = 'magic' | 'physical'
+﻿import { ClassSpec, WowClass } from './classes'
+
+export type DamageType = 'magic' | 'physical'
 
 export type Ability = {
   name: string
@@ -15,6 +17,9 @@ export type Ability = {
   rawAbsorb?: number
   absorbHealthMultiplier?: number
   absorbVersAffected?: boolean
+  associatedClass?: WowClass
+  associatedSpec?: ClassSpec
+  absorbBackup?: number
   talentPoints?: number
   iconName: string
   wowheadLink?: string

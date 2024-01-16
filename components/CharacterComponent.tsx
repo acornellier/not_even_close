@@ -68,6 +68,7 @@ export function CharacterComponent({
       <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
         <ClassDropdown onChange={setSpec} selectedClassSpec={character.classSpec} />
         <AbilitySelect
+          character={character}
           allAbilities={specAbilities}
           selectedAbilities={character.abilities}
           setSelectedAbilities={setAbilities}

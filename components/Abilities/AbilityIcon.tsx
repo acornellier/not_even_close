@@ -3,6 +3,10 @@ import { Tooltip } from 'react-tooltip'
 import { isAbilitySelected, roundTo } from '../../backend/utils'
 import Image from 'next/image'
 import { Fragment } from 'react'
+import { findAssociatedCharacter, getHealthMultiplierAbsorb } from '../../backend/sim'
+import { useSimContext } from '../Tools/SimContext'
+import { Character } from '../../backend/characterStats'
+import { equalSpecs } from '../../backend/classes'
 
 const iconSize = 40
 
@@ -11,6 +15,7 @@ interface AbilityIconProps {
   toggleAbility: (spellId: number) => void
   selectedAbilities: Ability[]
   allAbilities: Ability[]
+  character?: Character
 }
 
 function getEffectText(
@@ -47,6 +52,7 @@ export function AbilityIcon({
   toggleAbility,
   selectedAbilities,
   allAbilities,
+  character,
 }: AbilityIconProps) {
   const augmentedAbilities = ability.abilityAugmentations
     ? allAbilities.filter(({ spellId }) =>
@@ -57,6 +63,23 @@ export function AbilityIcon({
     : null
 
   const isSelected = isAbilitySelected(ability.spellId, selectedAbilities)
+
+  const { result } = useSimContext()
+  let calculatedAbsorb = 0
+  if (result) {
+    const resultChar = character
+      ? result.characters.find(
+          (char) => character.classSpec && equalSpecs(char.spec, character.classSpec)
+        )
+      : undefined
+
+    calculatedAbsorb = getHealthMultiplierAbsorb(
+      ability,
+      resultChar?.adjustedStats ?? null,
+      resultChar?.startingHealth ?? null,
+      result.characters
+    )
+  }
 
   return (
     <div
@@ -89,6 +112,9 @@ export function AbilityIcon({
                   {field === 'absorbHealthMultiplier' &&
                     ability.absorbVersAffected &&
                     ' (+vers)'}
+                  {field === 'absorbHealthMultiplier' &&
+                    calculatedAbsorb &&
+                    ` - ${calculatedAbsorb.toLocaleString('en-US')} absorb`}
                 </span>
               )
           )}

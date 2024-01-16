@@ -44,17 +44,23 @@ export const painSuppression: Ability = {
 export const lifeCocoon: Ability = {
   name: 'Life Cocoon',
   spellId: 116849,
-  rawAbsorb: 1_000_000,
+  associatedSpec: { class: 'Monk', spec: 'Mistweaver' },
+  absorbHealthMultiplier: 0.8,
+  absorbVersAffected: true,
+  absorbBackup: 1_000_000,
   iconName: 'ability_monk_chicocoon',
-  notes: "Assumes 1M absorb. In reality varies based on monk's HP and vers",
+  notes: 'Assumes 1M absorb if you have no mistweaver selected',
 }
 
 export const twinGuardian: Ability = {
   name: 'Twin Guardian (Rescue)',
-  rawAbsorb: 300_000,
+  associatedClass: 'Evoker',
+  absorbHealthMultiplier: 0.3,
+  absorbVersAffected: true,
+  absorbBackup: 300_000,
   spellId: 370888999,
   iconName: 'ability_skyreach_shielded',
-  notes: "Assumes 300K absorb but in reality is 30% of the evoker's HP",
+  notes: 'Assumes 300K absorb if you have no evoker selected',
 }
 
 export const leafOfTheAncientProtectors: Ability = {
