@@ -2,6 +2,7 @@ import { Ability } from '../ability'
 
 export const spellWarding: Ability = {
   name: 'Spell Warding',
+  onByDefault: true,
   dr: 0.03,
   spellId: 390667,
   iconName: 'spell_holy_spellwarding',
