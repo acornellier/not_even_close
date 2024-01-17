@@ -1,13 +1,12 @@
 import { Character } from '../backend/characterStats'
 import { EnemyAbilityDetails, KeyDetails, Result, simulate } from '../backend/sim'
 import { ResultsFull } from './Results/ResultsFull'
-import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
+import { Fragment, useCallback, useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { EnemyAbilities } from './EnemyAbilities/EnemyAbilities'
 import { GroupBuffs } from './Abilities/GroupBuffs'
 import { groupBuffs } from '../backend/groupAbilities/groupBuffs'
 import { Instructions } from './Instructions'
-import { augmentAbilities } from '../backend/utils'
 import useLocalStorage from './Tools/useLocalStorage'
 import { CustomDrs } from './Abilities/CustomDrs'
 import { CustomAbsorbs } from './Abilities/CustomAbsorbs'
@@ -20,7 +19,7 @@ import { CharacterComponent } from './CharacterComponent'
 import { ClassSpec, defaultAbilities } from '../backend/classes'
 import { groupActives } from '../backend/groupAbilities/groupActives'
 import { ResultsMini } from './Results/ResultsMini'
-import { SimContext, SimContextProvider } from './Tools/SimContext'
+import { SimContextProvider } from './Tools/SimContext'
 import { useKeyboardShortcut } from './Tools/useKeyboardShortcut'
 import { isAddonPaste, parseAddon } from './Tools/addon'
 
@@ -47,10 +46,15 @@ export function Simulator() {
 
   const [characters, setCharacters] = useLocalStorage('characters', defaultCharacters)
 
-  const setCharacterIdx = (index: number) => (newCharacter: Character) =>
-    setCharacters(
-      characters.map((character, index2) => (index2 === index ? newCharacter : character))
-    )
+  const setCharacterIdx = useCallback(
+    (index: number) => (newCharacter: Character) =>
+      setCharacters((characters) =>
+        characters.map((character, index2) =>
+          index2 === index ? newCharacter : character
+        )
+      ),
+    [setCharacters]
+  )
 
   const removeCharacterIdx = (index: number) => () =>
     setCharacters(characters.filter((_, index2) => index2 !== index))
@@ -68,25 +72,28 @@ export function Simulator() {
 
   const [result, setResult] = useState<Result | null>(null)
 
-  const handlePaste = async (characterIdx: number) => {
-    const text = await navigator.clipboard.readText()
+  const handlePaste = useCallback(
+    async (characterIdx: number) => {
+      const text = await navigator.clipboard.readText()
 
-    if (!isAddonPaste(text)) return
+      if (!isAddonPaste(text)) return
 
-    const addonOutput = parseAddon(text)
-    const specChanges = addonOutput.spec
-      ? {
-          classSpec: addonOutput.spec,
-          abilities: defaultAbilities(addonOutput.spec),
-        }
-      : {}
+      const addonOutput = parseAddon(text)
+      const specChanges = addonOutput.spec
+        ? {
+            classSpec: addonOutput.spec,
+            abilities: defaultAbilities(addonOutput.spec),
+          }
+        : {}
 
-    setCharacterIdx(characterIdx)({
-      ...characters[characterIdx],
-      ...specChanges,
-      stats: addonOutput.stats,
-    })
-  }
+      setCharacterIdx(characterIdx)({
+        ...characters[characterIdx],
+        ...specChanges,
+        stats: addonOutput.stats,
+      })
+    },
+    [characters, setCharacterIdx]
+  )
 
   const handleGlobalPaste = useCallback(async () => {
     if (characters.length == 1) await handlePaste(0)

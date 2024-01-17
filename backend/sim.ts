@@ -89,12 +89,11 @@ function getAdjustedStats(characterStats: CharacterStats, abilities: Ability[]) 
 }
 
 function getStartingHealth(characterStats: CharacterStats, abilities: Ability[]) {
-  const baseHealth = characterStats.stamina * 20
-  let startingHealth = baseHealth
+  let startingHealth = characterStats.stamina * 20
 
   for (const ability of abilities) {
     if (ability.healthIncrease) {
-      startingHealth += baseHealth * ability.healthIncrease
+      startingHealth *= 1 + ability.healthIncrease
     }
   }
 
