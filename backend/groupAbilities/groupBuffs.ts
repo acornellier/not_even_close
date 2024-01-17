@@ -64,11 +64,11 @@ export const masterPoisoner: Ability = {
 }
 
 export const groupBuffs: Ability[] = [
+  masterPoisoner,
+  atrophicPoison,
   blackAttunement,
   devotionAura,
   generousPour,
   fortitude,
   markOfTheWild,
-  atrophicPoison,
-  masterPoisoner,
 ]

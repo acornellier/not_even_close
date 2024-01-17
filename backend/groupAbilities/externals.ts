@@ -8,6 +8,13 @@ export const icyPreservation: Ability = {
   wowheadLink: 'https://www.wowhead.com/item=191326/phial-of-icy-preservation',
 }
 
+export const lenience: Ability = {
+  name: 'Lenience',
+  spellId: 238063,
+  dr: 0.03,
+  iconName: 'ability_priest_atonement',
+}
+
 export const blessingOfSacrifice: Ability = {
   name: 'Blessing of Sacrifice',
   spellId: 6940,
@@ -80,7 +87,7 @@ export const ancestralVigor: Ability = {
 
 export const externals: Ability[] = [
   icyPreservation,
-  leafOfTheAncientProtectors,
+  lenience,
   twinGuardian,
   ancestralVigor,
   ironBark,
@@ -88,4 +95,5 @@ export const externals: Ability[] = [
   blessingOfProtection,
   painSuppression,
   lifeCocoon,
+  leafOfTheAncientProtectors,
 ]
