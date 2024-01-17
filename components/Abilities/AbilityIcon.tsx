@@ -73,7 +73,6 @@ export function AbilityIcon({
         )
       : undefined
 
-    if (ability.name == 'TFT + Expel Harm') console.log(result, character, resultChar)
     calculatedAbsorb = getHealthMultiplierAbsorb(
       ability,
       resultChar?.adjustedStats ?? null,
