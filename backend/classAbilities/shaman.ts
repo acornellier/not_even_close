@@ -26,7 +26,7 @@ export const brimmingWithLife: Ability = {
 
 export const ancestralDefense: Ability = {
   name: 'Ancestral Defense',
-  aoeDr: 0.02,
+  aoeDr: -0.02,
   onByDefault: true,
   spellId: 382947,
   wowheadLink: 'https://www.wowhead.com/spell=382947/ancestral-defense',
