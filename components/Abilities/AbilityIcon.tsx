@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Fragment } from 'react'
 import { getHealthMultiplierAbsorb } from '../../backend/sim'
 import { useSimContext } from '../Tools/SimContext'
-import { Character } from '../../backend/characterStats'
+import { Character, CharacterStatsInput } from '../../backend/characterStats'
 import { equalSpecs } from '../../backend/classes'
 
 const iconSize = 40
@@ -18,12 +18,9 @@ interface AbilityIconProps {
   character?: Character
 }
 
-function getEffectText(
-  field: AbilityField,
-  value: number,
-  damageType?: DamageType,
-  absorbType?: DamageType
-) {
+function getEffectText(field: AbilityField, value: number, ability?: Ability) {
+  const damageType = ability?.drType
+  const absorbType = ability?.absorbType
   switch (field) {
     case 'dr':
       return `${roundTo(value * 100, 2)}% ${damageType ? damageType + ' ' : ''}DR`
@@ -103,13 +100,8 @@ export function AbilityIcon({
             (field) =>
               ability[field] && (
                 <span key={field}>
-                  {getEffectText(
-                    field,
-                    ability[field]!,
-                    ability.drType,
-                    ability.absorbType
-                  )}{' '}
-                  {field === 'absorbHealthMultiplier' &&
+                  {getEffectText(field, ability[field]!, ability)}{' '}
+                  {(field === 'absorbHealthMultiplier' || field === 'rawAbsorb') &&
                     ability.absorbVersAffected &&
                     ' (+vers)'}
                   {field === 'absorbHealthMultiplier' &&

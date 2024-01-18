@@ -172,7 +172,9 @@ function getAbsorbs(
     }
 
     if (ability.rawAbsorb) {
-      absorbs += ability.rawAbsorb
+      let absorb = ability.rawAbsorb
+      if (ability.absorbVersAffected) absorb *= 1 + characterStats.versatility
+      absorbs += absorb
     } else if (ability.absorbHealthMultiplier) {
       absorbs += getHealthMultiplierAbsorb(
         ability,
