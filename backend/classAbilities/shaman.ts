@@ -26,12 +26,11 @@ export const brimmingWithLife: Ability = {
 
 export const ancestralDefense: Ability = {
   name: 'Ancestral Defense',
-  aoeDr: -0.02,
+  aoeDr: 0.02,
   onByDefault: true,
   spellId: 382947,
   wowheadLink: 'https://www.wowhead.com/spell=382947/ancestral-defense',
   iconName: 'ability_earthen_pillar',
-  notes: 'Ancestral Defense is bugged and causes you to take 2% MORE damage',
 }
 
 export const astralShift: Ability = {
