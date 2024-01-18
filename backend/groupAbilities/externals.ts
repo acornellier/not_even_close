@@ -72,10 +72,10 @@ export const twinGuardian: Ability = {
 
 export const leafOfTheAncientProtectors: Ability = {
   name: 'Leaf of the Ancient Protectors',
-  rawAbsorb: 370_374,
+  rawAbsorb: 348_500,
   spellId: 110009,
   iconName: 'inv_misc_plant_01',
-  notes: 'Assumes ilvl 489, Myth 4/4',
+  notes: 'Assumes ilvl 483, Hero 6/6',
 }
 
 export const ancestralVigor: Ability = {
