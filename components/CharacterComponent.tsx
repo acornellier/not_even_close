@@ -1,11 +1,13 @@
-import { Character } from '../backend/characterStats'
+import { Character, CharacterStatsInput } from '../backend/characterStats'
 import { CharacterStatsForm } from './CharacterStatsForm'
 import { ClassDropdown } from './Abilities/ClassDropdown'
 import { AbilitySelect } from './Abilities/AbilitySelect'
 import { classSpecs, ClassSpec, defaultAbilities } from '../backend/classes'
-import { GroupBuffs } from './Abilities/GroupBuffs'
+import { LabelledAbilitySelect } from './Abilities/LabelledAbilitySelect'
 import { externals } from '../backend/groupAbilities/externals'
 import { Tooltip } from 'react-tooltip'
+import { useCallback } from 'react'
+import { Ability } from '../backend/ability'
 
 interface Props {
   idx: number
@@ -24,21 +26,31 @@ export function CharacterComponent({
   removeCharacter,
   handlePaste,
 }: Props) {
-  function setField<T>(field: keyof Character) {
-    return (value: T) => setCharacter({ ...character, [field]: value })
-  }
+  const setCharacterStats = useCallback(
+    (stats: CharacterStatsInput) => setCharacter({ ...character, stats }),
+    [character, setCharacter]
+  )
 
-  const setCharacterStats = setField('stats')
-  const setAbilities = setField('abilities')
-  const setExternals = setField('externals')
+  const setAbilities = useCallback(
+    (abilities: Ability[]) => setCharacter({ ...character, abilities }),
+    [character, setCharacter]
+  )
 
-  const setSpec = (spec: ClassSpec) => {
-    setCharacter({
-      ...character,
-      classSpec: spec,
-      abilities: defaultAbilities(spec),
-    })
-  }
+  const setExternals = useCallback(
+    (newExternals: Ability[]) => setCharacter({ ...character, externals: newExternals }),
+    [character, setCharacter]
+  )
+
+  const setSpec = useCallback(
+    (spec: ClassSpec) => {
+      setCharacter({
+        ...character,
+        classSpec: spec,
+        abilities: defaultAbilities(spec),
+      })
+    },
+    [character, setCharacter]
+  )
 
   const specAbilities =
     classSpecs[character.classSpec.class][character.classSpec.spec].abilities
@@ -116,17 +128,17 @@ export function CharacterComponent({
         <ClassDropdown onChange={setSpec} selectedClassSpec={character.classSpec} />
         <AbilitySelect
           character={character}
-          allAbilities={specAbilities}
+          availableAbilities={specAbilities}
           selectedAbilities={character.abilities}
           setSelectedAbilities={setAbilities}
         />
       </div>
 
-      <GroupBuffs
+      <LabelledAbilitySelect
         label="Externals"
-        allAbilities={externals}
-        selectedGroupAbilities={character.externals}
-        setSelectedGroupAbilities={setExternals}
+        availableAbilities={externals}
+        selectedAbilities={character.externals}
+        setSelectedAbilities={setExternals}
       />
     </div>
   )

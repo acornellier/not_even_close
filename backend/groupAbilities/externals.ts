@@ -65,7 +65,7 @@ export const twinGuardian: Ability = {
   absorbHealthMultiplier: 0.3,
   absorbVersAffected: true,
   absorbBackup: 300_000,
-  spellId: 370888999,
+  spellId: 370888,
   iconName: 'ability_skyreach_shielded',
   notes: 'Assumes 300K absorb if you have no evoker selected',
 }

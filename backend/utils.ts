@@ -25,3 +25,9 @@ export function augmentAbilities(abilities: Ability[], selectedAbilities: Abilit
     return augmentedAbility
   })
 }
+
+export function isAbilityAvailable(ability: Ability, availableAbililties: Ability[]) {
+  return availableAbililties.some(
+    (availableAbility) => availableAbility.spellId === ability.spellId
+  )
+}

@@ -4,7 +4,7 @@ import { ResultsFull } from './Results/ResultsFull'
 import { Fragment, useCallback, useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { EnemyAbilities } from './EnemyAbilities/EnemyAbilities'
-import { GroupBuffs } from './Abilities/GroupBuffs'
+import { LabelledAbilitySelect } from './Abilities/LabelledAbilitySelect'
 import { groupBuffs } from '../backend/groupAbilities/groupBuffs'
 import { Instructions } from './Instructions'
 import useLocalStorage from './Tools/useLocalStorage'
@@ -17,21 +17,23 @@ import { EnemyAbility } from '../backend/enemyAbilities'
 import { Label } from './Inputs/Label'
 import { CharacterComponent } from './CharacterComponent'
 import { ClassSpec, defaultAbilities } from '../backend/classes'
-import { groupActives } from '../backend/groupAbilities/groupActives'
 import { ResultsMini } from './Results/ResultsMini'
 import { SimContextProvider } from './Tools/SimContext'
 import { useKeyboardShortcut } from './Tools/useKeyboardShortcut'
 import { isAddonPaste, parseAddon } from './Tools/addon'
+import { groupActives } from '../backend/groupAbilities/groupActives'
 
 const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
 const defaultCharacter: Character = {
   classSpec: defaultClassSpec,
-  stats: { stamina: 41_000, versatilityPercent: 5, avoidancePercent: 3 },
+  stats: { stamina: 41_000, versatilityPercent: 5, avoidancePercent: 4.51 },
   abilities: defaultAbilities(defaultClassSpec),
   externals: [],
 }
 
 const defaultCharacters = [defaultCharacter]
+const defaultGroupBuffs: Ability[] = []
+const defaultGroupActives: Ability[] = []
 
 const defaultKeyDetails: KeyDetails = { keyLevel: 28, isTyran: true }
 
@@ -42,9 +44,15 @@ const defaultEnemyDetails: EnemyAbilityDetails = {
 }
 
 export function Simulator() {
-  const [selectedGroupAbilities, setSelectedGroupAbilities] = useState<Ability[]>([])
-
   const [characters, setCharacters] = useLocalStorage('characters', defaultCharacters)
+  const [selectedGroupBuffs, setGroupBuffs] = useLocalStorage<Ability[]>(
+    'groupBuffs',
+    defaultGroupBuffs
+  )
+  const [selectedGroupActives, setGroupActives] = useLocalStorage<Ability[]>(
+    'groupActives',
+    defaultGroupActives
+  )
 
   const setCharacterIdx = useCallback(
     (index: number) => (newCharacter: Character) =>
@@ -117,7 +125,7 @@ export function Simulator() {
   useEffect(() => {
     const result = simulate({
       characters,
-      groupAbilities: selectedGroupAbilities,
+      groupAbilities: [...selectedGroupBuffs, ...selectedGroupActives],
       customDrs: customDrs.split(',').map(Number).filter(Boolean),
       customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
       keyDetails,
@@ -130,15 +138,12 @@ export function Simulator() {
     customAbsorbs,
     keyDetails,
     enemyAbilityDetails,
-    selectedGroupAbilities,
+    selectedGroupBuffs,
+    selectedGroupActives,
   ])
 
   return (
-    <SimContextProvider
-      selectedGroupAbilities={selectedGroupAbilities}
-      characters={characters}
-      result={result}
-    >
+    <SimContextProvider result={result}>
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="flex flex-col items-start gap-4">
           <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
@@ -166,18 +171,18 @@ export function Simulator() {
             </Fragment>
           ))}
 
-          <GroupBuffs
+          <LabelledAbilitySelect
             label="Group buffs"
-            allAbilities={groupBuffs}
-            selectedGroupAbilities={selectedGroupAbilities}
-            setSelectedGroupAbilities={setSelectedGroupAbilities}
+            availableAbilities={groupBuffs}
+            selectedAbilities={selectedGroupBuffs}
+            setSelectedAbilities={setGroupBuffs}
           />
 
-          <GroupBuffs
+          <LabelledAbilitySelect
             label="Group actives"
-            allAbilities={groupActives}
-            selectedGroupAbilities={selectedGroupAbilities}
-            setSelectedGroupAbilities={setSelectedGroupAbilities}
+            availableAbilities={groupActives}
+            selectedAbilities={selectedGroupActives}
+            setSelectedAbilities={setGroupActives}
           />
 
           {moreShown && (

@@ -1,38 +1,62 @@
 ﻿import { Ability } from '../../backend/ability'
-import { augmentAbilities, isAbilitySelected } from '../../backend/utils'
+import {
+  augmentAbilities,
+  isAbilityAvailable,
+  isAbilitySelected,
+} from '../../backend/utils'
 import { AbilityIcon } from './AbilityIcon'
 import { Character } from '../../backend/characterStats'
+import { useCallback, useEffect } from 'react'
 
 interface Props {
-  allAbilities: Ability[]
+  availableAbilities: Ability[]
   selectedAbilities: Ability[]
   setSelectedAbilities: (abilities: Ability[]) => void
   character?: Character
 }
 
 export function AbilitySelect({
-  allAbilities,
+  availableAbilities,
   selectedAbilities,
   setSelectedAbilities,
   character,
 }: Props) {
-  const augmentedAbilities = augmentAbilities(allAbilities, selectedAbilities)
-
-  const toggleAbility = (spellId: number) => {
-    if (isAbilitySelected(spellId, selectedAbilities)) {
+  useEffect(() => {
+    if (
+      selectedAbilities.some(
+        (selectedAbility) => !isAbilityAvailable(selectedAbility, availableAbilities)
+      )
+    ) {
       setSelectedAbilities(
-        selectedAbilities.filter((selectedAbility) => selectedAbility.spellId !== spellId)
+        selectedAbilities.filter((selectedAbility) =>
+          isAbilityAvailable(selectedAbility, availableAbilities)
+        )
       )
-    } else {
-      const ability = allAbilities.find(
-        ({ spellId: otherSpellId }) => otherSpellId === spellId
-      )
-
-      if (ability) setSelectedAbilities([...selectedAbilities, ability])
     }
-  }
+  }, [availableAbilities, selectedAbilities, setSelectedAbilities])
 
-  const [augmenters, regulars] = (augmentedAbilities ?? allAbilities).reduce<
+  const augmentedAbilities = augmentAbilities(availableAbilities, selectedAbilities)
+
+  const toggleAbility = useCallback(
+    (spellId: number) => {
+      if (isAbilitySelected(spellId, selectedAbilities)) {
+        setSelectedAbilities(
+          selectedAbilities.filter(
+            (selectedAbility) => selectedAbility.spellId !== spellId
+          )
+        )
+      } else {
+        const ability = availableAbilities.find(
+          ({ spellId: otherSpellId }) => otherSpellId === spellId
+        )
+
+        if (ability) setSelectedAbilities([...selectedAbilities, ability])
+      }
+    },
+    [availableAbilities, selectedAbilities, setSelectedAbilities]
+  )
+
+  const [augmenters, regulars] = (augmentedAbilities ?? availableAbilities).reduce<
     [Ability[], Ability[]]
   >(
     (acc, ability) => {
@@ -50,7 +74,7 @@ export function AbilitySelect({
           ability={ability}
           toggleAbility={toggleAbility}
           selectedAbilities={selectedAbilities}
-          allAbilities={allAbilities}
+          allAbilities={availableAbilities}
           character={character}
         />
       ))}
@@ -63,7 +87,7 @@ export function AbilitySelect({
           ability={ability}
           toggleAbility={toggleAbility}
           selectedAbilities={selectedAbilities}
-          allAbilities={allAbilities}
+          allAbilities={availableAbilities}
           character={character}
         />
       ))}
