@@ -26,18 +26,12 @@ export function CharacterStatsForm({ characterStats, onChange }: Props) {
         label="Versatility (%)"
         value={characterStats.versatilityPercent}
         onChange={onChangeStat('versatilityPercent')}
-        tooltip={
-          <span>
-            <p>Total vers, not just the DR portion.</p>
-            <p>If below 30% vers, 205 points = 1% vers</p>
-          </span>
-        }
+        tooltip={<p>Total vers, not just the DR portion.</p>}
       />
       <NumericInput
         label="Avoidance (%)"
         value={characterStats.avoidancePercent}
         onChange={onChangeStat('avoidancePercent')}
-        tooltip="70.26 points = 1% avoidance"
       />
     </div>
   )

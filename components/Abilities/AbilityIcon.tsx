@@ -1,11 +1,11 @@
-import { Ability, AbilityField, abilityFields, DamageType } from '../../backend/ability'
+import { Ability, AbilityField, abilityFields } from '../../backend/ability'
 import { Tooltip } from 'react-tooltip'
 import { isAbilitySelected, roundTo } from '../../backend/utils'
 import Image from 'next/image'
 import { Fragment } from 'react'
 import { getHealthMultiplierAbsorb } from '../../backend/sim'
 import { useSimContext } from '../Tools/SimContext'
-import { Character, CharacterStatsInput } from '../../backend/characterStats'
+import { Character } from '../../backend/characterStats'
 import { equalSpecs } from '../../backend/classes'
 
 const iconSize = 40

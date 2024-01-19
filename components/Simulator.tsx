@@ -20,8 +20,8 @@ import { ClassSpec, defaultAbilities } from '../backend/classes'
 import { ResultsMini } from './Results/ResultsMini'
 import { SimContextProvider } from './Tools/SimContext'
 import { useKeyboardShortcut } from './Tools/useKeyboardShortcut'
-import { isAddonPaste, parseAddon } from './Tools/addon'
 import { groupActives } from '../backend/groupAbilities/groupActives'
+import { getAddonOutput, isAddonPaste } from './Tools/addon'
 
 const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
 const defaultCharacter: Character = {
@@ -86,21 +86,21 @@ export function Simulator() {
 
       if (!isAddonPaste(text)) return
 
-      const addonOutput = parseAddon(text)
-      const specChanges = addonOutput.spec
-        ? {
-            classSpec: addonOutput.spec,
-            abilities: defaultAbilities(addonOutput.spec),
-          }
-        : {}
+      const { character, groupBuffs: newGroupBuffs } = getAddonOutput(
+        text,
+        characters[characterIdx]
+      )
 
-      setCharacterIdx(characterIdx)({
-        ...characters[characterIdx],
-        ...specChanges,
-        stats: addonOutput.stats,
-      })
+      setCharacterIdx(characterIdx)(character)
+      setGroupBuffs([
+        ...selectedGroupBuffs,
+        ...newGroupBuffs.filter(
+          (newBuff) =>
+            !selectedGroupBuffs.some((curBuff) => curBuff.spellId === newBuff.spellId)
+        ),
+      ])
     },
-    [characters, setCharacterIdx]
+    [characters, setCharacterIdx, selectedGroupBuffs, setGroupBuffs]
   )
 
   const handleGlobalPaste = useCallback(async () => {

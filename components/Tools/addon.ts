@@ -1,10 +1,12 @@
-﻿import { ClassSpec, classSpecs, WowClass } from '../../backend/classes'
-import { CharacterStatsInput } from '../../backend/characterStats'
+﻿import { classSpecs, defaultAbilities, WowClass } from '../../backend/classes'
+import { Character } from '../../backend/characterStats'
 import { roundTo } from '../../backend/utils'
+import { fortitude, markOfTheWild } from '../../backend/groupAbilities/groupBuffs'
+import { Ability } from '../../backend/ability'
 
 export interface AddonOutput {
-  spec: ClassSpec | null
-  stats: CharacterStatsInput
+  character: Character
+  groupBuffs: Ability[]
 }
 
 function findValue(lines: string[], key: string) {
@@ -23,7 +25,7 @@ export function isAddonPaste(text: string) {
   return lines.some((line) => line.startsWith('# NotEvenClose Addon'))
 }
 
-export function parseAddon(text: string): AddonOutput {
+function parseAddon(text: string) {
   const lines = text.split('\n')
 
   const wowClass = findValue(lines, 'class') as WowClass
@@ -33,6 +35,7 @@ export function parseAddon(text: string): AddonOutput {
   const stamina = Number(findValue(lines, 'stamina'))
   const versatilityPercent = Number(findValue(lines, 'versatilityPercent'))
   const avoidancePercent = Number(findValue(lines, 'avoidancePercent'))
+  const buffs = findValue(lines, 'buffs')
 
   return {
     spec: isValidClassSpec ? { class: wowClass, spec } : null,
@@ -41,5 +44,39 @@ export function parseAddon(text: string): AddonOutput {
       versatilityPercent: roundTo(versatilityPercent, 3),
       avoidancePercent: roundTo(avoidancePercent, 3),
     },
+    buffs: buffs.split(',').map(Number),
+  }
+}
+
+export function getAddonOutput(text: string, character: Character): AddonOutput {
+  const addonOutput = parseAddon(text)
+
+  const classSpec = addonOutput.spec ?? character.classSpec
+  const abilities =
+    addonOutput.spec && addonOutput.spec !== character.classSpec
+      ? defaultAbilities(addonOutput.spec!)
+      : character.abilities
+
+  const newCharacter = {
+    ...character,
+    classSpec,
+    stats: addonOutput.stats,
+    abilities,
+  }
+
+  let groupBuffs: Ability[] = []
+  if (addonOutput.buffs.includes(markOfTheWild.spellId)) {
+    newCharacter.stats.versatilityPercent -= 3
+    groupBuffs.push(markOfTheWild)
+  }
+
+  if (addonOutput.buffs.includes(fortitude.spellId)) {
+    newCharacter.stats.stamina = Math.ceil(newCharacter.stats.stamina / 1.05)
+    groupBuffs.push(fortitude)
+  }
+
+  return {
+    character: newCharacter,
+    groupBuffs,
   }
 }

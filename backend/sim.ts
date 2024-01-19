@@ -71,13 +71,13 @@ function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isBossAbility: bool
 function getAdjustedStats(characterStats: CharacterStats, abilities: Ability[]) {
   let adjustedStats = { ...characterStats }
 
-  const baseStamina = characterStats.stamina
-
   for (const ability of abilities) {
     if (ability.staminaIncrease) {
-      adjustedStats.stamina += baseStamina * ability.staminaIncrease
+      adjustedStats.stamina *= 1 + ability.staminaIncrease
     }
   }
+
+  adjustedStats.stamina = Math.floor(adjustedStats.stamina)
 
   for (const ability of abilities) {
     if (ability.versIncrease) {
