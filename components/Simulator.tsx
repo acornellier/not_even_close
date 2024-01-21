@@ -22,6 +22,7 @@ import { SimContextProvider } from './Tools/SimContext'
 import { useKeyboardShortcut } from './Tools/useKeyboardShortcut'
 import { groupActives } from '../backend/groupAbilities/groupActives'
 import { getAddonOutput, isAddonPaste } from './Tools/addon'
+import { usePaste } from './Tools/usePaste'
 
 const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
 const defaultCharacter: Character = {
@@ -80,40 +81,12 @@ export function Simulator() {
 
   const [result, setResult] = useState<Result | null>(null)
 
-  const handlePaste = useCallback(
-    async (characterIdx: number) => {
-      const text = await navigator.clipboard.readText()
-
-      if (!isAddonPaste(text)) return
-
-      const { character, groupBuffs: newGroupBuffs } = getAddonOutput(
-        text,
-        characters[characterIdx]
-      )
-
-      setCharacterIdx(characterIdx)(character)
-      setGroupBuffs([
-        ...selectedGroupBuffs,
-        ...newGroupBuffs.filter(
-          (newBuff) =>
-            !selectedGroupBuffs.some((curBuff) => curBuff.spellId === newBuff.spellId)
-        ),
-      ])
-    },
-    [characters, setCharacterIdx, selectedGroupBuffs, setGroupBuffs]
-  )
-
-  const handleGlobalPaste = useCallback(async () => {
-    if (characters.length == 1) await handlePaste(0)
-  }, [characters, handlePaste])
-
-  useKeyboardShortcut(
-    [
-      ['ctrl', 'v'],
-      ['meta', 'v'],
-    ],
-    handleGlobalPaste
-  )
+  const handlePaste = usePaste({
+    characters,
+    setCharacterIdx,
+    selectedGroupBuffs,
+    setGroupBuffs,
+  })
 
   useEffect(() => {
     if (!moreShown) {
