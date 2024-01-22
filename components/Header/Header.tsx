@@ -8,9 +8,7 @@ export function Header() {
     <div className="flex flex-col gap-2">
       <div className="flex justify-between items-center">
         <div className="flex items-end gap-4">
-          <span className="text-4xl font-bold text-center text-teal-500">
-            Not Even Close
-          </span>
+          <h1 className="text-4xl font-bold text-center text-teal-500">Not Even Close</h1>
           <span className="font-bold text-center text-teal-500 hidden md:block">
             {"by Ortemist-Zul'jin"}
           </span>

@@ -8,6 +8,11 @@ export default function Home() {
     <div className="px-4 lg:px-6 xl:px-24 2xl:px-48 dark:bg-[#181a1b]">
       <Head>
         <title>Not Even Close</title>
+        <meta
+          name="description"
+          content="Not Even Close is a tool for World of Warcraft that will determine if you will
+          live or die to enemy abilities in Mythic+ dungeon keys, given your stats and defensives"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
