@@ -1,10 +1,10 @@
-import { EnemyAbility } from '../enemyAbilities'
+import { EnemyAbility } from '../dungeons'
 
 export const soulBurst: EnemyAbility = {
   name: 'Soul Burst',
   boss: 'The Amalgam of Souls',
   dungeon: 'Black Rook Hold',
-  damage: 123594,
+  baseDamage: 123594,
   isAoe: true,
   iconName: 'ability_bossgorefiend_touchofdoom',
   wowheadLink: 'https://www.wowhead.com/spell=196587/soul-burst#icon',
@@ -13,13 +13,13 @@ export const soulBurst: EnemyAbility = {
 export const soulBurstMaxStacks: EnemyAbility = {
   ...soulBurst,
   name: 'Soul Burst (max stacks)',
-  damage: 383141,
+  baseDamage: 383141,
 }
 
 export const earthShakingStomp: EnemyAbility = {
   name: 'Earthshaking Stomp',
   dungeon: 'Black Rook Hold',
-  damage: 96129,
+  baseDamage: 96129,
   isAoe: true,
   isPhysical: true,
   iconName: 'ability_warstomp',
@@ -29,7 +29,7 @@ export const earthShakingStomp: EnemyAbility = {
 export const hatefulCharge: EnemyAbility = {
   name: 'Hateful Charge',
   dungeon: 'Black Rook Hold',
-  damage: 123594,
+  baseDamage: 123594,
   isAoe: true,
   isPhysical: true,
   iconName: 'ability_monk_clashingoxcharge',
@@ -40,7 +40,7 @@ export const shadowBolt: EnemyAbility = {
   name: 'Shadow Bolt',
   boss: 'Ravencrest',
   dungeon: 'Black Rook Hold',
-  damage: 106831,
+  baseDamage: 106831,
   isAoe: true,
   iconName: 'spell_shadow_shadowbolt',
   wowheadLink: 'https://www.wowhead.com/spell=198833/shadow-bolt',
@@ -50,7 +50,7 @@ export const shadowBoltVolley: EnemyAbility = {
   name: 'Shadow Bolt Volley',
   boss: 'Ravencrest',
   dungeon: 'Black Rook Hold',
-  damage: 164792,
+  baseDamage: 164792,
   isAoe: true,
   iconName: 'spell_shadow_shadowbolt',
   wowheadLink: 'https://www.wowhead.com/spell=202019/shadow-bolt-volley',

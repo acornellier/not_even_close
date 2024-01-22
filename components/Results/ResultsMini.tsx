@@ -1,7 +1,7 @@
 ﻿import { EnemyAbilityDetails, Result } from '../../backend/sim'
 import { roundTo } from '../../backend/utils'
-import { EnemyAbility } from '../../backend/enemyAbilities'
-import { EnemyAbilityLink } from '../EnemyAbilities/EnemyAbilityLink'
+import { EnemyAbility } from '../../backend/dungeons'
+import { EnemyAbilityCard } from '../EnemyAbilities/EnemyAbilityCard'
 import { OverkillText } from './OverkillText'
 import Image from 'next/image'
 import { classSpecs } from '../../backend/classes'
@@ -9,30 +9,17 @@ import { ResultDetails } from './ResultDetails'
 
 interface Props {
   result: Result
-  enemyAbility: EnemyAbility | null
-  enemyAbilityDetails: EnemyAbilityDetails | null
 }
 
-export function ResultsMini({ result, enemyAbility, enemyAbilityDetails }: Props) {
-  const matchesAbility =
-    enemyAbility &&
-    enemyAbilityDetails &&
-    enemyAbilityDetails.name === enemyAbility.name &&
-    enemyAbilityDetails.baseDamage === enemyAbility.damage &&
-    enemyAbilityDetails.isAoe === enemyAbility.isAoe &&
-    enemyAbilityDetails.isBossAbility === !enemyAbility.isTrashAbility
-
+export function ResultsMini({ result }: Props) {
   return (
     <div className="flex flex-col gap-4">
       <div>
-        {matchesAbility && (
-          <EnemyAbilityLink key={enemyAbility.name} ability={enemyAbility} />
-        )}
         <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
-        <div>Unmitigated damage: {result.scaledDamage.toLocaleString('en-US')}</div>
+        <div>Unmitigated damage: {result.main.scaledDamage.toLocaleString('en-US')}</div>
       </div>
 
-      {result.characters.map((charResult, idx) => (
+      {result.main.characters.map((charResult, idx) => (
         <div key={idx}>
           <div className="flex gap-1 mt-1 font-bold">
             <Image

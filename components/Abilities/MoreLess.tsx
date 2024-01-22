@@ -7,7 +7,7 @@ interface Props {
 
 export function MoreLess({ moreShown, setMoreShown }: Props) {
   return (
-    <Label short className="cursor-pointer" onClick={() => setMoreShown(!moreShown)}>
+    <Label short button className="gap-2" onClick={() => setMoreShown(!moreShown)}>
       {moreShown ? 'Less' : 'More'}
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -65,7 +65,7 @@ export function AbilityIcon({
   let calculatedAbsorb = 0
   if (result) {
     const resultChar = character
-      ? result.characters.find(
+      ? result.main.characters.find(
           (char) => character.classSpec && equalSpecs(char.spec, character.classSpec)
         )
       : undefined
@@ -74,7 +74,7 @@ export function AbilityIcon({
       ability,
       resultChar?.adjustedStats ?? null,
       resultChar?.startingHealth ?? null,
-      result.characters
+      result.main.characters
     )
   }
 

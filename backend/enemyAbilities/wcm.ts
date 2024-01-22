@@ -1,10 +1,10 @@
-import { EnemyAbility } from '../enemyAbilities'
+import { EnemyAbility } from '../dungeons'
 
 export const dreadEssence: EnemyAbility = {
   name: 'Dread Essence',
   boss: 'Gorak Tul',
   dungeon: 'Waycrest Manor',
-  damage: 96129,
+  baseDamage: 96129,
   isAoe: true,
   iconName: 'ability_argus_soulburst',
   wowheadLink: 'https://www.wowhead.com/spell=266181/dread-essence',
@@ -13,7 +13,7 @@ export const dreadEssence: EnemyAbility = {
 export const rottenExpulsion: EnemyAbility = {
   name: 'Rotten Expulsion',
   dungeon: 'Waycrest Manor',
-  damage: 105742,
+  baseDamage: 105742,
   isAoe: true,
   iconName: 'ability_creature_disease_01',
   wowheadLink: 'https://www.wowhead.com/spell=264694/rotten-expulsion',

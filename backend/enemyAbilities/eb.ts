@@ -1,10 +1,10 @@
-import { EnemyAbility } from '../enemyAbilities'
+import { EnemyAbility } from '../dungeons'
 
 export const colossalBlow: EnemyAbility = {
   name: 'Colossal Blow',
   boss: 'Yalnu',
   dungeon: 'Everbloom',
-  damage: 87889,
+  baseDamage: 87889,
   isAoe: true,
   iconName: 'spell_shaman_earthquake',
   wowheadLink: 'https://www.wowhead.com/spell=169179/colossal-blow',

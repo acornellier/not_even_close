@@ -18,7 +18,7 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
   return (
     <div>
       <button
-        className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800"
+        className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 select-none"
         type="button"
         onClick={() => setOpen(!open)}
       >
@@ -66,7 +66,7 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
                     className="cursor-pointer "
                     onClick={() => handleChange({ class: wowClass, spec: wowSpec })}
                   >
-                    <a className="flex items-center pl-1 rounded hover:bg-gray-600 dark:hover:text-white">
+                    <a className="flex gap-0.5 items-center pl-1 rounded hover:bg-gray-600 dark:hover:text-white select-none">
                       <Image
                         className="rounded"
                         src={`https://wow.zamimg.com/images/wow/icons/medium/${classSpecs[wowClass][wowSpec].icon}.jpg`}

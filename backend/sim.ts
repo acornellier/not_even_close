@@ -1,10 +1,16 @@
 import { Character, CharacterStats } from './characterStats'
 import { Ability } from './ability'
 import { ClassSpec, equalSpecs } from './classes'
-import { augmentAbilities } from './utils'
+import { augmentAbilities, enemyAbilityToDetails } from './utils'
+import { Dungeon, dungeonAbilities } from './dungeons'
 
 export interface Result {
   damageScaling: number
+  main: AbilityResult
+  dungeon: AbilityResult[]
+}
+
+export interface AbilityResult {
   scaledDamage: number
   enemyAbilityDetails: EnemyAbilityDetails
   characters: CharacterResult[]
@@ -37,9 +43,9 @@ export interface KeyDetails {
 
 export interface EnemyAbilityDetails {
   name?: string
-  baseDamage: number
-  isBossAbility: boolean
+  damage: number
   isAoe: boolean
+  isTrashAbility?: boolean
   isPhysical?: boolean
   isReducedByArmor?: boolean
 }
@@ -51,17 +57,18 @@ interface Input {
   customAbsorbs: number[]
   keyDetails: KeyDetails
   enemyAbilityDetails: EnemyAbilityDetails
+  dungeon: Dungeon | null
 }
 
-function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isBossAbility: boolean) {
+function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isTrashAbility: boolean) {
   let scalingFactor = 1
   for (let i = 3; i <= keyLevel; ++i) {
     scalingFactor *= i <= 10 ? 1.08 : 1.1
   }
 
-  if (!isTyran && !isBossAbility) {
+  if (!isTyran && isTrashAbility) {
     scalingFactor *= 1.3
-  } else if (isTyran && isBossAbility) {
+  } else if (isTyran && !isTrashAbility) {
     scalingFactor *= 1.15
   }
 
@@ -232,7 +239,10 @@ function getDamageReduction(
   return 1 - inverseDr
 }
 
-function getPartialResults(characters: Character[], groupAbilities: Ability[]) {
+function getPartialResults(
+  characters: Character[],
+  groupAbilities: Ability[]
+): CharacterPartialResult[] {
   const augmentedGroupAbilities = augmentAbilities(groupAbilities, groupAbilities)
 
   return characters.map<CharacterPartialResult>((character) => {
@@ -266,6 +276,60 @@ function getPartialResults(characters: Character[], groupAbilities: Ability[]) {
   })
 }
 
+function getAbilityResult(
+  damageScaling: number,
+  charPartialResults: CharacterPartialResult[],
+  enemyAbilityDetails: EnemyAbilityDetails,
+  customAbsorbs: number[],
+  customDrs: number[]
+): AbilityResult {
+  const scaledDamage = Math.round(enemyAbilityDetails.damage * damageScaling)
+
+  return {
+    enemyAbilityDetails,
+    scaledDamage,
+    characters: charPartialResults.map<CharacterResult>(
+      ({ spec, startingHealth, adjustedStats, abilities }) => {
+        const absorbs = getAbsorbs(
+          adjustedStats,
+          abilities,
+          customAbsorbs,
+          enemyAbilityDetails,
+          startingHealth,
+          charPartialResults
+        )
+        const totalHealth = startingHealth + absorbs
+
+        const damageReduction = getDamageReduction(
+          adjustedStats,
+          abilities,
+          customDrs,
+          enemyAbilityDetails,
+          startingHealth,
+          scaledDamage
+        )
+        const mitigatedDamage = Math.round(scaledDamage * damageReduction)
+        const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
+
+        const healthRemaining = totalHealth - actualDamageTaken
+
+        return {
+          spec,
+          adjustedStats,
+          abilities,
+          damageReduction,
+          mitigatedDamage,
+          actualDamageTaken,
+          startingHealth,
+          absorbs,
+          totalHealth,
+          healthRemaining,
+        }
+      }
+    ),
+  }
+}
+
 export function simulate({
   characters,
   groupAbilities,
@@ -273,56 +337,34 @@ export function simulate({
   customAbsorbs,
   keyDetails,
   enemyAbilityDetails,
+  dungeon,
 }: Input): Result {
-  const damageScaling = getScalingFactor(keyDetails, enemyAbilityDetails.isBossAbility)
-  const scaledDamage = Math.round(enemyAbilityDetails.baseDamage * damageScaling)
-
+  const damageScaling = getScalingFactor(keyDetails, !!enemyAbilityDetails.isTrashAbility)
   const charPartialResults = getPartialResults(characters, groupAbilities)
 
-  const charResults = charPartialResults.map<CharacterResult>(
-    ({ spec, startingHealth, adjustedStats, abilities }) => {
-      const absorbs = getAbsorbs(
-        adjustedStats,
-        abilities,
-        customAbsorbs,
-        enemyAbilityDetails,
-        startingHealth,
-        charPartialResults
-      )
-      const totalHealth = startingHealth + absorbs
-
-      const damageReduction = getDamageReduction(
-        adjustedStats,
-        abilities,
-        customDrs,
-        enemyAbilityDetails,
-        startingHealth,
-        scaledDamage
-      )
-      const mitigatedDamage = Math.round(scaledDamage * damageReduction)
-      const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
-
-      const healthRemaining = totalHealth - actualDamageTaken
-
-      return {
-        spec,
-        adjustedStats,
-        abilities,
-        damageReduction,
-        mitigatedDamage,
-        actualDamageTaken,
-        startingHealth,
-        absorbs,
-        totalHealth,
-        healthRemaining,
-      }
-    }
+  const mainResults = getAbilityResult(
+    damageScaling,
+    charPartialResults,
+    enemyAbilityDetails,
+    customAbsorbs,
+    customDrs
   )
+
+  const dungeonResults = dungeon
+    ? dungeonAbilities[dungeon].map((enemyAbility) =>
+        getAbilityResult(
+          damageScaling,
+          charPartialResults,
+          enemyAbilityToDetails(enemyAbility),
+          customAbsorbs,
+          customDrs
+        )
+      )
+    : []
 
   return {
     damageScaling,
-    scaledDamage,
-    enemyAbilityDetails,
-    characters: charResults,
+    main: mainResults,
+    dungeon: dungeonResults,
   }
 }

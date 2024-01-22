@@ -22,10 +22,6 @@ export function Instructions() {
         1 character. It accounts for Fortitude and MotW, but not other stamina/vers buffs.
       </span>
       <span>
-        Click an enemy ability in the bottom left to set the base damage. If your ability
-        is missing, find the base damage in the dungeon journal.
-      </span>
-      <span>
         Physical damage reduced by armor is not supported. Earthshaking Stomp and Hateful
         Charge are not reduced by armor.
       </span>

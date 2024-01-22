@@ -13,16 +13,16 @@ import { CustomAbsorbs } from './Abilities/CustomAbsorbs'
 import { KeyDetailsInput } from './Inputs/KeyDetailsInput'
 import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsInput'
 import { MoreLess } from './Abilities/MoreLess'
-import { EnemyAbility } from '../backend/enemyAbilities'
+import { Dungeon, EnemyAbility } from '../backend/dungeons'
 import { Label } from './Inputs/Label'
 import { CharacterComponent } from './CharacterComponent'
 import { ClassSpec, defaultAbilities } from '../backend/classes'
 import { ResultsMini } from './Results/ResultsMini'
 import { SimContextProvider } from './Tools/SimContext'
-import { useKeyboardShortcut } from './Tools/useKeyboardShortcut'
 import { groupActives } from '../backend/groupAbilities/groupActives'
-import { getAddonOutput, isAddonPaste } from './Tools/addon'
 import { usePaste } from './Tools/usePaste'
+import { DungeonSelect } from './EnemyAbilities/DungeonSelect'
+import { enemyAbilityToDetails } from '../backend/utils'
 
 const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
 const defaultCharacter: Character = {
@@ -39,9 +39,11 @@ const defaultGroupActives: Ability[] = []
 const defaultKeyDetails: KeyDetails = { keyLevel: 28, isTyran: true }
 
 const defaultEnemyDetails: EnemyAbilityDetails = {
-  baseDamage: 100_000,
+  damage: 100_000,
   isAoe: false,
-  isBossAbility: true,
+  isTrashAbility: false,
+  isPhysical: false,
+  isReducedByArmor: false,
 }
 
 export function Simulator() {
@@ -68,18 +70,19 @@ export function Simulator() {
   const removeCharacterIdx = (index: number) => () =>
     setCharacters(characters.filter((_, index2) => index2 !== index))
 
-  const [moreShown, setMoreShown] = useLocalStorage('moreShown', false)
-  const [customDrs, setCustomDrs] = useState('')
-  const [customAbsorbs, setCustomAbsorbs] = useState('')
-
   const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
-  const [enemyAbility, setEnemyAbility] = useState<EnemyAbility | null>(null)
+  const [selectedDungeon, setSelectedDungeon] = useLocalStorage<Dungeon | null>(
+    'selectedDungeon',
+    null
+  )
+  const [enemyAbility, setEnemyAbility] = useLocalStorage<EnemyAbility | null>(
+    'selectedAbility',
+    null
+  )
   const [enemyAbilityDetails, setEnemyAbilityDetails] = useLocalStorage(
     'enemyAbilityDetails',
     defaultEnemyDetails
   )
-
-  const [result, setResult] = useState<Result | null>(null)
 
   const handlePaste = usePaste({
     characters,
@@ -88,12 +91,22 @@ export function Simulator() {
     setGroupBuffs,
   })
 
-  useEffect(() => {
-    if (!moreShown) {
-      setCustomDrs('')
-      setCustomAbsorbs('')
-    }
-  }, [moreShown])
+  const [moreShown, setMoreShown] = useLocalStorage('moreShown', false)
+  const [customDrs, setCustomDrs] = useLocalStorage('customDrs', '')
+  const [customAbsorbs, setCustomAbsorbs] = useLocalStorage('customAbsorbs', '')
+
+  const setMoreShownWithEffect = useCallback(
+    (value: boolean) => {
+      setMoreShown(value)
+      if (!value) {
+        setCustomDrs('')
+        setCustomAbsorbs('')
+      }
+    },
+    [setCustomAbsorbs, setCustomDrs, setMoreShown]
+  )
+
+  const [result, setResult] = useState<Result | null>(null)
 
   useEffect(() => {
     const result = simulate({
@@ -102,6 +115,7 @@ export function Simulator() {
       customDrs: customDrs.split(',').map(Number).filter(Boolean),
       customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
       keyDetails,
+      dungeon: selectedDungeon,
       enemyAbilityDetails,
     })
     setResult(result)
@@ -113,17 +127,21 @@ export function Simulator() {
     enemyAbilityDetails,
     selectedGroupBuffs,
     selectedGroupActives,
+    selectedDungeon,
   ])
 
   return (
     <SimContextProvider result={result}>
-      <div className="flex flex-col sm:flex-row gap-4">
-        <div className="flex flex-col items-start gap-4">
+      <div className="flex flex-col lg:flex-row gap-4">
+        <div className="flex flex-col gap-4">
           <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
 
           <EnemyAbilityDetailsInput
             enemyAbilityDetails={enemyAbilityDetails}
-            setEnemyAbilityDetails={setEnemyAbilityDetails}
+            setEnemyAbilityDetails={(details) => {
+              setEnemyAbility(null)
+              setEnemyAbilityDetails(details)
+            }}
           />
 
           <div className="border-2 w-full dark:border-gray-600" />
@@ -169,10 +187,11 @@ export function Simulator() {
           )}
 
           <div className="flex gap-4">
-            <MoreLess moreShown={moreShown} setMoreShown={setMoreShown} />
+            <MoreLess moreShown={moreShown} setMoreShown={setMoreShownWithEffect} />
             <Label
               short
-              className="gap-2 cursor-pointer"
+              button
+              className="gap-2"
               onClick={() => setCharacters([...characters, defaultCharacter])}
             >
               Add a player
@@ -181,36 +200,30 @@ export function Simulator() {
 
           <div className="border-2 w-full dark:border-gray-600" />
 
-          <EnemyAbilities
-            onSelect={(enemyAbility) => {
-              setEnemyAbility(enemyAbility)
-              setEnemyAbilityDetails({
-                name: enemyAbility.name,
-                baseDamage: enemyAbility.damage,
-                isAoe: enemyAbility.isAoe,
-                isBossAbility: !enemyAbility.isTrashAbility,
-                isPhysical: enemyAbility.isPhysical,
-              })
-            }}
-          />
+          {!selectedDungeon ? (
+            <DungeonSelect setSelectedDungeon={setSelectedDungeon} />
+          ) : (
+            <EnemyAbilities
+              selectedDungeon={selectedDungeon}
+              selectedAbility={enemyAbility}
+              deselectDungeon={() => setSelectedDungeon(null)}
+              onSelect={(enemyAbility) => {
+                setEnemyAbility(enemyAbility)
+                setEnemyAbilityDetails(enemyAbilityToDetails(enemyAbility))
+              }}
+              results={result?.dungeon ?? null}
+            />
+          )}
         </div>
 
         <div className="border-2 mx-2 dark:border-gray-600" />
 
         <div className="basis-96 relative">
           <div className="sm:sticky sm:top-10">
-            {result === null ? null : result.characters.length === 1 ? (
-              <ResultsFull
-                result={result}
-                enemyAbility={enemyAbility}
-                enemyAbilityDetails={enemyAbilityDetails}
-              />
+            {result === null ? null : result.main.characters.length === 1 ? (
+              <ResultsFull result={result} />
             ) : (
-              <ResultsMini
-                result={result}
-                enemyAbility={enemyAbility}
-                enemyAbilityDetails={enemyAbilityDetails}
-              />
+              <ResultsMini result={result} />
             )}
 
             <div className="border-2 my-4 dark:border-gray-600" />

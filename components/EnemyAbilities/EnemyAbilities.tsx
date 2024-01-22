@@ -1,28 +1,68 @@
-﻿import { enemyAbilitiesByDungeon, EnemyAbility } from '../../backend/enemyAbilities'
+﻿import {
+  Dungeon,
+  dungeonIcons,
+  dungeonAbilities,
+  EnemyAbility,
+} from '../../backend/dungeons'
+import { EnemyAbilityCard } from './EnemyAbilityCard'
+import { Label } from '../Inputs/Label'
 import Image from 'next/image'
-import { EnemyAbilityLink } from './EnemyAbilityLink'
+import { AbilityResult } from '../../backend/sim'
 
 interface Props {
+  selectedDungeon: Dungeon
+  selectedAbility: EnemyAbility | null
   onSelect: (bossAbility: EnemyAbility) => void
+  deselectDungeon: () => void
+  results: AbilityResult[] | null
 }
 
-export function EnemyAbilities({ onSelect }: Props) {
+export function EnemyAbilities({
+  selectedDungeon,
+  selectedAbility,
+  onSelect,
+  deselectDungeon,
+  results,
+}: Props) {
+  const abilities = dungeonAbilities[selectedDungeon]
+
   return (
-    <div className="flex flex-col items-start gap-2">
-      {enemyAbilitiesByDungeon.map(({ dungeon, abilities }) => (
-        <div key={dungeon}>
-          <span className="text-l font-bold">{dungeon}</span>
-          <div className="flex flex-row items-start gap-x-2 gap-y-1 flex-wrap">
-            {abilities.map((ability) => (
-              <EnemyAbilityLink
-                key={ability.name}
-                ability={ability}
-                onSelect={() => onSelect(ability)}
-              />
-            ))}
-          </div>
-        </div>
-      ))}
+    <div className="flex flex-col gap-2">
+      <div className="flex justify-between">
+        <Label
+          short
+          button
+          bigText
+          onClick={deselectDungeon}
+          className="font-bold text-xl gap-2 px-2"
+        >
+          <Image
+            className={`rounded border-2 border-gray-600`}
+            height={32}
+            width={32}
+            src={`https://wow.zamimg.com/images/wow/icons/large/${dungeonIcons[selectedDungeon]}.jpg`}
+            alt={selectedDungeon}
+          />
+          {selectedDungeon}
+        </Label>
+      </div>
+      <div className="flex flex-col gap-x-2 gap-y-1 flex-wrap items-stretch">
+        {abilities.map((ability) => {
+          const abilityResult = results?.find(
+            (result) => result.enemyAbilityDetails.name === ability.name
+          )
+
+          return (
+            <EnemyAbilityCard
+              key={ability.name}
+              ability={ability}
+              onSelect={() => onSelect(ability)}
+              selected={selectedAbility !== null && selectedAbility.name === ability.name}
+              result={abilityResult}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -51,7 +51,7 @@ export function usePaste({
 
       await handlePaste(event.clipboardData.getData('text'), 0)
     },
-    [characters, handlePaste]
+    [handlePaste]
   )
 
   useEffect(() => {
