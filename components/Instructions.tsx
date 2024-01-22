@@ -18,8 +18,8 @@ export function Instructions() {
           my addon
         </a>{' '}
         to quickly output stats. Import them by clicking the paste icon to the right of
-        the character stats, or by pressing ctrl-V/cmd-V if you only have 1 character. It
-        accounts for Fortitude and MotW, but not other stamina/vers buffs.
+        the character stats (not on Firefox), or by pressing ctrl-V/cmd-V if you only have
+        1 character. It accounts for Fortitude and MotW, but not other stamina/vers buffs.
       </span>
       <span>
         Click an enemy ability in the bottom left to set the base damage. If your ability

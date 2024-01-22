@@ -18,8 +18,6 @@ export function usePaste({
 }: Props) {
   const handlePaste = useCallback(
     async (text: string, characterIdx: number) => {
-      console.log(text)
-
       if (!isAddonPaste(text)) return
 
       const { character, groupBuffs: newGroupBuffs } = getAddonOutput(
