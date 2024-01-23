@@ -11,6 +11,10 @@
     --dash-size: 1em;
 }
 
+html {
+    scrollbar-gutter: stable;
+}
+
 .icon-highlight {
     border-width: 2px;
     box-shadow: inset 0 0 6px 2px #dbff43;

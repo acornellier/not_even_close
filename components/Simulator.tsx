@@ -133,7 +133,7 @@ export function Simulator() {
   return (
     <SimContextProvider result={result}>
       <div className="flex flex-col lg:flex-row gap-4">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 grow">
           <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
 
           <EnemyAbilityDetailsInput
@@ -218,7 +218,7 @@ export function Simulator() {
 
         <div className="border-2 mx-2 dark:border-gray-600" />
 
-        <div className="basis-96 relative">
+        <div className="basis-[400px] relative">
           <div className="sm:sticky sm:top-10">
             {result === null ? null : result.main.characters.length === 1 ? (
               <ResultsFull result={result} />
