@@ -4,6 +4,7 @@ export const aspectsFavor: Ability = {
   name: "Aspects' Favor",
   spellId: 407243,
   healthIncrease: 0.04,
+  associatedSpec: { class: 'Evoker', spec: 'Augmentation' },
   iconName: 'ability_evoker_aspectsfavor',
   wowheadLink: 'https://www.wowhead.com/spell=407243/aspects-favor?rank=2',
   notes: 'Assumes you already have Black Attunement selected',
@@ -13,6 +14,7 @@ export const zephyr: Ability = {
   name: 'Zephyr',
   spellId: 374227,
   aoeDr: 0.2,
+  associatedClass: 'Evoker',
   iconName: 'ability_evoker_hoverblack',
   wowheadLink: 'https://www.wowhead.com/spell=374227/zephyr',
 }
@@ -45,6 +47,7 @@ export const rallyingCry: Ability = {
   name: 'Rallying Cry',
   spellId: 97462,
   healthIncrease: 0.1,
+  associatedClass: 'Warrior',
   iconName: 'ability_warrior_rallyingcry',
   wowheadLink: 'https://www.wowhead.com/spell=97462/rallying-cry',
 }
@@ -53,6 +56,7 @@ export const auraMastery: Ability = {
   name: 'Aura Mastery',
   spellId: 31821,
   dr: 0.09,
+  associatedSpec: { class: 'Paladin', spec: 'Holy' },
   iconName: 'spell_holy_auramastery',
   wowheadLink: 'https://www.wowhead.com/spell=31821/aura-mastery',
   notes: 'Assumes you already have 3% devo aura selected',
@@ -62,6 +66,7 @@ export const powerWordBarrier: Ability = {
   name: 'Power Word: Barrier',
   spellId: 62618,
   dr: 0.2,
+  associatedSpec: { class: 'Priest', spec: 'Discipline' },
   iconName: 'spell_holy_powerwordbarrier',
   wowheadLink: 'https://www.wowhead.com/spell=62618/power-word-barrier',
 }
@@ -70,6 +75,7 @@ export const antiMagicZone: Ability = {
   name: 'Anti-Magic Zone',
   spellId: 51052,
   dr: 0.2,
+  associatedClass: 'Death Knight',
   iconName: 'spell_deathknight_antimagiczone',
   wowheadLink: 'https://www.wowhead.com/spell=51052/anti-magic-zone',
 }
@@ -79,6 +85,7 @@ export const stoneskinTotem: Ability = {
   spellId: 383017,
   dr: 0.1,
   drType: 'physical',
+  associatedClass: 'Shaman',
   iconName: 'ability_shaman_stoneskintotem',
   wowheadLink: 'https://www.wowhead.com/spell=383017/stoneskin-totem',
 }
@@ -87,6 +94,7 @@ export const spiritLinkTotem: Ability = {
   name: 'Spirit Link Totem',
   spellId: 98008,
   dr: 0.1,
+  associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   iconName: 'spell_shaman_spiritlink',
 }
 

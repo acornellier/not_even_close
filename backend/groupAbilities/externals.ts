@@ -12,6 +12,7 @@ export const lenience: Ability = {
   name: 'Lenience',
   spellId: 238063,
   dr: 0.03,
+  associatedSpec: { class: 'Priest', spec: 'Discipline' },
   iconName: 'ability_priest_atonement',
 }
 
@@ -19,6 +20,7 @@ export const blessingOfSacrifice: Ability = {
   name: 'Blessing of Sacrifice',
   spellId: 6940,
   dr: 0.3,
+  associatedClass: 'Paladin',
   iconName: 'spell_holy_sealofsacrifice',
   wowheadLink: 'https://www.wowhead.com/spell=6940/blessing-of-sacrifice',
   notes: 'Wrong for holy paladin where it is actually 32%',
@@ -28,6 +30,7 @@ export const blessingOfProtection: Ability = {
   name: 'Blessing of Protection',
   spellId: 1022,
   dr: 0.15,
+  associatedSpec: { class: 'Paladin', spec: 'Holy' },
   iconName: 'spell_holy_sealofprotection',
   notes: 'Requires a holy paladin with Echoing Blessings',
 }
@@ -36,6 +39,7 @@ export const ironBark: Ability = {
   name: 'Ironbark',
   spellId: 102342,
   dr: 0.2,
+  associatedSpec: { class: 'Druid', spec: 'Restoration' },
   iconName: 'spell_druid_ironbark',
   wowheadLink: 'https://www.wowhead.com/spell=102342/ironbark',
 }
@@ -44,6 +48,7 @@ export const painSuppression: Ability = {
   name: 'Pain Suppression',
   spellId: 33206,
   dr: 0.4,
+  associatedSpec: { class: 'Priest', spec: 'Discipline' },
   iconName: 'spell_holy_painsupression',
   wowheadLink: 'https://www.wowhead.com/spell=33206/pain-suppression',
 }
@@ -83,6 +88,7 @@ export const ancestralVigor: Ability = {
   name: 'Ancestral Vigor',
   healthIncrease: 0.1,
   spellId: 207401,
+  associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   iconName: 'spell_shaman_blessingoftheeternals',
 }
 
