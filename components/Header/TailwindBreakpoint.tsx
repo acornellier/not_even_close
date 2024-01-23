@@ -1,4 +1,8 @@
-﻿export function TailwindBreakpoint() {
+﻿import { isDevEnv } from '../Tools/env'
+
+export function TailwindBreakpoint() {
+  if (!isDevEnv) return null
+
   return (
     <div className="fixed top-0 left-0 bg-gray-600 px-1">
       <div
