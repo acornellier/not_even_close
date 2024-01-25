@@ -1,4 +1,4 @@
-﻿import { EnemyAbilityDetails, Result } from '../../backend/sim'
+﻿import { AbilityResult, EnemyAbilityDetails, Result } from '../../backend/sim'
 import { roundTo } from '../../backend/utils'
 import { EnemyAbility } from '../../backend/dungeons'
 import { EnemyAbilityCard } from '../EnemyAbilities/EnemyAbilityCard'
@@ -8,7 +8,7 @@ import { classSpecs } from '../../backend/classes'
 import { ResultDetails } from './ResultDetails'
 
 interface Props {
-  result: Result
+  result: AbilityResult
 }
 
 export function ResultsMini({ result }: Props) {
@@ -16,10 +16,10 @@ export function ResultsMini({ result }: Props) {
     <div className="flex flex-col gap-4">
       <div>
         <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
-        <div>Unmitigated damage: {result.main.scaledDamage.toLocaleString('en-US')}</div>
+        <div>Unmitigated damage: {result.scaledDamage.toLocaleString('en-US')}</div>
       </div>
 
-      {result.main.characters.map((charResult, idx) => (
+      {result.characters.map((charResult, idx) => (
         <div key={idx}>
           <div className="flex gap-1 mt-1 font-bold">
             <Image

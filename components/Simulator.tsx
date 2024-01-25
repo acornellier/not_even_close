@@ -221,9 +221,9 @@ export function Simulator() {
         <div className="basis-[400px] relative">
           <div className="sm:sticky sm:top-10">
             {result === null ? null : result.main.characters.length === 1 ? (
-              <ResultsFull result={result} />
+              <ResultsFull result={result.main} />
             ) : (
-              <ResultsMini result={result} />
+              <ResultsMini result={result.main} />
             )}
 
             <div className="border-2 my-4 dark:border-gray-600" />

@@ -5,12 +5,12 @@ import { augmentAbilities, enemyAbilityToDetails } from './utils'
 import { Dungeon, dungeonAbilities } from './dungeons'
 
 export interface Result {
-  damageScaling: number
   main: AbilityResult
   dungeon: AbilityResult[]
 }
 
 export interface AbilityResult {
+  damageScaling: number
   scaledDamage: number
   enemyAbilityDetails: EnemyAbilityDetails
   characters: CharacterResult[]
@@ -277,16 +277,18 @@ function getPartialResults(
 }
 
 function getAbilityResult(
-  damageScaling: number,
+  keyDetails: KeyDetails,
   charPartialResults: CharacterPartialResult[],
   enemyAbilityDetails: EnemyAbilityDetails,
   customAbsorbs: number[],
   customDrs: number[]
 ): AbilityResult {
+  const damageScaling = getScalingFactor(keyDetails, !!enemyAbilityDetails.isTrashAbility)
   const scaledDamage = Math.round(enemyAbilityDetails.damage * damageScaling)
 
   return {
     enemyAbilityDetails,
+    damageScaling,
     scaledDamage,
     characters: charPartialResults.map<CharacterResult>(
       ({ spec, startingHealth, adjustedStats, abilities }) => {
@@ -339,11 +341,10 @@ export function simulate({
   enemyAbilityDetails,
   dungeon,
 }: Input): Result {
-  const damageScaling = getScalingFactor(keyDetails, !!enemyAbilityDetails.isTrashAbility)
   const charPartialResults = getPartialResults(characters, groupAbilities)
 
   const mainResults = getAbilityResult(
-    damageScaling,
+    keyDetails,
     charPartialResults,
     enemyAbilityDetails,
     customAbsorbs,
@@ -353,7 +354,7 @@ export function simulate({
   const dungeonResults = dungeon
     ? dungeonAbilities[dungeon].map((enemyAbility) =>
         getAbilityResult(
-          damageScaling,
+          keyDetails,
           charPartialResults,
           enemyAbilityToDetails(enemyAbility),
           customAbsorbs,
@@ -363,7 +364,6 @@ export function simulate({
     : []
 
   return {
-    damageScaling,
     main: mainResults,
     dungeon: dungeonResults,
   }

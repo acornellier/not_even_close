@@ -1,15 +1,15 @@
-﻿import { EnemyAbilityDetails, Result } from '../../backend/sim'
+﻿import { AbilityResult, EnemyAbilityDetails, Result } from '../../backend/sim'
 import { EnemyAbility } from '../../backend/dungeons'
 import { EnemyAbilityCard } from '../EnemyAbilities/EnemyAbilityCard'
 import { OverkillText } from './OverkillText'
 import { ResultDetails } from './ResultDetails'
 
 interface Props {
-  result: Result
+  result: AbilityResult
 }
 
 export function ResultsFull({ result }: Props) {
-  const charResult = result.main.characters[0]
+  const charResult = result.characters[0]
 
   return (
     <div className="flex flex-col">
@@ -26,7 +26,7 @@ export function ResultsFull({ result }: Props) {
       </div>
 
       <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
-      <div>Unmitigated damage: {result.main.scaledDamage.toLocaleString('en-US')}</div>
+      <div>Unmitigated damage: {result.scaledDamage.toLocaleString('en-US')}</div>
       <ResultDetails charResult={charResult} />
       <OverkillText result={charResult} bold />
     </div>
