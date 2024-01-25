@@ -75,6 +75,7 @@ export const antiMagicZone: Ability = {
   name: 'Anti-Magic Zone',
   spellId: 51052,
   dr: 0.2,
+  drType: 'magic',
   associatedClass: 'Death Knight',
   iconName: 'spell_deathknight_antimagiczone',
   wowheadLink: 'https://www.wowhead.com/spell=51052/anti-magic-zone',
