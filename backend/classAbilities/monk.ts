@@ -22,6 +22,21 @@ export const ancientTeachings: Ability = {
   iconName: 'inv_misc_book_07',
 }
 
+export const secretInfusion: Ability = {
+  name: 'Secret Infusion (1 point)',
+  talentPoints: 1,
+  spellId: 388491,
+  onByDefault: true,
+  iconName: 'ability_monk_chibrew',
+  abilityAugmentations: [
+    {
+      otherSpellId: 322101,
+      field: 'versIncrease',
+      value: 0.08,
+    },
+  ],
+}
+
 export const expelHarm: Ability = {
   name: 'TFT + Expel Harm',
   spellId: 322101,
@@ -65,6 +80,7 @@ export const touchOfKarma: Ability = {
 
 export const monkMistweaverAbilities = [
   calmingPresenceMistweaver,
+  secretInfusion,
   ancientTeachings,
   expelHarm,
   dampenHarm,
