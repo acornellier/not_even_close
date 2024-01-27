@@ -6,6 +6,12 @@ export function TailwindBreakpoint() {
   return (
     <div className="fixed top-0 left-0 bg-gray-600 px-1">
       <div
+        id="breakpoint-xs"
+        className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden"
+      >
+        xs
+      </div>
+      <div
         id="breakpoint-sm"
         className="hidden sm:block md:hidden lg:hidden xl:hidden 2xl:hidden"
       >

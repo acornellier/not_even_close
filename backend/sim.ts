@@ -1,4 +1,4 @@
-import { Character, CharacterStats } from './characterStats'
+import { Character, CharacterStats } from './characters'
 import { Ability } from './ability'
 import { ClassSpec, equalSpecs } from './classes'
 import { augmentAbilities, enemyAbilityToDetails } from './utils'

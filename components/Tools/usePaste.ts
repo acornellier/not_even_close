@@ -1,18 +1,16 @@
 ﻿import { useCallback, useEffect } from 'react'
 import { getAddonOutput, isAddonPaste } from './addon'
 import { Ability } from '../../backend/ability'
-import { Character } from '../../backend/characterStats'
+import { Character, UpdateCharacter } from '../../backend/characters'
 
 interface Props {
-  characters: Character[]
-  setCharacterIdx: (index: number) => (character: Character) => void
+  updateCharacterIdx: (index: number) => UpdateCharacter
   selectedGroupBuffs: Ability[]
   setGroupBuffs: (abilities: Ability[]) => void
 }
 
 export function usePaste({
-  characters,
-  setCharacterIdx,
+  updateCharacterIdx,
   selectedGroupBuffs,
   setGroupBuffs,
 }: Props) {
@@ -20,12 +18,10 @@ export function usePaste({
     async (text: string, characterIdx: number) => {
       if (!isAddonPaste(text)) return
 
-      const { character, groupBuffs: newGroupBuffs } = getAddonOutput(
-        text,
-        characters[characterIdx]
-      )
+      const { character, groupBuffs: newGroupBuffs } = getAddonOutput(text)
 
-      setCharacterIdx(characterIdx)(character)
+      updateCharacterIdx(characterIdx)(character)
+
       setGroupBuffs([
         ...selectedGroupBuffs,
         ...newGroupBuffs.filter(
@@ -34,11 +30,11 @@ export function usePaste({
         ),
       ])
     },
-    [characters, setCharacterIdx, selectedGroupBuffs, setGroupBuffs]
+    [updateCharacterIdx, selectedGroupBuffs, setGroupBuffs]
   )
 
   const pasteWithButton = useCallback(
-    async (characterIdx: number) => {
+    (characterIdx: number) => async () => {
       const text = await navigator.clipboard.readText()
       await handlePaste(text, characterIdx)
     },

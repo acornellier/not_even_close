@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { AbilityDetailsChip } from './AbilityDetailsChip'
 import { AbilityResult } from '../../backend/sim'
 import { Tooltip } from 'react-tooltip'
+import { TooltipStyled } from '../Common/TooltipStyled'
 
 interface Props {
   ability: EnemyAbility
@@ -15,7 +16,8 @@ export function EnemyAbilityCard({ ability, onSelect, selected, result }: Props)
   const cardColor = selected ? 'bg-teal-600' : 'bg-teal-900'
   const hoverColor = !selected && 'hover:bg-teal-800'
   const showResults = result && result.characters.length === 1
-  const survival = result && result.characters[0].healthRemaining > 0
+  const survival =
+    result && result.characters[0] && result.characters[0].healthRemaining > 0
 
   return (
     <div
@@ -53,12 +55,12 @@ export function EnemyAbilityCard({ ability, onSelect, selected, result }: Props)
             {ability.variance && ` ±${ability.variance * 100}%`}
           </AbilityDetailsChip>
           {ability.variance && (
-            <Tooltip id={`chip-damage-${ability.name}`} className="z-10 max-w-sm">
+            <TooltipStyled id={`chip-damage-${ability.name}`}>
               <p>Some abilities have variance in their damage.</p>
               <p>
                 Not Even Close assumes you will take the upper bound of this variance.
               </p>
-            </Tooltip>
+            </TooltipStyled>
           )}
           <AbilityDetailsChip
             color={ability.isAoe ? 'bg-amber-600' : 'bg-pink-700'}

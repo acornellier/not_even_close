@@ -1,5 +1,5 @@
 ﻿import { Label } from '../Inputs/Label'
-import kofi from './kofi.svg'
+import kofi from '../../public/kofi.svg'
 import Image from 'next/image'
 
 export function KofiWidget() {

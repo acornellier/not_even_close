@@ -18,4 +18,14 @@ export interface Character {
   stats: CharacterStatsInput
   abilities: Ability[]
   externals: Ability[]
+  loadedProfileId?: string
 }
+
+export interface Profile {
+  id: string
+  name: string
+  classSpec: ClassSpec
+  stats: CharacterStatsInput
+}
+
+export type UpdateCharacter = (value: Partial<Character>) => void

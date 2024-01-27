@@ -1,12 +1,12 @@
 import { Ability, AbilityField, abilityFields } from '../../backend/ability'
-import { Tooltip } from 'react-tooltip'
 import { isAbilitySelected, roundTo } from '../../backend/utils'
 import Image from 'next/image'
 import { Fragment } from 'react'
 import { getHealthMultiplierAbsorb } from '../../backend/sim'
 import { useSimContext } from '../Tools/SimContext'
-import { Character } from '../../backend/characterStats'
+import { Character } from '../../backend/characters'
 import { equalSpecs } from '../../backend/classes'
+import { TooltipStyled } from '../Common/TooltipStyled'
 
 const iconSize = 40
 
@@ -88,12 +88,7 @@ export function AbilityIcon({
         toggleAbility(ability.spellId)
       }}
     >
-      <Tooltip
-        id={`ability-tooltip-${ability.spellId}`}
-        className="z-10 max-w-sm"
-        opacity={1}
-        place="right"
-      >
+      <TooltipStyled id={`ability-tooltip-${ability.spellId}`}>
         <div className="flex flex-col">
           <span className="text-xl">{ability.name}</span>
           {abilityFields.map(
@@ -134,7 +129,7 @@ export function AbilityIcon({
           })}
           {ability.notes && <span>{ability.notes}</span>}
         </div>
-      </Tooltip>
+      </TooltipStyled>
       {ability.talentPoints && (
         <div
           className="absolute rounded bottom-0 right-2 text-white"

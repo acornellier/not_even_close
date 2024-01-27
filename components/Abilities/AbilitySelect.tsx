@@ -5,7 +5,7 @@ import {
   isAbilitySelected,
 } from '../../backend/utils'
 import { AbilityIcon } from './AbilityIcon'
-import { Character } from '../../backend/characterStats'
+import { Character } from '../../backend/characters'
 import { useCallback, useEffect } from 'react'
 
 interface Props {

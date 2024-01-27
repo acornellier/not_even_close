@@ -1,6 +1,7 @@
 ﻿import { useState } from 'react'
 import { classColors, classSpecs, WowClass, ClassSpec } from '../../backend/classes'
 import Image from 'next/image'
+import { SpecIcon } from '../Common/SpecIcon'
 
 export interface DropdownProps {
   selectedClassSpec: ClassSpec
@@ -22,14 +23,11 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
         type="button"
         onClick={() => setOpen(!open)}
       >
-        <Image
-          className="rounded mr-1 -ml-1"
-          src={`https://wow.zamimg.com/images/wow/icons/medium/${
-            classSpecs[selectedClassSpec.class][selectedClassSpec.spec].icon
-          }.jpg`}
-          height={20}
-          width={20}
-          alt={selectedClassSpec.spec}
+        <SpecIcon
+          className="mr-1 -ml-1"
+          wowClass={selectedClassSpec.class}
+          spec={selectedClassSpec.spec}
+          size={20}
         />
         {selectedClassSpec.spec} {selectedClassSpec.class}
         <svg
@@ -60,21 +58,15 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
                 >
                   {wowClass}
                 </div>
-                {Object.keys(classSpecs[wowClass]).map((wowSpec) => (
+                {Object.keys(classSpecs[wowClass]).map((spec) => (
                   <div
-                    key={wowSpec}
+                    key={spec}
                     className="cursor-pointer "
-                    onClick={() => handleChange({ class: wowClass, spec: wowSpec })}
+                    onClick={() => handleChange({ class: wowClass, spec: spec })}
                   >
                     <a className="flex gap-0.5 items-center pl-1 rounded hover:bg-gray-600 dark:hover:text-white select-none">
-                      <Image
-                        className="rounded"
-                        src={`https://wow.zamimg.com/images/wow/icons/medium/${classSpecs[wowClass][wowSpec].icon}.jpg`}
-                        height={20}
-                        width={20}
-                        alt={wowSpec}
-                      />
-                      <div className="p-1">{wowSpec}</div>
+                      <SpecIcon wowClass={wowClass} spec={spec} size={20} />
+                      <div className="p-1">{spec}</div>
                     </a>
                   </div>
                 ))}

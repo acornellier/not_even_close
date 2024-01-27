@@ -6,6 +6,7 @@ import { OverkillText } from './OverkillText'
 import Image from 'next/image'
 import { classSpecs } from '../../backend/classes'
 import { ResultDetails } from './ResultDetails'
+import { SpecIcon } from '../Common/SpecIcon'
 
 interface Props {
   result: AbilityResult
@@ -22,14 +23,11 @@ export function ResultsMini({ result }: Props) {
       {result.characters.map((charResult, idx) => (
         <div key={idx}>
           <div className="flex gap-1 mt-1 font-bold">
-            <Image
-              className="rounded border border-gray-500"
-              src={`https://wow.zamimg.com/images/wow/icons/medium/${
-                classSpecs[charResult.spec.class][charResult.spec.spec].icon
-              }.jpg`}
-              height={24}
-              width={24}
-              alt={charResult.spec.spec}
+            <SpecIcon
+              className="border border-gray-500"
+              wowClass={charResult.spec.class}
+              spec={charResult.spec.spec}
+              size={24}
             />
             <span className="flex items-center gap-1">
               {charResult.spec.spec} {charResult.spec.class}:

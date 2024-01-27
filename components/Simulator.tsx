@@ -1,12 +1,11 @@
-import { Character } from '../backend/characterStats'
 import { EnemyAbilityDetails, KeyDetails, Result, simulate } from '../backend/sim'
 import { ResultsFull } from './Results/ResultsFull'
-import { Fragment, useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { EnemyAbilities } from './EnemyAbilities/EnemyAbilities'
 import { LabelledAbilitySelect } from './Abilities/LabelledAbilitySelect'
 import { groupBuffs } from '../backend/groupAbilities/groupBuffs'
-import { Instructions } from './Instructions'
+import { Instructions } from './Results/Instructions'
 import useLocalStorage from './Tools/useLocalStorage'
 import { CustomDrs } from './Abilities/CustomDrs'
 import { CustomAbsorbs } from './Abilities/CustomAbsorbs'
@@ -15,24 +14,13 @@ import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsIn
 import { MoreLess } from './Abilities/MoreLess'
 import { Dungeon, EnemyAbility } from '../backend/dungeons'
 import { Label } from './Inputs/Label'
-import { CharacterComponent } from './CharacterComponent'
-import { ClassSpec, defaultAbilities } from '../backend/classes'
 import { ResultsMini } from './Results/ResultsMini'
 import { SimContextProvider } from './Tools/SimContext'
 import { groupActives } from '../backend/groupAbilities/groupActives'
-import { usePaste } from './Tools/usePaste'
 import { DungeonSelect } from './EnemyAbilities/DungeonSelect'
 import { enemyAbilityToDetails } from '../backend/utils'
+import { Characters, defaultCharacter, defaultCharacters } from './Characters/Characters'
 
-const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
-const defaultCharacter: Character = {
-  classSpec: defaultClassSpec,
-  stats: { stamina: 41_000, versatilityPercent: 5, avoidancePercent: 4.51 },
-  abilities: defaultAbilities(defaultClassSpec),
-  externals: [],
-}
-
-const defaultCharacters = [defaultCharacter]
 const defaultGroupBuffs: Ability[] = []
 const defaultGroupActives: Ability[] = []
 
@@ -57,19 +45,6 @@ export function Simulator() {
     defaultGroupActives
   )
 
-  const setCharacterIdx = useCallback(
-    (index: number) => (newCharacter: Character) =>
-      setCharacters((characters) =>
-        characters.map((character, index2) =>
-          index2 === index ? newCharacter : character
-        )
-      ),
-    [setCharacters]
-  )
-
-  const removeCharacterIdx = (index: number) => () =>
-    setCharacters(characters.filter((_, index2) => index2 !== index))
-
   const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
   const [selectedDungeon, setSelectedDungeon] = useLocalStorage<Dungeon | null>(
     'selectedDungeon',
@@ -83,13 +58,6 @@ export function Simulator() {
     'enemyAbilityDetails',
     defaultEnemyDetails
   )
-
-  const handlePaste = usePaste({
-    characters,
-    setCharacterIdx,
-    selectedGroupBuffs,
-    setGroupBuffs,
-  })
 
   const [moreShown, setMoreShown] = useLocalStorage('moreShown', false)
   const [customDrs, setCustomDrs] = useLocalStorage('customDrs', '')
@@ -146,21 +114,12 @@ export function Simulator() {
 
           <div className="border-2 w-full dark:border-gray-600" />
 
-          {characters.map((character, idx) => (
-            <Fragment key={idx}>
-              <CharacterComponent
-                idx={idx}
-                character={character}
-                setCharacter={setCharacterIdx(idx)}
-                canRemove={characters.length > 1}
-                removeCharacter={removeCharacterIdx(idx)}
-                handlePaste={handlePaste}
-              />
-              {characters.length > 1 && (
-                <div className="border-2 w-full dark:border-gray-600" />
-              )}
-            </Fragment>
-          ))}
+          <Characters
+            characters={characters}
+            setCharacters={setCharacters}
+            selectedGroupBuffs={selectedGroupBuffs}
+            setGroupBuffs={setGroupBuffs}
+          />
 
           <LabelledAbilitySelect
             label="Group buffs"
@@ -194,7 +153,7 @@ export function Simulator() {
               className="gap-2"
               onClick={() => setCharacters([...characters, defaultCharacter])}
             >
-              Add a player
+              Add character
             </Label>
           </div>
 

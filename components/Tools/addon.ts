@@ -1,11 +1,11 @@
 ﻿import { classSpecs, defaultAbilities, WowClass } from '../../backend/classes'
-import { Character } from '../../backend/characterStats'
+import { Character } from '../../backend/characters'
 import { roundTo } from '../../backend/utils'
 import { fortitude, markOfTheWild } from '../../backend/groupAbilities/groupBuffs'
 import { Ability } from '../../backend/ability'
 
 export interface AddonOutput {
-  character: Character
+  character: Partial<Character>
   groupBuffs: Ability[]
 }
 
@@ -48,20 +48,12 @@ function parseAddon(text: string) {
   }
 }
 
-export function getAddonOutput(text: string, character: Character): AddonOutput {
+export function getAddonOutput(text: string): AddonOutput {
   const addonOutput = parseAddon(text)
 
-  const classSpec = addonOutput.spec ?? character.classSpec
-  const abilities =
-    addonOutput.spec && addonOutput.spec !== character.classSpec
-      ? defaultAbilities(addonOutput.spec!)
-      : character.abilities
-
   const newCharacter = {
-    ...character,
-    classSpec,
+    ...(addonOutput.spec ? { classSpec: addonOutput.spec } : {}),
     stats: addonOutput.stats,
-    abilities,
   }
 
   let groupBuffs: Ability[] = []

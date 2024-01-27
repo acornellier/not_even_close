@@ -1,6 +1,6 @@
 ﻿import { createContext, ReactNode, useContext, useMemo } from 'react'
 import { Ability } from '../../backend/ability'
-import { Character } from '../../backend/characterStats'
+import { Character } from '../../backend/characters'
 import { Result } from '../../backend/sim'
 
 export interface SimContext {
