@@ -24,6 +24,7 @@ export function Instructions() {
       <span>
         If you have multiple characters or builds, create profiles for them with the +
         icon to the right of the stats. Load them back with the folder icon at any time.
+        Changes made while a profile is loaded are automatically saved.
       </span>
       <span>
         Physical damage reduced by armor is not supported. Earthshaking Stomp and Hateful

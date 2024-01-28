@@ -140,7 +140,7 @@ export function AbilityIcon({
       )}
       {isSelected && (
         <div
-          className="absolute rounded border-yellow-300 icon-highlight"
+          className="absolute rounded icon-highlight"
           style={{ height: iconSize, width: iconSize }}
         />
       )}
