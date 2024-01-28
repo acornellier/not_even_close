@@ -74,29 +74,34 @@ export function Simulator() {
     [setCustomAbsorbs, setCustomDrs, setMoreShown]
   )
 
-  const [result, setResult] = useState<Result | null>(null)
+  const simulateResult = useCallback(
+    () =>
+      simulate({
+        characters,
+        groupAbilities: [...selectedGroupBuffs, ...selectedGroupActives],
+        customDrs: customDrs.split(',').map(Number).filter(Boolean),
+        customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
+        keyDetails,
+        dungeon: selectedDungeon,
+        enemyAbilityDetails,
+      }),
+    [
+      characters,
+      customDrs,
+      customAbsorbs,
+      keyDetails,
+      enemyAbilityDetails,
+      selectedGroupBuffs,
+      selectedGroupActives,
+      selectedDungeon,
+    ]
+  )
+
+  const [result, setResult] = useState<Result>(simulateResult())
 
   useEffect(() => {
-    const result = simulate({
-      characters,
-      groupAbilities: [...selectedGroupBuffs, ...selectedGroupActives],
-      customDrs: customDrs.split(',').map(Number).filter(Boolean),
-      customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
-      keyDetails,
-      dungeon: selectedDungeon,
-      enemyAbilityDetails,
-    })
-    setResult(result)
-  }, [
-    characters,
-    customDrs,
-    customAbsorbs,
-    keyDetails,
-    enemyAbilityDetails,
-    selectedGroupBuffs,
-    selectedGroupActives,
-    selectedDungeon,
-  ])
+    setResult(simulateResult())
+  }, [simulateResult])
 
   return (
     <SimContextProvider result={result}>
@@ -179,7 +184,7 @@ export function Simulator() {
 
         <div className="basis-[400px] relative">
           <div className="sm:sticky sm:top-10">
-            {result === null ? null : result.main.characters.length === 1 ? (
+            {result.main.characters.length === 1 ? (
               <ResultsFull result={result.main} />
             ) : (
               <ResultsMini result={result.main} />
