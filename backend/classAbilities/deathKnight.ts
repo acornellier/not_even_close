@@ -1,5 +1,12 @@
 import { Ability } from '../ability'
 
+export const willOfTheNecropolis: Ability = {
+  name: 'Will of the Necropolis',
+  spellId: 206967,
+  iconName: 'achievement_boss_kelthuzad_01',
+  notes: 'Damage below 30% Health is reduced by 20%',
+}
+
 export const antiMagicShell: Ability = {
   name: 'Anti-Magic Shell',
   drType: 'magic',
@@ -24,4 +31,9 @@ export const lichborne: Ability = {
   iconName: 'spell_shadow_raisedead',
 }
 
-export const deathKnightAbilities = [lichborne, antiMagicShell, iceboundFortitude]
+export const deathKnightAbilities = [
+  willOfTheNecropolis,
+  lichborne,
+  antiMagicShell,
+  iceboundFortitude,
+]

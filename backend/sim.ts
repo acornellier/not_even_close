@@ -3,6 +3,8 @@ import { Ability } from './ability'
 import { ClassSpec, equalSpecs } from './classes'
 import { augmentAbilities, enemyAbilityToDetails } from './utils'
 import { Dungeon, dungeonAbilities } from './dungeons'
+import { willOfTheNecropolis } from './classAbilities/deathKnight'
+import { dampenHarm } from './classAbilities/monk'
 
 export interface Result {
   main: AbilityResult
@@ -197,6 +199,27 @@ function getAbsorbs(
   return Math.round(absorbs)
 }
 
+function getExtraAbsorbs(
+  abilities: Ability[],
+  startingHealth: number,
+  absorbs: number,
+  actualDamageTaken: number
+) {
+  let extraAbsorbs = 0
+
+  for (const ability of abilities) {
+    if (ability.spellId === willOfTheNecropolis.spellId) {
+      const damageToReach30 = startingHealth + absorbs - startingHealth * 0.3
+      const damageTakenBelow30 = actualDamageTaken - damageToReach30
+      if (damageTakenBelow30 <= 0) continue
+
+      extraAbsorbs += damageTakenBelow30 * 0.35
+    }
+  }
+
+  return Math.round(extraAbsorbs)
+}
+
 function getDamageReduction(
   characterStats: CharacterStats,
   abilities: Ability[],
@@ -220,15 +243,15 @@ function getDamageReduction(
       dr = 0
     }
 
-    if (ability.name === 'Dampen Harm') {
-      const dampenDr = 0.2 + (damageTaken / startingHealth) * 0.3
-      inverseDr *= 1 - Math.min(dampenDr, 0.5)
-    } else if (dr && ability.aoeDr && enemyAbilityDetails.isAoe) {
+    if (dr && ability.aoeDr && enemyAbilityDetails.isAoe) {
       inverseDr *= 1 - Math.max(dr, ability.aoeDr)
     } else if (dr) {
       inverseDr *= 1 - dr
     } else if (ability.aoeDr && enemyAbilityDetails.isAoe) {
       inverseDr *= 1 - ability.aoeDr
+    } else if (ability.spellId === dampenHarm.spellId) {
+      const dampenDr = 0.2 + (damageTaken / startingHealth) * 0.3
+      inverseDr *= 1 - Math.min(dampenDr, 0.5)
     }
   }
 
@@ -300,7 +323,6 @@ function getAbilityResult(
           startingHealth,
           charPartialResults
         )
-        const totalHealth = startingHealth + absorbs
 
         const damageReduction = getDamageReduction(
           adjustedStats,
@@ -310,8 +332,18 @@ function getAbilityResult(
           startingHealth,
           scaledDamage
         )
+
+        const healthWithAbsorbs = startingHealth + absorbs
         const mitigatedDamage = Math.round(scaledDamage * damageReduction)
         const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
+
+        const extraAbsorbs = getExtraAbsorbs(
+          abilities,
+          startingHealth,
+          absorbs,
+          actualDamageTaken
+        )
+        const totalHealth = healthWithAbsorbs + extraAbsorbs
 
         const healthRemaining = totalHealth - actualDamageTaken
 
@@ -323,7 +355,7 @@ function getAbilityResult(
           mitigatedDamage,
           actualDamageTaken,
           startingHealth,
-          absorbs,
+          absorbs: absorbs + extraAbsorbs,
           totalHealth,
           healthRemaining,
         }

@@ -5,6 +5,7 @@ export type DamageType = 'magic' | 'physical'
 export type Ability = {
   name: string
   spellId: number
+  iconName: string
   abilityAugmentations?: AbilityAugmentation[]
   onByDefault?: boolean
   dr?: number
@@ -21,7 +22,6 @@ export type Ability = {
   associatedSpec?: ClassSpec
   absorbBackup?: number
   talentPoints?: number
-  iconName: string
   wowheadLink?: string
   notes?: string
 }
