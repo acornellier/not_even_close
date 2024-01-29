@@ -4,7 +4,7 @@ export const willOfTheNecropolis: Ability = {
   name: 'Will of the Necropolis',
   spellId: 206967,
   iconName: 'achievement_boss_kelthuzad_01',
-  notes: 'Damage below 30% Health is reduced by 20%',
+  notes: 'Damage below 30% Health is reduced by 35%',
 }
 
 export const antiMagicShell: Ability = {
