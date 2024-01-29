@@ -13,15 +13,17 @@ interface Props {
 }
 
 export function EnemyAbilityCard({ ability, onSelect, selected, result }: Props) {
-  const cardColor = selected ? 'bg-teal-600' : 'bg-teal-900'
-  const hoverColor = !selected && 'hover:bg-teal-800'
+  const cardColor = selected
+    ? 'bg-teal-800 dark:bg-teal-600'
+    : 'bg-teal-600 dark:bg-teal-900'
+  const hoverColor = !selected && 'hover:bg-teal-700 dark:hover:bg-teal-800'
   const showResults = result && result.characters.length === 1
   const survival =
     result && result.characters[0] && result.characters[0].healthRemaining > 0
 
   return (
     <div
-      className={`flex items-center gap-2 cursor-pointer rounded-md px-4 py-3 select-none ${hoverColor} ${cardColor}`}
+      className={`flex items-center gap-2 cursor-pointer rounded-md px-4 py-2 select-none ${hoverColor} ${cardColor}`}
       onClick={onSelect}
     >
       <div className="flex gap-2 items-center basis-[200px] whitespace-nowrap">
@@ -42,7 +44,7 @@ export function EnemyAbilityCard({ ability, onSelect, selected, result }: Props)
             alt={ability.name}
           />
         </a>
-        <div>{ability.name}</div>
+        <div className="text-white">{ability.name}</div>
       </div>
       <div className="flex justify-between grow gap-2">
         <div className="flex gap-2">

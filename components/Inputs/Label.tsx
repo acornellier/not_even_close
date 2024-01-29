@@ -10,7 +10,7 @@ interface Props
 export function Label({ className, short, button, bigText, ...props }: Props) {
   const shortClass = short ? 'py-1' : 'py-2.5'
   const buttonClass = button
-    ? 'cursor-pointer hover:bg-teal-800 hover:dark:bg-teal-700'
+    ? 'cursor-pointer hover:bg-teal-800 hover:dark:bg-teal-700 shadow-lg'
     : ''
   const textClass = bigText ? 'text-base' : 'text-sm'
 

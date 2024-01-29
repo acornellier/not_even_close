@@ -5,7 +5,7 @@
 }
 
 function OnOffButton({ label, enabled, isLeft }: OnOffButtonProps) {
-  const opacityClass = enabled ? '' : 'opacity-30'
+  const opacityClass = enabled ? '' : 'opacity-40 dark:opacity-30'
   const roundedClass = isLeft ? 'rounded-l' : 'rounded-r'
 
   return (

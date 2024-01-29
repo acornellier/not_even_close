@@ -4,7 +4,7 @@ export function TailwindBreakpoint() {
   if (!isDevEnv) return null
 
   return (
-    <div className="fixed top-0 left-0 bg-gray-600 px-1">
+    <div className="fixed top-0 left-0 bg-gray-600 px-1 text-white">
       <div
         id="breakpoint-xs"
         className="block sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden"

@@ -1,7 +1,6 @@
 ﻿import { Dungeon, dungeonIcons, dungeons } from '../../backend/dungeons'
 import Image from 'next/image'
 import { Label } from '../Inputs/Label'
-import { AbilityResult } from '../../backend/sim'
 
 interface Props {
   setSelectedDungeon: (dungeon: Dungeon) => void

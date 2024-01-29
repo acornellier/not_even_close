@@ -34,7 +34,7 @@ export function EnemyAbilities({
           button
           bigText
           onClick={deselectDungeon}
-          className="font-bold text-xl gap-2 px-2"
+          className="text-xl gap-2 px-2"
         >
           <Image
             className={`rounded border-2 border-gray-600`}
