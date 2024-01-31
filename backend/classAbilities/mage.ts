@@ -54,6 +54,7 @@ export const tempestBarrier: Ability = {
   name: 'Tempest Barrier',
   spellId: 382289,
   absorbHealthMultiplier: 0.06,
+  absorbVersAffected: true,
   iconName: 'inv_shield_1h_artifactstormfist_d_04',
 }
 
