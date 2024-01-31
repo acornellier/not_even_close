@@ -50,6 +50,13 @@ export const improvedPrismaticBarrier: Ability = {
   ],
 }
 
+export const tempestBarrier: Ability = {
+  name: 'Tempest Barrier',
+  spellId: 382289,
+  absorbHealthMultiplier: 0.06,
+  iconName: 'inv_shield_1h_artifactstormfist_d_04',
+}
+
 export const iceCold: Ability = {
   name: 'Ice Cold',
   dr: 0.7,
@@ -78,6 +85,7 @@ export const mageArcaneAbilities = [
   arcaneWarding,
   prismaticBarrier,
   improvedPrismaticBarrier,
+  tempestBarrier,
   mirrorImage,
   greaterInvisibility,
   iceCold,
@@ -86,6 +94,7 @@ export const mageArcaneAbilities = [
 export const mageFireAbilities = [
   arcaneWarding,
   blazingBarrier,
+  tempestBarrier,
   mirrorImage,
   greaterInvisibility,
   iceCold,
@@ -94,6 +103,7 @@ export const mageFireAbilities = [
 export const mageFrostAbilities = [
   arcaneWarding,
   iceBarrier,
+  tempestBarrier,
   mirrorImage,
   greaterInvisibility,
   iceCold,
