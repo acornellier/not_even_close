@@ -92,11 +92,20 @@ export const ancestralVigor: Ability = {
   iconName: 'spell_shaman_blessingoftheeternals',
 }
 
+export const earthenHarmony: Ability = {
+  name: 'Earthen Harmony',
+  dr: 0.06,
+  spellId: 382020,
+  associatedSpec: { class: 'Shaman', spec: 'Restoration' },
+  iconName: 'spell_shaman_improvedearthshield',
+}
+
 export const externals: Ability[] = [
   icyPreservation,
   lenience,
   twinGuardian,
   ancestralVigor,
+  earthenHarmony,
   ironBark,
   blessingOfSacrifice,
   blessingOfProtection,

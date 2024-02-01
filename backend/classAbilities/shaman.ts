@@ -63,13 +63,6 @@ export const earthElemental: Ability = {
   iconName: 'spell_nature_earthelemental_totem',
 }
 
-export const earthenHarmony: Ability = {
-  name: 'Earthen Harmony',
-  dr: 0.06,
-  spellId: 382020,
-  iconName: 'spell_shaman_improvedearthshield',
-}
-
 export const spiritWolf: Ability = {
   name: 'Spirit Wolf',
   dr: 0.2,
@@ -110,7 +103,6 @@ export const shamanRestoAbilities = [
   brimmingWithLife,
   ancestralDefense,
   astralBulwark,
-  earthenHarmony,
   earthElemental,
   spiritWolf,
   astralShift,

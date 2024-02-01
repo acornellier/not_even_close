@@ -76,6 +76,6 @@ export const groupBuffs: Ability[] = [
   blackAttunement,
   devotionAura,
   generousPour,
-  fortitude,
   markOfTheWild,
+  fortitude,
 ]
