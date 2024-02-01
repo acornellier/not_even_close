@@ -4,6 +4,7 @@ export const spellWarding: Ability = {
   name: 'Spell Warding',
   onByDefault: true,
   dr: 0.03,
+  drType: 'magic',
   spellId: 390667,
   iconName: 'spell_holy_spellwarding',
 }
