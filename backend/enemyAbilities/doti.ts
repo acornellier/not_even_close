@@ -30,6 +30,16 @@ export const dividingStrike: EnemyAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=400641/dividing-strike',
 }
 
+export const dividingStrikeTwo: EnemyAbility = {
+  name: 'Dividing Strike (split 2 ways)',
+  boss: 'Tyr',
+  dungeon: 'Dawn of the Infinite',
+  baseDamage: 274654, // 549308 / 2
+  isAoe: true,
+  iconName: 'inv_trinket_80_titan01d',
+  wowheadLink: 'https://www.wowhead.com/spell=400641/dividing-strike',
+}
+
 export const chronoburst: EnemyAbility = {
   name: 'Chronoburst',
   dungeon: 'Dawn of the Infinite',
@@ -40,4 +50,10 @@ export const chronoburst: EnemyAbility = {
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=415769/chronoburst',
 }
 
-export const dotiAbilites = [chronoburst, chronofade, corrosion, dividingStrike]
+export const dotiAbilites = [
+  chronoburst,
+  chronofade,
+  corrosion,
+  dividingStrike,
+  dividingStrikeTwo,
+]
