@@ -17,10 +17,11 @@ export function augmentAbilities(abilities: Ability[], selectedAbilities: Abilit
     abilities.forEach(({ spellId, abilityAugmentations }) => {
       if (!abilityAugmentations || !isAbilitySelected(spellId, selectedAbilities)) return
 
-      abilityAugmentations.forEach((abilityAugmentation) => {
-        if (abilityAugmentation?.otherSpellId === augmentedAbility.spellId) {
-          augmentedAbility[abilityAugmentation.field] ??= 0
-          augmentedAbility[abilityAugmentation.field]! += abilityAugmentation.value
+      abilityAugmentations.forEach(({ otherSpellId, field, value }) => {
+        if (otherSpellId === augmentedAbility.spellId) {
+          augmentedAbility[field] ??= 0
+          if (field === 'absorbHealthMultiplier') augmentedAbility[field]! *= 1 + value
+          else augmentedAbility[field]! += value
         }
       })
     })

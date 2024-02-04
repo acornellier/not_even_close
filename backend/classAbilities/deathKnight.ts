@@ -10,11 +10,38 @@ export const willOfTheNecropolis: Ability = {
 export const antiMagicShell: Ability = {
   name: 'Anti-Magic Shell',
   drType: 'magic',
-  absorbHealthMultiplier: 0.483,
+  absorbHealthMultiplier: 0.3,
   absorbVersAffected: true,
   spellId: 48707,
   iconName: 'spell_shadow_antimagicshell',
-  notes: 'Assumes you have Anti-Magic Barrier and Gloom Ward',
+}
+
+export const antiMagicBarrier: Ability = {
+  name: 'Anti-Magic Barrier',
+  spellId: 205727,
+  onByDefault: true,
+  iconName: 'spell_shadow_antimagicshell',
+  abilityAugmentations: [
+    {
+      otherSpellId: antiMagicShell.spellId,
+      field: 'absorbHealthMultiplier',
+      value: 0.4,
+    },
+  ],
+}
+
+export const gloomWard: Ability = {
+  name: 'Gloom Ward',
+  spellId: 391571,
+  onByDefault: true,
+  iconName: 'ability_rogue_envelopingshadows',
+  abilityAugmentations: [
+    {
+      otherSpellId: antiMagicShell.spellId,
+      field: 'absorbHealthMultiplier',
+      value: 0.15,
+    },
+  ],
 }
 
 export const iceboundFortitude: Ability = {
@@ -32,6 +59,8 @@ export const lichborne: Ability = {
 }
 
 export const deathKnightAbilities = [
+  antiMagicBarrier,
+  gloomWard,
   willOfTheNecropolis,
   lichborne,
   antiMagicShell,

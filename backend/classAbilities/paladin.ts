@@ -53,16 +53,17 @@ export const aegisOfProtection: Ability = {
   spellId: 403654,
   onByDefault: true,
   iconName: 'spell_holy_holyprotection',
+  notes: 'Bugged. Increases Shield of Vengeance by 20% instead of 10%.',
   abilityAugmentations: [
     {
-      otherSpellId: 498, // Divine Protection
+      otherSpellId: divineProtection.spellId,
       field: 'dr',
       value: 0.1,
     },
     {
-      otherSpellId: 184662, // Shield of Vengeance
+      otherSpellId: shieldOfVengeance.spellId,
       field: 'absorbHealthMultiplier',
-      value: 0.03,
+      value: 0.2,
     },
   ],
 }

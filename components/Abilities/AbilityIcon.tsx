@@ -115,14 +115,9 @@ export function AbilityIcon({
               <Fragment key={augmentedAbility.spellId}>
                 <span>
                   Improves {augmentedAbility.name}:{' '}
-                  {abilityFields.map(
-                    (field) =>
-                      augmentation.field === field && (
-                        <span key={field}>
-                          +{getEffectText(field, augmentation.value)}
-                        </span>
-                      )
-                  )}
+                  {augmentation.field !== 'absorbHealthMultiplier'
+                    ? `+${getEffectText(augmentation.field, augmentation.value)}`
+                    : `${augmentation.value * 100}% more absorb`}
                 </span>
               </Fragment>
             )
