@@ -36,7 +36,20 @@ export const warpaint: Ability = {
   notes: 'Enrage is usually active, but not always',
 }
 
-export const warriorArmsAbilities = [defensiveStance, spellReflection, dieByTheSword]
+export const seasonedSoldier: Ability = {
+  name: 'Seasoned Soldier',
+  aoeDr: 0.1,
+  spellId: 279423,
+  onByDefault: true,
+  iconName: 'inv_axe_09',
+}
+
+export const warriorArmsAbilities = [
+  seasonedSoldier,
+  defensiveStance,
+  spellReflection,
+  dieByTheSword,
+]
 
 export const warriorFuryAbilities = [
   defensiveStance,
