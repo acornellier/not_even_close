@@ -62,7 +62,7 @@ export const aegisOfProtection: Ability = {
     {
       otherSpellId: 184662, // Shield of Vengeance
       field: 'absorbHealthMultiplier',
-      value: 0.1,
+      value: 0.03,
     },
   ],
 }
