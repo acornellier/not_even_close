@@ -59,9 +59,9 @@ export const lifeCocoon: Ability = {
   associatedSpec: { class: 'Monk', spec: 'Mistweaver' },
   absorbHealthMultiplier: 0.8,
   absorbVersAffected: true,
-  absorbBackup: 1_000_000,
+  absorbBackup: 900_000,
   iconName: 'ability_monk_chicocoon',
-  notes: 'Assumes 1M absorb if you have no mistweaver selected',
+  notes: 'Assumes 900K absorb if you have no mistweaver selected',
 }
 
 export const twinGuardian: Ability = {
