@@ -18,10 +18,8 @@ export const risingLight: Ability = {
 export const bearForm: Ability = {
   name: 'Bear Form',
   staminaIncrease: 0.25,
-  versIncrease: 0.06,
   spellId: 5487,
   iconName: 'ability_racial_bearform',
-  notes: "Assumes you have 3 points in Lycara's Teachings",
 }
 
 export const lycarasTeachings: Ability = {
