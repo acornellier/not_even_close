@@ -24,6 +24,22 @@ export const bearForm: Ability = {
   notes: "Assumes you have 3 points in Lycara's Teachings",
 }
 
+export const lycarasTeachings: Ability = {
+  name: "Lycara's Teachings",
+  onByDefault: false,
+  spellId: 378988,
+  iconName: 'inv_trinket_ardenweald_02_green',
+  notes:
+    'You might not receive the vers buff for up to 5 seconds after swapping to Bear Form',
+  abilityAugmentations: [
+    {
+      otherSpellId: bearForm.spellId,
+      field: 'versIncrease',
+      value: 0.06,
+    },
+  ],
+}
+
 export const ursineVigorOnePoint: Ability = {
   name: 'Ursine Vigor (1 point)',
   talentPoints: 1,
@@ -32,7 +48,7 @@ export const ursineVigorOnePoint: Ability = {
   notes: 'Do NOT select both ursine vigors',
   abilityAugmentations: [
     {
-      otherSpellId: 5487,
+      otherSpellId: bearForm.spellId,
       field: 'healthIncrease',
       value: 0.1,
     },
@@ -47,7 +63,7 @@ export const ursineVigorTwoPoints: Ability = {
   notes: 'Do NOT select both ursine vigors',
   abilityAugmentations: [
     {
-      otherSpellId: 5487,
+      otherSpellId: bearForm.spellId,
       field: 'healthIncrease',
       value: 0.2,
     },
@@ -60,7 +76,7 @@ export const heartOfTheWild: Ability = {
   iconName: 'spell_holy_blessingofagility',
   abilityAugmentations: [
     {
-      otherSpellId: 5487,
+      otherSpellId: bearForm.spellId,
       field: 'staminaIncrease',
       value: 0.2,
     },
@@ -99,9 +115,10 @@ export const druidBalanceAbilities = [
   thickHide,
   risingLight,
   bearForm,
+  heartOfTheWild,
+  lycarasTeachings,
   ursineVigorOnePoint,
   ursineVigorTwoPoints,
-  heartOfTheWild,
   barkskin,
 ]
 
@@ -109,9 +126,10 @@ export const druidFeralAbilities = [
   thickHide,
   risingLight,
   bearForm,
+  heartOfTheWild,
+  lycarasTeachings,
   ursineVigorOnePoint,
   ursineVigorTwoPoints,
-  heartOfTheWild,
   barkskin,
   survivalInsticts,
   protectiveGrowth,
@@ -121,9 +139,10 @@ export const druidRestoAbilities = [
   thickHide,
   risingLight,
   bearForm,
+  heartOfTheWild,
+  lycarasTeachings,
   ursineVigorOnePoint,
   ursineVigorTwoPoints,
-  heartOfTheWild,
   barkskin,
   innerPeace,
 ]
