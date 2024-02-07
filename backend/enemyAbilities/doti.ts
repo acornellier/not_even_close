@@ -5,7 +5,7 @@ export const chronofade: EnemyAbility = {
   boss: 'Manifested Timeways',
   dungeon: 'Dawn of the Infinite',
   baseDamage: 68663,
-  isAoe: false,
+  isAoe: true,
   iconName: 'achievement_challengemode_arakkoaspires_hourglass',
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=405448/chronofade',
 }
