@@ -1,7 +1,7 @@
 ﻿import { useState } from 'react'
 import { classColors, classSpecs, WowClass, ClassSpec } from '../../backend/classes'
-import Image from 'next/image'
 import { SpecIcon } from '../Common/SpecIcon'
+import { Label } from '../Inputs/Label'
 
 export interface DropdownProps {
   selectedClassSpec: ClassSpec
@@ -18,10 +18,10 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
 
   return (
     <div>
-      <button
-        className="text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-teal-800 select-none"
-        type="button"
+      <Label
+        button
         onClick={() => setOpen(!open)}
+        className={open ? 'rounded-b-none' : ''}
       >
         <SpecIcon
           className="mr-1 -ml-1"
@@ -45,10 +45,10 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
             d="m1 1 4 4 4-4"
           />
         </svg>
-      </button>
+      </Label>
 
       {open && (
-        <div className="absolute z-10  divide-y divide-gray-100 rounded-lg shadow bg-gray-700">
+        <div className="absolute z-10  divide-y divide-gray-100 rounded-b-lg rounded-tr-lg shadow bg-zinc-700 dark:bg-zinc-800 border-2 border-gray-600">
           <div className="grid grid-cols-4 gap-2 px-4 py-2 text-sm text-gray-200">
             {(Object.keys(classSpecs) as WowClass[]).map((wowClass) => (
               <div className="p-1" key={wowClass}>
