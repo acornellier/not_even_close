@@ -70,6 +70,14 @@ export const masterPoisoner: Ability = {
   ],
 }
 
+export const lenience: Ability = {
+  name: 'Lenience',
+  spellId: 238063,
+  dr: 0.03,
+  associatedSpec: { class: 'Priest', spec: 'Discipline' },
+  iconName: 'ability_priest_atonement',
+}
+
 export const groupBuffs: Ability[] = [
   masterPoisoner,
   atrophicPoison,
@@ -78,4 +86,5 @@ export const groupBuffs: Ability[] = [
   generousPour,
   markOfTheWild,
   fortitude,
+  lenience,
 ]

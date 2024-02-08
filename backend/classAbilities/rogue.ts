@@ -3,6 +3,7 @@ import { Ability } from '../ability'
 export const elusiveness: Ability = {
   name: 'Elusiveness',
   spellId: 79008,
+  onByDefault: true,
   wowheadLink: 'https://www.wowhead.com/spell=79008/elusiveness',
   iconName: 'ability_rogue_turnthetables',
   abilityAugmentations: [
