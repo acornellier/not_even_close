@@ -1,11 +1,9 @@
 import { EnemyAbilityDetails, KeyDetails, Result, simulate } from '../backend/sim'
-import { ResultsFull } from './Results/ResultsFull'
 import { useCallback, useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { EnemyAbilities } from './EnemyAbilities/EnemyAbilities'
 import { LabelledAbilitySelect } from './Abilities/LabelledAbilitySelect'
 import { groupBuffs } from '../backend/groupAbilities/groupBuffs'
-import { Instructions } from './Results/Instructions'
 import useLocalStorage from './Tools/useLocalStorage'
 import { CustomDrs } from './Abilities/CustomDrs'
 import { CustomAbsorbs } from './Abilities/CustomAbsorbs'
@@ -14,12 +12,12 @@ import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsIn
 import { MoreLess } from './Abilities/MoreLess'
 import { Dungeon, EnemyAbility } from '../backend/dungeons'
 import { Label } from './Inputs/Label'
-import { ResultsMini } from './Results/ResultsMini'
 import { SimContextProvider } from './Tools/SimContext'
 import { groupActives } from '../backend/groupAbilities/groupActives'
 import { DungeonSelect } from './EnemyAbilities/DungeonSelect'
 import { enemyAbilityToDetails } from '../backend/utils'
 import { Characters, defaultCharacter, defaultCharacters } from './Characters/Characters'
+import { Sidebar } from './Sidebar'
 
 const defaultGroupBuffs: Ability[] = []
 const defaultGroupActives: Ability[] = []
@@ -183,17 +181,7 @@ export function Simulator() {
         <div className="border-2 mx-2 dark:border-gray-600" />
 
         <div className="basis-[400px] relative">
-          <div className="sm:sticky sm:top-10">
-            {result.main.characters.length === 1 ? (
-              <ResultsFull result={result.main} />
-            ) : (
-              <ResultsMini result={result.main} />
-            )}
-
-            <div className="border-2 my-4 dark:border-gray-600" />
-
-            <Instructions />
-          </div>
+          <Sidebar result={result} />
         </div>
       </div>
     </SimContextProvider>
