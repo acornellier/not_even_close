@@ -50,6 +50,16 @@ export const chronoburst: EnemyAbility = {
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=415769/chronoburst',
 }
 
+export const chronomelt: EnemyAbility = {
+  name: 'Chronomelt',
+  dungeon: 'Dawn of the Infinite',
+  baseDamage: 21972,
+  isAoe: false,
+  isTrashAbility: true,
+  iconName: 'inv_10_enchanting2_magicswirl_bronze',
+  wowheadLink: 'https://www.wowhead.com/ptr-2/spell=412393/chronomelt',
+}
+
 export const dotiAbilites = [
   chronoburst,
   chronofade,
