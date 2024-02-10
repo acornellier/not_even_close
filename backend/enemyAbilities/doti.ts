@@ -63,6 +63,7 @@ export const chronomelt: EnemyAbility = {
 export const dotiAbilites = [
   chronoburst,
   chronofade,
+  chronomelt,
   corrosion,
   dividingStrike,
   dividingStrikeTwo,
