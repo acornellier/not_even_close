@@ -193,7 +193,7 @@ export function Simulator() {
         <div className="border-2 mx-2 dark:border-gray-600" />
 
         <div className="basis-[400px] relative">
-          <Sidebar result={result} />
+          <Sidebar result={result} enemyAbility={enemyAbility} keyDetails={keyDetails} />
         </div>
       </div>
     </SimContextProvider>
