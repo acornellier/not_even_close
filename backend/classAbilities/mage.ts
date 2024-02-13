@@ -30,7 +30,6 @@ export const iceBarrier: Ability = {
 export const prismaticBarrier: Ability = {
   name: 'Prismatic Barrier',
   absorbHealthMultiplier: 0.2,
-  absorbVersAffected: true,
   dr: 0.15,
   spellId: 235450,
   iconName: 'spell_magearmor',
