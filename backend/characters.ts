@@ -3,14 +3,8 @@ import { Ability } from './ability'
 
 export interface CharacterStatsInput {
   stamina: number | undefined
-  versatilityPercent: number | undefined
-  avoidancePercent: number | undefined
-}
-
-export interface CharacterStats {
-  stamina: number
-  versatility: number
-  avoidance: number
+  versatilityRaw: number | undefined
+  avoidanceRaw: number | undefined
 }
 
 export interface Character {
@@ -28,4 +22,4 @@ export interface Profile {
   stats: CharacterStatsInput
 }
 
-export type UpdateCharacter = (value: Partial<Character>) => void
+export type UpdateCharacter = (value: Partial<Character>, addTepidVers?: boolean) => void

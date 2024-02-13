@@ -1,5 +1,6 @@
 ﻿import { CharacterStatsInput } from '../../backend/characters'
 import { NumericInput } from '../Inputs/NumericInput'
+import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from '../../backend/stats'
 
 interface Props {
   characterStats: CharacterStatsInput
@@ -21,17 +22,20 @@ export function CharacterStatsForm({ characterStats, onChange }: Props) {
         value={characterStats.stamina}
         onChange={onChangeStat('stamina')}
         step={500}
+        inputTooltip={`${staminaToHp(characterStats.stamina ?? 0)} HP`}
       />
       <NumericInput
-        label="Versatility (%)"
-        value={characterStats.versatilityPercent}
-        onChange={onChangeStat('versatilityPercent')}
-        tooltip={<p>Total vers, not just the DR portion.</p>}
+        label="Versatility (raw)"
+        value={characterStats.versatilityRaw}
+        onChange={onChangeStat('versatilityRaw')}
+        step={100}
+        inputTooltip={`${versRawToPercent(characterStats.versatilityRaw ?? 0)}%`}
       />
       <NumericInput
-        label="Avoidance (%)"
-        value={characterStats.avoidancePercent}
-        onChange={onChangeStat('avoidancePercent')}
+        label="Avoidance (raw)"
+        value={characterStats.avoidanceRaw}
+        onChange={onChangeStat('avoidanceRaw')}
+        inputTooltip={`${avoidanceRawToPercent(characterStats.avoidanceRaw ?? 0)}%`}
       />
     </div>
   )

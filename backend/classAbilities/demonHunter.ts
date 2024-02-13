@@ -1,5 +1,13 @@
 ﻿import { Ability } from '../ability'
 
+export const scarsOfSuffering: Ability = {
+  name: 'Scars of Suffering',
+  spellId: 428232,
+  onByDefault: true,
+  versIncrease: 0.04,
+  iconName: 'spell_fire_felimmolation',
+}
+
 export const demonicWards: Ability = {
   name: 'Demonic Wards',
   spellId: 203513,
@@ -63,6 +71,7 @@ export const demonHide: Ability = {
 }
 
 export const havocAbilities = [
+  scarsOfSuffering,
   demonicWards,
   illidariKnowledge,
   demonHide,

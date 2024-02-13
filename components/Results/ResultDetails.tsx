@@ -6,8 +6,14 @@ interface Props {
 }
 
 export function ResultDetails({ charResult }: Props) {
+  const vers = roundTo(charResult.adjustedStats.versatility * 100, 2)
+  const versDr = roundTo(vers / 2, 2)
+
   return (
     <>
+      <div>
+        Versatility: {vers.toLocaleString('en-US')}% ({versDr}% DR)
+      </div>
       <div>
         Damage mitigated: {charResult.mitigatedDamage.toLocaleString('en-US')} (
         {roundTo(charResult.damageReduction * 100, 2).toLocaleString('en-US')}%)

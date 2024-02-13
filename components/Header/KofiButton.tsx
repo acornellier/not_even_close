@@ -1,4 +1,4 @@
-﻿import { Label } from '../Inputs/Label'
+﻿import { Label } from '../Common/Label'
 import kofi from '../../public/kofi.svg'
 import Image from 'next/image'
 

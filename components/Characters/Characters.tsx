@@ -1,10 +1,11 @@
-import { Dispatch, Fragment, SetStateAction, useCallback, useEffect } from 'react'
+import { Dispatch, Fragment, SetStateAction, useEffect } from 'react'
 import { Character, Profile } from '../../backend/characters'
 import { CharacterComponent } from './CharacterComponent'
 import { usePaste } from '../Tools/usePaste'
 import { ClassSpec, defaultAbilities } from '../../backend/classes'
 import { Ability } from '../../backend/ability'
 import useLocalStorage from '../Tools/useLocalStorage'
+import { useCharacterChanges } from './useCharacterChanges'
 
 interface Props {
   characters: Character[]
@@ -16,7 +17,11 @@ interface Props {
 const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
 export const defaultCharacter: Character = {
   classSpec: defaultClassSpec,
-  stats: { stamina: 41_000, versatilityPercent: 5, avoidancePercent: 4.51 },
+  stats: {
+    stamina: 41_000,
+    versatilityRaw: 1000,
+    avoidanceRaw: 325,
+  },
   abilities: defaultAbilities(defaultClassSpec),
   externals: [],
 }
@@ -36,83 +41,17 @@ export function Characters({
     if (characters.length === 0) setCharacters(defaultCharacters)
   }, [characters, setCharacters])
 
-  const updateCharacterIdx = useCallback(
-    (index: number) => (charChanges: Partial<Character>) => {
-      setCharacters((characters) =>
-        characters.map((character, index2) => {
-          if (index2 !== index) return character
-
-          return {
-            ...character,
-            ...charChanges,
-            ...(charChanges.classSpec && charChanges.classSpec !== character.classSpec
-              ? { abilities: defaultAbilities(charChanges.classSpec), externals: [] }
-              : {}),
-          }
-        })
-      )
-
-      if (charChanges.loadedProfileId) return
-
-      setProfiles((profiles) =>
-        profiles.map((profile) =>
-          profile.id === characters[index].loadedProfileId
-            ? {
-                ...profile,
-                ...(charChanges.classSpec ? { classSpec: charChanges.classSpec } : {}),
-                ...(charChanges.stats ? { stats: charChanges.stats } : {}),
-              }
-            : profile
-        )
-      )
-    },
-    [characters, setCharacters, setProfiles]
-  )
-
-  const removeCharacterIdx = useCallback(
-    (index: number) => () =>
-      setCharacters((characters) => characters.filter((_, index2) => index2 !== index)),
-    [setCharacters]
-  )
-
-  const createProfileIdx = useCallback(
-    (characterIdx: number) => (name: string) => {
-      const id = crypto.randomUUID()
-      setProfiles((profiles) => [
-        ...profiles,
-        {
-          id,
-          name,
-          classSpec: characters[characterIdx].classSpec,
-          stats: characters[characterIdx].stats,
-        },
-      ])
-      updateCharacterIdx(characterIdx)({ loadedProfileId: id })
-    },
-    [characters, setProfiles, updateCharacterIdx]
-  )
-
-  const loadProfileIdx = useCallback(
-    (index: number) => (profile: Profile | null) => {
-      if (profile === null) {
-        updateCharacterIdx(index)({ loadedProfileId: undefined })
-      } else {
-        updateCharacterIdx(index)({
-          classSpec: profile.classSpec,
-          stats: profile.stats,
-          loadedProfileId: profile.id,
-        })
-      }
-    },
-    [updateCharacterIdx]
-  )
-
-  const deleteProfile = useCallback(
-    (profileId: string) => {
-      setProfiles((profiles) => profiles.filter((profile) => profile.id !== profileId))
-    },
-    [setProfiles]
-  )
+  const {
+    updateCharacterIdx,
+    removeCharacterIdx,
+    createProfileIdx,
+    deleteProfile,
+    loadProfileIdx,
+  } = useCharacterChanges({
+    setCharacters,
+    setProfiles,
+    characters,
+  })
 
   const handlePaste = usePaste({
     updateCharacterIdx,

@@ -44,7 +44,6 @@ export const ursineVigorOnePoint: Ability = {
   talentPoints: 1,
   spellId: 377842_1,
   iconName: 'ability_druid_markofursol',
-  notes: 'Do NOT select both ursine vigors',
   abilityAugmentations: [
     {
       otherSpellId: bearForm.spellId,
@@ -59,7 +58,6 @@ export const ursineVigorTwoPoints: Ability = {
   talentPoints: 2,
   spellId: 377842_2,
   iconName: 'ability_druid_markofursol',
-  notes: 'Do NOT select both ursine vigors',
   abilityAugmentations: [
     {
       otherSpellId: bearForm.spellId,

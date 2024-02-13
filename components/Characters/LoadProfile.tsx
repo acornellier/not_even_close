@@ -1,9 +1,9 @@
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { Profile } from '../../backend/characters'
-import { Label } from '../Inputs/Label'
 import { SpecIcon } from '../Common/SpecIcon'
 import { useRef } from 'react'
 import { TooltipRefProps } from 'react-tooltip'
+import { Button } from '../Common/Button'
 
 interface Props {
   idx: number
@@ -77,17 +77,17 @@ export function LoadProfile({
                 </div>
                 <div className="flex items-center gap-2">
                   {isLoaded ? (
-                    <Label short button onClick={() => loadProfile(null)}>
+                    <Button short onClick={() => loadProfile(null)}>
                       Unload
-                    </Label>
+                    </Button>
                   ) : (
-                    <Label short button onClick={() => loadProfile(profile)}>
+                    <Button short onClick={() => loadProfile(profile)}>
                       Load
-                    </Label>
+                    </Button>
                   )}
-                  <Label short button onClick={() => deleteProfile(profile.id)}>
+                  <Button short onClick={() => deleteProfile(profile.id)}>
                     Delete
-                  </Label>
+                  </Button>
                 </div>
               </div>
             )

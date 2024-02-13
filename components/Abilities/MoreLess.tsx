@@ -1,4 +1,4 @@
-import { Label } from '../Inputs/Label'
+import { Button } from '../Common/Button'
 
 interface Props {
   moreShown: boolean
@@ -7,7 +7,7 @@ interface Props {
 
 export function MoreLess({ moreShown, setMoreShown }: Props) {
   return (
-    <Label short button className="gap-2" onClick={() => setMoreShown(!moreShown)}>
+    <Button short className="gap-2" onClick={() => setMoreShown(!moreShown)}>
       {moreShown ? 'Less' : 'More'}
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -31,6 +31,6 @@ export function MoreLess({ moreShown, setMoreShown }: Props) {
           />
         )}
       </svg>
-    </Label>
+    </Button>
   )
 }

@@ -11,13 +11,14 @@ import { KeyDetailsInput } from './Inputs/KeyDetailsInput'
 import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsInput'
 import { MoreLess } from './Abilities/MoreLess'
 import { Dungeon, EnemyAbility } from '../backend/dungeons'
-import { Label } from './Inputs/Label'
+import { Sidebar } from './Sidebar'
 import { SimContextProvider } from './Tools/SimContext'
 import { groupActives } from '../backend/groupAbilities/groupActives'
 import { DungeonSelect } from './EnemyAbilities/DungeonSelect'
 import { enemyAbilityToDetails } from '../backend/utils'
 import { Characters, defaultCharacter, defaultCharacters } from './Characters/Characters'
-import { Sidebar } from './Sidebar'
+import { VersModal } from './Common/VersModal'
+import { Button } from './Common/Button'
 
 const defaultGroupBuffs: Ability[] = []
 const defaultGroupActives: Ability[] = []
@@ -101,8 +102,21 @@ export function Simulator() {
     setResult(simulateResult())
   }, [simulateResult])
 
+  const [versModalOpen, setVersModalOpen] = useState(false)
+  const [versModalAck, setVersModalAck] = useLocalStorage('versModalAck', false)
+
+  useEffect(() => {
+    if (characters[0]?.stats.versatilityRaw === undefined) setVersModalOpen(true)
+  }, [characters])
+
+  const onHideModal = useCallback(() => {
+    setVersModalOpen(false)
+    setVersModalAck(true)
+  }, [setVersModalAck])
+
   return (
     <SimContextProvider result={result}>
+      <VersModal open={versModalOpen && !versModalAck} hide={onHideModal} />
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="flex flex-col gap-4 grow">
           <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
@@ -150,14 +164,12 @@ export function Simulator() {
 
           <div className="flex gap-4">
             <MoreLess moreShown={moreShown} setMoreShown={setMoreShownWithEffect} />
-            <Label
+            <Button
               short
-              button
-              className="gap-2"
               onClick={() => setCharacters([...characters, defaultCharacter])}
             >
               Add character
-            </Label>
+            </Button>
           </div>
 
           <div className="border-2 w-full dark:border-gray-600" />

@@ -1,7 +1,7 @@
 ﻿import { useState } from 'react'
 import { classColors, classSpecs, WowClass, ClassSpec } from '../../backend/classes'
 import { SpecIcon } from '../Common/SpecIcon'
-import { Label } from '../Inputs/Label'
+import { Button } from '../Common/Button'
 
 export interface DropdownProps {
   selectedClassSpec: ClassSpec
@@ -18,11 +18,7 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
 
   return (
     <div>
-      <Label
-        button
-        onClick={() => setOpen(!open)}
-        className={open ? 'rounded-b-none' : ''}
-      >
+      <Button onClick={() => setOpen(!open)} className={open ? 'rounded-b-none' : ''}>
         <SpecIcon
           className="mr-1 -ml-1"
           wowClass={selectedClassSpec.class}
@@ -45,7 +41,7 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
             d="m1 1 4 4 4-4"
           />
         </svg>
-      </Label>
+      </Button>
 
       {open && (
         <div className="absolute z-10  divide-y divide-gray-100 rounded-b-lg rounded-tr-lg shadow bg-zinc-700 dark:bg-zinc-800 border-2 border-gray-600">

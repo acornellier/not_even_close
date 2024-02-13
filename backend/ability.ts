@@ -14,6 +14,7 @@ export type Ability = {
   aoeDr?: number
   staminaIncrease?: number
   versIncrease?: number
+  versRawIncrease?: number
   healthIncrease?: number
   rawAbsorb?: number
   absorbHealthMultiplier?: number
@@ -31,6 +32,7 @@ export const abilityFields = [
   'aoeDr',
   'staminaIncrease',
   'versIncrease',
+  'versRawIncrease',
   'healthIncrease',
   'rawAbsorb',
   'absorbHealthMultiplier',

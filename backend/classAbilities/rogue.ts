@@ -1,5 +1,13 @@
 import { Ability } from '../ability'
 
+export const thiefsVersatility: Ability = {
+  name: "Thief's Versatility",
+  spellId: 381619,
+  onByDefault: true,
+  versIncrease: 0.04,
+  iconName: 'ability_rogue_versatility',
+}
+
 export const elusiveness: Ability = {
   name: 'Elusiveness',
   spellId: 79008,
@@ -64,7 +72,13 @@ export const exhilaratingExecution: Ability = {
 
 export const rogueAssAbilities = [elusiveness, evasion, feint]
 
-export const rogueOutlawAbilities = [elusiveness, precisionShot, evasion, feint]
+export const rogueOutlawAbilities = [
+  thiefsVersatility,
+  elusiveness,
+  precisionShot,
+  evasion,
+  feint,
+]
 
 export const rogueSubAbilities = [
   elusiveness,

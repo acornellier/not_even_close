@@ -13,7 +13,7 @@ export const TooltipStyled = forwardRef<TooltipRefProps, Props>(function Tooltip
       className={`z-10 max-w-sm ${className}`}
       border="1px solid #9ca3af"
       opacity={1}
-      place="right"
+      place="top-start"
       {...props}
     />
   )

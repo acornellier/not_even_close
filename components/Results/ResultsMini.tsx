@@ -33,9 +33,9 @@ export function ResultsMini({ result }: Props) {
               {charResult.spec.spec} {charResult.spec.class}:
             </span>
             {charResult.healthRemaining > 0 ? (
-              <span className="text-green-500">You will live</span>
+              <span className="text-green-500">You live</span>
             ) : (
-              <span className="text-red-500">You will die</span>
+              <span className="text-red-500">You die</span>
             )}
           </div>
           <ResultDetails charResult={charResult} />

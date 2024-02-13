@@ -1,8 +1,8 @@
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { FormEvent, useRef, useState } from 'react'
 import { Input } from '../Inputs/Input'
-import { Label } from '../Inputs/Label'
 import { TooltipRefProps } from 'react-tooltip'
+import { Button } from '../Common/Button'
 
 interface Props {
   idx: number
@@ -69,9 +69,9 @@ export function CreateProfile({ idx, createProfile }: Props) {
               fullWidth
               autoFocus
             />
-            <Label short button onClick={save}>
+            <Button short onClick={save}>
               Create profile
-            </Label>
+            </Button>
           </div>
         </form>
       </TooltipStyled>

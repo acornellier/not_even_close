@@ -76,7 +76,7 @@ export function CharacterComponent({
 
   return (
     <div className="flex flex-col items-start gap-3 w-full">
-      <div className="flex justify-between w-full">
+      <div className="flex justify-between w-full gap-2">
         <CharacterStatsForm
           characterStats={character.stats}
           onChange={setCharacterStats}

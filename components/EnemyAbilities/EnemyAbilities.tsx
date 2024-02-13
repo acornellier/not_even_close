@@ -5,9 +5,9 @@
   EnemyAbility,
 } from '../../backend/dungeons'
 import { EnemyAbilityCard } from './EnemyAbilityCard'
-import { Label } from '../Inputs/Label'
 import Image from 'next/image'
 import { AbilityResult } from '../../backend/sim'
+import { Button } from '../Common/Button'
 
 interface Props {
   selectedDungeon: Dungeon
@@ -29,13 +29,7 @@ export function EnemyAbilities({
   return (
     <div className="flex flex-col gap-2">
       <div className="flex justify-between">
-        <Label
-          short
-          button
-          bigText
-          onClick={deselectDungeon}
-          className="text-xl gap-2 px-2"
-        >
+        <Button short bigText onClick={deselectDungeon} className="text-xl gap-2 px-2">
           <Image
             className={`rounded border-2 border-gray-600`}
             height={32}
@@ -44,7 +38,7 @@ export function EnemyAbilities({
             alt={selectedDungeon}
           />
           {selectedDungeon}
-        </Label>
+        </Button>
       </div>
       <div className="flex flex-col gap-x-2 gap-y-1 flex-wrap items-stretch">
         {abilities.map((ability) => {

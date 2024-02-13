@@ -1,10 +1,11 @@
-import { Character, CharacterStats } from './characters'
+import { Character, CharacterStatsInput } from './characters'
 import { Ability } from './ability'
 import { ClassSpec, equalSpecs } from './classes'
 import { augmentAbilities, enemyAbilityToDetails } from './utils'
 import { Dungeon, dungeonAbilities } from './dungeons'
 import { willOfTheNecropolis } from './classAbilities/deathKnight'
 import { dampenHarm } from './classAbilities/monk'
+import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from './stats'
 
 export interface Result {
   main: AbilityResult
@@ -16,6 +17,12 @@ export interface AbilityResult {
   scaledDamage: number
   enemyAbilityDetails: EnemyAbilityDetails
   characters: CharacterResult[]
+}
+
+export interface CharacterStats {
+  stamina: number
+  versatility: number
+  avoidance: number
 }
 
 export interface CharacterPartialResult {
@@ -77,8 +84,12 @@ function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isTrashAbility: boo
   return Math.round(scalingFactor * 100) / 100
 }
 
-function getAdjustedStats(characterStats: CharacterStats, abilities: Ability[]) {
-  let adjustedStats = { ...characterStats }
+function getAdjustedStats(characterStats: CharacterStatsInput, abilities: Ability[]) {
+  let adjustedStats: CharacterStats = {
+    stamina: characterStats.stamina ?? 0,
+    versatility: 0,
+    avoidance: avoidanceRawToPercent(characterStats.avoidanceRaw ?? 0) / 100,
+  }
 
   for (const ability of abilities) {
     if (ability.staminaIncrease) {
@@ -88,6 +99,14 @@ function getAdjustedStats(characterStats: CharacterStats, abilities: Ability[]) 
 
   adjustedStats.stamina = Math.floor(adjustedStats.stamina)
 
+  let rawVers = characterStats.versatilityRaw ?? 0
+  for (const ability of abilities) {
+    if (ability.versRawIncrease) {
+      rawVers += ability.versRawIncrease
+    }
+  }
+
+  adjustedStats.versatility = versRawToPercent(rawVers) / 100
   for (const ability of abilities) {
     if (ability.versIncrease) {
       adjustedStats.versatility += ability.versIncrease
@@ -98,7 +117,7 @@ function getAdjustedStats(characterStats: CharacterStats, abilities: Ability[]) 
 }
 
 function getStartingHealth(characterStats: CharacterStats, abilities: Ability[]) {
-  let startingHealth = characterStats.stamina * 20
+  let startingHealth = staminaToHp(characterStats.stamina)
 
   for (const ability of abilities) {
     if (ability.healthIncrease) {
@@ -269,13 +288,6 @@ function getPartialResults(
   const augmentedGroupAbilities = augmentAbilities(groupAbilities, groupAbilities)
 
   return characters.map<CharacterPartialResult>((character) => {
-    const spec = character.classSpec
-    const characterStats = {
-      stamina: character.stats.stamina ?? 0,
-      versatility: (character.stats.versatilityPercent ?? 0) / 100,
-      avoidance: (character.stats.avoidancePercent ?? 0) / 100,
-    }
-
     const augmentedSelectedAbilities = augmentAbilities(
       character.abilities,
       character.abilities
@@ -287,11 +299,11 @@ function getPartialResults(
       ...augmentedGroupAbilities,
     ]
 
-    const adjustedStats = getAdjustedStats(characterStats, abilities)
+    const adjustedStats = getAdjustedStats(character.stats, abilities)
     const startingHealth = getStartingHealth(adjustedStats, abilities)
 
     return {
-      spec,
+      spec: character.classSpec,
       abilities,
       adjustedStats,
       startingHealth,

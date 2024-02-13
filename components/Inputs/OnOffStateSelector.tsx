@@ -10,7 +10,7 @@ function OnOffButton({ label, enabled, isLeft }: OnOffButtonProps) {
 
   return (
     <button
-      className={`text-white bg-teal-700 font-medium text-sm py-2 px-4 ${opacityClass} ${roundedClass}`}
+      className={`text-white bg-teal-600 font-medium text-sm py-2 px-4 ${opacityClass} ${roundedClass}`}
     >
       {label}
     </button>

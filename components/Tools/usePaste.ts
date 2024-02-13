@@ -18,13 +18,13 @@ export function usePaste({
     async (text: string, characterIdx: number) => {
       if (!isAddonPaste(text)) return
 
-      const { character, groupBuffs: newGroupBuffs } = getAddonOutput(text)
+      const { character, groupBuffs, addTepidVers } = getAddonOutput(text)
 
-      updateCharacterIdx(characterIdx)(character)
+      updateCharacterIdx(characterIdx)(character, addTepidVers)
 
       setGroupBuffs([
         ...selectedGroupBuffs,
-        ...newGroupBuffs.filter(
+        ...groupBuffs.filter(
           (newBuff) =>
             !selectedGroupBuffs.some((curBuff) => curBuff.spellId === newBuff.spellId)
         ),

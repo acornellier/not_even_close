@@ -1,6 +1,6 @@
 import { AbilitySelect } from './AbilitySelect'
 import { Ability } from '../../backend/ability'
-import { Label } from '../Inputs/Label'
+import { Label } from '../Common/Label'
 import { useEffect } from 'react'
 import { isAbilityAvailable } from '../../backend/utils'
 

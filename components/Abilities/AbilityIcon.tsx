@@ -32,6 +32,8 @@ function getEffectText(field: AbilityField, value: number, ability?: Ability) {
       return `${roundTo(value * 100, 2)}% stamina`
     case 'versIncrease':
       return `${roundTo(value * 100, 2)}% versatility`
+    case 'versRawIncrease':
+      return `${value} versatility`
     case 'rawAbsorb':
       return `${value.toLocaleString('en-US')} HP ${
         absorbType ? absorbType + ' ' : ''

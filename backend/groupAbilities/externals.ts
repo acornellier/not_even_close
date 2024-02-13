@@ -1,7 +1,15 @@
 ﻿import { Ability } from '../ability'
 
+export const tepidVersatility: Ability = {
+  name: 'Phial of Tepid Versatility',
+  spellId: 371172,
+  versRawIncrease: 745,
+  iconName: 'inv_10_alchemy_bottle_shape2_black',
+  notes: '3.63% vers = 1.82% DR when below 30% vers',
+}
+
 export const icyPreservation: Ability = {
-  name: 'Icy Preservation',
+  name: 'Phial of Icy Preservation',
   spellId: 191326,
   dr: 0.06,
   iconName: 'inv_10_alchemy_bottle_shape2_blue',
@@ -16,15 +24,6 @@ export const blessingOfSacrifice: Ability = {
   iconName: 'spell_holy_sealofsacrifice',
   wowheadLink: 'https://www.wowhead.com/spell=6940/blessing-of-sacrifice',
   notes: 'Wrong for holy paladin where it is actually 32%',
-}
-
-export const blessingOfProtection: Ability = {
-  name: 'Blessing of Protection',
-  spellId: 1022,
-  dr: 0.15,
-  associatedSpec: { class: 'Paladin', spec: 'Holy' },
-  iconName: 'spell_holy_sealofprotection',
-  notes: 'Requires a holy paladin with Echoing Blessings',
 }
 
 export const ironBark: Ability = {
@@ -93,13 +92,13 @@ export const earthenHarmony: Ability = {
 }
 
 export const externals: Ability[] = [
+  tepidVersatility,
   icyPreservation,
   twinGuardian,
   ancestralVigor,
   earthenHarmony,
   ironBark,
   blessingOfSacrifice,
-  blessingOfProtection,
   painSuppression,
   lifeCocoon,
   leafOfTheAncientProtectors,
