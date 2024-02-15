@@ -10,6 +10,7 @@ export const defensiveStance: Ability = {
 export const spellReflection: Ability = {
   name: 'Spell Reflection',
   dr: 0.2,
+  drType: 'magic',
   spellId: 23920,
   iconName: 'ability_warrior_shieldreflection',
 }
