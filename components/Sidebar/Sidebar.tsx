@@ -1,0 +1,40 @@
+﻿import { ResultsFull } from './ResultsFull'
+import { ResultsMini } from './ResultsMini'
+import { Instructions } from './Instructions'
+import { KeyDetails, Result } from '../../backend/sim'
+import { memo, useState } from 'react'
+import dynamic from 'next/dynamic'
+import { EnemyAbility } from '../../backend/dungeons'
+import { TwitchStream } from './TwitchStream'
+
+interface Props {
+  result: Result
+  enemyAbility: EnemyAbility | null
+  keyDetails: KeyDetails
+}
+
+export function Sidebar({ result, enemyAbility, keyDetails }: Props) {
+  return (
+    <div className="sm:sticky sm:top-10">
+      {result.main.characters.length === 1 ? (
+        <ResultsFull
+          result={result.main}
+          enemyAbility={enemyAbility}
+          keyDetails={keyDetails}
+        />
+      ) : (
+        <ResultsMini
+          result={result.main}
+          enemyAbility={enemyAbility}
+          keyDetails={keyDetails}
+        />
+      )}
+
+      <div className="border-2 my-4 dark:border-gray-600" />
+
+      <TwitchStream />
+
+      <Instructions />
+    </div>
+  )
+}
