@@ -8,7 +8,7 @@ const ReactTwitchEmbedVideo = dynamic(() => import('react-twitch-embed-video'), 
 
 const videoWidth = 400
 const videoHeight = videoWidth * (9 / 16)
-const videoWithChatHeight = videoHeight + 500
+const videoWithChatHeight = videoHeight + 400
 
 function TwitchStreamComponent() {
   const [isTwitchLoaded, setIsTwitchLoaded] = useState(false)
@@ -25,6 +25,7 @@ function TwitchStreamComponent() {
         height={isChatExpanded ? videoWithChatHeight : videoHeight}
         muted
         onPlay={onPlay}
+        theme="dark"
       />
       <div className="flex flex-col items-center">
         <Button
