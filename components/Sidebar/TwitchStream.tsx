@@ -20,7 +20,7 @@ function TwitchStreamComponent() {
     <div className={`${isTwitchLoaded ? '' : 'hidden'}`}>
       <ReactTwitchEmbedVideo
         layout={isChatExpanded ? 'video-with-chat' : 'video'}
-        channel="ayije"
+        channel="ortemismw"
         width={videoWidth}
         height={isChatExpanded ? videoWithChatHeight : videoHeight}
         muted
