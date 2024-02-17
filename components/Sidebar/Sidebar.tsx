@@ -2,10 +2,13 @@
 import { ResultsMini } from './ResultsMini'
 import { Instructions } from './Instructions'
 import { KeyDetails, Result } from '../../backend/sim'
-import { memo, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { EnemyAbility } from '../../backend/dungeons'
-import { TwitchStream } from './TwitchStream'
+
+const TwitchStream = dynamic(
+  () => import('./TwitchStream').then((mod) => mod.TwitchStream),
+  { ssr: false }
+)
 
 interface Props {
   result: Result
