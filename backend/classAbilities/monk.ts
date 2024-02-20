@@ -45,6 +45,18 @@ export const expelHarm: Ability = {
   iconName: 'ability_monk_expelharm',
 }
 
+export const yulonsGraceMistweaver: Ability = {
+  name: "Yulon's Grace",
+  spellId: 414131,
+  absorbHealthMultiplier: 0.15,
+  iconName: 'ability_monk_dragonkick',
+}
+
+export const yulonsGraceWindwalker: Ability = {
+  ...yulonsGraceMistweaver,
+  absorbHealthMultiplier: 0.1,
+}
+
 export const dampenHarm: Ability = {
   name: 'Dampen Harm',
   spellId: 122278,
@@ -83,6 +95,7 @@ export const monkMistweaverAbilities = [
   secretInfusion,
   ancientTeachings,
   expelHarm,
+  yulonsGraceMistweaver,
   dampenHarm,
   diffuseMagic,
   fortBrew,
@@ -90,6 +103,7 @@ export const monkMistweaverAbilities = [
 
 export const monkWindwalkerAbilities = [
   calmingPresenceWindwalker,
+  yulonsGraceWindwalker,
   dampenHarm,
   diffuseMagic,
   fortBrew,
