@@ -49,6 +49,7 @@ export const yulonsGraceMistweaver: Ability = {
   name: "Yulon's Grace",
   spellId: 414131,
   absorbHealthMultiplier: 0.15,
+  absorbType: 'magic',
   iconName: 'ability_monk_dragonkick',
 }
 
