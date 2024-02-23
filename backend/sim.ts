@@ -125,7 +125,7 @@ function getStartingHealth(characterStats: CharacterStats, abilities: Ability[])
     }
   }
 
-  return startingHealth
+  return Math.round(startingHealth)
 }
 
 export function findAssociatedCharacter<T extends { spec: ClassSpec }>(
