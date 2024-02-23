@@ -1,5 +1,15 @@
 import { EnemyAbility } from '../dungeons'
 
+export const waterBolt: EnemyAbility = {
+  name: 'Water Bolt',
+  dungeon: 'Throne of the Tides',
+  baseDamage: 68663,
+  isAoe: false,
+  isTrashAbility: true,
+  iconName: 'ability_mage_waterjet',
+  wowheadLink: 'https://www.wowhead.com/spell=426731/water-bolt',
+}
+
 export const acidBarrage: EnemyAbility = {
   name: 'Acid Barrage',
   dungeon: 'Throne of the Tides',
@@ -61,6 +71,7 @@ export const blottingBarrage: EnemyAbility = {
 }
 
 export const tottAbilities = [
+  waterBolt,
   acidBarrage,
   focusedTempest,
   shockBlast,

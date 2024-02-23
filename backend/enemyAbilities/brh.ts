@@ -1,5 +1,15 @@
 import { EnemyAbility } from '../dungeons'
 
+export const soulBlast: EnemyAbility = {
+  name: 'Soul Blast',
+  dungeon: 'Black Rook Hold',
+  baseDamage: 82396,
+  isAoe: false,
+  isTrashAbility: true,
+  iconName: 'spell_shadow_painspike',
+  wowheadLink: 'https://www.wowhead.com/spell=199663/soul-blast',
+}
+
 export const soulBurst: EnemyAbility = {
   name: 'Soul Burst',
   boss: 'The Amalgam of Souls',
@@ -57,6 +67,7 @@ export const shadowBoltVolley: EnemyAbility = {
 }
 
 export const brhAbilities = [
+  soulBlast,
   soulBurst,
   soulBurstMaxStacks,
   earthShakingStomp,

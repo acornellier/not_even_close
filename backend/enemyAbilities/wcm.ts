@@ -1,5 +1,15 @@
 import { EnemyAbility } from '../dungeons'
 
+export const soulBolt: EnemyAbility = {
+  name: 'Soul Bolt',
+  dungeon: 'Waycrest Manor',
+  baseDamage: 87889,
+  isAoe: false,
+  isTrashAbility: true,
+  iconName: 'spell_shadow_painspike',
+  wowheadLink: 'https://www.wowhead.com/spell=264024/soul-bolt',
+}
+
 export const dreadEssence: EnemyAbility = {
   name: 'Dread Essence',
   boss: 'Gorak Tul',
@@ -19,4 +29,4 @@ export const rottenExpulsion: EnemyAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=264694/rotten-expulsion',
 }
 
-export const wcmAbilities = [rottenExpulsion, dreadEssence]
+export const wcmAbilities = [soulBolt, rottenExpulsion, dreadEssence]
