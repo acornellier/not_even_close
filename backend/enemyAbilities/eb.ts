@@ -18,10 +18,10 @@ export const waterBolt: EnemyAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=168092/water-bolt',
 }
 
-export const cinderboltSalvo: EnemyAbility = {
-  name: 'Cinderbolt Salvo (3 ticks)',
+export const cinderboltStorm: EnemyAbility = {
+  name: 'Cinderbolt Storm (3 ticks)',
   dungeon: 'Everbloom',
-  baseDamage: 32958 * 3,
+  baseDamage: 43945 * 3,
   isAoe: false,
   iconName: 'spell_fire_meteorstorm',
   wowheadLink: 'https://www.wowhead.com/spell=427223/cinderbolt-salvo',
@@ -37,4 +37,4 @@ export const colossalBlow: EnemyAbility = {
   wowheadLink: 'https://www.wowhead.com/spell=169179/colossal-blow',
 }
 
-export const ebAbilities = [agitatedWater, waterBolt, cinderboltSalvo, colossalBlow]
+export const ebAbilities = [agitatedWater, waterBolt, cinderboltStorm, colossalBlow]
