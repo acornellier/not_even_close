@@ -22,7 +22,9 @@ export function CharacterStatsForm({ characterStats, onChange }: Props) {
         value={characterStats.stamina}
         onChange={onChangeStat('stamina')}
         step={500}
-        inputTooltip={`${staminaToHp(characterStats.stamina ?? 0)} HP`}
+        inputTooltip={`${staminaToHp(characterStats.stamina ?? 0).toLocaleString(
+          'en-US'
+        )} HP`}
       />
       <NumericInput
         label="Versatility (raw)"
