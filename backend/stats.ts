@@ -30,7 +30,7 @@ const tertiaryStatBracketsBasic = [
   { size: 4, penalty: 0.2 },
   { size: 3, penalty: 0.4 },
   { size: 2, penalty: 0.6 },
-  { size: 100000, penalty: 0.8 },
+  { size: 100000, penalty: 0.6 },
 ]
 
 function makeStatBrackets(
