@@ -3,6 +3,7 @@ import { Ability } from '../ability'
 export const inherentResistanceAugPres: Ability = {
   name: 'Inherent Resistance',
   dr: 0.04,
+  drType: 'magic',
   onByDefault: true,
   spellId: 375544,
   iconName: 'inv_misc_rubysanctum1',
