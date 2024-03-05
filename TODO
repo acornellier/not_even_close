@@ -1,0 +1,13 @@
+- Matted Fur and Dark Pact
+-- Show a main stat input for Druid and Warlock
+--- Adjust styling to make sure 4 inputs fit on 1 row at all screen sizes
+-- Add abilities and new absorb scaling types
+-- Calculate AP/SP from main stat. Different for different specs
+
+Not planning on doing for now
+- All tank spells
+- Physical damage. It's a lot of work
+- Aug mastery: hard to calculate, and nobody plays around it (it's used on cd for dps). Quite powerful tho
+- Chrono ward: same as above
+- Light's Protection: hard to play around and not really worth it for 2% DR
+- Echoing Blessings on Sac: not worth it for 2% DR (32% instead of 30%)
