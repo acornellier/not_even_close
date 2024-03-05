@@ -32,9 +32,9 @@ export const prismaticBarrier: Ability = {
   absorbHealthMultiplier: 0.2,
   absorbVersAffected: true,
   dr: 0.15,
+  drType: 'magic',
   spellId: 235450,
   iconName: 'spell_magearmor',
-  notes: 'Bugged. Should be only magic damage.',
 }
 
 export const improvedPrismaticBarrier: Ability = {
