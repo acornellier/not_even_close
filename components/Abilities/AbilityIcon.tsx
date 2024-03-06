@@ -19,6 +19,8 @@ interface AbilityIconProps {
 }
 
 function getEffectText(field: AbilityField, value: number, ability?: Ability) {
+  if (ability?.name === 'Mass Barrier')
+    console.log('getEffectText', field, value, ability?.name)
   const damageType = ability?.drType
   const absorbType = ability?.absorbType
   switch (field) {

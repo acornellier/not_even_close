@@ -36,6 +36,21 @@ export const devotionAura: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=465/devotion-aura',
 }
 
+export const aspectsFavor: Ability = {
+  name: "Aspects' Favor",
+  spellId: 407243,
+  associatedSpec: { class: 'Evoker', spec: 'Augmentation' },
+  iconName: 'ability_evoker_aspectsfavor',
+  wowheadLink: 'https://www.wowhead.com/spell=407243/aspects-favor?rank=2',
+  abilityAugmentations: [
+    {
+      otherSpellId: blackAttunement.spellId,
+      field: 'healthIncrease',
+      value: 0.04,
+    },
+  ],
+}
+
 export const markOfTheWild: Ability = {
   name: 'Mark of the Wild',
   spellId: 1126,
@@ -79,6 +94,7 @@ export const lenience: Ability = {
 }
 
 export const groupBuffs: Ability[] = [
+  aspectsFavor,
   masterPoisoner,
   atrophicPoison,
   blackAttunement,

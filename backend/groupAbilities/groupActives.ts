@@ -1,15 +1,5 @@
 ﻿import { Ability } from '../ability'
 
-export const aspectsFavor: Ability = {
-  name: "Aspects' Favor",
-  spellId: 407243,
-  healthIncrease: 0.04,
-  associatedSpec: { class: 'Evoker', spec: 'Augmentation' },
-  iconName: 'ability_evoker_aspectsfavor',
-  wowheadLink: 'https://www.wowhead.com/spell=407243/aspects-favor?rank=2',
-  notes: 'Assumes you already have Black Attunement selected',
-}
-
 export const zephyr: Ability = {
   name: 'Zephyr',
   spellId: 374227,
@@ -37,7 +27,6 @@ export const massBarrier: Ability = {
   associatedClass: 'Mage',
   absorbHealthMultiplier: 0.2,
   absorbVersAffected: true,
-  dr: 0,
   drType: 'magic',
   absorbBackup: 200_000,
   iconName: 'ability_racial_magicalresistance',
@@ -46,7 +35,7 @@ export const massBarrier: Ability = {
 }
 
 export const arcanePrismaticBarrier: Ability = {
-  name: 'Arcane Mage Mass Barrier',
+  name: 'Arcane Mass Barrier',
   spellId: 3217451,
   onByDefault: true,
   associatedSpec: { class: 'Mage', spec: 'Arcane' },
@@ -131,7 +120,6 @@ export const spiritLinkTotem: Ability = {
 }
 
 export const groupActives: Ability[] = [
-  aspectsFavor,
   zephyr,
   chiCocoon,
   massBarrier,
