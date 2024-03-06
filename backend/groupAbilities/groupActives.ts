@@ -37,10 +37,41 @@ export const massBarrier: Ability = {
   associatedClass: 'Mage',
   absorbHealthMultiplier: 0.2,
   absorbVersAffected: true,
+  dr: 0,
+  drType: 'magic',
   absorbBackup: 200_000,
   iconName: 'ability_racial_magicalresistance',
   wowheadLink: 'https://www.wowhead.com/spell=414660/mass-barrier',
   notes: 'Assumes 200K absorb if you have no mage selected',
+}
+
+export const arcanePrismaticBarrier: Ability = {
+  name: 'Arcane Mage Mass Barrier',
+  spellId: 3217451,
+  onByDefault: true,
+  associatedSpec: { class: 'Mage', spec: 'Arcane' },
+  iconName: 'spell_holy_magicalsentry',
+  abilityAugmentations: [
+    {
+      otherSpellId: 414660, // Mass Barrier
+      field: 'dr',
+      value: 0.15,
+    },
+  ],
+}
+export const improvedPrismaticBarrier: Ability = {
+  name: 'Improved Prismatic Barrier',
+  spellId: 321745,
+  onByDefault: true,
+  associatedSpec: { class: 'Mage', spec: 'Arcane' },
+  iconName: 'spell_magearmor',
+  abilityAugmentations: [
+    {
+      otherSpellId: 414660, // Mass Barrier
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
 }
 
 export const rallyingCry: Ability = {
@@ -104,6 +135,8 @@ export const groupActives: Ability[] = [
   zephyr,
   chiCocoon,
   massBarrier,
+  arcanePrismaticBarrier,
+  improvedPrismaticBarrier,
   rallyingCry,
   auraMastery,
   spiritLinkTotem,
