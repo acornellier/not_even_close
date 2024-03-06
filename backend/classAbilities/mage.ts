@@ -1,4 +1,4 @@
-import { Ability } from '../ability'
+import { Ability, AbilityAugmentation } from '../ability'
 
 export const arcaneWarding: Ability = {
   name: 'Arcane Warding',
@@ -37,17 +37,17 @@ export const prismaticBarrier: Ability = {
   iconName: 'spell_magearmor',
 }
 
+export const improvedPrismaticBarrierAugmentation: AbilityAugmentation = {
+  otherSpellId: 235450,
+  field: 'dr',
+  value: 0.1,
+}
+
 export const improvedPrismaticBarrier: Ability = {
   name: 'Improved Prismatic Barrier',
   spellId: 321745,
   iconName: 'spell_magearmor',
-  abilityAugmentations: [
-    {
-      otherSpellId: 235450,
-      field: 'dr',
-      value: 0.1,
-    },
-  ],
+  abilityAugmentations: [improvedPrismaticBarrierAugmentation],
 }
 
 export const tempestBarrier: Ability = {

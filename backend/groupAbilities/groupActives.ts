@@ -1,4 +1,9 @@
-﻿import { Ability } from '../ability'
+﻿import { Ability, AbilityAugmentation } from '../ability'
+import {
+  improvedPrismaticBarrier,
+  improvedPrismaticBarrierAugmentation,
+  prismaticBarrier,
+} from '../classAbilities/mage'
 
 export const zephyr: Ability = {
   name: 'Zephyr',
@@ -27,38 +32,31 @@ export const massBarrier: Ability = {
   associatedClass: 'Mage',
   absorbHealthMultiplier: 0.2,
   absorbVersAffected: true,
-  drType: 'magic',
   absorbBackup: 200_000,
   iconName: 'ability_racial_magicalresistance',
   wowheadLink: 'https://www.wowhead.com/spell=414660/mass-barrier',
   notes: 'Assumes 200K absorb if you have no mage selected',
 }
 
-export const arcanePrismaticBarrier: Ability = {
+export const arcaneMassBarrier: Ability = {
+  ...massBarrier,
   name: 'Arcane Mass Barrier',
-  spellId: 3217451,
-  onByDefault: true,
+  spellId: massBarrier.spellId + 1,
+  dr: prismaticBarrier.dr,
+  drType: prismaticBarrier.drType,
   associatedSpec: { class: 'Mage', spec: 'Arcane' },
   iconName: 'spell_holy_magicalsentry',
-  abilityAugmentations: [
-    {
-      otherSpellId: 414660, // Mass Barrier
-      field: 'dr',
-      value: 0.15,
-    },
-  ],
 }
-export const improvedPrismaticBarrier: Ability = {
+
+export const improvedArcaneMassBarrier: Ability = {
   name: 'Improved Prismatic Barrier',
-  spellId: 321745,
-  onByDefault: true,
+  spellId: improvedPrismaticBarrier.spellId + 1,
   associatedSpec: { class: 'Mage', spec: 'Arcane' },
   iconName: 'spell_magearmor',
   abilityAugmentations: [
     {
-      otherSpellId: 414660, // Mass Barrier
-      field: 'dr',
-      value: 0.1,
+      ...improvedPrismaticBarrierAugmentation,
+      otherSpellId: arcaneMassBarrier.spellId,
     },
   ],
 }
@@ -123,8 +121,8 @@ export const groupActives: Ability[] = [
   zephyr,
   chiCocoon,
   massBarrier,
-  arcanePrismaticBarrier,
-  improvedPrismaticBarrier,
+  arcaneMassBarrier,
+  improvedArcaneMassBarrier,
   rallyingCry,
   auraMastery,
   spiritLinkTotem,
