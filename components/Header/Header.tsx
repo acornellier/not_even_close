@@ -15,7 +15,7 @@ export function Header() {
         </div>
         <div className="flex items-center">
           <DarkModeButton />
-          <DiscordButton href="https://discord.com/invite/Ykb6AbYHHZ" />
+          <DiscordButton href="https://discord.gg/chfMzG6q2W" />
           <GitHubButton href="https://github.com/acornellier/not_even_close" />
           <KofiWidget />
         </div>
