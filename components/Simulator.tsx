@@ -17,7 +17,6 @@ import { groupActives } from '../backend/groupAbilities/groupActives'
 import { DungeonSelect } from './EnemyAbilities/DungeonSelect'
 import { enemyAbilityToDetails } from '../backend/utils'
 import { Characters, defaultCharacter, defaultCharacters } from './Characters/Characters'
-import { VersModal } from './Common/VersModal'
 import { Button } from './Common/Button'
 
 const defaultGroupBuffs: Ability[] = []
@@ -102,21 +101,8 @@ export function Simulator() {
     setResult(simulateResult())
   }, [simulateResult])
 
-  const [versModalOpen, setVersModalOpen] = useState(false)
-  const [versModalAck, setVersModalAck] = useLocalStorage('versModalAck', false)
-
-  useEffect(() => {
-    if (characters[0]?.stats.versatilityRaw === undefined) setVersModalOpen(true)
-  }, [characters])
-
-  const onHideModal = useCallback(() => {
-    setVersModalOpen(false)
-    setVersModalAck(true)
-  }, [setVersModalAck])
-
   return (
     <SimContextProvider result={result}>
-      <VersModal open={versModalOpen && !versModalAck} hide={onHideModal} />
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="flex flex-col gap-4 grow">
           <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />

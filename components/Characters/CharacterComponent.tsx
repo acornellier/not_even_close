@@ -24,7 +24,7 @@ interface Props {
   updateCharacter: UpdateCharacter
   canRemove: boolean
   removeCharacter: () => void
-  handlePaste: () => void
+  handlePaste: (text: string) => void
   saveProfile: (name: string) => void
   loadProfile: (profile: Profile | null) => void
   deleteProfile: (profileId: string) => void

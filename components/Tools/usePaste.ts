@@ -34,8 +34,7 @@ export function usePaste({
   )
 
   const pasteWithButton = useCallback(
-    (characterIdx: number) => async () => {
-      const text = await navigator.clipboard.readText()
+    (characterIdx: number) => async (text: string) => {
       await handlePaste(text, characterIdx)
     },
     [handlePaste]

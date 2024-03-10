@@ -1,18 +1,44 @@
 ﻿import { TooltipStyled } from '../Common/TooltipStyled'
+import { useCallback, useState } from 'react'
+import { Modal } from '../Common/Modal'
+import { Button } from '../Common/Button'
 
 interface Props {
   idx: number
-  handlePaste: () => void
+  handlePaste: (text: string) => void
 }
 
 export function PasteButton({ handlePaste, idx }: Props) {
-  if (!navigator.clipboard.readText) return null
+  const [input, setInput] = useState('')
+  const [inputModalOpen, setInputModalOpen] = useState(false)
+
+  const onCloseModal = useCallback(() => {
+    setInputModalOpen(false)
+    setInput('')
+  }, [])
+
+  const onConfirmModal = useCallback(() => {
+    handlePaste(input)
+    onCloseModal()
+  }, [onCloseModal, handlePaste, input])
+
+  const handleClick = async () => {
+    if (navigator.clipboard.readText) {
+      const text = await navigator.clipboard.readText()
+      if (text) {
+        handlePaste(text)
+        return
+      }
+    }
+
+    setInputModalOpen(true)
+  }
 
   return (
     <div>
       <div
         className="cursor-pointer text-teal-500 select-none"
-        onClick={handlePaste}
+        onClick={handleClick}
         data-tooltip-id={`paste-character-${idx}`}
       >
         <svg
@@ -31,6 +57,30 @@ export function PasteButton({ handlePaste, idx }: Props) {
         </svg>
       </div>
       <TooltipStyled id={`paste-character-${idx}`}>Paste from addon</TooltipStyled>
+      {inputModalOpen && (
+        <Modal
+          title="Paste MDT string"
+          onConfirm={onConfirmModal}
+          onClose={onCloseModal}
+          closeOnEscape
+          closeOnClickOutside
+          contents={
+            <textarea
+              autoFocus
+              className="p-2 w-full h-[200px] resize-none "
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
+              placeholder="Paste MDT string here"
+            />
+          }
+          buttons={
+            <>
+              <Button onClick={onCloseModal}>Cancel</Button>
+              <Button onClick={onConfirmModal}>Confirm</Button>
+            </>
+          }
+        />
+      )}
     </div>
   )
 }
