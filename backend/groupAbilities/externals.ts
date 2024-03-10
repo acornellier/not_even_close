@@ -75,6 +75,15 @@ export const leafOfTheAncientProtectors: Ability = {
   notes: 'Assumes ilvl 483, Hero 6/6',
 }
 
+export const fyrakksTaintedRageheart: Ability = {
+  name: "Fyrakk's Tainted Rageheart",
+  rawAbsorb: 922_410,
+  absorbVersAffected: true,
+  spellId: 422750,
+  iconName: 'inv_ragnaros_heart_shadowflame',
+  notes: 'Assumes ilvl 489, Myth 4/4',
+}
+
 export const ancestralVigor: Ability = {
   name: 'Ancestral Vigor',
   healthIncrease: 0.1,
@@ -102,4 +111,5 @@ export const externals: Ability[] = [
   painSuppression,
   lifeCocoon,
   leafOfTheAncientProtectors,
+  fyrakksTaintedRageheart,
 ]
