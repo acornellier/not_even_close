@@ -23,7 +23,7 @@ export const iceBarrier: Ability = {
   name: 'Ice Barrier',
   absorbHealthMultiplier: 0.22,
   absorbVersAffected: true,
-  spellId: 382791,
+  spellId: 11426,
   iconName: 'spell_ice_lament',
 }
 

@@ -12,14 +12,14 @@ interface Props {
   availableAbilities: Ability[]
   selectedAbilities: Ability[]
   setSelectedAbilities: (abilities: Ability[]) => void
-  character?: Character
+  characterIdx?: number
 }
 
 export function AbilitySelect({
   availableAbilities,
   selectedAbilities,
   setSelectedAbilities,
-  character,
+  characterIdx,
 }: Props) {
   useEffect(() => {
     if (
@@ -75,7 +75,7 @@ export function AbilitySelect({
           toggleAbility={toggleAbility}
           selectedAbilities={selectedAbilities}
           allAbilities={availableAbilities}
-          character={character}
+          characterIdx={characterIdx}
         />
       ))}
 
@@ -88,7 +88,7 @@ export function AbilitySelect({
           toggleAbility={toggleAbility}
           selectedAbilities={selectedAbilities}
           allAbilities={availableAbilities}
-          character={character}
+          characterIdx={characterIdx}
         />
       ))}
     </div>

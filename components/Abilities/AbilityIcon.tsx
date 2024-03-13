@@ -15,7 +15,7 @@ interface AbilityIconProps {
   toggleAbility: (spellId: number) => void
   selectedAbilities: Ability[]
   allAbilities: Ability[]
-  character?: Character
+  characterIdx?: number
 }
 
 function getEffectText(field: AbilityField, value: number, ability?: Ability) {
@@ -51,7 +51,7 @@ export function AbilityIcon({
   toggleAbility,
   selectedAbilities,
   allAbilities,
-  character,
+  characterIdx,
 }: AbilityIconProps) {
   const augmentedAbilities = ability.abilityAugmentations
     ? allAbilities.filter(({ spellId }) =>
@@ -66,11 +66,8 @@ export function AbilityIcon({
   const { result } = useSimContext()
   let calculatedAbsorb = 0
   if (result) {
-    const resultChar = character
-      ? result.main.characters.find(
-          (char) => character.classSpec && equalSpecs(char.spec, character.classSpec)
-        )
-      : undefined
+    const resultChar =
+      characterIdx !== undefined ? result.main.characters[characterIdx] : undefined
 
     calculatedAbsorb = getHealthMultiplierAbsorb(
       ability,
@@ -80,17 +77,20 @@ export function AbilityIcon({
     )
   }
 
+  const tooltipId = `ability-tooltip-${ability.spellId}${
+    characterIdx ? `-${characterIdx}` : ''
+  }`
   return (
     <div
       key={ability.spellId}
-      data-tooltip-id={`ability-tooltip-${ability.spellId}`}
+      data-tooltip-id={tooltipId}
       className="cursor-pointer select-none relative"
       onClick={(e) => {
         e.preventDefault()
         toggleAbility(ability.spellId)
       }}
     >
-      <TooltipStyled id={`ability-tooltip-${ability.spellId}`}>
+      <TooltipStyled id={tooltipId}>
         <div className="flex flex-col">
           <span className="text-xl">{ability.name}</span>
           {abilityFields.map(
