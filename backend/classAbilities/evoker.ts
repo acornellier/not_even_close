@@ -1,6 +1,6 @@
 import { Ability } from '../ability'
 
-export const inherentResistanceAugPres: Ability = {
+export const inherentResistanceAug: Ability = {
   name: 'Inherent Resistance',
   dr: 0.04,
   drType: 'magic',
@@ -9,8 +9,8 @@ export const inherentResistanceAugPres: Ability = {
   iconName: 'inv_misc_rubysanctum1',
 }
 
-export const inherentResistanceDev: Ability = {
-  ...inherentResistanceAugPres,
+export const inherentResistanceDevPres: Ability = {
+  ...inherentResistanceAug,
   dr: 0.08,
 }
 
@@ -29,12 +29,12 @@ export const rushOfVitality: Ability = {
   iconName: 'trade_enchanting_greatermysteriousessence',
 }
 
-export const evokerAugAbilities = [inherentResistanceAugPres, obsidianScales]
+export const evokerAugAbilities = [inherentResistanceAug, obsidianScales]
 
-export const evokerDevAbilities = [inherentResistanceDev, obsidianScales]
+export const evokerDevAbilities = [inherentResistanceDevPres, obsidianScales]
 
 export const evokerPresAbilities = [
-  inherentResistanceAugPres,
+  inherentResistanceDevPres,
   obsidianScales,
   rushOfVitality,
 ]
