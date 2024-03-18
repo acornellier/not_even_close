@@ -6,9 +6,14 @@
 -- Add abilities and new absorb scaling types
 -- Calculate AP/SP from main stat. Different for different specs
 
+- Spell Metadata
+-- Time between casts
+-- Meld/invis/feign nothing/recast/cancel
+-- Spell reflect
+
 Not planning on doing for now
 - All tank spells
-- Physical damage. It's a lot of work
+- Physical damage reduced by armor
 - Aug mastery: hard to calculate, and nobody plays around it (it's used on cd for dps). Quite powerful tho
 - Chrono ward: same as above
 - Light's Protection: hard to play around and not really worth it for 2% DR
