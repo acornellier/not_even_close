@@ -43,9 +43,7 @@ export function Modal({
       >
         <div className="gritty absolute z-[-10] w-full h-full bg-zinc-700 rounded-lg" />
         <div className="flex flex-col w-full h-full justify-center gap-5 p-5">
-          <h3 className="text-xl font-semibold text-center text-white dark:text-black">
-            {title}
-          </h3>
+          <h3 className="text-xl font-semibold text-center text-black">{title}</h3>
 
           <div className="leading-relaxed">{contents}</div>
 

@@ -6,7 +6,7 @@ import { TailwindBreakpoint } from '../components/Header/TailwindBreakpoint'
 
 export default function Home() {
   return (
-    <div className="flex justify-center bg-gray-100 dark:bg-[#181a1b] px-4 lg:px-0">
+    <div className="flex justify-center bg-[#181a1b] px-4 lg:px-0">
       <Head>
         <title>Not Even Close</title>
         <meta

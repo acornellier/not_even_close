@@ -9,7 +9,7 @@ export function Instructions() {
       <span>
         Use{' '}
         <a
-          className="text-blue-600 dark:text-blue-500 hover:underline"
+          className="text-blue-500 hover:underline"
           href="https://www.curseforge.com/wow/addons/not-even-close"
           target="_blank"
           rel="noreferrer"
@@ -32,7 +32,7 @@ export function Instructions() {
       <span>
         To give feedback or view the changelog,{' '}
         <a
-          className="text-blue-600 dark:text-blue-500 hover:underline"
+          className="text-blue-500 hover:underline"
           href="https://discord.com/invite/Ykb6AbYHHZ"
           target="_blank"
           rel="noreferrer"

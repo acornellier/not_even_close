@@ -33,7 +33,7 @@ export function Sidebar({ result, enemyAbility, keyDetails }: Props) {
         />
       )}
 
-      <div className="border-2 my-4 dark:border-gray-600" />
+      <div className="border-2 my-4 border-gray-600" />
 
       {/*<TwitchStream />*/}
 

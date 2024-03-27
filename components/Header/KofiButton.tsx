@@ -10,7 +10,7 @@ export function KofiWidget() {
       rel="noreferrer"
       className="hidden sm:block"
     >
-      <Label className="hover:bg-teal-800 dark:hover:bg-teal-700 gap-1 px-2 py-1.5">
+      <Label className="hover:bg-teal-700 gap-1 px-2 py-1.5">
         <Image alt="kofi" src={kofi} width={25} />
         Donate
       </Label>

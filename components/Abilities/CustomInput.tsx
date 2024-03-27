@@ -16,7 +16,7 @@ export function CustomInput({ label, placeholder, tooltip, value, setValue }: Pr
       <Label data-tooltip-id={`${label}-tooltip`}>{label}</Label>
       <TooltipStyled id={`${label}-tooltip`}>{tooltip}</TooltipStyled>
       <input
-        className="bg-gray-200 dark:bg-zinc-700 border-2 border-gray-200 dark:border-zinc-600 text-black dark:text-white rounded w-40 py-1.5 px-4 focus:outline-none focus:bg-white dark:focus:bg-zinc-800 focus:border-teal-500 dark:focus:border-teal-500 min-w-[300px]"
+        className="bg-zinc-700 border-2 border-gray-200 dark:border-zinc-600 text-white rounded w-40 py-1.5 px-4 focus:outline-none focus:bg-white dark:focus:bg-zinc-800 focus:border-teal-500 dark:focus:border-teal-500 min-w-[300px]"
         placeholder={placeholder}
         onChange={({ target: { value } }) => setValue(value)}
         value={value}

@@ -115,7 +115,7 @@ export function Simulator() {
             }}
           />
 
-          <div className="border-2 w-full dark:border-gray-600" />
+          <div className="border-2 w-full border-gray-600" />
 
           <Characters
             characters={characters}
@@ -158,7 +158,7 @@ export function Simulator() {
             </Button>
           </div>
 
-          <div className="border-2 w-full dark:border-gray-600" />
+          <div className="border-2 w-full border-gray-600" />
 
           {!selectedDungeon ? (
             <DungeonSelect setSelectedDungeon={setSelectedDungeon} />
@@ -176,7 +176,7 @@ export function Simulator() {
           )}
         </div>
 
-        <div className="border-2 mx-2 dark:border-gray-600" />
+        <div className="border-2 mx-2 border-gray-600" />
 
         <div className="basis-[400px] relative">
           <Sidebar result={result} enemyAbility={enemyAbility} keyDetails={keyDetails} />

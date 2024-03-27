@@ -75,9 +75,7 @@ export function Characters({
             loadProfile={loadProfileIdx(idx)}
             deleteProfile={deleteProfile}
           />
-          {characters.length > 1 && (
-            <div className="border-2 w-full dark:border-gray-600" />
-          )}
+          {characters.length > 1 && <div className="border-2 w-full border-gray-600" />}
         </Fragment>
       ))}
     </>

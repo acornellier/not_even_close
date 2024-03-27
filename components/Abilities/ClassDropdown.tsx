@@ -1,5 +1,5 @@
 ﻿import { useState } from 'react'
-import { classColors, classSpecs, WowClass, ClassSpec } from '../../backend/classes'
+import { classColors, ClassSpec, classSpecs, WowClass } from '../../backend/classes'
 import { SpecIcon } from '../Common/SpecIcon'
 import { Button } from '../Common/Button'
 
@@ -44,7 +44,7 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
       </Button>
 
       {open && (
-        <div className="absolute z-10  divide-y divide-gray-100 rounded-b-lg rounded-tr-lg shadow bg-zinc-700 dark:bg-zinc-800 border-2 border-gray-600">
+        <div className="absolute z-10  divide-y divide-gray-100 rounded-b-lg rounded-tr-lg shadow bg-zinc-800 border-2 border-gray-600">
           <div className="grid grid-cols-4 gap-2 px-4 py-2 text-sm text-gray-200">
             {(Object.keys(classSpecs) as WowClass[]).map((wowClass) => (
               <div className="p-1" key={wowClass}>
@@ -60,7 +60,7 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
                     className="cursor-pointer "
                     onClick={() => handleChange({ class: wowClass, spec: spec })}
                   >
-                    <a className="flex gap-0.5 items-center pl-1 rounded hover:bg-gray-600 dark:hover:text-white select-none">
+                    <a className="flex gap-0.5 items-center pl-1 rounded hover:bg-gray-600 hover:text-white select-none">
                       <SpecIcon wowClass={wowClass} spec={spec} size={20} />
                       <div className="p-1">{spec}</div>
                     </a>

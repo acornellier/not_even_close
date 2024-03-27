@@ -66,7 +66,7 @@ function TwitchStreamComponent() {
             {isChatExpanded ? 'Hide' : 'Show'} chat
           </Button>
         </div>
-        <div className="border-2 my-4 dark:border-gray-600 grow" />
+        <div className="border-2 my-4 border-gray-600 grow" />
       </div>
       <Script src="/twitch_v1.js" onLoad={onLoadTwitchScript} />
     </>

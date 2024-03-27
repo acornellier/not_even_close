@@ -1,6 +1,5 @@
 ﻿import { DiscordButton } from './DiscordButton'
 import { GitHubButton } from './GithubButton'
-import { DarkModeButton } from './DarkModeButton'
 import { KofiWidget } from './KofiButton'
 
 export function Header() {
@@ -14,7 +13,6 @@ export function Header() {
           </span>
         </div>
         <div className="flex items-center">
-          <DarkModeButton />
           <DiscordButton href="https://discord.gg/chfMzG6q2W" />
           <GitHubButton href="https://github.com/acornellier/not_even_close" />
           <KofiWidget />

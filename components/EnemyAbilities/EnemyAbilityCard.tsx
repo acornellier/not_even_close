@@ -2,7 +2,6 @@
 import Image from 'next/image'
 import { AbilityDetailsChip } from './AbilityDetailsChip'
 import { AbilityResult } from '../../backend/sim'
-import { Tooltip } from 'react-tooltip'
 import { TooltipStyled } from '../Common/TooltipStyled'
 
 interface Props {
@@ -13,10 +12,8 @@ interface Props {
 }
 
 export function EnemyAbilityCard({ ability, onSelect, selected, result }: Props) {
-  const cardColor = selected
-    ? 'bg-teal-800 dark:bg-teal-600'
-    : 'bg-teal-600 dark:bg-teal-900'
-  const hoverColor = !selected && 'hover:bg-teal-700 dark:hover:bg-teal-800'
+  const cardColor = selected ? 'bg-teal-600' : 'bg-teal-900'
+  const hoverColor = !selected && 'hover:bg-teal-800'
   const showResults = result && result.characters.length === 1
   const survival =
     result && result.characters[0] && result.characters[0].healthRemaining > 0
