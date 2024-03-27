@@ -178,7 +178,7 @@ export function Simulator() {
 
         <div className="border-2 mx-2 border-gray-600" />
 
-        <div className="basis-[400px] relative">
+        <div className="basis-[360px] relative">
           <Sidebar result={result} enemyAbility={enemyAbility} keyDetails={keyDetails} />
         </div>
       </div>

@@ -100,6 +100,13 @@ export const earthenHarmony: Ability = {
   iconName: 'spell_shaman_improvedearthshield',
 }
 
+export const timeDilation: Ability = {
+  name: 'Time Dilation',
+  dr: 0.5,
+  spellId: 357170,
+  iconName: 'ability_evoker_timedilation',
+}
+
 export const externals: Ability[] = [
   tepidVersatility,
   icyPreservation,
@@ -109,6 +116,7 @@ export const externals: Ability[] = [
   ironBark,
   blessingOfSacrifice,
   painSuppression,
+  timeDilation,
   lifeCocoon,
   leafOfTheAncientProtectors,
   fyrakksTaintedRageheart,

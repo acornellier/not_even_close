@@ -35,6 +35,6 @@ export const evokerDevAbilities = [inherentResistanceDevPres, obsidianScales]
 
 export const evokerPresAbilities = [
   inherentResistanceDevPres,
-  obsidianScales,
   rushOfVitality,
+  obsidianScales,
 ]

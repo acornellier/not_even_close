@@ -4,8 +4,6 @@ import Image from 'next/image'
 import { Fragment } from 'react'
 import { getHealthMultiplierAbsorb } from '../../backend/sim'
 import { useSimContext } from '../Tools/SimContext'
-import { Character } from '../../backend/characters'
-import { equalSpecs } from '../../backend/classes'
 import { TooltipStyled } from '../Common/TooltipStyled'
 
 const iconSize = 40

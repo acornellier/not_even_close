@@ -7,7 +7,7 @@ import {
 import { CharacterStatsForm } from './CharacterStatsForm'
 import { ClassDropdown } from '../Abilities/ClassDropdown'
 import { AbilitySelect } from '../Abilities/AbilitySelect'
-import { classSpecs, ClassSpec } from '../../backend/classes'
+import { ClassSpec, classSpecs } from '../../backend/classes'
 import { LabelledAbilitySelect } from '../Abilities/LabelledAbilitySelect'
 import { externals } from '../../backend/groupAbilities/externals'
 import { useCallback } from 'react'
@@ -128,7 +128,7 @@ export function CharacterComponent({
         </div>
       </div>
 
-      <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
+      <div className="flex gap-3 items-start flex-col md:flex-row md:items-center">
         <ClassDropdown onChange={setSpec} selectedClassSpec={character.classSpec} />
         <AbilitySelect
           characterIdx={idx}

@@ -12,7 +12,7 @@ interface Props {
 
 export function CustomInput({ label, placeholder, tooltip, value, setValue }: Props) {
   return (
-    <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
+    <div className="flex gap-3 items-start flex-col md:flex-row md:items-center">
       <Label data-tooltip-id={`${label}-tooltip`}>{label}</Label>
       <TooltipStyled id={`${label}-tooltip`}>{tooltip}</TooltipStyled>
       <input

@@ -1,8 +1,6 @@
 import { AbilitySelect } from './AbilitySelect'
 import { Ability } from '../../backend/ability'
 import { Label } from '../Common/Label'
-import { useEffect } from 'react'
-import { isAbilityAvailable } from '../../backend/utils'
 
 interface Props {
   label: string
@@ -18,7 +16,7 @@ export function LabelledAbilitySelect({
   setSelectedAbilities,
 }: Props) {
   return (
-    <div className="flex gap-4 items-start flex-col md:flex-row md:items-center">
+    <div className="flex gap-3 items-start flex-col md:flex-row md:items-center">
       <Label>{label}</Label>
       <AbilitySelect
         availableAbilities={availableAbilities}
