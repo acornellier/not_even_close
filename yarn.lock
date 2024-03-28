@@ -1503,11 +1503,6 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-next-themes@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/next-themes/-/next-themes-0.2.1.tgz#0c9f128e847979daf6c67f70b38e6b6567856e45"
-  integrity sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==
-
 next@13.5.3:
   version "13.5.3"
   resolved "https://registry.yarnpkg.com/next/-/next-13.5.3.tgz#631efcbcc9d756c610855d9b94f3d8c4e73ee131"
@@ -1824,13 +1819,6 @@ react-tooltip@^5.25.0:
   dependencies:
     "@floating-ui/dom" "^1.0.0"
     classnames "^2.3.0"
-
-react-twitch-embed-video@^3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/react-twitch-embed-video/-/react-twitch-embed-video-3.0.3.tgz#d9df97e47bef08ada7f74083080ed516e586682b"
-  integrity sha512-ilfV5qW6ksVedroxmYQnujU9+DsC0HzS59+4SWuqop7ncnmSA7plkUiOdaKL0cx9+Ke2GNgdie8YSFmGoK3Dow==
-  dependencies:
-    window-or-global "^1.0.1"
 
 react@18.2.0:
   version "18.2.0"
@@ -2217,11 +2205,6 @@ which@^2.0.1:
   integrity sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==
   dependencies:
     isexe "^2.0.0"
-
-window-or-global@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/window-or-global/-/window-or-global-1.0.1.tgz#dbe45ba2a291aabc56d62cf66c45b7fa322946de"
-  integrity sha512-tE12J/NenOv4xdVobD+AD3fT06T4KNqnzRhkv5nBIu7K+pvOH2oLCEgYP+i+5mF2jtI6FEADheOdZkA8YWET9w==
 
 word-wrap@^1.2.3:
   version "1.2.3"
