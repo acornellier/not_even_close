@@ -26,10 +26,6 @@ export function Instructions() {
         Changes made while a profile is loaded are automatically saved.
       </span>
       <span>
-        Physical damage reduced by armor is not supported. Earthshaking Stomp and Hateful
-        Charge are not reduced by armor.
-      </span>
-      <span>
         To give feedback or view the changelog,{' '}
         <a
           className="text-blue-500 hover:underline"
