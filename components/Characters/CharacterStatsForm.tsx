@@ -54,11 +54,11 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
         labelTooltip="Raw avoidance, NOT %"
         inputTooltip={`${avoidanceRawToPercent(characterStats.avoidanceRaw ?? 0)}%`}
       />
-      <NumericInput
-        label="Armor"
-        value={characterStats.armor}
-        onChange={onChangeStat('armor')}
-      />
+      {/*<NumericInput*/}
+      {/*  label="Armor"*/}
+      {/*  value={characterStats.armor}*/}
+      {/*  onChange={onChangeStat('armor')}*/}
+      {/*/>*/}
       {showMainStat && (
         <NumericInput
           label="Main stat"
