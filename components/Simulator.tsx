@@ -30,7 +30,7 @@ const defaultEnemyDetails: EnemyAbilityDetails = {
   isAoe: false,
   isTrashAbility: false,
   isPhysical: false,
-  isReducedByArmor: false,
+  ignoresArmor: false,
 }
 
 export function Simulator() {

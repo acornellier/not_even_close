@@ -20,7 +20,7 @@ export function EnemyAbilityDetailsInput({
   const setBaseDamage = setField('damage')
 
   return (
-    <div className="flex gap-4 flex-wrap items-end">
+    <div className="flex gap-3 flex-wrap items-end">
       <NumericInput
         label="Base damage"
         step={1000}
@@ -35,19 +35,28 @@ export function EnemyAbilityDetailsInput({
         setIsEnabled={(val) => setField('isTrashAbility')(!val)}
       />
       <OnOffStateSelector
-        label="Damage type"
-        label1="Magic"
-        label2="Physical"
-        enabled={!!enemyAbilityDetails.isPhysical}
-        setIsEnabled={setField('isPhysical')}
-      />
-      <OnOffStateSelector
         label="Ability type"
         label1="Single"
         label2="AoE"
         enabled={enemyAbilityDetails.isAoe}
         setIsEnabled={setField('isAoe')}
       />
+      <OnOffStateSelector
+        label="Damage type"
+        label1="Magic"
+        label2="Physical"
+        enabled={!!enemyAbilityDetails.isPhysical}
+        setIsEnabled={setField('isPhysical')}
+      />
+      {enemyAbilityDetails.isPhysical && (
+        <OnOffStateSelector
+          label="Ignores armor"
+          label1="No"
+          label2="Yes"
+          enabled={!!enemyAbilityDetails.ignoresArmor}
+          setIsEnabled={setField('ignoresArmor')}
+        />
+      )}
     </div>
   )
 }

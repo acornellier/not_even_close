@@ -1,6 +1,7 @@
 import { CharacterStats, EnemyAbilityDetails } from './simTypes'
 import { Ability } from '../ability'
 import { dampenHarm } from '../classAbilities/monk'
+import { armorToPhysicalDr } from '../stats'
 
 export function getDamageReduction(
   characterStats: CharacterStats,
@@ -14,6 +15,10 @@ export function getDamageReduction(
 
   if (enemyAbilityDetails.isAoe) {
     inverseDr *= 1 - characterStats.avoidance
+  }
+
+  if (enemyAbilityDetails.isPhysical && !enemyAbilityDetails.ignoresArmor) {
+    inverseDr *= 1 - armorToPhysicalDr(characterStats.armor)
   }
 
   for (const ability of abilities) {

@@ -54,7 +54,7 @@ export interface EnemyAbilityDetails {
   isAoe: boolean
   isTrashAbility?: boolean
   isPhysical?: boolean
-  isReducedByArmor?: boolean
+  ignoresArmor?: boolean
 }
 
 export interface SimInput {

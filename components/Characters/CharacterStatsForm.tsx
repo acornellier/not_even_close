@@ -1,7 +1,13 @@
 ﻿import { CharacterStatsInput } from '../../backend/characters'
 import { NumericInput } from '../Inputs/NumericInput'
-import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from '../../backend/stats'
+import {
+  armorToPhysicalDr,
+  avoidanceRawToPercent,
+  staminaToHp,
+  versRawToPercent,
+} from '../../backend/stats'
 import { Ability } from '../../backend/ability'
+import { roundTo } from '../../backend/utils'
 
 interface Props {
   characterStats: CharacterStatsInput
@@ -28,6 +34,11 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
       )
   )
 
+  const versPercent = versRawToPercent(characterStats.versatilityRaw ?? 0)
+  const avoidancePercent = avoidanceRawToPercent(characterStats.avoidanceRaw ?? 0)
+  const physicalDr = armorToPhysicalDr(characterStats.armor ?? 0)
+  console.log(physicalDr)
+
   return (
     <div className="flex gap-3 flex-wrap">
       <NumericInput
@@ -45,20 +56,21 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
         onChange={onChangeStat('versatilityRaw')}
         step={100}
         labelTooltip="Raw vers, NOT %"
-        inputTooltip={`${versRawToPercent(characterStats.versatilityRaw ?? 0)}%`}
+        inputTooltip={`${versPercent}% vers, ${roundTo(versPercent / 2, 2)}% DR`}
       />
       <NumericInput
         label="Avoidance"
         value={characterStats.avoidanceRaw}
         onChange={onChangeStat('avoidanceRaw')}
         labelTooltip="Raw avoidance, NOT %"
-        inputTooltip={`${avoidanceRawToPercent(characterStats.avoidanceRaw ?? 0)}%`}
+        inputTooltip={`${avoidancePercent}% AoE DR`}
       />
-      {/*<NumericInput*/}
-      {/*  label="Armor"*/}
-      {/*  value={characterStats.armor}*/}
-      {/*  onChange={onChangeStat('armor')}*/}
-      {/*/>*/}
+      <NumericInput
+        label="Armor"
+        value={characterStats.armor}
+        onChange={onChangeStat('armor')}
+        inputTooltip={`${roundTo(physicalDr * 100, 2)}% physical DR`}
+      />
       {showMainStat && (
         <NumericInput
           label="Main stat"

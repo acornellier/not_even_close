@@ -1,5 +1,16 @@
 import { EnemyAbility } from '../dungeons'
 
+export const grievousRip: EnemyAbility = {
+  name: 'Grievous Rip',
+  dungeon: 'Darkheart Thicket',
+  baseDamage: 85143,
+  isAoe: false,
+  isTrashAbility: true,
+  isPhysical: true,
+  iconName: 'spell_frost_iceclaw',
+  wowheadLink: 'https://www.wowhead.com/spell=225484/grievous-rip',
+}
+
 export const shatteredEarth: EnemyAbility = {
   name: 'Shattered Earth',
   boss: 'Oakheart',
@@ -52,6 +63,7 @@ export const nightmareBolt: EnemyAbility = {
 }
 
 export const dhtAbilities = [
+  grievousRip,
   crushingGrip,
   shatteredEarth,
   earthshakingRoar,

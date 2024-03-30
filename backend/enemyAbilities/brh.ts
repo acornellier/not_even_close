@@ -32,6 +32,7 @@ export const earthShakingStomp: EnemyAbility = {
   baseDamage: 96129,
   isAoe: true,
   isPhysical: true,
+  ignoresArmor: true,
   iconName: 'ability_warstomp',
   wowheadLink: 'https://www.wowhead.com/spell=198073/earthshaking-stomp',
 }
@@ -42,6 +43,7 @@ export const hatefulCharge: EnemyAbility = {
   baseDamage: 123594,
   isAoe: true,
   isPhysical: true,
+  ignoresArmor: true,
   iconName: 'ability_monk_clashingoxcharge',
   wowheadLink: 'https://www.wowhead.com/spell=224188/hateful-charge',
 }
