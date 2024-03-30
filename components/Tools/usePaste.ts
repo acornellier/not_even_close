@@ -1,7 +1,8 @@
 ﻿import { useCallback, useEffect } from 'react'
 import { getAddonOutput, isAddonPaste } from './addon'
 import { Ability } from '../../backend/ability'
-import { Character, UpdateCharacter } from '../../backend/characters'
+import { UpdateCharacter } from '../../backend/characters'
+import { useToasts } from '../Common/Toasts/useToasts'
 
 interface Props {
   updateCharacterIdx: (index: number) => UpdateCharacter
@@ -14,9 +15,14 @@ export function usePaste({
   selectedGroupBuffs,
   setGroupBuffs,
 }: Props) {
+  const { addToast } = useToasts()
+
   const handlePaste = useCallback(
     async (text: string, characterIdx: number) => {
-      if (!isAddonPaste(text)) return
+      if (!isAddonPaste(text)) {
+        addToast({ message: 'Invalid paste.', type: 'error' })
+        return
+      }
 
       const { character, groupBuffs, addTepidVers } = getAddonOutput(text)
 
@@ -29,8 +35,10 @@ export function usePaste({
             !selectedGroupBuffs.some((curBuff) => curBuff.spellId === newBuff.spellId)
         ),
       ])
+
+      addToast({ message: 'Paste success.', type: 'success' })
     },
-    [updateCharacterIdx, selectedGroupBuffs, setGroupBuffs]
+    [updateCharacterIdx, setGroupBuffs, selectedGroupBuffs, addToast]
   )
 
   const pasteWithButton = useCallback(
