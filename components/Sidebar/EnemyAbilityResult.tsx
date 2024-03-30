@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { EnemyAbility } from '../../backend/dungeons'
-import { KeyDetails } from '../../backend/sim'
+
+import { KeyDetails } from '../../backend/sim/simTypes'
 
 interface Props {
   enemyAbility: EnemyAbility | null

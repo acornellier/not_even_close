@@ -42,8 +42,10 @@ export const divineProtection: Ability = {
 
 export const shieldOfVengeance: Ability = {
   name: 'Shield of Vengeance',
-  absorbHealthMultiplier: 0.3,
-  absorbVersAffected: true,
+  absorb: {
+    healthMultiplier: 0.3,
+    versAffected: true,
+  },
   spellId: 184662,
   iconName: 'ability_paladin_shieldofthetemplar',
 }
@@ -62,7 +64,8 @@ export const aegisOfProtection: Ability = {
     },
     {
       otherSpellId: shieldOfVengeance.spellId,
-      field: 'absorbHealthMultiplier',
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
       value: 0.2,
     },
   ],

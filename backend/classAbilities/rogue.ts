@@ -51,8 +51,10 @@ export const fadeToNothing: Ability = {
 
 export const cloakedInShadows: Ability = {
   name: 'Cloaked in Shadows',
-  absorbHealthMultiplier: 0.3,
   spellId: 382515,
+  absorb: {
+    healthMultiplier: 0.3,
+  },
   iconName: 'inv_helm_cloth_shadowmoonclan_b_01',
 }
 

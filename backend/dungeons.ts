@@ -5,7 +5,8 @@ import { tottAbilities } from './enemyAbilities/tott'
 import { wcmAbilities } from './enemyAbilities/wcm'
 import { dotiAbilites } from './enemyAbilities/doti'
 import { ebAbilities } from './enemyAbilities/eb'
-import { EnemyAbilityDetails } from './sim'
+
+import { EnemyAbilityDetails } from './sim/simTypes'
 
 export const dungeons = [
   "Atal'Dazar",

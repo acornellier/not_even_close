@@ -12,8 +12,10 @@ export const arcaneWarding: Ability = {
 
 export const blazingBarrier: Ability = {
   name: 'Blazing Barrier',
-  absorbHealthMultiplier: 0.2,
-  absorbVersAffected: true,
+  absorb: {
+    healthMultiplier: 0.2,
+    versAffected: true,
+  },
   spellId: 382791,
   wowheadLink: 'https://www.wowhead.com/spell=382791/molten-barrier',
   iconName: 'ability_mage_moltenarmor',
@@ -21,16 +23,20 @@ export const blazingBarrier: Ability = {
 
 export const iceBarrier: Ability = {
   name: 'Ice Barrier',
-  absorbHealthMultiplier: 0.22,
-  absorbVersAffected: true,
+  absorb: {
+    healthMultiplier: 0.22,
+    versAffected: true,
+  },
   spellId: 11426,
   iconName: 'spell_ice_lament',
 }
 
 export const prismaticBarrier: Ability = {
   name: 'Prismatic Barrier',
-  absorbHealthMultiplier: 0.2,
-  absorbVersAffected: true,
+  absorb: {
+    healthMultiplier: 0.2,
+    versAffected: true,
+  },
   dr: 0.15,
   drType: 'magic',
   spellId: 235450,
@@ -53,8 +59,10 @@ export const improvedPrismaticBarrier: Ability = {
 export const tempestBarrier: Ability = {
   name: 'Tempest Barrier',
   spellId: 382289,
-  absorbHealthMultiplier: 0.06,
-  absorbVersAffected: true,
+  absorb: {
+    healthMultiplier: 0.06,
+    versAffected: true,
+  },
   iconName: 'inv_shield_1h_artifactstormfist_d_04',
 }
 

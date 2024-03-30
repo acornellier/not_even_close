@@ -1,9 +1,3 @@
-- Matted Fur and Dark Pact
--- Show a main stat input for Druid and Warlock
---- Adjust styling to make sure 4 inputs fit on 1 row at all screen sizes
--- Add abilities and new absorb scaling types
--- Calculate AP/SP from main stat. Different for different specs
-
 - Spell Metadata
 -- Time between casts
 -- Meld/invis/feign nothing/recast/cancel

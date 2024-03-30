@@ -26,18 +26,21 @@ export const soulLink: Ability = {
 
 export const soulLeech: Ability = {
   name: 'Soul Leech',
-  absorbHealthMultiplier: 0.15,
   spellId: 108370,
+  absorb: {
+    healthMultiplier: 0.15,
+  },
   iconName: 'warlock_siphonlife',
 }
 
 export const darkPact: Ability = {
   name: 'Dark Pact',
-  absorbHealthMultiplier: 0.6,
   spellId: 108416,
+  absorb: {
+    healthMultiplier: 0.2,
+    spMultipler: 2.5,
+  },
   iconName: 'spell_shadow_deathpact',
-  notes:
-    'HACK. Actually 20% HP + 2.5 * spell power, but spell power is not implemented. This estimate is reasonably close with current numbers',
 }
 
 export const unendingResolve: Ability = {

@@ -48,38 +48,46 @@ export const lifeCocoon: Ability = {
   name: 'Life Cocoon',
   spellId: 116849,
   associatedSpec: { class: 'Monk', spec: 'Mistweaver' },
-  absorbHealthMultiplier: 0.8,
-  absorbVersAffected: true,
-  absorbBackup: 900_000,
+  absorb: {
+    healthMultiplier: 0.8,
+    versAffected: true,
+    backup: 900_000,
+  },
   iconName: 'ability_monk_chicocoon',
   notes: 'Assumes 900K absorb if you have no mistweaver selected',
 }
 
 export const twinGuardian: Ability = {
   name: 'Twin Guardian (Rescue)',
-  associatedClass: 'Evoker',
-  absorbHealthMultiplier: 0.3,
-  absorbVersAffected: true,
-  absorbBackup: 300_000,
   spellId: 370888,
+  associatedClass: 'Evoker',
+  absorb: {
+    healthMultiplier: 0.3,
+    versAffected: true,
+    backup: 300_000,
+  },
   iconName: 'ability_skyreach_shielded',
   notes: 'Assumes 300K absorb if you have no evoker selected',
 }
 
 export const leafOfTheAncientProtectors: Ability = {
   name: 'Leaf of the Ancient Protectors',
-  rawAbsorb: 348_500,
-  absorbVersAffected: true,
   spellId: 110009,
+  absorb: {
+    raw: 348_500,
+    versAffected: true,
+  },
   iconName: 'inv_misc_plant_01',
   notes: 'Assumes ilvl 483, Hero 6/6',
 }
 
 export const fyrakksTaintedRageheart: Ability = {
   name: "Fyrakk's Tainted Rageheart",
-  rawAbsorb: 922_410,
-  absorbVersAffected: true,
   spellId: 422750,
+  absorb: {
+    raw: 922_410,
+    versAffected: true,
+  },
   iconName: 'inv_ragnaros_heart_shadowflame',
   notes: 'Assumes ilvl 489, Myth 4/4',
 }

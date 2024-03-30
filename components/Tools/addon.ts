@@ -37,6 +37,8 @@ function parseAddon(text: string) {
   const stamina = Number(findValue(lines, 'stamina'))
   const versatilityRaw = Number(findValue(lines, 'versatilityRaw'))
   const avoidanceRaw = Number(findValue(lines, 'avoidanceRaw'))
+  const armor = Number(findValue(lines, 'armor'))
+  const mainStat = Number(findValue(lines, 'mainStat'))
   const buffs = findValue(lines, 'buffs')
 
   return {
@@ -45,6 +47,8 @@ function parseAddon(text: string) {
       stamina: stamina,
       versatilityRaw: roundTo(versatilityRaw, 3),
       avoidanceRaw: roundTo(avoidanceRaw, 3),
+      armor,
+      mainStat,
     },
     buffs: buffs.split(',').map(Number),
   }

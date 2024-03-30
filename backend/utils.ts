@@ -1,6 +1,7 @@
 ﻿import { Ability } from './ability'
 import { EnemyAbility } from './dungeons'
-import { EnemyAbilityDetails } from './sim'
+
+import { EnemyAbilityDetails } from './sim/simTypes'
 
 export function roundTo(number: number, to: number) {
   return Math.round(number * 10 ** to) / 10 ** to
@@ -17,11 +18,22 @@ export function augmentAbilities(abilities: Ability[], selectedAbilities: Abilit
     abilities.forEach(({ spellId, abilityAugmentations }) => {
       if (!abilityAugmentations || !isAbilitySelected(spellId, selectedAbilities)) return
 
-      abilityAugmentations.forEach(({ otherSpellId, field, value }) => {
-        if (otherSpellId === augmentedAbility.spellId) {
+      abilityAugmentations.forEach(({ otherSpellId, field, absorbField, value }) => {
+        if (otherSpellId !== augmentedAbility.spellId) return
+
+        if (field === 'absorb') {
+          const absorb = augmentedAbility.absorb
+          if (!absorb || !absorbField) return
+
+          augmentedAbility.absorb = { ...absorb }
+
+          augmentedAbility.absorb[absorbField] ??= 0
+          if (absorbField === 'healthMultiplier')
+            augmentedAbility.absorb[absorbField]! *= 1 + value
+          else augmentedAbility.absorb[absorbField]! += value
+        } else {
           augmentedAbility[field] ??= 0
-          if (field === 'absorbHealthMultiplier') augmentedAbility[field]! *= 1 + value
-          else augmentedAbility[field]! += value
+          augmentedAbility[field]! += value
         }
       })
     })

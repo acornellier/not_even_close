@@ -1,11 +1,8 @@
-﻿import { AbilityResult, EnemyAbilityDetails, KeyDetails, Result } from '../../backend/sim'
-import { EnemyAbility } from '../../backend/dungeons'
-import { EnemyAbilityCard } from '../EnemyAbilities/EnemyAbilityCard'
+﻿import { EnemyAbility } from '../../backend/dungeons'
 import { OverkillText } from './OverkillText'
 import { ResultDetails } from './ResultDetails'
-import { AbilityIcon } from '../Abilities/AbilityIcon'
-import Image from 'next/image'
 import { EnemyAbilityResult } from './EnemyAbilityResult'
+import { AbilityResult, KeyDetails } from '../../backend/sim/simTypes'
 
 interface Props {
   result: AbilityResult

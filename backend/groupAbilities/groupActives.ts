@@ -1,4 +1,4 @@
-﻿import { Ability, AbilityAugmentation } from '../ability'
+﻿import { Ability } from '../ability'
 import {
   improvedPrismaticBarrier,
   improvedPrismaticBarrierAugmentation,
@@ -18,9 +18,11 @@ export const chiCocoon: Ability = {
   name: 'Chi Cocoon',
   spellId: 406220,
   associatedSpec: { class: 'Monk', spec: 'Mistweaver' },
-  absorbHealthMultiplier: 0.16,
-  absorbVersAffected: true,
-  absorbBackup: 170_000,
+  absorb: {
+    healthMultiplier: 0.16,
+    versAffected: true,
+    backup: 170_000,
+  },
   iconName: 'inv_pet_crane',
   wowheadLink: 'https://www.wowhead.com/spell=406220/chi-cocoon',
   notes: 'Assumes 170K absorb if you have no mistweaver selected',
@@ -30,9 +32,11 @@ export const massBarrier: Ability = {
   name: 'Mass Barrier',
   spellId: 414660,
   associatedClass: 'Mage',
-  absorbHealthMultiplier: 0.2,
-  absorbVersAffected: true,
-  absorbBackup: 200_000,
+  absorb: {
+    healthMultiplier: 0.2,
+    versAffected: true,
+    backup: 200_000,
+  },
   iconName: 'ability_racial_magicalresistance',
   wowheadLink: 'https://www.wowhead.com/spell=414660/mass-barrier',
   notes: 'Assumes 200K absorb if you have no mage selected',

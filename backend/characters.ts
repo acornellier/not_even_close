@@ -5,6 +5,8 @@ export interface CharacterStatsInput {
   stamina: number | undefined
   versatilityRaw: number | undefined
   avoidanceRaw: number | undefined
+  armor: number | undefined
+  mainStat: number | undefined
 }
 
 export interface Character {

@@ -1,13 +1,13 @@
 ﻿import {
   Dungeon,
-  dungeonIcons,
   dungeonAbilities,
+  dungeonIcons,
   EnemyAbility,
 } from '../../backend/dungeons'
 import { EnemyAbilityCard } from './EnemyAbilityCard'
 import Image from 'next/image'
-import { AbilityResult } from '../../backend/sim'
 import { Button } from '../Common/Button'
+import { AbilityResult } from '../../backend/sim/simTypes'
 
 interface Props {
   selectedDungeon: Dungeon

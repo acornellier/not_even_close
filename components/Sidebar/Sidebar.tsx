@@ -1,9 +1,9 @@
 ﻿import { ResultsFull } from './ResultsFull'
 import { ResultsMini } from './ResultsMini'
 import { Instructions } from './Instructions'
-import { KeyDetails, Result } from '../../backend/sim'
 import dynamic from 'next/dynamic'
 import { EnemyAbility } from '../../backend/dungeons'
+import { KeyDetails, Result } from '../../backend/sim/simTypes'
 
 const TwitchStream = dynamic(
   () => import('./TwitchStream').then((mod) => mod.TwitchStream),

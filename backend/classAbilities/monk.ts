@@ -40,22 +40,29 @@ export const secretInfusion: Ability = {
 export const expelHarm: Ability = {
   name: 'TFT + Expel Harm',
   spellId: 322101,
-  absorbHealthMultiplier: 0.16,
-  absorbVersAffected: true,
+  absorb: {
+    healthMultiplier: 0.16,
+    versAffected: true,
+  },
   iconName: 'ability_monk_expelharm',
 }
 
 export const yulonsGraceMistweaver: Ability = {
   name: "Yulon's Grace",
   spellId: 414131,
-  absorbHealthMultiplier: 0.15,
-  absorbType: 'magic',
+  absorb: {
+    healthMultiplier: 0.15,
+    absorbType: 'magic',
+  },
   iconName: 'ability_monk_dragonkick',
 }
 
 export const yulonsGraceWindwalker: Ability = {
   ...yulonsGraceMistweaver,
-  absorbHealthMultiplier: 0.1,
+  absorb: {
+    ...yulonsGraceMistweaver.absorb,
+    healthMultiplier: 0.1,
+  },
 }
 
 export const dampenHarm: Ability = {
@@ -87,7 +94,9 @@ export const fortBrew: Ability = {
 export const touchOfKarma: Ability = {
   name: 'Touch of Karma',
   spellId: 122470,
-  absorbHealthMultiplier: 0.5,
+  absorb: {
+    healthMultiplier: 0.5,
+  },
   iconName: 'ability_monk_touchofkarma',
 }
 

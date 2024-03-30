@@ -1,8 +1,8 @@
 ﻿import { EnemyAbility } from '../../backend/dungeons'
 import Image from 'next/image'
 import { AbilityDetailsChip } from './AbilityDetailsChip'
-import { AbilityResult } from '../../backend/sim'
 import { TooltipStyled } from '../Common/TooltipStyled'
+import { AbilityResult } from '../../backend/sim/simTypes'
 
 interface Props {
   ability: EnemyAbility

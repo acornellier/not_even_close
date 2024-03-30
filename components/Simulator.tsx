@@ -1,4 +1,4 @@
-import { EnemyAbilityDetails, KeyDetails, Result, simulate } from '../backend/sim'
+import { simulate } from '../backend/sim/sim'
 import { useCallback, useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
 import { EnemyAbilities } from './EnemyAbilities/EnemyAbilities'
@@ -18,6 +18,7 @@ import { DungeonSelect } from './EnemyAbilities/DungeonSelect'
 import { enemyAbilityToDetails } from '../backend/utils'
 import { Characters, defaultCharacter, defaultCharacters } from './Characters/Characters'
 import { Button } from './Common/Button'
+import { EnemyAbilityDetails, KeyDetails, Result } from '../backend/sim/simTypes'
 
 const defaultGroupBuffs: Ability[] = []
 const defaultGroupActives: Ability[] = []

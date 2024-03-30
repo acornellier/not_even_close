@@ -9,10 +9,12 @@ export const willOfTheNecropolis: Ability = {
 
 export const antiMagicShell: Ability = {
   name: 'Anti-Magic Shell',
-  drType: 'magic',
-  absorbHealthMultiplier: 0.3,
-  absorbVersAffected: true,
   spellId: 48707,
+  absorb: {
+    healthMultiplier: 0.3,
+    absorbType: 'magic',
+    versAffected: true,
+  },
   iconName: 'spell_shadow_antimagicshell',
 }
 
@@ -24,7 +26,8 @@ export const antiMagicBarrier: Ability = {
   abilityAugmentations: [
     {
       otherSpellId: antiMagicShell.spellId,
-      field: 'absorbHealthMultiplier',
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
       value: 0.4,
     },
   ],
@@ -38,7 +41,8 @@ export const gloomWard: Ability = {
   abilityAugmentations: [
     {
       otherSpellId: antiMagicShell.spellId,
-      field: 'absorbHealthMultiplier',
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
       value: 0.15,
     },
   ],

@@ -19,8 +19,10 @@ export const defaultCharacter: Character = {
   classSpec: defaultClassSpec,
   stats: {
     stamina: 41_000,
-    versatilityRaw: 1000,
+    versatilityRaw: 1_000,
     avoidanceRaw: 325,
+    armor: 20_000,
+    mainStat: 10_000,
   },
   abilities: defaultAbilities(defaultClassSpec),
   externals: [],

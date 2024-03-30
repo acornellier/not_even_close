@@ -23,7 +23,7 @@ export function Input({
   fullWidth,
   ...props
 }: InputProps) {
-  const widthClass = fullWidth ? 'w-full' : 'w-32'
+  const widthClass = fullWidth ? 'w-full' : 'w-28'
 
   return (
     <div className={`flex flex-col ${widthClass}`}>

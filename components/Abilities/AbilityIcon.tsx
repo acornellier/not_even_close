@@ -1,10 +1,15 @@
-import { Ability, AbilityField, abilityFields } from '../../backend/ability'
+import {
+  Ability,
+  AbilityField,
+  abilityFields,
+  AbsorbOptions,
+} from '../../backend/ability'
 import { isAbilitySelected, roundTo } from '../../backend/utils'
 import Image from 'next/image'
 import { Fragment } from 'react'
-import { getHealthMultiplierAbsorb } from '../../backend/sim'
 import { useSimContext } from '../Tools/SimContext'
 import { TooltipStyled } from '../Common/TooltipStyled'
+import { getMultiplierAbsorb } from '../../backend/sim/absorbs'
 
 const iconSize = 40
 
@@ -16,9 +21,39 @@ interface AbilityIconProps {
   characterIdx?: number
 }
 
-function getEffectText(field: AbilityField, value: number, ability?: Ability) {
+function getAbsorbText(absorb: AbsorbOptions) {
+  let absorbs = []
+  if (absorb.raw) {
+    absorbs.push(`${absorb.raw.toLocaleString('en-US')} HP`)
+  } else if (absorb.healthMultiplier) {
+    absorbs.push(`${roundTo(absorb.healthMultiplier * 100, 2)}% HP`)
+  }
+
+  if (absorb.spMultipler) {
+    absorbs.push(`${roundTo(absorb.spMultipler * 100, 2)}% SP`)
+  } else if (absorb.apMultipler) {
+    absorbs.push(`${roundTo(absorb.apMultipler * 100, 2)}% AP`)
+  }
+
+  if (!absorbs.length) return ''
+
+  let str = absorbs.join(' + ')
+
+  str += ` ${absorb.absorbType ? absorb.absorbType + ' ' : ''}absorb`
+
+  if (absorb.versAffected) str += ' (+vers)'
+
+  return str
+}
+
+function getExtraAbsorbText(calculatedAbsorb: number) {
+  if (!calculatedAbsorb) return ''
+
+  return ` - ${calculatedAbsorb.toLocaleString('en-US')} absorb`
+}
+
+function getNumberText(field: AbilityField, value: number, ability?: Ability) {
   const damageType = ability?.drType
-  const absorbType = ability?.absorbType
   switch (field) {
     case 'dr':
       return `${roundTo(value * 100, 2)}% ${damageType ? damageType + ' ' : ''}DR`
@@ -32,15 +67,21 @@ function getEffectText(field: AbilityField, value: number, ability?: Ability) {
       return `${roundTo(value * 100, 2)}% versatility`
     case 'versRawIncrease':
       return `${value} versatility`
-    case 'rawAbsorb':
-      return `${value.toLocaleString('en-US')} HP ${
-        absorbType ? absorbType + ' ' : ''
-      }absorb`
-    case 'absorbHealthMultiplier':
-      return `${roundTo(value * 100, 2)}% HP ${absorbType ? absorbType + ' ' : ''}absorb`
     default:
       console.error(`Unknown ability field: ${field}`)
       return 'Error'
+  }
+}
+
+function getEffectText<T extends AbilityField>(
+  field: T,
+  value: Ability[T],
+  ability?: Ability
+) {
+  if (field === 'absorb') {
+    return getAbsorbText(value as AbsorbOptions)
+  } else {
+    return getNumberText(field, value as number, ability)
   }
 }
 
@@ -63,14 +104,14 @@ export function AbilityIcon({
 
   const { result } = useSimContext()
   let calculatedAbsorb = 0
-  if (result) {
+  if (result && ability.absorb) {
     const resultChar =
       characterIdx !== undefined ? result.main.characters[characterIdx] : undefined
 
-    calculatedAbsorb = getHealthMultiplierAbsorb(
+    calculatedAbsorb = getMultiplierAbsorb(
+      ability.absorb,
       ability,
-      resultChar?.adjustedStats ?? null,
-      resultChar?.startingHealth ?? null,
+      resultChar ?? null,
       result.main.characters
     )
   }
@@ -78,6 +119,7 @@ export function AbilityIcon({
   const tooltipId = `ability-tooltip-${ability.spellId}${
     characterIdx ? `-${characterIdx}` : ''
   }`
+
   return (
     <div
       key={ability.spellId}
@@ -91,20 +133,17 @@ export function AbilityIcon({
       <TooltipStyled id={tooltipId}>
         <div className="flex flex-col">
           <span className="text-xl">{ability.name}</span>
-          {abilityFields.map(
-            (field) =>
-              ability[field] && (
+          {abilityFields.map((field) => {
+            const value = ability[field]
+            return (
+              value && (
                 <span key={field}>
-                  {getEffectText(field, ability[field]!, ability)}{' '}
-                  {(field === 'absorbHealthMultiplier' || field === 'rawAbsorb') &&
-                    ability.absorbVersAffected &&
-                    ' (+vers)'}
-                  {field === 'absorbHealthMultiplier' &&
-                    calculatedAbsorb &&
-                    ` - ${calculatedAbsorb.toLocaleString('en-US')} absorb`}
+                  {getEffectText(field, value, ability)}
+                  {field === 'absorb' && getExtraAbsorbText(calculatedAbsorb)}
                 </span>
               )
-          )}
+            )
+          })}
           {augmentedAbilities?.map((augmentedAbility) => {
             const augmentation = ability.abilityAugmentations?.find(
               (augmentation) => augmentation.otherSpellId === augmentedAbility.spellId
@@ -115,9 +154,10 @@ export function AbilityIcon({
               <Fragment key={augmentedAbility.spellId}>
                 <span>
                   Improves {augmentedAbility.name}:{' '}
-                  {augmentation.field !== 'absorbHealthMultiplier'
-                    ? `+${getEffectText(augmentation.field, augmentation.value)}`
-                    : `${augmentation.value * 100}% more absorb`}
+                  {augmentation.field === 'absorb' &&
+                  augmentation.absorbField === 'healthMultiplier'
+                    ? `${augmentation.value * 100}% more absorb`
+                    : `+${getEffectText(augmentation.field, augmentation.value)}`}
                 </span>
               </Fragment>
             )

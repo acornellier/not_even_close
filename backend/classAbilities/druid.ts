@@ -84,7 +84,27 @@ export const barkskin: Ability = {
   name: 'Barkskin',
   dr: 0.2,
   spellId: 22812,
+  absorb: {
+    versAffected: true,
+  },
   iconName: 'spell_nature_stoneclawtotem',
+  notes:
+    'With Matted Fur, this is exact for Balance and Resto, but slightly off for Feral and Guardian due to weapon dps missing.',
+}
+
+export const mattedFur: Ability = {
+  name: 'Matted Fur',
+  spellId: 385786,
+  onByDefault: true,
+  abilityAugmentations: [
+    {
+      otherSpellId: barkskin.spellId,
+      field: 'absorb',
+      absorbField: 'apMultipler',
+      value: 3.125,
+    },
+  ],
+  iconName: 'inv_misc_pelt_15',
 }
 
 export const survivalInsticts: Ability = {
@@ -109,6 +129,7 @@ export const innerPeace: Ability = {
 }
 
 export const druidBalanceAbilities = [
+  mattedFur,
   thickHide,
   risingLight,
   bearForm,
@@ -120,6 +141,7 @@ export const druidBalanceAbilities = [
 ]
 
 export const druidFeralAbilities = [
+  mattedFur,
   thickHide,
   risingLight,
   bearForm,
@@ -133,6 +155,7 @@ export const druidFeralAbilities = [
 ]
 
 export const druidRestoAbilities = [
+  mattedFur,
   thickHide,
   risingLight,
   bearForm,
