@@ -22,7 +22,7 @@ function absorbMainStatAmount(absorb: AbsorbOptions, charResult: CharacterPartia
     const sp = charResult.adjustedStats.mainStat
     return sp * absorb.spMultipler
   } else if (absorb.apMultipler) {
-    const ap = charResult.adjustedStats.mainStat * 1.3
+    const ap = charResult.adjustedStats.mainStat * 1.2
     console.log(ap)
     return ap * absorb.apMultipler
   }

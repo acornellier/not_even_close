@@ -1,5 +1,6 @@
 import {
   Ability,
+  AbilityAugmentation,
   AbilityField,
   abilityFields,
   AbsorbOptions,
@@ -10,6 +11,7 @@ import { Fragment } from 'react'
 import { useSimContext } from '../Tools/SimContext'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { getMultiplierAbsorb } from '../../backend/sim/absorbs'
+import { barkskin } from '../../backend/classAbilities/druid'
 
 const iconSize = 40
 
@@ -85,6 +87,16 @@ function getEffectText<T extends AbilityField>(
   }
 }
 
+function getAugmentationText(augmentation: AbilityAugmentation) {
+  if (augmentation.field === 'absorb' && augmentation.absorbField === 'healthMultiplier')
+    return `${augmentation.value * 100}% more absorb`
+
+  if (augmentation.otherSpellId === barkskin.spellId)
+    return `+${augmentation.value * 100}% AP absorb`
+
+  return `+${getEffectText(augmentation.field, augmentation.value)}`
+}
+
 export function AbilityIcon({
   ability,
   toggleAbility,
@@ -153,11 +165,7 @@ export function AbilityIcon({
             return (
               <Fragment key={augmentedAbility.spellId}>
                 <span>
-                  Improves {augmentedAbility.name}:{' '}
-                  {augmentation.field === 'absorb' &&
-                  augmentation.absorbField === 'healthMultiplier'
-                    ? `${augmentation.value * 100}% more absorb`
-                    : `+${getEffectText(augmentation.field, augmentation.value)}`}
+                  Improves {augmentedAbility.name}: {getAugmentationText(augmentation)}
                 </span>
               </Fragment>
             )

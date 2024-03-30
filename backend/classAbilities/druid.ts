@@ -89,7 +89,7 @@ export const barkskin: Ability = {
   },
   iconName: 'spell_nature_stoneclawtotem',
   notes:
-    'With Matted Fur, this is exact for Balance and Resto, but slightly off for Feral and Guardian due to weapon dps missing.',
+    'The Matted Fur absorb is exact for Balance and Resto, but slightly off for Feral and Guardian due to weapon dps missing.',
 }
 
 export const mattedFur: Ability = {
@@ -143,6 +143,7 @@ export const druidBalanceAbilities = [
 export const druidFeralAbilities = [
   mattedFur,
   thickHide,
+  protectiveGrowth,
   risingLight,
   bearForm,
   heartOfTheWild,
@@ -151,13 +152,12 @@ export const druidFeralAbilities = [
   ursineVigorTwoPoints,
   barkskin,
   survivalInsticts,
-  protectiveGrowth,
 ]
 
 export const druidRestoAbilities = [
   mattedFur,
-  thickHide,
   risingLight,
+  thickHide,
   bearForm,
   heartOfTheWild,
   lycarasTeachings,
