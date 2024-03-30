@@ -50,7 +50,12 @@ export function usePaste({
 
   const handleGlobalPaste = useCallback(
     async (event: any) => {
-      if (!event.clipboardData) return
+      if (
+        !event.clipboardData ||
+        event.target instanceof HTMLInputElement ||
+        event.target instanceof HTMLTextAreaElement
+      )
+        return
 
       await handlePaste(event.clipboardData.getData('text'), 0)
     },
