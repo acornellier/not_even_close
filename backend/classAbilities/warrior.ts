@@ -45,8 +45,20 @@ export const seasonedSoldier: Ability = {
   iconName: 'inv_axe_09',
 }
 
+export const ignorePain: Ability = {
+  name: 'Ignore Pain',
+  spellId: 190456,
+  absorb: {
+    apMultipler: 4.375,
+    versAffected: true,
+  },
+  iconName: 'ability_warrior_renewedvigor',
+  notes: 'This is slightly off due to weapon dps missing.',
+}
+
 export const warriorArmsAbilities = [
   seasonedSoldier,
+  ignorePain,
   defensiveStance,
   spellReflection,
   dieByTheSword,
