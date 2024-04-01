@@ -37,7 +37,6 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
   const versPercent = versRawToPercent(characterStats.versatilityRaw ?? 0)
   const avoidancePercent = avoidanceRawToPercent(characterStats.avoidanceRaw ?? 0)
   const physicalDr = armorToPhysicalDr(characterStats.armor ?? 0)
-  console.log(physicalDr)
 
   return (
     <div className="flex gap-3 flex-wrap">

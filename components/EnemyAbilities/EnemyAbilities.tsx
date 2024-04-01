@@ -1,16 +1,11 @@
-﻿import {
-  Dungeon,
-  dungeonAbilities,
-  dungeonIcons,
-  EnemyAbility,
-} from '../../backend/dungeons'
+﻿import { DungeonKey, dungeonsByKey, EnemyAbility } from '../../backend/dungeons'
 import { EnemyAbilityCard } from './EnemyAbilityCard'
 import Image from 'next/image'
 import { Button } from '../Common/Button'
 import { AbilityResult } from '../../backend/sim/simTypes'
 
 interface Props {
-  selectedDungeon: Dungeon
+  selectedDungeon: DungeonKey
   selectedAbility: EnemyAbility | null
   onSelect: (bossAbility: EnemyAbility) => void
   deselectDungeon: () => void
@@ -24,7 +19,7 @@ export function EnemyAbilities({
   deselectDungeon,
   results,
 }: Props) {
-  const abilities = dungeonAbilities[selectedDungeon]
+  const dungeon = dungeonsByKey[selectedDungeon]
 
   return (
     <div className="flex flex-col gap-2">
@@ -34,14 +29,14 @@ export function EnemyAbilities({
             className={`rounded border-2 border-gray-600`}
             height={32}
             width={32}
-            src={`https://wow.zamimg.com/images/wow/icons/large/${dungeonIcons[selectedDungeon]}.jpg`}
-            alt={selectedDungeon}
+            src={`https://wow.zamimg.com/images/wow/icons/large/${dungeon.icon}.jpg`}
+            alt={dungeon.name}
           />
-          {selectedDungeon}
+          {dungeon.name}
         </Button>
       </div>
       <div className="flex flex-col gap-x-2 gap-y-1 flex-wrap items-stretch">
-        {abilities.map((ability) => {
+        {dungeon.abilities.map((ability) => {
           const abilityResult = results?.find(
             (result) => result.enemyAbilityDetails.name === ability.name
           )

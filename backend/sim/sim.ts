@@ -1,7 +1,6 @@
 import { Character, CharacterStatsInput } from '../characters'
 import { Ability } from '../ability'
 import { augmentAbilities, enemyAbilityToDetails } from '../utils'
-import { dungeonAbilities } from '../dungeons'
 import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from '../stats'
 import {
   AbilityResult,
@@ -15,6 +14,7 @@ import {
 } from './simTypes'
 import { getAbsorbs, getExtraAbsorbs } from './absorbs'
 import { getDamageReduction } from './dr'
+import { dungeonsByKey } from '../dungeons'
 
 function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isTrashAbility: boolean) {
   let scalingFactor = 1
@@ -190,7 +190,7 @@ export function simulate({
   )
 
   const dungeonResults = dungeon
-    ? dungeonAbilities[dungeon].map((enemyAbility) =>
+    ? dungeonsByKey[dungeon].abilities.map((enemyAbility) =>
         getAbilityResult(
           keyDetails,
           charPartialResults,

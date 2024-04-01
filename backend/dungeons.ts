@@ -5,58 +5,102 @@ import { tottAbilities } from './enemyAbilities/tott'
 import { wcmAbilities } from './enemyAbilities/wcm'
 import { dotiAbilites } from './enemyAbilities/doti'
 import { ebAbilities } from './enemyAbilities/eb'
-
 import { EnemyAbilityDetails } from './sim/simTypes'
-
-export const dungeons = [
-  "Atal'Dazar",
-  'Black Rook Hold',
-  'Darkheart Thicket',
-  'Dawn of the Infinite',
-  'Everbloom',
-  'Throne of the Tides',
-  'Waycrest Manor',
-  'All dungeons',
-] as const
-
-export type Dungeon = typeof dungeons[number]
 
 export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   name: string
   baseDamage: number
   variance?: number
   boss?: string
-  dungeon: Dungeon
+  dungeon: DungeonKey | string
   iconName: string
   wowheadLink: string
 }
 
-export const dungeonAbilities: Record<Dungeon, EnemyAbility[]> = {
-  "Atal'Dazar": adAbilities,
-  'Black Rook Hold': brhAbilities,
-  'Darkheart Thicket': dhtAbilities,
-  'Dawn of the Infinite': dotiAbilites,
-  Everbloom: ebAbilities,
-  'Throne of the Tides': tottAbilities,
-  'Waycrest Manor': wcmAbilities,
-  'All dungeons': [
-    ...adAbilities,
-    ...brhAbilities,
-    ...dhtAbilities,
-    ...dotiAbilites,
-    ...ebAbilities,
-    ...tottAbilities,
-    ...wcmAbilities,
-  ],
+export const dungeonKeys = [
+  'aa',
+  'av',
+  'bh',
+  'hoi',
+  'nelth',
+  'nok',
+  'rlp',
+  'uld',
+  'brh',
+  'dht',
+  'doti',
+  'ad',
+  'eb',
+  'tott',
+  'wcm',
+  'all',
+] as const
+
+export type DungeonKey = typeof dungeonKeys[number]
+
+export const isSeason4 = (key: DungeonKey) =>
+  ['aa', 'av', 'bh', 'hoi', 'nelth', 'nok', 'rlp', 'uld'].includes(key)
+
+export type Dungeon = {
+  key: DungeonKey
+  name: string
+  abilities: EnemyAbility[]
+  icon: string
 }
 
-export const dungeonIcons: Record<Dungeon, string> = {
-  "Atal'Dazar": 'achievement_dungeon_ataldazar',
-  'Black Rook Hold': 'achievement_dungeon_blackrookhold',
-  'Darkheart Thicket': 'achievement_dungeon_darkheartthicket',
-  'Dawn of the Infinite': 'achievement_dungeon_dawnoftheinfinite',
-  Everbloom: 'achievement_dungeon_everbloom',
-  'Throne of the Tides': 'achievement_dungeon_throne-of-the-tides',
-  'Waycrest Manor': 'achievement_dungeon_waycrestmannor',
-  'All dungeons': 'achievement_challengemode_arakkoaspires_gold',
-}
+export const dungeons: Dungeon[] = [
+  {
+    key: 'ad',
+    name: "Atal'Dazar",
+    abilities: adAbilities,
+    icon: 'achievement_dungeon_ataldazar',
+  },
+  {
+    key: 'brh',
+    name: 'Black Rook Hold',
+    abilities: brhAbilities,
+    icon: 'achievement_dungeon_blackrookhold',
+  },
+  {
+    key: 'dht',
+    name: 'Darkheart Thicket',
+    abilities: dhtAbilities,
+    icon: 'achievement_dungeon_darkheartthicket',
+  },
+  {
+    key: 'doti',
+    name: 'Dawn of the Infinite',
+    abilities: dotiAbilites,
+    icon: 'achievement_dungeon_dawnoftheinfinite',
+  },
+  {
+    key: 'eb',
+    name: 'Everbloom',
+    abilities: ebAbilities,
+    icon: 'achievement_dungeon_everbloom',
+  },
+  {
+    key: 'tott',
+    name: 'Throne of the Tides',
+    abilities: tottAbilities,
+    icon: 'achievement_dungeon_throne-of-the-tides',
+  },
+  {
+    key: 'wcm',
+    name: 'Waycrest Manor',
+    abilities: wcmAbilities,
+    icon: 'achievement_dungeon_waycrestmannor',
+  },
+]
+
+dungeons.push({
+  key: 'all',
+  name: 'All dungeons',
+  abilities: dungeons.flatMap(({ abilities }) => abilities),
+  icon: 'achievement_challengemode_arakkoaspires_gold',
+})
+
+export const dungeonsByKey = dungeons.reduce((acc, dungeon) => {
+  acc[dungeon.key] = dungeon
+  return acc
+}, {} as Record<DungeonKey, Dungeon>)
