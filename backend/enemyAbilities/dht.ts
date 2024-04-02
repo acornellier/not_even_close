@@ -2,7 +2,6 @@ import { EnemyAbility } from '../dungeons'
 
 export const grievousRip: EnemyAbility = {
   name: 'Grievous Rip',
-  dungeon: 'Darkheart Thicket',
   baseDamage: 85143,
   isAoe: false,
   isTrashAbility: true,
@@ -14,7 +13,6 @@ export const grievousRip: EnemyAbility = {
 export const shatteredEarth: EnemyAbility = {
   name: 'Shattered Earth',
   boss: 'Oakheart',
-  dungeon: 'Darkheart Thicket',
   baseDamage: 115355,
   isAoe: true,
   iconName: 'ability_warstomp',
@@ -24,7 +22,6 @@ export const shatteredEarth: EnemyAbility = {
 export const crushingGrip: EnemyAbility = {
   name: 'Crushing Grip',
   boss: 'Oakheart',
-  dungeon: 'Darkheart Thicket',
   baseDamage: 109862,
   isAoe: true,
   iconName: 'ability_warrior_titansgrip',
@@ -34,7 +31,6 @@ export const crushingGrip: EnemyAbility = {
 export const earthshakingRoar: EnemyAbility = {
   name: 'Earthshaking Roar',
   boss: 'Dresaron',
-  dungeon: 'Darkheart Thicket',
   baseDamage: 109862,
   isAoe: true,
   iconName: 'inv_misc_head_dragon_black_nightmare',
@@ -44,7 +40,6 @@ export const earthshakingRoar: EnemyAbility = {
 export const apocalypticNightmare: EnemyAbility = {
   name: 'Apocalyptic Nightmare',
   boss: 'Xavius',
-  dungeon: 'Darkheart Thicket',
   baseDamage: 137327,
   isAoe: true,
   iconName: 'sha_spell_fire_bluerainoffire_nightmare',
@@ -54,7 +49,6 @@ export const apocalypticNightmare: EnemyAbility = {
 export const nightmareBolt: EnemyAbility = {
   name: 'Nightmare Bolt',
   boss: 'Xavius',
-  dungeon: 'Darkheart Thicket',
   baseDamage: 90636,
   variance: 0.02,
   isAoe: false,

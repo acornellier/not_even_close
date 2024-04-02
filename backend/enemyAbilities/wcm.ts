@@ -2,7 +2,6 @@ import { EnemyAbility } from '../dungeons'
 
 export const soulBolt: EnemyAbility = {
   name: 'Soul Bolt',
-  dungeon: 'Waycrest Manor',
   baseDamage: 87889,
   isAoe: false,
   isTrashAbility: true,
@@ -12,7 +11,6 @@ export const soulBolt: EnemyAbility = {
 
 export const jaggedNettles: EnemyAbility = {
   name: 'Jagged Nettles',
-  dungeon: 'Waycrest Manor',
   baseDamage: 98875,
   isAoe: false,
   isPhysical: true,
@@ -23,7 +21,6 @@ export const jaggedNettles: EnemyAbility = {
 export const dreadEssence: EnemyAbility = {
   name: 'Dread Essence',
   boss: 'Gorak Tul',
-  dungeon: 'Waycrest Manor',
   baseDamage: 96129,
   isAoe: true,
   iconName: 'ability_argus_soulburst',
@@ -32,7 +29,6 @@ export const dreadEssence: EnemyAbility = {
 
 export const rottenExpulsion: EnemyAbility = {
   name: 'Rotten Expulsion',
-  dungeon: 'Waycrest Manor',
   baseDamage: 105742,
   isAoe: true,
   iconName: 'ability_creature_disease_01',

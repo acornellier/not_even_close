@@ -3,7 +3,6 @@ import { EnemyAbility } from '../dungeons'
 export const wrackingPain: EnemyAbility = {
   name: 'Wracking Pain',
   boss: 'Yazma',
-  dungeon: "Atal'Dazar",
   baseDamage: 82369,
   isAoe: false,
   iconName: 'ability_warlock_improvedsoulleech',
@@ -13,7 +12,6 @@ export const wrackingPain: EnemyAbility = {
 export const soulrend: EnemyAbility = {
   name: 'Soulrend',
   boss: 'Yazma',
-  dungeon: "Atal'Dazar",
   baseDamage: 100304,
   variance: 0.02,
   isAoe: false,

@@ -2,7 +2,6 @@ import { EnemyAbility } from '../dungeons'
 
 export const agitatedWater: EnemyAbility = {
   name: 'Agitated Water',
-  dungeon: 'Everbloom',
   baseDamage: 82396,
   isAoe: true,
   iconName: 'spell_frost_frostbolt',
@@ -11,7 +10,6 @@ export const agitatedWater: EnemyAbility = {
 
 export const waterBolt: EnemyAbility = {
   name: 'Water Bolt',
-  dungeon: 'Everbloom',
   baseDamage: 54931,
   isAoe: false,
   iconName: 'inv_elemental_crystal_water',
@@ -20,7 +18,6 @@ export const waterBolt: EnemyAbility = {
 
 export const cinderboltStorm: EnemyAbility = {
   name: 'Cinderbolt Storm (3 ticks)',
-  dungeon: 'Everbloom',
   baseDamage: 43945 * 3,
   isAoe: false,
   iconName: 'spell_fire_meteorstorm',
@@ -30,7 +27,6 @@ export const cinderboltStorm: EnemyAbility = {
 export const colossalBlow: EnemyAbility = {
   name: 'Colossal Blow',
   boss: 'Yalnu',
-  dungeon: 'Everbloom',
   baseDamage: 87889,
   isAoe: true,
   iconName: 'spell_shaman_earthquake',

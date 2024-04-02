@@ -16,10 +16,14 @@ import { getAbsorbs, getExtraAbsorbs } from './absorbs'
 import { getDamageReduction } from './dr'
 import { dungeonsByKey } from '../dungeons'
 
-function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isTrashAbility: boolean) {
+function getScalingFactor(
+  { keyLevel, isTyran }: KeyDetails,
+  isTrashAbility: boolean,
+  isBeta: boolean
+) {
   let scalingFactor = 1
   for (let i = 3; i <= keyLevel; ++i) {
-    scalingFactor *= i <= 10 ? 1.08 : 1.1
+    scalingFactor *= i <= 10 && !isBeta ? 1.08 : 1.1
   }
 
   if (!isTyran && isTrashAbility) {
@@ -112,9 +116,14 @@ function getAbilityResult(
   charPartialResults: CharacterPartialResult[],
   enemyAbilityDetails: EnemyAbilityDetails,
   customAbsorbs: number[],
-  customDrs: number[]
+  customDrs: number[],
+  isBeta: boolean
 ): AbilityResult {
-  const damageScaling = getScalingFactor(keyDetails, !!enemyAbilityDetails.isTrashAbility)
+  const damageScaling = getScalingFactor(
+    keyDetails,
+    !!enemyAbilityDetails.isTrashAbility,
+    isBeta
+  )
   const scaledDamage = Math.round(enemyAbilityDetails.damage * damageScaling)
 
   return {
@@ -178,6 +187,7 @@ export function simulate({
   keyDetails,
   enemyAbilityDetails,
   dungeon,
+  isBeta,
 }: SimInput): Result {
   const charPartialResults = getPartialResults(characters, groupAbilities)
 
@@ -186,7 +196,8 @@ export function simulate({
     charPartialResults,
     enemyAbilityDetails,
     customAbsorbs,
-    customDrs
+    customDrs,
+    isBeta
   )
 
   const dungeonResults = dungeon
@@ -196,7 +207,8 @@ export function simulate({
           charPartialResults,
           enemyAbilityToDetails(enemyAbility),
           customAbsorbs,
-          customDrs
+          customDrs,
+          isBeta
         )
       )
     : []

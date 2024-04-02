@@ -6,15 +6,15 @@ import { wcmAbilities } from './enemyAbilities/wcm'
 import { dotiAbilites } from './enemyAbilities/doti'
 import { ebAbilities } from './enemyAbilities/eb'
 import { EnemyAbilityDetails } from './sim/simTypes'
+import { aaAbilities } from './enemyAbilities/s4/aa'
 
 export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   name: string
   baseDamage: number
-  variance?: number
-  boss?: string
-  dungeon: DungeonKey | string
   iconName: string
   wowheadLink: string
+  variance?: number
+  boss?: string
 }
 
 export const dungeonKeys = [
@@ -49,6 +49,12 @@ export type Dungeon = {
 }
 
 export const dungeons: Dungeon[] = [
+  {
+    key: 'aa',
+    name: 'Algethar Academy',
+    abilities: aaAbilities,
+    icon: 'achievement_dungeon_dragonacademy',
+  },
   {
     key: 'ad',
     name: "Atal'Dazar",

@@ -2,7 +2,6 @@ import { EnemyAbility } from '../dungeons'
 
 export const soulBlast: EnemyAbility = {
   name: 'Soul Blast',
-  dungeon: 'Black Rook Hold',
   baseDamage: 82396,
   isAoe: false,
   isTrashAbility: true,
@@ -13,7 +12,6 @@ export const soulBlast: EnemyAbility = {
 export const soulBurst: EnemyAbility = {
   name: 'Soul Burst',
   boss: 'The Amalgam of Souls',
-  dungeon: 'Black Rook Hold',
   baseDamage: 123594,
   isAoe: true,
   iconName: 'ability_bossgorefiend_touchofdoom',
@@ -28,7 +26,6 @@ export const soulBurstMaxStacks: EnemyAbility = {
 
 export const earthShakingStomp: EnemyAbility = {
   name: 'Earthshaking Stomp',
-  dungeon: 'Black Rook Hold',
   baseDamage: 96129,
   isAoe: true,
   isPhysical: true,
@@ -39,7 +36,6 @@ export const earthShakingStomp: EnemyAbility = {
 
 export const hatefulCharge: EnemyAbility = {
   name: 'Hateful Charge',
-  dungeon: 'Black Rook Hold',
   baseDamage: 123594,
   isAoe: true,
   isPhysical: true,
@@ -51,7 +47,6 @@ export const hatefulCharge: EnemyAbility = {
 export const shadowBolt: EnemyAbility = {
   name: 'Shadow Bolt',
   boss: 'Ravencrest',
-  dungeon: 'Black Rook Hold',
   baseDamage: 106831,
   isAoe: true,
   iconName: 'spell_shadow_shadowbolt',
@@ -61,7 +56,6 @@ export const shadowBolt: EnemyAbility = {
 export const shadowBoltVolley: EnemyAbility = {
   name: 'Shadow Bolt Volley',
   boss: 'Ravencrest',
-  dungeon: 'Black Rook Hold',
   baseDamage: 164792,
   isAoe: true,
   iconName: 'spell_shadow_shadowbolt',

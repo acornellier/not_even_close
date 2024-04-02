@@ -2,7 +2,6 @@ import { EnemyAbility } from '../dungeons'
 
 export const waterBolt: EnemyAbility = {
   name: 'Water Bolt',
-  dungeon: 'Throne of the Tides',
   baseDamage: 68663,
   isAoe: false,
   isTrashAbility: true,
@@ -12,7 +11,6 @@ export const waterBolt: EnemyAbility = {
 
 export const acidBarrage: EnemyAbility = {
   name: 'Acid Barrage',
-  dungeon: 'Throne of the Tides',
   baseDamage: 71410,
   isAoe: true,
   isTrashAbility: true,
@@ -23,7 +21,6 @@ export const acidBarrage: EnemyAbility = {
 export const focusedTempest: EnemyAbility = {
   name: 'Focused Tempest',
   boss: "Lady Naz'jar",
-  dungeon: 'Throne of the Tides',
   baseDamage: 96129,
   isAoe: false,
   iconName: 'spell_shaman_thunderstorm',
@@ -33,7 +30,6 @@ export const focusedTempest: EnemyAbility = {
 export const shockBlast: EnemyAbility = {
   name: 'Shock Blast',
   boss: "Lady Naz'jar",
-  dungeon: 'Throne of the Tides',
   baseDamage: 129087,
   isAoe: true,
   iconName: 'spell_shaman_staticshock',
@@ -43,7 +39,6 @@ export const shockBlast: EnemyAbility = {
 export const festeringShockwave: EnemyAbility = {
   name: 'Festering Shockwave',
   boss: 'Commander Ulthok',
-  dungeon: 'Throne of the Tides',
   baseDamage: 90636,
   isAoe: true,
   iconName: 'spell_fire_twilightnova',
@@ -53,7 +48,6 @@ export const festeringShockwave: EnemyAbility = {
 export const flameShock: EnemyAbility = {
   name: 'Flame Shock',
   boss: 'Erunak Stonespeaker',
-  dungeon: 'Throne of the Tides',
   baseDamage: 82396,
   isAoe: false,
   iconName: 'spell_fire_flameshock',
@@ -62,7 +56,6 @@ export const flameShock: EnemyAbility = {
 
 export const blottingBarrage: EnemyAbility = {
   name: 'Blotting Barrage',
-  dungeon: 'Throne of the Tides',
   baseDamage: 82397,
   variance: 0.02,
   isAoe: true,

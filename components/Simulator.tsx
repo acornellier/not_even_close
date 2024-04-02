@@ -19,6 +19,7 @@ import { enemyAbilityToDetails } from '../backend/utils'
 import { Characters, defaultCharacter, defaultCharacters } from './Characters/Characters'
 import { Button } from './Common/Button'
 import { EnemyAbilityDetails, KeyDetails, Result } from '../backend/sim/simTypes'
+import { useKeyHeld } from './Tools/useKeyHeld'
 
 const defaultGroupBuffs: Ability[] = []
 const defaultGroupActives: Ability[] = []
@@ -73,6 +74,10 @@ export function Simulator() {
     [setCustomAbsorbs, setCustomDrs, setMoreShown]
   )
 
+  const [isBeta, setIsBeta] = useLocalStorage('s4Beta', false)
+  const isAltHeld = useKeyHeld('Alt')
+  const isShiftHeld = useKeyHeld('Shift')
+
   const simulateResult = useCallback(
     () =>
       simulate({
@@ -83,6 +88,7 @@ export function Simulator() {
         keyDetails,
         dungeon: selectedDungeon,
         enemyAbilityDetails,
+        isBeta,
       }),
     [
       characters,
@@ -93,6 +99,7 @@ export function Simulator() {
       selectedGroupBuffs,
       selectedGroupActives,
       selectedDungeon,
+      isBeta,
     ]
   )
 
@@ -106,6 +113,12 @@ export function Simulator() {
     <SimContextProvider result={result}>
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="flex flex-col gap-4 grow">
+          {(isBeta || (isAltHeld && isShiftHeld)) && (
+            <Button short className="gap-2 text-lg" onClick={() => setIsBeta(!isBeta)}>
+              {isBeta ? 'Back to Season 3' : 'View Season 4 (WIP)'}
+            </Button>
+          )}
+
           <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
 
           <EnemyAbilityDetailsInput
@@ -162,7 +175,7 @@ export function Simulator() {
           <div className="border-2 w-full border-gray-600" />
 
           {!selectedDungeon ? (
-            <DungeonSelect setSelectedDungeon={setSelectedDungeon} />
+            <DungeonSelect isBeta={isBeta} setSelectedDungeon={setSelectedDungeon} />
           ) : (
             <EnemyAbilities
               selectedDungeon={selectedDungeon}
