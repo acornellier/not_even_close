@@ -30,7 +30,7 @@ export default function Home() {
         `}
       </Script>
 
-      <main className="min-h-screen py-8 flex flex-col gap-4 lg:w-[1125px]">
+      <main className="min-h-screen py-4 flex flex-col gap-4 lg:w-[1125px]">
         <Header />
         <Simulator />
         <TailwindBreakpoint />
