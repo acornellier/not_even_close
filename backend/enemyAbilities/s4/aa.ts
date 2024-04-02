@@ -85,13 +85,13 @@ const arcaneFissure: EnemyAbility = {
 }
 
 export const aaAbilities = [
-  surge,
   burstForth,
-  expelIntruders,
   deafeningScreech3,
   deafeningScreech4,
   deafeningScreech5,
-  viciousAmbush,
   manaBomb,
   arcaneFissure,
+  surge,
+  viciousAmbush,
+  expelIntruders,
 ]
