@@ -1,4 +1,9 @@
-﻿import { DungeonKey, dungeonsByKey, EnemyAbility } from '../../backend/dungeons'
+﻿import {
+  DungeonKey,
+  dungeonsByKey,
+  EnemyAbility,
+  isSeason4,
+} from '../../backend/dungeons'
 import { EnemyAbilityCard } from './EnemyAbilityCard'
 import Image from 'next/image'
 import { Button } from '../Common/Button'
@@ -56,12 +61,14 @@ export function DungeonAbilities({
             />
             {dungeon.name}
           </Button>
-          <OnOffStateSelector
-            label1="One shots"
-            label2="All spells"
-            enabled={showAll}
-            setIsEnabled={setShowAll}
-          />
+          {isSeason4(dungeon.key) && (
+            <OnOffStateSelector
+              label1="One shots"
+              label2="All spells"
+              enabled={showAll}
+              setIsEnabled={setShowAll}
+            />
+          )}
         </div>
         <div className="flex items-center gap-2">
           <Button
@@ -92,6 +99,7 @@ export function DungeonAbilities({
                 result={abilityResult}
                 showExtras={abilityExtras.has(ability.name)}
                 toggleExtras={toggleAbilityExtras(ability)}
+                isSeason4={isSeason4(dungeon.key)}
               />
             )
           })}

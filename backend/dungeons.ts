@@ -30,6 +30,7 @@ export const dungeonKeys = [
   'nok',
   'rlp',
   'uld',
+  'all_s4',
   'brh',
   'dht',
   'doti',
@@ -37,13 +38,13 @@ export const dungeonKeys = [
   'eb',
   'tott',
   'wcm',
-  'all',
+  'all_s3',
 ] as const
 
 export type DungeonKey = typeof dungeonKeys[number]
 
 export const isSeason4 = (key: DungeonKey) =>
-  ['aa', 'av', 'bh', 'hoi', 'nelth', 'nok', 'rlp', 'uld'].includes(key)
+  ['aa', 'av', 'bh', 'hoi', 'nelth', 'nok', 'rlp', 'uld', 'all_s4'].includes(key)
 
 export type Dungeon = {
   key: DungeonKey
@@ -110,9 +111,20 @@ export const dungeons: Dungeon[] = [
 ]
 
 dungeons.push({
-  key: 'all',
+  key: 'all_s3',
   name: 'All dungeons',
-  abilities: dungeons.flatMap(({ abilities }) => abilities),
+  abilities: dungeons
+    .filter(({ key }) => !isSeason4(key))
+    .flatMap(({ abilities }) => abilities),
+  icon: 'achievement_challengemode_arakkoaspires_gold',
+})
+
+dungeons.push({
+  key: 'all_s4',
+  name: 'All dungeons',
+  abilities: dungeons
+    .filter(({ key }) => !isSeason4(key))
+    .flatMap(({ abilities }) => abilities),
   icon: 'achievement_challengemode_arakkoaspires_gold',
 })
 
