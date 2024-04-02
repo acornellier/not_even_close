@@ -10,7 +10,7 @@ import { CustomAbsorbs } from './Abilities/CustomAbsorbs'
 import { KeyDetailsInput } from './Inputs/KeyDetailsInput'
 import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsInput'
 import { MoreLess } from './Abilities/MoreLess'
-import { DungeonKey, EnemyAbility } from '../backend/dungeons'
+import { DungeonKey, dungeonKeys, EnemyAbility } from '../backend/dungeons'
 import { Sidebar } from './Sidebar/Sidebar'
 import { SimContextProvider } from './Tools/SimContext'
 import { groupActives } from '../backend/groupAbilities/groupActives'
@@ -46,10 +46,16 @@ export function Simulator() {
   )
 
   const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
-  const [selectedDungeon, setSelectedDungeon] = useLocalStorage<DungeonKey | null>(
+  let [selectedDungeon, setSelectedDungeon] = useLocalStorage<DungeonKey | null>(
     'selectedDungeon',
     null
   )
+
+  if (selectedDungeon && !dungeonKeys.includes(selectedDungeon)) {
+    setSelectedDungeon(null)
+    selectedDungeon = null
+  }
+
   const [enemyAbility, setEnemyAbility] = useLocalStorage<EnemyAbility | null>(
     'selectedAbility',
     null
