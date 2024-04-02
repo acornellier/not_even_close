@@ -120,7 +120,7 @@ export function Simulator() {
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="flex flex-col gap-4 grow">
           {(isBeta || (isAltHeld && isShiftHeld)) && (
-            <Button short className="gap-2 text-lg" onClick={() => setIsBeta(!isBeta)}>
+            <Button className="gap-2 text-lg" onClick={() => setIsBeta(!isBeta)}>
               {isBeta ? 'Back to Season 3' : 'View Season 4 (WIP)'}
             </Button>
           )}
