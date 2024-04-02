@@ -26,7 +26,6 @@ export const cinderboltStorm: EnemyAbility = {
 
 export const colossalBlow: EnemyAbility = {
   name: 'Colossal Blow',
-  boss: 'Yalnu',
   baseDamage: 87889,
   isAoe: true,
   iconName: 'spell_shaman_earthquake',

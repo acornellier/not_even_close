@@ -11,7 +11,6 @@ export const soulBlast: EnemyAbility = {
 
 export const soulBurst: EnemyAbility = {
   name: 'Soul Burst',
-  boss: 'The Amalgam of Souls',
   baseDamage: 123594,
   isAoe: true,
   iconName: 'ability_bossgorefiend_touchofdoom',
@@ -46,7 +45,6 @@ export const hatefulCharge: EnemyAbility = {
 
 export const shadowBolt: EnemyAbility = {
   name: 'Shadow Bolt',
-  boss: 'Ravencrest',
   baseDamage: 106831,
   isAoe: true,
   iconName: 'spell_shadow_shadowbolt',
@@ -55,7 +53,6 @@ export const shadowBolt: EnemyAbility = {
 
 export const shadowBoltVolley: EnemyAbility = {
   name: 'Shadow Bolt Volley',
-  boss: 'Ravencrest',
   baseDamage: 164792,
   isAoe: true,
   iconName: 'spell_shadow_shadowbolt',

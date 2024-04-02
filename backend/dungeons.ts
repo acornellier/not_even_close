@@ -7,6 +7,9 @@ import { dotiAbilites } from './enemyAbilities/doti'
 import { ebAbilities } from './enemyAbilities/eb'
 import { EnemyAbilityDetails } from './sim/simTypes'
 import { aaAbilities } from './enemyAbilities/s4/aa'
+import { nokAbilities } from './enemyAbilities/s4/nok'
+
+export type TimeBetweenCasts = number | [number, number]
 
 export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   name: string
@@ -14,7 +17,8 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   iconName: string
   wowheadLink: string
   variance?: number
-  boss?: string
+  timeBetweenCasts?: TimeBetweenCasts
+  notOneShot?: boolean
 }
 
 export const dungeonKeys = [
@@ -54,6 +58,12 @@ export const dungeons: Dungeon[] = [
     name: 'Algethar Academy',
     abilities: aaAbilities,
     icon: 'achievement_dungeon_dragonacademy',
+  },
+  {
+    key: 'nok',
+    name: 'Nokhud Offensive',
+    abilities: nokAbilities,
+    icon: 'achievement_dungeon_centaurplains',
   },
   {
     key: 'ad',

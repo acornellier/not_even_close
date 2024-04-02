@@ -1,7 +1,7 @@
 import { simulate } from '../backend/sim/sim'
 import { useCallback, useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
-import { EnemyAbilities } from './EnemyAbilities/EnemyAbilities'
+import { DungeonAbilities } from './EnemyAbilities/DungeonAbilities'
 import { LabelledAbilitySelect } from './Abilities/LabelledAbilitySelect'
 import { groupBuffs } from '../backend/groupAbilities/groupBuffs'
 import useLocalStorage from './Tools/useLocalStorage'
@@ -183,7 +183,7 @@ export function Simulator() {
           {!selectedDungeon ? (
             <DungeonSelect isBeta={isBeta} setSelectedDungeon={setSelectedDungeon} />
           ) : (
-            <EnemyAbilities
+            <DungeonAbilities
               selectedDungeon={selectedDungeon}
               selectedAbility={enemyAbility}
               deselectDungeon={() => setSelectedDungeon(null)}

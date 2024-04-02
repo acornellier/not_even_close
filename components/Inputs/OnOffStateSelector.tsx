@@ -18,7 +18,7 @@ function OnOffButton({ label, enabled, isLeft }: OnOffButtonProps) {
 }
 
 interface Props {
-  label: string
+  label?: string
   label1: string
   label2: string
   enabled: boolean
@@ -34,7 +34,7 @@ export function OnOffStateSelector({
 }: Props) {
   return (
     <div>
-      <label className="block font-bold mb-1 pr-4">{label}</label>
+      {label && <label className="block font-bold mb-1 pr-4">{label}</label>}
       <div className="inline-flex" onClick={() => setIsEnabled(!enabled)}>
         <OnOffButton label={label1} enabled={!enabled} isLeft />
         <OnOffButton label={label2} enabled={enabled} />

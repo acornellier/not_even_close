@@ -20,7 +20,6 @@ export const jaggedNettles: EnemyAbility = {
 
 export const dreadEssence: EnemyAbility = {
   name: 'Dread Essence',
-  boss: 'Gorak Tul',
   baseDamage: 96129,
   isAoe: true,
   iconName: 'ability_argus_soulburst',

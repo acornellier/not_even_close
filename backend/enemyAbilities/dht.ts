@@ -12,7 +12,6 @@ export const grievousRip: EnemyAbility = {
 
 export const shatteredEarth: EnemyAbility = {
   name: 'Shattered Earth',
-  boss: 'Oakheart',
   baseDamage: 115355,
   isAoe: true,
   iconName: 'ability_warstomp',
@@ -21,7 +20,6 @@ export const shatteredEarth: EnemyAbility = {
 
 export const crushingGrip: EnemyAbility = {
   name: 'Crushing Grip',
-  boss: 'Oakheart',
   baseDamage: 109862,
   isAoe: true,
   iconName: 'ability_warrior_titansgrip',
@@ -30,7 +28,6 @@ export const crushingGrip: EnemyAbility = {
 
 export const earthshakingRoar: EnemyAbility = {
   name: 'Earthshaking Roar',
-  boss: 'Dresaron',
   baseDamage: 109862,
   isAoe: true,
   iconName: 'inv_misc_head_dragon_black_nightmare',
@@ -39,7 +36,6 @@ export const earthshakingRoar: EnemyAbility = {
 
 export const apocalypticNightmare: EnemyAbility = {
   name: 'Apocalyptic Nightmare',
-  boss: 'Xavius',
   baseDamage: 137327,
   isAoe: true,
   iconName: 'sha_spell_fire_bluerainoffire_nightmare',
@@ -48,7 +44,6 @@ export const apocalypticNightmare: EnemyAbility = {
 
 export const nightmareBolt: EnemyAbility = {
   name: 'Nightmare Bolt',
-  boss: 'Xavius',
   baseDamage: 90636,
   variance: 0.02,
   isAoe: false,

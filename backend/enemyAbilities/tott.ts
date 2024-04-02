@@ -20,7 +20,6 @@ export const acidBarrage: EnemyAbility = {
 
 export const focusedTempest: EnemyAbility = {
   name: 'Focused Tempest',
-  boss: "Lady Naz'jar",
   baseDamage: 96129,
   isAoe: false,
   iconName: 'spell_shaman_thunderstorm',
@@ -29,7 +28,6 @@ export const focusedTempest: EnemyAbility = {
 
 export const shockBlast: EnemyAbility = {
   name: 'Shock Blast',
-  boss: "Lady Naz'jar",
   baseDamage: 129087,
   isAoe: true,
   iconName: 'spell_shaman_staticshock',
@@ -38,7 +36,6 @@ export const shockBlast: EnemyAbility = {
 
 export const festeringShockwave: EnemyAbility = {
   name: 'Festering Shockwave',
-  boss: 'Commander Ulthok',
   baseDamage: 90636,
   isAoe: true,
   iconName: 'spell_fire_twilightnova',
@@ -47,7 +44,6 @@ export const festeringShockwave: EnemyAbility = {
 
 export const flameShock: EnemyAbility = {
   name: 'Flame Shock',
-  boss: 'Erunak Stonespeaker',
   baseDamage: 82396,
   isAoe: false,
   iconName: 'spell_fire_flameshock',
