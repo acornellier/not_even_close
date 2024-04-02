@@ -24,6 +24,13 @@ export const soulLink: Ability = {
   iconName: 'ability_warlock_soullink',
 }
 
+export const abyssWalker: Ability = {
+  name: 'Abyss Walker',
+  spellId: 389609,
+  dr: 0.04,
+  iconName: 'achievement_explore_argus',
+}
+
 export const soulLeech: Ability = {
   name: 'Soul Leech',
   spellId: 108370,
@@ -68,6 +75,7 @@ export const warlockAbilities = [
   felArmor,
   demonicFortitude,
   soulLink,
+  abyssWalker,
   soulLeech,
   darkPact,
   unendingResolve,
