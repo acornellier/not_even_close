@@ -13,12 +13,13 @@ export type TimeBetweenCasts = number | [number, number]
 
 export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   name: string
-  baseDamage: number
+  spellId?: number
   iconName: string
-  wowheadLink: string
+  baseDamage: number
   variance?: number
   timeBetweenCasts?: TimeBetweenCasts
   notOneShot?: boolean
+  wowheadLink?: string
 }
 
 export const dungeonKeys = [

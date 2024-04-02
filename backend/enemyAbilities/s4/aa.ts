@@ -2,39 +2,39 @@ import { EnemyAbility } from '../../dungeons'
 
 const surge: EnemyAbility = {
   name: 'Surge',
-  baseDamage: 218851,
+  spellId: 388862,
   iconName: 'spell_arcane_arcane04',
+  baseDamage: 218851,
   isAoe: false,
   isTrashAbility: true,
-  wowheadLink: 'https://www.wowhead.com/spell=388862/surge',
   timeBetweenCasts: 25,
 }
 
 const burstForth: EnemyAbility = {
   name: 'Burst Forth',
+  spellId: 388923,
+  iconName: 'spell_nature_earthquake',
   baseDamage: 364751,
   isAoe: true,
-  iconName: 'spell_nature_earthquake',
-  wowheadLink: 'https://www.wowhead.com/spell=388923/burst-forth',
   timeBetweenCasts: 60,
 }
 
 const expelIntruders: EnemyAbility = {
   name: 'Expel Intruders',
+  spellId: 377912,
+  iconName: 'ability_druid_galewinds',
   baseDamage: 547127,
   isAoe: true,
   isTrashAbility: true,
-  iconName: 'ability_druid_galewinds',
-  wowheadLink: 'https://www.wowhead.com/spell=377912/expel-intruders',
   timeBetweenCasts: 26,
 }
 
 const deafeningScreech: EnemyAbility = {
   name: 'Screech',
+  spellId: 377004,
+  iconName: 'ability_vehicle_sonicshockwave',
   baseDamage: 218851,
   isAoe: true,
-  iconName: 'ability_vehicle_sonicshockwave',
-  wowheadLink: 'https://www.wowhead.com/spell=377004/deafening-screech',
   timeBetweenCasts: 23,
 }
 
@@ -58,20 +58,28 @@ const deafeningScreech5: EnemyAbility = {
 
 const manaBomb: EnemyAbility = {
   name: 'Mana Bomb',
+  spellId: 386181,
   baseDamage: 91188 * 4 + 182376,
   isAoe: false,
   iconName: 'spell_mage_flameorb_blue',
-  wowheadLink: 'https://www.wowhead.com/spell=386181/mana-bomb',
   timeBetweenCasts: 25,
   notOneShot: true,
 }
 
+const viciousAmbush: EnemyAbility = {
+  name: 'Vicious Ambush',
+  spellId: 388940,
+  iconName: 'ability_ambush',
+  baseDamage: 197855,
+  isAoe: true,
+}
+
 const arcaneFissure: EnemyAbility = {
   name: 'Arcane Fissure',
+  spellId: 388942,
   baseDamage: 237088,
   isAoe: true,
   iconName: 'spell_arcane_invocation',
-  wowheadLink: 'https://www.wowhead.com/spell=388537/arcane-fissure',
   timeBetweenCasts: 45,
   notOneShot: true,
 }
@@ -83,6 +91,7 @@ export const aaAbilities = [
   deafeningScreech3,
   deafeningScreech4,
   deafeningScreech5,
+  viciousAmbush,
   manaBomb,
   arcaneFissure,
 ]

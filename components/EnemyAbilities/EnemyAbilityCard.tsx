@@ -35,15 +35,19 @@ export function EnemyAbilityCard({
 
   return (
     <div
-      className={`flex flex-col gap-1 cursor-pointer rounded-md px-4 py-2 select-none ${hoverColor} ${cardColor}`}
+      className={`flex flex-col gap-2 cursor-pointer rounded-md px-4 py-2 select-none ${hoverColor} ${cardColor}`}
       onClick={onSelect}
     >
-      <div className="flex items-center gap-2 ">
+      <div className="flex items-center gap-2">
         <div className="flex gap-2 items-center basis-[200px] whitespace-nowrap">
           <a
             key={ability.name}
             className="min-w-[30px]"
-            href={ability.wowheadLink}
+            href={
+              ability.spellId
+                ? `https://www.wowhead.com/spell=${ability.spellId}/`
+                : ability.wowheadLink
+            }
             target="_blank"
             rel="noreferrer"
           >
