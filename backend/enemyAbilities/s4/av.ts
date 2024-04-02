@@ -6,6 +6,7 @@ const explosiveBrand: EnemyAbility = {
   iconName: 'spell_arcane_arcanetorrent',
   baseDamage: 729502,
   isAoe: true,
+  timeBetweenCasts: 50,
 }
 
 const consumingStomp: EnemyAbility = {
@@ -14,6 +15,7 @@ const consumingStomp: EnemyAbility = {
   iconName: 'spell_arcane_blast',
   baseDamage: 410345,
   isAoe: true,
+  timeBetweenCasts: 50,
 }
 
 const frostBomb: EnemyAbility = {
@@ -22,6 +24,7 @@ const frostBomb: EnemyAbility = {
   iconName: 'inv_10_elementalcombinedfoozles_frost',
   baseDamage: 273563,
   isAoe: true,
+  timeBetweenCasts: [15, 30],
 }
 
 const absoluteZero: EnemyAbility = {
@@ -30,6 +33,7 @@ const absoluteZero: EnemyAbility = {
   iconName: 'spell_frost_arcticwinds',
   baseDamage: 820690,
   isAoe: true,
+  timeBetweenCasts: 60,
 }
 
 const unleashedDestruction: EnemyAbility = {
@@ -38,6 +42,7 @@ const unleashedDestruction: EnemyAbility = {
   iconName: 'spell_arcane_blast',
   baseDamage: 218851,
   isAoe: true,
+  timeBetweenCasts: 105,
 }
 
 const shoulderSlam: EnemyAbility = {
@@ -48,6 +53,7 @@ const shoulderSlam: EnemyAbility = {
   isAoe: true,
   isPhysical: true,
   isTrashAbility: true,
+  timeBetweenCasts: 12,
 }
 
 export const avAbilities = [
