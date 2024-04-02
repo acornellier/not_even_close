@@ -8,6 +8,7 @@ import { ebAbilities } from './enemyAbilities/eb'
 import { EnemyAbilityDetails } from './sim/simTypes'
 import { aaAbilities } from './enemyAbilities/s4/aa'
 import { nokAbilities } from './enemyAbilities/s4/nok'
+import { avAbilities } from './enemyAbilities/s4/av'
 
 export type TimeBetweenCasts = number | [number, number]
 
@@ -32,6 +33,7 @@ export const dungeonKeys = [
   'rlp',
   'uld',
   'all_s4',
+  // s3
   'brh',
   'dht',
   'doti',
@@ -60,6 +62,12 @@ export const dungeons: Dungeon[] = [
     name: 'Algethar Academy',
     abilities: aaAbilities,
     icon: 'achievement_dungeon_dragonacademy',
+  },
+  {
+    key: 'av',
+    name: 'Azure Vault',
+    abilities: avAbilities,
+    icon: 'achievement_dungeon_arcanevaults',
   },
   {
     key: 'nok',
@@ -124,7 +132,7 @@ dungeons.push({
   key: 'all_s4',
   name: 'All dungeons',
   abilities: dungeons
-    .filter(({ key }) => !isSeason4(key))
+    .filter(({ key }) => isSeason4(key))
     .flatMap(({ abilities }) => abilities),
   icon: 'achievement_challengemode_arakkoaspires_gold',
 })

@@ -25,24 +25,6 @@ const galeArrow: EnemyAbility = {
   isAoe: false,
 }
 
-const rainOfArrows: EnemyAbility = {
-  name: 'Rain of Arrows',
-  spellId: 384476,
-  iconName: 'ability_hunter_quickshot',
-  baseDamage: 364751,
-  isAoe: true,
-  isTrashAbility: true,
-}
-
-const chainLightning: EnemyAbility = {
-  name: 'Chain Lightning',
-  spellId: 387127,
-  iconName: 'spell_nature_chainlightning',
-  baseDamage: 319157,
-  isAoe: false,
-  isTrashAbility: true,
-}
-
 const ironSpear: EnemyAbility = {
   name: 'Iron Spear',
   spellId: 376634,
@@ -75,6 +57,24 @@ const lightning: EnemyAbility = {
   isAoe: true,
 }
 
+const rainOfArrows: EnemyAbility = {
+  name: 'Rain of Arrows',
+  spellId: 384476,
+  iconName: 'ability_hunter_quickshot',
+  baseDamage: 364751,
+  isAoe: true,
+  isTrashAbility: true,
+}
+
+const chainLightning: EnemyAbility = {
+  name: 'Chain Lightning',
+  spellId: 387127,
+  iconName: 'spell_nature_chainlightning',
+  baseDamage: 319157,
+  isAoe: false,
+  isTrashAbility: true,
+}
+
 export const nokAbilities = [
   shardsOfStone,
   lightningStrike,
@@ -82,7 +82,7 @@ export const nokAbilities = [
   ironSpear,
   staticSpear,
   cracklingUpheaval,
+  lightning,
   rainOfArrows,
   chainLightning,
-  lightning,
 ]
