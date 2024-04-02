@@ -70,15 +70,17 @@ export function DungeonAbilities({
             />
           )}
         </div>
-        <div className="flex items-center gap-2">
-          <Button
-            short
-            className="hidden sm:block text-xl gap-2"
-            onClick={shouldExpandAll ? expandAll : collapseAll}
-          >
-            {shouldExpandAll ? 'Expand all' : 'Collapse all'}
-          </Button>
-        </div>
+        {isSeason4(dungeon.key) && (
+          <div className="flex items-center gap-2">
+            <Button
+              short
+              className="hidden sm:block text-xl gap-2"
+              onClick={shouldExpandAll ? expandAll : collapseAll}
+            >
+              {shouldExpandAll ? 'Expand all' : 'Collapse all'}
+            </Button>
+          </div>
+        )}
       </div>
       <div className="flex flex-col gap-x-2 gap-y-1 flex-wrap items-stretch">
         {dungeon.abilities
