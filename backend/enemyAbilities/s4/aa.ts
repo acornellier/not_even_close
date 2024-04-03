@@ -1,15 +1,5 @@
 import { EnemyAbility } from '../../dungeons'
 
-const surge: EnemyAbility = {
-  name: 'Surge',
-  id: 388862,
-  icon: 'spell_arcane_arcane04',
-  baseDamage: 218851,
-  isAoe: false,
-  isTrashAbility: true,
-  timeBetweenCasts: 25,
-}
-
 const burstForth: EnemyAbility = {
   name: 'Burst Forth',
   id: 388923,
@@ -17,16 +7,6 @@ const burstForth: EnemyAbility = {
   baseDamage: 364751,
   isAoe: true,
   timeBetweenCasts: 60,
-}
-
-const expelIntruders: EnemyAbility = {
-  name: 'Expel Intruders',
-  id: 377912,
-  icon: 'ability_druid_galewinds',
-  baseDamage: 547127,
-  isAoe: true,
-  isTrashAbility: true,
-  timeBetweenCasts: 26,
 }
 
 const deafeningScreech: EnemyAbility = {
@@ -56,6 +36,12 @@ const deafeningScreech5: EnemyAbility = {
   baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 4 * 0.5)),
 }
 
+const deafeningScreech6: EnemyAbility = {
+  ...deafeningScreech,
+  name: deafeningScreech.name + ' @ 5 stacks',
+  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 5 * 0.5)),
+}
+
 const manaBomb: EnemyAbility = {
   name: 'Mana Bomb',
   id: 386181,
@@ -66,6 +52,35 @@ const manaBomb: EnemyAbility = {
   notOneShot: true,
 }
 
+const arcaneFissure: EnemyAbility = {
+  name: 'Arcane Fissure',
+  id: 388537,
+  baseDamage: 237088,
+  isAoe: true,
+  icon: 'spell_arcane_invocation',
+  timeBetweenCasts: 45,
+}
+
+const surge: EnemyAbility = {
+  name: 'Surge',
+  id: 388862,
+  icon: 'spell_arcane_arcane04',
+  baseDamage: 218851,
+  isAoe: false,
+  isTrashAbility: true,
+  timeBetweenCasts: 25,
+}
+
+const expelIntruders: EnemyAbility = {
+  name: 'Expel Intruders',
+  id: 377912,
+  icon: 'ability_druid_galewinds',
+  baseDamage: 547127,
+  isAoe: true,
+  isTrashAbility: true,
+  timeBetweenCasts: 26,
+}
+
 const viciousAmbush: EnemyAbility = {
   name: 'Vicious Ambush',
   id: 388940,
@@ -74,24 +89,15 @@ const viciousAmbush: EnemyAbility = {
   isAoe: true,
 }
 
-const arcaneFissure: EnemyAbility = {
-  name: 'Arcane Fissure',
-  id: 388942,
-  baseDamage: 237088,
-  isAoe: true,
-  icon: 'spell_arcane_invocation',
-  timeBetweenCasts: 45,
-  notOneShot: true,
-}
-
 export const aaAbilities = [
   burstForth,
   deafeningScreech3,
   deafeningScreech4,
   deafeningScreech5,
+  deafeningScreech6,
   manaBomb,
   arcaneFissure,
   surge,
-  viciousAmbush,
   expelIntruders,
+  viciousAmbush,
 ]
