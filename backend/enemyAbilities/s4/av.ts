@@ -31,7 +31,7 @@ const absoluteZero: EnemyAbility = {
   name: 'Absolute Zero',
   id: 388008,
   icon: 'spell_frost_arcticwinds',
-  baseDamage: 820690,
+  baseDamage: 820690 / 2,
   isAoe: true,
   timeBetweenCasts: 60,
 }

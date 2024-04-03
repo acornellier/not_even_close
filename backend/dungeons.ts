@@ -23,6 +23,8 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   variance?: number
   timeBetweenCasts?: TimeBetweenCasts
   periodicDamage?: boolean
+  avoidable?: boolean
+  notes?: string
   wowheadLink?: string
 }
 

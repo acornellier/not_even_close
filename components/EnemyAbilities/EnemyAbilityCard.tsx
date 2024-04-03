@@ -35,7 +35,7 @@ export function EnemyAbilityCard({
 
   return (
     <div
-      className={`flex flex-col gap-2 cursor-pointer rounded-md px-4 py-2 select-none ${hoverColor} ${cardColor}`}
+      className={`flex flex-col gap-2 cursor-pointer rounded-md px-4 py-1 select-none ${hoverColor} ${cardColor}`}
       onClick={onSelect}
     >
       <div className="flex items-center gap-2">
@@ -59,7 +59,15 @@ export function EnemyAbilityCard({
               alt={ability.name}
             />
           </a>
-          <div className="text-white">{ability.name}</div>
+          <div
+            className="text-white"
+            data-tooltip-id={`enemy-ability-tooltip-${ability.id}`}
+          >
+            {ability.name}
+          </div>
+          <TooltipStyled id={`enemy-ability-tooltip-${ability.id}`}>
+            {ability.notes}
+          </TooltipStyled>
         </div>
         <div className="flex justify-between grow gap-2">
           <div className="flex gap-2">

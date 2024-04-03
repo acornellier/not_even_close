@@ -9,45 +9,6 @@ const burstForth: EnemyAbility = {
   timeBetweenCasts: 60,
 }
 
-const deafeningScreech: EnemyAbility = {
-  name: 'Screech',
-  id: 377004,
-  icon: 'ability_vehicle_sonicshockwave',
-  baseDamage: 218851,
-  isAoe: true,
-  timeBetweenCasts: 23,
-}
-
-const deafeningScreech2: EnemyAbility = {
-  ...deafeningScreech,
-  name: deafeningScreech.name + ' @ 1 stack',
-  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 1 * 0.5)),
-}
-
-const deafeningScreech3: EnemyAbility = {
-  ...deafeningScreech,
-  name: deafeningScreech.name + ' @ 2 stacks',
-  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 2 * 0.5)),
-}
-
-const deafeningScreech4: EnemyAbility = {
-  ...deafeningScreech,
-  name: deafeningScreech.name + ' @ 3 stacks',
-  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 3 * 0.5)),
-}
-
-const deafeningScreech5: EnemyAbility = {
-  ...deafeningScreech,
-  name: deafeningScreech.name + ' @ 4 stacks',
-  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 4 * 0.5)),
-}
-
-const deafeningScreech6: EnemyAbility = {
-  ...deafeningScreech,
-  name: deafeningScreech.name + ' @ 5 stacks',
-  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 5 * 0.5)),
-}
-
 const manaBomb: EnemyAbility = {
   name: 'Mana Bomb',
   id: 386181,
@@ -95,16 +56,56 @@ const expelIntruders: EnemyAbility = {
   timeBetweenCasts: 26,
 }
 
+const deafeningScreech: EnemyAbility = {
+  name: 'Screech',
+  id: 377004,
+  icon: 'ability_vehicle_sonicshockwave',
+  baseDamage: 218851,
+  isAoe: true,
+  timeBetweenCasts: 23,
+}
+
+const deafeningScreech2: EnemyAbility = {
+  ...deafeningScreech,
+  name: deafeningScreech.name + ' @ 1 stack',
+  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 1 * 0.5)),
+}
+
+const deafeningScreech3: EnemyAbility = {
+  ...deafeningScreech,
+  name: deafeningScreech.name + ' @ 2 stacks',
+  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 2 * 0.5)),
+}
+
+const deafeningScreech4: EnemyAbility = {
+  ...deafeningScreech,
+  name: deafeningScreech.name + ' @ 3 stacks',
+  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 3 * 0.5)),
+}
+
+const deafeningScreech5: EnemyAbility = {
+  ...deafeningScreech,
+  name: deafeningScreech.name + ' @ 4 stacks',
+  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 4 * 0.5)),
+}
+
+const deafeningScreech6: EnemyAbility = {
+  ...deafeningScreech,
+  name: deafeningScreech.name + ' @ 5 stacks',
+  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 5 * 0.5)),
+}
+
 export const aaAbilities = [
   burstForth,
-  deafeningScreech2,
-  deafeningScreech3,
-  deafeningScreech4,
-  deafeningScreech5,
-  deafeningScreech6,
   manaBomb,
   arcaneFissure,
   surge,
   expelIntruders,
   viciousAmbush,
+  deafeningScreech,
+  deafeningScreech2,
+  deafeningScreech3,
+  deafeningScreech4,
+  deafeningScreech5,
+  deafeningScreech6,
 ]

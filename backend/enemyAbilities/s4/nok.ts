@@ -60,6 +60,8 @@ const lightning: EnemyAbility = {
   icon: 'spell_nature_stormreach',
   baseDamage: 577076,
   isAoe: true,
+  avoidable: true,
+  notes: 'Swirlies during Balakar Khan intermission and P2',
 }
 
 const rainOfArrows: EnemyAbility = {
@@ -69,6 +71,8 @@ const rainOfArrows: EnemyAbility = {
   baseDamage: 364751,
   isAoe: true,
   isTrashAbility: true,
+  avoidable: true,
+  notes: 'Swirlies during Balakar Khan intermission and P2',
 }
 
 const chainLightning: EnemyAbility = {

@@ -31,6 +31,12 @@ export function DungeonAbilities({
   const [showAll, setShowAll] = useLocalStorage(`show-all-spells-${dungeon.key}`, false)
   const [abilityExtras, setAbilityExtras] = useState(new Set<string>())
 
+  const abilities = dungeon.abilities.filter(
+    ({ periodicDamage }) => showAll || !periodicDamage
+  )
+  const bossAbilities = abilities.filter(({ isTrashAbility }) => !isTrashAbility)
+  const trashAbilities = abilities.filter(({ isTrashAbility }) => isTrashAbility)
+
   const shouldExpandAll = abilityExtras.size < dungeon.abilities.length
 
   const expandAll = () => {
@@ -82,29 +88,43 @@ export function DungeonAbilities({
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-x-2 gap-y-1 flex-wrap items-stretch">
-        {dungeon.abilities
-          .filter(({ periodicDamage }) => showAll || !periodicDamage)
-          .map((ability) => {
-            const abilityResult = results?.find(
-              (result) => result.enemyAbilityDetails.name === ability.name
-            )
+      <div className="flex flex-col gap-y-2 flex-wrap items-stretch">
+        {[bossAbilities, trashAbilities].map((abilities) => {
+          if (!abilities.length) return
+          const isTrash = abilities[0].isTrashAbility
+          return (
+            <div
+              key={String(isTrash)}
+              className="flex flex-col gap-x-2 gap-y-1 flex-wrap items-stretch"
+            >
+              {isTrash && (
+                <div className="bg-teal-700 w-fit px-2 ml-1 -mb-1 rounded-t-md">
+                  Trash abiltiies
+                </div>
+              )}
+              {abilities.map((ability) => {
+                const abilityResult = results?.find(
+                  (result) => result.enemyAbilityDetails.name === ability.name
+                )
 
-            return (
-              <EnemyAbilityCard
-                key={ability.name}
-                ability={ability}
-                onSelect={() => onSelect(ability)}
-                selected={
-                  selectedAbility !== null && selectedAbility.name === ability.name
-                }
-                result={abilityResult}
-                showExtras={abilityExtras.has(ability.name)}
-                toggleExtras={toggleAbilityExtras(ability)}
-                isSeason4={isSeason4(dungeon.key)}
-              />
-            )
-          })}
+                return (
+                  <EnemyAbilityCard
+                    key={ability.name}
+                    ability={ability}
+                    onSelect={() => onSelect(ability)}
+                    selected={
+                      selectedAbility !== null && selectedAbility.name === ability.name
+                    }
+                    result={abilityResult}
+                    showExtras={abilityExtras.has(ability.name)}
+                    toggleExtras={toggleAbilityExtras(ability)}
+                    isSeason4={isSeason4(dungeon.key)}
+                  />
+                )
+              })}
+            </div>
+          )
+        })}
       </div>
     </div>
   )
