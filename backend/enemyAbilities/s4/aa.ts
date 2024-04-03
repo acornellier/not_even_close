@@ -18,6 +18,12 @@ const deafeningScreech: EnemyAbility = {
   timeBetweenCasts: 23,
 }
 
+const deafeningScreech2: EnemyAbility = {
+  ...deafeningScreech,
+  name: deafeningScreech.name + ' @ 1 stack',
+  baseDamage: Math.round(deafeningScreech.baseDamage * (1 + 1 * 0.5)),
+}
+
 const deafeningScreech3: EnemyAbility = {
   ...deafeningScreech,
   name: deafeningScreech.name + ' @ 2 stacks',
@@ -49,7 +55,7 @@ const manaBomb: EnemyAbility = {
   isAoe: false,
   icon: 'spell_mage_flameorb_blue',
   timeBetweenCasts: 25,
-  notOneShot: true,
+  periodicDamage: true,
 }
 
 const arcaneFissure: EnemyAbility = {
@@ -71,6 +77,14 @@ const surge: EnemyAbility = {
   timeBetweenCasts: 25,
 }
 
+const viciousAmbush: EnemyAbility = {
+  name: 'Vicious Ambush',
+  id: 388940,
+  icon: 'ability_ambush',
+  baseDamage: 197855,
+  isAoe: true,
+}
+
 const expelIntruders: EnemyAbility = {
   name: 'Expel Intruders',
   id: 377912,
@@ -81,16 +95,9 @@ const expelIntruders: EnemyAbility = {
   timeBetweenCasts: 26,
 }
 
-const viciousAmbush: EnemyAbility = {
-  name: 'Vicious Ambush',
-  id: 388940,
-  icon: 'ability_ambush',
-  baseDamage: 197855,
-  isAoe: true,
-}
-
 export const aaAbilities = [
   burstForth,
+  deafeningScreech2,
   deafeningScreech3,
   deafeningScreech4,
   deafeningScreech5,

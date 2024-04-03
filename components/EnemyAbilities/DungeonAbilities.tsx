@@ -84,7 +84,7 @@ export function DungeonAbilities({
       </div>
       <div className="flex flex-col gap-x-2 gap-y-1 flex-wrap items-stretch">
         {dungeon.abilities
-          .filter(({ notOneShot }) => showAll || !notOneShot)
+          .filter(({ periodicDamage }) => showAll || !periodicDamage)
           .map((ability) => {
             const abilityResult = results?.find(
               (result) => result.enemyAbilityDetails.name === ability.name

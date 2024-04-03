@@ -44,7 +44,7 @@ const blazingAegis: EnemyAbility = {
   icon: 'inv_shield_1h_dragondungeon_c_01',
   baseDamage: 218851 + 65655 * 4,
   isAoe: true,
-  notOneShot: true,
+  periodicDamage: true,
   timeBetweenCasts: 31,
 }
 
@@ -65,7 +65,7 @@ const candescentTempest: EnemyAbility = {
   baseDamage: (54713 + 91188) * 3,
   isAoe: true,
   isTrashAbility: true,
-  notOneShot: true,
+  periodicDamage: true,
   timeBetweenCasts: 28,
 }
 
