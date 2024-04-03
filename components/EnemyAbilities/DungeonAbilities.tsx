@@ -11,6 +11,7 @@ import { AbilityResult } from '../../backend/sim/simTypes'
 import { OnOffStateSelector } from '../Inputs/OnOffStateSelector'
 import { useState } from 'react'
 import useLocalStorage from '../Tools/useLocalStorage'
+import { Toggle } from '../Inputs/Toggle'
 
 interface Props {
   selectedDungeon: DungeonKey
@@ -28,12 +29,19 @@ export function DungeonAbilities({
   results,
 }: Props) {
   const dungeon = dungeonsByKey[selectedDungeon]
-  const [showAll, setShowAll] = useLocalStorage(`show-all-spells-${dungeon.key}`, false)
+  const [showPeriodic, setShowPeriodic] = useLocalStorage(
+    `show-periodic-${dungeon.key}`,
+    false
+  )
+  const [showAvoidable, setShowAvoidable] = useLocalStorage(
+    `show-avoidable-${dungeon.key}`,
+    true
+  )
   const [abilityExtras, setAbilityExtras] = useState(new Set<string>())
 
-  const abilities = dungeon.abilities.filter(
-    ({ periodicDamage }) => showAll || !periodicDamage
-  )
+  const abilities = dungeon.abilities
+    .filter(({ periodicDamage }) => showPeriodic || !periodicDamage)
+    .filter(({ avoidable }) => showAvoidable || !avoidable)
   const bossAbilities = abilities.filter(({ isTrashAbility }) => !isTrashAbility)
   const trashAbilities = abilities.filter(({ isTrashAbility }) => isTrashAbility)
 
@@ -65,15 +73,17 @@ export function DungeonAbilities({
               src={`https://wow.zamimg.com/images/wow/icons/large/${dungeon.icon}.jpg`}
               alt={dungeon.name}
             />
-            {dungeon.name}
+            <div className="hidden sm:block">{dungeon.name}</div>
           </Button>
           {isSeason4(dungeon.key) && (
-            <OnOffStateSelector
-              label1="One shots"
-              label2="All spells"
-              enabled={showAll}
-              setIsEnabled={setShowAll}
+            <Toggle
+              label="Avoidable"
+              checked={showAvoidable}
+              onChange={setShowAvoidable}
             />
+          )}
+          {isSeason4(dungeon.key) && (
+            <Toggle label="Periodic" checked={showPeriodic} onChange={setShowPeriodic} />
           )}
         </div>
         {isSeason4(dungeon.key) && (

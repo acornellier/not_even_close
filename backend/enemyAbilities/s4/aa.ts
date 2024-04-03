@@ -35,6 +35,7 @@ const surge: EnemyAbility = {
   baseDamage: 218851,
   isAoe: false,
   isTrashAbility: true,
+  avoidable: true,
   timeBetweenCasts: 25,
 }
 
@@ -44,6 +45,7 @@ const viciousAmbush: EnemyAbility = {
   icon: 'ability_ambush',
   baseDamage: 197855,
   isAoe: true,
+  isTrashAbility: true,
 }
 
 const expelIntruders: EnemyAbility = {
@@ -53,6 +55,7 @@ const expelIntruders: EnemyAbility = {
   baseDamage: 547127,
   isAoe: true,
   isTrashAbility: true,
+  avoidable: true,
   timeBetweenCasts: 26,
 }
 

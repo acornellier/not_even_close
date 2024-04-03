@@ -9,7 +9,7 @@ interface Props {
 
 export function DungeonSelect({ setSelectedDungeon, isBeta }: Props) {
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
       {dungeons
         .filter(({ key }) => isSeason4(key) === isBeta)
         .map(({ key, name, icon }) => (

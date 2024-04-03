@@ -51,8 +51,9 @@ const tempestsFury: EnemyAbility = {
 
 const tempestsFury32: EnemyAbility = {
   ...tempestsFury,
-  name: "Tempest's Fury @ 32 stacks",
-  baseDamage: Math.round(tempestsFury.baseDamage * 1.4),
+  name: "Tempest's Fury @ 20 stacks",
+  baseDamage: Math.round(tempestsFury.baseDamage * 1.2),
+  notes: 'Assumes all 4 ads channel for 25 seconds each. More likely to be ~15 stacks.',
 }
 
 const lightningBlast: EnemyAbility = {

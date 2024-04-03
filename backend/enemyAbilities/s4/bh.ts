@@ -16,6 +16,7 @@ const earthBolt: EnemyAbility = {
   icon: 'inv_10_elementalshardfoozles_earth',
   baseDamage: 237088,
   isAoe: true,
+  avoidable: true,
 }
 
 const witheredEruption: EnemyAbility = {

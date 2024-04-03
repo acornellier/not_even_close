@@ -72,7 +72,7 @@ const rainOfArrows: EnemyAbility = {
   isAoe: true,
   isTrashAbility: true,
   avoidable: true,
-  notes: 'Swirlies during Balakar Khan intermission and P2',
+  notes: 'Swirlies cast by Nokhud Longbow in first area',
 }
 
 const chainLightning: EnemyAbility = {

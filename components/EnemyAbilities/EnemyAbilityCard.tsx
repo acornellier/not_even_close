@@ -5,6 +5,7 @@ import { TooltipStyled } from '../Common/TooltipStyled'
 import { AbilityResult } from '../../backend/sim/simTypes'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'
 import { AbilityCardExtras } from './AbilityCardExtras'
+import { CardResult } from './CardResult'
 
 interface Props {
   ability: EnemyAbility
@@ -27,9 +28,6 @@ export function EnemyAbilityCard({
 }: Props) {
   const cardColor = selected ? 'bg-teal-600' : 'bg-teal-900'
   const hoverColor = !selected && 'hover:bg-teal-800'
-  const showResults = result && result.characters.length === 1
-  const survival =
-    result && result.characters[0] && result.characters[0].healthRemaining > 0
 
   const Chevron = showExtras ? ChevronUpIcon : ChevronDownIcon
 
@@ -101,14 +99,9 @@ export function EnemyAbilityCard({
             </AbilityDetailsChip>
           </div>
           <div className="flex gap-2">
-            {showResults &&
-              (survival ? (
-                <AbilityDetailsChip color="bg-green-500" textColor="text-black">
-                  You live
-                </AbilityDetailsChip>
-              ) : (
-                <AbilityDetailsChip color="bg-red-600">You die</AbilityDetailsChip>
-              ))}
+            {result?.characters.length === 1 && (
+              <CardResult result={result.characters[0]!} />
+            )}
             {isSeason4 && (
               <Chevron
                 height={24}

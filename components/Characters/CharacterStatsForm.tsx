@@ -39,7 +39,7 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
   const physicalDr = armorToPhysicalDr(characterStats.armor ?? 0)
 
   return (
-    <div className="flex gap-3 flex-wrap">
+    <div className="flex gap-3 flex-wrap -mt-1">
       <NumericInput
         label="Stamina"
         value={characterStats.stamina}
