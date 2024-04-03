@@ -2,8 +2,8 @@ import { EnemyAbility } from '../../dungeons'
 
 const surge: EnemyAbility = {
   name: 'Surge',
-  spellId: 388862,
-  iconName: 'spell_arcane_arcane04',
+  id: 388862,
+  icon: 'spell_arcane_arcane04',
   baseDamage: 218851,
   isAoe: false,
   isTrashAbility: true,
@@ -12,8 +12,8 @@ const surge: EnemyAbility = {
 
 const burstForth: EnemyAbility = {
   name: 'Burst Forth',
-  spellId: 388923,
-  iconName: 'spell_nature_earthquake',
+  id: 388923,
+  icon: 'spell_nature_earthquake',
   baseDamage: 364751,
   isAoe: true,
   timeBetweenCasts: 60,
@@ -21,8 +21,8 @@ const burstForth: EnemyAbility = {
 
 const expelIntruders: EnemyAbility = {
   name: 'Expel Intruders',
-  spellId: 377912,
-  iconName: 'ability_druid_galewinds',
+  id: 377912,
+  icon: 'ability_druid_galewinds',
   baseDamage: 547127,
   isAoe: true,
   isTrashAbility: true,
@@ -31,8 +31,8 @@ const expelIntruders: EnemyAbility = {
 
 const deafeningScreech: EnemyAbility = {
   name: 'Screech',
-  spellId: 377004,
-  iconName: 'ability_vehicle_sonicshockwave',
+  id: 377004,
+  icon: 'ability_vehicle_sonicshockwave',
   baseDamage: 218851,
   isAoe: true,
   timeBetweenCasts: 23,
@@ -58,28 +58,28 @@ const deafeningScreech5: EnemyAbility = {
 
 const manaBomb: EnemyAbility = {
   name: 'Mana Bomb',
-  spellId: 386181,
+  id: 386181,
   baseDamage: 91188 * 4 + 182376,
   isAoe: false,
-  iconName: 'spell_mage_flameorb_blue',
+  icon: 'spell_mage_flameorb_blue',
   timeBetweenCasts: 25,
   notOneShot: true,
 }
 
 const viciousAmbush: EnemyAbility = {
   name: 'Vicious Ambush',
-  spellId: 388940,
-  iconName: 'ability_ambush',
+  id: 388940,
+  icon: 'ability_ambush',
   baseDamage: 197855,
   isAoe: true,
 }
 
 const arcaneFissure: EnemyAbility = {
   name: 'Arcane Fissure',
-  spellId: 388942,
+  id: 388942,
   baseDamage: 237088,
   isAoe: true,
-  iconName: 'spell_arcane_invocation',
+  icon: 'spell_arcane_invocation',
   timeBetweenCasts: 45,
   notOneShot: true,
 }

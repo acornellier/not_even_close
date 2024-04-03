@@ -5,7 +5,7 @@ export const waterBolt: EnemyAbility = {
   baseDamage: 68663,
   isAoe: false,
   isTrashAbility: true,
-  iconName: 'ability_mage_waterjet',
+  icon: 'ability_mage_waterjet',
   wowheadLink: 'https://www.wowhead.com/spell=426731/water-bolt',
 }
 
@@ -14,7 +14,7 @@ export const acidBarrage: EnemyAbility = {
   baseDamage: 71410,
   isAoe: true,
   isTrashAbility: true,
-  iconName: 'inv_ammo_arrow_04',
+  icon: 'inv_ammo_arrow_04',
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=426645/acid-barrage',
 }
 
@@ -22,7 +22,7 @@ export const focusedTempest: EnemyAbility = {
   name: 'Focused Tempest',
   baseDamage: 96129,
   isAoe: false,
-  iconName: 'spell_shaman_thunderstorm',
+  icon: 'spell_shaman_thunderstorm',
   wowheadLink: 'https://www.wowhead.com/spell=428376/focused-tempest',
 }
 
@@ -30,7 +30,7 @@ export const shockBlast: EnemyAbility = {
   name: 'Shock Blast',
   baseDamage: 129087,
   isAoe: true,
-  iconName: 'spell_shaman_staticshock',
+  icon: 'spell_shaman_staticshock',
   wowheadLink: 'https://www.wowhead.com/spell=428041/shock-blast',
 }
 
@@ -38,7 +38,7 @@ export const festeringShockwave: EnemyAbility = {
   name: 'Festering Shockwave',
   baseDamage: 90636,
   isAoe: true,
-  iconName: 'spell_fire_twilightnova',
+  icon: 'spell_fire_twilightnova',
   wowheadLink: 'https://www.wowhead.com/spell=427668/festering-shockwave',
 }
 
@@ -46,7 +46,7 @@ export const flameShock: EnemyAbility = {
   name: 'Flame Shock',
   baseDamage: 82396,
   isAoe: false,
-  iconName: 'spell_fire_flameshock',
+  icon: 'spell_fire_flameshock',
   wowheadLink: 'https://www.wowhead.com/ptr-2/spell=429048/flame-shock',
 }
 
@@ -55,7 +55,7 @@ export const blottingBarrage: EnemyAbility = {
   baseDamage: 82397,
   variance: 0.02,
   isAoe: true,
-  iconName: 'ability_vehicle_oiljets',
+  icon: 'ability_vehicle_oiljets',
   wowheadLink: 'https://www.wowhead.com/spell=428405/blotting-barrage',
 }
 

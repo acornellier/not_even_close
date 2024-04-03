@@ -10,13 +10,14 @@ import { aaAbilities } from './enemyAbilities/s4/aa'
 import { nokAbilities } from './enemyAbilities/s4/nok'
 import { avAbilities } from './enemyAbilities/s4/av'
 import { bhAbilities } from './enemyAbilities/s4/bh'
+import { hoiAbilities } from './enemyAbilities/s4/hoi'
 
 export type TimeBetweenCasts = number | [number, number]
 
 export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   name: string
-  spellId?: number
-  iconName: string
+  id?: number
+  icon: string
   baseDamage: number
   variance?: number
   timeBetweenCasts?: TimeBetweenCasts
@@ -75,6 +76,12 @@ export const dungeons: Dungeon[] = [
     name: 'Brackenhide Hollow',
     abilities: bhAbilities,
     icon: 'achievement_dungeon_brackenhidehollow',
+  },
+  {
+    key: 'hoi',
+    name: 'Halls of Infusion',
+    abilities: hoiAbilities,
+    icon: 'achievement_dungeon_hallsofinfusion',
   },
   {
     key: 'nok',

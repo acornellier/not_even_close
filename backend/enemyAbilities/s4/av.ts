@@ -2,8 +2,8 @@
 
 const explosiveBrand: EnemyAbility = {
   name: 'Explosive Brand',
-  spellId: 374567,
-  iconName: 'spell_arcane_arcanetorrent',
+  id: 374567,
+  icon: 'spell_arcane_arcanetorrent',
   baseDamage: 729502,
   isAoe: true,
   timeBetweenCasts: 50,
@@ -11,8 +11,8 @@ const explosiveBrand: EnemyAbility = {
 
 const consumingStomp: EnemyAbility = {
   name: 'Consuming Stomp',
-  spellId: 374720,
-  iconName: 'spell_arcane_blast',
+  id: 374720,
+  icon: 'spell_arcane_blast',
   baseDamage: 410345,
   isAoe: true,
   timeBetweenCasts: 50,
@@ -20,8 +20,8 @@ const consumingStomp: EnemyAbility = {
 
 const frostBomb: EnemyAbility = {
   name: 'Frost Bomb',
-  spellId: 386781,
-  iconName: 'inv_10_elementalcombinedfoozles_frost',
+  id: 386781,
+  icon: 'inv_10_elementalcombinedfoozles_frost',
   baseDamage: 273563,
   isAoe: true,
   timeBetweenCasts: [15, 30],
@@ -29,8 +29,8 @@ const frostBomb: EnemyAbility = {
 
 const absoluteZero: EnemyAbility = {
   name: 'Absolute Zero',
-  spellId: 388008,
-  iconName: 'spell_frost_arcticwinds',
+  id: 388008,
+  icon: 'spell_frost_arcticwinds',
   baseDamage: 820690,
   isAoe: true,
   timeBetweenCasts: 60,
@@ -38,8 +38,8 @@ const absoluteZero: EnemyAbility = {
 
 const unleashedDestruction: EnemyAbility = {
   name: 'Unleashed Destruction',
-  spellId: 388804,
-  iconName: 'spell_arcane_blast',
+  id: 388804,
+  icon: 'spell_arcane_blast',
   baseDamage: 218851,
   isAoe: true,
   timeBetweenCasts: 105,
@@ -47,8 +47,8 @@ const unleashedDestruction: EnemyAbility = {
 
 const shoulderSlam: EnemyAbility = {
   name: 'Shoulder Slam',
-  spellId: 391136,
-  iconName: 'ability_warrior_shieldcharge',
+  id: 391136,
+  icon: 'ability_warrior_shieldcharge',
   baseDamage: 328276,
   isAoe: true,
   isPhysical: true,

@@ -2,9 +2,9 @@
 
 const gashFrenzy: EnemyAbility = {
   name: 'Gash Frenzy',
-  spellId: 378029,
-  iconName: 'ability_rogue_murderspree',
-  baseDamage: 0,
+  id: 378029,
+  icon: 'ability_rogue_murderspree',
+  baseDamage: 273563,
   isAoe: true,
   isPhysical: true,
   timeBetweenCasts: 60,
@@ -12,16 +12,16 @@ const gashFrenzy: EnemyAbility = {
 
 const earthBolt: EnemyAbility = {
   name: 'Earth Bolt',
-  spellId: 378155,
-  iconName: 'inv_10_elementalshardfoozles_earth',
+  id: 378155,
+  icon: 'inv_10_elementalshardfoozles_earth',
   baseDamage: 237088,
   isAoe: true,
 }
 
 const witheredEruption: EnemyAbility = {
   name: 'Withered Eruption',
-  spellId: 387264,
-  iconName: 'warlock_curse_weakness_aura',
+  id: 387264,
+  icon: 'warlock_curse_weakness_aura',
   baseDamage: 328276,
   isAoe: true,
   timeBetweenCasts: 45,
@@ -29,8 +29,8 @@ const witheredEruption: EnemyAbility = {
 
 const stinkBreath: EnemyAbility = {
   name: 'Stink Breath',
-  spellId: 388060,
-  iconName: 'spell_fire_felflamebreath',
+  id: 388060,
+  icon: 'spell_fire_felflamebreath',
   baseDamage: 524340,
   isAoe: true,
   isTrashAbility: true,

@@ -6,7 +6,7 @@ export const grievousRip: EnemyAbility = {
   isAoe: false,
   isTrashAbility: true,
   isPhysical: true,
-  iconName: 'spell_frost_iceclaw',
+  icon: 'spell_frost_iceclaw',
   wowheadLink: 'https://www.wowhead.com/spell=225484/grievous-rip',
 }
 
@@ -14,7 +14,7 @@ export const shatteredEarth: EnemyAbility = {
   name: 'Shattered Earth',
   baseDamage: 115355,
   isAoe: true,
-  iconName: 'ability_warstomp',
+  icon: 'ability_warstomp',
   wowheadLink: 'https://www.wowhead.com/spell=204666/shattered-earth',
 }
 
@@ -22,7 +22,7 @@ export const crushingGrip: EnemyAbility = {
   name: 'Crushing Grip',
   baseDamage: 109862,
   isAoe: true,
-  iconName: 'ability_warrior_titansgrip',
+  icon: 'ability_warrior_titansgrip',
   wowheadLink: 'https://www.wowhead.com/spell=204611/crushing-grip',
 }
 
@@ -30,7 +30,7 @@ export const earthshakingRoar: EnemyAbility = {
   name: 'Earthshaking Roar',
   baseDamage: 109862,
   isAoe: true,
-  iconName: 'inv_misc_head_dragon_black_nightmare',
+  icon: 'inv_misc_head_dragon_black_nightmare',
   wowheadLink: 'https://www.wowhead.com/spell=199389/earthshaking-roar',
 }
 
@@ -38,7 +38,7 @@ export const apocalypticNightmare: EnemyAbility = {
   name: 'Apocalyptic Nightmare',
   baseDamage: 137327,
   isAoe: true,
-  iconName: 'sha_spell_fire_bluerainoffire_nightmare',
+  icon: 'sha_spell_fire_bluerainoffire_nightmare',
   wowheadLink: 'https://www.wowhead.com/spell=204502/apocalyptic-nightmare',
 }
 
@@ -47,7 +47,7 @@ export const nightmareBolt: EnemyAbility = {
   baseDamage: 90636,
   variance: 0.02,
   isAoe: false,
-  iconName: 'sha_spell_fire_bluepyroblast_nightmare',
+  icon: 'sha_spell_fire_bluepyroblast_nightmare',
   wowheadLink: 'https://www.wowhead.com/spell=200185/nightmare-bolt',
 }
 

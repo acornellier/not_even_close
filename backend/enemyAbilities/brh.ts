@@ -5,7 +5,7 @@ export const soulBlast: EnemyAbility = {
   baseDamage: 82396,
   isAoe: false,
   isTrashAbility: true,
-  iconName: 'spell_shadow_painspike',
+  icon: 'spell_shadow_painspike',
   wowheadLink: 'https://www.wowhead.com/spell=199663/soul-blast',
 }
 
@@ -13,7 +13,7 @@ export const soulBurst: EnemyAbility = {
   name: 'Soul Burst',
   baseDamage: 123594,
   isAoe: true,
-  iconName: 'ability_bossgorefiend_touchofdoom',
+  icon: 'ability_bossgorefiend_touchofdoom',
   wowheadLink: 'https://www.wowhead.com/spell=196587/soul-burst#icon',
 }
 
@@ -29,7 +29,7 @@ export const earthShakingStomp: EnemyAbility = {
   isAoe: true,
   isPhysical: true,
   ignoresArmor: true,
-  iconName: 'ability_warstomp',
+  icon: 'ability_warstomp',
   wowheadLink: 'https://www.wowhead.com/spell=198073/earthshaking-stomp',
 }
 
@@ -39,7 +39,7 @@ export const hatefulCharge: EnemyAbility = {
   isAoe: true,
   isPhysical: true,
   ignoresArmor: true,
-  iconName: 'ability_monk_clashingoxcharge',
+  icon: 'ability_monk_clashingoxcharge',
   wowheadLink: 'https://www.wowhead.com/spell=224188/hateful-charge',
 }
 
@@ -47,7 +47,7 @@ export const shadowBolt: EnemyAbility = {
   name: 'Shadow Bolt',
   baseDamage: 106831,
   isAoe: true,
-  iconName: 'spell_shadow_shadowbolt',
+  icon: 'spell_shadow_shadowbolt',
   wowheadLink: 'https://www.wowhead.com/spell=198833/shadow-bolt',
 }
 
@@ -55,7 +55,7 @@ export const shadowBoltVolley: EnemyAbility = {
   name: 'Shadow Bolt Volley',
   baseDamage: 164792,
   isAoe: true,
-  iconName: 'spell_shadow_shadowbolt',
+  icon: 'spell_shadow_shadowbolt',
   wowheadLink: 'https://www.wowhead.com/spell=202019/shadow-bolt-volley',
 }
 

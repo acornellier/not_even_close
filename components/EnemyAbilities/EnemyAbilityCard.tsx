@@ -44,8 +44,8 @@ export function EnemyAbilityCard({
             key={ability.name}
             className="min-w-[30px]"
             href={
-              ability.spellId
-                ? `https://www.wowhead.com/spell=${ability.spellId}/`
+              ability.id
+                ? `https://www.wowhead.com/spell=${ability.id}/`
                 : ability.wowheadLink
             }
             target="_blank"
@@ -55,7 +55,7 @@ export function EnemyAbilityCard({
               className="rounded border border-gray-500"
               height={30}
               width={30}
-              src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}
+              src={`https://wow.zamimg.com/images/wow/icons/large/${ability.icon}.jpg`}
               alt={ability.name}
             />
           </a>

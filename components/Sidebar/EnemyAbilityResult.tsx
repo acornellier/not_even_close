@@ -17,7 +17,7 @@ export function EnemyAbilityResult({ enemyAbility, keyDetails }: Props) {
             className="rounded border border-gray-500"
             height={24}
             width={24}
-            src={`https://wow.zamimg.com/images/wow/icons/large/${enemyAbility.iconName}.jpg`}
+            src={`https://wow.zamimg.com/images/wow/icons/large/${enemyAbility.icon}.jpg`}
             alt={enemyAbility.name}
           />
         </a>
