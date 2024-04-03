@@ -11,6 +11,7 @@ import { nokAbilities } from './enemyAbilities/s4/nok'
 import { avAbilities } from './enemyAbilities/s4/av'
 import { bhAbilities } from './enemyAbilities/s4/bh'
 import { hoiAbilities } from './enemyAbilities/s4/hoi'
+import { nelthAbilities } from './enemyAbilities/s4/nelth'
 
 export type TimeBetweenCasts = number | [number, number]
 
@@ -82,6 +83,12 @@ export const dungeons: Dungeon[] = [
     name: 'Halls of Infusion',
     abilities: hoiAbilities,
     icon: 'achievement_dungeon_hallsofinfusion',
+  },
+  {
+    key: 'nelth',
+    name: 'Neltharus',
+    abilities: nelthAbilities,
+    icon: 'achievement_dungeon_neltharus',
   },
   {
     key: 'nok',
