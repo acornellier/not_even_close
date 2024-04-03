@@ -9,6 +9,7 @@ import { EnemyAbilityDetails } from './sim/simTypes'
 import { aaAbilities } from './enemyAbilities/s4/aa'
 import { nokAbilities } from './enemyAbilities/s4/nok'
 import { avAbilities } from './enemyAbilities/s4/av'
+import { bhAbilities } from './enemyAbilities/s4/bh'
 
 export type TimeBetweenCasts = number | [number, number]
 
@@ -68,6 +69,12 @@ export const dungeons: Dungeon[] = [
     name: 'Azure Vault',
     abilities: avAbilities,
     icon: 'achievement_dungeon_arcanevaults',
+  },
+  {
+    key: 'bh',
+    name: 'Brackenhide Hollow',
+    abilities: bhAbilities,
+    icon: 'achievement_dungeon_brackenhidehollow',
   },
   {
     key: 'nok',
