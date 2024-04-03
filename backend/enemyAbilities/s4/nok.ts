@@ -15,6 +15,7 @@ const lightningStrike: EnemyAbility = {
   iconName: 'ability_vehicle_electrocharge',
   baseDamage: 328276,
   isAoe: true,
+  timeBetweenCasts: 20,
 }
 
 const galeArrow: EnemyAbility = {
@@ -23,6 +24,7 @@ const galeArrow: EnemyAbility = {
   iconName: 'ability_skyreach_four_wind',
   baseDamage: 419464,
   isAoe: false,
+  timeBetweenCasts: 57,
 }
 
 const ironSpear: EnemyAbility = {
@@ -31,6 +33,7 @@ const ironSpear: EnemyAbility = {
   iconName: 'inv_spear_07',
   baseDamage: 547127,
   isAoe: true,
+  timeBetweenCasts: 35,
 }
 
 const staticSpear: EnemyAbility = {
@@ -39,6 +42,7 @@ const staticSpear: EnemyAbility = {
   iconName: 'inv_spear_04',
   baseDamage: 364751 + 191494,
   isAoe: true,
+  timeBetweenCasts: 39,
 }
 
 const cracklingUpheaval: EnemyAbility = {
@@ -47,6 +51,7 @@ const cracklingUpheaval: EnemyAbility = {
   iconName: 'spell_nature_unrelentingstorm',
   baseDamage: 364751,
   isAoe: true,
+  timeBetweenCasts: 37,
 }
 
 const lightning: EnemyAbility = {
@@ -73,6 +78,7 @@ const chainLightning: EnemyAbility = {
   baseDamage: 319157,
   isAoe: false,
   isTrashAbility: true,
+  timeBetweenCasts: 24,
 }
 
 export const nokAbilities = [
