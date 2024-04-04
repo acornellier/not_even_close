@@ -1,6 +1,6 @@
 import { Ability, AbilityAugmentation } from '../ability'
 
-export const arcaneWarding: Ability = {
+const arcaneWarding: Ability = {
   name: 'Arcane Warding',
   dr: 0.04,
   drType: 'magic',
@@ -10,7 +10,7 @@ export const arcaneWarding: Ability = {
   iconName: 'spell_arcane_arcaneresilience',
 }
 
-export const blazingBarrier: Ability = {
+const blazingBarrier: Ability = {
   name: 'Blazing Barrier',
   absorb: {
     healthMultiplier: 0.2,
@@ -21,7 +21,7 @@ export const blazingBarrier: Ability = {
   iconName: 'ability_mage_moltenarmor',
 }
 
-export const iceBarrier: Ability = {
+const iceBarrier: Ability = {
   name: 'Ice Barrier',
   absorb: {
     healthMultiplier: 0.22,
@@ -56,7 +56,7 @@ export const improvedPrismaticBarrier: Ability = {
   abilityAugmentations: [improvedPrismaticBarrierAugmentation],
 }
 
-export const tempestBarrier: Ability = {
+const tempestBarrier: Ability = {
   name: 'Tempest Barrier',
   spellId: 382289,
   absorb: {
@@ -66,7 +66,7 @@ export const tempestBarrier: Ability = {
   iconName: 'inv_shield_1h_artifactstormfist_d_04',
 }
 
-export const iceCold: Ability = {
+const iceCold: Ability = {
   name: 'Ice Cold',
   dr: 0.7,
   spellId: 414658,
@@ -74,7 +74,7 @@ export const iceCold: Ability = {
   iconName: 'spell_fire_bluefire',
 }
 
-export const mirrorImage: Ability = {
+const mirrorImage: Ability = {
   name: 'Mirror Image',
   dr: 0.2,
   spellId: 55342,
@@ -82,7 +82,7 @@ export const mirrorImage: Ability = {
   iconName: 'spell_magic_lesserinvisibilty',
 }
 
-export const greaterInvisibility: Ability = {
+const greaterInvisibility: Ability = {
   name: 'Greater Invisibility',
   dr: 0.6,
   spellId: 110959,

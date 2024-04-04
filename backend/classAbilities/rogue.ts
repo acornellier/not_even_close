@@ -1,6 +1,6 @@
 import { Ability } from '../ability'
 
-export const thiefsVersatility: Ability = {
+const thiefsVersatility: Ability = {
   name: "Thief's Versatility",
   spellId: 381619,
   onByDefault: true,
@@ -8,7 +8,7 @@ export const thiefsVersatility: Ability = {
   iconName: 'ability_rogue_versatility',
 }
 
-export const elusiveness: Ability = {
+const elusiveness: Ability = {
   name: 'Elusiveness',
   spellId: 79008,
   onByDefault: true,
@@ -28,7 +28,7 @@ export const elusiveness: Ability = {
   ],
 }
 
-export const feint: Ability = {
+const feint: Ability = {
   name: 'Feint',
   aoeDr: 0.4,
   spellId: 1966,
@@ -36,20 +36,20 @@ export const feint: Ability = {
   iconName: 'ability_rogue_feint',
 }
 
-export const evasion: Ability = {
+const evasion: Ability = {
   name: 'Evasion',
   spellId: 5277,
   iconName: 'spell_shadow_shadowward',
 }
 
-export const fadeToNothing: Ability = {
+const fadeToNothing: Ability = {
   name: 'Fade to Nothing',
   dr: 0.1,
   spellId: 382514,
   iconName: 'ability_warlock_everlastingaffliction',
 }
 
-export const cloakedInShadows: Ability = {
+const cloakedInShadows: Ability = {
   name: 'Cloaked in Shadows',
   spellId: 382515,
   absorb: {
@@ -58,14 +58,14 @@ export const cloakedInShadows: Ability = {
   iconName: 'inv_helm_cloth_shadowmoonclan_b_01',
 }
 
-export const precisionShot: Ability = {
+const precisionShot: Ability = {
   name: 'Precision Shot',
   dr: 0.05,
   spellId: 428377,
   iconName: 'inv_legendary_gun',
 }
 
-export const exhilaratingExecution: Ability = {
+const exhilaratingExecution: Ability = {
   name: 'Exhilarating Execution',
   healthIncrease: 0.1,
   spellId: 428486,

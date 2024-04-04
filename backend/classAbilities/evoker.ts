@@ -1,6 +1,6 @@
 import { Ability } from '../ability'
 
-export const inherentResistanceAug: Ability = {
+const inherentResistanceAug: Ability = {
   name: 'Inherent Resistance',
   dr: 0.04,
   drType: 'magic',
@@ -9,12 +9,12 @@ export const inherentResistanceAug: Ability = {
   iconName: 'inv_misc_rubysanctum1',
 }
 
-export const inherentResistanceDevPres: Ability = {
+const inherentResistanceDevPres: Ability = {
   ...inherentResistanceAug,
   dr: 0.08,
 }
 
-export const obsidianScales: Ability = {
+const obsidianScales: Ability = {
   name: 'Obsidian Scales',
   dr: 0.3,
   spellId: 363916,
@@ -22,7 +22,7 @@ export const obsidianScales: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=363916/obsidian-scales',
 }
 
-export const rushOfVitality: Ability = {
+const rushOfVitality: Ability = {
   name: 'Rush of Vitality',
   healthIncrease: 0.2,
   spellId: 377086,

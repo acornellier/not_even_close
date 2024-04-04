@@ -1,6 +1,6 @@
 import { Ability } from '../ability'
 
-export const elementalWardingEnh: Ability = {
+const elementalWardingEnh: Ability = {
   name: 'Elemental Warding',
   dr: 0.06,
   drType: 'magic',
@@ -10,12 +10,12 @@ export const elementalWardingEnh: Ability = {
   iconName: 'inv_10_elementalcombinedfoozles_primordial',
 }
 
-export const elementalWardingEleResto: Ability = {
+const elementalWardingEleResto: Ability = {
   ...elementalWardingEnh,
   dr: 0.04,
 }
 
-export const brimmingWithLife: Ability = {
+const brimmingWithLife: Ability = {
   name: 'Brimming With Life',
   healthIncrease: 0.08,
   onByDefault: true,
@@ -24,7 +24,7 @@ export const brimmingWithLife: Ability = {
   iconName: 'inv_jewelry_talisman_06',
 }
 
-export const ancestralDefense: Ability = {
+const ancestralDefense: Ability = {
   name: 'Ancestral Defense',
   aoeDr: 0.02,
   onByDefault: true,
@@ -33,7 +33,7 @@ export const ancestralDefense: Ability = {
   iconName: 'ability_earthen_pillar',
 }
 
-export const astralShift: Ability = {
+const astralShift: Ability = {
   name: 'Astral Shift',
   dr: 0.4,
   spellId: 108271,
@@ -41,7 +41,7 @@ export const astralShift: Ability = {
   iconName: 'ability_shaman_astralshift',
 }
 
-export const astralBulwark: Ability = {
+const astralBulwark: Ability = {
   name: 'Astral Bulwark',
   spellId: 377933,
   onByDefault: false,
@@ -55,7 +55,7 @@ export const astralBulwark: Ability = {
   ],
 }
 
-export const earthElemental: Ability = {
+const earthElemental: Ability = {
   name: 'Earth Elemental',
   healthIncrease: 0.15,
   spellId: 198103,
@@ -63,14 +63,14 @@ export const earthElemental: Ability = {
   iconName: 'spell_nature_earthelemental_totem',
 }
 
-export const spiritWolf: Ability = {
+const spiritWolf: Ability = {
   name: 'Spirit Wolf',
   dr: 0.2,
   spellId: 260878,
   iconName: 'spell_hunter_lonewolf',
 }
 
-export const primordialBond: Ability = {
+const primordialBond: Ability = {
   name: 'Primordial Bond',
   spellId: 381764,
   dr: 0.05,

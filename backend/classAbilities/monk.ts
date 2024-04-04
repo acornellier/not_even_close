@@ -1,6 +1,6 @@
 import { Ability } from '../ability'
 
-export const calmingPresenceMistweaver: Ability = {
+const calmingPresenceMistweaver: Ability = {
   name: 'Calming Presence',
   spellId: 388664,
   onByDefault: true,
@@ -10,19 +10,19 @@ export const calmingPresenceMistweaver: Ability = {
     'https://www.wowhead.com/spell=388664/calming-presence?spellModifier=428200',
 }
 
-export const calmingPresenceWindwalker: Ability = {
+const calmingPresenceWindwalker: Ability = {
   ...calmingPresenceMistweaver,
   dr: 0.03,
 }
 
-export const ancientTeachings: Ability = {
+const ancientTeachings: Ability = {
   name: 'Ancient Teachings',
   spellId: 388023,
   staminaIncrease: 0.05,
   iconName: 'inv_misc_book_07',
 }
 
-export const secretInfusion: Ability = {
+const secretInfusion: Ability = {
   name: 'Secret Infusion (1 point)',
   talentPoints: 1,
   spellId: 388491,
@@ -37,7 +37,7 @@ export const secretInfusion: Ability = {
   ],
 }
 
-export const expelHarm: Ability = {
+const expelHarm: Ability = {
   name: 'TFT + Expel Harm',
   spellId: 322101,
   absorb: {
@@ -47,7 +47,7 @@ export const expelHarm: Ability = {
   iconName: 'ability_monk_expelharm',
 }
 
-export const yulonsGraceMistweaver: Ability = {
+const yulonsGraceMistweaver: Ability = {
   name: "Yulon's Grace",
   spellId: 414131,
   absorb: {
@@ -57,7 +57,7 @@ export const yulonsGraceMistweaver: Ability = {
   iconName: 'ability_monk_dragonkick',
 }
 
-export const yulonsGraceWindwalker: Ability = {
+const yulonsGraceWindwalker: Ability = {
   ...yulonsGraceMistweaver,
   absorb: {
     ...yulonsGraceMistweaver.absorb,
@@ -73,7 +73,7 @@ export const dampenHarm: Ability = {
   notes: '20-50% DR based on damage taken',
 }
 
-export const diffuseMagic: Ability = {
+const diffuseMagic: Ability = {
   name: 'Diffuse Magic',
   spellId: 122783,
   dr: 0.6,
@@ -82,7 +82,7 @@ export const diffuseMagic: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=122783/diffuse-magic',
 }
 
-export const fortBrew: Ability = {
+const fortBrew: Ability = {
   name: 'Fortifying Brew',
   spellId: 388917,
   dr: 0.2,
@@ -91,7 +91,7 @@ export const fortBrew: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=388917/fortifying-brew',
 }
 
-export const touchOfKarma: Ability = {
+const touchOfKarma: Ability = {
   name: 'Touch of Karma',
   spellId: 122470,
   absorb: {

@@ -1,6 +1,6 @@
 import { Ability } from '../ability'
 
-export const thickHide: Ability = {
+const thickHide: Ability = {
   name: 'Thick Hide',
   dr: 0.06,
   onByDefault: true,
@@ -8,21 +8,21 @@ export const thickHide: Ability = {
   iconName: 'inv_misc_pelt_bear_03',
 }
 
-export const risingLight: Ability = {
+const risingLight: Ability = {
   name: 'Rising Light, Falling Night',
   versIncrease: 0.02,
   spellId: 417712,
   iconName: 'spell_druid_equinox',
 }
 
-export const bearForm: Ability = {
+const bearForm: Ability = {
   name: 'Bear Form',
   staminaIncrease: 0.25,
   spellId: 5487,
   iconName: 'ability_racial_bearform',
 }
 
-export const lycarasTeachings: Ability = {
+const lycarasTeachings: Ability = {
   name: "Lycara's Teachings",
   onByDefault: false,
   spellId: 378988,
@@ -38,7 +38,7 @@ export const lycarasTeachings: Ability = {
   ],
 }
 
-export const ursineVigorOnePoint: Ability = {
+const ursineVigorOnePoint: Ability = {
   name: 'Ursine Vigor (1 point)',
   talentPoints: 1,
   spellId: 377842_1,
@@ -52,7 +52,7 @@ export const ursineVigorOnePoint: Ability = {
   ],
 }
 
-export const ursineVigorTwoPoints: Ability = {
+const ursineVigorTwoPoints: Ability = {
   name: 'Ursine Vigor (2 points)',
   talentPoints: 2,
   spellId: 377842_2,
@@ -66,7 +66,7 @@ export const ursineVigorTwoPoints: Ability = {
   ],
 }
 
-export const heartOfTheWild: Ability = {
+const heartOfTheWild: Ability = {
   name: 'Heart of the Wild',
   spellId: 319454,
   iconName: 'spell_holy_blessingofagility',
@@ -91,7 +91,7 @@ export const barkskin: Ability = {
     'The Matted Fur absorb is exact for Balance and Resto, but slightly off for Feral and Guardian due to weapon dps missing.',
 }
 
-export const mattedFur: Ability = {
+const mattedFur: Ability = {
   name: 'Matted Fur',
   spellId: 385786,
   onByDefault: true,
@@ -106,21 +106,21 @@ export const mattedFur: Ability = {
   iconName: 'inv_misc_pelt_15',
 }
 
-export const survivalInsticts: Ability = {
+const survivalInsticts: Ability = {
   name: 'Survival Instincts',
   dr: 0.5,
   spellId: 61336,
   iconName: 'ability_druid_tigersroar',
 }
 
-export const protectiveGrowth: Ability = {
+const protectiveGrowth: Ability = {
   name: 'Protective Growth',
   dr: 0.05,
   spellId: 391947,
   iconName: 'spell_nature_resistnature',
 }
 
-export const innerPeace: Ability = {
+const innerPeace: Ability = {
   name: 'Inner Peace (Tranq)',
   dr: 0.2,
   spellId: 197073,

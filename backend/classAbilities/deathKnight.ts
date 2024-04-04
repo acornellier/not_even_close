@@ -7,7 +7,7 @@ export const willOfTheNecropolis: Ability = {
   notes: 'Damage below 30% Health is reduced by 35%',
 }
 
-export const antiMagicShell: Ability = {
+const antiMagicShell: Ability = {
   name: 'Anti-Magic Shell',
   spellId: 48707,
   absorb: {
@@ -18,7 +18,7 @@ export const antiMagicShell: Ability = {
   iconName: 'spell_shadow_antimagicshell',
 }
 
-export const antiMagicBarrier: Ability = {
+const antiMagicBarrier: Ability = {
   name: 'Anti-Magic Barrier',
   spellId: 205727,
   onByDefault: true,
@@ -33,7 +33,7 @@ export const antiMagicBarrier: Ability = {
   ],
 }
 
-export const gloomWard: Ability = {
+const gloomWard: Ability = {
   name: 'Gloom Ward',
   spellId: 391571,
   onByDefault: true,
@@ -48,14 +48,14 @@ export const gloomWard: Ability = {
   ],
 }
 
-export const iceboundFortitude: Ability = {
+const iceboundFortitude: Ability = {
   name: 'Icebound Fortitude',
   dr: 0.3,
   spellId: 48792,
   iconName: 'spell_deathknight_iceboundfortitude',
 }
 
-export const lichborne: Ability = {
+const lichborne: Ability = {
   name: 'Lichborne',
   dr: 0.15,
   spellId: 49039,

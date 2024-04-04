@@ -1,6 +1,6 @@
 import { Ability } from '../ability'
 
-export const aspectOfTheBeast: Ability = {
+const aspectOfTheBeast: Ability = {
   name: 'Aspect of the Beast',
   spellId: 191384,
   onByDefault: true,
@@ -14,7 +14,7 @@ export const aspectOfTheBeast: Ability = {
   ],
 }
 
-export const rejuvenatingWind: Ability = {
+const rejuvenatingWind: Ability = {
   name: 'Rejuvenating Wind',
   healthIncrease: 0.08,
   onByDefault: true,
@@ -22,7 +22,7 @@ export const rejuvenatingWind: Ability = {
   iconName: 'ability_druid_galewinds',
 }
 
-export const huntersAvoidance: Ability = {
+const huntersAvoidance: Ability = {
   name: "Hunter's Avoidance",
   aoeDr: 0.06,
   onByDefault: true,
@@ -30,7 +30,7 @@ export const huntersAvoidance: Ability = {
   iconName: 'rogue_burstofspeed',
 }
 
-export const enduranceTraining: Ability = {
+const enduranceTraining: Ability = {
   name: 'Endurance Training',
   healthIncrease: 0.05,
   onByDefault: true,
@@ -38,14 +38,14 @@ export const enduranceTraining: Ability = {
   iconName: 'ability_hunter_huntervswild',
 }
 
-export const survivalOfTheFittest: Ability = {
+const survivalOfTheFittest: Ability = {
   name: 'Survival of the Fittest',
   dr: 0.2,
   spellId: 264735,
   iconName: 'spell_nature_spiritarmor',
 }
 
-export const naturesEndurance: Ability = {
+const naturesEndurance: Ability = {
   name: "Nature's Endurance",
   spellId: 388042,
   onByDefault: true,
@@ -59,7 +59,7 @@ export const naturesEndurance: Ability = {
   ],
 }
 
-export const fortitudeOfTheBear: Ability = {
+const fortitudeOfTheBear: Ability = {
   name: 'Fortitude of the Bear',
   healthIncrease: 0.2,
   spellId: 388035,

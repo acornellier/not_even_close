@@ -1,6 +1,6 @@
 ﻿import { Ability } from '../ability'
 
-export const scarsOfSuffering: Ability = {
+const scarsOfSuffering: Ability = {
   name: 'Scars of Suffering',
   spellId: 428232,
   onByDefault: true,
@@ -8,7 +8,7 @@ export const scarsOfSuffering: Ability = {
   iconName: 'spell_fire_felimmolation',
 }
 
-export const demonicWards: Ability = {
+const demonicWards: Ability = {
   name: 'Demonic Wards',
   spellId: 203513,
   onByDefault: true,
@@ -18,7 +18,7 @@ export const demonicWards: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=320381/demonic-wards',
 }
 
-export const illidariKnowledge: Ability = {
+const illidariKnowledge: Ability = {
   name: 'Illidari Knowledge',
   spellId: 389696,
   onByDefault: true,
@@ -28,7 +28,7 @@ export const illidariKnowledge: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=389696/illidari-knowledge',
 }
 
-export const willOfTheIllidari: Ability = {
+const willOfTheIllidari: Ability = {
   name: 'Will of the Illidari',
   spellId: 389695,
   onByDefault: true,
@@ -37,7 +37,7 @@ export const willOfTheIllidari: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=389695/will-of-the-illidari',
 }
 
-export const blur: Ability = {
+const blur: Ability = {
   name: 'Blur',
   spellId: 198589,
   dr: 0.2,
@@ -45,7 +45,7 @@ export const blur: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=212800/blur',
 }
 
-export const deflectingDance: Ability = {
+const deflectingDance: Ability = {
   name: 'Deflecting Dance',
   spellId: 427776,
   absorb: {
@@ -55,7 +55,7 @@ export const deflectingDance: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=427776/deflecting-dance',
 }
 
-export const demonMuzzle: Ability = {
+const demonMuzzle: Ability = {
   name: 'Demon Muzzle',
   spellId: 388111,
   dr: 0.08,
@@ -63,7 +63,7 @@ export const demonMuzzle: Ability = {
   iconName: 'spell_fire_fireballgreen',
 }
 
-export const demonHide: Ability = {
+const demonHide: Ability = {
   name: 'Demon Hide',
   spellId: 428241,
   onByDefault: true,

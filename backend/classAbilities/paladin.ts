@@ -1,6 +1,6 @@
 import { Ability } from '../ability'
 
-export const obduracy: Ability = {
+const obduracy: Ability = {
   name: 'Obduracy',
   aoeDr: 0.02,
   onByDefault: true,
@@ -8,7 +8,7 @@ export const obduracy: Ability = {
   iconName: 'ability_paladin_speedoflight',
 }
 
-export const sanctifiedPlatesRetProt: Ability = {
+const sanctifiedPlatesRetProt: Ability = {
   name: 'Sanctified Plates',
   aoeDr: 0.1,
   onByDefault: true,
@@ -16,7 +16,7 @@ export const sanctifiedPlatesRetProt: Ability = {
   iconName: 'inv_chest_plate_raidpaladin_s_01',
 }
 
-export const sanctifiedPlatesHoly: Ability = {
+const sanctifiedPlatesHoly: Ability = {
   name: 'Sanctified Plates',
   aoeDr: 0.06,
   onByDefault: true,
@@ -24,7 +24,7 @@ export const sanctifiedPlatesHoly: Ability = {
   iconName: 'inv_chest_plate_raidpaladin_s_01',
 }
 
-export const blessingOfDusk: Ability = {
+const blessingOfDusk: Ability = {
   name: 'Blessing of Dusk',
   dr: 0.05,
   onByDefault: true,
@@ -33,14 +33,14 @@ export const blessingOfDusk: Ability = {
   notes: 'Blessing of Dusk is usually active, but not always',
 }
 
-export const divineProtection: Ability = {
+const divineProtection: Ability = {
   name: 'Divine Protection',
   dr: 0.2,
   spellId: 498,
   iconName: 'spell_holy_divineprotection',
 }
 
-export const shieldOfVengeance: Ability = {
+const shieldOfVengeance: Ability = {
   name: 'Shield of Vengeance',
   absorb: {
     healthMultiplier: 0.3,
@@ -50,7 +50,7 @@ export const shieldOfVengeance: Ability = {
   iconName: 'ability_paladin_shieldofthetemplar',
 }
 
-export const aegisOfProtection: Ability = {
+const aegisOfProtection: Ability = {
   name: 'Aegis of Protection',
   spellId: 403654,
   onByDefault: true,
