@@ -50,7 +50,7 @@ const seekingFlame: EnemyAbility = {
   name: 'Seeking Flame',
   id: 369052,
   icon: 'spell_fire_fireball02',
-  baseDamage: 0,
+  baseDamage: 412917,
   aoe: true,
   avoidable: true,
 }

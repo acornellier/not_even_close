@@ -22,6 +22,22 @@ export const soulLink: Ability = {
   onByDefault: true,
   spellId: 108415,
   iconName: 'ability_warlock_soullink',
+  notes: 'Only while your pet is active',
+}
+
+const soulburn: Ability = {
+  name: 'Soulburn + Healthstone',
+  healthIncrease: 0.2,
+  spellId: 385899,
+  iconName: 'spell_warlock_soulburn',
+}
+
+const grimoireOfSacrifice: Ability = {
+  name: 'Grimoire of Sacrifice',
+  spellId: 108503,
+  staminaIncrease: 0.05,
+  iconName: 'warlock_grimoireofsacrifice',
+  notes: 'Cannot have Soul Link while this is active',
 }
 
 export const abyssWalker: Ability = {
@@ -38,6 +54,13 @@ export const soulLeech: Ability = {
     healthMultiplier: 0.15,
   },
   iconName: 'warlock_siphonlife',
+}
+
+const shadowBulwark: Ability = {
+  name: 'Shadow Bulwark',
+  spellId: 17767,
+  healthIncrease: 0.3,
+  iconName: 'spell_shadow_antishadow',
 }
 
 export const darkPact: Ability = {
@@ -71,12 +94,27 @@ export const strengthOfWill: Ability = {
   ],
 }
 
-export const warlockAbilities = [
+export const warlockAffDestroAbilities = [
+  felArmor,
+  demonicFortitude,
+  soulLink,
+  grimoireOfSacrifice,
+  abyssWalker,
+  soulLeech,
+  soulburn,
+  shadowBulwark,
+  darkPact,
+  unendingResolve,
+  strengthOfWill,
+]
+
+export const warlockDemoAbilities = [
   felArmor,
   demonicFortitude,
   soulLink,
   abyssWalker,
   soulLeech,
+  soulburn,
   darkPact,
   unendingResolve,
   strengthOfWill,

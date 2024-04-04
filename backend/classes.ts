@@ -25,7 +25,7 @@ import { hunterBmAbilities, hunterMmSurvAbilities } from './classAbilities/hunte
 import { deathKnightAbilities } from './classAbilities/deathKnight'
 import { warriorArmsAbilities, warriorFuryAbilities } from './classAbilities/warrior'
 import { paladinHolyAbilities, paladinRetAbilities } from './classAbilities/paladin'
-import { warlockAbilities } from './classAbilities/warlock'
+import { warlockAffDestroAbilities, warlockDemoAbilities } from './classAbilities/warlock'
 import {
   druidBalanceAbilities,
   druidFeralAbilities,
@@ -137,9 +137,12 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
     Restoration: { abilities: shamanRestoAbilities, icon: 'spell_nature_magicimmunity' },
   },
   Warlock: {
-    Affliction: { abilities: warlockAbilities, icon: 'spell_shadow_deathcoil' },
-    Demonology: { abilities: warlockAbilities, icon: 'spell_shadow_metamorphosis' },
-    Destruction: { abilities: warlockAbilities, icon: 'spell_shadow_rainoffire' },
+    Affliction: { abilities: warlockAffDestroAbilities, icon: 'spell_shadow_deathcoil' },
+    Demonology: { abilities: warlockDemoAbilities, icon: 'spell_shadow_metamorphosis' },
+    Destruction: {
+      abilities: warlockAffDestroAbilities,
+      icon: 'spell_shadow_rainoffire',
+    },
   },
   Warrior: {
     Arms: { abilities: warriorArmsAbilities, icon: 'ability_warrior_savageblow' },
