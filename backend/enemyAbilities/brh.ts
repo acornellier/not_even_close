@@ -3,8 +3,8 @@ import { EnemyAbility } from '../dungeons'
 export const soulBlast: EnemyAbility = {
   name: 'Soul Blast',
   baseDamage: 82396,
-  isAoe: false,
-  isTrashAbility: true,
+  aoe: false,
+  trashAbility: true,
   icon: 'spell_shadow_painspike',
   wowheadLink: 'https://www.wowhead.com/spell=199663/soul-blast',
 }
@@ -12,7 +12,7 @@ export const soulBlast: EnemyAbility = {
 export const soulBurst: EnemyAbility = {
   name: 'Soul Burst',
   baseDamage: 123594,
-  isAoe: true,
+  aoe: true,
   icon: 'ability_bossgorefiend_touchofdoom',
   wowheadLink: 'https://www.wowhead.com/spell=196587/soul-burst#icon',
 }
@@ -26,8 +26,8 @@ export const soulBurstMaxStacks: EnemyAbility = {
 export const earthShakingStomp: EnemyAbility = {
   name: 'Earthshaking Stomp',
   baseDamage: 96129,
-  isAoe: true,
-  isPhysical: true,
+  aoe: true,
+  physical: true,
   ignoresArmor: true,
   icon: 'ability_warstomp',
   wowheadLink: 'https://www.wowhead.com/spell=198073/earthshaking-stomp',
@@ -36,8 +36,8 @@ export const earthShakingStomp: EnemyAbility = {
 export const hatefulCharge: EnemyAbility = {
   name: 'Hateful Charge',
   baseDamage: 123594,
-  isAoe: true,
-  isPhysical: true,
+  aoe: true,
+  physical: true,
   ignoresArmor: true,
   icon: 'ability_monk_clashingoxcharge',
   wowheadLink: 'https://www.wowhead.com/spell=224188/hateful-charge',
@@ -46,7 +46,7 @@ export const hatefulCharge: EnemyAbility = {
 export const shadowBolt: EnemyAbility = {
   name: 'Shadow Bolt',
   baseDamage: 106831,
-  isAoe: true,
+  aoe: true,
   icon: 'spell_shadow_shadowbolt',
   wowheadLink: 'https://www.wowhead.com/spell=198833/shadow-bolt',
 }
@@ -54,7 +54,7 @@ export const shadowBolt: EnemyAbility = {
 export const shadowBoltVolley: EnemyAbility = {
   name: 'Shadow Bolt Volley',
   baseDamage: 164792,
-  isAoe: true,
+  aoe: true,
   icon: 'spell_shadow_shadowbolt',
   wowheadLink: 'https://www.wowhead.com/spell=202019/shadow-bolt-volley',
 }

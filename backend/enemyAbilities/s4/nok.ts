@@ -5,7 +5,7 @@ const shardsOfStone: EnemyAbility = {
   id: 388817,
   icon: 'inv_10_elementalshardfoozles_earth',
   baseDamage: 328276,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: [13, 25],
 }
 
@@ -14,7 +14,7 @@ const lightningStrike: EnemyAbility = {
   id: 384316,
   icon: 'ability_vehicle_electrocharge',
   baseDamage: 328276,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: 20,
 }
 
@@ -23,7 +23,7 @@ const galeArrow: EnemyAbility = {
   id: 382670,
   icon: 'ability_skyreach_four_wind',
   baseDamage: 419464,
-  isAoe: false,
+  aoe: false,
   timeBetweenCasts: 57,
 }
 
@@ -32,7 +32,7 @@ const ironSpear: EnemyAbility = {
   id: 376634,
   icon: 'inv_spear_07',
   baseDamage: 547127,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: 35,
   counterplay: {
     combatDrop: 'cancel',
@@ -44,7 +44,7 @@ const staticSpear: EnemyAbility = {
   id: 376864,
   icon: 'inv_spear_04',
   baseDamage: 364751 + 191494,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: 39,
   counterplay: {
     combatDrop: 'cancel',
@@ -56,7 +56,7 @@ const cracklingUpheaval: EnemyAbility = {
   id: 376892,
   icon: 'spell_nature_unrelentingstorm',
   baseDamage: 364751,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: 37,
 }
 
@@ -65,7 +65,7 @@ const lightning: EnemyAbility = {
   id: 376737,
   icon: 'spell_nature_stormreach',
   baseDamage: 577076,
-  isAoe: true,
+  aoe: true,
   avoidable: true,
   notes: 'Swirlies during Balakar Khan intermission and P2',
 }
@@ -75,8 +75,8 @@ const rainOfArrows: EnemyAbility = {
   id: 384476,
   icon: 'ability_hunter_quickshot',
   baseDamage: 364751,
-  isAoe: true,
-  isTrashAbility: true,
+  aoe: true,
+  trashAbility: true,
   avoidable: true,
   notes: 'Swirlies cast by Nokhud Longbow in first area',
 }
@@ -86,8 +86,8 @@ const chainLightning: EnemyAbility = {
   id: 387127,
   icon: 'spell_nature_chainlightning',
   baseDamage: 319157,
-  isAoe: false,
-  isTrashAbility: true,
+  aoe: false,
+  trashAbility: true,
   timeBetweenCasts: 24,
 }
 

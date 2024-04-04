@@ -28,9 +28,9 @@ const defaultKeyDetails: KeyDetails = { keyLevel: 28, isTyran: true }
 
 const defaultEnemyDetails: EnemyAbilityDetails = {
   damage: 100_000,
-  isAoe: false,
-  isTrashAbility: false,
-  isPhysical: false,
+  aoe: false,
+  trashAbility: false,
+  physical: false,
   ignoresArmor: false,
 }
 

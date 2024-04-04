@@ -41,8 +41,8 @@ export function DungeonAbilities({
   const abilities = dungeon.abilities
     .filter(({ periodic }) => showPeriodic || !periodic)
     .filter(({ avoidable }) => showAvoidable || !avoidable)
-  const bossAbilities = abilities.filter(({ isTrashAbility }) => !isTrashAbility)
-  const trashAbilities = abilities.filter(({ isTrashAbility }) => isTrashAbility)
+  const bossAbilities = abilities.filter(({ trashAbility }) => !trashAbility)
+  const trashAbilities = abilities.filter(({ trashAbility }) => trashAbility)
 
   const shouldExpandAll = abilityExtras.size < dungeon.abilities.length
 
@@ -94,7 +94,7 @@ export function DungeonAbilities({
       <div className="flex flex-col gap-y-2 flex-wrap items-stretch">
         {[bossAbilities, trashAbilities].map((abilities) => {
           if (!abilities.length) return
-          const isTrash = abilities[0].isTrashAbility
+          const isTrash = abilities[0].trashAbility
           return (
             <div
               key={String(isTrash)}

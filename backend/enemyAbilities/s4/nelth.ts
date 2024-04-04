@@ -5,7 +5,7 @@ const lavaSpray: EnemyAbility = {
   id: 375251,
   icon: 'spell_shaman_lavasurge',
   baseDamage: 375251,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: 30,
   counterplay: {
     combatDrop: 'cancel',
@@ -18,7 +18,7 @@ const volatileMutation: EnemyAbility = {
   id: 374365,
   icon: 'ability_rhyolith_magmaflow_whole',
   baseDamage: 273563,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: 33,
 }
 
@@ -27,8 +27,8 @@ const dragonStrike: EnemyAbility = {
   id: 373733,
   icon: 'spell_warrior_wildstrike',
   baseDamage: 328276,
-  isAoe: false,
-  isPhysical: true,
+  aoe: false,
+  physical: true,
   timeBetweenCasts: 57,
 }
 
@@ -37,8 +37,8 @@ const groundingSpear: EnemyAbility = {
   id: 373424,
   icon: 'inv_spear_11',
   baseDamage: 291801,
-  isAoe: true,
-  isPhysical: true,
+  aoe: true,
+  physical: true,
   timeBetweenCasts: 57,
 }
 
@@ -47,7 +47,7 @@ const blazingAegis: EnemyAbility = {
   id: 374839,
   icon: 'inv_shield_1h_dragondungeon_c_01',
   baseDamage: 218851 + 65655 * 4,
-  isAoe: true,
+  aoe: true,
   periodic: true,
   timeBetweenCasts: 31,
   counterplay: {
@@ -60,8 +60,8 @@ const scorchingFusillade: EnemyAbility = {
   id: 373084,
   icon: 'inv_gizmo_supersappercharge',
   baseDamage: 273563,
-  isAoe: true,
-  isTrashAbility: true,
+  aoe: true,
+  trashAbility: true,
   timeBetweenCasts: 23,
 }
 
@@ -70,8 +70,8 @@ const candescentTempest: EnemyAbility = {
   id: 381663,
   icon: 'spell_fire_burnout',
   baseDamage: (54713 + 91188) * 3,
-  isAoe: true,
-  isTrashAbility: true,
+  aoe: true,
+  trashAbility: true,
   periodic: true,
   timeBetweenCasts: 28,
 }

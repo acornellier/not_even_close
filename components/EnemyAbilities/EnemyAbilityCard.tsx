@@ -80,16 +80,16 @@ export function EnemyAbilityCard({
               </TooltipStyled>
             )}
             <AbilityDetailsChip
-              color={ability.isAoe ? 'bg-amber-600' : 'bg-pink-700'}
+              color={ability.aoe ? 'bg-amber-600' : 'bg-pink-700'}
               className="hidden sm:block"
             >
-              {ability.isAoe ? 'AoE' : 'Single'}
+              {ability.aoe ? 'AoE' : 'Single'}
             </AbilityDetailsChip>
             <AbilityDetailsChip
-              color={ability.isPhysical ? 'bg-orange-800' : 'bg-blue-500'}
+              color={ability.physical ? 'bg-orange-800' : 'bg-blue-500'}
               className="hidden sm:block"
             >
-              {ability.isPhysical ? 'Physical' : 'Magic'}
+              {ability.physical ? 'Physical' : 'Magic'}
             </AbilityDetailsChip>
           </div>
           <div className="flex gap-2">

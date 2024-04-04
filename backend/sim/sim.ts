@@ -121,7 +121,7 @@ function getAbilityResult(
 ): AbilityResult {
   const damageScaling = getScalingFactor(
     keyDetails,
-    !!enemyAbilityDetails.isTrashAbility,
+    !!enemyAbilityDetails.trashAbility,
     isBeta
   )
   const scaledDamage = Math.round(enemyAbilityDetails.damage * damageScaling)

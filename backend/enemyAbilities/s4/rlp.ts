@@ -5,8 +5,8 @@ const tectonicSlam: EnemyAbility = {
   id: 372735,
   icon: 'inv_misc_volatileearth',
   baseDamage: 255326,
-  isAoe: true,
-  isTrashAbility: true,
+  aoe: true,
+  trashAbility: true,
   avoidable: true,
   timeBetweenCasts: 10,
   counterplay: {
@@ -19,8 +19,8 @@ const livingBomb: EnemyAbility = {
   id: 373693,
   icon: 'inv_summerfest_firespirit',
   baseDamage: 182376,
-  isAoe: true,
-  isTrashAbility: true,
+  aoe: true,
+  trashAbility: true,
   timeBetweenCasts: 17,
 }
 
@@ -29,8 +29,8 @@ const infernoTrash: EnemyAbility = {
   id: 373692,
   icon: 'ability_warlock_inferno',
   baseDamage: 218851,
-  isAoe: true,
-  isTrashAbility: true,
+  aoe: true,
+  trashAbility: true,
   timeBetweenCasts: 19,
   notes: 'This does not include the ticking damage. Only the initial groupwide damage.',
 }
@@ -40,8 +40,8 @@ const rollingThunder: EnemyAbility = {
   id: 392640,
   icon: 'spell_nature_lightningoverload',
   baseDamage: 182376,
-  isAoe: true,
-  isTrashAbility: true,
+  aoe: true,
+  trashAbility: true,
   notes: 'This does not include the ticking damage. Only the groupwide dispel damage.',
 }
 
@@ -50,7 +50,7 @@ const inferno: EnemyAbility = {
   id: 384823,
   icon: 'ability_warlock_inferno',
   baseDamage: 291801,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: 35,
   notes: 'This does not include the ticking damage. Only the initial groupwide damage.',
 }
@@ -60,8 +60,8 @@ const lightningStorm: EnemyAbility = {
   id: 392486,
   icon: 'spell_shaman_thunderstorm',
   baseDamage: 6 * 91188,
-  isAoe: true,
-  isTrashAbility: true,
+  aoe: true,
+  trashAbility: true,
   periodic: true,
   timeBetweenCasts: 28,
 }
@@ -71,7 +71,7 @@ const flamespit: EnemyAbility = {
   id: 381602,
   icon: 'spell_fire_firebolt',
   baseDamage: 182376,
-  isAoe: false,
+  aoe: false,
   timeBetweenCasts: 22,
   notes: 'Only the initial hit',
 }
@@ -81,7 +81,7 @@ const interruptingCloudburst: EnemyAbility = {
   id: 381516,
   icon: 'spell_nature_cyclone',
   baseDamage: 182376,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: 19,
 }
 
@@ -90,7 +90,7 @@ const infernocore: EnemyAbility = {
   id: 381862,
   icon: 'ability_mage_livingbomb',
   baseDamage: 182376 + 8 * 10943 + 118544,
-  isAoe: false,
+  aoe: false,
   periodic: true,
   timeBetweenCasts: 22,
   notes:

@@ -75,8 +75,8 @@ export function getAbsorbs(
 
     if (
       !absorb ||
-      (absorb.absorbType === 'magic' && enemyAbilityDetails.isPhysical) ||
-      (absorb.absorbType === 'physical' && !enemyAbilityDetails.isPhysical)
+      (absorb.absorbType === 'magic' && enemyAbilityDetails.physical) ||
+      (absorb.absorbType === 'physical' && !enemyAbilityDetails.physical)
     ) {
       continue
     }

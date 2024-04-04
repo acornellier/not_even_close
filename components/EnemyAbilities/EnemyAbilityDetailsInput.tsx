@@ -31,24 +31,24 @@ export function EnemyAbilityDetailsInput({
         label="Ability source"
         label1="Trash"
         label2="Boss"
-        enabled={!enemyAbilityDetails.isTrashAbility}
-        setIsEnabled={(val) => setField('isTrashAbility')(!val)}
+        enabled={!enemyAbilityDetails.trashAbility}
+        setIsEnabled={(val) => setField('trashAbility')(!val)}
       />
       <OnOffStateSelector
         label="Ability type"
         label1="Single"
         label2="AoE"
-        enabled={enemyAbilityDetails.isAoe}
-        setIsEnabled={setField('isAoe')}
+        enabled={enemyAbilityDetails.aoe}
+        setIsEnabled={setField('aoe')}
       />
       <OnOffStateSelector
         label="Damage type"
         label1="Magic"
         label2="Physical"
-        enabled={!!enemyAbilityDetails.isPhysical}
-        setIsEnabled={setField('isPhysical')}
+        enabled={!!enemyAbilityDetails.physical}
+        setIsEnabled={setField('physical')}
       />
-      {enemyAbilityDetails.isPhysical && (
+      {enemyAbilityDetails.physical && (
         <OnOffStateSelector
           label="Ignores armor"
           label1="No"

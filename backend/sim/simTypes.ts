@@ -51,9 +51,9 @@ export interface KeyDetails {
 export interface EnemyAbilityDetails {
   name?: string
   damage: number
-  isAoe: boolean
-  isTrashAbility?: boolean
-  isPhysical?: boolean
+  aoe: boolean
+  trashAbility?: boolean
+  physical?: boolean
   ignoresArmor?: boolean
 }
 

@@ -5,8 +5,8 @@ const gashFrenzy: EnemyAbility = {
   id: 378029,
   icon: 'ability_rogue_murderspree',
   baseDamage: 273563,
-  isAoe: true,
-  isPhysical: true,
+  aoe: true,
+  physical: true,
   timeBetweenCasts: 60,
 }
 
@@ -15,7 +15,7 @@ const earthBolt: EnemyAbility = {
   id: 378155,
   icon: 'inv_10_elementalshardfoozles_earth',
   baseDamage: 237088,
-  isAoe: true,
+  aoe: true,
   avoidable: true,
 }
 
@@ -24,7 +24,7 @@ const witheredEruption: EnemyAbility = {
   id: 387264,
   icon: 'warlock_curse_weakness_aura',
   baseDamage: 328276,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: 45,
 }
 
@@ -33,8 +33,8 @@ const stinkBreath: EnemyAbility = {
   id: 388060,
   icon: 'spell_fire_felflamebreath',
   baseDamage: 524340,
-  isAoe: true,
-  isTrashAbility: true,
+  aoe: true,
+  trashAbility: true,
   timeBetweenCasts: 15,
 }
 

@@ -13,28 +13,28 @@ export function getDamageReduction(
 ) {
   let inverseDr = 1 - characterStats.versatility / 2
 
-  if (enemyAbilityDetails.isAoe) {
+  if (enemyAbilityDetails.aoe) {
     inverseDr *= 1 - characterStats.avoidance
   }
 
-  if (enemyAbilityDetails.isPhysical && !enemyAbilityDetails.ignoresArmor) {
+  if (enemyAbilityDetails.physical && !enemyAbilityDetails.ignoresArmor) {
     inverseDr *= 1 - armorToPhysicalDr(characterStats.armor)
   }
 
   for (const ability of abilities) {
     let dr = ability.dr
     if (
-      (ability.drType === 'magic' && enemyAbilityDetails.isPhysical) ||
-      (ability.drType === 'physical' && !enemyAbilityDetails.isPhysical)
+      (ability.drType === 'magic' && enemyAbilityDetails.physical) ||
+      (ability.drType === 'physical' && !enemyAbilityDetails.physical)
     ) {
       dr = 0
     }
 
-    if (dr && ability.aoeDr && enemyAbilityDetails.isAoe) {
+    if (dr && ability.aoeDr && enemyAbilityDetails.aoe) {
       inverseDr *= 1 - Math.max(dr, ability.aoeDr)
     } else if (dr) {
       inverseDr *= 1 - dr
-    } else if (ability.aoeDr && enemyAbilityDetails.isAoe) {
+    } else if (ability.aoeDr && enemyAbilityDetails.aoe) {
       inverseDr *= 1 - ability.aoeDr
     } else if (ability.spellId === dampenHarm.spellId) {
       const dampenDr = 0.2 + (damageTaken / startingHealth) * 0.3

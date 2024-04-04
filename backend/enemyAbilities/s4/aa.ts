@@ -5,7 +5,7 @@ const burstForth: EnemyAbility = {
   id: 388923,
   icon: 'spell_nature_earthquake',
   baseDamage: 364751,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: 60,
 }
 
@@ -13,7 +13,7 @@ const manaBomb: EnemyAbility = {
   name: 'Mana Bomb',
   id: 386181,
   baseDamage: 91188 * 4 + 182376,
-  isAoe: false,
+  aoe: false,
   icon: 'spell_mage_flameorb_blue',
   timeBetweenCasts: 25,
   periodic: true,
@@ -23,7 +23,7 @@ const arcaneFissure: EnemyAbility = {
   name: 'Arcane Fissure',
   id: 388537,
   baseDamage: 237088,
-  isAoe: true,
+  aoe: true,
   icon: 'spell_arcane_invocation',
   timeBetweenCasts: 45,
 }
@@ -33,8 +33,8 @@ const surge: EnemyAbility = {
   id: 388862,
   icon: 'spell_arcane_arcane04',
   baseDamage: 218851,
-  isAoe: false,
-  isTrashAbility: true,
+  aoe: false,
+  trashAbility: true,
   avoidable: true,
   timeBetweenCasts: 25,
   counterplay: {
@@ -48,8 +48,8 @@ const viciousAmbush: EnemyAbility = {
   id: 388940,
   icon: 'ability_ambush',
   baseDamage: 197855,
-  isAoe: true,
-  isTrashAbility: true,
+  aoe: true,
+  trashAbility: true,
   counterplay: {
     los: true,
   },
@@ -60,8 +60,8 @@ const expelIntruders: EnemyAbility = {
   id: 377912,
   icon: 'ability_druid_galewinds',
   baseDamage: 547127,
-  isAoe: true,
-  isTrashAbility: true,
+  aoe: true,
+  trashAbility: true,
   avoidable: true,
   timeBetweenCasts: 26,
   counterplay: {
@@ -75,7 +75,7 @@ const deafeningScreech: EnemyAbility = {
   id: 377004,
   icon: 'ability_vehicle_sonicshockwave',
   baseDamage: 218851,
-  isAoe: true,
+  aoe: true,
   timeBetweenCasts: 23,
 }
 

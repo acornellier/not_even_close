@@ -5,8 +5,8 @@ const ricochetingShield: EnemyAbility = {
   id: 369677,
   icon: 'spell_holy_avengersshield',
   baseDamage: 455939,
-  isAoe: false,
-  isPhysical: true,
+  aoe: false,
+  physical: true,
 }
 
 const earthenShards: EnemyAbility = {
@@ -14,8 +14,8 @@ const earthenShards: EnemyAbility = {
   id: 372718,
   icon: '6bf_blackrock_nova',
   baseDamage: 273564,
-  isAoe: true,
-  isPhysical: true,
+  aoe: true,
+  physical: true,
 }
 
 const crushingStomp: EnemyAbility = {
@@ -23,8 +23,8 @@ const crushingStomp: EnemyAbility = {
   id: 372701,
   icon: 'warrior_talent_icon_thunderstruck',
   baseDamage: 273564,
-  isAoe: true,
-  isPhysical: true,
+  aoe: true,
+  physical: true,
 }
 
 const earthquake: EnemyAbility = {
@@ -32,9 +32,9 @@ const earthquake: EnemyAbility = {
   id: 369328,
   icon: 'spell_nature_earthquake',
   baseDamage: 0,
-  isAoe: true,
-  isTrashAbility: true,
-  isPhysical: true,
+  aoe: true,
+  trashAbility: true,
+  physical: true,
   periodic: true,
 }
 
@@ -43,7 +43,7 @@ const unstableEmbers: EnemyAbility = {
   id: 369110,
   icon: 'ability_creature_cursed_01',
   baseDamage: 328276,
-  isAoe: true,
+  aoe: true,
 }
 
 const seekingFlame: EnemyAbility = {
@@ -51,7 +51,7 @@ const seekingFlame: EnemyAbility = {
   id: 369052,
   icon: 'spell_fire_fireball02',
   baseDamage: 0,
-  isAoe: true,
+  aoe: true,
   avoidable: true,
 }
 
@@ -60,7 +60,7 @@ const thunderousClap: EnemyAbility = {
   id: 381593,
   icon: 'ability_earthenfury_giftofearth',
   baseDamage: 291801,
-  isAoe: true,
+  aoe: true,
 }
 
 const wingBuffet: EnemyAbility = {
@@ -68,7 +68,7 @@ const wingBuffet: EnemyAbility = {
   id: 376049,
   icon: 'inv_icon_wing07e',
   baseDamage: 319157,
-  isAoe: true,
+  aoe: true,
 }
 
 export const uldAbilities = [
