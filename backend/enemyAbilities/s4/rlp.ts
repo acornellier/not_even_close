@@ -62,7 +62,7 @@ const lightningStorm: EnemyAbility = {
   baseDamage: 6 * 91188,
   isAoe: true,
   isTrashAbility: true,
-  periodicDamage: true,
+  periodic: true,
   timeBetweenCasts: 28,
 }
 
@@ -91,7 +91,7 @@ const infernocore: EnemyAbility = {
   icon: 'ability_mage_livingbomb',
   baseDamage: 182376 + 8 * 10943 + 118544,
   isAoe: false,
-  periodicDamage: true,
+  periodic: true,
   timeBetweenCasts: 22,
   notes:
     'Does not include the initial Flamespit hit. Only the initial ticking damage and final hit.',

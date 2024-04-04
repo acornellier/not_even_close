@@ -16,7 +16,7 @@ const manaBomb: EnemyAbility = {
   isAoe: false,
   icon: 'spell_mage_flameorb_blue',
   timeBetweenCasts: 25,
-  periodicDamage: true,
+  periodic: true,
 }
 
 const arcaneFissure: EnemyAbility = {

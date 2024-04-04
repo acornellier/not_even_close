@@ -34,12 +34,12 @@ export function DungeonAbilities({
   )
   const [showAvoidable, setShowAvoidable] = useLocalStorage(
     `show-avoidable-${dungeon.key}`,
-    true
+    false
   )
   const [abilityExtras, setAbilityExtras] = useState(new Set<string>())
 
   const abilities = dungeon.abilities
-    .filter(({ periodicDamage }) => showPeriodic || !periodicDamage)
+    .filter(({ periodic }) => showPeriodic || !periodic)
     .filter(({ avoidable }) => showAvoidable || !avoidable)
   const bossAbilities = abilities.filter(({ isTrashAbility }) => !isTrashAbility)
   const trashAbilities = abilities.filter(({ isTrashAbility }) => isTrashAbility)

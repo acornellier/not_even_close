@@ -6,7 +6,7 @@ const staticSurge: EnemyAbility = {
   icon: 'spell_nature_unrelentingstorm',
   baseDamage: 155019 * 3,
   isAoe: true,
-  periodicDamage: true,
+  periodic: true,
   timeBetweenCasts: 28,
 }
 
@@ -16,7 +16,7 @@ const powerOverload: EnemyAbility = {
   icon: 'ability_thunderking_lightningwhip',
   baseDamage: 54713 * 6,
   isAoe: true,
-  periodicDamage: true,
+  periodic: true,
   timeBetweenCasts: 28,
 }
 
@@ -27,7 +27,7 @@ const overpoweringCroak: EnemyAbility = {
   baseDamage: 131903 * 3,
   isAoe: true,
   isPhysical: true,
-  periodicDamage: true,
+  periodic: true,
   timeBetweenCasts: 38,
 }
 
@@ -37,7 +37,7 @@ const toxicEffluvia: EnemyAbility = {
   icon: 'ability_creature_poison_02',
   baseDamage: 109425 * 3,
   isAoe: true,
-  periodicDamage: true,
+  periodic: true,
   timeBetweenCasts: 26,
 }
 
