@@ -61,6 +61,8 @@ const shadowBulwark: Ability = {
   spellId: 17767,
   healthIncrease: 0.3,
   iconName: 'spell_shadow_antishadow',
+  notes:
+    'If activating this, be sure to disable Soul Link and enable Grimoire of Sacrifice.',
 }
 
 const darkPact: Ability = {
@@ -100,10 +102,10 @@ export const warlockAffDestroAbilities = [
   demonicFortitude,
   soulLink,
   grimoireOfSacrifice,
+  shadowBulwark,
   abyssWalker,
   soulLeech,
   soulburn,
-  shadowBulwark,
   darkPact,
   unendingResolve,
   strengthOfWill,
