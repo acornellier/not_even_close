@@ -12,8 +12,18 @@ import { avAbilities } from './enemyAbilities/s4/av'
 import { bhAbilities } from './enemyAbilities/s4/bh'
 import { hoiAbilities } from './enemyAbilities/s4/hoi'
 import { nelthAbilities } from './enemyAbilities/s4/nelth'
+import { uldAbilities } from './enemyAbilities/s4/uld'
+import { rlpSpells } from './enemyAbilities/s4/rlp'
 
 export type TimeBetweenCasts = number | [number, number]
+
+export type Counterplay = {
+  combatDrop?: 'recast' | 'cancel'
+  los?: boolean
+  outrange?: number
+  spellReflect?: boolean
+  diffuse?: boolean
+}
 
 export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   name: string
@@ -26,6 +36,7 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   avoidable?: boolean
   notes?: string
   wowheadLink?: string
+  counterplay?: Counterplay
 }
 
 export const dungeonKeys = [
@@ -97,6 +108,18 @@ export const dungeons: Dungeon[] = [
     name: 'Nokhud Offensive',
     abilities: nokAbilities,
     icon: 'achievement_dungeon_centaurplains',
+  },
+  {
+    key: 'rlp',
+    name: 'Ruby Life Pools',
+    abilities: rlpSpells,
+    icon: 'achievement_dungeon_lifepools',
+  },
+  {
+    key: 'uld',
+    name: 'Uldaman',
+    abilities: uldAbilities,
+    icon: 'achievement_dungeon_uldaman',
   },
   {
     key: 'ad',

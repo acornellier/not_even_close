@@ -34,6 +34,9 @@ const ironSpear: EnemyAbility = {
   baseDamage: 547127,
   isAoe: true,
   timeBetweenCasts: 35,
+  counterplay: {
+    combatDrop: 'cancel',
+  },
 }
 
 const staticSpear: EnemyAbility = {
@@ -43,6 +46,9 @@ const staticSpear: EnemyAbility = {
   baseDamage: 364751 + 191494,
   isAoe: true,
   timeBetweenCasts: 39,
+  counterplay: {
+    combatDrop: 'cancel',
+  },
 }
 
 const cracklingUpheaval: EnemyAbility = {

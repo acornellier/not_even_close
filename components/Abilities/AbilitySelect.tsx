@@ -4,7 +4,7 @@ import {
   isAbilityAvailable,
   isAbilitySelected,
 } from '../../backend/utils'
-import { AbilityIcon } from './AbilityIcon'
+import { CharAbilityIcon } from './CharAbilityIcon'
 import { useCallback, useEffect } from 'react'
 
 interface Props {
@@ -68,7 +68,7 @@ export function AbilitySelect({
   return (
     <div className="flex gap-1.5 flex-wrap">
       {augmenters.map((ability) => (
-        <AbilityIcon
+        <CharAbilityIcon
           key={ability.spellId}
           ability={ability}
           toggleAbility={toggleAbility}
@@ -81,7 +81,7 @@ export function AbilitySelect({
       {augmenters.length > 0 && <div className="border-2 border-gray-300" />}
 
       {regulars.map((ability) => (
-        <AbilityIcon
+        <CharAbilityIcon
           key={ability.spellId}
           ability={ability}
           toggleAbility={toggleAbility}

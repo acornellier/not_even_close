@@ -1,11 +1,11 @@
 ﻿import { EnemyAbility } from '../../backend/dungeons'
-import Image from 'next/image'
 import { AbilityDetailsChip } from './AbilityDetailsChip'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { AbilityResult } from '../../backend/sim/simTypes'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'
 import { AbilityCardExtras } from './AbilityCardExtras'
 import { CardResult } from './CardResult'
+import { WowIcon } from '../Common/WowIcon'
 
 interface Props {
   ability: EnemyAbility
@@ -49,13 +49,7 @@ export function EnemyAbilityCard({
             target="_blank"
             rel="noreferrer"
           >
-            <Image
-              className="rounded border border-gray-500"
-              height={30}
-              width={30}
-              src={`https://wow.zamimg.com/images/wow/icons/large/${ability.icon}.jpg`}
-              alt={ability.name}
-            />
+            <WowIcon icon={ability.icon} size={30} />
           </a>
           <div
             className="text-white"

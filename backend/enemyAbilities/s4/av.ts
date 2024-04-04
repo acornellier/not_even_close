@@ -54,6 +54,9 @@ const shoulderSlam: EnemyAbility = {
   isPhysical: true,
   isTrashAbility: true,
   timeBetweenCasts: 12,
+  counterplay: {
+    outrange: 40,
+  },
 }
 
 export const avAbilities = [

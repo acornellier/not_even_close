@@ -63,6 +63,9 @@ const lightningBlast: EnemyAbility = {
   baseDamage: 218851,
   isAoe: false,
   isTrashAbility: true,
+  counterplay: {
+    outrange: 40,
+  },
 }
 
 const deepChill: EnemyAbility = {
@@ -81,6 +84,9 @@ const inundate: EnemyAbility = {
   baseDamage: 328276,
   isAoe: true,
   isTrashAbility: true,
+  counterplay: {
+    outrange: 40,
+  },
 }
 
 export const hoiAbilities = [

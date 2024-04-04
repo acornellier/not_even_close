@@ -1,6 +1,6 @@
 ﻿import { DungeonKey, dungeons, isSeason4 } from '../../backend/dungeons'
-import Image from 'next/image'
 import { Button } from '../Common/Button'
+import { WowIcon } from '../Common/WowIcon'
 
 interface Props {
   setSelectedDungeon: (dungeon: DungeonKey) => void
@@ -19,13 +19,7 @@ export function DungeonSelect({ setSelectedDungeon, isBeta }: Props) {
             className="flex gap-2 py-2 px-2"
             onClick={() => setSelectedDungeon(key)}
           >
-            <Image
-              className="rounded border-2 border-gray-600"
-              height={36}
-              width={36}
-              src={`https://wow.zamimg.com/images/wow/icons/large/${icon}.jpg`}
-              alt={name}
-            />
+            <WowIcon icon={icon} size={36} />
             {name}
           </Button>
         ))}

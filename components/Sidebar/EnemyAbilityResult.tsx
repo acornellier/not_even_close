@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import { EnemyAbility } from '../../backend/dungeons'
 
 import { KeyDetails } from '../../backend/sim/simTypes'
+import { WowIcon } from '../Common/WowIcon'
 
 interface Props {
   enemyAbility: EnemyAbility | null
@@ -13,13 +13,7 @@ export function EnemyAbilityResult({ enemyAbility, keyDetails }: Props) {
     enemyAbility && (
       <div className="flex gap-1 items-center whitespace-nowrap">
         <a key={enemyAbility.name}>
-          <Image
-            className="rounded border border-gray-500"
-            height={24}
-            width={24}
-            src={`https://wow.zamimg.com/images/wow/icons/large/${enemyAbility.icon}.jpg`}
-            alt={enemyAbility.name}
-          />
+          <WowIcon icon={enemyAbility.icon} size={24} />
         </a>
         <div className="text-white">
           {enemyAbility.name} | +{keyDetails.keyLevel}{' '}

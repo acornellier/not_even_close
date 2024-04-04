@@ -15,7 +15,7 @@ export function CardResult({ result }: Props) {
       textColor={survival ? 'text-black' : 'text-white'}
     >
       <div className="flex gap-2">
-        <div className="w-14">{survival ? 'You live' : 'You die'}</div>
+        <div>{survival ? 'You live' : 'You die'}</div>
         <div className="hidden md:block">({remainingHp})</div>
       </div>
     </AbilityDetailsChip>

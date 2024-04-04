@@ -37,6 +37,10 @@ const surge: EnemyAbility = {
   isTrashAbility: true,
   avoidable: true,
   timeBetweenCasts: 25,
+  counterplay: {
+    combatDrop: 'recast',
+    spellReflect: true,
+  },
 }
 
 const viciousAmbush: EnemyAbility = {
@@ -46,6 +50,9 @@ const viciousAmbush: EnemyAbility = {
   baseDamage: 197855,
   isAoe: true,
   isTrashAbility: true,
+  counterplay: {
+    los: true,
+  },
 }
 
 const expelIntruders: EnemyAbility = {
@@ -57,6 +64,10 @@ const expelIntruders: EnemyAbility = {
   isTrashAbility: true,
   avoidable: true,
   timeBetweenCasts: 26,
+  counterplay: {
+    los: true,
+    outrange: 30,
+  },
 }
 
 const deafeningScreech: EnemyAbility = {

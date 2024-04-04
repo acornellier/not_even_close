@@ -5,13 +5,12 @@
   isSeason4,
 } from '../../backend/dungeons'
 import { EnemyAbilityCard } from './EnemyAbilityCard'
-import Image from 'next/image'
 import { Button } from '../Common/Button'
 import { AbilityResult } from '../../backend/sim/simTypes'
-import { OnOffStateSelector } from '../Inputs/OnOffStateSelector'
 import { useState } from 'react'
 import useLocalStorage from '../Tools/useLocalStorage'
 import { Toggle } from '../Inputs/Toggle'
+import { WowIcon } from '../Common/WowIcon'
 
 interface Props {
   selectedDungeon: DungeonKey
@@ -66,13 +65,7 @@ export function DungeonAbilities({
       <div className="flex justify-between">
         <div className="flex items-center gap-3">
           <Button short bigText onClick={deselectDungeon} className="gap-2 px-2">
-            <Image
-              className={`rounded border-2 border-gray-600`}
-              height={32}
-              width={32}
-              src={`https://wow.zamimg.com/images/wow/icons/large/${dungeon.icon}.jpg`}
-              alt={dungeon.name}
-            />
+            <WowIcon icon={dungeon.icon} size={32} />
             <div className="hidden sm:block">{dungeon.name}</div>
           </Button>
           {isSeason4(dungeon.key) && (
@@ -119,11 +112,14 @@ export function DungeonAbilities({
 
                 return (
                   <EnemyAbilityCard
-                    key={ability.name}
+                    key={ability.id ?? ability.name}
                     ability={ability}
                     onSelect={() => onSelect(ability)}
                     selected={
-                      selectedAbility !== null && selectedAbility.name === ability.name
+                      selectedAbility !== null &&
+                      (selectedAbility.id && ability.id
+                        ? selectedAbility.id === ability.id
+                        : selectedAbility.name === ability.name)
                     }
                     result={abilityResult}
                     showExtras={abilityExtras.has(ability.name)}

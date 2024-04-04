@@ -7,6 +7,10 @@ const lavaSpray: EnemyAbility = {
   baseDamage: 375251,
   isAoe: true,
   timeBetweenCasts: 30,
+  counterplay: {
+    combatDrop: 'cancel',
+    outrange: 40,
+  },
 }
 
 const volatileMutation: EnemyAbility = {
@@ -46,6 +50,9 @@ const blazingAegis: EnemyAbility = {
   isAoe: true,
   periodicDamage: true,
   timeBetweenCasts: 31,
+  counterplay: {
+    combatDrop: 'cancel',
+  },
 }
 
 const scorchingFusillade: EnemyAbility = {

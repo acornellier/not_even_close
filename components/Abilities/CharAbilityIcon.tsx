@@ -97,7 +97,7 @@ function getAugmentationText(augmentation: AbilityAugmentation) {
   return `+${getEffectText(augmentation.field, augmentation.value)}`
 }
 
-export function AbilityIcon({
+export function CharAbilityIcon({
   ability,
   toggleAbility,
   selectedAbilities,
