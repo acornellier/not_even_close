@@ -68,6 +68,7 @@ const darkPact: Ability = {
   spellId: 108416,
   absorb: {
     healthMultiplier: 0.4,
+    versAffected: true,
     spMultipler: 2.5,
   },
   iconName: 'spell_shadow_deathpact',
