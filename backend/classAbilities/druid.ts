@@ -20,7 +20,6 @@ export const bearForm: Ability = {
   staminaIncrease: 0.25,
   spellId: 5487,
   iconName: 'ability_racial_bearform',
-  notes: "Assumes you have 3 points in Lycara's Teachings",
 }
 
 export const lycarasTeachings: Ability = {
