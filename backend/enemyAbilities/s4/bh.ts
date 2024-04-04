@@ -5,7 +5,7 @@ const gashFrenzy: EnemyAbility = {
   id: 378029,
   icon: 'ability_rogue_murderspree',
   baseDamage: 273563,
-  aoe: true,
+  aoe: false,
   physical: true,
   timeBetweenCasts: 60,
 }
@@ -15,7 +15,7 @@ const earthBolt: EnemyAbility = {
   id: 378155,
   icon: 'inv_10_elementalshardfoozles_earth',
   baseDamage: 237088,
-  aoe: true,
+  aoe: false,
   avoidable: true,
 }
 

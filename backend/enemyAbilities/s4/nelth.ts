@@ -34,10 +34,10 @@ const dragonStrike: EnemyAbility = {
 
 const groundingSpear: EnemyAbility = {
   name: 'Grounding Spear',
-  id: 373424,
+  id: 396672,
   icon: 'inv_spear_11',
   baseDamage: 291801,
-  aoe: true,
+  aoe: false,
   physical: true,
   timeBetweenCasts: 57,
 }

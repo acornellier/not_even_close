@@ -14,7 +14,7 @@ const earthenShards: EnemyAbility = {
   id: 372718,
   icon: '6bf_blackrock_nova',
   baseDamage: 273564,
-  aoe: true,
+  aoe: false,
   physical: true,
 }
 
@@ -51,7 +51,7 @@ const seekingFlame: EnemyAbility = {
   id: 369052,
   icon: 'spell_fire_fireball02',
   baseDamage: 412917,
-  aoe: true,
+  aoe: false,
   avoidable: true,
 }
 

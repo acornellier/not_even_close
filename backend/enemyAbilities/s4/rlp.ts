@@ -22,6 +22,7 @@ const livingBomb: EnemyAbility = {
   aoe: true,
   trashAbility: true,
   timeBetweenCasts: 17,
+  notes: 'Only the final hit.',
 }
 
 const infernoTrash: EnemyAbility = {
