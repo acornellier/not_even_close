@@ -7,6 +7,7 @@ const ricochetingShield: EnemyAbility = {
   baseDamage: 455939,
   aoe: false,
   physical: true,
+  timeBetweenCasts: 17,
 }
 
 const earthenShards: EnemyAbility = {
@@ -16,6 +17,7 @@ const earthenShards: EnemyAbility = {
   baseDamage: 273564,
   aoe: false,
   physical: true,
+  timeBetweenCasts: [10, 30],
 }
 
 const crushingStomp: EnemyAbility = {
@@ -25,6 +27,7 @@ const crushingStomp: EnemyAbility = {
   baseDamage: 273564,
   aoe: true,
   physical: true,
+  timeBetweenCasts: 12,
 }
 
 const earthquake: EnemyAbility = {
@@ -36,6 +39,7 @@ const earthquake: EnemyAbility = {
   trashAbility: true,
   physical: true,
   periodic: true,
+  timeBetweenCasts: 25,
 }
 
 const unstableEmbers: EnemyAbility = {
@@ -44,6 +48,7 @@ const unstableEmbers: EnemyAbility = {
   icon: 'ability_creature_cursed_01',
   baseDamage: 328276,
   aoe: true,
+  timeBetweenCasts: 12,
 }
 
 const seekingFlame: EnemyAbility = {
@@ -61,6 +66,7 @@ const thunderousClap: EnemyAbility = {
   icon: 'ability_earthenfury_giftofearth',
   baseDamage: 291801,
   aoe: true,
+  timeBetweenCasts: 20,
 }
 
 const wingBuffet: EnemyAbility = {
@@ -69,6 +75,7 @@ const wingBuffet: EnemyAbility = {
   icon: 'inv_icon_wing07e',
   baseDamage: 319157,
   aoe: true,
+  timeBetweenCasts: 23,
 }
 
 export const uldAbilities = [

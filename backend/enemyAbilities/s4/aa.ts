@@ -76,6 +76,9 @@ const deafeningScreech: EnemyAbility = {
   icon: 'ability_vehicle_sonicshockwave',
   baseDamage: 218851,
   aoe: true,
+  counterplay: {
+    los: true,
+  },
   timeBetweenCasts: 23,
 }
 
