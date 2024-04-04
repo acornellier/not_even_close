@@ -21,17 +21,18 @@ const livingBomb: EnemyAbility = {
   baseDamage: 182376,
   isAoe: true,
   isTrashAbility: true,
+  timeBetweenCasts: 17,
 }
 
 const infernoTrash: EnemyAbility = {
-  name: 'Inferno',
+  name: 'Inferno (Trash)',
   id: 373692,
   icon: 'ability_warlock_inferno',
   baseDamage: 218851,
   isAoe: true,
   isTrashAbility: true,
-  notes:
-    'Trash version. This does not include the ticking damage. Only the initial groupwide damage.',
+  timeBetweenCasts: 19,
+  notes: 'This does not include the ticking damage. Only the initial groupwide damage.',
 }
 
 const rollingThunder: EnemyAbility = {
@@ -45,13 +46,13 @@ const rollingThunder: EnemyAbility = {
 }
 
 const inferno: EnemyAbility = {
-  name: 'Inferno',
+  name: 'Inferno (Boss)',
   id: 384823,
   icon: 'ability_warlock_inferno',
   baseDamage: 291801,
   isAoe: true,
-  notes:
-    'Boss version. This does not include the ticking damage. Only the initial groupwide damage.',
+  timeBetweenCasts: 35,
+  notes: 'This does not include the ticking damage. Only the initial groupwide damage.',
 }
 
 const lightningStorm: EnemyAbility = {
@@ -62,6 +63,7 @@ const lightningStorm: EnemyAbility = {
   isAoe: true,
   isTrashAbility: true,
   periodicDamage: true,
+  timeBetweenCasts: 28,
 }
 
 const flamespit: EnemyAbility = {
@@ -70,6 +72,7 @@ const flamespit: EnemyAbility = {
   icon: 'spell_fire_firebolt',
   baseDamage: 182376,
   isAoe: false,
+  timeBetweenCasts: 22,
   notes: 'Only the initial hit',
 }
 
@@ -79,6 +82,7 @@ const interruptingCloudburst: EnemyAbility = {
   icon: 'spell_nature_cyclone',
   baseDamage: 182376,
   isAoe: true,
+  timeBetweenCasts: 19,
 }
 
 const infernocore: EnemyAbility = {
@@ -88,6 +92,7 @@ const infernocore: EnemyAbility = {
   baseDamage: 182376 + 8 * 10943 + 118544,
   isAoe: false,
   periodicDamage: true,
+  timeBetweenCasts: 22,
   notes:
     'Does not include the initial Flamespit hit. Only the initial ticking damage and final hit.',
 }
