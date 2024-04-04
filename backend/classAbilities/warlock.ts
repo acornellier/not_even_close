@@ -1,6 +1,6 @@
 import { Ability } from '../ability'
 
-export const felArmor: Ability = {
+const felArmor: Ability = {
   name: 'Fel Armor',
   dr: 0.03,
   onByDefault: true,
@@ -8,7 +8,7 @@ export const felArmor: Ability = {
   iconName: 'spell_shadow_felarmour',
 }
 
-export const demonicFortitude: Ability = {
+const demonicFortitude: Ability = {
   name: 'Demonic Fortitude',
   healthIncrease: 0.05,
   onByDefault: true,
@@ -16,7 +16,7 @@ export const demonicFortitude: Ability = {
   iconName: 'spell_warlock_summonimpoutland',
 }
 
-export const soulLink: Ability = {
+const soulLink: Ability = {
   name: 'Soul Link',
   dr: 0.1,
   onByDefault: true,
@@ -40,14 +40,14 @@ const grimoireOfSacrifice: Ability = {
   notes: 'Cannot have Soul Link while this is active',
 }
 
-export const abyssWalker: Ability = {
+const abyssWalker: Ability = {
   name: 'Abyss Walker',
   spellId: 389609,
   dr: 0.04,
   iconName: 'achievement_explore_argus',
 }
 
-export const soulLeech: Ability = {
+const soulLeech: Ability = {
   name: 'Soul Leech',
   spellId: 108370,
   absorb: {
@@ -63,24 +63,24 @@ const shadowBulwark: Ability = {
   iconName: 'spell_shadow_antishadow',
 }
 
-export const darkPact: Ability = {
+const darkPact: Ability = {
   name: 'Dark Pact',
   spellId: 108416,
   absorb: {
-    healthMultiplier: 0.2,
+    healthMultiplier: 0.4,
     spMultipler: 2.5,
   },
   iconName: 'spell_shadow_deathpact',
 }
 
-export const unendingResolve: Ability = {
+const unendingResolve: Ability = {
   name: 'Unending Resolve',
   dr: 0.25,
   spellId: 104773,
   iconName: 'spell_shadow_demonictactics',
 }
 
-export const strengthOfWill: Ability = {
+const strengthOfWill: Ability = {
   name: 'Strength of Will',
   spellId: 317138,
   onByDefault: true,
