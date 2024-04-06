@@ -16,7 +16,7 @@ function printTimeBetweenCasts(time: TimeBetweenCasts) {
 }
 
 export function AbilityCardExtras({ ability: { counterplay, timeBetweenCasts } }: Props) {
-  if (!counterplay && !timeBetweenCasts) return
+  if (!counterplay && !timeBetweenCasts) return null
 
   return (
     <div className="flex gap-4 w-fit">
