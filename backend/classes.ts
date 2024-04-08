@@ -1,8 +1,8 @@
 ﻿import { havocAbilities } from './classAbilities/demonHunter'
 import { Ability } from './ability'
 import {
-  evokerDevAbilities,
   evokerAugAbilities,
+  evokerDevAbilities,
   evokerPresAbilities,
 } from './classAbilities/evoker'
 import { monkMistweaverAbilities, monkWindwalkerAbilities } from './classAbilities/monk'
@@ -12,8 +12,8 @@ import {
   mageFrostAbilities,
 } from './classAbilities/mage'
 import {
-  shamanEnhAbilities,
   shamanEleAbilities,
+  shamanEnhAbilities,
   shamanRestoAbilities,
 } from './classAbilities/shaman'
 import {
@@ -151,7 +151,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
 } as const
 
 export const defaultAbilities = (classSpec: ClassSpec) =>
-  classSpecs[classSpec.class][classSpec.spec].abilities.filter(
+  classSpecs[classSpec.class][classSpec.spec]!.abilities.filter(
     ({ onByDefault }) => onByDefault
   )
 
