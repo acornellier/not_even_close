@@ -40,10 +40,8 @@
     "trashAbility": true,
     "avoidable": true,
     "cooldown": 25,
-    "counterplay": {
-      "combatDrop": "recast",
-      "spellReflect": true
-    }
+    "combatDrop": "recast",
+    "spellReflect": true
   },
   {
     "name": "Expel Intruders",
@@ -56,10 +54,8 @@
     "trashAbility": true,
     "avoidable": true,
     "cooldown": 26,
-    "counterplay": {
-      "los": true,
-      "outrange": 30
-    }
+    "los": true,
+    "outrange": 30
   },
   {
     "name": "Vicious Ambush",
@@ -70,9 +66,7 @@
     "physical": false,
     "variance": 0,
     "trashAbility": true,
-    "counterplay": {
-      "los": true
-    }
+    "los": true
   },
   {
     "name": "Screech",
@@ -82,9 +76,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
-    "counterplay": {
-      "los": true
-    },
+    "los": true,
     "cooldown": 23
   },
   {
@@ -95,9 +87,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
-    "counterplay": {
-      "los": true
-    },
+    "los": true,
     "cooldown": 23
   },
   {
@@ -108,9 +98,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
-    "counterplay": {
-      "los": true
-    },
+    "los": true,
     "cooldown": 23
   },
   {
@@ -121,9 +109,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
-    "counterplay": {
-      "los": true
-    },
+    "los": true,
     "cooldown": 23
   },
   {
@@ -134,9 +120,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
-    "counterplay": {
-      "los": true
-    },
+    "los": true,
     "cooldown": 23
   },
   {
@@ -147,9 +131,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
-    "counterplay": {
-      "los": true
-    },
+    "los": true,
     "cooldown": 23
   },
   {
@@ -216,9 +198,7 @@
     "variance": 0,
     "trashAbility": true,
     "cooldown": 12,
-    "counterplay": {
-      "outrange": 40
-    }
+    "outrange": 40
   },
   {
     "name": "Gash Frenzy",
@@ -333,9 +313,7 @@
     "physical": false,
     "variance": 0,
     "trashAbility": true,
-    "counterplay": {
-      "outrange": 40
-    }
+    "outrange": 40
   },
   {
     "name": "Deep Chill",
@@ -356,9 +334,7 @@
     "physical": false,
     "variance": 0,
     "trashAbility": true,
-    "counterplay": {
-      "outrange": 40
-    }
+    "outrange": 40
   },
   {
     "name": "Lava Spray",
@@ -369,10 +345,8 @@
     "physical": false,
     "variance": 0.025,
     "cooldown": 30,
-    "counterplay": {
-      "combatDrop": "cancel",
-      "outrange": 40
-    }
+    "combatDrop": "cancel",
+    "outrange": 40
   },
   {
     "name": "Volatile Mutation",
@@ -414,9 +388,7 @@
     "variance": 0,
     "periodic": true,
     "cooldown": 31,
-    "counterplay": {
-      "combatDrop": "cancel"
-    },
+    "combatDrop": "cancel",
     "notes": "Initial hit + 4 ticks"
   },
   {
@@ -484,9 +456,7 @@
     "physical": true,
     "variance": 0,
     "cooldown": 35,
-    "counterplay": {
-      "combatDrop": "cancel"
-    }
+    "combatDrop": "cancel"
   },
   {
     "name": "Static Spear",
@@ -556,9 +526,7 @@
     "trashAbility": true,
     "avoidable": true,
     "cooldown": 10,
-    "counterplay": {
-      "outrange": 40
-    }
+    "outrange": 40
   },
   {
     "name": "Living Bomb",

@@ -2,14 +2,6 @@
 
 export type TimeBetweenCasts = number | [number, number]
 
-export type Counterplay = {
-  combatDrop?: 'recast' | 'cancel'
-  los?: boolean
-  outrange?: number
-  spellReflect?: boolean
-  diffuse?: boolean
-}
-
 export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   name: string
   id?: number
@@ -19,9 +11,18 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   cooldown?: TimeBetweenCasts
   periodic?: boolean
   avoidable?: boolean
+
+  // counterplay
+  combatDrop?: 'recast' | 'cancel'
+  los?: boolean
+  outrange?: number
+  spellReflect?: boolean
+  diffuse?: boolean
+
   notes?: string
+
+  // delete this
   wowheadLink?: string
-  counterplay?: Counterplay
 }
 
 export const dungeonKeys = [

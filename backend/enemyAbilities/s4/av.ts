@@ -19,9 +19,7 @@ const unleashedDestruction = getEnemySpellS4(388804, { cooldown: 105 })
 const shoulderSlam = getEnemySpellS4(436652, {
   trashAbility: true,
   cooldown: 12,
-  counterplay: {
-    outrange: 40,
-  },
+  outrange: 40,
 })
 
 export const avAbilities = [

@@ -14,9 +14,7 @@ const galeArrow = getEnemySpellS4(386037, {
 
 const ironSpear = getEnemySpellS4(376660, {
   cooldown: 35,
-  counterplay: {
-    combatDrop: 'cancel',
-  },
+  combatDrop: 'cancel',
 })
 
 const staticSpear = getEnemySpellS4(376866, (baseSpell) => ({

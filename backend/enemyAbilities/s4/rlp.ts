@@ -4,9 +4,7 @@ const tectonicSlam = getEnemySpellS4(372735, {
   trashAbility: true,
   avoidable: true,
   cooldown: 10,
-  counterplay: {
-    outrange: 40,
-  },
+  outrange: 40,
 })
 
 const livingBomb = getEnemySpellS4(373694, {

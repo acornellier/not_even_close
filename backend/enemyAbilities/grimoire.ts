@@ -19,10 +19,10 @@ function getEnemySpell(
     name: spell.name,
     id: spell.id,
     icon: spell.icon,
-    damage: spell.damage[season],
-    aoe: spell.aoe,
-    physical: spell.physical,
-    variance: spell.variance / 2,
+    damage: spell.damage?.[season] ?? 0,
+    aoe: !!spell.aoe,
+    physical: !!spell.physical,
+    variance: (spell.variance ?? 0) / 2,
   }
 
   return {

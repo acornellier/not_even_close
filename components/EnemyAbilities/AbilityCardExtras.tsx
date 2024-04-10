@@ -15,8 +15,11 @@ function printTimeBetweenCasts(time: TimeBetweenCasts) {
   return `~${time} sec`
 }
 
-export function AbilityCardExtras({ ability: { counterplay, cooldown } }: Props) {
-  if (!counterplay && !cooldown) return null
+export function AbilityCardExtras({
+  ability: { combatDrop, los, outrange, spellReflect, diffuse, cooldown },
+}: Props) {
+  if (!combatDrop && !los && !outrange && !spellReflect && !diffuse && !cooldown)
+    return null
 
   return (
     <div className="flex gap-4 w-fit">
@@ -32,18 +35,18 @@ export function AbilityCardExtras({ ability: { counterplay, cooldown } }: Props)
         </div>
       )}
       <div className="flex gap-1">
-        {counterplay?.combatDrop && (
+        {combatDrop && (
           <div
             className="flex gap-1"
             data-tooltip-id="counterplay-tooltip"
             data-tooltip-content={`${
-              counterplay.combatDrop === 'cancel' ? 'Cancelled by' : 'Recasts on'
+              combatDrop === 'cancel' ? 'Cancelled by' : 'Recasts on'
             } Meld, Invis, or Feign Death`}
           >
             <WowIcon icon="ability_ambush" size={24} />
           </div>
         )}
-        {counterplay?.los && (
+        {los && (
           <div
             className="flex gap-1"
             data-tooltip-id="counterplay-tooltip"
@@ -52,17 +55,17 @@ export function AbilityCardExtras({ ability: { counterplay, cooldown } }: Props)
             <EyeSlashIcon width={24} />
           </div>
         )}
-        {counterplay?.outrange && (
+        {outrange && (
           <div
             className="flex gap-1"
             data-tooltip-id="counterplay-tooltip"
-            data-tooltip-content={`Outranged at ${counterplay.outrange} yd`}
+            data-tooltip-content={`Outranged at ${outrange} yd`}
           >
             <OutrangeIcon height={24} width={24} />
-            {counterplay.outrange} yd
+            {outrange} yd
           </div>
         )}
-        {counterplay?.spellReflect && (
+        {spellReflect && (
           <div
             className="flex gap-1"
             data-tooltip-id="counterplay-tooltip"
@@ -71,7 +74,7 @@ export function AbilityCardExtras({ ability: { counterplay, cooldown } }: Props)
             <WowIcon icon="ability_warrior_shieldreflection" size={24} />
           </div>
         )}
-        {counterplay?.diffuse && (
+        {diffuse && (
           <div
             className="flex gap-1"
             data-tooltip-id="counterplay-tooltip"

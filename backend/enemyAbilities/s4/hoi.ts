@@ -36,9 +36,7 @@ const tempestsFury32: EnemyAbility = {
 
 const lightningBlast = getEnemySpellS4(395690, {
   trashAbility: true,
-  counterplay: {
-    outrange: 40,
-  },
+  outrange: 40,
 })
 
 const deepChill = getEnemySpellS4(391634, {
@@ -47,9 +45,7 @@ const deepChill = getEnemySpellS4(391634, {
 
 const inundate = getEnemySpellS4(388882, {
   trashAbility: true,
-  counterplay: {
-    outrange: 40,
-  },
+  outrange: 40,
 })
 
 export const hoiAbilities = [

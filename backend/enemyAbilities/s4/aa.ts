@@ -17,34 +17,26 @@ const surge = getEnemySpellS4(388862, {
   trashAbility: true,
   avoidable: true,
   cooldown: 25,
-  counterplay: {
-    combatDrop: 'recast',
-    spellReflect: true,
-  },
+  combatDrop: 'recast',
+  spellReflect: true,
 })
 
 const viciousAmbush = getEnemySpellS4(388940, {
   trashAbility: true,
-  counterplay: {
-    los: true,
-  },
+  los: true,
 })
 
 const expelIntruders = getEnemySpellS4(377912, {
   trashAbility: true,
   avoidable: true,
   cooldown: 26,
-  counterplay: {
-    los: true,
-    outrange: 30,
-  },
+  los: true,
+  outrange: 30,
 })
 
 const deafeningScreech = getEnemySpellS4(377009, {
   name: 'Screech',
-  counterplay: {
-    los: true,
-  },
+  los: true,
   cooldown: 23,
 })
 

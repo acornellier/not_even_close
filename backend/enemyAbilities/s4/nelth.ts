@@ -2,10 +2,8 @@ import { getEnemySpellS4 } from '../grimoire'
 
 const lavaSpray = getEnemySpellS4(388296, {
   cooldown: 30,
-  counterplay: {
-    combatDrop: 'cancel',
-    outrange: 40,
-  },
+  combatDrop: 'cancel',
+  outrange: 40,
 })
 
 const volatileMutation = getEnemySpellS4(375890, {
@@ -26,9 +24,7 @@ const blazingAegis = getEnemySpellS4(374839, {
   damage: 218851 + 65655 * 4,
   periodic: true,
   cooldown: 31,
-  counterplay: {
-    combatDrop: 'cancel',
-  },
+  combatDrop: 'cancel',
   notes: 'Initial hit + 4 ticks',
 })
 
