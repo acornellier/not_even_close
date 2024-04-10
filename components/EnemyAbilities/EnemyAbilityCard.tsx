@@ -68,7 +68,7 @@ export function EnemyAbilityCard({
               className="hidden sm:block"
               data-tooltip-id={`chip-damage-${ability.name}`}
             >
-              {ability.baseDamage.toLocaleString('en-us')} dmg
+              {ability.damage.toLocaleString('en-us')} dmg
               {ability.variance !== undefined &&
                 ability.variance !== 0 &&
                 ` ±${ability.variance * 100}%`}

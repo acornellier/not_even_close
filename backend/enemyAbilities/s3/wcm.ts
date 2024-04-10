@@ -2,7 +2,7 @@ import { EnemyAbility } from '../enemies'
 
 export const soulBolt: EnemyAbility = {
   name: 'Soul Bolt',
-  baseDamage: 87889,
+  damage: 87889,
   aoe: false,
   trashAbility: true,
   icon: 'spell_shadow_painspike',
@@ -11,7 +11,7 @@ export const soulBolt: EnemyAbility = {
 
 export const jaggedNettles: EnemyAbility = {
   name: 'Jagged Nettles',
-  baseDamage: 98875,
+  damage: 98875,
   aoe: false,
   physical: true,
   icon: 'inv_misc_herb_gromsbloodleaf',
@@ -20,7 +20,7 @@ export const jaggedNettles: EnemyAbility = {
 
 export const dreadEssence: EnemyAbility = {
   name: 'Dread Essence',
-  baseDamage: 96129,
+  damage: 96129,
   aoe: true,
   icon: 'ability_argus_soulburst',
   wowheadLink: 'https://www.wowhead.com/spell=266181/dread-essence',
@@ -28,7 +28,7 @@ export const dreadEssence: EnemyAbility = {
 
 export const rottenExpulsion: EnemyAbility = {
   name: 'Rotten Expulsion',
-  baseDamage: 105742,
+  damage: 105742,
   aoe: true,
   icon: 'ability_creature_disease_01',
   wowheadLink: 'https://www.wowhead.com/spell=264694/rotten-expulsion',

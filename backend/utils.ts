@@ -48,7 +48,7 @@ export function isAbilityAvailable(ability: Ability, availableAbililties: Abilit
 }
 
 export function enemyAbilityToDetails(ability: EnemyAbility): EnemyAbilityDetails {
-  let damage = ability.baseDamage
+  let damage = ability.damage
   if (ability.variance) damage = Math.round(damage * (1 + ability.variance))
 
   return { ...ability, damage }

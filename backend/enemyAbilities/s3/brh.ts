@@ -2,7 +2,7 @@ import { EnemyAbility } from '../enemies'
 
 export const soulBlast: EnemyAbility = {
   name: 'Soul Blast',
-  baseDamage: 82396,
+  damage: 82396,
   aoe: false,
   trashAbility: true,
   icon: 'spell_shadow_painspike',
@@ -11,7 +11,7 @@ export const soulBlast: EnemyAbility = {
 
 export const soulBurst: EnemyAbility = {
   name: 'Soul Burst',
-  baseDamage: 123594,
+  damage: 123594,
   aoe: true,
   icon: 'ability_bossgorefiend_touchofdoom',
   wowheadLink: 'https://www.wowhead.com/spell=196587/soul-burst#icon',
@@ -20,12 +20,12 @@ export const soulBurst: EnemyAbility = {
 export const soulBurstMaxStacks: EnemyAbility = {
   ...soulBurst,
   name: 'Soul Burst (max stacks)',
-  baseDamage: 383141,
+  damage: 383141,
 }
 
 export const earthShakingStomp: EnemyAbility = {
   name: 'Earthshaking Stomp',
-  baseDamage: 96129,
+  damage: 96129,
   aoe: true,
   physical: true,
   ignoresArmor: true,
@@ -35,7 +35,7 @@ export const earthShakingStomp: EnemyAbility = {
 
 export const hatefulCharge: EnemyAbility = {
   name: 'Hateful Charge',
-  baseDamage: 123594,
+  damage: 123594,
   aoe: true,
   physical: true,
   ignoresArmor: true,
@@ -45,7 +45,7 @@ export const hatefulCharge: EnemyAbility = {
 
 export const shadowBolt: EnemyAbility = {
   name: 'Shadow Bolt',
-  baseDamage: 106831,
+  damage: 106831,
   aoe: true,
   icon: 'spell_shadow_shadowbolt',
   wowheadLink: 'https://www.wowhead.com/spell=198833/shadow-bolt',
@@ -53,7 +53,7 @@ export const shadowBolt: EnemyAbility = {
 
 export const shadowBoltVolley: EnemyAbility = {
   name: 'Shadow Bolt Volley',
-  baseDamage: 164792,
+  damage: 164792,
   aoe: true,
   icon: 'spell_shadow_shadowbolt',
   wowheadLink: 'https://www.wowhead.com/spell=202019/shadow-bolt-volley',

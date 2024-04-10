@@ -15,11 +15,11 @@ function getEnemySpell(
   overrides?: Overrides,
 ): EnemyAbility {
   const spell = getGrimoireSpell(spellId)
-  const baseSpell = {
+  const baseSpell: EnemyAbility = {
     name: spell.name,
     id: spell.id,
     icon: spell.icon,
-    baseDamage: spell.damage[season],
+    damage: spell.damage[season],
     aoe: spell.aoe,
     physical: spell.physical,
     variance: spell.variance / 2,

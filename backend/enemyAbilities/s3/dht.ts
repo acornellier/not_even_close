@@ -2,7 +2,7 @@ import { EnemyAbility } from '../enemies'
 
 export const grievousRip: EnemyAbility = {
   name: 'Grievous Rip',
-  baseDamage: 85143,
+  damage: 85143,
   aoe: false,
   trashAbility: true,
   physical: true,
@@ -12,7 +12,7 @@ export const grievousRip: EnemyAbility = {
 
 export const shatteredEarth: EnemyAbility = {
   name: 'Shattered Earth',
-  baseDamage: 115355,
+  damage: 115355,
   aoe: true,
   icon: 'ability_warstomp',
   wowheadLink: 'https://www.wowhead.com/spell=204666/shattered-earth',
@@ -20,7 +20,7 @@ export const shatteredEarth: EnemyAbility = {
 
 export const crushingGrip: EnemyAbility = {
   name: 'Crushing Grip',
-  baseDamage: 109862,
+  damage: 109862,
   aoe: true,
   icon: 'ability_warrior_titansgrip',
   wowheadLink: 'https://www.wowhead.com/spell=204611/crushing-grip',
@@ -28,7 +28,7 @@ export const crushingGrip: EnemyAbility = {
 
 export const earthshakingRoar: EnemyAbility = {
   name: 'Earthshaking Roar',
-  baseDamage: 109862,
+  damage: 109862,
   aoe: true,
   icon: 'inv_misc_head_dragon_black_nightmare',
   wowheadLink: 'https://www.wowhead.com/spell=199389/earthshaking-roar',
@@ -36,7 +36,7 @@ export const earthshakingRoar: EnemyAbility = {
 
 export const apocalypticNightmare: EnemyAbility = {
   name: 'Apocalyptic Nightmare',
-  baseDamage: 137327,
+  damage: 137327,
   aoe: true,
   icon: 'sha_spell_fire_bluerainoffire_nightmare',
   wowheadLink: 'https://www.wowhead.com/spell=204502/apocalyptic-nightmare',
@@ -44,7 +44,7 @@ export const apocalypticNightmare: EnemyAbility = {
 
 export const nightmareBolt: EnemyAbility = {
   name: 'Nightmare Bolt',
-  baseDamage: 90636,
+  damage: 90636,
   variance: 0.02,
   aoe: false,
   icon: 'sha_spell_fire_bluepyroblast_nightmare',

@@ -15,20 +15,20 @@ function printTimeBetweenCasts(time: TimeBetweenCasts) {
   return `~${time} sec`
 }
 
-export function AbilityCardExtras({ ability: { counterplay, timeBetweenCasts } }: Props) {
-  if (!counterplay && !timeBetweenCasts) return null
+export function AbilityCardExtras({ ability: { counterplay, cooldown } }: Props) {
+  if (!counterplay && !cooldown) return null
 
   return (
     <div className="flex gap-4 w-fit">
       <TooltipStyled id="counterplay-tooltip" />
-      {timeBetweenCasts && (
+      {cooldown && (
         <div
           className="flex gap-1"
           data-tooltip-id="counterplay-tooltip"
           data-tooltip-content="Time between casts"
         >
           <ClockIcon height={24} />
-          {printTimeBetweenCasts(timeBetweenCasts)}
+          {printTimeBetweenCasts(cooldown)}
         </div>
       )}
       <div className="flex gap-1">

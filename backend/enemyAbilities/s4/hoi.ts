@@ -2,27 +2,27 @@
 import { getEnemySpellS4 } from '../grimoire'
 
 const staticSurge = getEnemySpellS4(384015, (baseSpell) => ({
-  baseDamage: baseSpell.baseDamage * 3,
+  damage: baseSpell.damage * 3,
   periodic: true,
-  timeBetweenCasts: 28,
+  cooldown: 28,
 }))
 
 const powerOverload = getEnemySpellS4(389179, {
-  baseDamage: 54713 * 6,
+  damage: 54713 * 6,
   periodic: true,
-  timeBetweenCasts: 28,
+  cooldown: 28,
 })
 
 const overpoweringCroak = getEnemySpellS4(385187, (baseSpell) => ({
-  baseDamage: baseSpell.baseDamage * 3,
+  damage: baseSpell.damage * 3,
   periodic: true,
-  timeBetweenCasts: 38,
+  cooldown: 38,
 }))
 
 const toxicEffluvia = getEnemySpellS4(385451, (baseSpell) => ({
-  baseDamage: baseSpell.baseDamage * 3,
+  damage: baseSpell.damage * 3,
   periodic: true,
-  timeBetweenCasts: 26,
+  cooldown: 26,
 }))
 
 const tempestsFury = getEnemySpellS4(388424)
@@ -30,7 +30,7 @@ const tempestsFury = getEnemySpellS4(388424)
 const tempestsFury32: EnemyAbility = {
   ...tempestsFury,
   name: "Tempest's Fury @ 20 stacks",
-  baseDamage: Math.round(tempestsFury.baseDamage * 1.2),
+  damage: Math.round(tempestsFury.damage * 1.2),
   notes: 'Assumes all 4 ads channel for 25 seconds each. More likely to be ~15 stacks.',
 }
 

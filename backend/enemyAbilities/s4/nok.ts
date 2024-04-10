@@ -1,34 +1,34 @@
 import { getEnemySpellS4 } from '../grimoire'
 
 const shardsOfStone = getEnemySpellS4(388817, {
-  timeBetweenCasts: [13, 25],
+  cooldown: [13, 25],
 })
 
 const lightningStrike = getEnemySpellS4(384186, {
-  timeBetweenCasts: 20,
+  cooldown: 20,
 })
 
 const galeArrow = getEnemySpellS4(386037, {
-  timeBetweenCasts: 57,
+  cooldown: 57,
 })
 
 const ironSpear = getEnemySpellS4(376660, {
-  timeBetweenCasts: 35,
+  cooldown: 35,
   counterplay: {
     combatDrop: 'cancel',
   },
 })
 
 const staticSpear = getEnemySpellS4(376866, (baseSpell) => ({
-  baseDamage: 364751 + baseSpell.baseDamage,
-  timeBetweenCasts: 39,
+  damage: 364751 + baseSpell.damage,
+  cooldown: 39,
   counterplay: {
     combatDrop: 'cancel',
   },
 }))
 
 const cracklingUpheaval = getEnemySpellS4(376896, {
-  timeBetweenCasts: 37,
+  cooldown: 37,
 })
 
 const lightning = getEnemySpellS4(376737, {
@@ -44,7 +44,7 @@ const rainOfArrows = getEnemySpellS4(384479, {
 
 const chainLightning = getEnemySpellS4(387127, {
   trashAbility: true,
-  timeBetweenCasts: 24,
+  cooldown: 24,
 })
 
 export const nokAbilities = [
