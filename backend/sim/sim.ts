@@ -14,12 +14,11 @@ import {
 } from './simTypes'
 import { getAbsorbs, getExtraAbsorbs } from './absorbs'
 import { getDamageReduction } from './dr'
-import { dungeonsByKey } from '../dungeons'
 
 function getScalingFactor(
   { keyLevel, isTyran }: KeyDetails,
   isTrashAbility: boolean,
-  isBeta: boolean
+  isBeta: boolean,
 ) {
   let scalingFactor = 1
   for (let i = 3; i <= keyLevel; ++i) {
@@ -83,14 +82,14 @@ function getStartingHealth(characterStats: CharacterStats, abilities: Ability[])
 
 function getPartialResults(
   characters: Character[],
-  groupAbilities: Ability[]
+  groupAbilities: Ability[],
 ): CharacterPartialResult[] {
   const augmentedGroupAbilities = augmentAbilities(groupAbilities, groupAbilities)
 
   return characters.map<CharacterPartialResult>((character) => {
     const augmentedSelectedAbilities = augmentAbilities(
       character.abilities,
-      character.abilities
+      character.abilities,
     )
 
     const abilities = [
@@ -117,12 +116,12 @@ function getAbilityResult(
   enemyAbilityDetails: EnemyAbilityDetails,
   customAbsorbs: number[],
   customDrs: number[],
-  isBeta: boolean
+  isBeta: boolean,
 ): AbilityResult {
   const damageScaling = getScalingFactor(
     keyDetails,
     !!enemyAbilityDetails.trashAbility,
-    isBeta
+    isBeta,
   )
   const scaledDamage = Math.round(enemyAbilityDetails.damage * damageScaling)
 
@@ -137,7 +136,7 @@ function getAbilityResult(
         charResult,
         customAbsorbs,
         enemyAbilityDetails,
-        charPartialResults
+        charPartialResults,
       )
 
       const damageReduction = getDamageReduction(
@@ -146,7 +145,7 @@ function getAbilityResult(
         customDrs,
         enemyAbilityDetails,
         startingHealth,
-        scaledDamage
+        scaledDamage,
       )
 
       const healthWithAbsorbs = startingHealth + absorbs
@@ -157,7 +156,7 @@ function getAbilityResult(
         abilities,
         startingHealth,
         absorbs,
-        actualDamageTaken
+        actualDamageTaken,
       )
       const totalHealth = healthWithAbsorbs + extraAbsorbs
 
@@ -197,19 +196,19 @@ export function simulate({
     enemyAbilityDetails,
     customAbsorbs,
     customDrs,
-    isBeta
+    isBeta,
   )
 
   const dungeonResults = dungeon
-    ? dungeonsByKey[dungeon].abilities.map((enemyAbility) =>
+    ? dungeon.abilities.map((enemyAbility) =>
         getAbilityResult(
           keyDetails,
           charPartialResults,
           enemyAbilityToDetails(enemyAbility),
           customAbsorbs,
           customDrs,
-          isBeta
-        )
+          isBeta,
+        ),
       )
     : []
 

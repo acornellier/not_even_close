@@ -1,39 +1,19 @@
-import { EnemyAbility } from '../../dungeons'
+import { EnemyAbility } from '../enemies'
+import { getEnemySpellS4 } from '../grimoire'
 
-const burstForth: EnemyAbility = {
-  name: 'Burst Forth',
-  id: 388923,
-  icon: 'spell_nature_earthquake',
-  baseDamage: 364751,
-  aoe: true,
-  timeBetweenCasts: 60,
-}
+const burstForth = getEnemySpellS4(388923)
 
-const manaBomb: EnemyAbility = {
-  name: 'Mana Bomb',
-  id: 386181,
-  baseDamage: 91188 * 4 + 182376,
-  aoe: false,
-  icon: 'spell_mage_flameorb_blue',
+const manaBomb = getEnemySpellS4(386181, {
+  baseDamage: 91188 * 4 + getEnemySpellS4(386202).baseDamage,
   timeBetweenCasts: 25,
   periodic: true,
-}
+})
 
-const arcaneFissure: EnemyAbility = {
-  name: 'Arcane Fissure',
-  id: 388537,
-  baseDamage: 237088,
-  aoe: true,
-  icon: 'spell_arcane_invocation',
+const arcaneFissure = getEnemySpellS4(388537, {
   timeBetweenCasts: 45,
-}
+})
 
-const surge: EnemyAbility = {
-  name: 'Surge',
-  id: 388862,
-  icon: 'spell_arcane_arcane04',
-  baseDamage: 218851,
-  aoe: false,
+const surge = getEnemySpellS4(388862, {
   trashAbility: true,
   avoidable: true,
   timeBetweenCasts: 25,
@@ -41,26 +21,16 @@ const surge: EnemyAbility = {
     combatDrop: 'recast',
     spellReflect: true,
   },
-}
+})
 
-const viciousAmbush: EnemyAbility = {
-  name: 'Vicious Ambush',
-  id: 388940,
-  icon: 'ability_ambush',
-  baseDamage: 197855,
-  aoe: true,
+const viciousAmbush = getEnemySpellS4(388940, {
   trashAbility: true,
   counterplay: {
     los: true,
   },
-}
+})
 
-const expelIntruders: EnemyAbility = {
-  name: 'Expel Intruders',
-  id: 377912,
-  icon: 'ability_druid_galewinds',
-  baseDamage: 547127,
-  aoe: true,
+const expelIntruders = getEnemySpellS4(377912, {
   trashAbility: true,
   avoidable: true,
   timeBetweenCasts: 26,
@@ -68,19 +38,15 @@ const expelIntruders: EnemyAbility = {
     los: true,
     outrange: 30,
   },
-}
+})
 
-const deafeningScreech: EnemyAbility = {
+const deafeningScreech = getEnemySpellS4(377009, {
   name: 'Screech',
-  id: 377004,
-  icon: 'ability_vehicle_sonicshockwave',
-  baseDamage: 218851,
-  aoe: true,
   counterplay: {
     los: true,
   },
   timeBetweenCasts: 23,
-}
+})
 
 const deafeningScreech2: EnemyAbility = {
   ...deafeningScreech,

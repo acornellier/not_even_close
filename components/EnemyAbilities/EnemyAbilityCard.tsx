@@ -1,4 +1,4 @@
-﻿import { EnemyAbility } from '../../backend/dungeons'
+﻿import { EnemyAbility } from '../../backend/enemyAbilities/enemies'
 import { AbilityDetailsChip } from './AbilityDetailsChip'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { AbilityResult } from '../../backend/sim/simTypes'
@@ -69,9 +69,11 @@ export function EnemyAbilityCard({
               data-tooltip-id={`chip-damage-${ability.name}`}
             >
               {ability.baseDamage.toLocaleString('en-us')} dmg
-              {ability.variance && ` ±${ability.variance * 100}%`}
+              {ability.variance !== undefined &&
+                ability.variance !== 0 &&
+                ` ±${ability.variance * 100}%`}
             </AbilityDetailsChip>
-            {ability.variance && (
+            {ability.variance !== undefined && ability.variance !== 0 && (
               <TooltipStyled id={`chip-damage-${ability.name}`}>
                 <p>Some abilities have variance in their damage.</p>
                 <p>

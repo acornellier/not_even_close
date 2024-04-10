@@ -1,4 +1,4 @@
-import { EnemyAbility } from '../../backend/dungeons'
+import { EnemyAbility } from '../../backend/enemyAbilities/enemies'
 
 import { KeyDetails } from '../../backend/sim/simTypes'
 import { WowIcon } from '../Common/WowIcon'

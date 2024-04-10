@@ -1,0 +1,1021 @@
+[
+  {
+    "name": "Burst Forth",
+    "id": 388923,
+    "icon": "spell_nature_earthquake",
+    "baseDamage": 364751,
+    "aoe": true,
+    "physical": false,
+    "variance": 0
+  },
+  {
+    "name": "Mana Bomb",
+    "id": 386181,
+    "icon": "spell_mage_flameorb_blue",
+    "baseDamage": 547128,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 25,
+    "periodic": true
+  },
+  {
+    "name": "Arcane Fissure",
+    "id": 388537,
+    "icon": "spell_arcane_invocation",
+    "baseDamage": 237088,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 45
+  },
+  {
+    "name": "Surge",
+    "id": 388862,
+    "icon": "spell_arcane_arcane04",
+    "baseDamage": 218851,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "avoidable": true,
+    "timeBetweenCasts": 25,
+    "counterplay": {
+      "combatDrop": "recast",
+      "spellReflect": true
+    }
+  },
+  {
+    "name": "Expel Intruders",
+    "id": 377912,
+    "icon": "ability_druid_galewinds",
+    "baseDamage": 547127,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "avoidable": true,
+    "timeBetweenCasts": 26,
+    "counterplay": {
+      "los": true,
+      "outrange": 30
+    }
+  },
+  {
+    "name": "Vicious Ambush",
+    "id": 388940,
+    "icon": "ability_ambush",
+    "baseDamage": 218851,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "counterplay": {
+      "los": true
+    }
+  },
+  {
+    "name": "Screech",
+    "id": 377009,
+    "icon": "ability_vehicle_sonicshockwave",
+    "baseDamage": 218851,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "counterplay": {
+      "los": true
+    },
+    "timeBetweenCasts": 23
+  },
+  {
+    "name": "Screech @ 1 stack",
+    "id": 377009,
+    "icon": "ability_vehicle_sonicshockwave",
+    "baseDamage": 328277,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "counterplay": {
+      "los": true
+    },
+    "timeBetweenCasts": 23
+  },
+  {
+    "name": "Screech @ 2 stacks",
+    "id": 377009,
+    "icon": "ability_vehicle_sonicshockwave",
+    "baseDamage": 437702,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "counterplay": {
+      "los": true
+    },
+    "timeBetweenCasts": 23
+  },
+  {
+    "name": "Screech @ 3 stacks",
+    "id": 377009,
+    "icon": "ability_vehicle_sonicshockwave",
+    "baseDamage": 547128,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "counterplay": {
+      "los": true
+    },
+    "timeBetweenCasts": 23
+  },
+  {
+    "name": "Screech @ 4 stacks",
+    "id": 377009,
+    "icon": "ability_vehicle_sonicshockwave",
+    "baseDamage": 656553,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "counterplay": {
+      "los": true
+    },
+    "timeBetweenCasts": 23
+  },
+  {
+    "name": "Screech @ 5 stacks",
+    "id": 377009,
+    "icon": "ability_vehicle_sonicshockwave",
+    "baseDamage": 765979,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "counterplay": {
+      "los": true
+    },
+    "timeBetweenCasts": 23
+  },
+  {
+    "name": "Explosive Brand",
+    "id": 374582,
+    "icon": "spell_mage_arcaneorb",
+    "baseDamage": 729502,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 50
+  },
+  {
+    "name": "Consuming Stomp",
+    "id": 374731,
+    "icon": "spell_arcane_blast",
+    "baseDamage": 410345,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 50
+  },
+  {
+    "name": "Frost Bomb",
+    "id": 386910,
+    "icon": "inv_10_elementalcombinedfoozles_frost",
+    "baseDamage": 273563,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": [
+      15,
+      30
+    ]
+  },
+  {
+    "name": "Absolute Zero",
+    "id": 388008,
+    "icon": "spell_frost_arcticwinds",
+    "baseDamage": 410345,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 60,
+    "notes": "Assumes you have 50% DR"
+  },
+  {
+    "name": "Unleashed Destruction",
+    "id": 388804,
+    "icon": "spell_arcane_blast",
+    "baseDamage": 218851,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 105
+  },
+  {
+    "name": "Shoulder Slam",
+    "id": 436652,
+    "icon": "ability_warrior_shieldcharge",
+    "baseDamage": 328276,
+    "aoe": true,
+    "physical": true,
+    "variance": 0,
+    "trashAbility": true,
+    "timeBetweenCasts": 12,
+    "counterplay": {
+      "outrange": 40
+    }
+  },
+  {
+    "name": "Gash Frenzy",
+    "id": 378020,
+    "icon": "ability_rogue_murderspree",
+    "baseDamage": 273563,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "timeBetweenCasts": 60
+  },
+  {
+    "name": "Earth Bolt",
+    "id": 378155,
+    "icon": "inv_10_elementalshardfoozles_earth",
+    "baseDamage": 237088,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "avoidable": true
+  },
+  {
+    "name": "Withered Eruption",
+    "id": 387264,
+    "icon": "warlock_curse_weakness_aura",
+    "baseDamage": 328276,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 45
+  },
+  {
+    "name": "Stink Breath",
+    "id": 385186,
+    "icon": "ability_creature_poison_02",
+    "baseDamage": 547127,
+    "aoe": true,
+    "physical": true,
+    "variance": 0,
+    "trashAbility": true,
+    "timeBetweenCasts": 15
+  },
+  {
+    "name": "Static Surge",
+    "id": 384015,
+    "icon": "spell_nature_unrelentingstorm",
+    "baseDamage": 465057,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "periodic": true,
+    "timeBetweenCasts": 28
+  },
+  {
+    "name": "Power Overload",
+    "id": 389179,
+    "icon": "ability_thunderking_lightningwhip",
+    "baseDamage": 328278,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "periodic": true,
+    "timeBetweenCasts": 28
+  },
+  {
+    "name": "Overpowering Croak",
+    "id": 385187,
+    "icon": "ability_vehicle_sonicshockwave",
+    "baseDamage": 437700,
+    "aoe": true,
+    "physical": true,
+    "variance": 0,
+    "periodic": true,
+    "timeBetweenCasts": 38
+  },
+  {
+    "name": "Toxic Effluvia",
+    "id": 385451,
+    "icon": "ability_creature_poison_02",
+    "baseDamage": 328275,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "periodic": true,
+    "timeBetweenCasts": 26
+  },
+  {
+    "name": "Tempest's Fury",
+    "id": 388424,
+    "icon": "spell_druid_astralstorm",
+    "baseDamage": 373870,
+    "aoe": true,
+    "physical": false,
+    "variance": 0
+  },
+  {
+    "name": "Tempest's Fury @ 20 stacks",
+    "id": 388424,
+    "icon": "spell_druid_astralstorm",
+    "baseDamage": 448644,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "notes": "Assumes all 4 ads channel for 25 seconds each. More likely to be ~15 stacks."
+  },
+  {
+    "name": "Lightning Blast",
+    "id": 395690,
+    "icon": "spell_nature_lightning",
+    "baseDamage": 218851,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "counterplay": {
+      "outrange": 40
+    }
+  },
+  {
+    "name": "Deep Chill",
+    "id": 391634,
+    "icon": "ability_mage_wintersgrasp",
+    "baseDamage": 291801,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
+    "name": "Inundate",
+    "id": 388882,
+    "icon": "spell_frost_frostbolt02",
+    "baseDamage": 328276,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "counterplay": {
+      "outrange": 40
+    }
+  },
+  {
+    "name": "Lava Spray",
+    "id": 388296,
+    "icon": "spell_shaman_lavasurge",
+    "baseDamage": 455939,
+    "aoe": true,
+    "physical": false,
+    "variance": 0.025,
+    "timeBetweenCasts": 30,
+    "counterplay": {
+      "combatDrop": "cancel",
+      "outrange": 40
+    }
+  },
+  {
+    "name": "Volatile Mutation",
+    "id": 375890,
+    "icon": "ability_rhyolith_magmaflow_whole",
+    "baseDamage": 273563,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 33
+  },
+  {
+    "name": "Dragon Strike",
+    "id": 373735,
+    "icon": "spell_warrior_wildstrike",
+    "baseDamage": 328276,
+    "aoe": false,
+    "physical": true,
+    "variance": 0.025,
+    "timeBetweenCasts": 57
+  },
+  {
+    "name": "Grounding Spear",
+    "id": 396672,
+    "icon": "inv_spear_11",
+    "baseDamage": 291801,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "timeBetweenCasts": 57
+  },
+  {
+    "name": "Blazing Aegis",
+    "id": 374839,
+    "icon": "inv_shield_1h_dragondungeon_c_01",
+    "baseDamage": 481471,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "periodic": true,
+    "timeBetweenCasts": 31,
+    "counterplay": {
+      "combatDrop": "cancel"
+    },
+    "notes": "Initial hit + 4 ticks"
+  },
+  {
+    "name": "Scorching Fusillade",
+    "id": 372542,
+    "icon": "inv_gizmo_supersappercharge",
+    "baseDamage": 273563,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "timeBetweenCasts": 23
+  },
+  {
+    "name": "Candescent Tempest",
+    "id": 381663,
+    "icon": "spell_fire_burnout",
+    "baseDamage": 437703,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "trashAbility": true,
+    "periodic": true,
+    "timeBetweenCasts": 28
+  },
+  {
+    "name": "Shards of Stone",
+    "id": 388817,
+    "icon": "inv_10_elementalshardfoozles_earth",
+    "baseDamage": 328276,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": [
+      13,
+      25
+    ]
+  },
+  {
+    "name": "Lightning Strike",
+    "id": 384186,
+    "icon": "ability_vehicle_electrocharge",
+    "baseDamage": 328276,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 20
+  },
+  {
+    "name": "Gale Arrow",
+    "id": 386037,
+    "icon": "ability_skyreach_four_wind",
+    "baseDamage": 273563,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 57
+  },
+  {
+    "name": "Iron Spear",
+    "id": 376660,
+    "icon": "inv_spear_07",
+    "baseDamage": 547127,
+    "aoe": true,
+    "physical": true,
+    "variance": 0,
+    "timeBetweenCasts": 35,
+    "counterplay": {
+      "combatDrop": "cancel"
+    }
+  },
+  {
+    "name": "Static Spear",
+    "id": 376866,
+    "icon": "inv_spear_04",
+    "baseDamage": 920996,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 39,
+    "counterplay": {
+      "combatDrop": "cancel"
+    }
+  },
+  {
+    "name": "Crackling Upheaval",
+    "id": 376896,
+    "icon": "spell_nature_unrelentingstorm",
+    "baseDamage": 364751,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 37
+  },
+  {
+    "name": "Lightning",
+    "id": 376737,
+    "icon": "spell_nature_stormreach",
+    "baseDamage": 638314,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "avoidable": true,
+    "notes": "Swirlies during Balakar Khan intermission and P2"
+  },
+  {
+    "name": "Rain of Arrows",
+    "id": 384479,
+    "icon": "ability_hunter_quickshot",
+    "baseDamage": 364751,
+    "aoe": true,
+    "physical": true,
+    "variance": 0,
+    "trashAbility": true,
+    "avoidable": true,
+    "notes": "Swirlies cast by Nokhud Longbow in first area"
+  },
+  {
+    "name": "Chain Lightning",
+    "id": 387127,
+    "icon": "spell_nature_chainlightning",
+    "baseDamage": 319157,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "timeBetweenCasts": 24
+  },
+  {
+    "name": "Tectonic Slam",
+    "id": 372735,
+    "icon": "inv_misc_volatileearth",
+    "baseDamage": 255326,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "avoidable": true,
+    "timeBetweenCasts": 10,
+    "counterplay": {
+      "outrange": 40
+    }
+  },
+  {
+    "name": "Living Bomb",
+    "id": 373694,
+    "icon": "inv_summerfest_firespirit",
+    "baseDamage": 182376,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "timeBetweenCasts": 17,
+    "notes": "Only the final hit."
+  },
+  {
+    "name": "Inferno (Trash)",
+    "id": 373692,
+    "icon": "ability_warlock_inferno",
+    "baseDamage": 218851,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "timeBetweenCasts": 19,
+    "notes": "This does not include the ticking damage. Only the initial groupwide damage."
+  },
+  {
+    "name": "Rolling Thunder",
+    "id": 392642,
+    "icon": "spell_nature_lightningoverload",
+    "baseDamage": 182376,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "notes": "This does not include the ticking damage. Only the groupwide dispel damage."
+  },
+  {
+    "name": "Inferno (Boss)",
+    "id": 384823,
+    "icon": "ability_warlock_inferno",
+    "baseDamage": 291801,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 35,
+    "notes": "This does not include the ticking damage. Only the initial groupwide damage."
+  },
+  {
+    "name": "Lightning Storm",
+    "id": 392486,
+    "icon": "spell_shaman_thunderstorm",
+    "baseDamage": 547128,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "periodic": true,
+    "timeBetweenCasts": 28
+  },
+  {
+    "name": "Flamespit",
+    "id": 381607,
+    "icon": "spell_fire_firebolt",
+    "baseDamage": 182376,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 22,
+    "notes": "Only the initial hit"
+  },
+  {
+    "name": "Interrupting Cloudburst",
+    "id": 381516,
+    "icon": "spell_nature_cyclone",
+    "baseDamage": 182376,
+    "aoe": true,
+    "physical": false,
+    "variance": 0.05,
+    "timeBetweenCasts": 19
+  },
+  {
+    "name": "Infernocore",
+    "id": 381862,
+    "icon": "ability_mage_livingbomb",
+    "baseDamage": 388464,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "periodic": true,
+    "timeBetweenCasts": 22,
+    "notes": "Initial Flamespit hit + ticking damage + final hit."
+  },
+  {
+    "name": "Ricocheting Shield",
+    "id": 369677,
+    "icon": "spell_holy_avengersshield",
+    "baseDamage": 455939,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "timeBetweenCasts": 17
+  },
+  {
+    "name": "Earthen Shards",
+    "id": 372718,
+    "icon": "6bf_blackrock_nova",
+    "baseDamage": 273563,
+    "aoe": false,
+    "physical": true,
+    "variance": 0.025,
+    "timeBetweenCasts": [
+      10,
+      30
+    ],
+    "notes": "Only the initial hit."
+  },
+  {
+    "name": "Crushing Stomp",
+    "id": 372701,
+    "icon": "warrior_talent_icon_thunderstruck",
+    "baseDamage": 273563,
+    "aoe": true,
+    "physical": true,
+    "variance": 0.025,
+    "timeBetweenCasts": 12
+  },
+  {
+    "name": "Earthen Shards @ 5 stacks",
+    "id": 372718,
+    "icon": "6bf_blackrock_nova",
+    "baseDamage": 341953.75,
+    "aoe": false,
+    "physical": true,
+    "variance": 0.025
+  },
+  {
+    "name": "Crushing Stomp @ 5 stacks",
+    "id": 372701,
+    "icon": "warrior_talent_icon_thunderstruck",
+    "baseDamage": 341953.75,
+    "aoe": true,
+    "physical": true,
+    "variance": 0.025
+  },
+  {
+    "name": "Earthquake",
+    "id": 369328,
+    "icon": "spell_nature_earthquake",
+    "baseDamage": 1021300,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "trashAbility": true,
+    "periodic": true,
+    "timeBetweenCasts": 25
+  },
+  {
+    "name": "Unstable Embers",
+    "id": 369116,
+    "icon": "spell_shaman_improvedfirenova",
+    "baseDamage": 328276,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 12
+  },
+  {
+    "name": "Seeking Flame",
+    "id": 369052,
+    "icon": "spell_fire_fireball02",
+    "baseDamage": 455939,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "avoidable": true
+  },
+  {
+    "name": "Thunderous Clap",
+    "id": 381593,
+    "icon": "ability_earthenfury_giftofearth",
+    "baseDamage": 291801,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 20
+  },
+  {
+    "name": "Wing Buffet",
+    "id": 376049,
+    "icon": "inv_icon_wing07e",
+    "baseDamage": 319157,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "timeBetweenCasts": 23
+  },
+  {
+    "name": "Wracking Pain",
+    "id": 250096,
+    "icon": "ability_warlock_improvedsoulleech",
+    "baseDamage": 82396,
+    "aoe": false,
+    "physical": false,
+    "variance": 0
+  },
+  {
+    "name": "Soulrend",
+    "id": 259145,
+    "icon": "ability_demonhunter_soulcleave2",
+    "baseDamage": 100215,
+    "aoe": false,
+    "physical": false,
+    "variance": 0.025
+  },
+  {
+    "name": "Soul Blast",
+    "baseDamage": 82396,
+    "aoe": false,
+    "trashAbility": true,
+    "icon": "spell_shadow_painspike",
+    "wowheadLink": "https://www.wowhead.com/spell=199663/soul-blast"
+  },
+  {
+    "name": "Soul Burst",
+    "baseDamage": 123594,
+    "aoe": true,
+    "icon": "ability_bossgorefiend_touchofdoom",
+    "wowheadLink": "https://www.wowhead.com/spell=196587/soul-burst#icon"
+  },
+  {
+    "name": "Soul Burst (max stacks)",
+    "baseDamage": 383141,
+    "aoe": true,
+    "icon": "ability_bossgorefiend_touchofdoom",
+    "wowheadLink": "https://www.wowhead.com/spell=196587/soul-burst#icon"
+  },
+  {
+    "name": "Earthshaking Stomp",
+    "baseDamage": 96129,
+    "aoe": true,
+    "physical": true,
+    "ignoresArmor": true,
+    "icon": "ability_warstomp",
+    "wowheadLink": "https://www.wowhead.com/spell=198073/earthshaking-stomp"
+  },
+  {
+    "name": "Hateful Charge",
+    "baseDamage": 123594,
+    "aoe": true,
+    "physical": true,
+    "ignoresArmor": true,
+    "icon": "ability_monk_clashingoxcharge",
+    "wowheadLink": "https://www.wowhead.com/spell=224188/hateful-charge"
+  },
+  {
+    "name": "Shadow Bolt",
+    "baseDamage": 106831,
+    "aoe": true,
+    "icon": "spell_shadow_shadowbolt",
+    "wowheadLink": "https://www.wowhead.com/spell=198833/shadow-bolt"
+  },
+  {
+    "name": "Shadow Bolt Volley",
+    "baseDamage": 164792,
+    "aoe": true,
+    "icon": "spell_shadow_shadowbolt",
+    "wowheadLink": "https://www.wowhead.com/spell=202019/shadow-bolt-volley"
+  },
+  {
+    "name": "Grievous Rip",
+    "baseDamage": 85143,
+    "aoe": false,
+    "trashAbility": true,
+    "physical": true,
+    "icon": "spell_frost_iceclaw",
+    "wowheadLink": "https://www.wowhead.com/spell=225484/grievous-rip"
+  },
+  {
+    "name": "Crushing Grip",
+    "baseDamage": 109862,
+    "aoe": true,
+    "icon": "ability_warrior_titansgrip",
+    "wowheadLink": "https://www.wowhead.com/spell=204611/crushing-grip"
+  },
+  {
+    "name": "Shattered Earth",
+    "baseDamage": 115355,
+    "aoe": true,
+    "icon": "ability_warstomp",
+    "wowheadLink": "https://www.wowhead.com/spell=204666/shattered-earth"
+  },
+  {
+    "name": "Earthshaking Roar",
+    "baseDamage": 109862,
+    "aoe": true,
+    "icon": "inv_misc_head_dragon_black_nightmare",
+    "wowheadLink": "https://www.wowhead.com/spell=199389/earthshaking-roar"
+  },
+  {
+    "name": "Nightmare Bolt",
+    "baseDamage": 90636,
+    "variance": 0.02,
+    "aoe": false,
+    "icon": "sha_spell_fire_bluepyroblast_nightmare",
+    "wowheadLink": "https://www.wowhead.com/spell=200185/nightmare-bolt"
+  },
+  {
+    "name": "Apocalyptic Nightmare",
+    "baseDamage": 137327,
+    "aoe": true,
+    "icon": "sha_spell_fire_bluerainoffire_nightmare",
+    "wowheadLink": "https://www.wowhead.com/spell=204502/apocalyptic-nightmare"
+  },
+  {
+    "name": "Chronoburst",
+    "baseDamage": 82396,
+    "aoe": true,
+    "trashAbility": true,
+    "icon": "spell_holy_divineprovidence",
+    "wowheadLink": "https://www.wowhead.com/ptr-2/spell=415769/chronoburst"
+  },
+  {
+    "name": "Chronofade",
+    "baseDamage": 68663,
+    "aoe": true,
+    "icon": "achievement_challengemode_arakkoaspires_hourglass",
+    "wowheadLink": "https://www.wowhead.com/ptr-2/spell=405448/chronofade"
+  },
+  {
+    "name": "Corrosion",
+    "baseDamage": 82396,
+    "aoe": false,
+    "icon": "sha_inv_misc_slime_01",
+    "wowheadLink": "https://www.wowhead.com/ptr-2/spell=407406/corrosion"
+  },
+  {
+    "name": "Dividing Strike (split 5 ways)",
+    "baseDamage": 109862,
+    "aoe": true,
+    "icon": "inv_trinket_80_titan01d",
+    "wowheadLink": "https://www.wowhead.com/spell=400641/dividing-strike"
+  },
+  {
+    "name": "Dividing Strike (split 2 ways)",
+    "baseDamage": 274654,
+    "aoe": true,
+    "icon": "inv_trinket_80_titan01d",
+    "wowheadLink": "https://www.wowhead.com/spell=400641/dividing-strike"
+  },
+  {
+    "name": "Agitated Water",
+    "baseDamage": 82396,
+    "aoe": true,
+    "icon": "spell_frost_frostbolt",
+    "wowheadLink": "https://www.wowhead.com/spell=177734/agitated-water"
+  },
+  {
+    "name": "Water Bolt",
+    "baseDamage": 54931,
+    "aoe": false,
+    "icon": "inv_elemental_crystal_water",
+    "wowheadLink": "https://www.wowhead.com/spell=168092/water-bolt"
+  },
+  {
+    "name": "Cinderbolt Storm (3 ticks)",
+    "baseDamage": 131835,
+    "aoe": false,
+    "icon": "spell_fire_meteorstorm",
+    "wowheadLink": "https://www.wowhead.com/spell=427223/cinderbolt-salvo"
+  },
+  {
+    "name": "Colossal Blow",
+    "baseDamage": 87889,
+    "aoe": true,
+    "icon": "spell_shaman_earthquake",
+    "wowheadLink": "https://www.wowhead.com/spell=169179/colossal-blow"
+  },
+  {
+    "name": "Water Bolt",
+    "baseDamage": 68663,
+    "aoe": false,
+    "trashAbility": true,
+    "icon": "ability_mage_waterjet",
+    "wowheadLink": "https://www.wowhead.com/spell=426731/water-bolt"
+  },
+  {
+    "name": "Acid Barrage",
+    "baseDamage": 71410,
+    "aoe": true,
+    "trashAbility": true,
+    "icon": "inv_ammo_arrow_04",
+    "wowheadLink": "https://www.wowhead.com/ptr-2/spell=426645/acid-barrage"
+  },
+  {
+    "name": "Focused Tempest",
+    "baseDamage": 96129,
+    "aoe": false,
+    "icon": "spell_shaman_thunderstorm",
+    "wowheadLink": "https://www.wowhead.com/spell=428376/focused-tempest"
+  },
+  {
+    "name": "Shock Blast",
+    "baseDamage": 129087,
+    "aoe": true,
+    "icon": "spell_shaman_staticshock",
+    "wowheadLink": "https://www.wowhead.com/spell=428041/shock-blast"
+  },
+  {
+    "name": "Festering Shockwave",
+    "baseDamage": 90636,
+    "aoe": true,
+    "icon": "spell_fire_twilightnova",
+    "wowheadLink": "https://www.wowhead.com/spell=427668/festering-shockwave"
+  },
+  {
+    "name": "Flame Shock",
+    "baseDamage": 82396,
+    "aoe": false,
+    "icon": "spell_fire_flameshock",
+    "wowheadLink": "https://www.wowhead.com/ptr-2/spell=429048/flame-shock"
+  },
+  {
+    "name": "Blotting Barrage",
+    "baseDamage": 82397,
+    "variance": 0.02,
+    "aoe": true,
+    "icon": "ability_vehicle_oiljets",
+    "wowheadLink": "https://www.wowhead.com/spell=428405/blotting-barrage"
+  },
+  {
+    "name": "Soul Bolt",
+    "baseDamage": 87889,
+    "aoe": false,
+    "trashAbility": true,
+    "icon": "spell_shadow_painspike",
+    "wowheadLink": "https://www.wowhead.com/spell=264024/soul-bolt"
+  },
+  {
+    "name": "Jagged Nettles",
+    "baseDamage": 98875,
+    "aoe": false,
+    "physical": true,
+    "icon": "inv_misc_herb_gromsbloodleaf",
+    "wowheadLink": "https://www.wowhead.com/spell=260741/jagged-nettles"
+  },
+  {
+    "name": "Rotten Expulsion",
+    "baseDamage": 105742,
+    "aoe": true,
+    "icon": "ability_creature_disease_01",
+    "wowheadLink": "https://www.wowhead.com/spell=264694/rotten-expulsion"
+  },
+  {
+    "name": "Dread Essence",
+    "baseDamage": 96129,
+    "aoe": true,
+    "icon": "ability_argus_soulburst",
+    "wowheadLink": "https://www.wowhead.com/spell=266181/dread-essence"
+  }
+]

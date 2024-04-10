@@ -1,95 +1,51 @@
-import { EnemyAbility } from '../../dungeons'
+import { getEnemySpellS4 } from '../grimoire'
 
-const shardsOfStone: EnemyAbility = {
-  name: 'Shards of Stone',
-  id: 388817,
-  icon: 'inv_10_elementalshardfoozles_earth',
-  baseDamage: 328276,
-  aoe: true,
+const shardsOfStone = getEnemySpellS4(388817, {
   timeBetweenCasts: [13, 25],
-}
+})
 
-const lightningStrike: EnemyAbility = {
-  name: 'Lightning Strike',
-  id: 384316,
-  icon: 'ability_vehicle_electrocharge',
-  baseDamage: 328276,
-  aoe: true,
+const lightningStrike = getEnemySpellS4(384186, {
   timeBetweenCasts: 20,
-}
+})
 
-const galeArrow: EnemyAbility = {
-  name: 'Gale Arrow',
-  id: 382670,
-  icon: 'ability_skyreach_four_wind',
-  baseDamage: 419464,
-  aoe: false,
+const galeArrow = getEnemySpellS4(386037, {
   timeBetweenCasts: 57,
-}
+})
 
-const ironSpear: EnemyAbility = {
-  name: 'Iron Spear',
-  id: 376634,
-  icon: 'inv_spear_07',
-  baseDamage: 547127,
-  aoe: true,
+const ironSpear = getEnemySpellS4(376660, {
   timeBetweenCasts: 35,
   counterplay: {
     combatDrop: 'cancel',
   },
-}
+})
 
-const staticSpear: EnemyAbility = {
-  name: 'Static Spear',
-  id: 376864,
-  icon: 'inv_spear_04',
-  baseDamage: 364751 + 191494,
-  aoe: true,
+const staticSpear = getEnemySpellS4(376866, (baseSpell) => ({
+  baseDamage: 364751 + baseSpell.baseDamage,
   timeBetweenCasts: 39,
   counterplay: {
     combatDrop: 'cancel',
   },
-}
+}))
 
-const cracklingUpheaval: EnemyAbility = {
-  name: 'Crackling Upheaval',
-  id: 376892,
-  icon: 'spell_nature_unrelentingstorm',
-  baseDamage: 364751,
-  aoe: true,
+const cracklingUpheaval = getEnemySpellS4(376896, {
   timeBetweenCasts: 37,
-}
+})
 
-const lightning: EnemyAbility = {
-  name: 'Lightning',
-  id: 376737,
-  icon: 'spell_nature_stormreach',
-  baseDamage: 577076,
-  aoe: true,
+const lightning = getEnemySpellS4(376737, {
   avoidable: true,
   notes: 'Swirlies during Balakar Khan intermission and P2',
-}
+})
 
-const rainOfArrows: EnemyAbility = {
-  name: 'Rain of Arrows',
-  id: 384476,
-  icon: 'ability_hunter_quickshot',
-  baseDamage: 364751,
-  aoe: true,
+const rainOfArrows = getEnemySpellS4(384479, {
   trashAbility: true,
   avoidable: true,
   notes: 'Swirlies cast by Nokhud Longbow in first area',
-}
+})
 
-const chainLightning: EnemyAbility = {
-  name: 'Chain Lightning',
-  id: 387127,
-  icon: 'spell_nature_chainlightning',
-  baseDamage: 319157,
-  aoe: false,
+const chainLightning = getEnemySpellS4(387127, {
   trashAbility: true,
   timeBetweenCasts: 24,
-}
+})
 
 export const nokAbilities = [
   shardsOfStone,

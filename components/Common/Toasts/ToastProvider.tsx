@@ -1,3 +1,5 @@
+'use client'
+
 import { createContext, ReactNode, useCallback, useMemo, useState } from 'react'
 
 type ToastType = 'success' | 'error' | 'info'
@@ -27,7 +29,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 
     setTimeout(() => {
       setToasts((prev) =>
-        prev.map((cur) => (cur.id !== toast.id ? cur : { ...cur, removing: true }))
+        prev.map((cur) => (cur.id !== toast.id ? cur : { ...cur, removing: true })),
       )
 
       setTimeout(() => {
@@ -41,7 +43,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       toasts,
       addToast,
     }),
-    [toasts, addToast]
+    [toasts, addToast],
   )
 
   return <ToastContext.Provider value={value}>{children}</ToastContext.Provider>

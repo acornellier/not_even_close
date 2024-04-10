@@ -1,102 +1,61 @@
-import { EnemyAbility } from '../../dungeons'
+import { getEnemySpellS4 } from '../grimoire'
 
-const tectonicSlam: EnemyAbility = {
-  name: 'Tectonic Slam',
-  id: 372735,
-  icon: 'inv_misc_volatileearth',
-  baseDamage: 255326,
-  aoe: true,
+const tectonicSlam = getEnemySpellS4(372735, {
   trashAbility: true,
   avoidable: true,
   timeBetweenCasts: 10,
   counterplay: {
     outrange: 40,
   },
-}
+})
 
-const livingBomb: EnemyAbility = {
-  name: 'Living Bomb',
-  id: 373693,
-  icon: 'inv_summerfest_firespirit',
+const livingBomb = getEnemySpellS4(373694, {
   baseDamage: 182376,
-  aoe: true,
   trashAbility: true,
   timeBetweenCasts: 17,
   notes: 'Only the final hit.',
-}
+})
 
-const infernoTrash: EnemyAbility = {
+const infernoTrash = getEnemySpellS4(373692, {
   name: 'Inferno (Trash)',
-  id: 373692,
-  icon: 'ability_warlock_inferno',
-  baseDamage: 218851,
-  aoe: true,
   trashAbility: true,
   timeBetweenCasts: 19,
   notes: 'This does not include the ticking damage. Only the initial groupwide damage.',
-}
+})
 
-const rollingThunder: EnemyAbility = {
-  name: 'Rolling Thunder',
-  id: 392640,
-  icon: 'spell_nature_lightningoverload',
-  baseDamage: 182376,
-  aoe: true,
+const rollingThunder = getEnemySpellS4(392642, {
   trashAbility: true,
   notes: 'This does not include the ticking damage. Only the groupwide dispel damage.',
-}
+})
 
-const inferno: EnemyAbility = {
+const inferno = getEnemySpellS4(384823, {
   name: 'Inferno (Boss)',
-  id: 384823,
-  icon: 'ability_warlock_inferno',
-  baseDamage: 291801,
-  aoe: true,
   timeBetweenCasts: 35,
   notes: 'This does not include the ticking damage. Only the initial groupwide damage.',
-}
+})
 
-const lightningStorm: EnemyAbility = {
-  name: 'Lightning Storm',
-  id: 392486,
-  icon: 'spell_shaman_thunderstorm',
-  baseDamage: 6 * 91188,
-  aoe: true,
+const lightningStorm = getEnemySpellS4(392486, {
+  baseDamage: 6 * getEnemySpellS4(392488).baseDamage,
   trashAbility: true,
   periodic: true,
   timeBetweenCasts: 28,
-}
+})
 
-const flamespit: EnemyAbility = {
-  name: 'Flamespit',
-  id: 381602,
-  icon: 'spell_fire_firebolt',
-  baseDamage: 182376,
-  aoe: false,
+const flamespit = getEnemySpellS4(381607, {
   timeBetweenCasts: 22,
   notes: 'Only the initial hit',
-}
+})
 
-const interruptingCloudburst: EnemyAbility = {
-  name: 'Interrupting Cloudburst',
-  id: 381516,
-  icon: 'spell_nature_cyclone',
-  baseDamage: 182376,
-  aoe: true,
+const interruptingCloudburst = getEnemySpellS4(381516, {
   timeBetweenCasts: 19,
-}
+})
 
-const infernocore: EnemyAbility = {
-  name: 'Infernocore',
-  id: 381862,
-  icon: 'ability_mage_livingbomb',
-  baseDamage: 182376 + 8 * 10943 + 118544,
-  aoe: false,
+const infernocore = getEnemySpellS4(381862, {
+  baseDamage: flamespit.baseDamage + 8 * 10943 + getEnemySpellS4(381864).baseDamage,
   periodic: true,
   timeBetweenCasts: 22,
-  notes:
-    'Does not include the initial Flamespit hit. Only the initial ticking damage and final hit.',
-}
+  notes: 'Initial Flamespit hit + ticking damage + final hit.',
+})
 
 export const rlpSpells = [
   tectonicSlam,

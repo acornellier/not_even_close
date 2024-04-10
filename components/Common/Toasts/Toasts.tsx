@@ -1,3 +1,5 @@
+'use client'
+
 import { useToasts } from './useToasts'
 import { ToastComponent } from './ToastComponent'
 

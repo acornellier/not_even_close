@@ -1,9 +1,4 @@
-﻿import {
-  DungeonKey,
-  dungeonsByKey,
-  EnemyAbility,
-  isSeason4,
-} from '../../backend/dungeons'
+﻿import { Dungeon, EnemyAbility, isSeason4 } from '../../backend/enemyAbilities/enemies'
 import { EnemyAbilityCard } from './EnemyAbilityCard'
 import { Button } from '../Common/Button'
 import { AbilityResult } from '../../backend/sim/simTypes'
@@ -13,7 +8,7 @@ import { Toggle } from '../Inputs/Toggle'
 import { WowIcon } from '../Common/WowIcon'
 
 interface Props {
-  selectedDungeon: DungeonKey
+  dungeon: Dungeon
   selectedAbility: EnemyAbility | null
   onSelect: (bossAbility: EnemyAbility) => void
   deselectDungeon: () => void
@@ -21,20 +16,19 @@ interface Props {
 }
 
 export function DungeonAbilities({
-  selectedDungeon,
+  dungeon,
   selectedAbility,
   onSelect,
   deselectDungeon,
   results,
 }: Props) {
-  const dungeon = dungeonsByKey[selectedDungeon]
   const [showPeriodic, setShowPeriodic] = useLocalStorage(
     `show-periodic-${dungeon.key}`,
-    false
+    false,
   )
   const [showAvoidable, setShowAvoidable] = useLocalStorage(
     `show-avoidable-${dungeon.key}`,
-    false
+    false,
   )
   const [abilityExtras, setAbilityExtras] = useState(new Set<string>())
 
@@ -107,7 +101,7 @@ export function DungeonAbilities({
               )}
               {abilities.map((ability) => {
                 const abilityResult = results?.find(
-                  (result) => result.enemyAbilityDetails.name === ability.name
+                  (result) => result.enemyAbilityDetails.name === ability.name,
                 )
 
                 return (

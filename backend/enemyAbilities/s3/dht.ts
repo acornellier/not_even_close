@@ -1,4 +1,4 @@
-import { EnemyAbility } from '../dungeons'
+import { EnemyAbility } from '../enemies'
 
 export const grievousRip: EnemyAbility = {
   name: 'Grievous Rip',

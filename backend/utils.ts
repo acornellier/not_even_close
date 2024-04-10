@@ -1,5 +1,5 @@
 ﻿import { Ability } from './ability'
-import { EnemyAbility } from './dungeons'
+import { EnemyAbility } from './enemyAbilities/enemies'
 
 import { EnemyAbilityDetails } from './sim/simTypes'
 
@@ -43,7 +43,7 @@ export function augmentAbilities(abilities: Ability[], selectedAbilities: Abilit
 
 export function isAbilityAvailable(ability: Ability, availableAbililties: Ability[]) {
   return availableAbililties.some(
-    (availableAbility) => availableAbility.spellId === ability.spellId
+    (availableAbility) => availableAbility.spellId === ability.spellId,
   )
 }
 

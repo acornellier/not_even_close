@@ -1,4 +1,4 @@
-﻿import { EnemyAbility } from '../../backend/dungeons'
+﻿import { EnemyAbility } from '../../backend/enemyAbilities/enemies'
 import { OverkillText } from './OverkillText'
 import { ResultDetails } from './ResultDetails'
 import { EnemyAbilityResult } from './EnemyAbilityResult'

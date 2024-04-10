@@ -1,4 +1,4 @@
-import { EnemyAbility, TimeBetweenCasts } from '../../backend/dungeons'
+import { EnemyAbility, TimeBetweenCasts } from '../../backend/enemyAbilities/enemies'
 import { ClockIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { WowIcon } from '../Common/WowIcon'

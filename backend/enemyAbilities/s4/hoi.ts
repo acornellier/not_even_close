@@ -1,53 +1,31 @@
-﻿import { EnemyAbility } from '../../dungeons'
+﻿import { EnemyAbility } from '../enemies'
+import { getEnemySpellS4 } from '../grimoire'
 
-const staticSurge: EnemyAbility = {
-  name: 'Static Surge',
-  id: 384014,
-  icon: 'spell_nature_unrelentingstorm',
-  baseDamage: 155019 * 3,
-  aoe: true,
+const staticSurge = getEnemySpellS4(384015, (baseSpell) => ({
+  baseDamage: baseSpell.baseDamage * 3,
   periodic: true,
   timeBetweenCasts: 28,
-}
+}))
 
-const powerOverload: EnemyAbility = {
-  name: 'Power Overload',
-  id: 389179,
-  icon: 'ability_thunderking_lightningwhip',
+const powerOverload = getEnemySpellS4(389179, {
   baseDamage: 54713 * 6,
-  aoe: true,
   periodic: true,
   timeBetweenCasts: 28,
-}
+})
 
-const overpoweringCroak: EnemyAbility = {
-  name: 'Overpowering Croak',
-  id: 385187,
-  icon: 'ability_vehicle_sonicshockwave',
-  baseDamage: 131903 * 3,
-  aoe: true,
-  physical: true,
+const overpoweringCroak = getEnemySpellS4(385187, (baseSpell) => ({
+  baseDamage: baseSpell.baseDamage * 3,
   periodic: true,
   timeBetweenCasts: 38,
-}
+}))
 
-const toxicEffluvia: EnemyAbility = {
-  name: 'Toxic Effluvia',
-  id: 385442,
-  icon: 'ability_creature_poison_02',
-  baseDamage: 109425 * 3,
-  aoe: true,
+const toxicEffluvia = getEnemySpellS4(385451, (baseSpell) => ({
+  baseDamage: baseSpell.baseDamage * 3,
   periodic: true,
   timeBetweenCasts: 26,
-}
+}))
 
-const tempestsFury: EnemyAbility = {
-  name: "Tempest's Fury",
-  id: 388424,
-  icon: 'spell_druid_astralstorm',
-  baseDamage: 373870,
-  aoe: true,
-}
+const tempestsFury = getEnemySpellS4(388424)
 
 const tempestsFury32: EnemyAbility = {
   ...tempestsFury,
@@ -56,38 +34,23 @@ const tempestsFury32: EnemyAbility = {
   notes: 'Assumes all 4 ads channel for 25 seconds each. More likely to be ~15 stacks.',
 }
 
-const lightningBlast: EnemyAbility = {
-  name: 'Lightning Blast',
-  id: 395690,
-  icon: 'spell_nature_lightning',
-  baseDamage: 218851,
-  aoe: false,
+const lightningBlast = getEnemySpellS4(395690, {
   trashAbility: true,
   counterplay: {
     outrange: 40,
   },
-}
+})
 
-const deepChill: EnemyAbility = {
-  name: 'Deep Chill',
-  id: 391634,
-  icon: 'ability_mage_wintersgrasp',
-  baseDamage: 291801,
-  aoe: true,
+const deepChill = getEnemySpellS4(391634, {
   trashAbility: true,
-}
+})
 
-const inundate: EnemyAbility = {
-  name: 'Inundate',
-  id: 388882,
-  icon: 'spell_frost_frostbolt02',
-  baseDamage: 328276,
-  aoe: true,
+const inundate = getEnemySpellS4(388882, {
   trashAbility: true,
   counterplay: {
     outrange: 40,
   },
-}
+})
 
 export const hoiAbilities = [
   staticSurge,

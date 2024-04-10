@@ -1,13 +1,14 @@
-﻿import { DungeonKey, dungeons, isSeason4 } from '../../backend/dungeons'
+﻿import { Dungeon, DungeonKey, isSeason4 } from '../../backend/enemyAbilities/enemies'
 import { Button } from '../Common/Button'
 import { WowIcon } from '../Common/WowIcon'
 
 interface Props {
+  dungeons: Dungeon[]
   setSelectedDungeon: (dungeon: DungeonKey) => void
   isBeta: boolean
 }
 
-export function DungeonSelect({ setSelectedDungeon, isBeta }: Props) {
+export function DungeonSelect({ dungeons, setSelectedDungeon, isBeta }: Props) {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
       {dungeons

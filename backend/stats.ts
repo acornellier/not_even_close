@@ -5,8 +5,8 @@ const versConversionFactor = 204.9944775
 const avoidanceConversionFactor = 71.9980604
 
 // Changes every patch
-// https://docs.google.com/document/d/1FJlB1T8ijaQLjY_cihyoyhLoi6lYRnT-N-ipVFCLidE/edit#heading=h.a7ifehuynye8
-const armorKValueMplus = 18672.642
+const armorKValueMplusS3 = 18672.642
+const armorKValueMplusS4 = 24308.556
 
 interface StatBracketBasic {
   size: number
@@ -39,7 +39,7 @@ const tertiaryStatBracketsBasic = [
 
 function makeStatBrackets(
   conversionFactor: number,
-  statBracketsBasic: StatBracketBasic[]
+  statBracketsBasic: StatBracketBasic[],
 ): StatBracket[] {
   let prevBreakpoint = { size: 0, penalty: 0, percent: 0, rawValue: 0 }
   return statBracketsBasic.map((bracket) => {
@@ -54,17 +54,17 @@ function makeStatBrackets(
 
 const versStatBrackets = makeStatBrackets(
   versConversionFactor,
-  secondaryStatBracketsBasic
+  secondaryStatBracketsBasic,
 )
 const avoidanceStatBrackets = makeStatBrackets(
   avoidanceConversionFactor,
-  tertiaryStatBracketsBasic
+  tertiaryStatBracketsBasic,
 )
 
 function rawToPercent(
   rawStat: number,
   conversionFactor: number,
-  statBrackets: StatBracket[]
+  statBrackets: StatBracket[],
 ) {
   let percent = 0
   let remainingRawStat = rawStat
@@ -90,4 +90,4 @@ export const versRawToPercent = (rawVers: number) =>
 export const avoidanceRawToPercent = (rawAvoidance: number) =>
   rawToPercent(rawAvoidance, avoidanceConversionFactor, avoidanceStatBrackets)
 
-export const armorToPhysicalDr = (armor: number) => armor / (armor + armorKValueMplus)
+export const armorToPhysicalDr = (armor: number) => armor / (armor + armorKValueMplusS3)

@@ -1,4 +1,4 @@
-import { EnemyAbility } from '../dungeons'
+import { EnemyAbility } from '../enemies'
 
 export const soulBlast: EnemyAbility = {
   name: 'Soul Blast',

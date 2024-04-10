@@ -1,76 +1,19 @@
-﻿import { dhtAbilities } from './enemyAbilities/dht'
-import { adAbilities } from './enemyAbilities/ad'
-import { brhAbilities } from './enemyAbilities/brh'
-import { tottAbilities } from './enemyAbilities/tott'
-import { wcmAbilities } from './enemyAbilities/wcm'
-import { dotiAbilites } from './enemyAbilities/doti'
-import { ebAbilities } from './enemyAbilities/eb'
-import { EnemyAbilityDetails } from './sim/simTypes'
-import { aaAbilities } from './enemyAbilities/s4/aa'
-import { nokAbilities } from './enemyAbilities/s4/nok'
-import { avAbilities } from './enemyAbilities/s4/av'
-import { bhAbilities } from './enemyAbilities/s4/bh'
-import { hoiAbilities } from './enemyAbilities/s4/hoi'
-import { nelthAbilities } from './enemyAbilities/s4/nelth'
-import { uldAbilities } from './enemyAbilities/s4/uld'
-import { rlpSpells } from './enemyAbilities/s4/rlp'
-
-export type TimeBetweenCasts = number | [number, number]
-
-export type Counterplay = {
-  combatDrop?: 'recast' | 'cancel'
-  los?: boolean
-  outrange?: number
-  spellReflect?: boolean
-  diffuse?: boolean
-}
-
-export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
-  name: string
-  id?: number
-  icon: string
-  baseDamage: number
-  variance?: number
-  timeBetweenCasts?: TimeBetweenCasts
-  periodic?: boolean
-  avoidable?: boolean
-  notes?: string
-  wowheadLink?: string
-  counterplay?: Counterplay
-}
-
-export const dungeonKeys = [
-  'aa',
-  'av',
-  'bh',
-  'hoi',
-  'nelth',
-  'nok',
-  'rlp',
-  'uld',
-  'all_s4',
-  // s3
-  'brh',
-  'dht',
-  'doti',
-  'ad',
-  'eb',
-  'tott',
-  'wcm',
-  'all_s3',
-] as const
-
-export type DungeonKey = typeof dungeonKeys[number]
-
-export const isSeason4 = (key: DungeonKey) =>
-  ['aa', 'av', 'bh', 'hoi', 'nelth', 'nok', 'rlp', 'uld', 'all_s4'].includes(key)
-
-export type Dungeon = {
-  key: DungeonKey
-  name: string
-  abilities: EnemyAbility[]
-  icon: string
-}
+import { aaAbilities } from './s4/aa'
+import { avAbilities } from './s4/av'
+import { bhAbilities } from './s4/bh'
+import { hoiAbilities } from './s4/hoi'
+import { nelthAbilities } from './s4/nelth'
+import { nokAbilities } from './s4/nok'
+import { rlpSpells } from './s4/rlp'
+import { uldAbilities } from './s4/uld'
+import { adAbilities } from './s3/ad'
+import { brhAbilities } from './s3/brh'
+import { dhtAbilities } from './s3/dht'
+import { dotiAbilites } from './s3/doti'
+import { ebAbilities } from './s3/eb'
+import { tottAbilities } from './s3/tott'
+import { wcmAbilities } from './s3/wcm'
+import { Dungeon, isSeason4 } from './enemies'
 
 export const dungeons: Dungeon[] = [
   {
@@ -182,8 +125,3 @@ dungeons.push({
     .flatMap(({ abilities }) => abilities),
   icon: 'achievement_challengemode_arakkoaspires_gold',
 })
-
-export const dungeonsByKey = dungeons.reduce((acc, dungeon) => {
-  acc[dungeon.key] = dungeon
-  return acc
-}, {} as Record<DungeonKey, Dungeon>)

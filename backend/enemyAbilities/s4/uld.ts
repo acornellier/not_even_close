@@ -1,87 +1,57 @@
-import { EnemyAbility } from '../../dungeons'
+import { getEnemySpellS4 } from '../grimoire'
 
-const ricochetingShield: EnemyAbility = {
-  name: 'Ricocheting Shield',
-  id: 369677,
-  icon: 'spell_holy_avengersshield',
-  baseDamage: 455939,
-  aoe: false,
-  physical: true,
+const ricochetingShield = getEnemySpellS4(369677, {
   timeBetweenCasts: 17,
-}
+})
 
-const earthenShards: EnemyAbility = {
-  name: 'Earthen Shards',
-  id: 372718,
-  icon: '6bf_blackrock_nova',
-  baseDamage: 273564,
-  aoe: false,
-  physical: true,
+const earthenShards = getEnemySpellS4(372718, {
   timeBetweenCasts: [10, 30],
-}
+  notes: 'Only the initial hit.',
+})
 
-const crushingStomp: EnemyAbility = {
-  name: 'Crushing Stomp',
-  id: 372701,
-  icon: 'warrior_talent_icon_thunderstruck',
-  baseDamage: 273564,
-  aoe: true,
-  physical: true,
+const crushingStomp = getEnemySpellS4(372701, {
   timeBetweenCasts: 12,
-}
+})
 
-const earthquake: EnemyAbility = {
-  name: 'Earthquake',
-  id: 369328,
-  icon: 'spell_nature_earthquake',
-  baseDamage: 0,
-  aoe: true,
+const earthenShards4Stacks = getEnemySpellS4(372718, {
+  name: 'Earthen Shards @ 5 stacks',
+  baseDamage: earthenShards.baseDamage * 1.25,
+})
+
+const crushingStomp4Stacks = getEnemySpellS4(372701, {
+  name: 'Crushing Stomp @ 5 stacks',
+  baseDamage: crushingStomp.baseDamage * 1.25,
+})
+
+const earthquake = getEnemySpellS4(369328, {
+  baseDamage: getEnemySpellS4(369327).baseDamage * 7,
   trashAbility: true,
-  physical: true,
   periodic: true,
   timeBetweenCasts: 25,
-}
+})
 
-const unstableEmbers: EnemyAbility = {
-  name: 'Unstable Embers',
-  id: 369110,
-  icon: 'ability_creature_cursed_01',
-  baseDamage: 328276,
-  aoe: true,
+const unstableEmbers = getEnemySpellS4(369116, {
   timeBetweenCasts: 12,
-}
+})
 
-const seekingFlame: EnemyAbility = {
-  name: 'Seeking Flame',
-  id: 369052,
-  icon: 'spell_fire_fireball02',
-  baseDamage: 412917,
-  aoe: false,
+const seekingFlame = getEnemySpellS4(369052, {
   avoidable: true,
-}
+})
 
-const thunderousClap: EnemyAbility = {
-  name: 'Thunderous Clap',
-  id: 381593,
-  icon: 'ability_earthenfury_giftofearth',
-  baseDamage: 291801,
-  aoe: true,
+const thunderousClap = getEnemySpellS4(381593, {
   timeBetweenCasts: 20,
-}
+})
 
-const wingBuffet: EnemyAbility = {
-  name: 'Wing Buffet',
-  id: 376049,
-  icon: 'inv_icon_wing07e',
-  baseDamage: 319157,
-  aoe: true,
+const wingBuffet = getEnemySpellS4(376049, {
   timeBetweenCasts: 23,
-}
+})
 
 export const uldAbilities = [
   ricochetingShield,
   earthenShards,
   crushingStomp,
+  earthenShards4Stacks,
+  crushingStomp4Stacks,
   earthquake,
   unstableEmbers,
   seekingFlame,

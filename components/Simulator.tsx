@@ -1,3 +1,5 @@
+'use client'
+
 import { simulate } from '../backend/sim/sim'
 import { useCallback, useEffect, useState } from 'react'
 import { Ability } from '../backend/ability'
@@ -10,7 +12,12 @@ import { CustomAbsorbs } from './Abilities/CustomAbsorbs'
 import { KeyDetailsInput } from './Inputs/KeyDetailsInput'
 import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsInput'
 import { MoreLess } from './Abilities/MoreLess'
-import { DungeonKey, dungeonKeys, EnemyAbility } from '../backend/dungeons'
+import {
+  Dungeon,
+  DungeonKey,
+  dungeonKeys,
+  EnemyAbility,
+} from '../backend/enemyAbilities/enemies'
 import { Sidebar } from './Sidebar/Sidebar'
 import { SimContextProvider } from './Tools/SimContext'
 import { groupActives } from '../backend/groupAbilities/groupActives'
@@ -34,35 +41,37 @@ const defaultEnemyDetails: EnemyAbilityDetails = {
   ignoresArmor: false,
 }
 
-export function Simulator() {
+export function Simulator({ dungeons }: { dungeons: Dungeon[] }) {
   const [characters, setCharacters] = useLocalStorage('characters', defaultCharacters)
   const [selectedGroupBuffs, setGroupBuffs] = useLocalStorage<Ability[]>(
     'groupBuffs',
-    defaultGroupBuffs
+    defaultGroupBuffs,
   )
   const [selectedGroupActives, setGroupActives] = useLocalStorage<Ability[]>(
     'groupActives',
-    defaultGroupActives
+    defaultGroupActives,
   )
 
   const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
-  let [selectedDungeon, setSelectedDungeon] = useLocalStorage<DungeonKey | null>(
+  let [selectedDungeonKey, setSelectedDungeonKey] = useLocalStorage<DungeonKey | null>(
     'selectedDungeon',
-    null
+    null,
   )
 
-  if (selectedDungeon && !dungeonKeys.includes(selectedDungeon)) {
-    setSelectedDungeon(null)
-    selectedDungeon = null
+  const selectedDungeon = dungeons.find(({ key }) => key === selectedDungeonKey) ?? null
+
+  if (selectedDungeonKey && !dungeonKeys.includes(selectedDungeonKey)) {
+    setSelectedDungeonKey(null)
+    selectedDungeonKey = null
   }
 
   const [enemyAbility, setEnemyAbility] = useLocalStorage<EnemyAbility | null>(
     'selectedAbility',
-    null
+    null,
   )
   const [enemyAbilityDetails, setEnemyAbilityDetails] = useLocalStorage(
     'enemyAbilityDetails',
-    defaultEnemyDetails
+    defaultEnemyDetails,
   )
 
   const [moreShown, setMoreShown] = useLocalStorage('moreShown', false)
@@ -77,7 +86,7 @@ export function Simulator() {
         setCustomAbsorbs('')
       }
     },
-    [setCustomAbsorbs, setCustomDrs, setMoreShown]
+    [setCustomAbsorbs, setCustomDrs, setMoreShown],
   )
 
   const [isBeta, setIsBeta] = useLocalStorage('s4Beta', false)
@@ -106,7 +115,7 @@ export function Simulator() {
       selectedGroupActives,
       selectedDungeon,
       isBeta,
-    ]
+    ],
   )
 
   const [result, setResult] = useState<Result>(simulateResult())
@@ -181,12 +190,16 @@ export function Simulator() {
           <div className="border-2 w-full border-gray-600" />
 
           {!selectedDungeon ? (
-            <DungeonSelect isBeta={isBeta} setSelectedDungeon={setSelectedDungeon} />
+            <DungeonSelect
+              dungeons={dungeons}
+              isBeta={isBeta}
+              setSelectedDungeon={setSelectedDungeonKey}
+            />
           ) : (
             <DungeonAbilities
-              selectedDungeon={selectedDungeon}
+              dungeon={selectedDungeon}
               selectedAbility={enemyAbility}
-              deselectDungeon={() => setSelectedDungeon(null)}
+              deselectDungeon={() => setSelectedDungeonKey(null)}
               onSelect={(enemyAbility) => {
                 setEnemyAbility(enemyAbility)
                 setEnemyAbilityDetails(enemyAbilityToDetails(enemyAbility))

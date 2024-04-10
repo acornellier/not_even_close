@@ -1,7 +1,7 @@
 import { ClassSpec } from '../classes'
 import { Ability } from '../ability'
 import { Character } from '../characters'
-import { DungeonKey } from '../dungeons'
+import { Dungeon, DungeonKey } from '../enemyAbilities/enemies'
 
 export interface Result {
   main: AbilityResult
@@ -64,6 +64,6 @@ export interface SimInput {
   customAbsorbs: number[]
   keyDetails: KeyDetails
   enemyAbilityDetails: EnemyAbilityDetails
-  dungeon: DungeonKey | null
+  dungeon: Dungeon | null
   isBeta: boolean
 }
