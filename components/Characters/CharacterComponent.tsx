@@ -12,7 +12,7 @@ import { LabelledAbilitySelect } from '../Abilities/LabelledAbilitySelect'
 import { externals } from '../../backend/groupAbilities/externals'
 import { useCallback } from 'react'
 import { Ability } from '../../backend/ability'
-// import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic'
 import { CreateProfile } from './CreateProfile'
 import { LoadProfile } from './LoadProfile'
 import { TooltipStyled } from '../Common/TooltipStyled'
@@ -30,10 +30,10 @@ interface Props {
   deleteProfile: (profileId: string) => void
 }
 
-// const PasteButtonNoSsr = dynamic(
-//   () => import('./PasteButton').then((mod) => mod.PasteButton),
-//   { ssr: false }
-// )
+const PasteButtonNoSsr = dynamic(
+  () => import('./PasteButton').then((mod) => mod.PasteButton),
+  { ssr: false },
+)
 
 export function CharacterComponent({
   idx,
@@ -92,7 +92,7 @@ export function CharacterComponent({
               loadProfile={loadProfile}
               deleteProfile={deleteProfile}
             />
-            {/*<PasteButtonNoSsr handlePaste={handlePaste} idx={idx} />*/}
+            <PasteButtonNoSsr handlePaste={handlePaste} idx={idx} />
 
             {canRemove && (
               <div
