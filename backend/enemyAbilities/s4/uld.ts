@@ -13,15 +13,17 @@ const crushingStomp = getEnemySpellS4(372701, {
   cooldown: 12,
 })
 
-const earthenShards4Stacks = getEnemySpellS4(372718, {
+const earthenShards4Stacks = {
+  ...earthenShards,
   name: 'Earthen Shards @ 5 stacks',
-  damage: earthenShards.damage * 1.25,
-})
+  damage: Math.round(earthenShards.damage * 1.25),
+}
 
-const crushingStomp4Stacks = getEnemySpellS4(372701, {
+const crushingStomp4Stacks = {
+  ...crushingStomp,
   name: 'Crushing Stomp @ 5 stacks',
-  damage: crushingStomp.damage * 1.25,
-})
+  damage: Math.round(crushingStomp.damage * 1.25),
+}
 
 const earthquake = getEnemySpellS4(369328, {
   damage: getEnemySpellS4(369327).damage * 7,

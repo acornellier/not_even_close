@@ -657,19 +657,25 @@
     "name": "Earthen Shards @ 5 stacks",
     "id": 372718,
     "icon": "6bf_blackrock_nova",
-    "damage": 341953.75,
+    "damage": 341954,
     "aoe": false,
     "physical": true,
-    "variance": 0.025
+    "variance": 0.025,
+    "cooldown": [
+      10,
+      30
+    ],
+    "notes": "Only the initial hit."
   },
   {
     "name": "Crushing Stomp @ 5 stacks",
     "id": 372701,
     "icon": "warrior_talent_icon_thunderstruck",
-    "damage": 341953.75,
+    "damage": 341954,
     "aoe": true,
     "physical": true,
-    "variance": 0.025
+    "variance": 0.025,
+    "cooldown": 12
   },
   {
     "name": "Earthquake",

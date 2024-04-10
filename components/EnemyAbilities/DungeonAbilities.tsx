@@ -77,7 +77,7 @@ export function DungeonAbilities({
           <div className="flex items-center gap-2">
             <Button
               short
-              className="hidden sm:block text-xl gap-2"
+              className="hidden sm:block gap-2"
               onClick={shouldExpandAll ? expandAll : collapseAll}
             >
               {shouldExpandAll ? 'Expand all' : 'Collapse all'}
