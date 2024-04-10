@@ -2,7 +2,7 @@ import { memo, useCallback, useState } from 'react'
 import { Button } from '../Common/Button'
 import Script from 'next/script'
 
-const channel = 'ortemismw'
+const channel = 'woxtoxic'
 const videoWidth = 400
 const videoHeight = videoWidth * (9 / 16)
 const chatHeight = 400
