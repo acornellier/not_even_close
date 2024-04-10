@@ -6,7 +6,8 @@
     "damage": 364751,
     "aoe": true,
     "physical": false,
-    "variance": 0
+    "variance": 0,
+    "cooldown": 60
   },
   {
     "name": "Mana Bomb",

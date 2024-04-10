@@ -1,7 +1,9 @@
 import { EnemyAbility } from '../enemies'
 import { getEnemySpellS4 } from '../grimoire'
 
-const burstForth = getEnemySpellS4(388923)
+const burstForth = getEnemySpellS4(388923, {
+  cooldown: 60,
+})
 
 const manaBomb = getEnemySpellS4(386181, {
   damage: 91188 * 4 + getEnemySpellS4(386202).damage,
