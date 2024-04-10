@@ -7,7 +7,7 @@ import { KeyDetails, Result } from '../../backend/sim/simTypes'
 
 const TwitchStream = dynamic(
   () => import('./TwitchStream').then((mod) => mod.TwitchStream),
-  { ssr: false }
+  { ssr: false },
 )
 
 interface Props {
@@ -35,7 +35,7 @@ export function Sidebar({ result, enemyAbility, keyDetails }: Props) {
 
       <div className="border-2 my-4 border-gray-600" />
 
-      {/*<TwitchStream />*/}
+      <TwitchStream />
 
       <Instructions />
     </div>
