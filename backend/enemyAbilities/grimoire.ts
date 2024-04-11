@@ -1,6 +1,8 @@
 import { EnemyAbility } from './enemies'
 import { getGrimoireSpell, initGrimoire } from 'grimoire-wow'
 
+import 'grimoire-wow/dist/spells.json'
+
 initGrimoire(process.cwd() + '/node_modules/grimoire-wow/dist/spells.json')
 
 type Overrides =
