@@ -6,6 +6,7 @@ import { Toasts } from './components/Common/Toasts/Toasts'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { SimulatorWithDefaultEnemySpell } from './components/SimulatorWithDefaultEnemySpell.tsx'
 
+// Be sure to update vercel.json when changing routes
 const router = createBrowserRouter([
   {
     path: '/',
