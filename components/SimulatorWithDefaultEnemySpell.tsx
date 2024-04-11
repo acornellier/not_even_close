@@ -30,7 +30,7 @@ export function SimulatorWithDefaultEnemySpell({ dungeons, spellId }: Props) {
         type: 'success',
       })
     })
-  }, [addToast, spellId])
+  }, [addToast, searchParams, spellId])
 
   return <Simulator dungeons={dungeons} defaultEnemyAbility={enemyAbility} />
 }
