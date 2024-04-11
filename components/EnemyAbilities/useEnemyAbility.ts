@@ -44,7 +44,6 @@ export function useEnemyAbility({ defaultEnemyAbility }: Props) {
   )
 
   useEffect(() => {
-    console.log('hi')
     if (defaultEnemyAbility) {
       setEnemyAbilityWrapper(defaultEnemyAbility)
     }
