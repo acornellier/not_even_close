@@ -5,7 +5,6 @@ import { Header } from './components/Header/Header'
 import { Toasts } from './components/Common/Toasts/Toasts'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { SimulatorWithDefaultEnemySpell } from './components/SimulatorWithDefaultEnemySpell.tsx'
-import './backend/enemyAbilities/dungeons.ts'
 
 const router = createBrowserRouter([
   {
