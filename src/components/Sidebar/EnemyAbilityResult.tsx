@@ -4,19 +4,26 @@ import { KeyDetails } from '../../backend/sim/simTypes'
 import { WowIcon } from '../Common/WowIcon'
 
 interface Props {
-  enemyAbility: EnemyAbility | null
+  ability: EnemyAbility | null
   keyDetails: KeyDetails
 }
 
-export function EnemyAbilityResult({ enemyAbility, keyDetails }: Props) {
+export function EnemyAbilityResult({ ability, keyDetails }: Props) {
   return (
-    enemyAbility && (
+    ability && (
       <div className="flex gap-1 items-center whitespace-nowrap">
-        <a key={enemyAbility.name}>
-          <WowIcon icon={enemyAbility.icon} size={24} />
+        <a
+          key={ability.name}
+          href={
+            ability.id
+              ? `https://www.wowhead.com/spell=${ability.id}/`
+              : ability.wowheadLink
+          }
+        >
+          <WowIcon icon={ability.icon} size={24} />
         </a>
         <div className="text-white">
-          {enemyAbility.name} | +{keyDetails.keyLevel}{' '}
+          {ability.name} | +{keyDetails.keyLevel}{' '}
           {keyDetails.isTyran ? 'Tyrannical' : 'Fortified'}
         </div>
       </div>

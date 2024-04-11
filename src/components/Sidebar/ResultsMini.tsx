@@ -15,7 +15,7 @@ export function ResultsMini({ result, enemyAbility, keyDetails }: Props) {
   return (
     <div className="flex flex-col gap-4">
       <div>
-        <EnemyAbilityResult enemyAbility={enemyAbility} keyDetails={keyDetails} />
+        <EnemyAbilityResult ability={enemyAbility} keyDetails={keyDetails} />
         <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
         <div>Unmitigated damage: {result.scaledDamage.toLocaleString('en-US')}</div>
       </div>

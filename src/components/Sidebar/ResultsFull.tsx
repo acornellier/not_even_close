@@ -27,7 +27,7 @@ export function ResultsFull({ result, enemyAbility, keyDetails }: Props) {
           </span>
         )}
       </div>
-      <EnemyAbilityResult enemyAbility={enemyAbility} keyDetails={keyDetails} />
+      <EnemyAbilityResult ability={enemyAbility} keyDetails={keyDetails} />
       <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
       <div>Unmitigated damage: {result.scaledDamage.toLocaleString('en-US')}</div>
       <ResultDetails charResult={charResult} />
