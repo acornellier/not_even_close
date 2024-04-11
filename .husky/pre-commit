@@ -1,2 +1,2 @@
-yarn tsx ./scripts/diffSpells.ts
-git add ./backend/enemyAbilities/differ.json
+yarn tsx ./scripts/differ.ts
+git add ./src/backend/enemyAbilities/spellDiff.json
