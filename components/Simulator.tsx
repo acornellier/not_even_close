@@ -22,26 +22,23 @@ import { Sidebar } from './Sidebar/Sidebar'
 import { SimContextProvider } from './Tools/SimContext'
 import { groupActives } from '../backend/groupAbilities/groupActives'
 import { DungeonSelect } from './EnemyAbilities/DungeonSelect'
-import { enemyAbilityToDetails } from '../backend/utils'
 import { Characters, defaultCharacter, defaultCharacters } from './Characters/Characters'
 import { Button } from './Common/Button'
-import { EnemyAbilityDetails, KeyDetails, Result } from '../backend/sim/simTypes'
+import { KeyDetails, Result } from '../backend/sim/simTypes'
 import { useKeyHeld } from './Tools/useKeyHeld'
+import { useEnemyAbility } from './EnemyAbilities/useEnemyAbility'
 
 const defaultGroupBuffs: Ability[] = []
 const defaultGroupActives: Ability[] = []
 
 const defaultKeyDetails: KeyDetails = { keyLevel: 28, isTyran: true }
 
-const defaultEnemyDetails: EnemyAbilityDetails = {
-  damage: 100_000,
-  aoe: false,
-  trashAbility: false,
-  physical: false,
-  ignoresArmor: false,
+interface Props {
+  dungeons: Dungeon[]
+  defaultEnemyAbility?: EnemyAbility
 }
 
-export function Simulator({ dungeons }: { dungeons: Dungeon[] }) {
+export function Simulator({ dungeons, defaultEnemyAbility }: Props) {
   const [characters, setCharacters] = useLocalStorage('characters', defaultCharacters)
   const [selectedGroupBuffs, setGroupBuffs] = useLocalStorage<Ability[]>(
     'groupBuffs',
@@ -65,14 +62,8 @@ export function Simulator({ dungeons }: { dungeons: Dungeon[] }) {
     selectedDungeonKey = null
   }
 
-  const [enemyAbility, setEnemyAbility] = useLocalStorage<EnemyAbility | null>(
-    'selectedAbility',
-    null,
-  )
-  const [enemyAbilityDetails, setEnemyAbilityDetails] = useLocalStorage(
-    'enemyAbilityDetails',
-    defaultEnemyDetails,
-  )
+  const { enemyAbility, enemyAbilityDetails, setEnemyAbility, setEnemyAbilityDetails } =
+    useEnemyAbility({ defaultEnemyAbility })
 
   const [moreShown, setMoreShown] = useLocalStorage('moreShown', false)
   const [customDrs, setCustomDrs] = useLocalStorage('customDrs', '')
@@ -138,10 +129,7 @@ export function Simulator({ dungeons }: { dungeons: Dungeon[] }) {
 
           <EnemyAbilityDetailsInput
             enemyAbilityDetails={enemyAbilityDetails}
-            setEnemyAbilityDetails={(details) => {
-              setEnemyAbility(null)
-              setEnemyAbilityDetails(details)
-            }}
+            setEnemyAbilityDetails={setEnemyAbilityDetails}
           />
 
           <div className="border-2 w-full border-gray-600" />
@@ -200,10 +188,7 @@ export function Simulator({ dungeons }: { dungeons: Dungeon[] }) {
               dungeon={selectedDungeon}
               selectedAbility={enemyAbility}
               deselectDungeon={() => setSelectedDungeonKey(null)}
-              onSelect={(enemyAbility) => {
-                setEnemyAbility(enemyAbility)
-                setEnemyAbilityDetails(enemyAbilityToDetails(enemyAbility))
-              }}
+              onSelect={setEnemyAbility}
               results={result?.dungeon ?? null}
             />
           )}

@@ -1,5 +1,3 @@
-// import 'server-only'
-
 import { EnemyAbility } from './enemies'
 import { getGrimoireSpell, initGrimoire } from 'grimoire-wow'
 

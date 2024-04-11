@@ -1,12 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   images: {
-    remotePatterns: [
-      { hostname: 'wow.zamimg.com' },
-      { hostname: 'www.wowhead.com' },
-    ],
+    remotePatterns: [{ hostname: 'wow.zamimg.com' }, { hostname: 'www.wowhead.com' }],
   },
 }
 
