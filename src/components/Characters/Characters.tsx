@@ -4,7 +4,7 @@ import { CharacterComponent } from './CharacterComponent'
 import { usePaste } from '../../util/usePaste'
 import { ClassSpec, defaultAbilities } from '../../backend/classes'
 import { Ability } from '../../backend/ability'
-import useLocalStorage from '../../util/useLocalStorage'
+import { useLocalStorage } from '../../util/useLocalStorage'
 import { useCharacterChanges } from './useCharacterChanges'
 
 interface Props {

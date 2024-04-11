@@ -3,7 +3,7 @@ import { EnemyAbilityCard } from './EnemyAbilityCard'
 import { Button } from '../Common/Button'
 import { AbilityResult } from '../../backend/sim/simTypes'
 import { useState } from 'react'
-import useLocalStorage from '../../util/useLocalStorage'
+import { useLocalStorage } from '../../util/useLocalStorage'
 import { Toggle } from '../Inputs/Toggle'
 import { WowIcon } from '../Common/WowIcon'
 

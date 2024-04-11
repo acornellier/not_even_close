@@ -1,4 +1,4 @@
-import useLocalStorage from '../../util/useLocalStorage'
+import { useLocalStorage } from '../../util/useLocalStorage'
 import { EnemyAbility } from '../../backend/enemyAbilities/enemies'
 import { useCallback, useEffect } from 'react'
 import { enemyAbilityToDetails } from '../../backend/utils'
