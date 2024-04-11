@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     element: <Simulator />,
   },
   {
-    path: 'spell/:spellId',
+    path: '/spell/:spellId',
     element: <SimulatorWithDefaultEnemySpell />,
   },
 ])
