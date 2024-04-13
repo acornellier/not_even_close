@@ -4,11 +4,11 @@ import { Modal } from '../Common/Modal'
 import { Button } from '../Common/Button'
 
 interface Props {
-  idx: number
-  handlePaste: (text: string) => void
+  charIndex: number
+  handlePaste: (charIndex: number, text: string) => void
 }
 
-export function PasteButton({ handlePaste, idx }: Props) {
+export function PasteButton({ charIndex, handlePaste }: Props) {
   const [input, setInput] = useState('')
   const [inputModalOpen, setInputModalOpen] = useState(false)
 
@@ -18,15 +18,15 @@ export function PasteButton({ handlePaste, idx }: Props) {
   }, [])
 
   const onConfirmModal = useCallback(() => {
-    handlePaste(input)
+    handlePaste(charIndex, input)
     onCloseModal()
-  }, [onCloseModal, handlePaste, input])
+  }, [handlePaste, charIndex, input, onCloseModal])
 
   const handleClick = async () => {
     if (navigator.clipboard.readText) {
       const text = await navigator.clipboard.readText()
       if (text) {
-        handlePaste(text)
+        handlePaste(charIndex, text)
         return
       }
     }
@@ -39,7 +39,7 @@ export function PasteButton({ handlePaste, idx }: Props) {
       <div
         className="cursor-pointer text-teal-500 select-none"
         onClick={handleClick}
-        data-tooltip-id={`paste-character-${idx}`}
+        data-tooltip-id={`paste-character-${charIndex}`}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ export function PasteButton({ handlePaste, idx }: Props) {
           />
         </svg>
       </div>
-      <TooltipStyled id={`paste-character-${idx}`}>Paste from addon</TooltipStyled>
+      <TooltipStyled id={`paste-character-${charIndex}`}>Paste from addon</TooltipStyled>
       {inputModalOpen && (
         <Modal
           title="Paste MDT string"

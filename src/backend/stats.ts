@@ -6,7 +6,7 @@ const avoidanceConversionFactor = 71.9980604
 
 // Changes every patch
 const armorKValueMplusS3 = 18672.642
-const armorKValueMplusS4 = 24308.556
+// const armorKValueMplusS4 = 24308.556
 
 interface StatBracketBasic {
   size: number

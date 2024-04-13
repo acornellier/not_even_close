@@ -1,7 +1,7 @@
 import { ClassSpec } from '../classes'
-import { Ability } from '../ability'
+import { Ability, AbilityCombo } from '../ability'
 import { Character } from '../characters'
-import { Dungeon, DungeonKey } from '../enemyAbilities/enemies'
+import { Dungeon } from '../enemyAbilities/enemies'
 
 export interface Result {
   main: AbilityResult
@@ -59,7 +59,8 @@ export interface EnemyAbilityDetails {
 
 export interface SimInput {
   characters: Character[]
-  groupAbilities: Ability[]
+  groupAbilities: AbilityCombo[]
+  selectedCombo: number
   customDrs: number[]
   customAbsorbs: number[]
   keyDetails: KeyDetails

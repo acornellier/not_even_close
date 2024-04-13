@@ -5,16 +5,12 @@ import { UpdateCharacter } from '../backend/characters.ts'
 import { useToasts } from '../components/Common/Toasts/useToasts.ts'
 
 interface Props {
-  updateCharacterIdx: (index: number) => UpdateCharacter
+  updateCharacter: UpdateCharacter
   selectedGroupBuffs: Ability[]
   setGroupBuffs: (abilities: Ability[]) => void
 }
 
-export function usePaste({
-  updateCharacterIdx,
-  selectedGroupBuffs,
-  setGroupBuffs,
-}: Props) {
+export function usePaste({ updateCharacter, selectedGroupBuffs, setGroupBuffs }: Props) {
   const { addToast } = useToasts()
 
   const handlePaste = useCallback(
@@ -24,9 +20,9 @@ export function usePaste({
         return
       }
 
-      const { character, groupBuffs, addTepidVers } = getAddonOutput(text)
+      const { charChanges, groupBuffs } = getAddonOutput(text, characterIdx)
 
-      updateCharacterIdx(characterIdx)(character, addTepidVers)
+      updateCharacter(charChanges)
 
       setGroupBuffs([
         ...selectedGroupBuffs,
@@ -38,7 +34,7 @@ export function usePaste({
 
       addToast({ message: 'Paste success.', type: 'success' })
     },
-    [updateCharacterIdx, setGroupBuffs, selectedGroupBuffs, addToast],
+    [updateCharacter, setGroupBuffs, selectedGroupBuffs, addToast],
   )
 
   const pasteWithButton = useCallback(

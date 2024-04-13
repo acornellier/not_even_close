@@ -23,13 +23,13 @@ export function AbilitySelect({
   useEffect(() => {
     if (
       selectedAbilities.some(
-        (selectedAbility) => !isAbilityAvailable(selectedAbility, availableAbilities)
+        (selectedAbility) => !isAbilityAvailable(selectedAbility, availableAbilities),
       )
     ) {
       setSelectedAbilities(
         selectedAbilities.filter((selectedAbility) =>
-          isAbilityAvailable(selectedAbility, availableAbilities)
-        )
+          isAbilityAvailable(selectedAbility, availableAbilities),
+        ),
       )
     }
   }, [availableAbilities, selectedAbilities, setSelectedAbilities])
@@ -41,18 +41,18 @@ export function AbilitySelect({
       if (isAbilitySelected(spellId, selectedAbilities)) {
         setSelectedAbilities(
           selectedAbilities.filter(
-            (selectedAbility) => selectedAbility.spellId !== spellId
-          )
+            (selectedAbility) => selectedAbility.spellId !== spellId,
+          ),
         )
       } else {
         const ability = availableAbilities.find(
-          ({ spellId: otherSpellId }) => otherSpellId === spellId
+          ({ spellId: otherSpellId }) => otherSpellId === spellId,
         )
 
         if (ability) setSelectedAbilities([...selectedAbilities, ability])
       }
     },
-    [availableAbilities, selectedAbilities, setSelectedAbilities]
+    [availableAbilities, selectedAbilities, setSelectedAbilities],
   )
 
   const [augmenters, regulars] = (augmentedAbilities ?? availableAbilities).reduce<
@@ -62,7 +62,7 @@ export function AbilitySelect({
       acc[ability.abilityAugmentations ? 0 : 1].push(ability)
       return acc
     },
-    [[], []]
+    [[], []],
   )
 
   return (

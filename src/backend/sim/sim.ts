@@ -1,5 +1,5 @@
 import { Character, CharacterStatsInput } from '../characters'
-import { Ability } from '../ability'
+import { Ability, AbilityCombo } from '../ability'
 import { augmentAbilities, enemyAbilityToDetails } from '../utils'
 import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from '../stats'
 import {
@@ -35,7 +35,7 @@ function getScalingFactor(
 }
 
 function getAdjustedStats(characterStats: CharacterStatsInput, abilities: Ability[]) {
-  let adjustedStats: CharacterStats = {
+  const adjustedStats: CharacterStats = {
     stamina: characterStats.stamina ?? 0,
     versatility: 0,
     avoidance: avoidanceRawToPercent(characterStats.avoidanceRaw ?? 0) / 100,
@@ -82,19 +82,23 @@ function getStartingHealth(characterStats: CharacterStats, abilities: Ability[])
 
 function getPartialResults(
   characters: Character[],
-  groupAbilities: Ability[],
+  groupAbilityCombos: AbilityCombo[],
+  selectedCombo: number,
 ): CharacterPartialResult[] {
+  const groupAbilities = groupAbilityCombos[selectedCombo]!
   const augmentedGroupAbilities = augmentAbilities(groupAbilities, groupAbilities)
 
   return characters.map<CharacterPartialResult>((character) => {
+    const abilityCombo = character.abilityCombos[selectedCombo]!
+
     const augmentedSelectedAbilities = augmentAbilities(
-      character.abilities,
-      character.abilities,
+      abilityCombo.abilities,
+      abilityCombo.abilities,
     )
 
     const abilities = [
       ...augmentedSelectedAbilities,
-      ...character.externals,
+      ...abilityCombo.externals,
       ...augmentedGroupAbilities,
     ]
 
@@ -181,6 +185,7 @@ function getAbilityResult(
 export function simulate({
   characters,
   groupAbilities,
+  selectedCombo,
   customDrs,
   customAbsorbs,
   keyDetails,
@@ -188,7 +193,7 @@ export function simulate({
   dungeon,
   isBeta,
 }: SimInput): Result {
-  const charPartialResults = getPartialResults(characters, groupAbilities)
+  const charPartialResults = getPartialResults(characters, groupAbilities, selectedCombo)
 
   const mainResults = getAbilityResult(
     keyDetails,

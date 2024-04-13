@@ -1,4 +1,9 @@
-import { Character, Profile } from '../../backend/characters'
+import {
+  AbilityCombo,
+  Character,
+  CharacterChanges,
+  Profile,
+} from '../../backend/characters'
 import { Dispatch, SetStateAction, useCallback } from 'react'
 import { defaultAbilities, equalSpecs } from '../../backend/classes'
 import { tepidVersatility } from '../../backend/groupAbilities/externals'
@@ -10,7 +15,7 @@ const uniqueExternalNames = ['phial']
 
 function uniqueAbilities(abilities: Ability[], uniqueNames: string[]) {
   for (const uniqueName of uniqueNames) {
-    let lastIndex = abilities.findLastIndex((ability) =>
+    const lastIndex = abilities.findLastIndex((ability) =>
       ability.name.toLowerCase().includes(uniqueName),
     )
 
@@ -29,99 +34,107 @@ interface Props {
   setCharacters: Dispatch<SetStateAction<Character[]>>
   setProfiles: Dispatch<SetStateAction<Profile[]>>
   characters: Character[]
+  selectedCombo: number
 }
 
-export function useCharacterChanges({ setCharacters, setProfiles, characters }: Props) {
-  const updateCharacterIdx = useCallback(
-    (index: number) =>
-      (charChanges: Partial<Character>, addTepidVers = false) => {
-        setCharacters((characters) =>
-          characters.map((character, index2) => {
-            if (index2 !== index) return character
+export function useCharacterChanges({
+  setCharacters,
+  setProfiles,
+  characters,
+  selectedCombo,
+}: Props) {
+  const updateCharacter = useCallback(
+    ({ charIndex, charChanges, comboChanges, addTepidVers }: CharacterChanges) => {
+      setCharacters((characters) => {
+        return characters.map((prevChar, index2) => {
+          if (index2 !== charIndex) return prevChar
 
-            let specChangeChanges =
-              charChanges.classSpec &&
-              !equalSpecs(character.classSpec, charChanges.classSpec)
-                ? {
-                    abilities: defaultAbilities(charChanges.classSpec),
-                    externals: addTepidVers ? [tepidVersatility] : [],
-                  }
-                : {}
+          const combo: AbilityCombo = {
+            ...prevChar.abilityCombos[selectedCombo]!,
+            ...comboChanges,
+          }
 
-            const res = {
-              ...character,
-              ...charChanges,
-              ...specChangeChanges,
+          if (
+            charChanges?.classSpec &&
+            !equalSpecs(prevChar.classSpec, charChanges.classSpec)
+          ) {
+            combo.abilities = defaultAbilities(charChanges.classSpec)
+            combo.externals = addTepidVers ? [tepidVersatility] : []
+          }
+
+          if (addTepidVers) {
+            combo.externals ??= []
+
+            if (!isAbilitySelected(tepidVersatility.spellId, combo.externals)) {
+              combo.externals.push(tepidVersatility)
             }
+          }
 
-            if (addTepidVers) {
-              res.externals ??= []
+          combo.abilities = uniqueAbilities(combo.abilities, uniqueAbilityNames)
+          combo.externals = uniqueAbilities(combo.externals, uniqueExternalNames)
 
-              if (!isAbilitySelected(tepidVersatility.spellId, res.externals)) {
-                res.externals.push(tepidVersatility)
+          const newChar: Character = { ...prevChar, ...charChanges }
+          newChar.abilityCombos[selectedCombo] = combo
+          return newChar
+        })
+      })
+
+      if (charChanges?.loadedProfileId) return
+
+      setProfiles((profiles) =>
+        profiles.map((profile) =>
+          profile.id === characters[charIndex]!.loadedProfileId
+            ? {
+                ...profile,
+                ...(charChanges?.classSpec ? { classSpec: charChanges?.classSpec } : {}),
+                ...(charChanges?.stats ? { stats: charChanges?.stats } : {}),
               }
-            }
-
-            res.abilities = uniqueAbilities(res.abilities, uniqueAbilityNames)
-            res.externals = uniqueAbilities(res.externals, uniqueExternalNames)
-
-            return res
-          }),
-        )
-
-        if (charChanges.loadedProfileId) return
-
-        setProfiles((profiles) =>
-          profiles.map((profile) =>
-            profile.id === characters[index]!.loadedProfileId
-              ? {
-                  ...profile,
-                  ...(charChanges.classSpec ? { classSpec: charChanges.classSpec } : {}),
-                  ...(charChanges.stats ? { stats: charChanges.stats } : {}),
-                }
-              : profile,
-          ),
-        )
-      },
-    [characters, setCharacters, setProfiles],
+            : profile,
+        ),
+      )
+    },
+    [characters, setCharacters, setProfiles, selectedCombo],
   )
 
-  const removeCharacterIdx = useCallback(
-    (index: number) => () =>
+  const removeCharacter = useCallback(
+    (index: number) =>
       setCharacters((characters) => characters.filter((_, index2) => index2 !== index)),
     [setCharacters],
   )
 
-  const createProfileIdx = useCallback(
-    (characterIdx: number) => (name: string) => {
+  const createProfile = useCallback(
+    (charIndex: number, name: string) => {
       const id = crypto.randomUUID()
       setProfiles((profiles) => [
         ...profiles,
         {
           id,
           name,
-          classSpec: characters[characterIdx]!.classSpec,
-          stats: characters[characterIdx]!.stats,
+          classSpec: characters[charIndex]!.classSpec,
+          stats: characters[charIndex]!.stats,
         },
       ])
-      updateCharacterIdx(characterIdx)({ loadedProfileId: id })
+      updateCharacter({ charIndex, charChanges: { loadedProfileId: id } })
     },
-    [characters, setProfiles, updateCharacterIdx],
+    [characters, setProfiles, updateCharacter],
   )
 
-  const loadProfileIdx = useCallback(
-    (index: number) => (profile: Profile | null) => {
+  const loadProfile = useCallback(
+    (charIndex: number, profile: Profile | null) => {
       if (profile === null) {
-        updateCharacterIdx(index)({ loadedProfileId: undefined })
+        updateCharacter({ charIndex, charChanges: { loadedProfileId: undefined } })
       } else {
-        updateCharacterIdx(index)({
-          classSpec: profile.classSpec,
-          stats: profile.stats,
-          loadedProfileId: profile.id,
+        updateCharacter({
+          charIndex,
+          charChanges: {
+            classSpec: profile.classSpec,
+            stats: profile.stats,
+            loadedProfileId: profile.id,
+          },
         })
       }
     },
-    [updateCharacterIdx],
+    [updateCharacter],
   )
 
   const deleteProfile = useCallback(
@@ -132,10 +145,10 @@ export function useCharacterChanges({ setCharacters, setProfiles, characters }: 
   )
 
   return {
-    updateCharacterIdx,
-    removeCharacterIdx,
-    createProfileIdx,
-    loadProfileIdx,
+    updateCharacter,
+    removeCharacter,
+    createProfile,
+    loadProfile,
     deleteProfile,
   }
 }

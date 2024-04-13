@@ -6,15 +6,15 @@ import { TooltipRefProps } from 'react-tooltip'
 import { Button } from '../Common/Button'
 
 interface Props {
-  idx: number
+  charIndex: number
   profiles: Profile[]
   loadedProfileId: string | undefined
-  loadProfile: (profile: Profile | null) => void
+  loadProfile: (charIndex: number, profile: Profile | null) => void
   deleteProfile: (profileId: string) => void
 }
 
 export function LoadProfile({
-  idx,
+  charIndex,
   profiles,
   loadedProfileId,
   loadProfile,
@@ -28,7 +28,7 @@ export function LoadProfile({
     <div>
       <div
         className="cursor-pointer text-teal-500 select-none"
-        data-tooltip-id={`load-character-${idx}`}
+        data-tooltip-id={`load-character-${charIndex}`}
         onClick={() =>
           tooltipRef.current?.isOpen
             ? tooltipRef.current?.close()
@@ -50,9 +50,9 @@ export function LoadProfile({
           />
         </svg>
       </div>
-      <TooltipStyled id={`load-character-${idx}`}>Load profile</TooltipStyled>
+      <TooltipStyled id={`load-character-${charIndex}`}>Load profile</TooltipStyled>
       <TooltipStyled
-        id={`load-character-${idx}`}
+        id={`load-character-${charIndex}`}
         ref={tooltipRef}
         imperativeModeOnly
         place="bottom"
@@ -77,11 +77,11 @@ export function LoadProfile({
                 </div>
                 <div className="flex items-center gap-2">
                   {isLoaded ? (
-                    <Button short onClick={() => loadProfile(null)}>
+                    <Button short onClick={() => loadProfile(charIndex, null)}>
                       Unload
                     </Button>
                   ) : (
-                    <Button short onClick={() => loadProfile(profile)}>
+                    <Button short onClick={() => loadProfile(charIndex, profile)}>
                       Load
                     </Button>
                   )}

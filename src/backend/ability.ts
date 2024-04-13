@@ -37,6 +37,8 @@ export type Ability = {
   notes?: string
 }
 
+export type AbilityCombo = Ability[]
+
 export const abilityFields = [
   'dr',
   'aoeDr',
@@ -47,9 +49,8 @@ export const abilityFields = [
   'absorb',
 ] as const
 
-export type AbilityField = typeof abilityFields[number]
+export type AbilityField = (typeof abilityFields)[number]
 export type AbsorbField = keyof AbsorbOptions
-export type AbsorbAugmentations = Exclude<AbsorbField, 'versAffected' | 'absorbType'>
 
 export type AbilityAugmentation = {
   otherSpellId: number

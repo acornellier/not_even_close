@@ -7,10 +7,10 @@ import {
 } from '../../backend/ability'
 import { isAbilitySelected, roundTo } from '../../backend/utils'
 import { Fragment } from 'react'
-import { useSimContext } from '../../util/SimContext'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { getMultiplierAbsorb } from '../../backend/sim/absorbs'
 import { barkskin } from '../../backend/classAbilities/druid'
+import { useSimContext } from '../Simulator/UseSimContext.tsx'
 
 const iconSize = 40
 
@@ -23,7 +23,7 @@ interface AbilityIconProps {
 }
 
 function getAbsorbText(absorb: AbsorbOptions) {
-  let absorbs = []
+  const absorbs = []
   if (absorb.raw) {
     absorbs.push(`${absorb.raw.toLocaleString('en-US')} HP`)
   } else if (absorb.healthMultiplier) {

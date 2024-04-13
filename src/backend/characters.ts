@@ -9,11 +9,15 @@ export interface CharacterStatsInput {
   mainStat: number | undefined
 }
 
+export interface AbilityCombo {
+  abilities: Ability[]
+  externals: Ability[]
+}
+
 export interface Character {
   classSpec: ClassSpec
   stats: CharacterStatsInput
-  abilities: Ability[]
-  externals: Ability[]
+  abilityCombos: AbilityCombo[]
   loadedProfileId?: string
 }
 
@@ -24,4 +28,18 @@ export interface Profile {
   stats: CharacterStatsInput
 }
 
-export type UpdateCharacter = (value: Partial<Character>, addTepidVers?: boolean) => void
+export interface CharacterChanges {
+  charIndex: number
+  charChanges?: {
+    classSpec?: ClassSpec
+    stats?: CharacterStatsInput
+    loadedProfileId?: string
+  }
+  comboChanges?: {
+    abilities?: Ability[]
+    externals?: Ability[]
+  }
+  addTepidVers?: boolean
+}
+
+export type UpdateCharacter = (value: CharacterChanges, addTepidVers?: boolean) => void

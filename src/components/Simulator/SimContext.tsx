@@ -1,6 +1,6 @@
-﻿import { createContext, ReactNode, useContext, useMemo } from 'react'
+﻿import { createContext, ReactNode, useMemo } from 'react'
 
-import { Result } from '../backend/sim/simTypes.ts'
+import { Result } from '../../backend/sim/simTypes.ts'
 
 export interface SimContext {
   result: Result | null
@@ -23,5 +23,3 @@ export function SimContextProvider({ result, children }: Props) {
 
   return <SimContext.Provider value={simContext}>{children}</SimContext.Provider>
 }
-
-export const useSimContext = () => useContext(SimContext)

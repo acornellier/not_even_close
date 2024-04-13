@@ -6,7 +6,7 @@ import { Button } from '../Common/Button'
 
 interface Props {
   idx: number
-  createProfile: (name: string) => void
+  createProfile: (charIndex: number, name: string) => void
 }
 
 export function CreateProfile({ idx, createProfile }: Props) {
@@ -15,7 +15,7 @@ export function CreateProfile({ idx, createProfile }: Props) {
 
   const save = () => {
     if (name === '') return
-    createProfile(name)
+    createProfile(idx, name)
     setName('')
     tooltipRef.current?.close()
   }
@@ -29,7 +29,7 @@ export function CreateProfile({ idx, createProfile }: Props) {
     <div>
       <div
         className="cursor-pointer text-teal-500 select-none"
-        data-tooltip-id={`save-character-${idx}`}
+        data-tooltip-id={`create-profile-${idx}`}
         onClick={() =>
           tooltipRef.current?.isOpen
             ? tooltipRef.current?.close()
@@ -51,9 +51,9 @@ export function CreateProfile({ idx, createProfile }: Props) {
           />
         </svg>
       </div>
-      <TooltipStyled id={`save-character-${idx}`}>Create new profile</TooltipStyled>
+      <TooltipStyled id={`create-profile-${idx}`}>Create new profile</TooltipStyled>
       <TooltipStyled
-        id={`save-character-${idx}`}
+        id={`create-profile-${idx}`}
         ref={tooltipRef}
         imperativeModeOnly
         place="bottom"

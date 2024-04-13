@@ -18,48 +18,52 @@ import { TooltipStyled } from '../Common/TooltipStyled'
 import { PasteButton } from './PasteButton.tsx'
 
 interface Props {
-  idx: number
+  charIndex: number
   character: Character
   profiles: Profile[]
+  selectedCombo: number
   updateCharacter: UpdateCharacter
   canRemove: boolean
-  removeCharacter: () => void
-  handlePaste: (text: string) => void
-  saveProfile: (name: string) => void
-  loadProfile: (profile: Profile | null) => void
+  removeCharacter: (charIndex: number) => void
+  handlePaste: (charIndex: number, text: string) => void
+  createProfile: (charIndex: number, name: string) => void
+  loadProfile: (charIndex: number, profile: Profile | null) => void
   deleteProfile: (profileId: string) => void
 }
 
 export function CharacterComponent({
-  idx,
+  charIndex,
   character,
   profiles,
+  selectedCombo,
   updateCharacter,
   canRemove,
   removeCharacter,
   handlePaste,
-  saveProfile,
+  createProfile,
   loadProfile,
   deleteProfile,
 }: Props) {
   const setCharacterStats = useCallback(
-    (stats: CharacterStatsInput) => updateCharacter({ stats }),
-    [updateCharacter],
+    (stats: CharacterStatsInput) =>
+      updateCharacter({ charIndex, charChanges: { stats } }),
+    [charIndex, updateCharacter],
   )
 
   const setAbilities = useCallback(
-    (abilities: Ability[]) => updateCharacter({ abilities }),
-    [updateCharacter],
+    (abilities: Ability[]) => updateCharacter({ charIndex, comboChanges: { abilities } }),
+    [charIndex, updateCharacter],
   )
 
   const setExternals = useCallback(
-    (newExternals: Ability[]) => updateCharacter({ externals: newExternals }),
-    [updateCharacter],
+    (newExternals: Ability[]) =>
+      updateCharacter({ charIndex, comboChanges: { externals: newExternals } }),
+    [charIndex, updateCharacter],
   )
 
   const setSpec = useCallback(
-    (spec: ClassSpec) => updateCharacter({ classSpec: spec }),
-    [updateCharacter],
+    (spec: ClassSpec) => updateCharacter({ charIndex, charChanges: { classSpec: spec } }),
+    [charIndex, updateCharacter],
   )
 
   const specAbilities =
@@ -79,21 +83,21 @@ export function CharacterComponent({
         />
         <div className="flex flex-col gap-2 items-end">
           <div className="flex gap-2 h-fit">
-            <CreateProfile idx={idx} createProfile={saveProfile} />
+            <CreateProfile idx={charIndex} createProfile={createProfile} />
             <LoadProfile
-              idx={idx}
+              charIndex={charIndex}
               profiles={profiles}
               loadedProfileId={character.loadedProfileId}
               loadProfile={loadProfile}
               deleteProfile={deleteProfile}
             />
-            <PasteButton handlePaste={handlePaste} idx={idx} />
+            <PasteButton handlePaste={handlePaste} charIndex={charIndex} />
 
             {canRemove && (
               <div
                 className="cursor-pointer text-teal-500"
-                onClick={removeCharacter}
-                data-tooltip-id={`delete-character-${idx}`}
+                onClick={() => removeCharacter(charIndex)}
+                data-tooltip-id={`delete-character-${charIndex}`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +113,7 @@ export function CharacterComponent({
                     d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                   />
                 </svg>
-                <TooltipStyled id={`delete-character-${idx}`}>
+                <TooltipStyled id={`delete-character-${charIndex}`}>
                   Remove character
                 </TooltipStyled>
               </div>
@@ -127,9 +131,9 @@ export function CharacterComponent({
       <div className="flex gap-3 items-start flex-col md:flex-row md:items-center">
         <ClassDropdown onChange={setSpec} selectedClassSpec={character.classSpec} />
         <AbilitySelect
-          characterIdx={idx}
+          characterIdx={charIndex}
           availableAbilities={specAbilities}
-          selectedAbilities={character.abilities}
+          selectedAbilities={character.abilityCombos[selectedCombo]!.abilities}
           setSelectedAbilities={setAbilities}
         />
       </div>
@@ -137,7 +141,7 @@ export function CharacterComponent({
       <LabelledAbilitySelect
         label="Externals"
         availableAbilities={externals}
-        selectedAbilities={character.externals}
+        selectedAbilities={character.abilityCombos[selectedCombo]!.externals}
         setSelectedAbilities={setExternals}
       />
     </div>

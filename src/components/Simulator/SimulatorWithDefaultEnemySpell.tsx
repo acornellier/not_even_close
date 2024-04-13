@@ -1,10 +1,10 @@
-import { useToasts } from './Common/Toasts/useToasts'
+import { useToasts } from '../Common/Toasts/useToasts.ts'
 import { useEffect, useState } from 'react'
-import { spellByIdApi } from '../api/spellByIdApi'
-import { Simulator } from './Simulator'
-import { EnemyAbility } from '../backend/enemyAbilities/enemies'
+import { spellByIdApi } from '../../api/spellByIdApi.ts'
+import { Simulator } from '../Simulator.tsx'
+import { EnemyAbility } from '../../backend/enemyAbilities/enemies.ts'
 import { useParams, useSearchParams } from 'react-router-dom'
-import { grimoireToEnemyAbility } from '../backend/enemyAbilities/grimoireConverter.ts'
+import { grimoireToEnemyAbility } from '../../backend/enemyAbilities/grimoireConverter.ts'
 
 export function SimulatorWithDefaultEnemySpell() {
   const { addToast } = useToasts()

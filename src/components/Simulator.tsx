@@ -1,6 +1,5 @@
 import { simulate } from '../backend/sim/sim'
 import { useCallback, useEffect, useState } from 'react'
-import { Ability } from '../backend/ability'
 import { DungeonAbilities } from './EnemyAbilities/DungeonAbilities'
 import { LabelledAbilitySelect } from './Abilities/LabelledAbilitySelect'
 import { groupBuffs } from '../backend/groupAbilities/groupBuffs'
@@ -12,18 +11,16 @@ import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsIn
 import { MoreLess } from './Abilities/MoreLess'
 import { DungeonKey, dungeonKeys, EnemyAbility } from '../backend/enemyAbilities/enemies'
 import { Sidebar } from './Sidebar/Sidebar'
-import { SimContextProvider } from '../util/SimContext'
+import { SimContextProvider } from './Simulator/SimContext.tsx'
 import { groupActives } from '../backend/groupAbilities/groupActives'
 import { DungeonSelect } from './EnemyAbilities/DungeonSelect'
-import { Characters, defaultCharacter, defaultCharacters } from './Characters/Characters'
+import { Characters } from './Characters/Characters'
 import { Button } from './Common/Button'
 import { KeyDetails, Result } from '../backend/sim/simTypes'
 import { useKeyHeld } from '../util/useKeyHeld'
 import { useEnemyAbility } from './EnemyAbilities/useEnemyAbility'
 import { dungeons } from '../backend/enemyAbilities/dungeons.ts'
-
-const defaultGroupBuffs: Ability[] = []
-const defaultGroupActives: Ability[] = []
+import { defaultCharacter, useAbilities } from './Characters/useAbilities.ts'
 
 const defaultKeyDetails: KeyDetails = { keyLevel: 28, isTyran: true }
 
@@ -32,15 +29,15 @@ interface Props {
 }
 
 export function Simulator({ defaultEnemyAbility }: Props) {
-  const [characters, setCharacters] = useLocalStorage('characters', defaultCharacters)
-  const [selectedGroupBuffs, setGroupBuffs] = useLocalStorage<Ability[]>(
-    'groupBuffs',
-    defaultGroupBuffs,
-  )
-  const [selectedGroupActives, setGroupActives] = useLocalStorage<Ability[]>(
-    'groupActives',
-    defaultGroupActives,
-  )
+  const {
+    characters,
+    setCharacters,
+    selectedGroupBuffs,
+    setGroupBuffs,
+    selectedGroupActives,
+    setGroupActives,
+    selectedCombo,
+  } = useAbilities()
 
   const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
   let [selectedDungeonKey, setSelectedDungeonKey] = useLocalStorage<DungeonKey | null>(
@@ -82,6 +79,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
       simulate({
         characters,
         groupAbilities: [...selectedGroupBuffs, ...selectedGroupActives],
+        selectedCombo,
         customDrs: customDrs.split(',').map(Number).filter(Boolean),
         customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
         keyDetails,
@@ -91,6 +89,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
       }),
     [
       characters,
+      selectedCombo,
       customDrs,
       customAbsorbs,
       keyDetails,
@@ -130,21 +129,22 @@ export function Simulator({ defaultEnemyAbility }: Props) {
           <Characters
             characters={characters}
             setCharacters={setCharacters}
-            selectedGroupBuffs={selectedGroupBuffs}
+            selectedGroupBuffs={selectedGroupBuffs[selectedCombo]!}
             setGroupBuffs={setGroupBuffs}
+            selectedCombo={selectedCombo}
           />
 
           <LabelledAbilitySelect
             label="Group buffs"
             availableAbilities={groupBuffs}
-            selectedAbilities={selectedGroupBuffs}
+            selectedAbilities={selectedGroupBuffs[selectedCombo]!}
             setSelectedAbilities={setGroupBuffs}
           />
 
           <LabelledAbilitySelect
             label="Group actives"
             availableAbilities={groupActives}
-            selectedAbilities={selectedGroupActives}
+            selectedAbilities={selectedGroupActives[selectedCombo]!}
             setSelectedAbilities={setGroupActives}
           />
 

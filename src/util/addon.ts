@@ -1,14 +1,13 @@
 ﻿import { classSpecs, WowClass } from '../backend/classes.ts'
-import { Character } from '../backend/characters.ts'
+import { CharacterChanges } from '../backend/characters.ts'
 import { roundTo } from '../backend/utils.ts'
 import { fortitude, markOfTheWild } from '../backend/groupAbilities/groupBuffs.ts'
 import { Ability } from '../backend/ability.ts'
 import { tepidVersatility } from '../backend/groupAbilities/externals.ts'
 
 export interface AddonOutput {
-  character: Partial<Character>
+  charChanges: CharacterChanges
   groupBuffs: Ability[]
-  addTepidVers: boolean
 }
 
 function findValue(lines: string[], key: string) {
@@ -54,7 +53,7 @@ function parseAddon(text: string) {
   }
 }
 
-export function getAddonOutput(text: string): AddonOutput {
+export function getAddonOutput(text: string, charIndex: number): AddonOutput {
   const addonOutput = parseAddon(text)
 
   const character = {
@@ -62,7 +61,7 @@ export function getAddonOutput(text: string): AddonOutput {
     stats: addonOutput.stats,
   }
 
-  let groupBuffs: Ability[] = []
+  const groupBuffs: Ability[] = []
 
   if (addonOutput.buffs.includes(markOfTheWild.spellId)) {
     groupBuffs.push(markOfTheWild)
@@ -80,8 +79,11 @@ export function getAddonOutput(text: string): AddonOutput {
   }
 
   return {
-    character,
+    charChanges: {
+      charIndex,
+      charChanges: character,
+      addTepidVers,
+    },
     groupBuffs,
-    addTepidVers,
   }
 }

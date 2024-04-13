@@ -5,7 +5,7 @@ import { AbilityResult } from '../../backend/sim/simTypes'
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'
 import { AbilityCardExtras } from './AbilityCardExtras'
 import { CardResult } from './CardResult'
-import { WowIcon } from '../Common/WowIcon'
+import { WowSpellIcon } from '../Common/WowSpellIcon.tsx'
 
 interface Props {
   ability: EnemyAbility
@@ -38,19 +38,7 @@ export function EnemyAbilityCard({
     >
       <div className="flex items-center gap-2">
         <div className="flex gap-2 items-center basis-[200px] whitespace-nowrap">
-          <a
-            key={ability.name}
-            className="min-w-[30px]"
-            href={
-              ability.id
-                ? `https://www.wowhead.com/spell=${ability.id}/`
-                : ability.wowheadLink
-            }
-            target="_blank"
-            rel="noreferrer"
-          >
-            <WowIcon icon={ability.icon} size={30} />
-          </a>
+          <WowSpellIcon key={ability.name} ability={ability} />
           <div
             className="text-white"
             data-tooltip-id={`enemy-ability-tooltip-${ability.id}`}
