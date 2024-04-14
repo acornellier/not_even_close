@@ -64,7 +64,6 @@ export interface SimInput {
   characters: Character[]
   groupBuffs: AbilityCombo[]
   groupActives: AbilityCombo[]
-  selectedCombo: number
   customDrs: number[]
   customAbsorbs: number[]
   keyDetails: KeyDetails

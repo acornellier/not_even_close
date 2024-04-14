@@ -9,6 +9,7 @@ interface Props {
   results: DungeonAbilityResult[] | null
   selectedCombo: number
   characterIndex: number
+  setSelectedCombo: (comboIndex: number) => void
 }
 
 export function DungeonAbilityTable({
@@ -16,6 +17,8 @@ export function DungeonAbilityTable({
   trashAbilities,
   results,
   characterIndex,
+  selectedCombo,
+  setSelectedCombo,
 }: Props) {
   if (results === null) return null
 
@@ -43,14 +46,19 @@ export function DungeonAbilityTable({
       </thead>
       <tbody>
         {[...Array(comboCount)].map((_, comboIndex) => {
-          const abilities = results[0]!.characters[characterIndex]![comboIndex]!.abilities
-          console.log(abilities)
+          const abilities = results[0]!.characters[characterIndex]![
+            comboIndex
+          ]!.abilities.filter(({ onByDefault }) => !onByDefault)
+
+          const bg = selectedCombo === comboIndex ? 'bg-teal-200' : 'bg-teal-400'
           return (
             <tr key={comboIndex}>
-              <td className="flex items-center justify-center gap-1 bg-teal-500">
-                {abilities.map((ability) => (
-                  <WowSpellIcon key={ability.name} ability={ability} />
-                ))}
+              <td onClick={() => setSelectedCombo(comboIndex)} className={bg}>
+                <div className={`flex items-center justify-center gap-1`}>
+                  {abilities.map((ability) => (
+                    <WowSpellIcon key={ability.name} ability={ability} />
+                  ))}
+                </div>
               </td>
               {enemyAbilities.map((enemyAbility) => {
                 const abilityResult = results.find(

@@ -37,6 +37,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     selectedGroupActives,
     setGroupActives,
     selectedCombo,
+    setSelectedCombo,
   } = useAbilities()
 
   const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
@@ -80,7 +81,6 @@ export function Simulator({ defaultEnemyAbility }: Props) {
         characters,
         groupBuffs: selectedGroupBuffs,
         groupActives: selectedGroupActives,
-        selectedCombo,
         customDrs: customDrs.split(',').map(Number).filter(Boolean),
         customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
         keyDetails,
@@ -90,7 +90,6 @@ export function Simulator({ defaultEnemyAbility }: Props) {
       }),
     [
       characters,
-      selectedCombo,
       customDrs,
       customAbsorbs,
       keyDetails,
@@ -185,6 +184,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
               onSelect={setEnemyAbility}
               results={result.dungeon}
               selectedCombo={selectedCombo}
+              setSelectedCombo={setSelectedCombo}
             />
           )}
         </div>

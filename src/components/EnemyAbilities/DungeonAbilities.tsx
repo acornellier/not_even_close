@@ -15,6 +15,7 @@ interface Props {
   deselectDungeon: () => void
   results: DungeonAbilityResult[] | null
   selectedCombo: number
+  setSelectedCombo: (comboIndex: number) => void
 }
 
 export function DungeonAbilities({
@@ -24,6 +25,7 @@ export function DungeonAbilities({
   deselectDungeon,
   results,
   selectedCombo,
+  setSelectedCombo,
 }: Props) {
   const [showPeriodic, setShowPeriodic] = useLocalStorage(
     `show-periodic-${dungeon.key}`,
@@ -76,6 +78,7 @@ export function DungeonAbilities({
           results={results}
           selectedCombo={selectedCombo}
           characterIndex={0}
+          setSelectedCombo={setSelectedCombo}
         />
       ) : (
         <DungeonAbilityList

@@ -85,14 +85,13 @@ function getPartialResults(
   characters: Character[],
   groupBuffCombos: AbilityCombo[],
   groupActiveCombos: AbilityCombo[],
-  selectedCombo: number,
 ): CharacterPartialResult[][] {
   return characters.map((character) => {
-    return character.abilityCombos.map<CharacterPartialResult>((combo) => {
-      const groupBuffs = groupBuffCombos[selectedCombo]!
+    return character.abilityCombos.map<CharacterPartialResult>((combo, comboIdx) => {
+      const groupBuffs = groupBuffCombos[comboIdx]!
       const augmentedGroupBuffs = augmentAbilities(groupBuffs, groupBuffs)
 
-      const groupActives = groupActiveCombos[selectedCombo]!
+      const groupActives = groupActiveCombos[comboIdx]!
       const augmentedGroupActives = augmentAbilities(groupActives, groupActives)
 
       const augmentedSelectedAbilities = augmentAbilities(
@@ -197,7 +196,6 @@ export function simulate({
   characters,
   groupBuffs,
   groupActives,
-  selectedCombo,
   customDrs,
   customAbsorbs,
   keyDetails,
@@ -205,12 +203,7 @@ export function simulate({
   dungeon,
   isBeta,
 }: SimInput): Result {
-  const charPartialResults = getPartialResults(
-    characters,
-    groupBuffs,
-    groupActives,
-    selectedCombo,
-  )
+  const charPartialResults = getPartialResults(characters, groupBuffs, groupActives)
 
   const mainResults = getAbilityResult(
     keyDetails,

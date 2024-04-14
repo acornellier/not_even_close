@@ -104,9 +104,9 @@ export function CharAbilityIcon({
   characterIdx,
 }: AbilityIconProps) {
   const augmentedAbilities = ability.abilityAugmentations
-    ? allAbilities.filter(({ spellId }) =>
+    ? allAbilities.filter(({ id }) =>
         ability.abilityAugmentations?.some(
-          (augmentation) => spellId === augmentation.otherSpellId,
+          (augmentation) => id === augmentation.otherSpellId,
         ),
       )
     : null
