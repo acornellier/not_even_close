@@ -8,18 +8,18 @@ export function roundTo(number: number, to: number) {
 }
 
 export function isAbilitySelected(spellId: number, selectedAbilities: Ability[]) {
-  return selectedAbilities.some((selectedAbility) => selectedAbility.spellId === spellId)
+  return selectedAbilities.some((selectedAbility) => selectedAbility.id === spellId)
 }
 
 export function augmentAbilities(abilities: Ability[], selectedAbilities: Ability[]) {
   return abilities.map((specAbility) => {
     const augmentedAbility = { ...specAbility }
 
-    abilities.forEach(({ spellId, abilityAugmentations }) => {
-      if (!abilityAugmentations || !isAbilitySelected(spellId, selectedAbilities)) return
+    abilities.forEach(({ id, abilityAugmentations }) => {
+      if (!abilityAugmentations || !isAbilitySelected(id, selectedAbilities)) return
 
       abilityAugmentations.forEach(({ otherSpellId, field, absorbField, value }) => {
-        if (otherSpellId !== augmentedAbility.spellId) return
+        if (otherSpellId !== augmentedAbility.id) return
 
         if (field === 'absorb') {
           const absorb = augmentedAbility.absorb
@@ -43,7 +43,7 @@ export function augmentAbilities(abilities: Ability[], selectedAbilities: Abilit
 
 export function isAbilityAvailable(ability: Ability, availableAbililties: Ability[]) {
   return availableAbililties.some(
-    (availableAbility) => availableAbility.spellId === ability.spellId,
+    (availableAbility) => availableAbility.id === ability.id,
   )
 }
 

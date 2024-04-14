@@ -3,6 +3,9 @@ import { Ability, AbilityCombo } from '../../backend/ability.ts'
 import { ClassSpec, defaultAbilities } from '../../backend/classes.ts'
 import { Character } from '../../backend/characters.ts'
 import { Dispatch, SetStateAction, useCallback, useMemo } from 'react'
+import { massBarrier } from '../../backend/groupAbilities/groupActives.ts'
+import { atrophicPoison } from '../../backend/groupAbilities/groupBuffs.ts'
+import { blessingOfSacrifice } from '../../backend/groupAbilities/externals.ts'
 
 const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
 export const defaultCharacter: Character = {
@@ -19,13 +22,17 @@ export const defaultCharacter: Character = {
       abilities: defaultAbilities(defaultClassSpec),
       externals: [],
     },
+    {
+      abilities: defaultAbilities(defaultClassSpec),
+      externals: [blessingOfSacrifice],
+    },
   ],
 }
 
 export const defaultCharacters = [defaultCharacter]
 
-const defaultGroupBuffs: AbilityCombo[] = [[]]
-const defaultGroupActives: AbilityCombo[] = [[]]
+const defaultGroupBuffs: AbilityCombo[] = [[], [atrophicPoison]]
+const defaultGroupActives: AbilityCombo[] = [[], [massBarrier]]
 
 export function useAbilities() {
   const [characters, setCharacters] = useLocalStorage('characters2', defaultCharacters)

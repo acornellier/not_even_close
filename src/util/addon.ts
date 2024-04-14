@@ -63,17 +63,17 @@ export function getAddonOutput(text: string, charIndex: number): AddonOutput {
 
   const groupBuffs: Ability[] = []
 
-  if (addonOutput.buffs.includes(markOfTheWild.spellId)) {
+  if (addonOutput.buffs.includes(markOfTheWild.id)) {
     groupBuffs.push(markOfTheWild)
   }
 
   let addTepidVers = false
-  if (addonOutput.buffs.includes(tepidVersatility.spellId)) {
+  if (addonOutput.buffs.includes(tepidVersatility.id)) {
     character.stats.versatilityRaw -= tepidVersatility.versRawIncrease!
     addTepidVers = true
   }
 
-  if (addonOutput.buffs.includes(fortitude.spellId)) {
+  if (addonOutput.buffs.includes(fortitude.id)) {
     character.stats.stamina = Math.ceil(character.stats.stamina / 1.05)
     groupBuffs.push(fortitude)
   }

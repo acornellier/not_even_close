@@ -27,8 +27,7 @@ export function usePaste({ updateCharacter, selectedGroupBuffs, setGroupBuffs }:
       setGroupBuffs([
         ...selectedGroupBuffs,
         ...groupBuffs.filter(
-          (newBuff) =>
-            !selectedGroupBuffs.some((curBuff) => curBuff.spellId === newBuff.spellId),
+          (newBuff) => !selectedGroupBuffs.some((curBuff) => curBuff.id === newBuff.id),
         ),
       ])
 

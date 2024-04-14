@@ -65,7 +65,7 @@ export function useCharacterChanges({
           if (addTepidVers) {
             combo.externals ??= []
 
-            if (!isAbilitySelected(tepidVersatility.spellId, combo.externals)) {
+            if (!isAbilitySelected(tepidVersatility.id, combo.externals)) {
               combo.externals.push(tepidVersatility)
             }
           }

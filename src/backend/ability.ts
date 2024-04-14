@@ -14,7 +14,7 @@ export type AbsorbOptions = {
 
 export type Ability = {
   name: string
-  spellId: number
+  id: number
   onByDefault?: boolean
 
   dr?: number

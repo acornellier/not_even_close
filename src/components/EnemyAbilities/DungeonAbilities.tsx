@@ -60,19 +60,19 @@ export function DungeonAbilities({
             <Toggle label="Periodic" checked={showPeriodic} onChange={setShowPeriodic} />
           )}
         </div>
-        {isSeason4(dungeon.key) && (
-          <div className="flex items-center gap-2">
-            <OnOffStateSelector
-              label1="List"
-              label2="Grid"
-              enabled={isTableView}
-              setIsEnabled={setIsTableView}
-            />
-          </div>
-        )}
+        <div className="flex items-center gap-2">
+          <OnOffStateSelector
+            label1="List"
+            label2="Grid"
+            enabled={isTableView}
+            setIsEnabled={setIsTableView}
+          />
+        </div>
       </div>
       {isTableView ? (
         <DungeonAbilityTable
+          bossAbilities={bossAbilities}
+          trashAbilities={trashAbilities}
           results={results}
           selectedCombo={selectedCombo}
           characterIndex={0}

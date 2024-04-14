@@ -5,7 +5,7 @@ const arcaneWarding: Ability = {
   dr: 0.04,
   drType: 'magic',
   onByDefault: true,
-  spellId: 383092,
+  id: 383092,
   wowheadLink: 'https://www.wowhead.com/spell=383092/arcane-warding',
   icon: 'spell_arcane_arcaneresilience',
 }
@@ -16,7 +16,7 @@ const blazingBarrier: Ability = {
     healthMultiplier: 0.2,
     versAffected: true,
   },
-  spellId: 382791,
+  id: 382791,
   wowheadLink: 'https://www.wowhead.com/spell=382791/molten-barrier',
   icon: 'ability_mage_moltenarmor',
 }
@@ -27,7 +27,7 @@ const iceBarrier: Ability = {
     healthMultiplier: 0.22,
     versAffected: true,
   },
-  spellId: 11426,
+  id: 11426,
   icon: 'spell_ice_lament',
 }
 
@@ -39,7 +39,7 @@ export const prismaticBarrier: Ability = {
   },
   dr: 0.15,
   drType: 'magic',
-  spellId: 235450,
+  id: 235450,
   icon: 'spell_magearmor',
 }
 
@@ -51,14 +51,14 @@ export const improvedPrismaticBarrierAugmentation: AbilityAugmentation = {
 
 export const improvedPrismaticBarrier: Ability = {
   name: 'Improved Prismatic Barrier',
-  spellId: 321745,
+  id: 321745,
   icon: 'spell_magearmor',
   abilityAugmentations: [improvedPrismaticBarrierAugmentation],
 }
 
 const tempestBarrier: Ability = {
   name: 'Tempest Barrier',
-  spellId: 382289,
+  id: 382289,
   absorb: {
     healthMultiplier: 0.06,
     versAffected: true,
@@ -69,7 +69,7 @@ const tempestBarrier: Ability = {
 const iceCold: Ability = {
   name: 'Ice Cold',
   dr: 0.7,
-  spellId: 414658,
+  id: 414658,
   wowheadLink: 'https://www.wowhead.com/spell=414658/ice-cold',
   icon: 'spell_fire_bluefire',
 }
@@ -77,7 +77,7 @@ const iceCold: Ability = {
 const mirrorImage: Ability = {
   name: 'Mirror Image',
   dr: 0.2,
-  spellId: 55342,
+  id: 55342,
   wowheadLink: 'https://www.wowhead.com/spell=55342/mirror-image',
   icon: 'spell_magic_lesserinvisibilty',
 }
@@ -85,7 +85,7 @@ const mirrorImage: Ability = {
 const greaterInvisibility: Ability = {
   name: 'Greater Invisibility',
   dr: 0.6,
-  spellId: 110959,
+  id: 110959,
   wowheadLink: 'https://www.wowhead.com/spell=110959/greater-invisibility',
   icon: 'ability_mage_greaterinvisibility',
 }

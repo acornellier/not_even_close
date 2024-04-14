@@ -90,7 +90,7 @@ function getAugmentationText(augmentation: AbilityAugmentation) {
   if (augmentation.field === 'absorb' && augmentation.absorbField === 'healthMultiplier')
     return `${augmentation.value * 100}% more absorb`
 
-  if (augmentation.otherSpellId === barkskin.spellId)
+  if (augmentation.otherSpellId === barkskin.id)
     return `+${augmentation.value * 100}% AP absorb`
 
   return `+${getEffectText(augmentation.field, augmentation.value)}`
@@ -111,7 +111,7 @@ export function CharAbilityIcon({
       )
     : null
 
-  const isSelected = isAbilitySelected(ability.spellId, selectedAbilities)
+  const isSelected = isAbilitySelected(ability.id, selectedAbilities)
 
   const { result, selectedCombo } = useSimContext()
   let calculatedAbsorb = 0
@@ -129,18 +129,18 @@ export function CharAbilityIcon({
     )
   }
 
-  const tooltipId = `ability-tooltip-${ability.spellId}${
+  const tooltipId = `ability-tooltip-${ability.id}${
     characterIdx ? `-${characterIdx}` : ''
   }`
 
   return (
     <div
-      key={ability.spellId}
+      key={ability.id}
       data-tooltip-id={tooltipId}
       className="cursor-pointer select-none relative"
       onClick={(e) => {
         e.preventDefault()
-        toggleAbility(ability.spellId)
+        toggleAbility(ability.id)
       }}
     >
       <TooltipStyled id={tooltipId}>
@@ -159,12 +159,12 @@ export function CharAbilityIcon({
           })}
           {augmentedAbilities?.map((augmentedAbility) => {
             const augmentation = ability.abilityAugmentations?.find(
-              (augmentation) => augmentation.otherSpellId === augmentedAbility.spellId,
+              (augmentation) => augmentation.otherSpellId === augmentedAbility.id,
             )
             if (!augmentation) return null
 
             return (
-              <Fragment key={augmentedAbility.spellId}>
+              <Fragment key={augmentedAbility.id}>
                 <span>
                   Improves {augmentedAbility.name}: {getAugmentationText(augmentation)}
                 </span>

@@ -2,7 +2,7 @@
 
 const scarsOfSuffering: Ability = {
   name: 'Scars of Suffering',
-  spellId: 428232,
+  id: 428232,
   onByDefault: true,
   versIncrease: 0.04,
   icon: 'spell_fire_felimmolation',
@@ -10,7 +10,7 @@ const scarsOfSuffering: Ability = {
 
 const demonicWards: Ability = {
   name: 'Demonic Wards',
-  spellId: 203513,
+  id: 203513,
   onByDefault: true,
   dr: 0.1,
   drType: 'magic',
@@ -20,7 +20,7 @@ const demonicWards: Ability = {
 
 const illidariKnowledge: Ability = {
   name: 'Illidari Knowledge',
-  spellId: 389696,
+  id: 389696,
   onByDefault: true,
   dr: 0.05,
   drType: 'magic',
@@ -30,7 +30,7 @@ const illidariKnowledge: Ability = {
 
 const willOfTheIllidari: Ability = {
   name: 'Will of the Illidari',
-  spellId: 389695,
+  id: 389695,
   onByDefault: true,
   healthIncrease: 0.05,
   icon: 'ability_demonhunter_spectank',
@@ -39,7 +39,7 @@ const willOfTheIllidari: Ability = {
 
 const blur: Ability = {
   name: 'Blur',
-  spellId: 198589,
+  id: 198589,
   dr: 0.2,
   icon: 'ability_demonhunter_blur',
   wowheadLink: 'https://www.wowhead.com/spell=212800/blur',
@@ -47,7 +47,7 @@ const blur: Ability = {
 
 const deflectingDance: Ability = {
   name: 'Deflecting Dance',
-  spellId: 427776,
+  id: 427776,
   absorb: {
     healthMultiplier: 0.15,
   },
@@ -57,7 +57,7 @@ const deflectingDance: Ability = {
 
 const demonMuzzle: Ability = {
   name: 'Demon Muzzle',
-  spellId: 388111,
+  id: 388111,
   dr: 0.08,
   drType: 'magic',
   icon: 'spell_fire_fireballgreen',
@@ -65,7 +65,7 @@ const demonMuzzle: Ability = {
 
 const demonHide: Ability = {
   name: 'Demon Hide',
-  spellId: 428241,
+  id: 428241,
   onByDefault: true,
   dr: 0.05,
   drType: 'physical',

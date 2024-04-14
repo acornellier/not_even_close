@@ -5,7 +5,7 @@ const inherentResistanceAug: Ability = {
   dr: 0.04,
   drType: 'magic',
   onByDefault: true,
-  spellId: 375544,
+  id: 375544,
   icon: 'inv_misc_rubysanctum1',
 }
 
@@ -17,7 +17,7 @@ const inherentResistanceDevPres: Ability = {
 const obsidianScales: Ability = {
   name: 'Obsidian Scales',
   dr: 0.3,
-  spellId: 363916,
+  id: 363916,
   icon: 'inv_artifact_dragonscales',
   wowheadLink: 'https://www.wowhead.com/spell=363916/obsidian-scales',
 }
@@ -25,7 +25,7 @@ const obsidianScales: Ability = {
 const rushOfVitality: Ability = {
   name: 'Rush of Vitality',
   healthIncrease: 0.2,
-  spellId: 377086,
+  id: 377086,
   icon: 'trade_enchanting_greatermysteriousessence',
 }
 

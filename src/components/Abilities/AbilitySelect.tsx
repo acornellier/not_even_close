@@ -40,13 +40,11 @@ export function AbilitySelect({
     (spellId: number) => {
       if (isAbilitySelected(spellId, selectedAbilities)) {
         setSelectedAbilities(
-          selectedAbilities.filter(
-            (selectedAbility) => selectedAbility.spellId !== spellId,
-          ),
+          selectedAbilities.filter((selectedAbility) => selectedAbility.id !== spellId),
         )
       } else {
         const ability = availableAbilities.find(
-          ({ spellId: otherSpellId }) => otherSpellId === spellId,
+          ({ id: otherSpellId }) => otherSpellId === spellId,
         )
 
         if (ability) setSelectedAbilities([...selectedAbilities, ability])
@@ -69,7 +67,7 @@ export function AbilitySelect({
     <div className="flex gap-1.5 flex-wrap">
       {augmenters.map((ability) => (
         <CharAbilityIcon
-          key={ability.spellId}
+          key={ability.id}
           ability={ability}
           toggleAbility={toggleAbility}
           selectedAbilities={selectedAbilities}
@@ -82,7 +80,7 @@ export function AbilitySelect({
 
       {regulars.map((ability) => (
         <CharAbilityIcon
-          key={ability.spellId}
+          key={ability.id}
           ability={ability}
           toggleAbility={toggleAbility}
           selectedAbilities={selectedAbilities}

@@ -1,14 +1,22 @@
 import { DungeonAbilityResult } from '../../backend/sim/simTypes.ts'
 import { WowSpellIcon } from '../Common/WowSpellIcon.tsx'
-import { CheckCircleIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { EnemyAbility } from '../../backend/enemyAbilities/enemies.ts'
 
 interface Props {
+  bossAbilities: EnemyAbility[]
+  trashAbilities: EnemyAbility[]
   results: DungeonAbilityResult[] | null
   selectedCombo: number
   characterIndex: number
 }
 
-export function DungeonAbilityTable({ results, characterIndex }: Props) {
+export function DungeonAbilityTable({
+  bossAbilities,
+  trashAbilities,
+  results,
+  characterIndex,
+}: Props) {
   if (results === null) return null
 
   const comboCount = results[0]?.characters[0]?.length
@@ -17,16 +25,18 @@ export function DungeonAbilityTable({ results, characterIndex }: Props) {
     return null
   }
 
-  console.log(results)
+  const enemyAbilities = [...bossAbilities, ...trashAbilities]
 
   return (
-    <table className="table-auto border border-gray-400 rounded-md outline-1 overflow-hidden">
+    <table className="dungeon-ability-table table-auto border-2 border-gray-400 rounded-md outline-1 overflow-hidden">
       <thead className="bg-teal-400">
         <tr>
           <th>Ability combos</th>
-          {results.map(({ enemyAbility }) => (
-            <th key={enemyAbility.name} className="p-1">
-              <WowSpellIcon ability={enemyAbility} />
+          {enemyAbilities.map((enemyAbility) => (
+            <th key={enemyAbility.name}>
+              <div className="flex justify-center">
+                <WowSpellIcon ability={enemyAbility} />
+              </div>
             </th>
           ))}
         </tr>
@@ -34,22 +44,36 @@ export function DungeonAbilityTable({ results, characterIndex }: Props) {
       <tbody>
         {[...Array(comboCount)].map((_, comboIndex) => {
           const abilities = results[0]!.characters[characterIndex]![comboIndex]!.abilities
+          console.log(abilities)
           return (
             <tr key={comboIndex}>
-              <td className="flex items-center justify-center p-1 gap-1 bg-teal-500">
+              <td className="flex items-center justify-center gap-1 bg-teal-500">
                 {abilities.map((ability) => (
                   <WowSpellIcon key={ability.name} ability={ability} />
                 ))}
               </td>
-              {results.map((abilityResult) => {
+              {enemyAbilities.map((enemyAbility) => {
+                const abilityResult = results.find(
+                  (result) => result.enemyAbility.name === enemyAbility.name,
+                )
+
+                if (!abilityResult) {
+                  console.error(`No ability result found for ${enemyAbility.name}`)
+                  return null
+                }
+
+                const survival =
+                  abilityResult.characters[characterIndex]![comboIndex]!.healthRemaining >
+                  0
+
                 return (
-                  <td key={abilityResult.enemyAbility.name} className="p-1 bg-teal-500">
-                    {abilityResult.characters[characterIndex]![comboIndex]!
-                      .healthRemaining > 0 ? (
-                      <CheckCircleIcon height={30} color="green" />
-                    ) : (
-                      <XMarkIcon height={30} color="red" />
-                    )}
+                  <td
+                    key={abilityResult.enemyAbility.name}
+                    className={`${survival ? 'bg-green-500' : 'bg-red-500'}`}
+                  >
+                    <div className="flex justify-center">
+                      {survival ? <CheckIcon height={30} /> : <XMarkIcon height={30} />}
+                    </div>
                   </td>
                 )
               })}

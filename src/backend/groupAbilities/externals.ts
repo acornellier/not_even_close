@@ -2,7 +2,7 @@
 
 export const tepidVersatility: Ability = {
   name: 'Phial of Tepid Versatility',
-  spellId: 371172,
+  id: 371172,
   versRawIncrease: 745,
   icon: 'inv_10_alchemy_bottle_shape2_black',
   notes: '3.63% vers = 1.82% DR when below 30% vers',
@@ -10,7 +10,7 @@ export const tepidVersatility: Ability = {
 
 export const icyPreservation: Ability = {
   name: 'Phial of Icy Preservation',
-  spellId: 191326,
+  id: 191326,
   dr: 0.06,
   icon: 'inv_10_alchemy_bottle_shape2_blue',
   wowheadLink: 'https://www.wowhead.com/item=191326/phial-of-icy-preservation',
@@ -18,7 +18,7 @@ export const icyPreservation: Ability = {
 
 export const blessingOfSacrifice: Ability = {
   name: 'Blessing of Sacrifice',
-  spellId: 6940,
+  id: 6940,
   dr: 0.3,
   associatedClass: 'Paladin',
   icon: 'spell_holy_sealofsacrifice',
@@ -28,7 +28,7 @@ export const blessingOfSacrifice: Ability = {
 
 export const ironBark: Ability = {
   name: 'Ironbark',
-  spellId: 102342,
+  id: 102342,
   dr: 0.2,
   associatedSpec: { class: 'Druid', spec: 'Restoration' },
   icon: 'spell_druid_ironbark',
@@ -37,7 +37,7 @@ export const ironBark: Ability = {
 
 export const painSuppression: Ability = {
   name: 'Pain Suppression',
-  spellId: 33206,
+  id: 33206,
   dr: 0.4,
   associatedSpec: { class: 'Priest', spec: 'Discipline' },
   icon: 'spell_holy_painsupression',
@@ -46,7 +46,7 @@ export const painSuppression: Ability = {
 
 export const lifeCocoon: Ability = {
   name: 'Life Cocoon',
-  spellId: 116849,
+  id: 116849,
   associatedSpec: { class: 'Monk', spec: 'Mistweaver' },
   absorb: {
     healthMultiplier: 0.8,
@@ -59,7 +59,7 @@ export const lifeCocoon: Ability = {
 
 export const twinGuardian: Ability = {
   name: 'Twin Guardian (Rescue)',
-  spellId: 370888,
+  id: 370888,
   associatedClass: 'Evoker',
   absorb: {
     healthMultiplier: 0.3,
@@ -72,7 +72,7 @@ export const twinGuardian: Ability = {
 
 export const leafOfTheAncientProtectors: Ability = {
   name: 'Leaf of the Ancient Protectors',
-  spellId: 110009,
+  id: 110009,
   absorb: {
     raw: 348_500,
     versAffected: true,
@@ -83,7 +83,7 @@ export const leafOfTheAncientProtectors: Ability = {
 
 export const fyrakksTaintedRageheart: Ability = {
   name: "Fyrakk's Tainted Rageheart",
-  spellId: 422750,
+  id: 422750,
   absorb: {
     raw: 922_410,
     versAffected: true,
@@ -95,7 +95,7 @@ export const fyrakksTaintedRageheart: Ability = {
 export const ancestralVigor: Ability = {
   name: 'Ancestral Vigor',
   healthIncrease: 0.1,
-  spellId: 207401,
+  id: 207401,
   associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   icon: 'spell_shaman_blessingoftheeternals',
 }
@@ -103,7 +103,7 @@ export const ancestralVigor: Ability = {
 export const earthenHarmony: Ability = {
   name: 'Earthen Harmony',
   dr: 0.06,
-  spellId: 382020,
+  id: 382020,
   associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   icon: 'spell_shaman_improvedearthshield',
 }
@@ -111,7 +111,7 @@ export const earthenHarmony: Ability = {
 export const timeDilation: Ability = {
   name: 'Time Dilation',
   dr: 0.5,
-  spellId: 357170,
+  id: 357170,
   icon: 'ability_evoker_timedilation',
 }
 
