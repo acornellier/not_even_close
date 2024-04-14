@@ -1,6 +1,6 @@
 import { Dungeon, EnemyAbility, isSeason4 } from '../../backend/enemyAbilities/enemies.ts'
 import { EnemyAbilityCard } from './EnemyAbilityCard.tsx'
-import { AbilityResult } from '../../backend/sim/simTypes.ts'
+import { DungeonAbilityResult } from '../../backend/sim/simTypes.ts'
 import { useState } from 'react'
 
 interface Props {
@@ -9,7 +9,8 @@ interface Props {
   dungeon: Dungeon
   selectedAbility: EnemyAbility | null
   onSelect: (bossAbility: EnemyAbility) => void
-  results: AbilityResult[] | null
+  results: DungeonAbilityResult[] | null
+  selectedCombo: number
 }
 
 export function DungeonAbilityList({
@@ -19,6 +20,7 @@ export function DungeonAbilityList({
   selectedAbility,
   onSelect,
   results,
+  selectedCombo,
 }: Props) {
   const [abilityExtras, setAbilityExtras] = useState(new Set<string>())
 
@@ -45,7 +47,7 @@ export function DungeonAbilityList({
             )}
             {abilities.map((ability) => {
               const abilityResult = results?.find(
-                (result) => result.enemyAbilityDetails.name === ability.name,
+                (result) => result.enemyAbility.name === ability.name,
               )
 
               return (
@@ -57,6 +59,7 @@ export function DungeonAbilityList({
                     selectedAbility !== null && selectedAbility.name === ability.name
                   }
                   result={abilityResult}
+                  selectedCombo={selectedCombo}
                   showExtras={abilityExtras.has(ability.name)}
                   toggleExtras={toggleAbilityExtras(ability)}
                   isSeason4={isSeason4(dungeon.key)}

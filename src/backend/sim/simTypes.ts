@@ -1,18 +1,21 @@
 import { ClassSpec } from '../classes'
 import { Ability, AbilityCombo } from '../ability'
 import { Character } from '../characters'
-import { Dungeon } from '../enemyAbilities/enemies'
+import { Dungeon, EnemyAbility } from '../enemyAbilities/enemies'
 
 export interface Result {
   main: AbilityResult
-  dungeon: AbilityResult[]
+  dungeon: DungeonAbilityResult[]
 }
 
 export interface AbilityResult {
   damageScaling: number
   scaledDamage: number
-  enemyAbilityDetails: EnemyAbilityDetails
-  characters: CharacterResult[]
+  characters: CharacterResult[][]
+}
+
+export interface DungeonAbilityResult extends AbilityResult {
+  enemyAbility: EnemyAbility
 }
 
 export interface CharacterStats {

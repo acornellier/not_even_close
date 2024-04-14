@@ -113,17 +113,19 @@ export function CharAbilityIcon({
 
   const isSelected = isAbilitySelected(ability.spellId, selectedAbilities)
 
-  const { result } = useSimContext()
+  const { result, selectedCombo } = useSimContext()
   let calculatedAbsorb = 0
   if (result && ability.absorb) {
     const resultChar =
-      characterIdx !== undefined ? result.main.characters[characterIdx] : undefined
+      characterIdx !== undefined && selectedCombo !== undefined
+        ? result.main.characters[characterIdx]?.[selectedCombo]
+        : undefined
 
     calculatedAbsorb = getMultiplierAbsorb(
       ability.absorb,
       ability,
       resultChar ?? null,
-      result.main.characters,
+      result.main.characters.map((char) => char[selectedCombo]!),
     )
   }
 

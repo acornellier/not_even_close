@@ -1,6 +1,6 @@
 ﻿import { Dungeon, EnemyAbility, isSeason4 } from '../../backend/enemyAbilities/enemies'
 import { Button } from '../Common/Button'
-import { AbilityResult } from '../../backend/sim/simTypes'
+import { DungeonAbilityResult } from '../../backend/sim/simTypes'
 import { useLocalStorage } from '../../util/useLocalStorage'
 import { Toggle } from '../Inputs/Toggle'
 import { WowIcon } from '../Common/WowIcon'
@@ -13,7 +13,8 @@ interface Props {
   selectedAbility: EnemyAbility | null
   onSelect: (bossAbility: EnemyAbility) => void
   deselectDungeon: () => void
-  results: AbilityResult[] | null
+  results: DungeonAbilityResult[] | null
+  selectedCombo: number
 }
 
 export function DungeonAbilities({
@@ -22,6 +23,7 @@ export function DungeonAbilities({
   onSelect,
   deselectDungeon,
   results,
+  selectedCombo,
 }: Props) {
   const [showPeriodic, setShowPeriodic] = useLocalStorage(
     `show-periodic-${dungeon.key}`,
@@ -83,6 +85,7 @@ export function DungeonAbilities({
           selectedAbility={selectedAbility}
           onSelect={onSelect}
           results={results}
+          selectedCombo={selectedCombo}
         />
       )}
     </div>

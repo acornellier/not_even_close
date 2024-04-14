@@ -12,6 +12,7 @@ interface Props {
   onSelect?: () => void
   selected: boolean
   result: AbilityResult | undefined
+  selectedCombo: number
   showExtras: boolean
   toggleExtras: () => void
   isSeason4: boolean
@@ -22,6 +23,7 @@ export function EnemyAbilityCard({
   onSelect,
   selected,
   result,
+  selectedCombo,
   showExtras,
   toggleExtras,
   isSeason4,
@@ -84,7 +86,7 @@ export function EnemyAbilityCard({
           </div>
           <div className="flex gap-2">
             {result?.characters.length === 1 && (
-              <CardResult result={result.characters[0]!} />
+              <CardResult result={result.characters[0]![selectedCombo]!} />
             )}
             {isSeason4 && (
               <Chevron

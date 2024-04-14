@@ -6,11 +6,12 @@ import { KeyDetails, Result } from '../../backend/sim/simTypes'
 
 interface Props {
   result: Result
+  selectedCombo: number
   enemyAbility: EnemyAbility | null
   keyDetails: KeyDetails
 }
 
-export function Sidebar({ result, enemyAbility, keyDetails }: Props) {
+export function Sidebar({ result, selectedCombo, enemyAbility, keyDetails }: Props) {
   return (
     <div className="sm:sticky sm:top-10">
       {result.main.characters.length === 1 ? (
@@ -18,10 +19,12 @@ export function Sidebar({ result, enemyAbility, keyDetails }: Props) {
           result={result.main}
           enemyAbility={enemyAbility}
           keyDetails={keyDetails}
+          selectedCombo={selectedCombo}
         />
       ) : (
         <ResultsMini
           result={result.main}
+          selectedCombo={selectedCombo}
           enemyAbility={enemyAbility}
           keyDetails={keyDetails}
         />

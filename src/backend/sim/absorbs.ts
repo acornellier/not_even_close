@@ -5,12 +5,12 @@ import { ClassSpec, equalSpecs } from '../classes'
 
 export function findAssociatedCharacter<T extends { spec: ClassSpec }>(
   ability: Ability,
-  items: Array<T>
+  items: Array<T>,
 ) {
   return items.find(
     ({ spec }) =>
       (ability.associatedClass && spec.class === ability.associatedClass) ||
-      (ability.associatedSpec && equalSpecs(spec, ability.associatedSpec))
+      (ability.associatedSpec && equalSpecs(spec, ability.associatedSpec)),
   )
 }
 
@@ -31,7 +31,7 @@ function absorbMainStatAmount(absorb: AbsorbOptions, charResult: CharacterPartia
 
 export function calculateAbsorb(
   absorb: AbsorbOptions,
-  charResult: CharacterPartialResult
+  charResult: CharacterPartialResult,
 ) {
   const versMultiplier = absorb.versAffected ? charResult.adjustedStats.versatility : 0
   const healthAmount = (absorb.healthMultiplier ?? 0) * charResult.startingHealth
@@ -44,7 +44,7 @@ export function getMultiplierAbsorb(
   absorb: AbsorbOptions,
   ability: Ability,
   charResult: CharacterPartialResult | null,
-  charPartialResults: CharacterPartialResult[]
+  charPartialResults: CharacterPartialResult[],
 ) {
   if (!absorb.healthMultiplier && !absorb.spMultipler && !absorb.apMultipler) return 0
 
@@ -66,7 +66,7 @@ export function getAbsorbs(
   charResult: CharacterPartialResult,
   customAbsorbs: number[],
   enemyAbilityDetails: EnemyAbilityDetails,
-  charPartialResults: CharacterPartialResult[]
+  charPartialResults: CharacterPartialResult[],
 ) {
   let absorbs = 0
 
@@ -99,7 +99,7 @@ export function getExtraAbsorbs(
   abilities: Ability[],
   startingHealth: number,
   absorbs: number,
-  actualDamageTaken: number
+  actualDamageTaken: number,
 ) {
   let extraAbsorbs = 0
 

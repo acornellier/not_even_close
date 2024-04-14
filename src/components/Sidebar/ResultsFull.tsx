@@ -6,12 +6,13 @@ import { AbilityResult, KeyDetails } from '../../backend/sim/simTypes'
 
 interface Props {
   result: AbilityResult
+  selectedCombo: number
   enemyAbility: EnemyAbility | null
   keyDetails: KeyDetails
 }
 
-export function ResultsFull({ result, enemyAbility, keyDetails }: Props) {
-  const charResult = result.characters[0]
+export function ResultsFull({ result, selectedCombo, enemyAbility, keyDetails }: Props) {
+  const charResult = result.characters[0]?.[selectedCombo]
   if (!charResult) return false
 
   return (

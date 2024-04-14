@@ -108,7 +108,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
   }, [simulateResult])
 
   return (
-    <SimContextProvider result={result}>
+    <SimContextProvider result={result} selectedCombo={selectedCombo}>
       <div className="flex flex-col lg:flex-row gap-2 mb-24">
         <div className="flex flex-col gap-3 grow">
           {(isBeta || (isAltHeld && isShiftHeld)) && (
@@ -183,6 +183,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
               deselectDungeon={() => setSelectedDungeonKey(null)}
               onSelect={setEnemyAbility}
               results={result?.dungeon ?? null}
+              selectedCombo={selectedCombo}
             />
           )}
         </div>
@@ -190,7 +191,12 @@ export function Simulator({ defaultEnemyAbility }: Props) {
         <div className="border-2 mx-2 border-gray-600" />
 
         <div className="basis-[360px] relative">
-          <Sidebar result={result} enemyAbility={enemyAbility} keyDetails={keyDetails} />
+          <Sidebar
+            result={result}
+            selectedCombo={selectedCombo}
+            enemyAbility={enemyAbility}
+            keyDetails={keyDetails}
+          />
         </div>
       </div>
     </SimContextProvider>

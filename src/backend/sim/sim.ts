@@ -7,6 +7,7 @@ import {
   CharacterPartialResult,
   CharacterResult,
   CharacterStats,
+  DungeonAbilityResult,
   EnemyAbilityDetails,
   KeyDetails,
   Result,
@@ -84,39 +85,39 @@ function getPartialResults(
   characters: Character[],
   groupAbilityCombos: AbilityCombo[],
   selectedCombo: number,
-): CharacterPartialResult[] {
-  const groupAbilities = groupAbilityCombos[selectedCombo]!
-  const augmentedGroupAbilities = augmentAbilities(groupAbilities, groupAbilities)
+): CharacterPartialResult[][] {
+  return characters.map((character) => {
+    return character.abilityCombos.map<CharacterPartialResult>((combo) => {
+      const groupAbilities = groupAbilityCombos[selectedCombo]!
+      const augmentedGroupAbilities = augmentAbilities(groupAbilities, groupAbilities)
 
-  return characters.map<CharacterPartialResult>((character) => {
-    const abilityCombo = character.abilityCombos[selectedCombo]!
+      const augmentedSelectedAbilities = augmentAbilities(
+        combo.abilities,
+        combo.abilities,
+      )
 
-    const augmentedSelectedAbilities = augmentAbilities(
-      abilityCombo.abilities,
-      abilityCombo.abilities,
-    )
+      const abilities = [
+        ...augmentedSelectedAbilities,
+        ...combo.externals,
+        ...augmentedGroupAbilities,
+      ]
 
-    const abilities = [
-      ...augmentedSelectedAbilities,
-      ...abilityCombo.externals,
-      ...augmentedGroupAbilities,
-    ]
+      const adjustedStats = getAdjustedStats(character.stats, abilities)
+      const startingHealth = getStartingHealth(adjustedStats, abilities)
 
-    const adjustedStats = getAdjustedStats(character.stats, abilities)
-    const startingHealth = getStartingHealth(adjustedStats, abilities)
-
-    return {
-      spec: character.classSpec,
-      abilities,
-      adjustedStats,
-      startingHealth,
-    }
+      return {
+        spec: character.classSpec,
+        abilities,
+        adjustedStats,
+        startingHealth,
+      }
+    })
   })
 }
 
 function getAbilityResult(
   keyDetails: KeyDetails,
-  charPartialResults: CharacterPartialResult[],
+  charPartialResults: CharacterPartialResult[][],
   enemyAbilityDetails: EnemyAbilityDetails,
   customAbsorbs: number[],
   customDrs: number[],
@@ -130,54 +131,59 @@ function getAbilityResult(
   const scaledDamage = Math.round(enemyAbilityDetails.damage * damageScaling)
 
   return {
-    enemyAbilityDetails,
     damageScaling,
     scaledDamage,
-    characters: charPartialResults.map<CharacterResult>((charResult) => {
-      const { spec, startingHealth, adjustedStats, abilities } = charResult
+    characters: charPartialResults.map((charResultCombos) => {
+      return charResultCombos.map<CharacterResult>((comboResult, comboIndex) => {
+        const { startingHealth, adjustedStats, abilities } = comboResult
 
-      const absorbs = getAbsorbs(
-        charResult,
-        customAbsorbs,
-        enemyAbilityDetails,
-        charPartialResults,
-      )
+        const comboResults = charPartialResults.map(
+          (charResults) => charResults[comboIndex]!,
+        )
 
-      const damageReduction = getDamageReduction(
-        adjustedStats,
-        abilities,
-        customDrs,
-        enemyAbilityDetails,
-        startingHealth,
-        scaledDamage,
-      )
+        const absorbs = getAbsorbs(
+          comboResult,
+          customAbsorbs,
+          enemyAbilityDetails,
+          comboResults,
+        )
 
-      const healthWithAbsorbs = startingHealth + absorbs
-      const mitigatedDamage = Math.round(scaledDamage * damageReduction)
-      const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
+        const damageReduction = getDamageReduction(
+          adjustedStats,
+          abilities,
+          customDrs,
+          enemyAbilityDetails,
+          startingHealth,
+          scaledDamage,
+        )
 
-      const extraAbsorbs = getExtraAbsorbs(
-        abilities,
-        startingHealth,
-        absorbs,
-        actualDamageTaken,
-      )
-      const totalHealth = healthWithAbsorbs + extraAbsorbs
+        const healthWithAbsorbs = startingHealth + absorbs
+        const mitigatedDamage = Math.round(scaledDamage * damageReduction)
+        const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
 
-      const healthRemaining = totalHealth - actualDamageTaken
+        const extraAbsorbs = getExtraAbsorbs(
+          abilities,
+          startingHealth,
+          absorbs,
+          actualDamageTaken,
+        )
+        const totalHealth = healthWithAbsorbs + extraAbsorbs
 
-      return {
-        spec,
-        adjustedStats,
-        abilities,
-        damageReduction,
-        mitigatedDamage,
-        actualDamageTaken,
-        startingHealth,
-        absorbs: absorbs + extraAbsorbs,
-        totalHealth,
-        healthRemaining,
-      }
+        const healthRemaining = totalHealth - actualDamageTaken
+
+        return {
+          spec: comboResult.spec,
+          adjustedStats,
+          abilities,
+          damageReduction,
+          mitigatedDamage,
+          actualDamageTaken,
+          startingHealth,
+          absorbs: absorbs + extraAbsorbs,
+          totalHealth,
+          healthRemaining,
+        }
+      })
     }),
   }
 }
@@ -205,8 +211,9 @@ export function simulate({
   )
 
   const dungeonResults = dungeon
-    ? dungeon.abilities.map((enemyAbility) =>
-        getAbilityResult(
+    ? dungeon.abilities.map<DungeonAbilityResult>((enemyAbility) => ({
+        enemyAbility,
+        ...getAbilityResult(
           keyDetails,
           charPartialResults,
           enemyAbilityToDetails(enemyAbility),
@@ -214,7 +221,7 @@ export function simulate({
           customDrs,
           isBeta,
         ),
-      )
+      }))
     : []
 
   return {
