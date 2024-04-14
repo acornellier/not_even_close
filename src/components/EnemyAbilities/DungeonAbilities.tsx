@@ -96,7 +96,7 @@ export function DungeonAbilities({
             >
               {isTrash && (
                 <div className="bg-teal-700 w-fit px-2 ml-1 -mb-1 rounded-t-md">
-                  Trash abiltiies
+                  Trash abilities
                 </div>
               )}
               {abilities.map((ability) => {
