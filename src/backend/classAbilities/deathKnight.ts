@@ -3,7 +3,7 @@ import { Ability } from '../ability'
 export const willOfTheNecropolis: Ability = {
   name: 'Will of the Necropolis',
   spellId: 206967,
-  iconName: 'achievement_boss_kelthuzad_01',
+  icon: 'achievement_boss_kelthuzad_01',
   notes: 'Damage below 30% Health is reduced by 35%',
 }
 
@@ -15,14 +15,14 @@ const antiMagicShell: Ability = {
     absorbType: 'magic',
     versAffected: true,
   },
-  iconName: 'spell_shadow_antimagicshell',
+  icon: 'spell_shadow_antimagicshell',
 }
 
 const antiMagicBarrier: Ability = {
   name: 'Anti-Magic Barrier',
   spellId: 205727,
   onByDefault: true,
-  iconName: 'spell_shadow_antimagicshell',
+  icon: 'spell_shadow_antimagicshell',
   abilityAugmentations: [
     {
       otherSpellId: antiMagicShell.spellId,
@@ -37,7 +37,7 @@ const gloomWard: Ability = {
   name: 'Gloom Ward',
   spellId: 391571,
   onByDefault: true,
-  iconName: 'ability_rogue_envelopingshadows',
+  icon: 'ability_rogue_envelopingshadows',
   abilityAugmentations: [
     {
       otherSpellId: antiMagicShell.spellId,
@@ -52,14 +52,14 @@ const iceboundFortitude: Ability = {
   name: 'Icebound Fortitude',
   dr: 0.3,
   spellId: 48792,
-  iconName: 'spell_deathknight_iceboundfortitude',
+  icon: 'spell_deathknight_iceboundfortitude',
 }
 
 const lichborne: Ability = {
   name: 'Lichborne',
   dr: 0.15,
   spellId: 49039,
-  iconName: 'spell_shadow_raisedead',
+  icon: 'spell_shadow_raisedead',
 }
 
 export const deathKnightAbilities = [

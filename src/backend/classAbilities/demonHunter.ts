@@ -5,7 +5,7 @@ const scarsOfSuffering: Ability = {
   spellId: 428232,
   onByDefault: true,
   versIncrease: 0.04,
-  iconName: 'spell_fire_felimmolation',
+  icon: 'spell_fire_felimmolation',
 }
 
 const demonicWards: Ability = {
@@ -14,7 +14,7 @@ const demonicWards: Ability = {
   onByDefault: true,
   dr: 0.1,
   drType: 'magic',
-  iconName: 'inv_belt_leather_demonhunter_a_01',
+  icon: 'inv_belt_leather_demonhunter_a_01',
   wowheadLink: 'https://www.wowhead.com/spell=320381/demonic-wards',
 }
 
@@ -24,7 +24,7 @@ const illidariKnowledge: Ability = {
   onByDefault: true,
   dr: 0.05,
   drType: 'magic',
-  iconName: 'spell_mage_overpowered',
+  icon: 'spell_mage_overpowered',
   wowheadLink: 'https://www.wowhead.com/spell=389696/illidari-knowledge',
 }
 
@@ -33,7 +33,7 @@ const willOfTheIllidari: Ability = {
   spellId: 389695,
   onByDefault: true,
   healthIncrease: 0.05,
-  iconName: 'ability_demonhunter_spectank',
+  icon: 'ability_demonhunter_spectank',
   wowheadLink: 'https://www.wowhead.com/spell=389695/will-of-the-illidari',
 }
 
@@ -41,7 +41,7 @@ const blur: Ability = {
   name: 'Blur',
   spellId: 198589,
   dr: 0.2,
-  iconName: 'ability_demonhunter_blur',
+  icon: 'ability_demonhunter_blur',
   wowheadLink: 'https://www.wowhead.com/spell=212800/blur',
 }
 
@@ -51,7 +51,7 @@ const deflectingDance: Ability = {
   absorb: {
     healthMultiplier: 0.15,
   },
-  iconName: 'ability_ironmaidens_bladerush',
+  icon: 'ability_ironmaidens_bladerush',
   wowheadLink: 'https://www.wowhead.com/spell=427776/deflecting-dance',
 }
 
@@ -60,7 +60,7 @@ const demonMuzzle: Ability = {
   spellId: 388111,
   dr: 0.08,
   drType: 'magic',
-  iconName: 'spell_fire_fireballgreen',
+  icon: 'spell_fire_fireballgreen',
 }
 
 const demonHide: Ability = {
@@ -69,7 +69,7 @@ const demonHide: Ability = {
   onByDefault: true,
   dr: 0.05,
   drType: 'physical',
-  iconName: 'misc_legionfall_demonhunter',
+  icon: 'misc_legionfall_demonhunter',
 }
 
 export const havocAbilities = [

@@ -5,7 +5,7 @@ import { Dungeon, EnemyAbility } from '../enemyAbilities/enemies'
 
 export interface Result {
   main: AbilityResult
-  dungeon: DungeonAbilityResult[]
+  dungeon: DungeonAbilityResult[] | null
 }
 
 export interface AbilityResult {
@@ -62,7 +62,8 @@ export interface EnemyAbilityDetails {
 
 export interface SimInput {
   characters: Character[]
-  groupAbilities: AbilityCombo[]
+  groupBuffs: AbilityCombo[]
+  groupActives: AbilityCombo[]
   selectedCombo: number
   customDrs: number[]
   customAbsorbs: number[]

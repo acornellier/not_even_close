@@ -73,9 +73,9 @@ export function DungeonAbilities({
       </div>
       {isTableView ? (
         <DungeonAbilityTable
-          bossAbilities={bossAbilities}
-          trashAbilities={trashAbilities}
           results={results}
+          selectedCombo={selectedCombo}
+          characterIndex={0}
         />
       ) : (
         <DungeonAbilityList

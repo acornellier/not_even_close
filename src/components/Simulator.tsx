@@ -78,7 +78,8 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     () =>
       simulate({
         characters,
-        groupAbilities: [...selectedGroupBuffs, ...selectedGroupActives],
+        groupBuffs: selectedGroupBuffs,
+        groupActives: selectedGroupActives,
         selectedCombo,
         customDrs: customDrs.split(',').map(Number).filter(Boolean),
         customAbsorbs: customAbsorbs.split(',').map(Number).filter(Boolean),
@@ -182,7 +183,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
               selectedAbility={enemyAbility}
               deselectDungeon={() => setSelectedDungeonKey(null)}
               onSelect={setEnemyAbility}
-              results={result?.dungeon ?? null}
+              results={result.dungeon}
               selectedCombo={selectedCombo}
             />
           )}

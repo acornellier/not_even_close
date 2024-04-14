@@ -1,8 +1,11 @@
 import { WowIcon } from './WowIcon.tsx'
-import { EnemyAbility } from '../../backend/enemyAbilities/enemies.ts'
 
 interface Props {
-  ability: EnemyAbility
+  ability: {
+    id?: number
+    icon: string
+    wowheadLink?: string
+  }
 }
 
 export function WowSpellIcon({ ability }: Props) {

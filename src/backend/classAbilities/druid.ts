@@ -5,28 +5,28 @@ const thickHide: Ability = {
   dr: 0.06,
   onByDefault: true,
   spellId: 16931,
-  iconName: 'inv_misc_pelt_bear_03',
+  icon: 'inv_misc_pelt_bear_03',
 }
 
 const risingLight: Ability = {
   name: 'Rising Light, Falling Night',
   versIncrease: 0.02,
   spellId: 417712,
-  iconName: 'spell_druid_equinox',
+  icon: 'spell_druid_equinox',
 }
 
 const bearForm: Ability = {
   name: 'Bear Form',
   staminaIncrease: 0.25,
   spellId: 5487,
-  iconName: 'ability_racial_bearform',
+  icon: 'ability_racial_bearform',
 }
 
 const lycarasTeachings: Ability = {
   name: "Lycara's Teachings",
   onByDefault: false,
   spellId: 378988,
-  iconName: 'inv_trinket_ardenweald_02_green',
+  icon: 'inv_trinket_ardenweald_02_green',
   notes:
     'You might not receive the vers buff for up to 5 seconds after swapping to Bear Form',
   abilityAugmentations: [
@@ -42,7 +42,7 @@ const ursineVigorOnePoint: Ability = {
   name: 'Ursine Vigor (1 point)',
   talentPoints: 1,
   spellId: 377842_1,
-  iconName: 'ability_druid_markofursol',
+  icon: 'ability_druid_markofursol',
   abilityAugmentations: [
     {
       otherSpellId: bearForm.spellId,
@@ -56,7 +56,7 @@ const ursineVigorTwoPoints: Ability = {
   name: 'Ursine Vigor (2 points)',
   talentPoints: 2,
   spellId: 377842_2,
-  iconName: 'ability_druid_markofursol',
+  icon: 'ability_druid_markofursol',
   abilityAugmentations: [
     {
       otherSpellId: bearForm.spellId,
@@ -69,7 +69,7 @@ const ursineVigorTwoPoints: Ability = {
 const heartOfTheWild: Ability = {
   name: 'Heart of the Wild',
   spellId: 319454,
-  iconName: 'spell_holy_blessingofagility',
+  icon: 'spell_holy_blessingofagility',
   abilityAugmentations: [
     {
       otherSpellId: bearForm.spellId,
@@ -86,7 +86,7 @@ export const barkskin: Ability = {
   absorb: {
     versAffected: true,
   },
-  iconName: 'spell_nature_stoneclawtotem',
+  icon: 'spell_nature_stoneclawtotem',
   notes:
     'The Matted Fur absorb is exact for Balance and Resto, but slightly off for Feral and Guardian due to weapon dps missing.',
 }
@@ -103,28 +103,28 @@ const mattedFur: Ability = {
       value: 3.125,
     },
   ],
-  iconName: 'inv_misc_pelt_15',
+  icon: 'inv_misc_pelt_15',
 }
 
 const survivalInsticts: Ability = {
   name: 'Survival Instincts',
   dr: 0.5,
   spellId: 61336,
-  iconName: 'ability_druid_tigersroar',
+  icon: 'ability_druid_tigersroar',
 }
 
 const protectiveGrowth: Ability = {
   name: 'Protective Growth',
   dr: 0.05,
   spellId: 391947,
-  iconName: 'spell_nature_resistnature',
+  icon: 'spell_nature_resistnature',
 }
 
 const innerPeace: Ability = {
   name: 'Inner Peace (Tranq)',
   dr: 0.2,
   spellId: 197073,
-  iconName: 'ability_druid_dreamstate',
+  icon: 'ability_druid_dreamstate',
 }
 
 export const druidBalanceAbilities = [

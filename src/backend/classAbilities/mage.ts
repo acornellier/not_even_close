@@ -7,7 +7,7 @@ const arcaneWarding: Ability = {
   onByDefault: true,
   spellId: 383092,
   wowheadLink: 'https://www.wowhead.com/spell=383092/arcane-warding',
-  iconName: 'spell_arcane_arcaneresilience',
+  icon: 'spell_arcane_arcaneresilience',
 }
 
 const blazingBarrier: Ability = {
@@ -18,7 +18,7 @@ const blazingBarrier: Ability = {
   },
   spellId: 382791,
   wowheadLink: 'https://www.wowhead.com/spell=382791/molten-barrier',
-  iconName: 'ability_mage_moltenarmor',
+  icon: 'ability_mage_moltenarmor',
 }
 
 const iceBarrier: Ability = {
@@ -28,7 +28,7 @@ const iceBarrier: Ability = {
     versAffected: true,
   },
   spellId: 11426,
-  iconName: 'spell_ice_lament',
+  icon: 'spell_ice_lament',
 }
 
 export const prismaticBarrier: Ability = {
@@ -40,7 +40,7 @@ export const prismaticBarrier: Ability = {
   dr: 0.15,
   drType: 'magic',
   spellId: 235450,
-  iconName: 'spell_magearmor',
+  icon: 'spell_magearmor',
 }
 
 export const improvedPrismaticBarrierAugmentation: AbilityAugmentation = {
@@ -52,7 +52,7 @@ export const improvedPrismaticBarrierAugmentation: AbilityAugmentation = {
 export const improvedPrismaticBarrier: Ability = {
   name: 'Improved Prismatic Barrier',
   spellId: 321745,
-  iconName: 'spell_magearmor',
+  icon: 'spell_magearmor',
   abilityAugmentations: [improvedPrismaticBarrierAugmentation],
 }
 
@@ -63,7 +63,7 @@ const tempestBarrier: Ability = {
     healthMultiplier: 0.06,
     versAffected: true,
   },
-  iconName: 'inv_shield_1h_artifactstormfist_d_04',
+  icon: 'inv_shield_1h_artifactstormfist_d_04',
 }
 
 const iceCold: Ability = {
@@ -71,7 +71,7 @@ const iceCold: Ability = {
   dr: 0.7,
   spellId: 414658,
   wowheadLink: 'https://www.wowhead.com/spell=414658/ice-cold',
-  iconName: 'spell_fire_bluefire',
+  icon: 'spell_fire_bluefire',
 }
 
 const mirrorImage: Ability = {
@@ -79,7 +79,7 @@ const mirrorImage: Ability = {
   dr: 0.2,
   spellId: 55342,
   wowheadLink: 'https://www.wowhead.com/spell=55342/mirror-image',
-  iconName: 'spell_magic_lesserinvisibilty',
+  icon: 'spell_magic_lesserinvisibilty',
 }
 
 const greaterInvisibility: Ability = {
@@ -87,7 +87,7 @@ const greaterInvisibility: Ability = {
   dr: 0.6,
   spellId: 110959,
   wowheadLink: 'https://www.wowhead.com/spell=110959/greater-invisibility',
-  iconName: 'ability_mage_greaterinvisibility',
+  icon: 'ability_mage_greaterinvisibility',
 }
 
 export const mageArcaneAbilities = [

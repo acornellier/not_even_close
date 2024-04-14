@@ -5,7 +5,7 @@ const obduracy: Ability = {
   aoeDr: 0.02,
   onByDefault: true,
   spellId: 385427,
-  iconName: 'ability_paladin_speedoflight',
+  icon: 'ability_paladin_speedoflight',
 }
 
 const sanctifiedPlatesRetProt: Ability = {
@@ -13,7 +13,7 @@ const sanctifiedPlatesRetProt: Ability = {
   aoeDr: 0.1,
   onByDefault: true,
   spellId: 402964,
-  iconName: 'inv_chest_plate_raidpaladin_s_01',
+  icon: 'inv_chest_plate_raidpaladin_s_01',
 }
 
 const sanctifiedPlatesHoly: Ability = {
@@ -21,7 +21,7 @@ const sanctifiedPlatesHoly: Ability = {
   aoeDr: 0.06,
   onByDefault: true,
   spellId: 402964,
-  iconName: 'inv_chest_plate_raidpaladin_s_01',
+  icon: 'inv_chest_plate_raidpaladin_s_01',
 }
 
 const blessingOfDusk: Ability = {
@@ -29,7 +29,7 @@ const blessingOfDusk: Ability = {
   dr: 0.05,
   onByDefault: true,
   spellId: 385126,
-  iconName: 'achievement_zone_newshadowmoonvalley',
+  icon: 'achievement_zone_newshadowmoonvalley',
   notes: 'Blessing of Dusk is usually active, but not always',
 }
 
@@ -37,7 +37,7 @@ const divineProtection: Ability = {
   name: 'Divine Protection',
   dr: 0.2,
   spellId: 498,
-  iconName: 'spell_holy_divineprotection',
+  icon: 'spell_holy_divineprotection',
 }
 
 const shieldOfVengeance: Ability = {
@@ -47,14 +47,14 @@ const shieldOfVengeance: Ability = {
     versAffected: true,
   },
   spellId: 184662,
-  iconName: 'ability_paladin_shieldofthetemplar',
+  icon: 'ability_paladin_shieldofthetemplar',
 }
 
 const aegisOfProtection: Ability = {
   name: 'Aegis of Protection',
   spellId: 403654,
   onByDefault: true,
-  iconName: 'spell_holy_holyprotection',
+  icon: 'spell_holy_holyprotection',
   notes: 'Bugged. Increases Shield of Vengeance by 20% instead of 10%.',
   abilityAugmentations: [
     {

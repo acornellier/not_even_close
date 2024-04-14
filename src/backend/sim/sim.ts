@@ -83,13 +83,17 @@ function getStartingHealth(characterStats: CharacterStats, abilities: Ability[])
 
 function getPartialResults(
   characters: Character[],
-  groupAbilityCombos: AbilityCombo[],
+  groupBuffCombos: AbilityCombo[],
+  groupActiveCombos: AbilityCombo[],
   selectedCombo: number,
 ): CharacterPartialResult[][] {
   return characters.map((character) => {
     return character.abilityCombos.map<CharacterPartialResult>((combo) => {
-      const groupAbilities = groupAbilityCombos[selectedCombo]!
-      const augmentedGroupAbilities = augmentAbilities(groupAbilities, groupAbilities)
+      const groupBuffs = groupBuffCombos[selectedCombo]!
+      const augmentedGroupBuffs = augmentAbilities(groupBuffs, groupBuffs)
+
+      const groupActives = groupActiveCombos[selectedCombo]!
+      const augmentedGroupActives = augmentAbilities(groupActives, groupActives)
 
       const augmentedSelectedAbilities = augmentAbilities(
         combo.abilities,
@@ -99,7 +103,8 @@ function getPartialResults(
       const abilities = [
         ...augmentedSelectedAbilities,
         ...combo.externals,
-        ...augmentedGroupAbilities,
+        ...augmentedGroupBuffs,
+        ...augmentedGroupActives,
       ]
 
       const adjustedStats = getAdjustedStats(character.stats, abilities)
@@ -190,7 +195,8 @@ function getAbilityResult(
 
 export function simulate({
   characters,
-  groupAbilities,
+  groupBuffs,
+  groupActives,
   selectedCombo,
   customDrs,
   customAbsorbs,
@@ -199,7 +205,12 @@ export function simulate({
   dungeon,
   isBeta,
 }: SimInput): Result {
-  const charPartialResults = getPartialResults(characters, groupAbilities, selectedCombo)
+  const charPartialResults = getPartialResults(
+    characters,
+    groupBuffs,
+    groupActives,
+    selectedCombo,
+  )
 
   const mainResults = getAbilityResult(
     keyDetails,
@@ -210,19 +221,20 @@ export function simulate({
     isBeta,
   )
 
-  const dungeonResults = dungeon
-    ? dungeon.abilities.map<DungeonAbilityResult>((enemyAbility) => ({
-        enemyAbility,
-        ...getAbilityResult(
-          keyDetails,
-          charPartialResults,
-          enemyAbilityToDetails(enemyAbility),
-          customAbsorbs,
-          customDrs,
-          isBeta,
-        ),
-      }))
-    : []
+  const dungeonResults =
+    dungeon === null
+      ? null
+      : dungeon.abilities.map<DungeonAbilityResult>((enemyAbility) => ({
+          enemyAbility,
+          ...getAbilityResult(
+            keyDetails,
+            charPartialResults,
+            enemyAbilityToDetails(enemyAbility),
+            customAbsorbs,
+            customDrs,
+            isBeta,
+          ),
+        }))
 
   return {
     main: mainResults,

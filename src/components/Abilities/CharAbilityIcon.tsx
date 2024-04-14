@@ -192,7 +192,7 @@ export function CharAbilityIcon({
         className={`rounded border-2 border-gray-600`}
         height={iconSize}
         width={iconSize}
-        src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}
+        src={`https://wow.zamimg.com/images/wow/icons/large/${ability.icon}.jpg`}
         alt={ability.name}
       />
     </div>

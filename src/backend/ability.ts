@@ -32,7 +32,7 @@ export type Ability = {
   associatedSpec?: ClassSpec
   talentPoints?: number
 
-  iconName: string
+  icon: string
   wowheadLink?: string
   notes?: string
 }
