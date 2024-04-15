@@ -1,5 +1,5 @@
 import { classSpecs, WowClass, WowSpec } from '../../backend/classes'
-import { Image } from './Image.tsx'
+import { ZamIcon } from './ZamIcon.tsx'
 
 interface Props {
   wowClass: WowClass
@@ -10,9 +10,9 @@ interface Props {
 
 export function SpecIcon({ wowClass, spec, size, className }: Props) {
   return (
-    <Image
+    <ZamIcon
       className={`rounded ${className}`}
-      src={`https://wow.zamimg.com/images/wow/icons/medium/${classSpecs[wowClass][spec]!.icon}.jpg`}
+      src={`https://wow.zamimg.com/images/wow/icons/large/${classSpecs[wowClass][spec]!.icon}.jpg`}
       size={size}
       alt={spec}
     />

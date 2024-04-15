@@ -1,6 +1,5 @@
 import { DetailedHTMLProps, forwardRef, ImgHTMLAttributes } from 'react'
 import { isDev } from '../../util/env.ts'
-import vercelConfig from '../../../vercel.json'
 
 interface Props
   extends DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> {
@@ -8,13 +7,7 @@ interface Props
   size: number
 }
 
-const allowedSizes = vercelConfig.images.sizes
-
-export const Image = forwardRef<HTMLImageElement, Props>((props, ref) => {
-  if (!allowedSizes.includes(props.size)) {
-    console.error(`Image size not configured in vercel: ${props.size}`)
-  }
-
+export const ZamIcon = forwardRef<HTMLImageElement, Props>((props, ref) => {
   return (
     <img
       {...props}
@@ -25,10 +18,10 @@ export const Image = forwardRef<HTMLImageElement, Props>((props, ref) => {
       src={
         isDev
           ? props.src
-          : `/_vercel/image?url=${encodeURIComponent(props.src)}&w=${props.size}&q=100`
+          : `/_vercel/image?url=${encodeURIComponent(props.src)}&w=56&q=100`
       }
     />
   )
 })
 
-Image.displayName = 'Image'
+ZamIcon.displayName = 'Image'

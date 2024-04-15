@@ -11,7 +11,7 @@ import { useSimContext } from '../../util/useSimContext.ts'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { getMultiplierAbsorb } from '../../backend/sim/absorbs'
 import { barkskin } from '../../backend/classAbilities/druid'
-import { Image } from '../Common/Image.tsx'
+import { ZamIcon } from '../Common/ZamIcon.tsx'
 
 const iconSize = 40
 
@@ -187,7 +187,7 @@ export function CharAbilityIcon({
           style={{ height: iconSize, width: iconSize }}
         />
       )}
-      <Image
+      <ZamIcon
         className={`rounded border-2 border-gray-600`}
         size={iconSize}
         src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}

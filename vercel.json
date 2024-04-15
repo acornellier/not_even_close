@@ -1,7 +1,7 @@
 {
   "rewrites": [{ "source": "/spell/(.*)", "destination": "/" }],
   "images": {
-    "sizes": [20, 24, 30, 32, 36, 40],
+    "sizes": [56],
     "minimumCacheTTL": 2592000,
     "remotePatterns": [
       {
