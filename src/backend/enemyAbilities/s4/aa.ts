@@ -1,4 +1,4 @@
-import { EnemyAbility } from '../enemies'
+import type { EnemyAbility } from '../enemies'
 import { getEnemySpellS4 } from '../grimoire'
 
 const burstForth = getEnemySpellS4(388923, {

@@ -1,4 +1,4 @@
-﻿import { CharacterStatsInput } from '../../backend/characters'
+﻿import type { CharacterStatsInput } from '../../backend/characters'
 import { NumericInput } from '../Inputs/NumericInput'
 import {
   armorToPhysicalDr,
@@ -6,7 +6,7 @@ import {
   staminaToHp,
   versRawToPercent,
 } from '../../backend/stats'
-import { Ability } from '../../backend/ability'
+import type { Ability } from '../../backend/ability'
 import { roundTo } from '../../backend/utils'
 
 interface Props {

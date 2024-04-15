@@ -1,4 +1,4 @@
-import { Ability } from '../ability'
+import type { Ability } from '../ability'
 
 const calmingPresenceMistweaver: Ability = {
   name: 'Calming Presence',

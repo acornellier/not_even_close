@@ -1,6 +1,7 @@
-﻿import { createContext, ReactNode, useMemo } from 'react'
+﻿import type { ReactNode} from 'react';
+import { createContext, useMemo } from 'react'
 
-import { Result } from '../backend/sim/simTypes.ts'
+import type { Result } from '../backend/sim/simTypes.ts'
 
 export interface SimContext {
   result: Result | null

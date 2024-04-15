@@ -1,5 +1,6 @@
 ﻿import { useState } from 'react'
-import { classColors, ClassSpec, classSpecs, WowClass } from '../../backend/classes'
+import type { ClassSpec, WowClass } from '../../backend/classes';
+import { classColors, classSpecs } from '../../backend/classes'
 import { SpecIcon } from '../Common/SpecIcon'
 import { Button } from '../Common/Button'
 

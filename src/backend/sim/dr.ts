@@ -1,5 +1,5 @@
-import { CharacterStats, EnemyAbilityDetails } from './simTypes'
-import { Ability } from '../ability'
+import type { CharacterStats, EnemyAbilityDetails } from './simTypes'
+import type { Ability } from '../ability'
 import { dampenHarm } from '../classAbilities/monk'
 import { armorToPhysicalDr } from '../stats'
 

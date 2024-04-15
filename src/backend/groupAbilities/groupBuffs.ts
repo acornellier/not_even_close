@@ -1,4 +1,4 @@
-﻿import { Ability } from '../ability'
+﻿import type { Ability } from '../ability'
 
 export const fortitude: Ability = {
   name: 'Power Word: Fortitude',

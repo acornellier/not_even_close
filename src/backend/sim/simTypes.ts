@@ -1,7 +1,7 @@
-import { ClassSpec } from '../classes'
-import { Ability } from '../ability'
-import { Character } from '../characters'
-import { Dungeon } from '../enemyAbilities/enemies'
+import type { ClassSpec } from '../classes'
+import type { Ability } from '../ability'
+import type { Character } from '../characters'
+import type { Dungeon } from '../enemyAbilities/enemies'
 
 export interface Result {
   main: AbilityResult

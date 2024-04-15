@@ -1,4 +1,5 @@
-import { Label, LabelProps } from './Label'
+import type { LabelProps } from './Label';
+import { Label } from './Label'
 
 export interface ButtonProps extends Omit<LabelProps, 'Button'> {}
 

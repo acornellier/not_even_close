@@ -1,4 +1,4 @@
-import {
+import type {
   Character,
   CharacterStatsInput,
   Profile,
@@ -7,11 +7,12 @@ import {
 import { CharacterStatsForm } from './CharacterStatsForm'
 import { ClassDropdown } from '../Abilities/ClassDropdown'
 import { AbilitySelect } from '../Abilities/AbilitySelect'
-import { ClassSpec, classSpecs } from '../../backend/classes'
+import type { ClassSpec} from '../../backend/classes';
+import { classSpecs } from '../../backend/classes'
 import { LabelledAbilitySelect } from '../Abilities/LabelledAbilitySelect'
 import { externals } from '../../backend/groupAbilities/externals'
 import { useCallback } from 'react'
-import { Ability } from '../../backend/ability'
+import type { Ability } from '../../backend/ability'
 import { CreateProfile } from './CreateProfile'
 import { LoadProfile } from './LoadProfile'
 import { TooltipStyled } from '../Common/TooltipStyled'

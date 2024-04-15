@@ -1,8 +1,8 @@
 ﻿import { ResultsFull } from './ResultsFull'
 import { ResultsMini } from './ResultsMini'
 import { Instructions } from './Instructions'
-import { EnemyAbility } from '../../backend/enemyAbilities/enemies'
-import { KeyDetails, Result } from '../../backend/sim/simTypes'
+import type { EnemyAbility } from '../../backend/enemyAbilities/enemies'
+import type { KeyDetails, Result } from '../../backend/sim/simTypes'
 
 interface Props {
   result: Result

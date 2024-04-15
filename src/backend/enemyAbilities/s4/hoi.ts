@@ -1,4 +1,4 @@
-﻿import { EnemyAbility } from '../enemies'
+﻿import type { EnemyAbility } from '../enemies'
 import { getEnemySpellS4 } from '../grimoire'
 
 const staticSurge = getEnemySpellS4(384015, (baseSpell) => ({

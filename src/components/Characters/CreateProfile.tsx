@@ -1,7 +1,8 @@
 import { TooltipStyled } from '../Common/TooltipStyled'
-import { FormEvent, useRef, useState } from 'react'
+import type { FormEvent} from 'react';
+import { useRef, useState } from 'react'
 import { Input } from '../Inputs/Input'
-import { TooltipRefProps } from 'react-tooltip'
+import type { TooltipRefProps } from 'react-tooltip'
 import { Button } from '../Common/Button'
 
 interface Props {

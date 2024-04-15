@@ -2,7 +2,7 @@ import { useToasts } from './Common/Toasts/useToasts'
 import { useEffect, useState } from 'react'
 import { spellByIdApi } from '../api/spellByIdApi'
 import { Simulator } from './Simulator'
-import { EnemyAbility } from '../backend/enemyAbilities/enemies'
+import type { EnemyAbility } from '../backend/enemyAbilities/enemies'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { grimoireToEnemyAbility } from '../backend/enemyAbilities/grimoireConverter.ts'
 

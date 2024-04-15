@@ -1,4 +1,4 @@
-﻿import { Ability } from '../../backend/ability'
+﻿import type { Ability } from '../../backend/ability'
 import {
   augmentAbilities,
   isAbilityAvailable,

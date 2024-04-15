@@ -1,4 +1,4 @@
-﻿import { EnemyAbilityDetails } from '../sim/simTypes'
+﻿import type { EnemyAbilityDetails } from '../sim/simTypes'
 
 export type TimeBetweenCasts = number | [number, number]
 

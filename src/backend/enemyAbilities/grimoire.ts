@@ -1,4 +1,4 @@
-import { EnemyAbility } from './enemies'
+import type { EnemyAbility } from './enemies'
 import { getGrimoireSpell } from 'grimoire-wow'
 import { grimoireToEnemyAbility } from './grimoireConverter.ts'
 

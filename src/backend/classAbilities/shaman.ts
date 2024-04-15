@@ -1,4 +1,4 @@
-import { Ability } from '../ability'
+import type { Ability } from '../ability'
 
 const elementalWardingEnh: Ability = {
   name: 'Elemental Warding',

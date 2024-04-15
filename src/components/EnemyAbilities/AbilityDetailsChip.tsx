@@ -1,4 +1,4 @@
-﻿import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
+﻿import type { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
 
 interface Props
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

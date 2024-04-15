@@ -1,4 +1,5 @@
-﻿import { Input, InputProps } from './Input'
+﻿import type { InputProps } from './Input';
+import { Input } from './Input'
 
 interface Props extends Omit<InputProps, 'onChange' | 'value'> {
   max?: number

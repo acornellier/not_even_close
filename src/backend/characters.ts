@@ -1,5 +1,5 @@
-﻿import { ClassSpec } from './classes'
-import { Ability } from './ability'
+﻿import type { ClassSpec } from './classes'
+import type { Ability } from './ability'
 
 export interface CharacterStatsInput {
   stamina: number | undefined

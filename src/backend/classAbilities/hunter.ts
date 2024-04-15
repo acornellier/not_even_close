@@ -1,4 +1,4 @@
-import { Ability } from '../ability'
+import type { Ability } from '../ability'
 
 const aspectOfTheBeast: Ability = {
   name: 'Aspect of the Beast',

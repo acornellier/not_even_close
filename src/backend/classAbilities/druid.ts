@@ -1,4 +1,4 @@
-import { Ability } from '../ability'
+import type { Ability } from '../ability'
 
 const thickHide: Ability = {
   name: 'Thick Hide',

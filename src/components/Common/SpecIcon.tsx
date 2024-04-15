@@ -1,4 +1,5 @@
-import { classSpecs, WowClass, WowSpec } from '../../backend/classes'
+import type { WowClass, WowSpec } from '../../backend/classes';
+import { classSpecs } from '../../backend/classes'
 import { ZamIcon } from './ZamIcon.tsx'
 
 interface Props {

@@ -1,8 +1,8 @@
 import { useLocalStorage } from '../../util/useLocalStorage'
-import { EnemyAbility } from '../../backend/enemyAbilities/enemies'
+import type { EnemyAbility } from '../../backend/enemyAbilities/enemies'
 import { useCallback, useEffect } from 'react'
 import { enemyAbilityToDetails } from '../../backend/utils'
-import { EnemyAbilityDetails } from '../../backend/sim/simTypes'
+import type { EnemyAbilityDetails } from '../../backend/sim/simTypes'
 
 const defaultEnemyDetails: EnemyAbilityDetails = {
   damage: 100_000,

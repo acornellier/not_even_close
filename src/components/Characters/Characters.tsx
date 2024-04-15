@@ -1,8 +1,9 @@
-import { Dispatch, Fragment, SetStateAction, useEffect } from 'react'
-import { Character, Profile } from '../../backend/characters'
+import type { Dispatch, SetStateAction} from 'react';
+import { Fragment, useEffect } from 'react'
+import type { Character, Profile } from '../../backend/characters'
 import { CharacterComponent } from './CharacterComponent'
 import { usePaste } from '../../util/usePaste'
-import { Ability } from '../../backend/ability'
+import type { Ability } from '../../backend/ability'
 import { useLocalStorage } from '../../util/useLocalStorage'
 import { useCharacterChanges } from './useCharacterChanges'
 import { defaultCharacters } from './defaultCharacters.ts'

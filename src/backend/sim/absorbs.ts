@@ -1,7 +1,8 @@
-import { Ability, AbsorbOptions } from '../ability'
-import { CharacterPartialResult, EnemyAbilityDetails } from './simTypes'
+import type { Ability, AbsorbOptions } from '../ability'
+import type { CharacterPartialResult, EnemyAbilityDetails } from './simTypes'
 import { willOfTheNecropolis } from '../classAbilities/deathKnight'
-import { ClassSpec, equalSpecs } from '../classes'
+import type { ClassSpec} from '../classes';
+import { equalSpecs } from '../classes'
 
 export function findAssociatedCharacter<T extends { spec: ClassSpec }>(
   ability: Ability,

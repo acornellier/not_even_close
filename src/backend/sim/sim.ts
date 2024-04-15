@@ -1,8 +1,8 @@
-import { Character, CharacterStatsInput } from '../characters'
-import { Ability } from '../ability'
+import type { Character, CharacterStatsInput } from '../characters'
+import type { Ability } from '../ability'
 import { augmentAbilities, enemyAbilityToDetails } from '../utils'
 import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from '../stats'
-import {
+import type {
   AbilityResult,
   CharacterPartialResult,
   CharacterResult,

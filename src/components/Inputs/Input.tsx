@@ -1,4 +1,4 @@
-﻿import { DetailedHTMLProps, InputHTMLAttributes, ReactNode } from 'react'
+﻿import type { DetailedHTMLProps, InputHTMLAttributes, ReactNode } from 'react'
 import { TooltipStyled } from '../Common/TooltipStyled'
 
 export interface InputProps

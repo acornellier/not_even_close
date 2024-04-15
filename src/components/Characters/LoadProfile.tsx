@@ -1,8 +1,8 @@
 import { TooltipStyled } from '../Common/TooltipStyled'
-import { Profile } from '../../backend/characters'
+import type { Profile } from '../../backend/characters'
 import { SpecIcon } from '../Common/SpecIcon'
 import { useRef } from 'react'
-import { TooltipRefProps } from 'react-tooltip'
+import type { TooltipRefProps } from 'react-tooltip'
 import { Button } from '../Common/Button'
 
 interface Props {

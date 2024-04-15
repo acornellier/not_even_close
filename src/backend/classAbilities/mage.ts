@@ -1,4 +1,4 @@
-import { Ability, AbilityAugmentation } from '../ability'
+import type { Ability, AbilityAugmentation } from '../ability'
 
 const arcaneWarding: Ability = {
   name: 'Arcane Warding',

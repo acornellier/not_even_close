@@ -1,6 +1,6 @@
-import { EnemyAbility } from '../../backend/enemyAbilities/enemies'
+import type { EnemyAbility } from '../../backend/enemyAbilities/enemies'
 
-import { KeyDetails } from '../../backend/sim/simTypes'
+import type { KeyDetails } from '../../backend/sim/simTypes'
 import { WowIcon } from '../Common/WowIcon'
 
 interface Props {

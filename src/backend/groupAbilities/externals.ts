@@ -1,4 +1,4 @@
-﻿import { Ability } from '../ability'
+﻿import type { Ability } from '../ability'
 
 export const tepidVersatility: Ability = {
   name: 'Phial of Tepid Versatility',

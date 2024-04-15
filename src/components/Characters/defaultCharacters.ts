@@ -1,5 +1,6 @@
-import { Character } from '../../backend/characters.ts'
-import { ClassSpec, defaultAbilities } from '../../backend/classes.ts'
+import type { Character } from '../../backend/characters.ts'
+import type { ClassSpec} from '../../backend/classes.ts';
+import { defaultAbilities } from '../../backend/classes.ts'
 
 const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
 

@@ -1,8 +1,9 @@
-﻿import { classSpecs, WowClass } from '../backend/classes.ts'
-import { Character } from '../backend/characters.ts'
+﻿import type { WowClass } from '../backend/classes.ts';
+import { classSpecs } from '../backend/classes.ts'
+import type { Character } from '../backend/characters.ts'
 import { roundTo } from '../backend/utils.ts'
 import { fortitude, markOfTheWild } from '../backend/groupAbilities/groupBuffs.ts'
-import { Ability } from '../backend/ability.ts'
+import type { Ability } from '../backend/ability.ts'
 import { tepidVersatility } from '../backend/groupAbilities/externals.ts'
 
 export interface AddonOutput {

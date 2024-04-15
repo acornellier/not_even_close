@@ -13,7 +13,8 @@ import { dotiAbilites } from './s3/doti'
 import { ebAbilities } from './s3/eb'
 import { tottAbilities } from './s3/tott'
 import { wcmAbilities } from './s3/wcm'
-import { Dungeon, isSeason4 } from './enemies'
+import type { Dungeon} from './enemies';
+import { isSeason4 } from './enemies'
 
 export const dungeonsUncompiled: Dungeon[] = [
   {

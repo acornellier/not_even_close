@@ -1,4 +1,4 @@
-﻿import { GrimoireSpell } from 'grimoire-wow'
+﻿import type { GrimoireSpell } from 'grimoire-wow'
 
 export const spellByIdApi = (spellId: number): Promise<GrimoireSpell> =>
   fetch(`/api/spellById/${spellId}`, {

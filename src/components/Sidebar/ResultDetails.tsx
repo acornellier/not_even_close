@@ -1,5 +1,5 @@
 ﻿import { roundTo } from '../../backend/utils'
-import { CharacterResult } from '../../backend/sim/simTypes'
+import type { CharacterResult } from '../../backend/sim/simTypes'
 
 interface Props {
   charResult: CharacterResult

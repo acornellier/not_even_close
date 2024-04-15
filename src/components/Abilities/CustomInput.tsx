@@ -1,4 +1,4 @@
-﻿import { ReactNode } from 'react'
+﻿import type { ReactNode } from 'react'
 import { Label } from '../Common/Label'
 import { TooltipStyled } from '../Common/TooltipStyled'
 

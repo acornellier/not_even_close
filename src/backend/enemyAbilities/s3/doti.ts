@@ -1,4 +1,4 @@
-import { EnemyAbility } from '../enemies'
+import type { EnemyAbility } from '../enemies'
 
 export const chronofade: EnemyAbility = {
   name: 'Chronofade',

@@ -1,9 +1,9 @@
-﻿import { EnemyAbility } from '../../backend/enemyAbilities/enemies'
+﻿import type { EnemyAbility } from '../../backend/enemyAbilities/enemies'
 import { OverkillText } from './OverkillText'
 import { ResultDetails } from './ResultDetails'
 import { SpecIcon } from '../Common/SpecIcon'
 import { EnemyAbilityResult } from './EnemyAbilityResult'
-import { AbilityResult, KeyDetails } from '../../backend/sim/simTypes'
+import type { AbilityResult, KeyDetails } from '../../backend/sim/simTypes'
 
 interface Props {
   result: AbilityResult

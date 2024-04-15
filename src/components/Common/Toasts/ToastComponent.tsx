@@ -3,7 +3,7 @@ import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
 } from '@heroicons/react/24/outline'
-import { Toast } from './ToastProvider'
+import type { Toast } from './ToastProvider'
 import { Label } from '../Label'
 
 interface Props {

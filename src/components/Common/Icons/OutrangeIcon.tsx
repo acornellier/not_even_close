@@ -1,4 +1,5 @@
-import { forwardRef, Ref, SVGProps } from 'react'
+import type { Ref, SVGProps } from 'react';
+import { forwardRef } from 'react'
 
 const OutrangeIcon = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg

@@ -1,9 +1,10 @@
-import { Character, Profile } from '../../backend/characters'
-import { Dispatch, SetStateAction, useCallback } from 'react'
+import type { Character, Profile } from '../../backend/characters'
+import type { Dispatch, SetStateAction} from 'react';
+import { useCallback } from 'react'
 import { defaultAbilities, equalSpecs } from '../../backend/classes'
 import { tepidVersatility } from '../../backend/groupAbilities/externals'
 import { isAbilitySelected } from '../../backend/utils'
-import { Ability } from '../../backend/ability'
+import type { Ability } from '../../backend/ability'
 
 const uniqueAbilityNames = ['ursine vigor']
 const uniqueExternalNames = ['phial']

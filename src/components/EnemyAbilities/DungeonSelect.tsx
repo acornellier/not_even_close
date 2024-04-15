@@ -1,4 +1,5 @@
-﻿import { Dungeon, DungeonKey, isSeason4 } from '../../backend/enemyAbilities/enemies'
+﻿import type { Dungeon, DungeonKey} from '../../backend/enemyAbilities/enemies';
+import { isSeason4 } from '../../backend/enemyAbilities/enemies'
 import { Button } from '../Common/Button'
 import { WowIcon } from '../Common/WowIcon'
 

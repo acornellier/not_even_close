@@ -1,4 +1,5 @@
-import { DetailedHTMLProps, forwardRef, ImgHTMLAttributes } from 'react'
+import type { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
+import { forwardRef } from 'react'
 import { isDev } from '../../util/env.ts'
 
 interface Props

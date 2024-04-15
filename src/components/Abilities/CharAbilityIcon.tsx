@@ -1,9 +1,10 @@
-import {
+import type {
   Ability,
   AbilityAugmentation,
   AbilityField,
-  abilityFields,
-  AbsorbOptions,
+  AbsorbOptions} from '../../backend/ability';
+import {
+  abilityFields
 } from '../../backend/ability'
 import { isAbilitySelected, roundTo } from '../../backend/utils'
 import { Fragment } from 'react'

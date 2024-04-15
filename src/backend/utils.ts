@@ -1,7 +1,7 @@
-﻿import { Ability } from './ability'
-import { EnemyAbility } from './enemyAbilities/enemies'
+﻿import type { Ability } from './ability'
+import type { EnemyAbility } from './enemyAbilities/enemies'
 
-import { EnemyAbilityDetails } from './sim/simTypes'
+import type { EnemyAbilityDetails } from './sim/simTypes'
 
 export function roundTo(number: number, to: number) {
   return Math.round(number * 10 ** to) / 10 ** to

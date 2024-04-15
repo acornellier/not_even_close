@@ -1,7 +1,7 @@
 ﻿import { useCallback, useEffect } from 'react'
 import { getAddonOutput, isAddonPaste } from './addon.ts'
-import { Ability } from '../backend/ability.ts'
-import { UpdateCharacter } from '../backend/characters.ts'
+import type { Ability } from '../backend/ability.ts'
+import type { UpdateCharacter } from '../backend/characters.ts'
 import { useToasts } from '../components/Common/Toasts/useToasts.ts'
 
 interface Props {

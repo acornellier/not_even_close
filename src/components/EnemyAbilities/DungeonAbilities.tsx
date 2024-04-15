@@ -1,7 +1,8 @@
-﻿import { Dungeon, EnemyAbility, isSeason4 } from '../../backend/enemyAbilities/enemies'
+﻿import type { Dungeon, EnemyAbility} from '../../backend/enemyAbilities/enemies';
+import { isSeason4 } from '../../backend/enemyAbilities/enemies'
 import { EnemyAbilityCard } from './EnemyAbilityCard'
 import { Button } from '../Common/Button'
-import { AbilityResult } from '../../backend/sim/simTypes'
+import type { AbilityResult } from '../../backend/sim/simTypes'
 import { useState } from 'react'
 import { useLocalStorage } from '../../util/useLocalStorage'
 import { Toggle } from '../Inputs/Toggle'

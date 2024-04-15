@@ -1,4 +1,4 @@
-﻿import { CharacterResult } from '../../backend/sim/simTypes'
+﻿import type { CharacterResult } from '../../backend/sim/simTypes'
 import { AbilityDetailsChip } from './AbilityDetailsChip'
 
 interface Props {

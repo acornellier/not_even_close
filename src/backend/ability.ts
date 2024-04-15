@@ -1,4 +1,4 @@
-﻿import { ClassSpec, WowClass } from './classes'
+﻿import type { ClassSpec, WowClass } from './classes'
 
 export type DamageType = 'magic' | 'physical'
 
