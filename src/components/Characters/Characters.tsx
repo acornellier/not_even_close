@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction} from 'react';
+import type { Dispatch, SetStateAction } from 'react'
 import { Fragment, useEffect } from 'react'
 import type { Character, Profile } from '../../backend/characters'
 import { CharacterComponent } from './CharacterComponent'
@@ -42,6 +42,8 @@ export function Characters({
   })
 
   const handlePaste = usePaste({
+    characters,
+    setCharacters,
     updateCharacterIdx,
     selectedGroupBuffs,
     setGroupBuffs,

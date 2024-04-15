@@ -1,16 +1,19 @@
-﻿import type { WowClass } from '../backend/classes.ts';
+﻿import type { ClassSpec, WowClass } from '../backend/classes.ts'
 import { classSpecs } from '../backend/classes.ts'
-import type { Character } from '../backend/characters.ts'
+import { CharacterStatsInput } from '../backend/characters.ts'
 import { roundTo } from '../backend/utils.ts'
 import { fortitude, markOfTheWild } from '../backend/groupAbilities/groupBuffs.ts'
 import type { Ability } from '../backend/ability.ts'
 import { tepidVersatility } from '../backend/groupAbilities/externals.ts'
 
-export interface AddonOutput {
-  character: Partial<Character>
+export interface AddonCharacter {
+  classSpec: ClassSpec
+  stats: CharacterStatsInput
   groupBuffs: Ability[]
   addTepidVers: boolean
 }
+
+export type AddonOutput = AddonCharacter[]
 
 function findValue(lines: string[], key: string) {
   for (const line of lines) {
@@ -29,60 +32,65 @@ export function isAddonPaste(text: string) {
 }
 
 function parseAddon(text: string) {
-  const lines = text.split('\n')
+  const sections = text.split('##################')
+  return sections.map((section) => {
+    const lines = section.split('\n')
 
-  const wowClass = findValue(lines, 'class') as WowClass
-  const spec = findValue(lines, 'spec')
-  const isValidClassSpec = classSpecs[wowClass]?.[spec] !== undefined
+    const wowClass = findValue(lines, 'class') as WowClass
+    const spec = findValue(lines, 'spec')
+    const isValidClassSpec = classSpecs[wowClass]?.[spec] !== undefined
 
-  const stamina = Number(findValue(lines, 'stamina'))
-  const versatilityRaw = Number(findValue(lines, 'versatilityRaw'))
-  const avoidanceRaw = Number(findValue(lines, 'avoidanceRaw'))
-  const armor = Number(findValue(lines, 'armor'))
-  const mainStat = Number(findValue(lines, 'mainStat'))
-  const buffs = findValue(lines, 'buffs')
+    if (!isValidClassSpec) throw new Error(`Invalid class spec: ${wowClass} ${spec}`)
 
-  return {
-    spec: isValidClassSpec ? { class: wowClass, spec } : null,
-    stats: {
-      stamina: stamina,
-      versatilityRaw: roundTo(versatilityRaw, 3),
-      avoidanceRaw: roundTo(avoidanceRaw, 3),
-      armor,
-      mainStat,
-    },
-    buffs: buffs.split(',').map(Number),
-  }
+    const stamina = Number(findValue(lines, 'stamina'))
+    const versatilityRaw = Number(findValue(lines, 'versatilityRaw'))
+    const avoidanceRaw = Number(findValue(lines, 'avoidanceRaw'))
+    const armor = Number(findValue(lines, 'armor'))
+    const mainStat = Number(findValue(lines, 'mainStat'))
+    const buffs = findValue(lines, 'buffs')
+
+    return {
+      spec: { class: wowClass, spec },
+      stats: {
+        stamina: stamina,
+        versatilityRaw: roundTo(versatilityRaw, 3),
+        avoidanceRaw: roundTo(avoidanceRaw, 3),
+        armor,
+        mainStat,
+      },
+      buffs: buffs.split(',').map(Number),
+    }
+  })
 }
 
 export function getAddonOutput(text: string): AddonOutput {
-  const addonOutput = parseAddon(text)
+  const output = parseAddon(text)
 
-  const character = {
-    ...(addonOutput.spec ? { classSpec: addonOutput.spec } : {}),
-    stats: addonOutput.stats,
-  }
+  return output.map<AddonCharacter>((characterOutput) => {
+    const stats = characterOutput.stats
 
-  const groupBuffs: Ability[] = []
+    const groupBuffs: Ability[] = []
 
-  if (addonOutput.buffs.includes(markOfTheWild.spellId)) {
-    groupBuffs.push(markOfTheWild)
-  }
+    if (characterOutput.buffs.includes(markOfTheWild.spellId)) {
+      groupBuffs.push(markOfTheWild)
+    }
 
-  let addTepidVers = false
-  if (addonOutput.buffs.includes(tepidVersatility.spellId)) {
-    character.stats.versatilityRaw -= tepidVersatility.versRawIncrease!
-    addTepidVers = true
-  }
+    let addTepidVers = false
+    if (characterOutput.buffs.includes(tepidVersatility.spellId)) {
+      stats.versatilityRaw -= tepidVersatility.versRawIncrease!
+      addTepidVers = true
+    }
 
-  if (addonOutput.buffs.includes(fortitude.spellId)) {
-    character.stats.stamina = Math.ceil(character.stats.stamina / 1.05)
-    groupBuffs.push(fortitude)
-  }
+    if (characterOutput.buffs.includes(fortitude.spellId)) {
+      stats.stamina = Math.ceil(stats.stamina / 1.05)
+      groupBuffs.push(fortitude)
+    }
 
-  return {
-    character,
-    groupBuffs,
-    addTepidVers,
-  }
+    return {
+      classSpec: characterOutput.spec,
+      stats,
+      groupBuffs,
+      addTepidVers,
+    }
+  })
 }
