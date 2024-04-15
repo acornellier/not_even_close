@@ -35,7 +35,7 @@ function getScalingFactor(
 }
 
 function getAdjustedStats(characterStats: CharacterStatsInput, abilities: Ability[]) {
-  let adjustedStats: CharacterStats = {
+  const adjustedStats: CharacterStats = {
     stamina: characterStats.stamina ?? 0,
     versatility: 0,
     avoidance: avoidanceRawToPercent(characterStats.avoidanceRaw ?? 0) / 100,

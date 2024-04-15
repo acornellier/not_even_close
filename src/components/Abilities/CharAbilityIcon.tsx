@@ -7,10 +7,11 @@ import {
 } from '../../backend/ability'
 import { isAbilitySelected, roundTo } from '../../backend/utils'
 import { Fragment } from 'react'
-import { useSimContext } from '../../util/SimContext'
+import { useSimContext } from '../../util/useSimContext.ts'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { getMultiplierAbsorb } from '../../backend/sim/absorbs'
 import { barkskin } from '../../backend/classAbilities/druid'
+import { Image } from '../Common/Image.tsx'
 
 const iconSize = 40
 
@@ -23,7 +24,7 @@ interface AbilityIconProps {
 }
 
 function getAbsorbText(absorb: AbsorbOptions) {
-  let absorbs = []
+  const absorbs = []
   if (absorb.raw) {
     absorbs.push(`${absorb.raw.toLocaleString('en-US')} HP`)
   } else if (absorb.healthMultiplier) {
@@ -186,10 +187,9 @@ export function CharAbilityIcon({
           style={{ height: iconSize, width: iconSize }}
         />
       )}
-      <img
+      <Image
         className={`rounded border-2 border-gray-600`}
-        height={iconSize}
-        width={iconSize}
+        size={iconSize}
         src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}
         alt={ability.name}
       />

@@ -1,3 +1,13 @@
 {
-  "rewrites": [{ "source": "/spell/(.*)", "destination": "/" }]
+  "rewrites": [{ "source": "/spell/(.*)", "destination": "/" }],
+  "images": {
+    "sizes": [20, 24, 30, 32, 36, 40],
+    "minimumCacheTTL": 2592000,
+    "remotePatterns": [
+      {
+        "protocol": "https",
+        "hostname": "wow.zamimg.com"
+      }
+    ]
+  }
 }

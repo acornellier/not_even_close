@@ -15,12 +15,13 @@ import { Sidebar } from './Sidebar/Sidebar'
 import { SimContextProvider } from '../util/SimContext'
 import { groupActives } from '../backend/groupAbilities/groupActives'
 import { DungeonSelect } from './EnemyAbilities/DungeonSelect'
-import { Characters, defaultCharacter, defaultCharacters } from './Characters/Characters'
+import { Characters } from './Characters/Characters'
 import { Button } from './Common/Button'
 import { KeyDetails, Result } from '../backend/sim/simTypes'
 import { useKeyHeld } from '../util/useKeyHeld'
 import { useEnemyAbility } from './EnemyAbilities/useEnemyAbility'
 import { dungeons } from '../backend/enemyAbilities/dungeons.ts'
+import { defaultCharacter, defaultCharacters } from './Characters/defaultCharacters.ts'
 
 const defaultGroupBuffs: Ability[] = []
 const defaultGroupActives: Ability[] = []

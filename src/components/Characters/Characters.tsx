@@ -2,10 +2,10 @@ import { Dispatch, Fragment, SetStateAction, useEffect } from 'react'
 import { Character, Profile } from '../../backend/characters'
 import { CharacterComponent } from './CharacterComponent'
 import { usePaste } from '../../util/usePaste'
-import { ClassSpec, defaultAbilities } from '../../backend/classes'
 import { Ability } from '../../backend/ability'
 import { useLocalStorage } from '../../util/useLocalStorage'
 import { useCharacterChanges } from './useCharacterChanges'
+import { defaultCharacters } from './defaultCharacters.ts'
 
 interface Props {
   characters: Character[]
@@ -14,21 +14,6 @@ interface Props {
   setGroupBuffs: Dispatch<SetStateAction<Ability[]>>
 }
 
-const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
-export const defaultCharacter: Character = {
-  classSpec: defaultClassSpec,
-  stats: {
-    stamina: 41_000,
-    versatilityRaw: 1_000,
-    avoidanceRaw: 325,
-    armor: 20_000,
-    mainStat: 10_000,
-  },
-  abilities: defaultAbilities(defaultClassSpec),
-  externals: [],
-}
-
-export const defaultCharacters = [defaultCharacter]
 const defaultProfiles: Profile[] = []
 
 export function Characters({

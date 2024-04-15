@@ -7,7 +7,8 @@
     "dev": "vite --port 3000",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "eslint --ext .ts,.tsx src"
   },
   "engines": {
     "node": "20"

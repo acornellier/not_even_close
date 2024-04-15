@@ -10,7 +10,7 @@ const uniqueExternalNames = ['phial']
 
 function uniqueAbilities(abilities: Ability[], uniqueNames: string[]) {
   for (const uniqueName of uniqueNames) {
-    let lastIndex = abilities.findLastIndex((ability) =>
+    const lastIndex = abilities.findLastIndex((ability) =>
       ability.name.toLowerCase().includes(uniqueName),
     )
 
@@ -39,7 +39,7 @@ export function useCharacterChanges({ setCharacters, setProfiles, characters }: 
           characters.map((character, index2) => {
             if (index2 !== index) return character
 
-            let specChangeChanges =
+            const specChangeChanges =
               charChanges.classSpec &&
               !equalSpecs(character.classSpec, charChanges.classSpec)
                 ? {

@@ -62,7 +62,7 @@ export function getAddonOutput(text: string): AddonOutput {
     stats: addonOutput.stats,
   }
 
-  let groupBuffs: Ability[] = []
+  const groupBuffs: Ability[] = []
 
   if (addonOutput.buffs.includes(markOfTheWild.spellId)) {
     groupBuffs.push(markOfTheWild)
