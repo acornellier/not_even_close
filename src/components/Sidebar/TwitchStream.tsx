@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from 'react'
 import { Button } from '../Common/Button'
 
-const channel = 'ortemismw'
+const channel = 'zrinn13'
 const videoWidth = 400
 const videoHeight = videoWidth * (9 / 16)
 const chatHeight = 400
