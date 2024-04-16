@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 import { Button } from '../Common/Button'
 import { useExternalScript } from '../../util/useExternalScript.ts'
 
@@ -12,10 +12,12 @@ function TwitchStreamComponent() {
   const [isChatExpanded, setChatExpanded] = useState(false)
 
   const scriptStatus = useExternalScript('/twitch_v1.js')
+  const twitchLoaded = useRef(false)
 
   useEffect(() => {
-    if (scriptStatus !== 'ready') return
+    if (scriptStatus !== 'ready' && !twitchLoaded.current) return
 
+    twitchLoaded.current = true
     const player = new Twitch.Embed('twitch-embed', {
       width: videoWidth,
       height: videoHeight,
