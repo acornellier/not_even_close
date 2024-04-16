@@ -1,5 +1,6 @@
-import { memo, useCallback, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { Button } from '../Common/Button'
+import { useExternalScript } from '../../util/useExternalScript.ts'
 
 const channel = 'zrinn13'
 const videoWidth = 400
@@ -10,7 +11,11 @@ function TwitchStreamComponent() {
   const [isTwitchVisible, setTwitchVisible] = useState(false)
   const [isChatExpanded, setChatExpanded] = useState(false)
 
-  const onLoadTwitchScript = useCallback(() => {
+  const scriptStatus = useExternalScript('/twitch_v1.js')
+
+  useEffect(() => {
+    if (scriptStatus !== 'ready') return
+
     const player = new Twitch.Embed('twitch-embed', {
       width: videoWidth,
       height: videoHeight,
@@ -41,7 +46,7 @@ function TwitchStreamComponent() {
       player.removeEventListener(Twitch.Player.OFFLINE, handleOffline)
       player.addEventListener(Twitch.Player.ONLINE, handleOnline)
     }
-  }, [])
+  }, [scriptStatus])
 
   return (
     <>
@@ -65,7 +70,6 @@ function TwitchStreamComponent() {
         </div>
         <div className="border-2 my-4 border-gray-600 grow" />
       </div>
-      <script src="/twitch_v1.js" onLoad={onLoadTwitchScript} />
     </>
   )
 }
