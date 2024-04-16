@@ -1,8 +1,13 @@
 import { useLocalStorage } from '../../util/useLocalStorage'
-import type { EnemyAbility } from '../../backend/enemyAbilities/enemies'
+import {
+  DungeonKey,
+  dungeonKeys,
+  EnemyAbility,
+} from '../../backend/enemyAbilities/enemies'
 import { useCallback, useEffect } from 'react'
 import { enemyAbilityToDetails } from '../../backend/utils'
 import type { EnemyAbilityDetails } from '../../backend/sim/simTypes'
+import { dungeons } from '../../backend/enemyAbilities/dungeons.ts'
 
 const defaultEnemyDetails: EnemyAbilityDetails = {
   damage: 100_000,
@@ -43,13 +48,44 @@ export function useEnemyAbility({ defaultEnemyAbility }: Props) {
     [setEnemyAbility, setEnemyAbilityDetails],
   )
 
+  let [selectedDungeonKey, setSelectedDungeonKey] = useLocalStorage<DungeonKey | null>(
+    'selectedDungeon',
+    null,
+  )
+
+  const selectedDungeon = dungeons.find(({ key }) => key === selectedDungeonKey) ?? null
+
+  if (selectedDungeonKey && !dungeonKeys.includes(selectedDungeonKey)) {
+    setSelectedDungeonKey(null)
+    selectedDungeonKey = null
+  }
+
   useEffect(() => {
-    if (defaultEnemyAbility) {
-      setEnemyAbilityWrapper(defaultEnemyAbility)
+    if (!defaultEnemyAbility) return
+
+    setEnemyAbilityWrapper(defaultEnemyAbility)
+
+    for (const dungeon of dungeons) {
+      const matchingAbility = dungeon.abilities.find(
+        (spell) => spell.id === defaultEnemyAbility.id,
+      )
+
+      if (matchingAbility) {
+        setSelectedDungeonKey(dungeon.key)
+        setEnemyAbility(matchingAbility)
+        break
+      }
     }
-  }, [defaultEnemyAbility, setEnemyAbilityWrapper])
+  }, [
+    defaultEnemyAbility,
+    setEnemyAbility,
+    setEnemyAbilityWrapper,
+    setSelectedDungeonKey,
+  ])
 
   return {
+    selectedDungeon,
+    setSelectedDungeonKey,
     enemyAbility,
     enemyAbilityDetails,
     setEnemyAbility: setEnemyAbilityWrapper,

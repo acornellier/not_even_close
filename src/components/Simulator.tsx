@@ -10,8 +10,7 @@ import { CustomAbsorbs } from './Abilities/CustomAbsorbs'
 import { KeyDetailsInput } from './Inputs/KeyDetailsInput'
 import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsInput'
 import { MoreLess } from './Abilities/MoreLess'
-import type { DungeonKey, EnemyAbility } from '../backend/enemyAbilities/enemies';
-import { dungeonKeys } from '../backend/enemyAbilities/enemies'
+import type { EnemyAbility } from '../backend/enemyAbilities/enemies'
 import { Sidebar } from './Sidebar/Sidebar'
 import { SimContextProvider } from '../util/SimContext'
 import { groupActives } from '../backend/groupAbilities/groupActives'
@@ -45,20 +44,15 @@ export function Simulator({ defaultEnemyAbility }: Props) {
   )
 
   const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
-  let [selectedDungeonKey, setSelectedDungeonKey] = useLocalStorage<DungeonKey | null>(
-    'selectedDungeon',
-    null,
-  )
 
-  const selectedDungeon = dungeons.find(({ key }) => key === selectedDungeonKey) ?? null
-
-  if (selectedDungeonKey && !dungeonKeys.includes(selectedDungeonKey)) {
-    setSelectedDungeonKey(null)
-    selectedDungeonKey = null
-  }
-
-  const { enemyAbility, enemyAbilityDetails, setEnemyAbility, setEnemyAbilityDetails } =
-    useEnemyAbility({ defaultEnemyAbility })
+  const {
+    selectedDungeon,
+    setSelectedDungeonKey,
+    enemyAbility,
+    enemyAbilityDetails,
+    setEnemyAbility,
+    setEnemyAbilityDetails,
+  } = useEnemyAbility({ defaultEnemyAbility })
 
   const [moreShown, setMoreShown] = useLocalStorage('moreShown', false)
   const [customDrs, setCustomDrs] = useLocalStorage('customDrs', '')
