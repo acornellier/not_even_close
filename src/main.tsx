@@ -4,8 +4,9 @@ import TagManager from 'react-gtm-module'
 import { App } from './App'
 // import { StrictMode } from 'react'
 
-if (process.env.NODE_ENV === 'production')
-  TagManager.initialize({ gtmId: 'G-0XXET0NQC8' })
+// if (process.env.NODE_ENV === 'production')
+console.log('hi')
+TagManager.initialize({ gtmId: 'G-N6CRB9B3CL' })
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <StrictMode>
