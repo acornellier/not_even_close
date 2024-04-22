@@ -1,16 +1,13 @@
 import { useLocalStorage } from '../../util/useLocalStorage'
-import {
-  DungeonKey,
-  dungeonKeys,
-  EnemyAbility,
-} from '../../backend/enemyAbilities/enemies'
+import type { DungeonKey, EnemyAbility } from '../../backend/enemyAbilities/enemies'
+import { dungeonKeys } from '../../backend/enemyAbilities/enemies'
 import { useCallback, useEffect } from 'react'
 import { enemyAbilityToDetails } from '../../backend/utils'
 import type { EnemyAbilityDetails } from '../../backend/sim/simTypes'
 import { dungeons } from '../../backend/enemyAbilities/dungeons.ts'
 
 const defaultEnemyDetails: EnemyAbilityDetails = {
-  damage: 100_000,
+  damage: 200_000,
   aoe: false,
   trashAbility: false,
   physical: false,

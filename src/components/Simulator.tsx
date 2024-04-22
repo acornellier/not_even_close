@@ -26,7 +26,7 @@ import { Modal } from './Common/Modal.tsx'
 const defaultGroupBuffs: Ability[] = []
 const defaultGroupActives: Ability[] = []
 
-const defaultKeyDetails: KeyDetails = { keyLevel: 28, isTyran: true }
+const defaultKeyDetails: KeyDetails = { keyLevel: 15, isTyran: true }
 
 interface Props {
   defaultEnemyAbility?: EnemyAbility
