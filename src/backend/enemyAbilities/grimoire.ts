@@ -6,13 +6,9 @@ type Overrides =
   | Partial<EnemyAbility>
   | ((baseAbility: EnemyAbility) => Partial<EnemyAbility>)
 
-function getEnemySpell(
-  spellId: number,
-  season: 's3' | 's4',
-  overrides?: Overrides,
-): EnemyAbility {
+export function getEnemySpell(spellId: number, overrides?: Overrides): EnemyAbility {
   const spell = getGrimoireSpell(spellId)
-  const baseSpell = grimoireToEnemyAbility(spell, season)
+  const baseSpell = grimoireToEnemyAbility(spell)
 
   return {
     ...baseSpell,
@@ -21,8 +17,3 @@ function getEnemySpell(
       : overrides) || {}),
   }
 }
-
-export const getEnemySpellS3 = (spellId: number, overrides?: Overrides) =>
-  getEnemySpell(spellId, 's3', overrides)
-export const getEnemySpellS4 = (spellId: number, overrides?: Overrides) =>
-  getEnemySpell(spellId, 's4', overrides)

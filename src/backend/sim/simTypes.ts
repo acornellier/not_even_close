@@ -65,5 +65,4 @@ export interface SimInput {
   keyDetails: KeyDetails
   enemyAbilityDetails: EnemyAbilityDetails
   dungeon: Dungeon | null
-  isBeta: boolean
 }

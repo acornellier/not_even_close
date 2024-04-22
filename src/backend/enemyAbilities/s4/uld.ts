@@ -1,15 +1,15 @@
-import { getEnemySpellS4 } from '../grimoire'
+import { getEnemySpell } from '../grimoire'
 
-const ricochetingShield = getEnemySpellS4(369677, {
+const ricochetingShield = getEnemySpell(369677, {
   cooldown: 17,
 })
 
-const earthenShards = getEnemySpellS4(372718, {
+const earthenShards = getEnemySpell(372718, {
   cooldown: [10, 30],
   notes: 'Only the initial hit.',
 })
 
-const crushingStomp = getEnemySpellS4(372701, {
+const crushingStomp = getEnemySpell(372701, {
   cooldown: 12,
 })
 
@@ -25,26 +25,26 @@ const crushingStomp4Stacks = {
   damage: Math.round(crushingStomp.damage * 1.25),
 }
 
-const earthquake = getEnemySpellS4(369328, {
-  damage: getEnemySpellS4(369327).damage * 7,
+const earthquake = getEnemySpell(369328, {
+  damage: getEnemySpell(369327).damage * 7,
   trashAbility: true,
   periodic: true,
   cooldown: 25,
 })
 
-const unstableEmbers = getEnemySpellS4(369116, {
+const unstableEmbers = getEnemySpell(369116, {
   cooldown: 12,
 })
 
-const seekingFlame = getEnemySpellS4(369052, {
+const seekingFlame = getEnemySpell(369052, {
   avoidable: true,
 })
 
-const thunderousClap = getEnemySpellS4(381593, {
+const thunderousClap = getEnemySpell(381593, {
   cooldown: 20,
 })
 
-const wingBuffet = getEnemySpellS4(376049, {
+const wingBuffet = getEnemySpell(376049, {
   cooldown: 23,
 })
 

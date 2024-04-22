@@ -1,22 +1,22 @@
-﻿import { getEnemySpellS4 } from '../grimoire'
+﻿import { getEnemySpell } from '../grimoire'
 
-const explosiveBrand = getEnemySpellS4(374582, { cooldown: 50 })
+const explosiveBrand = getEnemySpell(374582, { cooldown: 50 })
 
-const consumingStomp = getEnemySpellS4(374731, { cooldown: 50 })
+const consumingStomp = getEnemySpell(374731, { cooldown: 50 })
 
-const frostBomb = getEnemySpellS4(386910, {
+const frostBomb = getEnemySpell(386910, {
   cooldown: [15, 30],
 })
 
-const absoluteZero = getEnemySpellS4(388008, (baseSpell) => ({
+const absoluteZero = getEnemySpell(388008, (baseSpell) => ({
   damage: baseSpell.damage / 2,
   cooldown: 60,
   notes: 'Assumes you have 50% DR',
 }))
 
-const unleashedDestruction = getEnemySpellS4(388804, { cooldown: 105 })
+const unleashedDestruction = getEnemySpell(388804, { cooldown: 105 })
 
-const shoulderSlam = getEnemySpellS4(436652, {
+const shoulderSlam = getEnemySpell(436652, {
   trashAbility: true,
   cooldown: 12,
   outrange: 40,

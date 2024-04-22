@@ -1,31 +1,31 @@
 ﻿import type { EnemyAbility } from '../enemies'
-import { getEnemySpellS4 } from '../grimoire'
+import { getEnemySpell } from '../grimoire'
 
-const staticSurge = getEnemySpellS4(384015, (baseSpell) => ({
+const staticSurge = getEnemySpell(384015, (baseSpell) => ({
   damage: baseSpell.damage * 3,
   periodic: true,
   cooldown: 28,
 }))
 
-const powerOverload = getEnemySpellS4(389179, {
+const powerOverload = getEnemySpell(389179, {
   damage: 54713 * 6,
   periodic: true,
   cooldown: 28,
 })
 
-const overpoweringCroak = getEnemySpellS4(385187, (baseSpell) => ({
+const overpoweringCroak = getEnemySpell(385187, (baseSpell) => ({
   damage: baseSpell.damage * 3,
   periodic: true,
   cooldown: 38,
 }))
 
-const toxicEffluvia = getEnemySpellS4(385451, (baseSpell) => ({
+const toxicEffluvia = getEnemySpell(385451, (baseSpell) => ({
   damage: baseSpell.damage * 3,
   periodic: true,
   cooldown: 26,
 }))
 
-const tempestsFury = getEnemySpellS4(388424)
+const tempestsFury = getEnemySpell(388424)
 
 const tempestsFury32: EnemyAbility = {
   ...tempestsFury,
@@ -34,16 +34,16 @@ const tempestsFury32: EnemyAbility = {
   notes: 'Assumes all 4 ads channel for 25 seconds each. More likely to be ~15 stacks.',
 }
 
-const lightningBlast = getEnemySpellS4(395690, {
+const lightningBlast = getEnemySpell(395690, {
   trashAbility: true,
   outrange: 40,
 })
 
-const deepChill = getEnemySpellS4(391634, {
+const deepChill = getEnemySpell(391634, {
   trashAbility: true,
 })
 
-const inundate = getEnemySpellS4(388882, {
+const inundate = getEnemySpell(388882, {
   trashAbility: true,
   outrange: 40,
 })

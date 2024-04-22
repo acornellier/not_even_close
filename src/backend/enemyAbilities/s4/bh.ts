@@ -1,14 +1,15 @@
-﻿import { getEnemySpellS4 } from '../grimoire'
+﻿import { getEnemySpell } from '../grimoire'
 
-const gashFrenzy = getEnemySpellS4(378020, { cooldown: 60 })
+const gashFrenzy = getEnemySpell(378020, { cooldown: 60 })
 
-const earthBolt = getEnemySpellS4(378155, { avoidable: true })
+const earthBolt = getEnemySpell(378155, { avoidable: true })
 
-const witheredEruption = getEnemySpellS4(387264, { cooldown: 45 })
+const witheredEruption = getEnemySpell(387264, { cooldown: 45 })
 
-const stinkBreath = getEnemySpellS4(385186, {
+const stinkBreath = getEnemySpell(385186, {
   trashAbility: true,
   cooldown: 15,
+  outrange: 10,
 })
 
 export const bhAbilities = [gashFrenzy, earthBolt, witheredEruption, stinkBreath]

@@ -14,7 +14,6 @@ interface Props {
   result: AbilityResult | undefined
   showExtras: boolean
   toggleExtras: () => void
-  isSeason4: boolean
 }
 
 export function EnemyAbilityCard({
@@ -24,7 +23,6 @@ export function EnemyAbilityCard({
   result,
   showExtras,
   toggleExtras,
-  isSeason4,
 }: Props) {
   const cardColor = selected ? 'bg-teal-600' : 'bg-teal-900'
   const hoverColor = !selected && 'hover:bg-teal-800'
@@ -41,11 +39,7 @@ export function EnemyAbilityCard({
           <a
             key={ability.name}
             className="min-w-[30px]"
-            href={
-              ability.id
-                ? `https://www.wowhead.com/spell=${ability.id}/`
-                : ability.wowheadLink
-            }
+            href={`https://www.wowhead.com/spell=${ability.id}/`}
             target="_blank"
             rel="noreferrer"
           >
@@ -98,15 +92,13 @@ export function EnemyAbilityCard({
             {result?.characters.length === 1 && (
               <CardResult result={result.characters[0]!} />
             )}
-            {isSeason4 && (
-              <Chevron
-                height={24}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  toggleExtras()
-                }}
-              />
-            )}
+            <Chevron
+              height={24}
+              onClick={(e) => {
+                e.stopPropagation()
+                toggleExtras()
+              }}
+            />
           </div>
         </div>
       </div>

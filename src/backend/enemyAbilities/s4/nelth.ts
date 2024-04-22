@@ -1,26 +1,26 @@
-import { getEnemySpellS4 } from '../grimoire'
+import { getEnemySpell } from '../grimoire'
 
-const lavaSpray = getEnemySpellS4(388296, {
+const lavaSpray = getEnemySpell(388296, {
   cooldown: 30,
   combatDrop: 'cancel',
   outrange: 40,
 })
 
-const volatileMutation = getEnemySpellS4(375890, {
+const volatileMutation = getEnemySpell(375890, {
   name: 'Volatile Mutation',
   icon: 'ability_rhyolith_magmaflow_whole',
   cooldown: 33,
 })
 
-const dragonStrike = getEnemySpellS4(373735, {
+const dragonStrike = getEnemySpell(373735, {
   cooldown: 57,
 })
 
-const groundingSpear = getEnemySpellS4(396672, {
+const groundingSpear = getEnemySpell(396672, {
   cooldown: 57,
 })
 
-const blazingAegis = getEnemySpellS4(374839, {
+const blazingAegis = getEnemySpell(374839, {
   damage: 218851 + 65655 * 4,
   periodic: true,
   cooldown: 31,
@@ -28,12 +28,12 @@ const blazingAegis = getEnemySpellS4(374839, {
   notes: 'Initial hit + 4 ticks',
 })
 
-const scorchingFusillade = getEnemySpellS4(372542, {
+const scorchingFusillade = getEnemySpell(372542, {
   trashAbility: true,
   cooldown: 23,
 })
 
-const candescentTempest = getEnemySpellS4(381663, {
+const candescentTempest = getEnemySpell(381663, {
   damage: (54713 + 91188) * 3,
   trashAbility: true,
   periodic: true,

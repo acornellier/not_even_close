@@ -1,4 +1,4 @@
-import type { ReactNode} from 'react';
+import type { ReactNode } from 'react'
 import { useCallback } from 'react'
 import { useKeyPress } from '../../util/useKeyPress'
 import { useOutsideClick } from '../../util/useOutsideClick'
@@ -42,9 +42,9 @@ export function Modal({
         ref={ref}
         className="relative z-10 w-[500px] flex rounded-lg border-2 border-gray-600"
       >
-        <div className="gritty absolute z-[-10] w-full h-full bg-zinc-700 rounded-lg" />
+        <div className="gritty absolute z-[-10] w-full h-full bg-zinc-800 rounded-lg" />
         <div className="flex flex-col w-full h-full justify-center gap-5 p-5">
-          <h3 className="text-xl font-semibold text-center text-black">{title}</h3>
+          <h3 className="text-xl font-semibold text-center">{title}</h3>
 
           <div className="leading-relaxed">{contents}</div>
 

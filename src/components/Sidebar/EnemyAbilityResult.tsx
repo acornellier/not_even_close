@@ -12,14 +12,7 @@ export function EnemyAbilityResult({ ability, keyDetails }: Props) {
   return (
     ability && (
       <div className="flex gap-1 items-center whitespace-nowrap">
-        <a
-          key={ability.name}
-          href={
-            ability.id
-              ? `https://www.wowhead.com/spell=${ability.id}/`
-              : ability.wowheadLink
-          }
-        >
+        <a key={ability.name} href={`https://www.wowhead.com/spell=${ability.id}/`}>
           <WowIcon icon={ability.icon} size={24} />
         </a>
         <div className="text-white">

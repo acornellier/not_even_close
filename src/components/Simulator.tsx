@@ -18,10 +18,10 @@ import { DungeonSelect } from './EnemyAbilities/DungeonSelect'
 import { Characters } from './Characters/Characters'
 import { Button } from './Common/Button'
 import type { KeyDetails, Result } from '../backend/sim/simTypes'
-import { useKeyHeld } from '../util/useKeyHeld'
 import { useEnemyAbility } from './EnemyAbilities/useEnemyAbility'
 import { dungeons } from '../backend/enemyAbilities/dungeons.ts'
 import { defaultCharacter, defaultCharacters } from './Characters/defaultCharacters.ts'
+import { Modal } from './Common/Modal.tsx'
 
 const defaultGroupBuffs: Ability[] = []
 const defaultGroupActives: Ability[] = []
@@ -69,10 +69,6 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     [setCustomAbsorbs, setCustomDrs, setMoreShown],
   )
 
-  const [isBeta, setIsBeta] = useLocalStorage('s4Beta', false)
-  const isAltHeld = useKeyHeld('Alt')
-  const isShiftHeld = useKeyHeld('Shift')
-
   const simulateResult = useCallback(
     () =>
       simulate({
@@ -83,7 +79,6 @@ export function Simulator({ defaultEnemyAbility }: Props) {
         keyDetails,
         dungeon: selectedDungeon,
         enemyAbilityDetails,
-        isBeta,
       }),
     [
       characters,
@@ -94,7 +89,6 @@ export function Simulator({ defaultEnemyAbility }: Props) {
       selectedGroupBuffs,
       selectedGroupActives,
       selectedDungeon,
-      isBeta,
     ],
   )
 
@@ -104,16 +98,32 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     setResult(simulateResult())
   }, [simulateResult])
 
+  const [modalAck, setModalAck] = useLocalStorage('s4-damage-warning-modal-ack', false)
+
   return (
     <SimContextProvider result={result}>
+      {!modalAck && (
+        <Modal
+          title="Season 4 is live but slightly INNACURATE!"
+          onConfirm={() => setModalAck(true)}
+          onClose={() => setModalAck(true)}
+          contents={
+            <div>
+              Due to the major changes in key scaling, the damage is expected to be
+              slightly different than what is currently shown. Beta results seem
+              unreliable. When the patch goes live, I will verify the in-game numbers and
+              update the simulator accordingly.
+            </div>
+          }
+          buttons={
+            <>
+              <Button onClick={() => setModalAck(true)}>Got it!</Button>
+            </>
+          }
+        />
+      )}
       <div className="flex flex-col lg:flex-row gap-2 mb-24">
         <div className="flex flex-col gap-3 grow">
-          {(isBeta || (isAltHeld && isShiftHeld)) && (
-            <Button className="gap-2 text-lg" onClick={() => setIsBeta(!isBeta)}>
-              {isBeta ? 'Back to Season 3' : 'View Season 4 (WIP)'}
-            </Button>
-          )}
-
           <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
 
           <EnemyAbilityDetailsInput
@@ -169,7 +179,6 @@ export function Simulator({ defaultEnemyAbility }: Props) {
           {!selectedDungeon ? (
             <DungeonSelect
               dungeons={dungeons}
-              isBeta={isBeta}
               setSelectedDungeon={setSelectedDungeonKey}
             />
           ) : (

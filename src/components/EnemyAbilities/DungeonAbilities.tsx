@@ -1,5 +1,4 @@
-﻿import type { Dungeon, EnemyAbility} from '../../backend/enemyAbilities/enemies';
-import { isSeason4 } from '../../backend/enemyAbilities/enemies'
+﻿import type { Dungeon, EnemyAbility } from '../../backend/enemyAbilities/enemies'
 import { EnemyAbilityCard } from './EnemyAbilityCard'
 import { Button } from '../Common/Button'
 import type { AbilityResult } from '../../backend/sim/simTypes'
@@ -63,28 +62,18 @@ export function DungeonAbilities({
             <WowIcon icon={dungeon.icon} size={32} />
             <div className="hidden sm:block">{dungeon.name}</div>
           </Button>
-          {isSeason4(dungeon.key) && (
-            <Toggle
-              label="Avoidable"
-              checked={showAvoidable}
-              onChange={setShowAvoidable}
-            />
-          )}
-          {isSeason4(dungeon.key) && (
-            <Toggle label="Periodic" checked={showPeriodic} onChange={setShowPeriodic} />
-          )}
+          <Toggle label="Avoidable" checked={showAvoidable} onChange={setShowAvoidable} />
+          <Toggle label="Periodic" checked={showPeriodic} onChange={setShowPeriodic} />
         </div>
-        {isSeason4(dungeon.key) && (
-          <div className="flex items-center gap-2">
-            <Button
-              short
-              className="hidden sm:block gap-2"
-              onClick={shouldExpandAll ? expandAll : collapseAll}
-            >
-              {shouldExpandAll ? 'Expand all' : 'Collapse all'}
-            </Button>
-          </div>
-        )}
+        <div className="flex items-center gap-2">
+          <Button
+            short
+            className="hidden sm:block gap-2"
+            onClick={shouldExpandAll ? expandAll : collapseAll}
+          >
+            {shouldExpandAll ? 'Expand all' : 'Collapse all'}
+          </Button>
+        </div>
       </div>
       <div className="flex flex-col gap-y-2 flex-wrap items-stretch">
         {[bossAbilities, trashAbilities].map((abilities) => {
@@ -116,7 +105,6 @@ export function DungeonAbilities({
                     result={abilityResult}
                     showExtras={abilityExtras.has(ability.name)}
                     toggleExtras={toggleAbilityExtras(ability)}
-                    isSeason4={isSeason4(dungeon.key)}
                   />
                 )
               })}

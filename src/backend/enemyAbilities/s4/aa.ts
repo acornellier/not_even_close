@@ -1,21 +1,21 @@
 import type { EnemyAbility } from '../enemies'
-import { getEnemySpellS4 } from '../grimoire'
+import { getEnemySpell } from '../grimoire'
 
-const burstForth = getEnemySpellS4(388923, {
+const burstForth = getEnemySpell(388923, {
   cooldown: 60,
 })
 
-const manaBomb = getEnemySpellS4(386181, {
-  damage: 91188 * 4 + getEnemySpellS4(386202).damage,
+const manaBomb = getEnemySpell(386181, {
+  damage: 91188 * 4 + getEnemySpell(386202).damage,
   cooldown: 25,
   periodic: true,
 })
 
-const arcaneFissure = getEnemySpellS4(388537, {
+const arcaneFissure = getEnemySpell(388537, {
   cooldown: 45,
 })
 
-const surge = getEnemySpellS4(388862, {
+const surge = getEnemySpell(388862, {
   trashAbility: true,
   avoidable: true,
   cooldown: 25,
@@ -23,12 +23,12 @@ const surge = getEnemySpellS4(388862, {
   spellReflect: true,
 })
 
-const viciousAmbush = getEnemySpellS4(388940, {
+const viciousAmbush = getEnemySpell(388940, {
   trashAbility: true,
   los: true,
 })
 
-const expelIntruders = getEnemySpellS4(377912, {
+const expelIntruders = getEnemySpell(377912, {
   trashAbility: true,
   avoidable: true,
   cooldown: 26,
@@ -36,7 +36,7 @@ const expelIntruders = getEnemySpellS4(377912, {
   outrange: 30,
 })
 
-const deafeningScreech = getEnemySpellS4(377009, {
+const deafeningScreech = getEnemySpell(377009, {
   name: 'Screech',
   los: true,
   cooldown: 23,

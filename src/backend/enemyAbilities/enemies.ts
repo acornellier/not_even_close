@@ -3,7 +3,7 @@
 export type TimeBetweenCasts = number | [number, number]
 
 export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
-  id?: number
+  id: number
   name: string
   icon: string
   damage: number
@@ -20,9 +20,6 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   diffuse?: boolean
 
   notes?: string
-
-  // delete this
-  wowheadLink?: string
 }
 
 export const dungeonKeys = [
@@ -35,21 +32,9 @@ export const dungeonKeys = [
   'rlp',
   'uld',
   'all_s4',
-  // s3
-  'brh',
-  'dht',
-  'doti',
-  'ad',
-  'eb',
-  'tott',
-  'wcm',
-  'all_s3',
 ] as const
 
 export type DungeonKey = (typeof dungeonKeys)[number]
-
-export const isSeason4 = (key: DungeonKey) =>
-  ['aa', 'av', 'bh', 'hoi', 'nelth', 'nok', 'rlp', 'uld', 'all_s4'].includes(key)
 
 export type Dungeon = {
   key: DungeonKey
