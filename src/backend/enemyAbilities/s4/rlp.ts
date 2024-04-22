@@ -18,6 +18,7 @@ const infernoTrash = getEnemySpell(373692, {
   name: 'Inferno (Trash)',
   trashAbility: true,
   cooldown: 19,
+  combatDrop: 'cancel',
   notes: 'This does not include the ticking damage. Only the initial groupwide damage.',
 })
 

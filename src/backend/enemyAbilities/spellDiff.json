@@ -469,9 +469,7 @@
     "physical": false,
     "variance": 0,
     "cooldown": 39,
-    "counterplay": {
-      "combatDrop": "cancel"
-    }
+    "combatDrop": "cancel"
   },
   {
     "id": 376896,
@@ -552,6 +550,7 @@
     "variance": 0,
     "trashAbility": true,
     "cooldown": 19,
+    "combatDrop": "cancel",
     "notes": "This does not include the ticking damage. Only the initial groupwide damage."
   },
   {
