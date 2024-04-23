@@ -21,8 +21,6 @@ import type { KeyDetails, Result } from '../backend/sim/simTypes'
 import { useEnemyAbility } from './EnemyAbilities/useEnemyAbility'
 import { dungeons } from '../backend/enemyAbilities/dungeons.ts'
 import { defaultCharacter, defaultCharacters } from './Characters/defaultCharacters.ts'
-import { Modal } from './Common/Modal.tsx'
-import { Label } from './Common/Label.tsx'
 
 const defaultGroupBuffs: Ability[] = []
 const defaultGroupActives: Ability[] = []
@@ -99,36 +97,10 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     setResult(simulateResult())
   }, [simulateResult])
 
-  const [modalAck, setModalAck] = useLocalStorage('s4-damage-warning-modal-ack', false)
-
   return (
     <SimContextProvider result={result}>
-      {!modalAck && (
-        <Modal
-          title="Season 4 is live but slightly INNACURATE!"
-          onConfirm={() => setModalAck(true)}
-          onClose={() => setModalAck(true)}
-          contents={
-            <div>
-              Due to the major changes in key scaling, the damage is expected to be
-              slightly different than what is currently shown. Beta results seem
-              unreliable. When the patch goes live, I will verify the in-game numbers and
-              update the simulator accordingly.
-            </div>
-          }
-          buttons={
-            <>
-              <Button onClick={() => setModalAck(true)}>Got it!</Button>
-            </>
-          }
-        />
-      )}
       <div className="flex flex-col lg:flex-row gap-2 mb-24">
         <div className="flex flex-col gap-3 grow">
-          <Label className="gap-2 text-lg [&]:bg-red-600">
-            WARNING: values may be slightly inaccurate. They are based on PTR values.
-          </Label>
-
           <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
 
           <EnemyAbilityDetailsInput

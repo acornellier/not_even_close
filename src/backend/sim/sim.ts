@@ -17,7 +17,7 @@ import { getDamageReduction } from './dr'
 
 function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isTrashAbility: boolean) {
   let scalingFactor = 1
-  for (let i = 3; i <= keyLevel; ++i) {
+  for (let i = 2; i <= keyLevel; ++i) {
     scalingFactor *= 1.1
   }
 

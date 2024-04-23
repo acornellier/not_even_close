@@ -19,7 +19,7 @@
     "@types/react": "18.2.76",
     "@types/react-dom": "18.2.25",
     "@vitejs/plugin-react-swc": "3.6.0",
-    "grimoire-wow": "1.1.0",
+    "grimoire-wow": "1.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-gtm-module": "2.0.11",
