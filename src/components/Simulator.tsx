@@ -22,6 +22,7 @@ import { useEnemyAbility } from './EnemyAbilities/useEnemyAbility'
 import { dungeons } from '../backend/enemyAbilities/dungeons.ts'
 import { defaultCharacter, defaultCharacters } from './Characters/defaultCharacters.ts'
 import { Modal } from './Common/Modal.tsx'
+import { Label } from './Common/Label.tsx'
 
 const defaultGroupBuffs: Ability[] = []
 const defaultGroupActives: Ability[] = []
@@ -124,6 +125,10 @@ export function Simulator({ defaultEnemyAbility }: Props) {
       )}
       <div className="flex flex-col lg:flex-row gap-2 mb-24">
         <div className="flex flex-col gap-3 grow">
+          <Label className="gap-2 text-lg [&]:bg-red-600">
+            WARNING: values may be slightly inaccurate. They are based on PTR values.
+          </Label>
+
           <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
 
           <EnemyAbilityDetailsInput
