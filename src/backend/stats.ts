@@ -5,8 +5,7 @@ const versConversionFactor = 204.9944775
 const avoidanceConversionFactor = 71.9980604
 
 // Changes every patch
-const armorKValueMplusS3 = 18672.642
-// const armorKValueMplusS4 = 24308.556
+const armorKValueMplusS4 = 24308.556
 
 interface StatBracketBasic {
   size: number
@@ -90,4 +89,4 @@ export const versRawToPercent = (rawVers: number) =>
 export const avoidanceRawToPercent = (rawAvoidance: number) =>
   rawToPercent(rawAvoidance, avoidanceConversionFactor, avoidanceStatBrackets)
 
-export const armorToPhysicalDr = (armor: number) => armor / (armor + armorKValueMplusS3)
+export const armorToPhysicalDr = (armor: number) => armor / (armor + armorKValueMplusS4)
