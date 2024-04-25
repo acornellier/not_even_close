@@ -1,6 +1,6 @@
 ﻿import { getEnemySpell } from '../grimoire'
 
-const explosiveBrand = getEnemySpell(374582, { cooldown: 50 })
+const explosiveBrand = getEnemySpell(374582, { damage: 331247, cooldown: 50 })
 
 const consumingStomp = getEnemySpell(374731, { cooldown: 50 })
 
