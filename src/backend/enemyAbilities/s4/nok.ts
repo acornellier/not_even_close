@@ -17,11 +17,10 @@ const ironSpear = getEnemySpell(376660, {
   combatDrop: 'cancel',
 })
 
-const staticSpear = getEnemySpell(376866, (baseSpell) => ({
-  damage: 364751 + baseSpell.damage,
+const staticSpear = getEnemySpell(376866, {
   cooldown: 39,
   combatDrop: 'cancel',
-}))
+})
 
 const cracklingUpheaval = getEnemySpell(376896, {
   cooldown: 37,
