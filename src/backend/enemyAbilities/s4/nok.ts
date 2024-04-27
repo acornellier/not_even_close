@@ -9,6 +9,7 @@ const lightningStrike = getEnemySpell(384186, {
 })
 
 const galeArrow = getEnemySpell(386037, {
+  damage: 449796,
   cooldown: 57,
 })
 
