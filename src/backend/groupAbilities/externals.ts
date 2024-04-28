@@ -70,15 +70,15 @@ export const twinGuardian: Ability = {
   notes: 'Assumes 300K absorb if you have no evoker selected',
 }
 
-export const leafOfTheAncientProtectors: Ability = {
-  name: 'Leaf of the Ancient Protectors',
-  spellId: 110009,
+export const wardOfFacelessIre: Ability = {
+  name: 'Ward of Faceless Ire',
+  spellId: 401238,
   absorb: {
-    raw: 348_500,
+    raw: 618887,
     versAffected: true,
   },
-  iconName: 'inv_misc_plant_01',
-  notes: 'Assumes ilvl 483, Hero 6/6',
+  iconName: 'inv_10_dungeonjewelry_dragon_trinket_2arcanemagical_green',
+  notes: 'Assumes ilvl 522, Hero 6/6',
 }
 
 export const fyrakksTaintedRageheart: Ability = {
@@ -126,6 +126,6 @@ export const externals: Ability[] = [
   painSuppression,
   timeDilation,
   lifeCocoon,
-  leafOfTheAncientProtectors,
+  wardOfFacelessIre,
   fyrakksTaintedRageheart,
 ]
