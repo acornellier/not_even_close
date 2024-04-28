@@ -20,7 +20,7 @@ const groundingSpear = getEnemySpell(396672, {
   cooldown: 57,
 })
 
-const blazingAegis = getEnemySpell(374839, {
+const blazingAegis = getEnemySpell(375046, {
   damage: 218851 + 65655 * 4,
   periodic: true,
   cooldown: 31,

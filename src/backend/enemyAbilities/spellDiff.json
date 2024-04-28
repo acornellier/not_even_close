@@ -381,12 +381,12 @@
     "cooldown": 57
   },
   {
-    "id": 374839,
+    "id": 375046,
     "name": "Blazing Aegis",
     "icon": "inv_shield_1h_dragondungeon_c_01",
     "damage": 481471,
-    "aoe": false,
-    "physical": true,
+    "aoe": true,
+    "physical": false,
     "variance": 0,
     "periodic": true,
     "cooldown": 31,
