@@ -7,16 +7,17 @@ import type {
 import { CharacterStatsForm } from './CharacterStatsForm'
 import { ClassDropdown } from '../Abilities/ClassDropdown'
 import { AbilitySelect } from '../Abilities/AbilitySelect'
-import type { ClassSpec} from '../../backend/classes';
+import type { ClassSpec } from '../../backend/classes'
 import { classSpecs } from '../../backend/classes'
 import { LabelledAbilitySelect } from '../Abilities/LabelledAbilitySelect'
-import { externals } from '../../backend/groupAbilities/externals'
-import { useCallback } from 'react'
+import { aaVersBuff, externals } from '../../backend/groupAbilities/externals'
+import { useCallback, useMemo } from 'react'
 import type { Ability } from '../../backend/ability'
 import { CreateProfile } from './CreateProfile'
 import { LoadProfile } from './LoadProfile'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { PasteButton } from './PasteButton.tsx'
+import { useSimContext } from '../../util/useSimContext.ts'
 
 interface Props {
   idx: number
@@ -43,6 +44,8 @@ export function CharacterComponent({
   loadProfile,
   deleteProfile,
 }: Props) {
+  const { dungeon } = useSimContext()
+
   const setCharacterStats = useCallback(
     (stats: CharacterStatsInput) => updateCharacter({ stats }),
     [updateCharacter],
@@ -62,6 +65,12 @@ export function CharacterComponent({
     (spec: ClassSpec) => updateCharacter({ classSpec: spec }),
     [updateCharacter],
   )
+
+  const availableExternals = useMemo(() => {
+    const res = [...externals]
+    if (dungeon?.key === 'aa') res.push(aaVersBuff)
+    return res
+  }, [dungeon])
 
   const specAbilities =
     classSpecs[character.classSpec.class][character.classSpec.spec]!.abilities
@@ -137,7 +146,7 @@ export function CharacterComponent({
 
       <LabelledAbilitySelect
         label="Externals"
-        availableAbilities={externals}
+        availableAbilities={availableExternals}
         selectedAbilities={character.externals}
         setSelectedAbilities={setExternals}
       />

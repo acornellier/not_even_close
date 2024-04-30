@@ -8,7 +8,7 @@ export const tepidVersatility: Ability = {
   notes: '3.63% vers = 1.82% DR when below 30% vers',
 }
 
-export const icyPreservation: Ability = {
+const icyPreservation: Ability = {
   name: 'Phial of Icy Preservation',
   spellId: 191326,
   dr: 0.06,
@@ -16,7 +16,7 @@ export const icyPreservation: Ability = {
   wowheadLink: 'https://www.wowhead.com/item=191326/phial-of-icy-preservation',
 }
 
-export const blessingOfSacrifice: Ability = {
+const blessingOfSacrifice: Ability = {
   name: 'Blessing of Sacrifice',
   spellId: 6940,
   dr: 0.3,
@@ -26,7 +26,7 @@ export const blessingOfSacrifice: Ability = {
   notes: 'Wrong for holy paladin where it is actually 32%',
 }
 
-export const ironBark: Ability = {
+const ironBark: Ability = {
   name: 'Ironbark',
   spellId: 102342,
   dr: 0.2,
@@ -35,7 +35,7 @@ export const ironBark: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=102342/ironbark',
 }
 
-export const painSuppression: Ability = {
+const painSuppression: Ability = {
   name: 'Pain Suppression',
   spellId: 33206,
   dr: 0.4,
@@ -44,7 +44,7 @@ export const painSuppression: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=33206/pain-suppression',
 }
 
-export const lifeCocoon: Ability = {
+const lifeCocoon: Ability = {
   name: 'Life Cocoon',
   spellId: 116849,
   associatedSpec: { class: 'Monk', spec: 'Mistweaver' },
@@ -57,7 +57,7 @@ export const lifeCocoon: Ability = {
   notes: 'Assumes 900K absorb if you have no mistweaver selected',
 }
 
-export const twinGuardian: Ability = {
+const twinGuardian: Ability = {
   name: 'Twin Guardian (Rescue)',
   spellId: 370888,
   associatedClass: 'Evoker',
@@ -70,7 +70,7 @@ export const twinGuardian: Ability = {
   notes: 'Assumes 300K absorb if you have no evoker selected',
 }
 
-export const wardOfFacelessIre: Ability = {
+const wardOfFacelessIre: Ability = {
   name: 'Ward of Faceless Ire',
   spellId: 401238,
   absorb: {
@@ -81,7 +81,7 @@ export const wardOfFacelessIre: Ability = {
   notes: 'Assumes ilvl 522, Hero 6/6',
 }
 
-export const fyrakksTaintedRageheart: Ability = {
+const fyrakksTaintedRageheart: Ability = {
   name: "Fyrakk's Tainted Rageheart",
   spellId: 422750,
   absorb: {
@@ -92,7 +92,7 @@ export const fyrakksTaintedRageheart: Ability = {
   notes: 'Assumes ilvl 489, Myth 4/4',
 }
 
-export const ancestralVigor: Ability = {
+const ancestralVigor: Ability = {
   name: 'Ancestral Vigor',
   healthIncrease: 0.1,
   spellId: 207401,
@@ -100,7 +100,7 @@ export const ancestralVigor: Ability = {
   iconName: 'spell_shaman_blessingoftheeternals',
 }
 
-export const earthenHarmony: Ability = {
+const earthenHarmony: Ability = {
   name: 'Earthen Harmony',
   dr: 0.06,
   spellId: 382020,
@@ -108,11 +108,18 @@ export const earthenHarmony: Ability = {
   iconName: 'spell_shaman_improvedearthshield',
 }
 
-export const timeDilation: Ability = {
+const timeDilation: Ability = {
   name: 'Time Dilation',
   dr: 0.5,
   spellId: 357170,
   iconName: 'ability_evoker_timedilation',
+}
+
+export const aaVersBuff: Ability = {
+  name: 'Algethar Vers Buff',
+  versIncrease: 0.05,
+  spellId: 389501,
+  iconName: 'inv_bijou_red',
 }
 
 export const externals: Ability[] = [

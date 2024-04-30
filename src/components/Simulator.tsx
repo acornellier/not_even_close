@@ -98,7 +98,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
   }, [simulateResult])
 
   return (
-    <SimContextProvider result={result}>
+    <SimContextProvider dungeon={selectedDungeon} result={result}>
       <div className="flex flex-col lg:flex-row gap-2 mb-24">
         <div className="flex flex-col gap-3 grow">
           <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
