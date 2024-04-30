@@ -1,5 +1,10 @@
 import { getEnemySpell } from '../grimoire'
 
+const chillstorm = getEnemySpell(383925, {
+  cooldown: 23,
+  notes: 'Only the final hit, not the ticking damage',
+})
+
 const tectonicSlam = getEnemySpell(372735, {
   trashAbility: true,
   avoidable: true,
@@ -57,6 +62,7 @@ const infernocore = getEnemySpell(381862, {
 })
 
 export const rlpSpells = [
+  chillstorm,
   tectonicSlam,
   livingBomb,
   infernoTrash,

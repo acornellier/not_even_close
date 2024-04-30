@@ -516,6 +516,17 @@
     "cooldown": 24
   },
   {
+    "id": 383925,
+    "name": "Chillstorm",
+    "icon": "spell_shadow_soulleech_2",
+    "damage": 234676,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "cooldown": 23,
+    "notes": "Only the final hit, not the ticking damage"
+  },
+  {
     "id": 372735,
     "name": "Tectonic Slam",
     "icon": "inv_misc_volatileearth",
