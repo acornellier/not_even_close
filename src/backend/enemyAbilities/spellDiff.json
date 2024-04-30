@@ -729,7 +729,8 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
-    "cooldown": 20
+    "cooldown": 20,
+    "trashAbility": true
   },
   {
     "id": 376049,

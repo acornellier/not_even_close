@@ -42,6 +42,7 @@ const seekingFlame = getEnemySpell(369052, {
 
 const thunderousClap = getEnemySpell(381593, {
   cooldown: 20,
+  trashAbility: true,
 })
 
 const wingBuffet = getEnemySpell(376049, {
