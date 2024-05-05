@@ -339,13 +339,13 @@
     "outrange": 40
   },
   {
-    "id": 388296,
-    "name": "Lava Spray",
+    "id": 375251,
+    "name": "Lava Spray (max stacks)",
     "icon": "spell_shaman_lavasurge",
-    "damage": 488909,
+    "damage": 234530,
     "aoe": true,
     "physical": false,
-    "variance": 0.025,
+    "variance": 0,
     "cooldown": 30,
     "combatDrop": "cancel",
     "outrange": 40

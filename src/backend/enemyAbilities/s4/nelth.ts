@@ -1,6 +1,8 @@
 import { getEnemySpell } from '../grimoire'
 
-const lavaSpray = getEnemySpell(388296, {
+const lavaSpray = getEnemySpell(375251, {
+  name: 'Lava Spray (max stacks)',
+  damage: 46906 * 5,
   cooldown: 30,
   combatDrop: 'cancel',
   outrange: 40,
