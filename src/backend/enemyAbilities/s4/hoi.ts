@@ -45,7 +45,7 @@ const deepChill = getEnemySpell(391634, {
 
 const inundate = getEnemySpell(388882, {
   trashAbility: true,
-  outrange: 40,
+  outrange: 35,
 })
 
 export const hoiAbilities = [
