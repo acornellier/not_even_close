@@ -22,6 +22,11 @@ const shoulderSlam = getEnemySpell(436652, {
   outrange: 40,
 })
 
+const bestialRoar = getEnemySpell(396991, {
+  trashAbility: true,
+  outrange: 30,
+})
+
 export const avAbilities = [
   explosiveBrand,
   consumingStomp,
@@ -29,4 +34,5 @@ export const avAbilities = [
   absoluteZero,
   unleashedDestruction,
   shoulderSlam,
+  bestialRoar,
 ]

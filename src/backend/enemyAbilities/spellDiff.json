@@ -202,6 +202,17 @@
     "outrange": 40
   },
   {
+    "id": 396991,
+    "name": "Bestial Roar",
+    "icon": "ability_warrior_dragonroar",
+    "damage": 293345,
+    "aoe": true,
+    "physical": true,
+    "variance": 0,
+    "trashAbility": true,
+    "outrange": 30
+  },
+  {
     "id": 378020,
     "name": "Gash Frenzy",
     "icon": "ability_rogue_murderspree",
