@@ -35,7 +35,7 @@ const scorchingFusillade = getEnemySpell(372542, {
   cooldown: 23,
 })
 
-const candescentTempest = getEnemySpell(381663, {
+const candescentTempest = getEnemySpell(381662, {
   damage: (54713 + 91188) * 3,
   trashAbility: true,
   periodic: true,

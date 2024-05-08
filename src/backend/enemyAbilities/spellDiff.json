@@ -416,12 +416,12 @@
     "cooldown": 23
   },
   {
-    "id": 381663,
+    "id": 381662,
     "name": "Candescent Tempest",
     "icon": "spell_fire_burnout",
     "damage": 437703,
-    "aoe": false,
-    "physical": true,
+    "aoe": true,
+    "physical": false,
     "variance": 0,
     "trashAbility": true,
     "periodic": true,
