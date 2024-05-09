@@ -45,6 +45,14 @@ const survivalOfTheFittest: Ability = {
   iconName: 'spell_nature_spiritarmor',
 }
 
+const aspectOfTheTurtle: Ability = {
+  name: 'Aspect of the Turtle',
+  dr: 0.3,
+  spellId: 186265,
+  iconName: 'ability_hunter_pet_turtle',
+  notes: 'Only the DR portion, does not calculate immunities',
+}
+
 const naturesEndurance: Ability = {
   name: "Nature's Endurance",
   spellId: 388042,
@@ -71,6 +79,7 @@ export const hunterMmSurvAbilities = [
   rejuvenatingWind,
   huntersAvoidance,
   enduranceTraining,
+  aspectOfTheTurtle,
   survivalOfTheFittest,
   fortitudeOfTheBear,
 ]
@@ -81,6 +90,7 @@ export const hunterBmAbilities = [
   rejuvenatingWind,
   huntersAvoidance,
   enduranceTraining,
+  aspectOfTheTurtle,
   survivalOfTheFittest,
   fortitudeOfTheBear,
 ]
