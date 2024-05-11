@@ -152,7 +152,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
 
 export const defaultAbilities = (classSpec: ClassSpec) =>
   classSpecs[classSpec.class][classSpec.spec]!.abilities.filter(
-    ({ onByDefault }) => onByDefault
+    ({ onByDefault }) => onByDefault,
   )
 
 export const classColors: Record<WowClass, string> = {
@@ -169,4 +169,19 @@ export const classColors: Record<WowClass, string> = {
   Shaman: '#0070DD',
   Warlock: '#8788EE',
   Warrior: '#C69B6D',
+}
+
+const intellectClasses: WowClass[] = ['Evoker', 'Mage', 'Priest', 'Warlock']
+const intellectSpecs: WowSpec[] = [
+  'Balance',
+  'Restoration',
+  'Mistweaver',
+  'Holy',
+  'Elemental',
+]
+
+export function specIsIntellect(classSpec: ClassSpec) {
+  return (
+    intellectClasses.includes(classSpec.class) || intellectSpecs.includes(classSpec.spec)
+  )
 }

@@ -1,29 +1,29 @@
 import type { Ability, AbsorbOptions } from '../ability'
 import type { CharacterPartialResult, EnemyAbilityDetails } from './simTypes'
 import { willOfTheNecropolis } from '../classAbilities/deathKnight'
-import type { ClassSpec} from '../classes';
-import { equalSpecs } from '../classes'
+import type { ClassSpec } from '../classes'
+import { equalSpecs, specIsIntellect } from '../classes'
 
 export function findAssociatedCharacter<T extends { spec: ClassSpec }>(
   ability: Ability,
-  items: Array<T>
+  items: Array<T>,
 ) {
   return items.find(
     ({ spec }) =>
       (ability.associatedClass && spec.class === ability.associatedClass) ||
-      (ability.associatedSpec && equalSpecs(spec, ability.associatedSpec))
+      (ability.associatedSpec && equalSpecs(spec, ability.associatedSpec)),
   )
 }
 
-// SP = Main stat
-// For intellect classes, AP = SP * 1.04
-// For other classes, AP scales off Weapon DPS. We simply estimate weapon dps effect to be 1.3
 function absorbMainStatAmount(absorb: AbsorbOptions, charResult: CharacterPartialResult) {
   if (absorb.spMultipler) {
     const sp = charResult.adjustedStats.mainStat
     return sp * absorb.spMultipler
   } else if (absorb.apMultipler) {
-    const ap = charResult.adjustedStats.mainStat * 1.2
+    // For intellect classes, AP = SP * 1.04
+    // For other classes, AP scales off Weapon DPS. We simply estimate weapon dps effect to be 1.2
+    const apMultiplier = specIsIntellect(charResult.spec) ? 1.04 : 1.02
+    const ap = charResult.adjustedStats.mainStat * apMultiplier
     return ap * absorb.apMultipler
   }
 
@@ -32,7 +32,7 @@ function absorbMainStatAmount(absorb: AbsorbOptions, charResult: CharacterPartia
 
 export function calculateAbsorb(
   absorb: AbsorbOptions,
-  charResult: CharacterPartialResult
+  charResult: CharacterPartialResult,
 ) {
   const versMultiplier = absorb.versAffected ? charResult.adjustedStats.versatility : 0
   const healthAmount = (absorb.healthMultiplier ?? 0) * charResult.startingHealth
@@ -45,7 +45,7 @@ export function getMultiplierAbsorb(
   absorb: AbsorbOptions,
   ability: Ability,
   charResult: CharacterPartialResult | null,
-  charPartialResults: CharacterPartialResult[]
+  charPartialResults: CharacterPartialResult[],
 ) {
   if (!absorb.healthMultiplier && !absorb.spMultipler && !absorb.apMultipler) return 0
 
@@ -67,7 +67,7 @@ export function getAbsorbs(
   charResult: CharacterPartialResult,
   customAbsorbs: number[],
   enemyAbilityDetails: EnemyAbilityDetails,
-  charPartialResults: CharacterPartialResult[]
+  charPartialResults: CharacterPartialResult[],
 ) {
   let absorbs = 0
 
@@ -100,7 +100,7 @@ export function getExtraAbsorbs(
   abilities: Ability[],
   startingHealth: number,
   absorbs: number,
-  actualDamageTaken: number
+  actualDamageTaken: number,
 ) {
   let extraAbsorbs = 0
 
