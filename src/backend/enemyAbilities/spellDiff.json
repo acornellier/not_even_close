@@ -11,14 +11,15 @@
   },
   {
     "id": 386181,
-    "name": "Mana Bomb",
+    "name": "Mana Bomb (1 tick + hit)",
     "icon": "spell_mage_flameorb_blue",
-    "damage": 560316,
-    "aoe": false,
+    "damage": 286752,
+    "aoe": true,
     "physical": false,
     "variance": 0,
+    "aoeMultiplier": 0.714,
     "cooldown": 25,
-    "periodic": true
+    "notes": "The final hit is always preceded immediately by a tick of damage. The dot is ST but the final hit is AoE."
   },
   {
     "id": 388537,

@@ -52,6 +52,7 @@ export interface EnemyAbilityDetails {
   name?: string
   damage: number
   aoe: boolean
+  aoeMultiplier?: number
   trashAbility?: boolean
   physical?: boolean
   ignoresArmor?: boolean

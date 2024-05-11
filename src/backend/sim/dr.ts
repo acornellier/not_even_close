@@ -9,7 +9,7 @@ export function getDamageReduction(
   customDrs: number[],
   enemyAbilityDetails: EnemyAbilityDetails,
   startingHealth: number,
-  damageTaken: number
+  damageTaken: number,
 ) {
   let inverseDr = 1 - characterStats.versatility / 2
 
@@ -30,12 +30,17 @@ export function getDamageReduction(
       dr = 0
     }
 
-    if (dr && ability.aoeDr && enemyAbilityDetails.aoe) {
-      inverseDr *= 1 - Math.max(dr, ability.aoeDr)
+    let aoeDr = ability.aoeDr
+    if (aoeDr && enemyAbilityDetails.aoeMultiplier) {
+      aoeDr *= enemyAbilityDetails.aoeMultiplier
+    }
+
+    if (dr && aoeDr && enemyAbilityDetails.aoe) {
+      inverseDr *= 1 - Math.max(dr, aoeDr)
     } else if (dr) {
       inverseDr *= 1 - dr
-    } else if (ability.aoeDr && enemyAbilityDetails.aoe) {
-      inverseDr *= 1 - ability.aoeDr
+    } else if (aoeDr && enemyAbilityDetails.aoe) {
+      inverseDr *= 1 - aoeDr
     } else if (ability.spellId === dampenHarm.spellId) {
       const dampenDr = 0.2 + (damageTaken / startingHealth) * 0.3
       inverseDr *= 1 - Math.min(dampenDr, 0.5)

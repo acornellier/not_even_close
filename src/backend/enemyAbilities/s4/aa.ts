@@ -6,9 +6,13 @@ const burstForth = getEnemySpell(388923, {
 })
 
 const manaBomb = getEnemySpell(386181, {
-  damage: 91188 * 4 + getEnemySpell(386202).damage,
+  name: 'Mana Bomb (1 tick + hit)',
+  damage: 91188 + getEnemySpell(386202).damage,
+  aoe: true,
+  aoeMultiplier: 0.714,
   cooldown: 25,
-  periodic: true,
+  notes:
+    'The final hit is always preceded immediately by a tick of damage. The dot is ST but the final hit is AoE.',
 })
 
 const arcaneFissure = getEnemySpell(388537, {

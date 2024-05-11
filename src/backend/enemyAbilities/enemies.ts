@@ -7,6 +7,7 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   name: string
   icon: string
   damage: number
+  aoeMultiplier?: number
   variance?: number
   cooldown?: TimeBetweenCasts
   periodic?: boolean

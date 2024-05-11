@@ -76,10 +76,16 @@ export function EnemyAbilityCard({
               </TooltipStyled>
             )}
             <AbilityDetailsChip
-              color={ability.aoe ? 'bg-amber-600' : 'bg-pink-700'}
+              color={
+                ability.aoeMultiplier
+                  ? 'bg-amber-800'
+                  : ability.aoe
+                    ? 'bg-amber-600'
+                    : 'bg-pink-700'
+              }
               className="hidden sm:block"
             >
-              {ability.aoe ? 'AoE' : 'Single'}
+              {ability.aoeMultiplier ? 'Mixed' : ability.aoe ? 'AoE' : 'Single'}
             </AbilityDetailsChip>
             <AbilityDetailsChip
               color={ability.physical ? 'bg-orange-800' : 'bg-blue-500'}
