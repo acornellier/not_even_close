@@ -2,7 +2,7 @@ import type { Ability, AbsorbOptions } from '../ability'
 import type { CharacterPartialResult, EnemyAbilityDetails } from './simTypes'
 import { willOfTheNecropolis } from '../classAbilities/deathKnight'
 import type { ClassSpec } from '../classes'
-import { equalSpecs, specIsIntellect } from '../classes'
+import { classSpecs, equalSpecs } from '../classes'
 
 export function findAssociatedCharacter<T extends { spec: ClassSpec }>(
   ability: Ability,
@@ -22,7 +22,9 @@ function absorbMainStatAmount(absorb: AbsorbOptions, charResult: CharacterPartia
   } else if (absorb.apMultipler) {
     // For intellect classes, AP = SP * 1.04
     // For other classes, AP scales off Weapon DPS. We simply estimate weapon dps effect to be 1.2
-    const apMultiplier = specIsIntellect(charResult.spec) ? 1.04 : 1.02
+    const isIntellect =
+      classSpecs[charResult.spec.class][charResult.spec.spec]!.mainStat === 'intellect'
+    const apMultiplier = isIntellect ? 1.04 : 1.02
     const ap = charResult.adjustedStats.mainStat * apMultiplier
     return ap * absorb.apMultipler
   }

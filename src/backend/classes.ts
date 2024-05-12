@@ -62,91 +62,200 @@ export type WowSpec = string
 type SpecDetails = {
   abilities: Ability[]
   icon: string
+  mainStat: 'intellect' | 'other'
 }
 
 export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
   'Death Knight': {
-    Frost: { abilities: deathKnightAbilities, icon: 'spell_deathknight_frostpresence' },
-    Unholy: { abilities: deathKnightAbilities, icon: 'spell_deathknight_unholypresence' },
+    Frost: {
+      abilities: deathKnightAbilities,
+      icon: 'spell_deathknight_frostpresence',
+      mainStat: 'other',
+    },
+    Unholy: {
+      abilities: deathKnightAbilities,
+      icon: 'spell_deathknight_unholypresence',
+      mainStat: 'other',
+    },
   },
   'Demon Hunter': {
-    Havoc: { abilities: havocAbilities, icon: 'ability_demonhunter_specdps' },
+    Havoc: {
+      abilities: havocAbilities,
+      icon: 'ability_demonhunter_specdps',
+      mainStat: 'other',
+    },
   },
   Druid: {
-    Balance: { abilities: druidBalanceAbilities, icon: 'spell_nature_starfall' },
-    Feral: { abilities: druidFeralAbilities, icon: 'ability_druid_catform' },
-    Restoration: { abilities: druidRestoAbilities, icon: 'spell_nature_healingtouch' },
+    Balance: {
+      abilities: druidBalanceAbilities,
+      icon: 'spell_nature_starfall',
+      mainStat: 'intellect',
+    },
+    Feral: {
+      abilities: druidFeralAbilities,
+      icon: 'ability_druid_catform',
+      mainStat: 'other',
+    },
+    Restoration: {
+      abilities: druidRestoAbilities,
+      icon: 'spell_nature_healingtouch',
+      mainStat: 'intellect',
+    },
   },
   Evoker: {
     Augmentation: {
       abilities: evokerAugAbilities,
       icon: 'classicon_evoker_augmentation',
+      mainStat: 'intellect',
     },
-    Devastation: { abilities: evokerDevAbilities, icon: 'classicon_evoker_devastation' },
+    Devastation: {
+      abilities: evokerDevAbilities,
+      icon: 'classicon_evoker_devastation',
+      mainStat: 'intellect',
+    },
     Preservation: {
       abilities: evokerPresAbilities,
       icon: 'classicon_evoker_preservation',
+      mainStat: 'intellect',
     },
   },
   Hunter: {
     'Beast Mastery': {
       abilities: hunterBmAbilities,
       icon: 'ability_hunter_bestialdiscipline',
+      mainStat: 'other',
     },
-    Marksmanship: { abilities: hunterMmSurvAbilities, icon: 'ability_hunter_focusedaim' },
-    Survival: { abilities: hunterMmSurvAbilities, icon: 'ability_hunter_camouflage' },
+    Marksmanship: {
+      abilities: hunterMmSurvAbilities,
+      icon: 'ability_hunter_focusedaim',
+      mainStat: 'other',
+    },
+    Survival: {
+      abilities: hunterMmSurvAbilities,
+      icon: 'ability_hunter_camouflage',
+      mainStat: 'other',
+    },
   },
   Mage: {
-    Arcane: { abilities: mageArcaneAbilities, icon: 'spell_holy_magicalsentry' },
-    Fire: { abilities: mageFireAbilities, icon: 'spell_fire_firebolt02' },
-    Frost: { abilities: mageFrostAbilities, icon: 'spell_frost_frostbolt02' },
+    Arcane: {
+      abilities: mageArcaneAbilities,
+      icon: 'spell_holy_magicalsentry',
+      mainStat: 'intellect',
+    },
+    Fire: {
+      abilities: mageFireAbilities,
+      icon: 'spell_fire_firebolt02',
+      mainStat: 'intellect',
+    },
+    Frost: {
+      abilities: mageFrostAbilities,
+      icon: 'spell_frost_frostbolt02',
+      mainStat: 'intellect',
+    },
   },
   Monk: {
     Mistweaver: {
       abilities: monkMistweaverAbilities,
       icon: 'spell_monk_mistweaver_spec',
+      mainStat: 'intellect',
     },
     Windwalker: {
       abilities: monkWindwalkerAbilities,
       icon: 'spell_monk_windwalker_spec',
+      mainStat: 'other',
     },
   },
   Paladin: {
-    Holy: { abilities: paladinHolyAbilities, icon: 'spell_holy_holybolt' },
-    Retribution: { abilities: paladinRetAbilities, icon: 'spell_holy_auraoflight' },
+    Holy: {
+      abilities: paladinHolyAbilities,
+      icon: 'spell_holy_holybolt',
+      mainStat: 'intellect',
+    },
+    Retribution: {
+      abilities: paladinRetAbilities,
+      icon: 'spell_holy_auraoflight',
+      mainStat: 'other',
+    },
   },
   Priest: {
-    Discipline: { abilities: priestDiscAbilities, icon: 'spell_holy_powerwordshield' },
-    Holy: { abilities: priestHolyAbilities, icon: 'spell_holy_guardianspirit' },
-    Shadow: { abilities: priestShadowAbilities, icon: 'spell_shadow_shadowwordpain' },
+    Discipline: {
+      abilities: priestDiscAbilities,
+      icon: 'spell_holy_powerwordshield',
+      mainStat: 'intellect',
+    },
+    Holy: {
+      abilities: priestHolyAbilities,
+      icon: 'spell_holy_guardianspirit',
+      mainStat: 'intellect',
+    },
+    Shadow: {
+      abilities: priestShadowAbilities,
+      icon: 'spell_shadow_shadowwordpain',
+      mainStat: 'intellect',
+    },
   },
   Rogue: {
-    Assassination: { abilities: rogueAssAbilities, icon: 'ability_rogue_eviscerate' },
-    Outlaw: { abilities: rogueOutlawAbilities, icon: 'ability_rogue_waylay' },
-    Subtlety: { abilities: rogueSubAbilities, icon: 'ability_stealth' },
+    Assassination: {
+      abilities: rogueAssAbilities,
+      icon: 'ability_rogue_eviscerate',
+      mainStat: 'other',
+    },
+    Outlaw: {
+      abilities: rogueOutlawAbilities,
+      icon: 'ability_rogue_waylay',
+      mainStat: 'other',
+    },
+    Subtlety: {
+      abilities: rogueSubAbilities,
+      icon: 'ability_stealth',
+      mainStat: 'other',
+    },
   },
   Shaman: {
     Enhancement: {
       abilities: shamanEnhAbilities,
       icon: 'spell_shaman_improvedstormstrike',
+      mainStat: 'other',
     },
     Elemental: {
       abilities: shamanEleAbilities,
       icon: 'spell_nature_lightning',
+      mainStat: 'intellect',
     },
-    Restoration: { abilities: shamanRestoAbilities, icon: 'spell_nature_magicimmunity' },
+    Restoration: {
+      abilities: shamanRestoAbilities,
+      icon: 'spell_nature_magicimmunity',
+      mainStat: 'intellect',
+    },
   },
   Warlock: {
-    Affliction: { abilities: warlockAffDestroAbilities, icon: 'spell_shadow_deathcoil' },
-    Demonology: { abilities: warlockDemoAbilities, icon: 'spell_shadow_metamorphosis' },
+    Affliction: {
+      abilities: warlockAffDestroAbilities,
+      icon: 'spell_shadow_deathcoil',
+      mainStat: 'intellect',
+    },
+    Demonology: {
+      abilities: warlockDemoAbilities,
+      icon: 'spell_shadow_metamorphosis',
+      mainStat: 'intellect',
+    },
     Destruction: {
       abilities: warlockAffDestroAbilities,
       icon: 'spell_shadow_rainoffire',
+      mainStat: 'intellect',
     },
   },
   Warrior: {
-    Arms: { abilities: warriorArmsAbilities, icon: 'ability_warrior_savageblow' },
-    Fury: { abilities: warriorFuryAbilities, icon: 'ability_warrior_innerrage' },
+    Arms: {
+      abilities: warriorArmsAbilities,
+      icon: 'ability_warrior_savageblow',
+      mainStat: 'other',
+    },
+    Fury: {
+      abilities: warriorFuryAbilities,
+      icon: 'ability_warrior_innerrage',
+      mainStat: 'other',
+    },
   },
 } as const
 
@@ -169,19 +278,4 @@ export const classColors: Record<WowClass, string> = {
   Shaman: '#0070DD',
   Warlock: '#8788EE',
   Warrior: '#C69B6D',
-}
-
-const intellectClasses: WowClass[] = ['Evoker', 'Mage', 'Priest', 'Warlock']
-const intellectSpecs: WowSpec[] = [
-  'Balance',
-  'Restoration',
-  'Mistweaver',
-  'Holy',
-  'Elemental',
-]
-
-export function specIsIntellect(classSpec: ClassSpec) {
-  return (
-    intellectClasses.includes(classSpec.class) || intellectSpecs.includes(classSpec.spec)
-  )
 }
