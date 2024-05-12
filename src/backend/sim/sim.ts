@@ -106,6 +106,18 @@ function getPartialResults(
   })
 }
 
+function getDamageDealtReduction(abilities: Ability[]) {
+  let damageDealtReduction = 1
+
+  for (const ability of abilities) {
+    if (ability.damageDealtReduction) {
+      damageDealtReduction *= 1 - ability.damageDealtReduction
+    }
+  }
+
+  return 1 - damageDealtReduction
+}
+
 function getAbilityResult(
   keyDetails: KeyDetails,
   charPartialResults: CharacterPartialResult[],
@@ -123,6 +135,10 @@ function getAbilityResult(
     characters: charPartialResults.map<CharacterResult>((charResult) => {
       const { spec, startingHealth, adjustedStats, abilities } = charResult
 
+      const damageDealtReduction = getDamageDealtReduction(abilities)
+      const reducedDamage = Math.round(scaledDamage * (1 - damageDealtReduction))
+      console.log(scaledDamage, damageDealtReduction, reducedDamage)
+
       const absorbs = getAbsorbs(
         charResult,
         customAbsorbs,
@@ -136,12 +152,12 @@ function getAbilityResult(
         customDrs,
         enemyAbilityDetails,
         startingHealth,
-        scaledDamage,
+        reducedDamage,
       )
 
       const healthWithAbsorbs = startingHealth + absorbs
-      const mitigatedDamage = Math.round(scaledDamage * damageReduction)
-      const actualDamageTaken = Math.round(scaledDamage - mitigatedDamage)
+      const mitigatedDamage = Math.round(reducedDamage * damageReduction)
+      const actualDamageTaken = Math.round(reducedDamage - mitigatedDamage)
 
       const extraAbsorbs = getExtraAbsorbs(
         abilities,
@@ -157,6 +173,8 @@ function getAbilityResult(
         spec,
         adjustedStats,
         abilities,
+        damageDealtReduction,
+        reducedDamage,
         damageReduction,
         mitigatedDamage,
         actualDamageTaken,

@@ -24,6 +24,7 @@ export type Ability = {
   dr?: number
   drType?: DamageType
   aoeDr?: number
+  damageDealtReduction?: number
   staminaIncrease?: number
   versIncrease?: number
   versRawIncrease?: number
@@ -44,6 +45,7 @@ export type Ability = {
 export const abilityEffectFields = [
   'dr',
   'aoeDr',
+  'damageDealtReduction',
   'staminaIncrease',
   'versIncrease',
   'versRawIncrease',

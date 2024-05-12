@@ -61,6 +61,8 @@ function getNumberText(field: AbilityField, value: number, ability?: Ability) {
       return `${roundTo(value * 100, 2)}% ${damageType ? damageType + ' ' : ''}DR`
     case 'aoeDr':
       return `${roundTo(value * 100, 2)}% AoE DR`
+    case 'damageDealtReduction':
+      return `${roundTo(value * 100, 2)}% less enemy damage`
     case 'healthIncrease':
       return `${roundTo(value * 100, 2)}% HP`
     case 'staminaIncrease':

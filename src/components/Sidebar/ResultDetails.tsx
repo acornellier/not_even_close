@@ -11,6 +11,15 @@ export function ResultDetails({ charResult }: Props) {
 
   return (
     <>
+      {charResult.damageDealtReduction > 0 && (
+        <>
+          <div>
+            Enemy damage reduction:{' '}
+            {roundTo(charResult.damageDealtReduction * 100, 2).toLocaleString('en-US')}%
+          </div>
+          <div>Reduced damage: {charResult.reducedDamage.toLocaleString('en-US')}</div>
+        </>
+      )}
       <div>
         Versatility: {vers.toLocaleString('en-US')}% ({versDr}% DR)
       </div>

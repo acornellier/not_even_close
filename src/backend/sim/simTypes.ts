@@ -34,7 +34,9 @@ export interface CharacterResult {
   spec: ClassSpec
   adjustedStats: CharacterStats
   abilities: Ability[]
+  damageDealtReduction: number
   damageReduction: number
+  reducedDamage: number
   mitigatedDamage: number
   actualDamageTaken: number
   startingHealth: number

@@ -62,7 +62,7 @@ export const markOfTheWild: Ability = {
 
 export const atrophicPoison: Ability = {
   name: 'Atrophic Poison',
-  dr: 0.03,
+  damageDealtReduction: 0.03,
   spellId: 381637,
   associatedClass: 'Rogue',
   wowheadLink: 'https://www.wowhead.com/spell=381637/atrophic-poison',
@@ -79,7 +79,7 @@ export const masterPoisoner: Ability = {
   abilityAugmentations: [
     {
       otherSpellId: 381637, // Atrophic Poison
-      field: 'dr',
+      field: 'damageDealtReduction',
       value: 0.006,
     },
   ],

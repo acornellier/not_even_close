@@ -60,7 +60,7 @@ const cloakedInShadows: Ability = {
 
 const precisionShot: Ability = {
   name: 'Precision Shot',
-  dr: 0.05,
+  damageDealtReduction: 0.05,
   spellId: 428377,
   iconName: 'inv_legendary_gun',
 }
