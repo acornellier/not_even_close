@@ -35,7 +35,7 @@ const rollingThunder = getEnemySpell(392642, {
 const inferno = getEnemySpell(384823, {
   name: 'Inferno (Boss)',
   cooldown: 35,
-  notes: 'This does not include the ticking damage. Only the initial groupwide damage.',
+  notes: 'Only the initial groupwide damage, not the ticking damage.',
 })
 
 const lightningStorm = getEnemySpell(392486, {

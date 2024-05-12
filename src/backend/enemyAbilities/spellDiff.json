@@ -285,6 +285,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0,
+    "ignoresArmor": true,
     "periodic": true,
     "cooldown": 38
   },
@@ -596,7 +597,7 @@
     "physical": false,
     "variance": 0,
     "cooldown": 35,
-    "notes": "This does not include the ticking damage. Only the initial groupwide damage."
+    "notes": "Only the initial groupwide damage, not the ticking damage."
   },
   {
     "id": 392486,
