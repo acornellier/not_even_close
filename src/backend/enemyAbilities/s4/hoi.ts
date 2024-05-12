@@ -15,7 +15,6 @@ const powerOverload = getEnemySpell(389179, {
 
 const overpoweringCroak = getEnemySpell(385187, (baseSpell) => ({
   damage: baseSpell.damage * 3,
-  ignoresArmor: true,
   periodic: true,
   cooldown: 38,
 }))

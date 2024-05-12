@@ -285,7 +285,6 @@
     "aoe": true,
     "physical": true,
     "variance": 0,
-    "ignoresArmor": true,
     "periodic": true,
     "cooldown": 38
   },
@@ -676,7 +675,6 @@
     "aoe": true,
     "physical": true,
     "variance": 0.025,
-    "ignoresArmor": true,
     "cooldown": 12
   },
   {
@@ -701,7 +699,6 @@
     "aoe": true,
     "physical": true,
     "variance": 0.025,
-    "ignoresArmor": true,
     "cooldown": 12
   },
   {

@@ -10,7 +10,6 @@ const earthenShards = getEnemySpell(372718, {
 })
 
 const crushingStomp = getEnemySpell(372701, {
-  ignoresArmor: true,
   cooldown: 12,
 })
 

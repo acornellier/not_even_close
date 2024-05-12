@@ -48,15 +48,6 @@ export function EnemyAbilityDetailsInput({
         enabled={!!enemyAbilityDetails.physical}
         setIsEnabled={setField('physical')}
       />
-      {enemyAbilityDetails.physical && (
-        <OnOffStateSelector
-          label="Ignores armor"
-          label1="No"
-          label2="Yes"
-          enabled={!!enemyAbilityDetails.ignoresArmor}
-          setIsEnabled={setField('ignoresArmor')}
-        />
-      )}
     </div>
   )
 }

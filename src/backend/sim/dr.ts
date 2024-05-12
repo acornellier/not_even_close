@@ -17,7 +17,7 @@ export function getDamageReduction(
     inverseDr *= 1 - characterStats.avoidance
   }
 
-  if (enemyAbilityDetails.physical && !enemyAbilityDetails.ignoresArmor) {
+  if (enemyAbilityDetails.physical && !enemyAbilityDetails.aoe) {
     inverseDr *= 1 - armorToPhysicalDr(characterStats.armor)
   }
 
