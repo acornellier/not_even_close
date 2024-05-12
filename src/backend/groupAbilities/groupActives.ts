@@ -21,7 +21,7 @@ export const chiCocoon: Ability = {
   absorb: {
     healthMultiplier: 0.16,
     versAffected: true,
-    backup: 170_000,
+    backup: 270_000,
   },
   iconName: 'inv_pet_crane',
   wowheadLink: 'https://www.wowhead.com/spell=406220/chi-cocoon',
