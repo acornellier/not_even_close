@@ -15,13 +15,13 @@ const crushingStomp = getEnemySpell(372701, {
 
 const earthenShards4Stacks = {
   ...earthenShards,
-  name: 'Earthen Shards @ 5 stacks',
+  name: 'Shards @ 5 stacks',
   damage: Math.round(earthenShards.damage * 1.25),
 }
 
 const crushingStomp4Stacks = {
   ...crushingStomp,
-  name: 'Crushing Stomp @ 5 stacks',
+  name: 'Stomp @ 5 stacks',
   damage: Math.round(crushingStomp.damage * 1.25),
 }
 

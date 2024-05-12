@@ -679,7 +679,7 @@
   },
   {
     "id": 372718,
-    "name": "Earthen Shards @ 5 stacks",
+    "name": "Shards @ 5 stacks",
     "icon": "6bf_blackrock_nova",
     "damage": 366681,
     "aoe": false,
@@ -693,7 +693,7 @@
   },
   {
     "id": 372701,
-    "name": "Crushing Stomp @ 5 stacks",
+    "name": "Stomp @ 5 stacks",
     "icon": "warrior_talent_icon_thunderstruck",
     "damage": 366681,
     "aoe": true,
