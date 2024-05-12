@@ -2,7 +2,11 @@
 import { AbilityDetailsChip } from './AbilityDetailsChip'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import type { AbilityResult } from '../../backend/sim/simTypes'
-import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline'
+import {
+  ChevronDownIcon,
+  ChevronUpIcon,
+  QuestionMarkCircleIcon,
+} from '@heroicons/react/24/outline'
 import { AbilityCardExtras } from './AbilityCardExtras'
 import { CardResult } from './CardResult'
 import { WowIcon } from '../Common/WowIcon'
@@ -45,15 +49,18 @@ export function EnemyAbilityCard({
           >
             <WowIcon icon={ability.icon} size={30} />
           </a>
-          <div
-            className="text-white"
-            data-tooltip-id={`enemy-ability-tooltip-${ability.id}`}
-          >
-            {ability.name}
+          <div className="flex items-center gap-1">
+            <div className="text-white">{ability.name}</div>
+            {ability.notes && (
+              <QuestionMarkCircleIcon
+                height={20}
+                data-tooltip-id={`enemy-ability-tooltip-${ability.id}`}
+              />
+            )}
+            <TooltipStyled id={`enemy-ability-tooltip-${ability.id}`}>
+              {ability.notes}
+            </TooltipStyled>
           </div>
-          <TooltipStyled id={`enemy-ability-tooltip-${ability.id}`}>
-            {ability.notes}
-          </TooltipStyled>
         </div>
         <div className="flex justify-between grow gap-2">
           <div className="flex gap-2">
