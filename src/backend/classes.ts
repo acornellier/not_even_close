@@ -22,7 +22,10 @@ import {
   priestShadowAbilities,
 } from './classAbilities/priest'
 import { hunterBmAbilities, hunterMmSurvAbilities } from './classAbilities/hunter'
-import { deathKnightAbilities } from './classAbilities/deathKnight'
+import {
+  deathKnightAbilities,
+  deathKnightBloodAbilities,
+} from './classAbilities/deathKnight'
 import { warriorArmsAbilities, warriorFuryAbilities } from './classAbilities/warrior'
 import { paladinHolyAbilities, paladinRetAbilities } from './classAbilities/paladin'
 import { warlockAffDestroAbilities, warlockDemoAbilities } from './classAbilities/warlock'
@@ -63,10 +66,16 @@ type SpecDetails = {
   abilities: Ability[]
   icon: string
   mainStat: 'intellect' | 'other'
+  isTank?: boolean
 }
 
 export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
   'Death Knight': {
+    Blood: {
+      abilities: deathKnightBloodAbilities,
+      icon: 'spell_deathknight_bloodpresence',
+      mainStat: 'other',
+    },
     Frost: {
       abilities: deathKnightAbilities,
       icon: 'spell_deathknight_frostpresence',

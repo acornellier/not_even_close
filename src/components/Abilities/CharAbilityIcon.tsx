@@ -2,10 +2,9 @@ import type {
   Ability,
   AbilityAugmentation,
   AbilityField,
-  AbsorbOptions} from '../../backend/ability';
-import {
-  abilityFields
+  AbsorbOptions,
 } from '../../backend/ability'
+import { abilityEffectFields } from '../../backend/ability'
 import { isAbilitySelected, roundTo } from '../../backend/utils'
 import { Fragment } from 'react'
 import { useSimContext } from '../../util/useSimContext.ts'
@@ -81,11 +80,16 @@ function getEffectText<T extends AbilityField>(
   value: Ability[T],
   ability?: Ability,
 ) {
+  let text = ''
   if (field === 'absorb') {
-    return getAbsorbText(value as AbsorbOptions)
+    text += getAbsorbText(value as AbsorbOptions)
   } else {
-    return getNumberText(field, value as number, ability)
+    text += getNumberText(field, value as number, ability)
   }
+
+  if (ability?.stacks) text += ' per stack'
+
+  return text
 }
 
 function getAugmentationText(augmentation: AbilityAugmentation) {
@@ -146,7 +150,7 @@ export function CharAbilityIcon({
       <TooltipStyled id={tooltipId}>
         <div className="flex flex-col">
           <span className="text-xl">{ability.name}</span>
-          {abilityFields.map((field) => {
+          {abilityEffectFields.map((field) => {
             const value = ability[field]
             return (
               value && (

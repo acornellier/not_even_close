@@ -28,9 +28,11 @@ export function augmentAbilities(abilities: Ability[], selectedAbilities: Abilit
           augmentedAbility.absorb = { ...absorb }
 
           augmentedAbility.absorb[absorbField] ??= 0
-          if (absorbField === 'healthMultiplier')
+          if (absorbField === 'healthMultiplier') {
             augmentedAbility.absorb[absorbField]! *= 1 + value
-          else augmentedAbility.absorb[absorbField]! += value
+          } else {
+            augmentedAbility.absorb[absorbField]! += value
+          }
         } else {
           augmentedAbility[field] ??= 0
           augmentedAbility[field]! += value

@@ -1,4 +1,4 @@
-import type { Ability } from '../ability'
+import type { Ability, AbilityAugmentation } from '../ability'
 
 export const willOfTheNecropolis: Ability = {
   name: 'Will of the Necropolis',
@@ -33,21 +33,6 @@ const antiMagicBarrier: Ability = {
   ],
 }
 
-const gloomWard: Ability = {
-  name: 'Gloom Ward',
-  spellId: 391571,
-  onByDefault: true,
-  iconName: 'ability_rogue_envelopingshadows',
-  abilityAugmentations: [
-    {
-      otherSpellId: antiMagicShell.spellId,
-      field: 'absorb',
-      absorbField: 'healthMultiplier',
-      value: 0.15,
-    },
-  ],
-}
-
 const iceboundFortitude: Ability = {
   name: 'Icebound Fortitude',
   dr: 0.3,
@@ -62,6 +47,65 @@ const lichborne: Ability = {
   iconName: 'spell_shadow_raisedead',
 }
 
+const runeTap: Ability = {
+  name: 'Rune Tap',
+  spellId: 194679,
+  dr: 0.2,
+  iconName: 'spell_deathknight_runetap',
+}
+
+const tombstone: Ability = {
+  name: 'Tombstone',
+  spellId: 219809,
+  absorb: {
+    healthMultiplier: 0.3,
+    versAffected: true,
+  },
+  iconName: 'ability_fiegndead',
+  notes: 'Assumes you consumed 5 stacks of Bone Shield',
+}
+
+const foulBulwark: Ability = {
+  name: 'Foul Bulwark',
+  spellId: 206974,
+  healthIncrease: 0.01,
+  stacks: {
+    maxStacks: 10,
+  },
+  iconName: 'inv_armor_shield_naxxramas_d_02',
+}
+
+const absorbAugmentations = (value: number): AbilityAugmentation[] => [
+  {
+    otherSpellId: antiMagicShell.spellId,
+    field: 'absorb',
+    absorbField: 'healthMultiplier',
+    value,
+  },
+  {
+    otherSpellId: tombstone.spellId,
+    field: 'absorb',
+    absorbField: 'healthMultiplier',
+    value,
+  },
+]
+
+const vampiricBlood: Ability = {
+  name: 'Vampiric Blood',
+  spellId: 55233,
+  healthIncrease: 0.3,
+  iconName: 'spell_shadow_lifedrain',
+  abilityAugmentations: absorbAugmentations(0.3),
+}
+
+const gloomWard: Ability = {
+  name: 'Gloom Ward',
+  spellId: 391571,
+  onByDefault: true,
+  iconName: 'ability_rogue_envelopingshadows',
+  abilityAugmentations: absorbAugmentations(0.15),
+}
+
 export const deathKnightAbilities = [
   antiMagicBarrier,
   gloomWard,
@@ -69,4 +113,17 @@ export const deathKnightAbilities = [
   lichborne,
   antiMagicShell,
   iceboundFortitude,
+]
+
+export const deathKnightBloodAbilities = [
+  antiMagicBarrier,
+  gloomWard,
+  willOfTheNecropolis,
+  lichborne,
+  antiMagicShell,
+  iceboundFortitude,
+  vampiricBlood,
+  tombstone,
+  runeTap,
+  // foulBulwark,
 ]

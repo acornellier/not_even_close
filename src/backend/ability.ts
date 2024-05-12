@@ -12,6 +12,10 @@ export type AbsorbOptions = {
   backup?: number
 }
 
+export type StackOptions = {
+  maxStacks: number
+}
+
 export type Ability = {
   name: string
   spellId: number
@@ -24,20 +28,20 @@ export type Ability = {
   versIncrease?: number
   versRawIncrease?: number
   healthIncrease?: number
-
   absorb?: AbsorbOptions
+  stacks?: StackOptions
 
   abilityAugmentations?: AbilityAugmentation[]
   associatedClass?: WowClass
   associatedSpec?: ClassSpec
-  talentPoints?: number
 
+  talentPoints?: number
   iconName: string
   wowheadLink?: string
   notes?: string
 }
 
-export const abilityFields = [
+export const abilityEffectFields = [
   'dr',
   'aoeDr',
   'staminaIncrease',
@@ -47,7 +51,7 @@ export const abilityFields = [
   'absorb',
 ] as const
 
-export type AbilityField = typeof abilityFields[number]
+export type AbilityField = (typeof abilityEffectFields)[number]
 export type AbsorbField = keyof AbsorbOptions
 export type AbsorbAugmentations = Exclude<AbsorbField, 'versAffected' | 'absorbType'>
 
