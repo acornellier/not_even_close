@@ -137,7 +137,6 @@ function getAbilityResult(
 
       const damageDealtReduction = getDamageDealtReduction(abilities)
       const reducedDamage = Math.round(scaledDamage * (1 - damageDealtReduction))
-      console.log(scaledDamage, damageDealtReduction, reducedDamage)
 
       const absorbs = getAbsorbs(
         charResult,
