@@ -72,7 +72,7 @@
   },
   {
     "id": 377009,
-    "name": "Screech",
+    "name": "Screech 1",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 234676,
     "aoe": true,
@@ -83,7 +83,7 @@
   },
   {
     "id": 377009,
-    "name": "Screech @ 1 stack",
+    "name": "Screech 2",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 352014,
     "aoe": true,
@@ -94,7 +94,7 @@
   },
   {
     "id": 377009,
-    "name": "Screech @ 2 stacks",
+    "name": "Screech 3",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 469352,
     "aoe": true,
@@ -105,7 +105,7 @@
   },
   {
     "id": 377009,
-    "name": "Screech @ 3 stacks",
+    "name": "Screech 4",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 586690,
     "aoe": true,
@@ -116,7 +116,7 @@
   },
   {
     "id": 377009,
-    "name": "Screech @ 4 stacks",
+    "name": "Screech 5",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 704028,
     "aoe": true,
@@ -127,7 +127,7 @@
   },
   {
     "id": 377009,
-    "name": "Screech @ 5 stacks",
+    "name": "Screech 6",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 821366,
     "aoe": true,

@@ -41,38 +41,38 @@ const expelIntruders = getEnemySpell(377912, {
 })
 
 const deafeningScreech = getEnemySpell(377009, {
-  name: 'Screech',
+  name: 'Screech 1',
   los: true,
   cooldown: 23,
 })
 
 const deafeningScreech2: EnemyAbility = {
   ...deafeningScreech,
-  name: deafeningScreech.name + ' @ 1 stack',
+  name: 'Screech 2',
   damage: Math.round(deafeningScreech.damage * (1 + 1 * 0.5)),
 }
 
 const deafeningScreech3: EnemyAbility = {
   ...deafeningScreech,
-  name: deafeningScreech.name + ' @ 2 stacks',
+  name: 'Screech 3',
   damage: Math.round(deafeningScreech.damage * (1 + 2 * 0.5)),
 }
 
 const deafeningScreech4: EnemyAbility = {
   ...deafeningScreech,
-  name: deafeningScreech.name + ' @ 3 stacks',
+  name: 'Screech 4',
   damage: Math.round(deafeningScreech.damage * (1 + 3 * 0.5)),
 }
 
 const deafeningScreech5: EnemyAbility = {
   ...deafeningScreech,
-  name: deafeningScreech.name + ' @ 4 stacks',
+  name: 'Screech 5',
   damage: Math.round(deafeningScreech.damage * (1 + 4 * 0.5)),
 }
 
 const deafeningScreech6: EnemyAbility = {
   ...deafeningScreech,
-  name: deafeningScreech.name + ' @ 5 stacks',
+  name: 'Screech 6',
   damage: Math.round(deafeningScreech.damage * (1 + 5 * 0.5)),
 }
 
