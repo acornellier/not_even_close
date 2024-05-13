@@ -58,14 +58,14 @@ function augmentAbility(
 }
 
 export function augmentAbilities(
-  abilities: Ability[],
+  abilitiesToAugment: Ability[],
   selectedAbilities: SelectedAbility[],
 ) {
-  return abilities.map<Ability>((ability) => {
+  return abilitiesToAugment.map<Ability>((ability) => {
     const augmentedAbility = { ...ability }
 
-    abilities.forEach((augmentingAbility) =>
-      augmentAbility(augmentedAbility, augmentingAbility, selectedAbilities),
+    selectedAbilities.forEach((augmentingAbility) =>
+      augmentAbility(augmentedAbility, augmentingAbility.ability, selectedAbilities),
     )
 
     return augmentedAbility
@@ -73,13 +73,13 @@ export function augmentAbilities(
 }
 
 export function augmentSelectedAbilities(
-  abilities: SelectedAbility[],
+  abilitiesToAugment: SelectedAbility[],
   selectedAbilities: SelectedAbility[],
 ) {
-  return abilities.map<SelectedAbility>((ability) => {
+  return abilitiesToAugment.map<SelectedAbility>((ability) => {
     const augmentedAbility = { ...ability.ability }
 
-    abilities.forEach((augmentingAbility) =>
+    selectedAbilities.forEach((augmentingAbility) =>
       augmentAbility(augmentedAbility, augmentingAbility.ability, selectedAbilities),
     )
 
