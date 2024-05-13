@@ -1,2 +1,3 @@
+#!/usr/bin/env sh
 yarn tsx ./scripts/differ.ts
 git add ./src/backend/enemyAbilities/spellDiff.json

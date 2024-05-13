@@ -12,6 +12,7 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   cooldown?: TimeBetweenCasts
   periodic?: boolean
   avoidable?: boolean
+  tankOnly?: boolean
 
   // counterplay
   combatDrop?: 'recast' | 'cancel'

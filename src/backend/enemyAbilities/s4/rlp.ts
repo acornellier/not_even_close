@@ -1,5 +1,9 @@
 import { getEnemySpell } from '../grimoire'
 
+const frigidShard = getEnemySpell(372808, {
+  tankOnly: true,
+})
+
 const chillstorm = getEnemySpell(383925, {
   cooldown: 23,
   notes: 'Only the final hit, not the ticking damage',
@@ -62,6 +66,7 @@ const infernocore = getEnemySpell(381862, {
 })
 
 export const rlpSpells = [
+  frigidShard,
   chillstorm,
   tectonicSlam,
   livingBomb,

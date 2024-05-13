@@ -3,7 +3,7 @@ import { Fragment, useEffect } from 'react'
 import type { Character, Profile } from '../../backend/characters'
 import { CharacterComponent } from './CharacterComponent'
 import { usePaste } from '../../util/usePaste'
-import type { Ability } from '../../backend/ability'
+import type { SelectedAbility } from '../../backend/ability'
 import { useLocalStorage } from '../../util/useLocalStorage'
 import { useCharacterChanges } from './useCharacterChanges'
 import { defaultCharacters } from './defaultCharacters.ts'
@@ -11,8 +11,8 @@ import { defaultCharacters } from './defaultCharacters.ts'
 interface Props {
   characters: Character[]
   setCharacters: Dispatch<SetStateAction<Character[]>>
-  selectedGroupBuffs: Ability[]
-  setGroupBuffs: Dispatch<SetStateAction<Ability[]>>
+  selectedGroupBuffs: SelectedAbility[]
+  setGroupBuffs: Dispatch<SetStateAction<SelectedAbility[]>>
 }
 
 const defaultProfiles: Profile[] = []

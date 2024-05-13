@@ -1,12 +1,12 @@
 import { AbilitySelect } from './AbilitySelect'
-import type { Ability } from '../../backend/ability'
+import type { Ability, SelectedAbility } from '../../backend/ability'
 import { Label } from '../Common/Label'
 
 interface Props {
   label: string
   availableAbilities: Ability[]
-  selectedAbilities: Ability[]
-  setSelectedAbilities: (abilities: Ability[]) => void
+  selectedAbilities: SelectedAbility[]
+  setSelectedAbilities: (abilities: SelectedAbility[]) => void
 }
 
 export function LabelledAbilitySelect({

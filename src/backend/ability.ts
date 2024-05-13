@@ -13,6 +13,7 @@ export type AbsorbOptions = {
 }
 
 export type StackOptions = {
+  defaultStacks: number
   maxStacks: number
 }
 
@@ -40,6 +41,11 @@ export type Ability = {
   iconName: string
   wowheadLink?: string
   notes?: string
+}
+
+export type SelectedAbility = {
+  ability: Ability
+  stacks?: number
 }
 
 export const abilityEffectFields = [

@@ -1,5 +1,5 @@
 import type { ClassSpec } from '../classes'
-import type { Ability } from '../ability'
+import type { SelectedAbility } from '../ability'
 import type { Character } from '../characters'
 import type { Dungeon } from '../enemyAbilities/enemies'
 
@@ -26,14 +26,14 @@ export interface CharacterStats {
 export interface CharacterPartialResult {
   spec: ClassSpec
   adjustedStats: CharacterStats
-  abilities: Ability[]
+  abilities: SelectedAbility[]
   startingHealth: number
 }
 
 export interface CharacterResult {
   spec: ClassSpec
   adjustedStats: CharacterStats
-  abilities: Ability[]
+  abilities: SelectedAbility[]
   damageDealtReduction: number
   damageReduction: number
   reducedDamage: number
@@ -61,7 +61,7 @@ export interface EnemyAbilityDetails {
 
 export interface SimInput {
   characters: Character[]
-  groupAbilities: Ability[]
+  groupAbilities: SelectedAbility[]
   customDrs: number[]
   customAbsorbs: number[]
   keyDetails: KeyDetails

@@ -6,6 +6,8 @@ import { useState } from 'react'
 import { useLocalStorage } from '../../util/useLocalStorage'
 import { Toggle } from '../Inputs/Toggle'
 import { WowIcon } from '../Common/WowIcon'
+import type { Character } from '../../backend/characters.ts'
+import { classSpecs } from '../../backend/classes.ts'
 
 interface Props {
   dungeon: Dungeon
@@ -13,6 +15,7 @@ interface Props {
   onSelect: (bossAbility: EnemyAbility) => void
   deselectDungeon: () => void
   results: AbilityResult[] | null
+  characters: Character[]
 }
 
 export function DungeonAbilities({
@@ -21,6 +24,7 @@ export function DungeonAbilities({
   onSelect,
   deselectDungeon,
   results,
+  characters,
 }: Props) {
   const [showPeriodic, setShowPeriodic] = useLocalStorage(
     `show-periodic-${dungeon.key}`,
@@ -32,9 +36,16 @@ export function DungeonAbilities({
   )
   const [abilityExtras, setAbilityExtras] = useState(new Set<string>())
 
+  const hasTank = characters.some(
+    (character) =>
+      classSpecs[character.classSpec.class][character.classSpec.spec]!.isTank,
+  )
+
   const abilities = dungeon.abilities
+    .filter(({ tankOnly }) => !tankOnly || hasTank)
     .filter(({ periodic }) => showPeriodic || !periodic)
     .filter(({ avoidable }) => showAvoidable || !avoidable)
+
   const bossAbilities = abilities.filter(({ trashAbility }) => !trashAbility)
   const trashAbilities = abilities.filter(({ trashAbility }) => trashAbility)
 

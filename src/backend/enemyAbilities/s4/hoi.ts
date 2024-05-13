@@ -25,6 +25,10 @@ const toxicEffluvia = getEnemySpell(385451, (baseSpell) => ({
   cooldown: 26,
 }))
 
+const squallBuffet = getEnemySpell(387504, {
+  tankOnly: true,
+})
+
 const tempestsFury = getEnemySpell(388424)
 
 const tempestsFury32: EnemyAbility = {
@@ -53,6 +57,7 @@ export const hoiAbilities = [
   powerOverload,
   overpoweringCroak,
   toxicEffluvia,
+  squallBuffet,
   tempestsFury,
   tempestsFury32,
   lightningBlast,

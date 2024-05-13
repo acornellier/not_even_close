@@ -1,4 +1,4 @@
-import type { Ability, AbsorbOptions } from '../ability'
+import type { Ability, AbsorbOptions, SelectedAbility } from '../ability'
 import type { CharacterPartialResult, EnemyAbilityDetails } from './simTypes'
 import { willOfTheNecropolis } from '../classAbilities/deathKnight'
 import type { ClassSpec } from '../classes'
@@ -73,7 +73,7 @@ export function getAbsorbs(
 ) {
   let absorbs = 0
 
-  for (const ability of charResult.abilities) {
+  for (const { ability } of charResult.abilities) {
     const { absorb } = ability
 
     if (
@@ -99,14 +99,14 @@ export function getAbsorbs(
 }
 
 export function getExtraAbsorbs(
-  abilities: Ability[],
+  abilities: SelectedAbility[],
   startingHealth: number,
   absorbs: number,
   actualDamageTaken: number,
 ) {
   let extraAbsorbs = 0
 
-  for (const ability of abilities) {
+  for (const { ability } of abilities) {
     if (ability.spellId === willOfTheNecropolis.spellId) {
       const damageToReach30 = startingHealth + absorbs - startingHealth * 0.3
       const damageTakenBelow30 = actualDamageTaken - damageToReach30

@@ -1,6 +1,7 @@
-﻿import { Dispatch, SetStateAction, useCallback, useEffect } from 'react'
+﻿import type { Dispatch, SetStateAction } from 'react'
+import { useCallback, useEffect } from 'react'
 import { getAddonOutput, isAddonPaste } from './addon.ts'
-import type { Ability } from '../backend/ability.ts'
+import type { SelectedAbility } from '../backend/ability.ts'
 import type { Character, UpdateCharacter } from '../backend/characters.ts'
 import { useToasts } from '../components/Common/Toasts/useToasts.ts'
 import { defaultAbilities, equalSpecs } from '../backend/classes.ts'
@@ -10,8 +11,8 @@ interface Props {
   characters: Character[]
   setCharacters: Dispatch<SetStateAction<Character[]>>
   updateCharacterIdx: (index: number) => UpdateCharacter
-  selectedGroupBuffs: Ability[]
-  setGroupBuffs: (abilities: Ability[]) => void
+  selectedGroupBuffs: SelectedAbility[]
+  setGroupBuffs: (abilities: SelectedAbility[]) => void
 }
 
 export function usePaste({
@@ -48,19 +49,21 @@ export function usePaste({
 
           setGroupBuffs([
             ...selectedGroupBuffs,
-            ...groupBuffs.filter(
-              (newBuff) =>
-                !selectedGroupBuffs.some(
-                  (curBuff) => curBuff.spellId === newBuff.spellId,
-                ),
-            ),
+            ...groupBuffs
+              .filter(
+                (newBuff) =>
+                  !selectedGroupBuffs.some(
+                    (curBuff) => curBuff.ability.spellId === newBuff.spellId,
+                  ),
+              )
+              .map((ability) => ({ ability })),
           ])
         } else {
           const newCharacter: Character = {
             classSpec,
             stats,
             abilities: defaultAbilities(classSpec),
-            externals: addTepidVers ? [tepidVersatility] : [],
+            externals: addTepidVers ? [{ ability: tepidVersatility }] : [],
           }
 
           setCharacters((prevCharacters) => [...prevCharacters, newCharacter])

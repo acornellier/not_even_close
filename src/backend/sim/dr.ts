@@ -1,11 +1,11 @@
 import type { CharacterStats, EnemyAbilityDetails } from './simTypes'
-import type { Ability } from '../ability'
+import type { SelectedAbility } from '../ability'
 import { dampenHarm } from '../classAbilities/monk'
 import { armorToPhysicalDr } from '../stats'
 
 export function getDamageReduction(
   characterStats: CharacterStats,
-  abilities: Ability[],
+  abilities: SelectedAbility[],
   customDrs: number[],
   enemyAbilityDetails: EnemyAbilityDetails,
   startingHealth: number,
@@ -21,7 +21,7 @@ export function getDamageReduction(
     inverseDr *= 1 - armorToPhysicalDr(characterStats.armor)
   }
 
-  for (const ability of abilities) {
+  for (const { ability } of abilities) {
     let dr = ability.dr
     if (
       (ability.drType === 'magic' && enemyAbilityDetails.physical) ||

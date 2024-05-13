@@ -1,4 +1,4 @@
-﻿import type { InputProps } from './Input';
+﻿import type { InputProps } from './Input'
 import { Input } from './Input'
 
 interface Props extends Omit<InputProps, 'onChange' | 'value'> {
@@ -17,7 +17,8 @@ export function NumericInput({ max, min, step = 1, onChange, ...props }: Props) 
       max={max}
       step={step}
       onChange={(value) => {
-        onChange(value === '' ? undefined : Number(value))
+        const num = Number(value)
+        onChange(value === '' || Number.isNaN(num) ? undefined : Number(value))
       }}
       {...props}
     />

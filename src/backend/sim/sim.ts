@@ -1,6 +1,6 @@
 import type { Character, CharacterStatsInput } from '../characters'
-import type { Ability } from '../ability'
-import { augmentAbilities, enemyAbilityToDetails } from '../utils'
+import type { SelectedAbility } from '../ability'
+import { augmentSelectedAbilities, enemyAbilityToDetails } from '../utils'
 import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from '../stats'
 import type {
   AbilityResult,
@@ -30,7 +30,10 @@ function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isTrashAbility: boo
   return Math.round(scalingFactor * 100) / 100
 }
 
-function getAdjustedStats(characterStats: CharacterStatsInput, abilities: Ability[]) {
+function getAdjustedStats(
+  characterStats: CharacterStatsInput,
+  abilities: SelectedAbility[],
+) {
   const adjustedStats: CharacterStats = {
     stamina: characterStats.stamina ?? 0,
     versatility: 0,
@@ -39,7 +42,7 @@ function getAdjustedStats(characterStats: CharacterStatsInput, abilities: Abilit
     mainStat: characterStats.mainStat ?? 0,
   }
 
-  for (const ability of abilities) {
+  for (const { ability } of abilities) {
     if (ability.staminaIncrease) {
       adjustedStats.stamina *= 1 + ability.staminaIncrease
     }
@@ -48,14 +51,14 @@ function getAdjustedStats(characterStats: CharacterStatsInput, abilities: Abilit
   adjustedStats.stamina = Math.floor(adjustedStats.stamina)
 
   let rawVers = characterStats.versatilityRaw ?? 0
-  for (const ability of abilities) {
+  for (const { ability } of abilities) {
     if (ability.versRawIncrease) {
       rawVers += ability.versRawIncrease
     }
   }
 
   adjustedStats.versatility = versRawToPercent(rawVers) / 100
-  for (const ability of abilities) {
+  for (const { ability } of abilities) {
     if (ability.versIncrease) {
       adjustedStats.versatility += ability.versIncrease
     }
@@ -64,12 +67,12 @@ function getAdjustedStats(characterStats: CharacterStatsInput, abilities: Abilit
   return adjustedStats
 }
 
-function getStartingHealth(characterStats: CharacterStats, abilities: Ability[]) {
+function getStartingHealth(characterStats: CharacterStats, abilities: SelectedAbility[]) {
   let startingHealth = staminaToHp(characterStats.stamina)
 
-  for (const ability of abilities) {
+  for (const { ability, stacks } of abilities) {
     if (ability.healthIncrease) {
-      startingHealth *= 1 + ability.healthIncrease
+      startingHealth *= 1 + ability.healthIncrease * (stacks ?? 1)
     }
   }
 
@@ -78,12 +81,12 @@ function getStartingHealth(characterStats: CharacterStats, abilities: Ability[])
 
 function getPartialResults(
   characters: Character[],
-  groupAbilities: Ability[],
+  groupAbilities: SelectedAbility[],
 ): CharacterPartialResult[] {
-  const augmentedGroupAbilities = augmentAbilities(groupAbilities, groupAbilities)
+  const augmentedGroupAbilities = augmentSelectedAbilities(groupAbilities, groupAbilities)
 
   return characters.map<CharacterPartialResult>((character) => {
-    const augmentedSelectedAbilities = augmentAbilities(
+    const augmentedSelectedAbilities = augmentSelectedAbilities(
       character.abilities,
       character.abilities,
     )
@@ -106,10 +109,10 @@ function getPartialResults(
   })
 }
 
-function getDamageDealtReduction(abilities: Ability[]) {
+function getDamageDealtReduction(abilities: SelectedAbility[]) {
   let damageDealtReduction = 1
 
-  for (const ability of abilities) {
+  for (const { ability } of abilities) {
     if (ability.damageDealtReduction) {
       damageDealtReduction *= 1 - ability.damageDealtReduction
     }

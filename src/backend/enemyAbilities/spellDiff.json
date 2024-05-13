@@ -1,5 +1,15 @@
 [
   {
+    "id": 388544,
+    "name": "Barkbreaker",
+    "icon": "ability_smash",
+    "damage": 938705,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "tankOnly": true
+  },
+  {
     "id": 388923,
     "name": "Burst Forth",
     "icon": "spell_nature_earthquake",
@@ -8,6 +18,16 @@
     "physical": false,
     "variance": 0,
     "cooldown": 60
+  },
+  {
+    "id": 385958,
+    "name": "Arcane Expulsion",
+    "icon": "spell_arcane_arcanetorrent",
+    "damage": 880036,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "tankOnly": true
   },
   {
     "id": 386181,
@@ -71,8 +91,19 @@
     "los": true
   },
   {
+    "id": 376997,
+    "name": "Savage Peck",
+    "icon": "inv_misc_raptortalon_nightmare",
+    "damage": 1271163,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "tankOnly": true,
+    "notes": "Only the initial hit"
+  },
+  {
     "id": 377009,
-    "name": "Screech 1",
+    "name": "Deafening Screech 1",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 234676,
     "aoe": true,
@@ -83,7 +114,7 @@
   },
   {
     "id": 377009,
-    "name": "Screech 2",
+    "name": "Deafening Screech 2",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 352014,
     "aoe": true,
@@ -94,7 +125,7 @@
   },
   {
     "id": 377009,
-    "name": "Screech 3",
+    "name": "Deafening Screech 3",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 469352,
     "aoe": true,
@@ -105,7 +136,7 @@
   },
   {
     "id": 377009,
-    "name": "Screech 4",
+    "name": "Deafening Screech 4",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 586690,
     "aoe": true,
@@ -116,7 +147,7 @@
   },
   {
     "id": 377009,
-    "name": "Screech 5",
+    "name": "Deafening Screech 5",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 704028,
     "aoe": true,
@@ -127,7 +158,7 @@
   },
   {
     "id": 377009,
-    "name": "Screech 6",
+    "name": "Deafening Screech 6",
     "icon": "ability_vehicle_sonicshockwave",
     "damage": 821366,
     "aoe": true,
@@ -135,6 +166,26 @@
     "variance": 0,
     "los": true,
     "cooldown": 23
+  },
+  {
+    "id": 374789,
+    "name": "Infused Strike",
+    "icon": "spell_frost_manaburn",
+    "damage": 782254,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "tankOnly": true
+  },
+  {
+    "id": 386660,
+    "name": "Erupting Fissure",
+    "icon": "inv_enchant_essencearcanelarge",
+    "damage": 977818,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "tankOnly": true
   },
   {
     "id": 374582,
@@ -189,6 +240,17 @@
     "physical": false,
     "variance": 0,
     "cooldown": 105
+  },
+  {
+    "id": 384978,
+    "name": "Dragon Strike",
+    "icon": "achievement_boss_malygos_01",
+    "damage": 977818,
+    "aoe": false,
+    "physical": false,
+    "variance": 0.05,
+    "tankOnly": true,
+    "cooldown": 18
   },
   {
     "id": 436652,
@@ -298,6 +360,16 @@
     "variance": 0,
     "periodic": true,
     "cooldown": 26
+  },
+  {
+    "id": 387504,
+    "name": "Squall Buffet",
+    "icon": "ability_mage_waterjet",
+    "damage": 782254,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "tankOnly": true
   },
   {
     "id": 388424,
@@ -452,6 +524,16 @@
     "cooldown": 20
   },
   {
+    "id": 382836,
+    "name": "Brutalize",
+    "icon": "ability_warrior_bloodbath",
+    "damage": 1564508,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "tankOnly": true
+  },
+  {
     "id": 386037,
     "name": "Gale Arrow",
     "icon": "ability_skyreach_four_wind",
@@ -460,6 +542,16 @@
     "physical": false,
     "variance": 0,
     "cooldown": 57
+  },
+  {
+    "id": 375937,
+    "name": "Rending Strike",
+    "icon": "ability_gouge",
+    "damage": 1368945,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "tankOnly": true
   },
   {
     "id": 376660,
@@ -471,6 +563,16 @@
     "variance": 0,
     "cooldown": 35,
     "combatDrop": "cancel"
+  },
+  {
+    "id": 376827,
+    "name": "Conductive Strike",
+    "icon": "ability_thunderking_lightningwhip",
+    "damage": 684472,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "tankOnly": true
   },
   {
     "id": 376866,
@@ -526,6 +628,16 @@
     "variance": 0,
     "trashAbility": true,
     "cooldown": 24
+  },
+  {
+    "id": 372808,
+    "name": "Frigid Shard",
+    "icon": "spell_frost_iceshard",
+    "damage": 391127,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "tankOnly": true
   },
   {
     "id": 383925,
@@ -714,6 +826,16 @@
     "cooldown": 25
   },
   {
+    "id": 369061,
+    "name": "Searing Clap",
+    "icon": "spell_fire_immolation",
+    "damage": 684472,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "tankOnly": true
+  },
+  {
     "id": 369116,
     "name": "Unstable Embers",
     "icon": "spell_shaman_improvedfirenova",
@@ -743,6 +865,16 @@
     "variance": 0,
     "cooldown": 20,
     "trashAbility": true
+  },
+  {
+    "id": 375727,
+    "name": "Sand Breath",
+    "icon": "inv_elementalearth2",
+    "damage": 880036,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "tankOnly": true
   },
   {
     "id": 376049,

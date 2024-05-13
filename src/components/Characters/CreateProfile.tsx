@@ -1,5 +1,5 @@
 import { TooltipStyled } from '../Common/TooltipStyled'
-import type { FormEvent} from 'react';
+import type { FormEvent } from 'react'
 import { useRef, useState } from 'react'
 import { Input } from '../Inputs/Input'
 import type { TooltipRefProps } from 'react-tooltip'
@@ -67,7 +67,7 @@ export function CreateProfile({ idx, createProfile }: Props) {
               value={name}
               onChange={setName}
               label="Profile name"
-              fullWidth
+              width="full"
               autoFocus
             />
             <Button short onClick={save}>

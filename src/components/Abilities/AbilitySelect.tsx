@@ -1,7 +1,8 @@
-﻿import type { Ability } from '../../backend/ability'
+﻿import type { Ability, SelectedAbility } from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
 import {
   augmentAbilities,
+  getSelectedAbility,
   isAbilityAvailable,
   isAbilitySelected,
 } from '../../backend/utils'
@@ -12,8 +13,8 @@ import { willOfTheNecropolis } from '../../backend/classAbilities/deathKnight.ts
 
 interface Props {
   availableAbilities: Ability[]
-  selectedAbilities: Ability[]
-  setSelectedAbilities: (abilities: Ability[]) => void
+  selectedAbilities: SelectedAbility[]
+  setSelectedAbilities: (abilities: SelectedAbility[]) => void
   characterIdx?: number
 }
 
@@ -33,12 +34,13 @@ export function AbilitySelect({
   useEffect(() => {
     if (
       selectedAbilities.some(
-        (selectedAbility) => !isAbilityAvailable(selectedAbility, availableAbilities),
+        (selectedAbility) =>
+          !isAbilityAvailable(selectedAbility.ability, availableAbilities),
       )
     ) {
       setSelectedAbilities(
         selectedAbilities.filter((selectedAbility) =>
-          isAbilityAvailable(selectedAbility, availableAbilities),
+          isAbilityAvailable(selectedAbility.ability, availableAbilities),
         ),
       )
     }
@@ -51,7 +53,7 @@ export function AbilitySelect({
       if (isAbilitySelected(spellId, selectedAbilities)) {
         setSelectedAbilities(
           selectedAbilities.filter(
-            (selectedAbility) => selectedAbility.spellId !== spellId,
+            (selectedAbility) => selectedAbility.ability.spellId !== spellId,
           ),
         )
       } else {
@@ -59,10 +61,34 @@ export function AbilitySelect({
           ({ spellId: otherSpellId }) => otherSpellId === spellId,
         )
 
-        if (ability) setSelectedAbilities([...selectedAbilities, ability])
+        if (!ability) return
+
+        setSelectedAbilities([
+          ...selectedAbilities,
+          {
+            ability,
+            ...(ability.stacks ? { stacks: ability.stacks.defaultStacks } : {}),
+          },
+        ])
       }
     },
     [availableAbilities, selectedAbilities, setSelectedAbilities],
+  )
+
+  const setAbilityStacks = useCallback(
+    (spellId: number, stacks: number) => {
+      const selectedAbility = getSelectedAbility(spellId, selectedAbilities)
+
+      if (!selectedAbility) return
+
+      setSelectedAbilities([
+        ...selectedAbilities.filter(
+          (selectedAbility) => selectedAbility.ability.spellId !== spellId,
+        ),
+        { ...selectedAbility, stacks },
+      ])
+    },
+    [selectedAbilities, setSelectedAbilities],
   )
 
   const [augmenters, regulars] = (augmentedAbilities ?? availableAbilities).reduce<
@@ -81,8 +107,9 @@ export function AbilitySelect({
         <CharAbilityIcon
           key={ability.spellId}
           ability={ability}
+          selectedAbility={getSelectedAbility(ability.spellId, selectedAbilities)}
           toggleAbility={toggleAbility}
-          selectedAbilities={selectedAbilities}
+          setAbilityStacks={setAbilityStacks}
           allAbilities={availableAbilities}
           characterIdx={characterIdx}
         />
@@ -94,8 +121,9 @@ export function AbilitySelect({
         <CharAbilityIcon
           key={ability.spellId}
           ability={ability}
+          selectedAbility={getSelectedAbility(ability.spellId, selectedAbilities)}
           toggleAbility={toggleAbility}
-          selectedAbilities={selectedAbilities}
+          setAbilityStacks={setAbilityStacks}
           allAbilities={availableAbilities}
           characterIdx={characterIdx}
         />

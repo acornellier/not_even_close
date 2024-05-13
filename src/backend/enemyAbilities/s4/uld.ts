@@ -32,6 +32,10 @@ const earthquake = getEnemySpell(369328, {
   cooldown: 25,
 })
 
+const searingClap = getEnemySpell(369061, {
+  tankOnly: true,
+})
+
 const unstableEmbers = getEnemySpell(369116, {
   cooldown: 12,
 })
@@ -45,6 +49,10 @@ const thunderousClap = getEnemySpell(381593, {
   trashAbility: true,
 })
 
+const sandBreath = getEnemySpell(375727, {
+  tankOnly: true,
+})
+
 const wingBuffet = getEnemySpell(376049, {
   cooldown: 23,
 })
@@ -56,8 +64,10 @@ export const uldAbilities = [
   earthenShards4Stacks,
   crushingStomp4Stacks,
   earthquake,
+  searingClap,
   unstableEmbers,
   seekingFlame,
   thunderousClap,
+  sandBreath,
   wingBuffet,
 ]

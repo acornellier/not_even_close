@@ -70,6 +70,7 @@ const foulBulwark: Ability = {
   spellId: 206974,
   healthIncrease: 0.01,
   stacks: {
+    defaultStacks: 5,
     maxStacks: 10,
   },
   iconName: 'inv_armor_shield_naxxramas_d_02',
@@ -80,6 +81,13 @@ const vampiricBlood: Ability = {
   spellId: 55233,
   healthIncrease: 0.3,
   iconName: 'spell_shadow_lifedrain',
+}
+
+const ashenDecay: Ability = {
+  name: 'Ashen Decay (S3 2pc)',
+  spellId: 425719,
+  damageDealtReduction: 0.1,
+  iconName: 'spell_holy_ashestoashes',
 }
 
 const gloomWard: Ability = {
@@ -116,11 +124,12 @@ export const deathKnightBloodAbilities = [
   antiMagicBarrier,
   gloomWard,
   willOfTheNecropolis,
+  foulBulwark,
+  ashenDecay,
   lichborne,
   antiMagicShell,
   iceboundFortitude,
   vampiricBlood,
   tombstone,
   runeTap,
-  // foulBulwark,
 ]

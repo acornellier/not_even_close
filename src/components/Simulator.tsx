@@ -1,6 +1,5 @@
 import { simulate } from '../backend/sim/sim'
 import { useCallback, useEffect, useState } from 'react'
-import type { Ability } from '../backend/ability'
 import { DungeonAbilities } from './EnemyAbilities/DungeonAbilities'
 import { LabelledAbilitySelect } from './Abilities/LabelledAbilitySelect'
 import { groupBuffs } from '../backend/groupAbilities/groupBuffs'
@@ -20,10 +19,8 @@ import { Button } from './Common/Button'
 import type { KeyDetails, Result } from '../backend/sim/simTypes'
 import { useEnemyAbility } from './EnemyAbilities/useEnemyAbility'
 import { dungeons } from '../backend/enemyAbilities/dungeons.ts'
-import { defaultCharacter, defaultCharacters } from './Characters/defaultCharacters.ts'
-
-const defaultGroupBuffs: Ability[] = []
-const defaultGroupActives: Ability[] = []
+import { defaultCharacter } from './Characters/defaultCharacters.ts'
+import { useAbilities } from './Characters/useAbilities.ts'
 
 const defaultKeyDetails: KeyDetails = { keyLevel: 15, isTyran: true }
 
@@ -32,15 +29,14 @@ interface Props {
 }
 
 export function Simulator({ defaultEnemyAbility }: Props) {
-  const [characters, setCharacters] = useLocalStorage('characters', defaultCharacters)
-  const [selectedGroupBuffs, setGroupBuffs] = useLocalStorage<Ability[]>(
-    'groupBuffs',
-    defaultGroupBuffs,
-  )
-  const [selectedGroupActives, setGroupActives] = useLocalStorage<Ability[]>(
-    'groupActives',
-    defaultGroupActives,
-  )
+  const {
+    characters,
+    setCharacters,
+    selectedGroupBuffs,
+    setGroupBuffs,
+    selectedGroupActives,
+    setGroupActives,
+  } = useAbilities()
 
   const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
 
@@ -165,6 +161,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
               deselectDungeon={() => setSelectedDungeonKey(null)}
               onSelect={setEnemyAbility}
               results={result?.dungeon ?? null}
+              characters={characters}
             />
           )}
         </div>

@@ -12,12 +12,13 @@ import { classSpecs } from '../../backend/classes'
 import { LabelledAbilitySelect } from '../Abilities/LabelledAbilitySelect'
 import { aaVersBuff, externals } from '../../backend/groupAbilities/externals'
 import { useCallback, useMemo } from 'react'
-import type { Ability } from '../../backend/ability'
+import type { SelectedAbility } from '../../backend/ability'
 import { CreateProfile } from './CreateProfile'
 import { LoadProfile } from './LoadProfile'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { PasteButton } from './PasteButton.tsx'
 import { useSimContext } from '../../util/useSimContext.ts'
+import { Label } from '../Common/Label.tsx'
 
 interface Props {
   idx: number
@@ -52,12 +53,12 @@ export function CharacterComponent({
   )
 
   const setAbilities = useCallback(
-    (abilities: Ability[]) => updateCharacter({ abilities }),
+    (abilities: SelectedAbility[]) => updateCharacter({ abilities }),
     [updateCharacter],
   )
 
   const setExternals = useCallback(
-    (newExternals: Ability[]) => updateCharacter({ externals: newExternals }),
+    (newExternals: SelectedAbility[]) => updateCharacter({ externals: newExternals }),
     [updateCharacter],
   )
 
@@ -72,8 +73,8 @@ export function CharacterComponent({
     return res
   }, [dungeon])
 
-  const specAbilities =
-    classSpecs[character.classSpec.class][character.classSpec.spec]!.abilities
+  const specDetails = classSpecs[character.classSpec.class][character.classSpec.spec]!
+  const specAbilities = specDetails.abilities
 
   const loadedProfile = profiles.find(
     (profile) => profile.id === character.loadedProfileId,
@@ -81,6 +82,11 @@ export function CharacterComponent({
 
   return (
     <div className="flex flex-col items-start gap-3 w-full">
+      {specDetails.isTank && (
+        <Label className="[&]:bg-red-700">
+          WARNING: Tanks are a WIP and may contain invalid results
+        </Label>
+      )}
       <div className="flex justify-between w-full gap-2">
         <CharacterStatsForm
           characterStats={character.stats}

@@ -1,5 +1,5 @@
 ﻿import { havocAbilities } from './classAbilities/demonHunter'
-import type { Ability } from './ability'
+import type { Ability, SelectedAbility } from './ability'
 import {
   evokerAugAbilities,
   evokerDevAbilities,
@@ -75,6 +75,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: deathKnightBloodAbilities,
       icon: 'spell_deathknight_bloodpresence',
       mainStat: 'other',
+      isTank: true,
     },
     Frost: {
       abilities: deathKnightAbilities,
@@ -268,10 +269,12 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
   },
 } as const
 
-export const defaultAbilities = (classSpec: ClassSpec) =>
-  classSpecs[classSpec.class][classSpec.spec]!.abilities.filter(
-    ({ onByDefault }) => onByDefault,
-  )
+export const defaultAbilities = (classSpec: ClassSpec): SelectedAbility[] => {
+  const specDetails = classSpecs[classSpec.class][classSpec.spec]!
+  return specDetails.abilities
+    .filter(({ onByDefault }) => onByDefault)
+    .map((ability) => ({ ability }))
+}
 
 export const classColors: Record<WowClass, string> = {
   'Death Knight': '#C41E3A',

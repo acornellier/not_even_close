@@ -1,4 +1,4 @@
-﻿import type { Ability } from './ability'
+﻿import type { Ability, SelectedAbility } from './ability'
 import type { EnemyAbility } from './enemyAbilities/enemies'
 
 import type { EnemyAbilityDetails } from './sim/simTypes'
@@ -11,39 +11,79 @@ export function thousands(number: number) {
   return `${Math.round(number / 1000).toLocaleString('en-US')}K`
 }
 
-export function isAbilitySelected(spellId: number, selectedAbilities: Ability[]) {
-  return selectedAbilities.some((selectedAbility) => selectedAbility.spellId === spellId)
+export function getSelectedAbility(
+  spellId: number,
+  selectedAbilities: SelectedAbility[],
+) {
+  return selectedAbilities.find(({ ability }) => ability.spellId === spellId)
 }
 
-export function augmentAbilities(abilities: Ability[], selectedAbilities: Ability[]) {
-  return abilities.map((specAbility) => {
-    const augmentedAbility = { ...specAbility }
+export function isAbilitySelected(spellId: number, selectedAbilities: SelectedAbility[]) {
+  return !!getSelectedAbility(spellId, selectedAbilities)
+}
 
-    abilities.forEach(({ spellId, abilityAugmentations }) => {
-      if (!abilityAugmentations || !isAbilitySelected(spellId, selectedAbilities)) return
+function augmentAbility(
+  augmentedAbility: Ability,
+  augmentingAbility: Ability,
+  selectedAbilities: SelectedAbility[],
+) {
+  if (
+    !augmentingAbility.abilityAugmentations ||
+    !isAbilitySelected(augmentedAbility.spellId, selectedAbilities)
+  )
+    return
 
-      abilityAugmentations.forEach(({ otherSpellId, field, absorbField, value }) => {
-        if (otherSpellId !== augmentedAbility.spellId) return
+  augmentingAbility.abilityAugmentations.forEach(
+    ({ otherSpellId, field, absorbField, value }) => {
+      if (otherSpellId !== augmentedAbility.spellId) return
 
-        if (field === 'absorb') {
-          const absorb = augmentedAbility.absorb
-          if (!absorb || !absorbField) return
+      if (field === 'absorb') {
+        const absorb = augmentedAbility.absorb
+        if (!absorb || !absorbField) return
 
-          augmentedAbility.absorb = { ...absorb }
+        augmentedAbility.absorb = { ...absorb }
 
-          augmentedAbility.absorb[absorbField] ??= 0
-          if (absorbField === 'healthMultiplier') {
-            augmentedAbility.absorb[absorbField]! *= 1 + value
-          } else {
-            augmentedAbility.absorb[absorbField]! += value
-          }
+        augmentedAbility.absorb[absorbField] ??= 0
+        if (absorbField === 'healthMultiplier') {
+          augmentedAbility.absorb[absorbField]! *= 1 + value
         } else {
-          augmentedAbility[field] ??= 0
-          augmentedAbility[field]! += value
+          augmentedAbility.absorb[absorbField]! += value
         }
-      })
-    })
+      } else {
+        augmentedAbility[field] ??= 0
+        augmentedAbility[field]! += value
+      }
+    },
+  )
+}
+
+export function augmentAbilities(
+  abilities: Ability[],
+  selectedAbilities: SelectedAbility[],
+) {
+  return abilities.map<Ability>((ability) => {
+    const augmentedAbility = { ...ability }
+
+    abilities.forEach((augmentingAbility) =>
+      augmentAbility(augmentedAbility, augmentingAbility, selectedAbilities),
+    )
+
     return augmentedAbility
+  })
+}
+
+export function augmentSelectedAbilities(
+  abilities: SelectedAbility[],
+  selectedAbilities: SelectedAbility[],
+) {
+  return abilities.map<SelectedAbility>((ability) => {
+    const augmentedAbility = { ...ability.ability }
+
+    abilities.forEach((augmentingAbility) =>
+      augmentAbility(augmentedAbility, augmentingAbility.ability, selectedAbilities),
+    )
+
+    return { ...ability, ability: augmentedAbility }
   })
 }
 

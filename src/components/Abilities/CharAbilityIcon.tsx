@@ -3,22 +3,25 @@ import type {
   AbilityAugmentation,
   AbilityField,
   AbsorbOptions,
+  SelectedAbility,
 } from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
-import { isAbilitySelected, roundTo } from '../../backend/utils'
+import { roundTo } from '../../backend/utils'
 import { Fragment } from 'react'
 import { useSimContext } from '../../util/useSimContext.ts'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { getMultiplierAbsorb } from '../../backend/sim/absorbs'
 import { barkskin } from '../../backend/classAbilities/druid'
 import { ZamIcon } from '../Common/ZamIcon.tsx'
+import { NumericInput } from '../Inputs/NumericInput.tsx'
 
 const iconSize = 40
 
 interface AbilityIconProps {
   ability: Ability
+  selectedAbility: SelectedAbility | undefined
   toggleAbility: (spellId: number) => void
-  selectedAbilities: Ability[]
+  setAbilityStacks: (spellId: number, stacks: number) => void
   allAbilities: Ability[]
   characterIdx?: number
 }
@@ -106,8 +109,9 @@ function getAugmentationText(augmentation: AbilityAugmentation) {
 
 export function CharAbilityIcon({
   ability,
+  selectedAbility,
   toggleAbility,
-  selectedAbilities,
+  setAbilityStacks,
   allAbilities,
   characterIdx,
 }: AbilityIconProps) {
@@ -119,7 +123,7 @@ export function CharAbilityIcon({
       )
     : null
 
-  const isSelected = isAbilitySelected(ability.spellId, selectedAbilities)
+  const isSelected = !!selectedAbility
 
   const { result } = useSimContext()
   let calculatedAbsorb = 0
@@ -140,66 +144,77 @@ export function CharAbilityIcon({
   }`
 
   return (
-    <div
-      key={ability.spellId}
-      data-tooltip-id={tooltipId}
-      className="cursor-pointer select-none relative"
-      onClick={(e) => {
-        e.preventDefault()
-        toggleAbility(ability.spellId)
-      }}
-    >
-      <TooltipStyled id={tooltipId}>
-        <div className="flex flex-col">
-          <span className="text-xl">{ability.name}</span>
-          {abilityEffectFields.map((field) => {
-            const value = ability[field]
-            return (
-              value && (
-                <span key={field}>
-                  {getEffectText(field, value, ability)}
-                  {field === 'absorb' && getExtraAbsorbText(calculatedAbsorb)}
-                </span>
+    <>
+      <div
+        key={ability.spellId}
+        data-tooltip-id={tooltipId}
+        className="cursor-pointer select-none relative"
+        onClick={(e) => {
+          e.preventDefault()
+          toggleAbility(ability.spellId)
+        }}
+      >
+        <TooltipStyled id={tooltipId}>
+          <div className="flex flex-col">
+            <span className="text-xl">{ability.name}</span>
+            {abilityEffectFields.map((field) => {
+              const value = ability[field]
+              return (
+                value && (
+                  <span key={field}>
+                    {getEffectText(field, value, ability)}
+                    {field === 'absorb' && getExtraAbsorbText(calculatedAbsorb)}
+                  </span>
+                )
               )
-            )
-          })}
-          {augmentedAbilities?.map((augmentedAbility) => {
-            const augmentation = ability.abilityAugmentations?.find(
-              (augmentation) => augmentation.otherSpellId === augmentedAbility.spellId,
-            )
-            if (!augmentation) return null
+            })}
+            {augmentedAbilities?.map((augmentedAbility) => {
+              const augmentation = ability.abilityAugmentations?.find(
+                (augmentation) => augmentation.otherSpellId === augmentedAbility.spellId,
+              )
+              if (!augmentation) return null
 
-            return (
-              <Fragment key={augmentedAbility.spellId}>
-                <span>
-                  Improves {augmentedAbility.name}: {getAugmentationText(augmentation)}
-                </span>
-              </Fragment>
-            )
-          })}
-          {ability.notes && <span>{ability.notes}</span>}
-        </div>
-      </TooltipStyled>
-      {ability.talentPoints && (
-        <div
-          className="absolute rounded bottom-0 right-2 text-white"
-          style={{ WebkitTextStroke: '1px yellow' }}
-        >
-          {ability.talentPoints}
-        </div>
-      )}
-      {isSelected && (
-        <div
-          className="absolute rounded icon-highlight"
-          style={{ height: iconSize, width: iconSize }}
+              return (
+                <Fragment key={augmentedAbility.spellId}>
+                  <span>
+                    Improves {augmentedAbility.name}: {getAugmentationText(augmentation)}
+                  </span>
+                </Fragment>
+              )
+            })}
+            {ability.notes && <span>{ability.notes}</span>}
+          </div>
+        </TooltipStyled>
+        {ability.talentPoints && (
+          <div
+            className="absolute rounded bottom-0 right-2 text-white"
+            style={{ WebkitTextStroke: '1px yellow' }}
+          >
+            {ability.talentPoints}
+          </div>
+        )}
+        {isSelected && (
+          <div
+            className="absolute rounded icon-highlight"
+            style={{ height: iconSize, width: iconSize }}
+          />
+        )}
+        <ZamIcon
+          className={`rounded border-2 border-gray-600`}
+          size={iconSize}
+          src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}
+          alt={ability.name}
+        />
+      </div>
+      {ability.stacks && selectedAbility && (
+        <NumericInput
+          width="icon"
+          onChange={(newValue) => setAbilityStacks(ability.spellId, newValue ?? 0)}
+          value={selectedAbility.stacks}
+          min={0}
+          max={ability.stacks.maxStacks}
         />
       )}
-      <ZamIcon
-        className={`rounded border-2 border-gray-600`}
-        size={iconSize}
-        src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}
-        alt={ability.name}
-      />
-    </div>
+    </>
   )
 }

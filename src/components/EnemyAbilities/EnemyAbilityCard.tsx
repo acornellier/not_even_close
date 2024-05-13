@@ -6,6 +6,7 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
   QuestionMarkCircleIcon,
+  ShieldExclamationIcon,
 } from '@heroicons/react/24/outline'
 import { AbilityCardExtras } from './AbilityCardExtras'
 import { CardResult } from './CardResult'
@@ -52,6 +53,13 @@ export function EnemyAbilityCard({
           </a>
           <div className="flex items-center gap-1">
             <div className="text-white">{ability.name}</div>
+            {ability.tankOnly && (
+              <ShieldExclamationIcon
+                height={20}
+                data-tooltip-id="enemy-ability-tank-tooltip"
+              />
+            )}
+            <TooltipStyled id="enemy-ability-tank-tooltip">Tank buster</TooltipStyled>
             {ability.notes && (
               <QuestionMarkCircleIcon
                 height={20}

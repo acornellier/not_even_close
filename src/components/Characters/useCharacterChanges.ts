@@ -1,23 +1,26 @@
 import type { Character, Profile } from '../../backend/characters'
-import type { Dispatch, SetStateAction} from 'react';
+import type { Dispatch, SetStateAction } from 'react'
 import { useCallback } from 'react'
 import { defaultAbilities, equalSpecs } from '../../backend/classes'
 import { tepidVersatility } from '../../backend/groupAbilities/externals'
 import { isAbilitySelected } from '../../backend/utils'
-import type { Ability } from '../../backend/ability'
+import type { SelectedAbility } from '../../backend/ability'
 
 const uniqueAbilityNames = ['ursine vigor']
 const uniqueExternalNames = ['phial']
 
-function uniqueAbilities(abilities: Ability[], uniqueNames: string[]) {
+function uniqueAbilities(
+  abilities: SelectedAbility[],
+  uniqueNames: string[],
+): SelectedAbility[] {
   for (const uniqueName of uniqueNames) {
-    const lastIndex = abilities.findLastIndex((ability) =>
+    const lastIndex = abilities.findLastIndex(({ ability }) =>
       ability.name.toLowerCase().includes(uniqueName),
     )
 
     if (lastIndex !== -1) {
       abilities = abilities.filter(
-        (ability, idx) =>
+        ({ ability }, idx) =>
           idx === lastIndex || !ability.name.toLowerCase().includes(uniqueName),
       )
     }
@@ -45,7 +48,7 @@ export function useCharacterChanges({ setCharacters, setProfiles, characters }: 
               !equalSpecs(character.classSpec, charChanges.classSpec)
                 ? {
                     abilities: defaultAbilities(charChanges.classSpec),
-                    externals: addTepidVers ? [tepidVersatility] : [],
+                    externals: addTepidVers ? [{ ability: tepidVersatility }] : [],
                   }
                 : {}
 
@@ -59,7 +62,7 @@ export function useCharacterChanges({ setCharacters, setProfiles, characters }: 
               res.externals ??= []
 
               if (!isAbilitySelected(tepidVersatility.spellId, res.externals)) {
-                res.externals.push(tepidVersatility)
+                res.externals.push({ ability: tepidVersatility })
               }
             }
 
