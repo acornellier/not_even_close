@@ -1,4 +1,4 @@
-import type { Ability, AbilityAugmentation } from '../ability'
+import type { Ability } from '../ability'
 
 export const willOfTheNecropolis: Ability = {
   name: 'Will of the Necropolis',
@@ -75,27 +75,11 @@ const foulBulwark: Ability = {
   iconName: 'inv_armor_shield_naxxramas_d_02',
 }
 
-const absorbAugmentations = (value: number): AbilityAugmentation[] => [
-  {
-    otherSpellId: antiMagicShell.spellId,
-    field: 'absorb',
-    absorbField: 'healthMultiplier',
-    value,
-  },
-  {
-    otherSpellId: tombstone.spellId,
-    field: 'absorb',
-    absorbField: 'healthMultiplier',
-    value,
-  },
-]
-
 const vampiricBlood: Ability = {
   name: 'Vampiric Blood',
   spellId: 55233,
   healthIncrease: 0.3,
   iconName: 'spell_shadow_lifedrain',
-  abilityAugmentations: absorbAugmentations(0.3),
 }
 
 const gloomWard: Ability = {
@@ -103,7 +87,20 @@ const gloomWard: Ability = {
   spellId: 391571,
   onByDefault: true,
   iconName: 'ability_rogue_envelopingshadows',
-  abilityAugmentations: absorbAugmentations(0.15),
+  abilityAugmentations: [
+    {
+      otherSpellId: antiMagicShell.spellId,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.15,
+    },
+    {
+      otherSpellId: tombstone.spellId,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.15,
+    },
+  ],
 }
 
 export const deathKnightAbilities = [
