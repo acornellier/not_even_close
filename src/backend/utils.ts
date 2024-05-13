@@ -7,6 +7,10 @@ export function roundTo(number: number, to: number) {
   return Math.round(number * 10 ** to) / 10 ** to
 }
 
+export function thousands(number: number) {
+  return `${Math.round(number / 1000).toLocaleString('en-US')}K`
+}
+
 export function isAbilitySelected(spellId: number, selectedAbilities: Ability[]) {
   return selectedAbilities.some((selectedAbility) => selectedAbility.spellId === spellId)
 }

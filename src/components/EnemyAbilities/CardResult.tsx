@@ -1,5 +1,6 @@
 ﻿import type { CharacterResult } from '../../backend/sim/simTypes'
 import { AbilityDetailsChip } from './AbilityDetailsChip'
+import { thousands } from '../../backend/utils.ts'
 
 interface Props {
   result: CharacterResult
@@ -7,7 +8,7 @@ interface Props {
 
 export function CardResult({ result }: Props) {
   const survival = result.healthRemaining > 0
-  const remainingHp = result.healthRemaining.toLocaleString('en-US')
+  const remainingHp = thousands(result.healthRemaining)
 
   return (
     <AbilityDetailsChip

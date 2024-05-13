@@ -29,7 +29,7 @@ const tempestsFury = getEnemySpell(388424)
 
 const tempestsFury32: EnemyAbility = {
   ...tempestsFury,
-  name: "Tempest's Fury @ 20 stacks",
+  name: 'Fury @ 20 stacks',
   damage: Math.round(tempestsFury.damage * 1.2),
   notes: 'Assumes all 4 ads channel for 25 seconds each. More likely to be ~15 stacks.',
 }

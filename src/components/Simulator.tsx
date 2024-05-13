@@ -171,7 +171,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
 
         <div className="border-2 mx-2 border-gray-600" />
 
-        <div className="basis-[330px] relative">
+        <div className="w-[330px] relative">
           <Sidebar result={result} enemyAbility={enemyAbility} keyDetails={keyDetails} />
         </div>
       </div>

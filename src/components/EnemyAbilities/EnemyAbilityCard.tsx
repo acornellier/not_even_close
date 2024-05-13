@@ -10,6 +10,7 @@ import {
 import { AbilityCardExtras } from './AbilityCardExtras'
 import { CardResult } from './CardResult'
 import { WowIcon } from '../Common/WowIcon'
+import { thousands } from '../../backend/utils.ts'
 
 interface Props {
   ability: EnemyAbility
@@ -69,7 +70,7 @@ export function EnemyAbilityCard({
               className="hidden sm:block"
               data-tooltip-id={`chip-damage-${ability.name}`}
             >
-              {ability.damage.toLocaleString('en-us')} dmg
+              {thousands(ability.damage)} dmg
               {ability.variance !== undefined &&
                 ability.variance !== 0 &&
                 ` ±${ability.variance * 100}%`}
