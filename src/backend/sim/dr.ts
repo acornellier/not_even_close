@@ -3,6 +3,16 @@ import type { SelectedAbility } from '../ability'
 import { dampenHarm } from '../classAbilities/monk'
 import { armorToPhysicalDr } from '../stats'
 
+const getIsPhysicalReduction = ({
+  physical,
+  forcePhysicalReduction,
+  aoe,
+}: EnemyAbilityDetails) => {
+  if (!physical) return false
+  if (forcePhysicalReduction) return true
+  return !aoe
+}
+
 export function getDamageReduction(
   characterStats: CharacterStats,
   abilities: SelectedAbility[],
@@ -17,7 +27,7 @@ export function getDamageReduction(
     inverseDr *= 1 - characterStats.avoidance
   }
 
-  if (enemyAbilityDetails.physical && !enemyAbilityDetails.aoe) {
+  if (getIsPhysicalReduction(enemyAbilityDetails)) {
     inverseDr *= 1 - armorToPhysicalDr(characterStats.armor)
   }
 

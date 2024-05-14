@@ -7,6 +7,7 @@
     "aoe": false,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true
   },
   {
@@ -17,6 +18,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 60
   },
   {
@@ -27,6 +29,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true
   },
   {
@@ -37,6 +40,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "aoeMultiplier": 0.714,
     "cooldown": 25,
     "notes": "The final hit is always preceded immediately by a tick of damage. The dot is ST but the final hit is AoE."
@@ -49,6 +53,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 45
   },
   {
@@ -59,6 +64,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "avoidable": true,
     "cooldown": 25,
@@ -73,6 +79,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "avoidable": true,
     "cooldown": 26,
@@ -87,6 +94,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "los": true
   },
@@ -98,6 +106,7 @@
     "aoe": false,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true,
     "notes": "Only the initial hit"
   },
@@ -109,6 +118,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "los": true,
     "cooldown": 23
   },
@@ -120,6 +130,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "los": true,
     "cooldown": 23
   },
@@ -131,6 +142,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "los": true,
     "cooldown": 23
   },
@@ -142,6 +154,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "los": true,
     "cooldown": 23
   },
@@ -153,6 +166,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "los": true,
     "cooldown": 23
   },
@@ -164,6 +178,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "los": true,
     "cooldown": 23
   },
@@ -175,6 +190,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true
   },
   {
@@ -185,6 +201,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true
   },
   {
@@ -195,6 +212,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 50
   },
   {
@@ -205,6 +223,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 50
   },
   {
@@ -215,6 +234,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": [
       15,
       30
@@ -228,6 +248,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 60,
     "notes": "Assumes you have 50% DR"
   },
@@ -239,6 +260,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 105
   },
   {
@@ -249,6 +271,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0.05,
+    "forcePhysicalReduction": false,
     "tankOnly": true,
     "cooldown": 18
   },
@@ -260,6 +283,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "cooldown": 12,
     "outrange": 40
@@ -272,6 +296,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "outrange": 30
   },
@@ -283,6 +308,7 @@
     "aoe": false,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 60
   },
   {
@@ -293,6 +319,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "avoidable": true
   },
   {
@@ -303,6 +330,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 45
   },
   {
@@ -313,6 +341,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "cooldown": 15,
     "outrange": 10
@@ -325,6 +354,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "periodic": true,
     "cooldown": 28
   },
@@ -336,6 +366,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "periodic": true,
     "cooldown": 28
   },
@@ -347,6 +378,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "periodic": true,
     "cooldown": 38
   },
@@ -358,6 +390,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "periodic": true,
     "cooldown": 26
   },
@@ -369,6 +402,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true
   },
   {
@@ -378,7 +412,8 @@
     "damage": 400905,
     "aoe": true,
     "physical": false,
-    "variance": 0
+    "variance": 0,
+    "forcePhysicalReduction": false
   },
   {
     "id": 388424,
@@ -388,6 +423,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "notes": "Assumes all 4 ads channel for 25 seconds each. More likely to be ~15 stacks."
   },
   {
@@ -398,6 +434,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "outrange": 40
   },
@@ -409,6 +446,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true
   },
   {
@@ -419,6 +457,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "outrange": 35
   },
@@ -430,6 +469,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 30,
     "combatDrop": "cancel",
     "outrange": 40
@@ -442,6 +482,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 33
   },
   {
@@ -452,6 +493,7 @@
     "aoe": false,
     "physical": true,
     "variance": 0.025,
+    "forcePhysicalReduction": false,
     "cooldown": 57
   },
   {
@@ -462,6 +504,7 @@
     "aoe": false,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 57
   },
   {
@@ -472,6 +515,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "periodic": true,
     "cooldown": 31,
     "combatDrop": "cancel",
@@ -485,6 +529,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "cooldown": 23
   },
@@ -496,6 +541,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "periodic": true,
     "cooldown": 28
@@ -508,6 +554,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": [
       13,
       25
@@ -521,6 +568,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 20
   },
   {
@@ -531,6 +579,7 @@
     "aoe": false,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true
   },
   {
@@ -541,6 +590,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 57
   },
   {
@@ -551,6 +601,7 @@
     "aoe": false,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true
   },
   {
@@ -561,6 +612,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": true,
     "cooldown": 35,
     "combatDrop": "cancel"
   },
@@ -572,6 +624,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true
   },
   {
@@ -582,6 +635,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 39,
     "combatDrop": "cancel"
   },
@@ -593,6 +647,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 37
   },
   {
@@ -603,6 +658,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "avoidable": true,
     "notes": "Swirlies during Balakar Khan intermission and P2"
   },
@@ -614,6 +670,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "avoidable": true,
     "notes": "Swirlies cast by Nokhud Longbow in first area"
@@ -626,6 +683,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "cooldown": 24
   },
@@ -637,6 +695,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true
   },
   {
@@ -647,6 +706,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 23,
     "notes": "Only the final hit, not the ticking damage"
   },
@@ -658,6 +718,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "avoidable": true,
     "cooldown": 10,
@@ -671,6 +732,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "cooldown": 17,
     "notes": "Only the final hit."
@@ -683,6 +745,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "cooldown": 19,
     "combatDrop": "cancel",
@@ -696,6 +759,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "notes": "This does not include the ticking damage. Only the groupwide dispel damage."
   },
@@ -707,6 +771,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 35,
     "notes": "Only the initial groupwide damage, not the ticking damage."
   },
@@ -718,6 +783,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "periodic": true,
     "cooldown": 28
@@ -730,6 +796,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 22,
     "notes": "Only the initial hit"
   },
@@ -741,6 +808,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0.05,
+    "forcePhysicalReduction": false,
     "cooldown": 19
   },
   {
@@ -751,6 +819,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "periodic": true,
     "cooldown": 22,
     "notes": "Initial Flamespit hit + ticking damage + final hit."
@@ -763,6 +832,7 @@
     "aoe": false,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 17
   },
   {
@@ -773,6 +843,7 @@
     "aoe": false,
     "physical": true,
     "variance": 0.025,
+    "forcePhysicalReduction": false,
     "cooldown": [
       10,
       30
@@ -787,6 +858,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0.025,
+    "forcePhysicalReduction": false,
     "cooldown": 12
   },
   {
@@ -797,6 +869,7 @@
     "aoe": false,
     "physical": true,
     "variance": 0.025,
+    "forcePhysicalReduction": false,
     "cooldown": [
       10,
       30
@@ -811,6 +884,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0.025,
+    "forcePhysicalReduction": false,
     "cooldown": 12
   },
   {
@@ -821,6 +895,7 @@
     "aoe": false,
     "physical": true,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "trashAbility": true,
     "periodic": true,
     "cooldown": 25
@@ -833,6 +908,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true
   },
   {
@@ -843,6 +919,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 12
   },
   {
@@ -853,6 +930,7 @@
     "aoe": false,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "avoidable": true
   },
   {
@@ -863,6 +941,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 20,
     "trashAbility": true
   },
@@ -874,6 +953,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "tankOnly": true
   },
   {
@@ -884,6 +964,7 @@
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "forcePhysicalReduction": false,
     "cooldown": 23
   }
 ]
