@@ -85,11 +85,11 @@ const fyrakksTaintedRageheart: Ability = {
   name: "Fyrakk's Tainted Rageheart",
   spellId: 422750,
   absorb: {
-    raw: 922_410,
+    raw: 1_394_780,
     versAffected: true,
   },
   iconName: 'inv_ragnaros_heart_shadowflame',
-  notes: 'Assumes ilvl 489, Myth 4/4',
+  notes: 'Assumes ilvl 525',
 }
 
 const ancestralVigor: Ability = {
