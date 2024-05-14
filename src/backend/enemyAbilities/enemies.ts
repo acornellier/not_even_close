@@ -22,7 +22,6 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   diffuse?: boolean
 
   notes?: string
-  forcePhysicalReduction?: boolean
 }
 
 export const dungeonKeys = [

@@ -10,6 +10,5 @@ export function grimoireToEnemyAbility(spell: GrimoireSpell): EnemyAbility {
     aoe: !!spell.aoe,
     physical: !!spell.physical,
     variance: (spell.variance ?? 0) / 2,
-    forcePhysicalReduction: false,
   }
 }

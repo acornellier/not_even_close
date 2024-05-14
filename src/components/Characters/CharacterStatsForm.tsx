@@ -30,8 +30,8 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
       ability.abilityAugmentations?.some(
         (augmentation) =>
           augmentation.absorbField === 'apMultipler' ||
-          augmentation.absorbField === 'spMultipler'
-      )
+          augmentation.absorbField === 'spMultipler',
+      ),
   )
 
   const versPercent = versRawToPercent(characterStats.versatilityRaw ?? 0)
@@ -46,7 +46,7 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
         onChange={onChangeStat('stamina')}
         step={500}
         inputTooltip={`${staminaToHp(characterStats.stamina ?? 0).toLocaleString(
-          'en-US'
+          'en-US',
         )} HP`}
       />
       <NumericInput
@@ -68,6 +68,7 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
         label="Armor"
         value={characterStats.armor}
         onChange={onChangeStat('armor')}
+        step={100}
         inputTooltip={`${roundTo(physicalDr * 100, 2)}% physical DR`}
       />
       {showMainStat && (
