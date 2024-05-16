@@ -67,7 +67,7 @@ export function CreateProfile({ idx, createProfile }: Props) {
               value={name}
               onChange={setName}
               label="Profile name"
-              width="full"
+              design="full"
               autoFocus
             />
             <Button short onClick={save}>

@@ -1,10 +1,14 @@
-﻿import type { Ability, SelectedAbility } from './ability'
+﻿import type { Ability, SelectedAbility, StackOptions } from './ability'
 import type { EnemyAbility } from './enemyAbilities/enemies'
 
 import type { EnemyAbilityDetails } from './sim/simTypes'
 
 export function roundTo(number: number, to: number) {
   return Math.round(number * 10 ** to) / 10 ** to
+}
+
+export function roundHundred(number: number) {
+  return roundTo(number * 100, 2)
 }
 
 export function thousands(number: number) {
@@ -22,39 +26,45 @@ export function isAbilitySelected(spellId: number, selectedAbilities: SelectedAb
   return !!getSelectedAbility(spellId, selectedAbilities)
 }
 
+export function findMatchingAbility(spellId: number, abilities: Ability[]) {
+  return abilities.find((ability) => ability.spellId === spellId)
+}
+
+export function defaultStacks(stacks: StackOptions) {
+  return stacks?.default ?? stacks.max
+}
+
 function augmentAbility(
-  augmentedAbility: Ability,
-  augmentingAbility: Ability,
+  abilityToAugment: Ability,
+  { ability: { abilityAugmentations }, stacks }: SelectedAbility,
   selectedAbilities: SelectedAbility[],
 ) {
   if (
-    !augmentingAbility.abilityAugmentations ||
-    !isAbilitySelected(augmentedAbility.spellId, selectedAbilities)
+    !abilityAugmentations ||
+    !isAbilitySelected(abilityToAugment.spellId, selectedAbilities)
   )
     return
 
-  augmentingAbility.abilityAugmentations.forEach(
-    ({ otherSpellId, field, absorbField, value }) => {
-      if (otherSpellId !== augmentedAbility.spellId) return
+  abilityAugmentations.forEach(({ otherSpellId, field, absorbField, value }) => {
+    if (otherSpellId !== abilityToAugment.spellId) return
 
-      if (field === 'absorb') {
-        const absorb = augmentedAbility.absorb
-        if (!absorb || !absorbField) return
+    if (field === 'absorb') {
+      const absorb = abilityToAugment.absorb
+      if (!absorb || !absorbField) return
 
-        augmentedAbility.absorb = { ...absorb }
+      abilityToAugment.absorb = { ...absorb }
 
-        augmentedAbility.absorb[absorbField] ??= 0
-        if (absorbField === 'healthMultiplier') {
-          augmentedAbility.absorb[absorbField]! *= 1 + value
-        } else {
-          augmentedAbility.absorb[absorbField]! += value
-        }
+      abilityToAugment.absorb[absorbField] ??= 0
+      if (absorbField === 'healthMultiplier') {
+        abilityToAugment.absorb[absorbField]! *= 1 + value * (stacks ?? 1)
       } else {
-        augmentedAbility[field] ??= 0
-        augmentedAbility[field]! += value
+        abilityToAugment.absorb[absorbField]! += value * (stacks ?? 1)
       }
-    },
-  )
+    } else {
+      abilityToAugment[field] ??= 0
+      abilityToAugment[field]! += value * (stacks ?? 1)
+    }
+  })
 }
 
 export function augmentAbilities(
@@ -65,7 +75,7 @@ export function augmentAbilities(
     const augmentedAbility = { ...ability }
 
     selectedAbilities.forEach((augmentingAbility) =>
-      augmentAbility(augmentedAbility, augmentingAbility.ability, selectedAbilities),
+      augmentAbility(augmentedAbility, augmentingAbility, selectedAbilities),
     )
 
     return augmentedAbility
@@ -80,7 +90,7 @@ export function augmentSelectedAbilities(
     const augmentedAbility = { ...ability.ability }
 
     selectedAbilities.forEach((augmentingAbility) =>
-      augmentAbility(augmentedAbility, augmentingAbility.ability, selectedAbilities),
+      augmentAbility(augmentedAbility, augmentingAbility, selectedAbilities),
     )
 
     return { ...ability, ability: augmentedAbility }

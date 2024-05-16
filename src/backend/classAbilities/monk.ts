@@ -23,9 +23,14 @@ const ancientTeachings: Ability = {
 }
 
 const secretInfusion: Ability = {
-  name: 'Secret Infusion (1 point)',
-  talentPoints: 1,
+  name: 'Secret Infusion',
   spellId: 388491,
+  stacks: {
+    type: 'talent',
+    max: 2,
+    default: 1,
+    values: [8, 15],
+  },
   onByDefault: true,
   iconName: 'ability_monk_chibrew',
   abilityAugmentations: [

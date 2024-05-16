@@ -94,7 +94,8 @@ const fyrakksTaintedRageheart: Ability = {
 
 const ancestralVigor: Ability = {
   name: 'Ancestral Vigor',
-  healthIncrease: 0.1,
+  healthIncrease: 0.05,
+  stacks: { type: 'talent', max: 2 },
   spellId: 207401,
   associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   iconName: 'spell_shaman_blessingoftheeternals',
@@ -102,7 +103,8 @@ const ancestralVigor: Ability = {
 
 const earthenHarmony: Ability = {
   name: 'Earthen Harmony',
-  dr: 0.06,
+  dr: 0.03,
+  stacks: { type: 'talent', max: 2 },
   spellId: 382020,
   associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   iconName: 'spell_shaman_improvedearthshield',

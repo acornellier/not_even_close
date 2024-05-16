@@ -13,8 +13,10 @@ export type AbsorbOptions = {
 }
 
 export type StackOptions = {
-  defaultStacks: number
-  maxStacks: number
+  type: 'talent' | 'stacks'
+  max: number
+  default?: number
+  values?: number[]
 }
 
 export type Ability = {
@@ -37,7 +39,6 @@ export type Ability = {
   associatedClass?: WowClass
   associatedSpec?: ClassSpec
 
-  talentPoints?: number
   iconName: string
   wowheadLink?: string
   notes?: string

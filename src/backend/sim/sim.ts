@@ -112,9 +112,9 @@ function getPartialResults(
 function getDamageDealtReduction(abilities: SelectedAbility[]) {
   let damageDealtReduction = 1
 
-  for (const { ability } of abilities) {
+  for (const { ability, stacks } of abilities) {
     if (ability.damageDealtReduction) {
-      damageDealtReduction *= 1 - ability.damageDealtReduction
+      damageDealtReduction *= 1 - ability.damageDealtReduction * (stacks ?? 1)
     }
   }
 

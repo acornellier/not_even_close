@@ -2,8 +2,9 @@ import type { Ability, AbilityAugmentation } from '../ability'
 
 const arcaneWarding: Ability = {
   name: 'Arcane Warding',
-  dr: 0.04,
+  dr: 0.02,
   drType: 'magic',
+  stacks: { type: 'talent', max: 2 },
   onByDefault: true,
   spellId: 383092,
   wowheadLink: 'https://www.wowhead.com/spell=383092/arcane-warding',
@@ -60,9 +61,10 @@ const tempestBarrier: Ability = {
   name: 'Tempest Barrier',
   spellId: 382289,
   absorb: {
-    healthMultiplier: 0.06,
+    healthMultiplier: 0.03,
     versAffected: true,
   },
+  stacks: { type: 'talent', max: 2 },
   iconName: 'inv_shield_1h_artifactstormfist_d_04',
 }
 

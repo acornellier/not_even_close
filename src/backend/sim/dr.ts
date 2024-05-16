@@ -24,8 +24,8 @@ export function getDamageReduction(
     inverseDr *= 1 - armorToPhysicalDr(characterStats.armor)
   }
 
-  for (const { ability } of abilities) {
-    let dr = ability.dr
+  for (const { ability, stacks } of abilities) {
+    let dr = (ability.dr ?? 0) * (stacks ?? 1)
     if (
       (ability.drType === 'magic' && enemyAbilityDetails.physical) ||
       (ability.drType === 'physical' && !enemyAbilityDetails.physical)
@@ -33,7 +33,7 @@ export function getDamageReduction(
       dr = 0
     }
 
-    let aoeDr = ability.aoeDr
+    let aoeDr = (ability.aoeDr ?? 0) * (stacks ?? 1)
     if (aoeDr && enemyAbilityDetails.aoeMultiplier) {
       aoeDr *= enemyAbilityDetails.aoeMultiplier
     }

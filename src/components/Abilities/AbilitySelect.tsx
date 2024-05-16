@@ -1,15 +1,10 @@
 ﻿import type { Ability, SelectedAbility } from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
-import {
-  augmentAbilities,
-  getSelectedAbility,
-  isAbilityAvailable,
-  isAbilitySelected,
-} from '../../backend/utils'
+import { augmentAbilities, getSelectedAbility } from '../../backend/utils'
 import { CharAbilityIcon } from './CharAbilityIcon'
-import { useCallback, useEffect } from 'react'
 import { dampenHarm } from '../../backend/classAbilities/monk.ts'
 import { willOfTheNecropolis } from '../../backend/classAbilities/deathKnight.ts'
+import { useAbilitySetters } from './useAbilitySetters.ts'
 
 interface Props {
   availableAbilities: Ability[]
@@ -22,7 +17,9 @@ function isAugmenter(ability: Ability) {
   if ([dampenHarm.spellId, willOfTheNecropolis.spellId].includes(ability.spellId))
     return false
 
-  return !abilityEffectFields.some((field) => ability[field])
+  return (
+    ability.abilityAugmentations && !abilityEffectFields.some((field) => ability[field])
+  )
 }
 
 export function AbilitySelect({
@@ -31,65 +28,13 @@ export function AbilitySelect({
   setSelectedAbilities,
   characterIdx,
 }: Props) {
-  useEffect(() => {
-    if (
-      selectedAbilities.some(
-        (selectedAbility) =>
-          !isAbilityAvailable(selectedAbility.ability, availableAbilities),
-      )
-    ) {
-      setSelectedAbilities(
-        selectedAbilities.filter((selectedAbility) =>
-          isAbilityAvailable(selectedAbility.ability, availableAbilities),
-        ),
-      )
-    }
-  }, [availableAbilities, selectedAbilities, setSelectedAbilities])
+  const { toggleAbility, setAbilityStacks } = useAbilitySetters({
+    selectedAbilities,
+    availableAbilities,
+    setSelectedAbilities,
+  })
 
   const augmentedAbilities = augmentAbilities(availableAbilities, selectedAbilities)
-
-  const toggleAbility = useCallback(
-    (spellId: number) => {
-      if (isAbilitySelected(spellId, selectedAbilities)) {
-        setSelectedAbilities(
-          selectedAbilities.filter(
-            (selectedAbility) => selectedAbility.ability.spellId !== spellId,
-          ),
-        )
-      } else {
-        const ability = availableAbilities.find(
-          ({ spellId: otherSpellId }) => otherSpellId === spellId,
-        )
-
-        if (!ability) return
-
-        setSelectedAbilities([
-          ...selectedAbilities,
-          {
-            ability,
-            ...(ability.stacks ? { stacks: ability.stacks.defaultStacks } : {}),
-          },
-        ])
-      }
-    },
-    [availableAbilities, selectedAbilities, setSelectedAbilities],
-  )
-
-  const setAbilityStacks = useCallback(
-    (spellId: number, stacks: number) => {
-      const selectedAbility = getSelectedAbility(spellId, selectedAbilities)
-
-      if (!selectedAbility) return
-
-      setSelectedAbilities([
-        ...selectedAbilities.filter(
-          (selectedAbility) => selectedAbility.ability.spellId !== spellId,
-        ),
-        { ...selectedAbility, stacks },
-      ])
-    },
-    [selectedAbilities, setSelectedAbilities],
-  )
 
   const [augmenters, regulars] = (augmentedAbilities ?? availableAbilities).reduce<
     [Ability[], Ability[]]

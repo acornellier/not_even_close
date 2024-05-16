@@ -12,7 +12,8 @@ export const fortitude: Ability = {
 export const generousPour: Ability = {
   name: 'Generous Pour',
   spellId: 389575,
-  aoeDr: 0.04,
+  aoeDr: 0.02,
+  stacks: { type: 'talent', max: 2 },
   associatedClass: 'Monk',
   iconName: 'inv_misc_food_legion_goocaramel_bottle',
   wowheadLink: 'https://www.wowhead.com/spell=389575/generous-pour?def=106502&rank=2',
@@ -46,9 +47,13 @@ export const aspectsFavor: Ability = {
     {
       otherSpellId: blackAttunement.spellId,
       field: 'healthIncrease',
-      value: 0.04,
+      value: 0.02,
     },
   ],
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
 }
 
 export const markOfTheWild: Ability = {

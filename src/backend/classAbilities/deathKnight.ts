@@ -3,6 +3,10 @@ import type { Ability } from '../ability'
 export const willOfTheNecropolis: Ability = {
   name: 'Will of the Necropolis',
   spellId: 206967,
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
   iconName: 'achievement_boss_kelthuzad_01',
   notes: 'Damage below 30% Health is reduced by 35%',
 }
@@ -70,8 +74,8 @@ const foulBulwark: Ability = {
   spellId: 206974,
   healthIncrease: 0.01,
   stacks: {
-    defaultStacks: 5,
-    maxStacks: 10,
+    type: 'stacks',
+    max: 10,
   },
   iconName: 'inv_armor_shield_naxxramas_d_02',
 }

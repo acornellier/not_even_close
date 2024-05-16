@@ -2,8 +2,9 @@ import type { Ability } from '../ability'
 
 const inherentResistanceAug: Ability = {
   name: 'Inherent Resistance',
-  dr: 0.04,
+  dr: 0.02,
   drType: 'magic',
+  stacks: { type: 'talent', max: 2 },
   onByDefault: true,
   spellId: 375544,
   iconName: 'inv_misc_rubysanctum1',
@@ -11,7 +12,7 @@ const inherentResistanceAug: Ability = {
 
 const inherentResistanceDevPres: Ability = {
   ...inherentResistanceAug,
-  dr: 0.08,
+  dr: 0.04,
 }
 
 const obsidianScales: Ability = {

@@ -33,35 +33,28 @@ const lycarasTeachings: Ability = {
     {
       otherSpellId: bearForm.spellId,
       field: 'versIncrease',
-      value: 0.06,
+      value: 0.02,
     },
   ],
+  stacks: {
+    type: 'talent',
+    max: 3,
+  },
 }
 
-const ursineVigorOnePoint: Ability = {
-  name: 'Ursine Vigor (1 point)',
-  talentPoints: 1,
-  spellId: 377842_1,
+const ursineVigor: Ability = {
+  name: 'Ursine Vigor',
+  spellId: 377842,
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
   iconName: 'ability_druid_markofursol',
   abilityAugmentations: [
     {
       otherSpellId: bearForm.spellId,
       field: 'healthIncrease',
       value: 0.1,
-    },
-  ],
-}
-
-const ursineVigorTwoPoints: Ability = {
-  name: 'Ursine Vigor (2 points)',
-  talentPoints: 2,
-  spellId: 377842_2,
-  iconName: 'ability_druid_markofursol',
-  abilityAugmentations: [
-    {
-      otherSpellId: bearForm.spellId,
-      field: 'healthIncrease',
-      value: 0.2,
     },
   ],
 }
@@ -134,8 +127,7 @@ export const druidBalanceAbilities = [
   bearForm,
   heartOfTheWild,
   lycarasTeachings,
-  ursineVigorOnePoint,
-  ursineVigorTwoPoints,
+  ursineVigor,
   barkskin,
 ]
 
@@ -147,8 +139,7 @@ export const druidFeralAbilities = [
   bearForm,
   heartOfTheWild,
   lycarasTeachings,
-  ursineVigorOnePoint,
-  ursineVigorTwoPoints,
+  ursineVigor,
   barkskin,
   survivalInsticts,
 ]
@@ -160,8 +151,7 @@ export const druidRestoAbilities = [
   bearForm,
   heartOfTheWild,
   lycarasTeachings,
-  ursineVigorOnePoint,
-  ursineVigorTwoPoints,
+  ursineVigor,
   barkskin,
   innerPeace,
 ]

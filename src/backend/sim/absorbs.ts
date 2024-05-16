@@ -34,18 +34,22 @@ function absorbMainStatAmount(absorb: AbsorbOptions, charResult: CharacterPartia
 
 export function calculateAbsorb(
   absorb: AbsorbOptions,
+  stacks: number | undefined,
   charResult: CharacterPartialResult,
 ) {
   const versMultiplier = absorb.versAffected ? charResult.adjustedStats.versatility : 0
   const healthAmount = (absorb.healthMultiplier ?? 0) * charResult.startingHealth
   const mainStatAmount = absorbMainStatAmount(absorb, charResult)
 
-  return Math.round((healthAmount + mainStatAmount) * (1 + versMultiplier))
+  return Math.round(
+    (healthAmount + mainStatAmount) * (stacks ?? 1) * (1 + versMultiplier),
+  )
 }
 
 export function getMultiplierAbsorb(
   absorb: AbsorbOptions,
   ability: Ability,
+  stacks: number | undefined,
   charResult: CharacterPartialResult | null,
   charPartialResults: CharacterPartialResult[],
 ) {
@@ -54,12 +58,12 @@ export function getMultiplierAbsorb(
   if (ability.associatedClass || ability.associatedSpec) {
     const associatedCharacter = findAssociatedCharacter(ability, charPartialResults)
     if (associatedCharacter) {
-      return calculateAbsorb(absorb, associatedCharacter)
+      return calculateAbsorb(absorb, stacks, associatedCharacter)
     } else if (absorb.backup) {
       return absorb.backup
     }
   } else if (charResult) {
-    return calculateAbsorb(absorb, charResult)
+    return calculateAbsorb(absorb, stacks, charResult)
   }
 
   return 0
@@ -73,8 +77,8 @@ export function getAbsorbs(
 ) {
   let absorbs = 0
 
-  for (const { ability } of charResult.abilities) {
-    const { absorb } = ability
+  for (const selectedAbility of charResult.abilities) {
+    const { absorb } = selectedAbility.ability
 
     if (
       !absorb ||
@@ -89,7 +93,13 @@ export function getAbsorbs(
       if (absorb.versAffected) absorbValue *= 1 + charResult.adjustedStats.versatility
       absorbs += absorbValue
     } else {
-      absorbs += getMultiplierAbsorb(absorb, ability, charResult, charPartialResults)
+      absorbs += getMultiplierAbsorb(
+        absorb,
+        selectedAbility.ability,
+        selectedAbility.stacks,
+        charResult,
+        charPartialResults,
+      )
     }
   }
 

@@ -2,8 +2,9 @@ import type { Ability } from '../ability'
 
 const elementalWardingEnh: Ability = {
   name: 'Elemental Warding',
-  dr: 0.06,
+  dr: 0.03,
   drType: 'magic',
+  stacks: { type: 'talent', max: 2 },
   onByDefault: true,
   spellId: 381650,
   wowheadLink: 'https://www.wowhead.com/spell=381650/elemental-warding',
@@ -12,7 +13,7 @@ const elementalWardingEnh: Ability = {
 
 const elementalWardingEleResto: Ability = {
   ...elementalWardingEnh,
-  dr: 0.04,
+  dr: 0.02,
 }
 
 const brimmingWithLife: Ability = {
@@ -65,7 +66,8 @@ const earthElemental: Ability = {
 
 const spiritWolf: Ability = {
   name: 'Spirit Wolf',
-  dr: 0.2,
+  dr: 0.05,
+  stacks: { type: 'stacks', max: 4 },
   spellId: 260878,
   iconName: 'spell_hunter_lonewolf',
 }
