@@ -1,5 +1,5 @@
-﻿import { Label } from '../Common/Label'
-import kofi from '../../public/kofi.svg'
+﻿import kofi from '../../../public/kofi.svg'
+import { Button } from '../Common/Button.tsx'
 
 export function KofiWidget() {
   return (
@@ -9,10 +9,10 @@ export function KofiWidget() {
       rel="noreferrer"
       className="hidden sm:block"
     >
-      <Label className="hover:bg-teal-700 gap-1 px-2 py-1.5">
+      <Button short className="gap-1">
         <img alt="kofi" src={kofi} width={25} />
         Donate
-      </Label>
+      </Button>
     </a>
   )
 }
