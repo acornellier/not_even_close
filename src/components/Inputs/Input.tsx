@@ -25,7 +25,7 @@ export function Input({
 }: InputProps) {
   const flexDirectionClass = design === 'minimal' ? 'flex-row items-center' : 'flex-col'
   const heightClass = !label ? 'h-full' : ''
-  const widthClass = design === 'full' ? 'w-full' : ''
+  const widthClass = design === 'full' ? 'w-full' : design === 'minimal' ? '' : 'w-28'
   const inputWidthClass = design === 'minimal' ? 'w-12' : ''
   const marginClass = design === 'minimal' ? 'mr-2' : 'mb-1'
   const paddingClass = design === 'minimal' ? 'p-1' : 'py-1.5 px-4'
