@@ -111,14 +111,13 @@ export function getAbsorbs(
 export function getExtraAbsorbs(
   abilities: SelectedAbility[],
   startingHealth: number,
-  absorbs: number,
   actualDamageTaken: number,
 ) {
   let extraAbsorbs = 0
 
   for (const { ability, stacks } of abilities) {
     if (ability.spellId === willOfTheNecropolis.spellId) {
-      const damageToReach30 = startingHealth + absorbs - startingHealth * 0.3
+      const damageToReach30 = startingHealth * 0.7
       const damageTakenBelow30 = actualDamageTaken - damageToReach30
       if (damageTakenBelow30 <= 0) continue
 

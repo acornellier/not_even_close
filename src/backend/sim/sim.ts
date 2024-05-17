@@ -167,12 +167,7 @@ function getAbilityResult(
       const mitigatedDamage = Math.round(reducedDamage * damageReduction)
       const actualDamageTaken = Math.round(reducedDamage - mitigatedDamage)
 
-      const extraAbsorbs = getExtraAbsorbs(
-        abilities,
-        startingHealth,
-        absorbs,
-        actualDamageTaken,
-      )
+      const extraAbsorbs = getExtraAbsorbs(abilities, startingHealth, actualDamageTaken)
       const totalHealth = healthWithAbsorbs + extraAbsorbs
 
       const healthRemaining = totalHealth - actualDamageTaken
