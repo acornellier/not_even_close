@@ -3,9 +3,9 @@ import type { Ability } from '../ability'
 export const willOfTheNecropolis: Ability = {
   name: 'Will of the Necropolis',
   spellId: 206967,
-  // stacks: { type: 'talent', max: 2, },
+  stacks: { type: 'talent', max: 2 },
   iconName: 'achievement_boss_kelthuzad_01',
-  notes: 'Damage below 30% Health is reduced by 35%',
+  notes: 'Damage below 30% Health is reduced by 20/35%',
 }
 
 const antiMagicShell: Ability = {

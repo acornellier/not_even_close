@@ -25,12 +25,6 @@ const ancientTeachings: Ability = {
 const secretInfusion: Ability = {
   name: 'Secret Infusion',
   spellId: 388491,
-  stacks: {
-    type: 'talent',
-    max: 2,
-    default: 1,
-    values: [8, 15],
-  },
   onByDefault: true,
   iconName: 'ability_monk_chibrew',
   abilityAugmentations: [
@@ -40,6 +34,12 @@ const secretInfusion: Ability = {
       value: 0.08,
     },
   ],
+  stacks: {
+    type: 'talent',
+    max: 2,
+    default: 1,
+    values: [0.08, 0.15],
+  },
 }
 
 const expelHarm: Ability = {

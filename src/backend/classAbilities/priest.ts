@@ -41,6 +41,11 @@ const lightsInspiration: Ability = {
       value: 0.15,
     },
   ],
+  stacks: {
+    type: 'talent',
+    max: 2,
+    values: [0.08, 0.15],
+  },
 }
 
 const mentalFortitude: Ability = {

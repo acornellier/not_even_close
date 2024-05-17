@@ -1,6 +1,10 @@
 import type { Character, CharacterStatsInput } from '../characters'
 import type { SelectedAbility } from '../ability'
-import { augmentSelectedAbilities, enemyAbilityToDetails } from '../utils'
+import {
+  augmentSelectedAbilities,
+  enemyAbilityToDetails,
+  getStackedValue,
+} from '../utils'
 import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from '../stats'
 import type {
   AbilityResult,
@@ -72,7 +76,8 @@ function getStartingHealth(characterStats: CharacterStats, abilities: SelectedAb
 
   for (const { ability, stacks } of abilities) {
     if (ability.healthIncrease) {
-      startingHealth *= 1 + ability.healthIncrease * (stacks ?? 1)
+      startingHealth *=
+        1 + getStackedValue(ability.healthIncrease, stacks, ability.stacks)
     }
   }
 
@@ -114,7 +119,8 @@ function getDamageDealtReduction(abilities: SelectedAbility[]) {
 
   for (const { ability, stacks } of abilities) {
     if (ability.damageDealtReduction) {
-      damageDealtReduction *= 1 - ability.damageDealtReduction * (stacks ?? 1)
+      damageDealtReduction *=
+        1 - getStackedValue(ability.damageDealtReduction, stacks, ability.stacks)
     }
   }
 

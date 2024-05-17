@@ -6,7 +6,6 @@ import { tepidVersatility } from '../../backend/groupAbilities/externals'
 import { isAbilitySelected } from '../../backend/utils'
 import type { SelectedAbility } from '../../backend/ability'
 
-const uniqueAbilityNames = ['ursine vigor']
 const uniqueExternalNames = ['phial']
 
 function uniqueAbilities(
@@ -66,7 +65,6 @@ export function useCharacterChanges({ setCharacters, setProfiles, characters }: 
               }
             }
 
-            res.abilities = uniqueAbilities(res.abilities, uniqueAbilityNames)
             res.externals = uniqueAbilities(res.externals, uniqueExternalNames)
 
             return res

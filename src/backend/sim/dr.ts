@@ -2,13 +2,14 @@ import type { CharacterStats, EnemyAbilityDetails } from './simTypes'
 import type { SelectedAbility } from '../ability'
 import { dampenHarm } from '../classAbilities/monk'
 import { armorToPhysicalDr } from '../stats'
+import { getStackedValue } from '../utils.ts'
 
 const isReducedByArmor = ({ physical, affectedByArmor, aoe }: EnemyAbilityDetails) =>
   physical && (affectedByArmor || !aoe)
 
 export function getDamageReduction(
   characterStats: CharacterStats,
-  abilities: SelectedAbility[],
+  selectedAbilities: SelectedAbility[],
   customDrs: number[],
   enemyAbilityDetails: EnemyAbilityDetails,
   startingHealth: number,
@@ -24,13 +25,17 @@ export function getDamageReduction(
     inverseDr *= 1 - armorToPhysicalDr(characterStats.armor)
   }
 
-  for (const { ability, stacks } of abilities) {
-    let dr = (ability.dr ?? 0) * (stacks ?? 1)
-    if (
-      (ability.drType === 'magic' && enemyAbilityDetails.physical) ||
-      (ability.drType === 'physical' && !enemyAbilityDetails.physical)
-    ) {
-      dr = 0
+  for (const { ability, stacks } of selectedAbilities) {
+    let dr = ability.dr
+    if (dr) {
+      if (
+        (ability.drType === 'magic' && enemyAbilityDetails.physical) ||
+        (ability.drType === 'physical' && !enemyAbilityDetails.physical)
+      ) {
+        dr = 0
+      } else {
+        dr = getStackedValue(ability.dr ?? 0, stacks, ability.stacks)
+      }
     }
 
     let aoeDr = (ability.aoeDr ?? 0) * (stacks ?? 1)

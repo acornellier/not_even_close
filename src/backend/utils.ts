@@ -34,9 +34,28 @@ export function defaultStacks(stacks: StackOptions) {
   return stacks?.default ?? stacks.max
 }
 
+export function getStackedValue(
+  value: number,
+  stackCount: number | undefined,
+  stackOptions: StackOptions | undefined,
+) {
+  if (stackCount === undefined) return value
+
+  if (stackOptions?.values) {
+    const arrValue = stackOptions.values[stackCount - 1]
+    if (arrValue) {
+      return arrValue
+    } else {
+      console.error(`Stacks array does not contain value for stack count ${stackCount}`)
+    }
+  }
+
+  return value * stackCount
+}
+
 function augmentAbility(
   abilityToAugment: Ability,
-  { ability: { abilityAugmentations }, stacks }: SelectedAbility,
+  { ability: { abilityAugmentations, stacks: stackOptions }, stacks }: SelectedAbility,
   selectedAbilities: SelectedAbility[],
 ) {
   if (
@@ -48,6 +67,8 @@ function augmentAbility(
   abilityAugmentations.forEach(({ otherSpellId, field, absorbField, value }) => {
     if (otherSpellId !== abilityToAugment.spellId) return
 
+    const stackedValue = getStackedValue(value, stacks, stackOptions)
+
     if (field === 'absorb') {
       const absorb = abilityToAugment.absorb
       if (!absorb || !absorbField) return
@@ -56,13 +77,13 @@ function augmentAbility(
 
       abilityToAugment.absorb[absorbField] ??= 0
       if (absorbField === 'healthMultiplier') {
-        abilityToAugment.absorb[absorbField]! *= 1 + value * (stacks ?? 1)
+        abilityToAugment.absorb[absorbField]! *= 1 + stackedValue
       } else {
-        abilityToAugment.absorb[absorbField]! += value * (stacks ?? 1)
+        abilityToAugment.absorb[absorbField]! += stackedValue
       }
     } else {
       abilityToAugment[field] ??= 0
-      abilityToAugment[field]! += value * (stacks ?? 1)
+      abilityToAugment[field]! += stackedValue
     }
   })
 }
