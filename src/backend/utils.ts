@@ -55,12 +55,17 @@ export function getStackedValue(
 
 function augmentAbility(
   abilityToAugment: Ability,
-  { ability: { abilityAugmentations, stacks: stackOptions }, stacks }: SelectedAbility,
+  augmentingAbility: SelectedAbility,
   selectedAbilities: SelectedAbility[],
 ) {
+  const {
+    ability: { abilityAugmentations, stacks: stackOptions },
+    stacks,
+  } = augmentingAbility
+
   if (
     !abilityAugmentations ||
-    !isAbilitySelected(abilityToAugment.spellId, selectedAbilities)
+    !isAbilitySelected(augmentingAbility.ability.spellId, selectedAbilities)
   )
     return
 
