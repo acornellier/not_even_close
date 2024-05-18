@@ -7,6 +7,11 @@ const defensiveStance: Ability = {
   iconName: 'ability_warrior_defensivestance',
 }
 
+const defensiveStanceProt: Ability = {
+  ...defensiveStance,
+  dr: 0.2,
+}
+
 const spellReflection: Ability = {
   name: 'Spell Reflection',
   dr: 0.2,
@@ -52,8 +57,46 @@ const ignorePain: Ability = {
     apMultipler: 4.375,
     versAffected: true,
   },
+  stacks: {
+    type: 'stacks',
+    default: 1,
+    max: 10,
+  },
   iconName: 'ability_warrior_renewedvigor',
   notes: 'This is slightly off due to weapon dps missing.',
+}
+
+const punish: Ability = {
+  name: 'Punish',
+  spellId: 275334,
+  damageDealtReduction: 0.03,
+  stacks: {
+    type: 'stacks',
+    default: 1,
+    max: 10,
+  },
+  iconName: 'ability_deathknight_sanguinfortitude',
+}
+
+const shieldWall: Ability = {
+  name: 'Shield Wall',
+  spellId: 871,
+  dr: 0.4,
+  iconName: 'ability_warrior_shieldwall',
+}
+
+const lastStand: Ability = {
+  name: 'Shield Wall',
+  spellId: 12975,
+  healthIncrease: 0.3,
+  iconName: 'spell_holy_ashestoashes',
+}
+
+const demoralizingShout: Ability = {
+  name: 'Demoralizing Shout',
+  spellId: 1160,
+  dr: 0.2,
+  iconName: 'ability_warrior_warcry',
 }
 
 export const warriorArmsAbilities = [
@@ -69,4 +112,14 @@ export const warriorFuryAbilities = [
   warpaint,
   spellReflection,
   enragedRegeneration,
+]
+
+export const warriorProtAbilities = [
+  punish,
+  ignorePain,
+  defensiveStanceProt,
+  spellReflection,
+  lastStand,
+  demoralizingShout,
+  shieldWall,
 ]

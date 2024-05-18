@@ -26,7 +26,11 @@ import {
   deathKnightAbilities,
   deathKnightBloodAbilities,
 } from './classAbilities/deathKnight'
-import { warriorArmsAbilities, warriorFuryAbilities } from './classAbilities/warrior'
+import {
+  warriorArmsAbilities,
+  warriorFuryAbilities,
+  warriorProtAbilities,
+} from './classAbilities/warrior'
 import { paladinHolyAbilities, paladinRetAbilities } from './classAbilities/paladin'
 import { warlockAffDestroAbilities, warlockDemoAbilities } from './classAbilities/warlock'
 import {
@@ -273,6 +277,12 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: warriorFuryAbilities,
       icon: 'ability_warrior_innerrage',
       mainStat: 'other',
+    },
+    Protection: {
+      abilities: warriorProtAbilities,
+      icon: 'ability_warrior_defensivestance',
+      mainStat: 'other',
+      isTank: true,
     },
   },
 } as const
