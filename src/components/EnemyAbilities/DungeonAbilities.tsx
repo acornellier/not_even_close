@@ -5,7 +5,7 @@ import type { AbilityResult } from '../../backend/sim/simTypes'
 import { useState } from 'react'
 import { useLocalStorage } from '../../util/useLocalStorage'
 import { Toggle } from '../Inputs/Toggle'
-import { WowIcon } from '../Common/WowIcon'
+import { AbilityIcon } from '../Common/AbilityIcon.tsx'
 import type { Character } from '../../backend/characters.ts'
 import { classSpecs } from '../../backend/classes.ts'
 
@@ -70,7 +70,7 @@ export function DungeonAbilities({
       <div className="flex justify-between">
         <div className="flex items-center gap-3">
           <Button short bigText onClick={deselectDungeon} className="gap-2 px-2">
-            <WowIcon icon={dungeon.icon} size={32} />
+            <AbilityIcon icon={dungeon.icon} size={32} />
             <div className="hidden sm:block">{dungeon.name}</div>
           </Button>
           <Toggle label="Avoidable" checked={showAvoidable} onChange={setShowAvoidable} />

@@ -10,7 +10,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { AbilityCardExtras } from './AbilityCardExtras'
 import { CardResult } from './CardResult'
-import { WowIcon } from '../Common/WowIcon'
+import { AbilityIcon } from '../Common/AbilityIcon.tsx'
 import { thousands } from '../../backend/utils.ts'
 
 interface Props {
@@ -49,7 +49,7 @@ export function EnemyAbilityCard({
             target="_blank"
             rel="noreferrer"
           >
-            <WowIcon icon={ability.icon} size={30} />
+            <AbilityIcon icon={ability.icon} size={30} />
           </a>
           <div className="flex items-center gap-1">
             <div className="text-white">{ability.name}</div>

@@ -13,7 +13,7 @@ export function SpecIcon({ wowClass, spec, size, className }: Props) {
   return (
     <ZamIcon
       className={`rounded ${className}`}
-      src={`https://wow.zamimg.com/images/wow/icons/large/${classSpecs[wowClass][spec]!.icon}.jpg`}
+      icon={classSpecs[wowClass][spec]!.icon}
       size={size}
       alt={spec}
     />

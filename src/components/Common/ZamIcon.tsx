@@ -3,21 +3,23 @@ import { forwardRef } from 'react'
 
 interface Props
   extends DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement> {
-  src: string
+  icon: string
   size: number
 }
 
-export const ZamIcon = forwardRef<HTMLImageElement, Props>((props, ref) => {
-  return (
-    <img
-      {...props}
-      ref={ref}
-      alt={props.alt}
-      width={props.size}
-      height={props.size}
-      src={props.src}
-    />
-  )
-})
+export const ZamIcon = forwardRef<HTMLImageElement, Props>(
+  ({ alt, size, icon, ...props }, ref) => {
+    return (
+      <img
+        {...props}
+        ref={ref}
+        alt={alt}
+        width={size}
+        height={size}
+        src={`https://icons.wowdb.com/retail/large/${icon}.jpg`}
+      />
+    )
+  },
+)
 
 ZamIcon.displayName = 'Image'

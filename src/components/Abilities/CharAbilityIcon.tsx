@@ -5,13 +5,13 @@ import { Fragment } from 'react'
 import { useSimContext } from '../../util/useSimContext.ts'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { getMultiplierAbsorb } from '../../backend/sim/absorbs'
-import { ZamIcon } from '../Common/ZamIcon.tsx'
 import { NumericInput } from '../Inputs/NumericInput.tsx'
 import {
   getAugmentationText,
   getEffectText,
   getExtraAbsorbText,
 } from './abilityTooltipFormat.ts'
+import { AbilityIcon } from '../Common/AbilityIcon.tsx'
 
 const iconSize = 40
 
@@ -81,12 +81,7 @@ export function CharAbilityIcon({
             style={{ height: iconSize, width: iconSize }}
           />
         )}
-        <ZamIcon
-          className={`rounded border-2 border-gray-600`}
-          size={iconSize}
-          src={`https://wow.zamimg.com/images/wow/icons/large/${ability.iconName}.jpg`}
-          alt={ability.name}
-        />
+        <AbilityIcon size={iconSize} icon={ability.iconName} />
       </div>
       <TooltipStyled id={tooltipId} clickable={!!ability.stacks && !!selectedAbility}>
         <div className="flex flex-col">

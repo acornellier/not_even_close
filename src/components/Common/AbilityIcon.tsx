@@ -5,12 +5,12 @@ interface Props {
   size: number
 }
 
-export function WowIcon({ icon, size }: Props) {
+export function AbilityIcon({ icon, size }: Props) {
   return (
     <ZamIcon
       className="rounded border border-gray-500"
       size={size}
-      src={`https://wow.zamimg.com/images/wow/icons/large/${icon}.jpg`}
+      icon={icon}
       alt={icon}
     />
   )

@@ -1,6 +1,6 @@
 ﻿import type { Dungeon, DungeonKey } from '../../backend/enemyAbilities/enemies'
 import { Button } from '../Common/Button'
-import { WowIcon } from '../Common/WowIcon'
+import { AbilityIcon } from '../Common/AbilityIcon.tsx'
 
 interface Props {
   dungeons: Dungeon[]
@@ -17,7 +17,7 @@ export function DungeonSelect({ dungeons, setSelectedDungeon }: Props) {
           className="flex gap-2 py-2 px-2"
           onClick={() => setSelectedDungeon(key)}
         >
-          <WowIcon icon={icon} size={36} />
+          <AbilityIcon icon={icon} size={36} />
           {name}
         </Button>
       ))}

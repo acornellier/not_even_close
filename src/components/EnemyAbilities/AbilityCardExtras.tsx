@@ -1,7 +1,7 @@
 import type { EnemyAbility, TimeBetweenCasts } from '../../backend/enemyAbilities/enemies'
 import { ClockIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
 import { TooltipStyled } from '../Common/TooltipStyled'
-import { WowIcon } from '../Common/WowIcon'
+import { AbilityIcon } from '../Common/AbilityIcon.tsx'
 import { OutrangeIcon } from '../Common/Icons/OutrangeIcon'
 
 interface Props {
@@ -43,7 +43,7 @@ export function AbilityCardExtras({
               combatDrop === 'cancel' ? 'Cancelled by' : 'Recasts on'
             } Meld, Invis, or Feign Death`}
           >
-            <WowIcon icon="ability_ambush" size={24} />
+            <AbilityIcon icon="ability_ambush" size={24} />
           </div>
         )}
         {los && (
@@ -71,7 +71,7 @@ export function AbilityCardExtras({
             data-tooltip-id="counterplay-tooltip"
             data-tooltip-content="Reflected by Spell Reflect"
           >
-            <WowIcon icon="ability_warrior_shieldreflection" size={24} />
+            <AbilityIcon icon="ability_warrior_shieldreflection" size={24} />
           </div>
         )}
         {diffuse && (
@@ -80,7 +80,7 @@ export function AbilityCardExtras({
             data-tooltip-id="counterplay-tooltip"
             data-tooltip-content="Reflected by Diffuse Magic"
           >
-            <WowIcon icon="spell_monk_diffusemagic" size={24} />
+            <AbilityIcon icon="spell_monk_diffusemagic" size={24} />
           </div>
         )}
       </div>
