@@ -51,10 +51,10 @@ const lifeCocoon: Ability = {
   absorb: {
     healthMultiplier: 0.8,
     versAffected: true,
-    backup: 900_000,
+    backup: 1_400_000,
   },
   iconName: 'ability_monk_chicocoon',
-  notes: 'Assumes 900K absorb if you have no mistweaver selected',
+  notes: 'Assumes 1.4M absorb if you have no mistweaver selected',
 }
 
 const twinGuardian: Ability = {

@@ -25,7 +25,7 @@ export const chiCocoon: Ability = {
   },
   iconName: 'inv_pet_crane',
   wowheadLink: 'https://www.wowhead.com/spell=406220/chi-cocoon',
-  notes: 'Assumes 170K absorb if you have no mistweaver selected',
+  notes: 'Assumes 270K absorb if you have no mistweaver selected',
 }
 
 export const massBarrier: Ability = {
