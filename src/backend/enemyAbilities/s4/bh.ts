@@ -5,7 +5,6 @@ const gashFrenzy = getEnemySpell(378020, { cooldown: 60 })
 const earthBolt = getEnemySpell(378155, { avoidable: true })
 
 const witheredEruption = getEnemySpell(387264, {
-  aoe: true,
   cooldown: 45,
 })
 

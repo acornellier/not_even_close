@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@heroicons/react": "2.1.3",
-    "grimoire-wow": "1.3.0",
+    "grimoire-wow": "1.3.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-gtm-module": "2.0.11",
