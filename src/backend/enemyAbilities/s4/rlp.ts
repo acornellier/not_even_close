@@ -5,8 +5,11 @@ const frigidShard = getEnemySpell(372808, {
 })
 
 const chillstorm = getEnemySpell(383925, {
+  name: 'Chillstorm',
+  damage: getEnemySpell(397077).damage + getEnemySpell(383925).damage,
+  aoe: true,
   cooldown: 23,
-  notes: 'Only the final hit, not the ticking damage',
+  notes: '1 tick + final hit',
 })
 
 const tectonicSlam = getEnemySpell(372735, {
@@ -17,10 +20,12 @@ const tectonicSlam = getEnemySpell(372735, {
 })
 
 const livingBomb = getEnemySpell(373694, {
-  damage: 182376,
+  damage: 78225 + 195564,
+  aoe: true,
+  aoeMultiplier: 0.714,
   trashAbility: true,
   cooldown: 17,
-  notes: 'Only the final hit.',
+  notes: '1 tick + final hit.',
 })
 
 const infernoTrash = getEnemySpell(373692, {
@@ -28,18 +33,18 @@ const infernoTrash = getEnemySpell(373692, {
   trashAbility: true,
   cooldown: 19,
   combatDrop: 'cancel',
-  notes: 'This does not include the ticking damage. Only the initial groupwide damage.',
+  notes: 'Only the initial hit.',
 })
 
 const rollingThunder = getEnemySpell(392642, {
   trashAbility: true,
-  notes: 'This does not include the ticking damage. Only the groupwide dispel damage.',
+  notes: 'Only the initial hit',
 })
 
 const inferno = getEnemySpell(384823, {
   name: 'Inferno (Boss)',
   cooldown: 35,
-  notes: 'Only the initial groupwide damage, not the ticking damage.',
+  notes: 'Only the initial hit.',
 })
 
 const lightningStorm = getEnemySpell(392486, {

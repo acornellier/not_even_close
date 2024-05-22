@@ -644,12 +644,12 @@
     "id": 383925,
     "name": "Chillstorm",
     "icon": "spell_shadow_soulleech_2",
-    "damage": 234676,
+    "damage": 293345,
     "aoe": true,
     "physical": false,
     "variance": 0,
     "cooldown": 23,
-    "notes": "Only the final hit, not the ticking damage"
+    "notes": "1 tick + final hit"
   },
   {
     "id": 372735,
@@ -668,13 +668,14 @@
     "id": 373694,
     "name": "Living Bomb",
     "icon": "inv_summerfest_firespirit",
-    "damage": 182376,
+    "damage": 273789,
     "aoe": true,
     "physical": false,
     "variance": 0,
+    "aoeMultiplier": 0.714,
     "trashAbility": true,
     "cooldown": 17,
-    "notes": "Only the final hit."
+    "notes": "1 tick + final hit."
   },
   {
     "id": 373692,
@@ -687,7 +688,7 @@
     "trashAbility": true,
     "cooldown": 19,
     "combatDrop": "cancel",
-    "notes": "This does not include the ticking damage. Only the initial groupwide damage."
+    "notes": "Only the initial hit."
   },
   {
     "id": 392642,
@@ -698,7 +699,7 @@
     "physical": false,
     "variance": 0,
     "trashAbility": true,
-    "notes": "This does not include the ticking damage. Only the groupwide dispel damage."
+    "notes": "Only the initial hit"
   },
   {
     "id": 384823,
@@ -709,7 +710,7 @@
     "physical": false,
     "variance": 0,
     "cooldown": 35,
-    "notes": "Only the initial groupwide damage, not the ticking damage."
+    "notes": "Only the initial hit."
   },
   {
     "id": 392486,
