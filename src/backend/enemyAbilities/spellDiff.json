@@ -300,7 +300,7 @@
     "name": "Withered Eruption",
     "icon": "warlock_curse_weakness_aura",
     "damage": 352014,
-    "aoe": false,
+    "aoe": true,
     "physical": false,
     "variance": 0,
     "cooldown": 45
