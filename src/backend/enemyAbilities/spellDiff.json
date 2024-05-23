@@ -261,6 +261,7 @@
     "physical": true,
     "variance": 0,
     "trashAbility": true,
+    "affectedByArmor": true,
     "cooldown": 12,
     "outrange": 40
   },
