@@ -84,7 +84,7 @@ export function CharacterComponent({
     <div className="flex flex-col items-start gap-3 w-full">
       {specDetails.isTank && (
         <Label className="[&]:bg-red-700">
-          WARNING: Tanks are a WIP and may contain invalid results
+          WARNING: Tanks are a WIP and may produce invalid results
         </Label>
       )}
       <div className="flex justify-between w-full gap-2">
