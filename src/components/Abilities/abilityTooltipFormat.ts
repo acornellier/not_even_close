@@ -85,6 +85,8 @@ function getNumberText(field: AbilityField, value: number, { drType, stacks }: A
       return `${values}% versatility`
     case 'versRawIncrease':
       return `${values} versatility`
+    case 'armorIncrease':
+      return `${values}% armor`
     default:
       console.error(`Unknown ability field: ${field}`)
       return 'Error'

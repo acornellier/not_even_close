@@ -17,6 +17,8 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
     setOpen(false)
   }
 
+  const specDetails = classSpecs[selectedClassSpec.class][selectedClassSpec.spec]
+
   return (
     <div>
       <Button onClick={() => setOpen(!open)} className={open ? 'rounded-b-none' : ''}>
@@ -26,7 +28,7 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
           spec={selectedClassSpec.spec}
           size={20}
         />
-        {selectedClassSpec.spec} {selectedClassSpec.class}
+        {specDetails?.shortName ?? `${selectedClassSpec.spec} ${selectedClassSpec.class}`}
         <svg
           className="w-2.5 h-2.5 ml-2"
           aria-hidden="true"

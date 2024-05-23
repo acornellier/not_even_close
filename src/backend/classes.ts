@@ -1,4 +1,4 @@
-﻿import { havocAbilities } from './classAbilities/demonHunter'
+﻿import { havocAbilities, vengeanceAbilities } from './classAbilities/demonHunter'
 import type { Ability, SelectedAbility } from './ability'
 import {
   evokerAugAbilities,
@@ -67,6 +67,7 @@ type SpecDetails = {
   icon: string
   mainStat: 'intellect' | 'other'
   isTank?: boolean
+  shortName?: string
 }
 
 export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
@@ -93,6 +94,13 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: havocAbilities,
       icon: 'ability_demonhunter_specdps',
       mainStat: 'other',
+    },
+    Vengeance: {
+      abilities: vengeanceAbilities,
+      icon: 'ability_demonhunter_spectank',
+      mainStat: 'other',
+      isTank: true,
+      shortName: 'VDH',
     },
   },
   Druid: {

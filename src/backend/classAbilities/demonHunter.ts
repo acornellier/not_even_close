@@ -72,13 +72,143 @@ const demonHide: Ability = {
   iconName: 'misc_legionfall_demonhunter',
 }
 
+const immolationAura: Ability = {
+  name: 'Immolation Aura',
+  spellId: 258920,
+  iconName: 'ability_demonhunter_immolation',
+}
+
+const infernalArmor: Ability = {
+  name: 'Infernal Armor',
+  spellId: 320331,
+  onByDefault: true,
+  iconName: 'ability_demonhunter_immolation',
+  abilityAugmentations: [
+    {
+      field: 'armorIncrease',
+      otherSpellId: immolationAura.spellId,
+      value: 0.2,
+    },
+  ],
+}
+
+const felFlameFortification: Ability = {
+  name: 'Fel Flame Fortification',
+  spellId: 389705,
+  onByDefault: true,
+  drType: 'magic',
+  iconName: 'spell_fire_felfire',
+  abilityAugmentations: [
+    {
+      field: 'dr',
+      otherSpellId: immolationAura.spellId,
+      value: 0.1,
+    },
+  ],
+}
+
+const metamorphosis: Ability = {
+  name: 'Metamorphosis',
+  spellId: 191427,
+  healthIncrease: 0.5,
+  armorIncrease: 2,
+  iconName: 'ability_demonhunter_metamorphasistank',
+}
+
+const fieryBrand: Ability = {
+  name: 'Fiery Brand',
+  spellId: 204021,
+  damageDealtReduction: 0.4,
+  iconName: 'ability_demonhunter_fierybrand',
+}
+
+const soulmonger: Ability = {
+  name: 'Soulmonger',
+  spellId: 389711,
+  iconName: 'ability_demonhunter_shatteredsouls',
+  absorb: {
+    healthMultiplier: 0.01,
+  },
+  stacks: {
+    type: 'stacks',
+    max: 10,
+    default: 5,
+  },
+}
+
+const calcifiedSpikes: Ability = {
+  name: 'Calcified Spikes',
+  spellId: 389720,
+  dr: 0.01,
+  iconName: 'ability_demonhunter_demonspikes',
+  stacks: {
+    type: 'stacks',
+    max: 12,
+  },
+}
+
+const voidReaver: Ability = {
+  name: 'Void Reaver (Frailty)',
+  spellId: 268175,
+  dr: 0.04,
+  iconName: 'spell_shadow_demonicempathy',
+  stacks: {
+    type: 'stacks',
+    max: 10,
+    default: 1,
+  },
+}
+
+const painbringer: Ability = {
+  name: 'Painbringer',
+  spellId: 207387,
+  dr: 0.02,
+  iconName: 'artifactability_vengeancedemonhunter_painbringer',
+  stacks: {
+    type: 'stacks',
+    max: 20,
+    default: 5,
+  },
+}
+
+const fieryResolve: Ability = {
+  name: 'Fiery Resolve (2pc)',
+  spellId: 425653,
+  staminaIncrease: 0.02,
+  iconName: 'spell_fire_moltenblood',
+  stacks: {
+    type: 'stacks',
+    max: 5,
+  },
+}
+
 export const havocAbilities = [
+  infernalArmor,
   scarsOfSuffering,
   demonicWards,
   illidariKnowledge,
   demonHide,
   willOfTheIllidari,
   demonMuzzle,
+  metamorphosis,
+  immolationAura,
   deflectingDance,
   blur,
+]
+
+export const vengeanceAbilities = [
+  infernalArmor,
+  felFlameFortification,
+  demonicWards,
+  illidariKnowledge,
+  willOfTheIllidari,
+  fieryResolve,
+  soulmonger,
+  calcifiedSpikes,
+  voidReaver,
+  painbringer,
+  immolationAura,
+  demonMuzzle,
+  metamorphosis,
+  fieryBrand,
 ]

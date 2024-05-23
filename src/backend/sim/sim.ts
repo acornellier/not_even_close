@@ -50,6 +50,10 @@ function getAdjustedStats(
     if (ability.staminaIncrease) {
       adjustedStats.stamina *= 1 + ability.staminaIncrease
     }
+
+    if (ability.armorIncrease) {
+      adjustedStats.armor *= 1 + ability.armorIncrease
+    }
   }
 
   adjustedStats.stamina = Math.floor(adjustedStats.stamina)
