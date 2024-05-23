@@ -58,7 +58,7 @@ const deflectingDance: Ability = {
 const demonMuzzle: Ability = {
   name: 'Demon Muzzle',
   spellId: 388111,
-  dr: 0.08,
+  damageDealtReduction: 0.08,
   drType: 'magic',
   iconName: 'spell_fire_fireballgreen',
 }
@@ -75,6 +75,7 @@ const demonHide: Ability = {
 const immolationAura: Ability = {
   name: 'Immolation Aura',
   spellId: 258920,
+  drType: 'magic',
   iconName: 'ability_demonhunter_immolation',
 }
 
