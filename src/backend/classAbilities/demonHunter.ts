@@ -18,6 +18,11 @@ const demonicWards: Ability = {
   wowheadLink: 'https://www.wowhead.com/spell=320381/demonic-wards',
 }
 
+const demonicWardsVdh: Ability = {
+  ...demonicWards,
+  drType: undefined,
+}
+
 const illidariKnowledge: Ability = {
   name: 'Illidari Knowledge',
   spellId: 389696,
@@ -201,7 +206,7 @@ export const havocAbilities = [
 export const vengeanceAbilities = [
   infernalArmor,
   felFlameFortification,
-  demonicWards,
+  demonicWardsVdh,
   illidariKnowledge,
   willOfTheIllidari,
   fieryResolve,
