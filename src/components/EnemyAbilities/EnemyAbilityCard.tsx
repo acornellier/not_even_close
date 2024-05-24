@@ -85,7 +85,7 @@ export function EnemyAbilityCard({
             </AbilityDetailsChip>
             {ability.variance !== undefined && ability.variance !== 0 && (
               <TooltipStyled id={`chip-damage-${ability.name}`}>
-                <p>Some abilities have variance in their damage.</p>
+                <p>This ability has variance in its damage.</p>
                 <p>
                   Not Even Close assumes you will take the upper bound of this variance.
                 </p>

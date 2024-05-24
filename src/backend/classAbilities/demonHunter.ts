@@ -1,4 +1,4 @@
-﻿import type { Ability } from '../ability'
+import type { Ability } from '../ability'
 
 const scarsOfSuffering: Ability = {
   name: 'Scars of Suffering',
@@ -145,13 +145,14 @@ const calcifiedSpikes: Ability = {
   stacks: {
     type: 'stacks',
     max: 12,
+    default: 6,
   },
 }
 
 const voidReaver: Ability = {
   name: 'Void Reaver (Frailty)',
   spellId: 268175,
-  dr: 0.04,
+  damageDealtReduction: 0.04,
   iconName: 'spell_shadow_demonicempathy',
   stacks: {
     type: 'stacks',
@@ -206,10 +207,10 @@ export const vengeanceAbilities = [
   fieryResolve,
   soulmonger,
   calcifiedSpikes,
-  voidReaver,
   painbringer,
   immolationAura,
-  demonMuzzle,
   metamorphosis,
+  voidReaver,
+  demonMuzzle,
   fieryBrand,
 ]
