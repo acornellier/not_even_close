@@ -67,7 +67,9 @@ function getNumberText(field: AbilityField, value: number, { drType, stacks }: A
   const stackArray = getStackArray(stacks)
 
   const values = mapStacks(value, stackArray, stacks, (calculatedValue) =>
-    field === 'versRawIncrease' ? calculatedValue : roundHundred(calculatedValue),
+    field === 'versRawIncrease' || field === 'armorRawIncrease'
+      ? calculatedValue.toLocaleString('en-US')
+      : roundHundred(calculatedValue),
   )
 
   switch (field) {
@@ -87,6 +89,8 @@ function getNumberText(field: AbilityField, value: number, { drType, stacks }: A
       return `${values} versatility`
     case 'armorIncrease':
       return `${values}% armor`
+    case 'armorRawIncrease':
+      return `${values} armor`
     default:
       console.error(`Unknown ability field: ${field}`)
       return 'Error'

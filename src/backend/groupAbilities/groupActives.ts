@@ -35,11 +35,11 @@ export const massBarrier: Ability = {
   absorb: {
     healthMultiplier: 0.2,
     versAffected: true,
-    backup: 200_000,
+    backup: 300_000,
   },
   iconName: 'ability_racial_magicalresistance',
   wowheadLink: 'https://www.wowhead.com/spell=414660/mass-barrier',
-  notes: 'Assumes 200K absorb if you have no mage selected',
+  notes: 'Assumes 300K absorb if you have no mage selected',
 }
 
 export const arcaneMassBarrier: Ability = {

@@ -33,6 +33,7 @@ export type Ability = {
   versRawIncrease?: number
   healthIncrease?: number
   armorIncrease?: number
+  armorRawIncrease?: number
   absorb?: AbsorbOptions
   stacks?: StackOptions
 
@@ -59,6 +60,7 @@ export const abilityEffectFields = [
   'versRawIncrease',
   'healthIncrease',
   'armorIncrease',
+  'armorRawIncrease',
   'absorb',
 ] as const
 

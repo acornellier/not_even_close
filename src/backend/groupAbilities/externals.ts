@@ -57,17 +57,17 @@ const lifeCocoon: Ability = {
   notes: 'Assumes 1.4M absorb if you have no mistweaver selected',
 }
 
-const twinGuardian: Ability = {
-  name: 'Twin Guardian (Rescue)',
+const rescue: Ability = {
+  name: 'Rescue',
   spellId: 370888,
   associatedClass: 'Evoker',
   absorb: {
     healthMultiplier: 0.3,
     versAffected: true,
-    backup: 300_000,
+    backup: 400_000,
   },
   iconName: 'ability_skyreach_shielded',
-  notes: 'Assumes 300K absorb if you have no evoker selected',
+  notes: 'Assumes 400K absorb if you have no evoker selected',
 }
 
 const wardOfFacelessIre: Ability = {
@@ -117,6 +117,14 @@ const timeDilation: Ability = {
   iconName: 'ability_evoker_timedilation',
 }
 
+const blisteringScales: Ability = {
+  name: 'Blistering Scales',
+  spellId: 360827,
+  armorRawIncrease: Math.round(17818 * 0.3),
+  iconName: 'ability_evoker_blisteringscales',
+  notes: 'NOT EXACT. Based on an evoker at 526 ilvl',
+}
+
 export const aaVersBuff: Ability = {
   name: 'Algethar Vers Buff',
   versIncrease: 0.05,
@@ -127,7 +135,6 @@ export const aaVersBuff: Ability = {
 export const externals: Ability[] = [
   tepidVersatility,
   icyPreservation,
-  twinGuardian,
   ancestralVigor,
   earthenHarmony,
   ironBark,
@@ -135,6 +142,8 @@ export const externals: Ability[] = [
   painSuppression,
   timeDilation,
   lifeCocoon,
+  rescue,
+  blisteringScales,
   wardOfFacelessIre,
   fyrakksTaintedRageheart,
 ]

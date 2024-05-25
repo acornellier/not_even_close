@@ -63,6 +63,10 @@ function getAdjustedStats(
     if (ability.versRawIncrease) {
       rawVers += ability.versRawIncrease
     }
+
+    if (ability.armorRawIncrease) {
+      adjustedStats.armor += ability.armorRawIncrease
+    }
   }
 
   adjustedStats.versatility = versRawToPercent(rawVers) / 100
