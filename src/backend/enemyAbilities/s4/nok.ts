@@ -12,8 +12,7 @@ const brutalize = getEnemySpell(382836, {
   tankOnly: true,
 })
 
-const galeArrow = getEnemySpell(386037, {
-  damage: 449796,
+const galeArrow = getEnemySpell(386016, {
   cooldown: 57,
 })
 

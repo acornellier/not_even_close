@@ -535,13 +535,13 @@
     "tankOnly": true
   },
   {
-    "id": 386037,
+    "id": 386016,
     "name": "Gale Arrow",
     "icon": "ability_skyreach_four_wind",
     "damage": 449796,
     "aoe": false,
     "physical": false,
-    "variance": 0,
+    "variance": 0.05,
     "cooldown": 57
   },
   {
