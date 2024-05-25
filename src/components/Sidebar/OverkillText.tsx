@@ -1,4 +1,4 @@
-﻿import { roundTo } from '../../backend/utils'
+﻿import { formatNumber, roundTo } from '../../backend/utils'
 
 import type { CharacterResult } from '../../backend/sim/simTypes'
 
@@ -12,15 +12,14 @@ export function OverkillText({ result, bold }: Props) {
     <div className={bold ? 'font-bold' : ''}>
       {result.healthRemaining > 0 ? (
         <span>
-          Health remaining: {result.healthRemaining.toLocaleString('en-US')} (
-          {roundTo(
-            (result.healthRemaining / result.startingHealth) * 100,
-            2
-          ).toLocaleString('en-US')}
+          Health remaining: {formatNumber(result.healthRemaining)} (
+          {formatNumber(
+            roundTo((result.healthRemaining / result.startingHealth) * 100, 2),
+          )}
           %)
         </span>
       ) : (
-        `Overkill: ${(-result.healthRemaining).toLocaleString('en-US')}`
+        `Overkill: ${formatNumber(-result.healthRemaining)}`
       )}
     </div>
   )

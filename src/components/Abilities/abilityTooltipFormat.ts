@@ -5,7 +5,7 @@ import type {
   AbsorbOptions,
   StackOptions,
 } from '../../backend/ability.ts'
-import { getStackedValue, roundHundred } from '../../backend/utils.ts'
+import { formatNumber, getStackedValue, roundHundred } from '../../backend/utils.ts'
 import { barkskin } from '../../backend/classAbilities/druid.ts'
 
 function getStackArray(stacks: StackOptions | undefined) {
@@ -31,9 +31,7 @@ function getAbsorbText(absorb: AbsorbOptions, { stacks }: Ability) {
 
   const absorbs = []
   if (absorb.raw) {
-    const values = mapStacks(absorb.raw, stackArray, stacks, (v) =>
-      v.toLocaleString('en-US'),
-    )
+    const values = mapStacks(absorb.raw, stackArray, stacks, formatNumber)
     absorbs.push(`${values} HP`)
   } else if (absorb.healthMultiplier) {
     const values = mapStacks(absorb.healthMultiplier, stackArray, stacks, roundHundred)
@@ -60,7 +58,7 @@ function getAbsorbText(absorb: AbsorbOptions, { stacks }: Ability) {
 export function getExtraAbsorbText(calculatedAbsorb: number) {
   if (!calculatedAbsorb) return ''
 
-  return ` - ${calculatedAbsorb.toLocaleString('en-US')} absorb`
+  return ` - ${formatNumber(calculatedAbsorb)} absorb`
 }
 
 function getNumberText(field: AbilityField, value: number, { drType, stacks }: Ability) {
@@ -68,7 +66,7 @@ function getNumberText(field: AbilityField, value: number, { drType, stacks }: A
 
   const values = mapStacks(value, stackArray, stacks, (calculatedValue) =>
     field === 'versRawIncrease' || field === 'armorRawIncrease'
-      ? calculatedValue.toLocaleString('en-US')
+      ? formatNumber(calculatedValue)
       : roundHundred(calculatedValue),
   )
 

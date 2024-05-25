@@ -3,6 +3,7 @@ import { OverkillText } from './OverkillText'
 import { ResultDetails } from './ResultDetails'
 import { EnemyAbilityResult } from './EnemyAbilityResult'
 import type { AbilityResult, KeyDetails } from '../../backend/sim/simTypes'
+import { formatNumber } from '../../backend/utils.ts'
 
 interface Props {
   result: AbilityResult
@@ -28,8 +29,8 @@ export function ResultsFull({ result, enemyAbility, keyDetails }: Props) {
         )}
       </div>
       <EnemyAbilityResult ability={enemyAbility} keyDetails={keyDetails} />
-      <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
-      <div>Unmitigated damage: {result.scaledDamage.toLocaleString('en-US')}</div>
+      <div>Damage scaling: {formatNumber(result.damageScaling)}</div>
+      <div>Unmitigated damage: {formatNumber(result.scaledDamage)}</div>
       <ResultDetails charResult={charResult} />
       <OverkillText result={charResult} bold />
     </div>

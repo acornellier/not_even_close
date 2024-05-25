@@ -4,6 +4,7 @@ import { ResultDetails } from './ResultDetails'
 import { SpecIcon } from '../Common/SpecIcon'
 import { EnemyAbilityResult } from './EnemyAbilityResult'
 import type { AbilityResult, KeyDetails } from '../../backend/sim/simTypes'
+import { formatNumber } from '../../backend/utils.ts'
 
 interface Props {
   result: AbilityResult
@@ -16,8 +17,8 @@ export function ResultsMini({ result, enemyAbility, keyDetails }: Props) {
     <div className="flex flex-col gap-4">
       <div>
         <EnemyAbilityResult ability={enemyAbility} keyDetails={keyDetails} />
-        <div>Damage scaling: {result.damageScaling.toLocaleString('en-US')}</div>
-        <div>Unmitigated damage: {result.scaledDamage.toLocaleString('en-US')}</div>
+        <div>Damage scaling: {formatNumber(result.damageScaling)}</div>
+        <div>Unmitigated damage: {formatNumber(result.scaledDamage)}</div>
       </div>
 
       {result.characters.map((charResult, idx) => (

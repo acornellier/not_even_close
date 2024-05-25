@@ -7,7 +7,7 @@ import {
   versRawToPercent,
 } from '../../backend/stats'
 import type { Ability } from '../../backend/ability'
-import { roundTo } from '../../backend/utils'
+import { formatNumber, roundTo } from '../../backend/utils'
 
 interface Props {
   characterStats: CharacterStatsInput
@@ -45,9 +45,7 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
         value={characterStats.stamina}
         onChange={onChangeStat('stamina')}
         step={500}
-        inputTooltip={`${staminaToHp(characterStats.stamina ?? 0).toLocaleString(
-          'en-US',
-        )} HP`}
+        inputTooltip={`${formatNumber(staminaToHp(characterStats.stamina ?? 0))} HP`}
       />
       <NumericInput
         label="Versatility"

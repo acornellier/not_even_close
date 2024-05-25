@@ -1,4 +1,4 @@
-﻿import { roundTo } from '../../backend/utils'
+﻿import { formatNumber, roundTo } from '../../backend/utils'
 import type { CharacterResult } from '../../backend/sim/simTypes'
 
 interface Props {
@@ -15,26 +15,24 @@ export function ResultDetails({ charResult }: Props) {
         <>
           <div>
             Enemy damage reduction:{' '}
-            {roundTo(charResult.damageDealtReduction * 100, 2).toLocaleString('en-US')}%
+            {formatNumber(roundTo(charResult.damageDealtReduction * 100, 2))}%
           </div>
-          <div>Reduced damage: {charResult.reducedDamage.toLocaleString('en-US')}</div>
+          <div>Reduced damage: {formatNumber(charResult.reducedDamage)}</div>
         </>
       )}
       <div>
-        Versatility: {vers.toLocaleString('en-US')}% ({versDr}% DR)
+        Versatility: {formatNumber(vers)}% ({versDr}% DR)
       </div>
       <div>
-        Damage mitigated: {charResult.mitigatedDamage.toLocaleString('en-US')} (
-        {roundTo(charResult.damageReduction * 100, 2).toLocaleString('en-US')}%)
+        Damage mitigated: {formatNumber(charResult.mitigatedDamage)} (
+        {formatNumber(roundTo(charResult.damageReduction * 100, 2))}%)
       </div>
-      <div>
-        Actual damage taken: {charResult.actualDamageTaken.toLocaleString('en-US')}
-      </div>
-      <div>Starting health: {charResult.startingHealth.toLocaleString('en-US')}</div>
+      <div>Actual damage taken: {formatNumber(charResult.actualDamageTaken)}</div>
+      <div>Starting health: {formatNumber(charResult.startingHealth)}</div>
       {charResult.absorbs > 0 && (
         <>
-          <div>Absorbs: {charResult.absorbs.toLocaleString('en-US')}</div>
-          <div>Total health: {charResult.totalHealth.toLocaleString('en-US')}</div>
+          <div>Absorbs: {formatNumber(charResult.absorbs)}</div>
+          <div>Total health: {formatNumber(charResult.totalHealth)}</div>
         </>
       )}
     </>
