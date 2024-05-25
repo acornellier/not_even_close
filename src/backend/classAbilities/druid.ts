@@ -2,10 +2,14 @@ import type { Ability } from '../ability'
 
 const thickHide: Ability = {
   name: 'Thick Hide',
-  dr: 0.06,
+  dr: 0.03,
   onByDefault: true,
   spellId: 16931,
   iconName: 'inv_misc_pelt_bear_03',
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
 }
 
 const risingLight: Ability = {
