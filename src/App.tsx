@@ -22,7 +22,7 @@ export function App() {
   return (
     <ToastProvider>
       <div className="flex justify-center bg-[#181a1b] px-4 lg:px-0">
-        <main className="min-h-screen py-4 flex flex-col gap-4 md:w-[765px] lg:w-[1155px]">
+        <main className="min-h-screen py-4 flex flex-col gap-4 md:w-[735px] lg:w-[1125px]">
           <Header />
           <RouterProvider router={router} />
           <TailwindBreakpoint />
