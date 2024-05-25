@@ -1,7 +1,7 @@
 ﻿import type { EnemyAbility } from '../../backend/enemyAbilities/enemies'
 import { AbilityDetailsChip } from './AbilityDetailsChip'
 import { TooltipStyled } from '../Common/TooltipStyled'
-import type { AbilityResult } from '../../backend/sim/simTypes'
+import type { AbilityResult, KeyDetails } from '../../backend/sim/simTypes'
 import {
   ChevronDownIcon,
   ChevronUpIcon,
@@ -11,7 +11,8 @@ import {
 import { AbilityCardExtras } from './AbilityCardExtras'
 import { CardResult } from './CardResult'
 import { AbilityIcon } from '../Common/AbilityIcon.tsx'
-import { thousands } from '../../backend/utils.ts'
+import { shortRoundedNumber } from '../../backend/utils.ts'
+import { scaleDamage } from '../../backend/sim/sim.ts'
 
 interface Props {
   ability: EnemyAbility
@@ -20,6 +21,7 @@ interface Props {
   result: AbilityResult | undefined
   showExtras: boolean
   toggleExtras: () => void
+  keyDetails: KeyDetails
 }
 
 export function EnemyAbilityCard({
@@ -29,6 +31,7 @@ export function EnemyAbilityCard({
   result,
   showExtras,
   toggleExtras,
+  keyDetails,
 }: Props) {
   const cardColor = selected ? 'bg-teal-600' : 'bg-teal-900'
   const hoverColor = !selected && 'hover:bg-teal-800'
@@ -78,7 +81,7 @@ export function EnemyAbilityCard({
               className="hidden sm:block"
               data-tooltip-id={`chip-damage-${ability.name}`}
             >
-              {thousands(ability.damage)} dmg
+              {shortRoundedNumber(scaleDamage(keyDetails, ability).scaledDamage)} dmg
               {ability.variance !== undefined &&
                 ability.variance !== 0 &&
                 ` ±${ability.variance * 100}%`}

@@ -11,8 +11,15 @@ export function roundHundred(number: number) {
   return roundTo(number * 100, 2)
 }
 
-export function thousands(number: number) {
-  return `${Math.round(number / 1000).toLocaleString('en-US')}K`
+export function formatNumber(number: number) {
+  return number.toLocaleString('en-US')
+}
+
+export function shortRoundedNumber(number: number) {
+  const absNumber = Math.abs(number)
+  if (absNumber <= 9_999) return formatNumber(Math.round(number))
+  if (absNumber <= 999_999) return `${formatNumber(Math.round(number / 1_000))}K`
+  return `${formatNumber(roundTo(number / 1_000_000, 2))}M`
 }
 
 export function getSelectedAbility(

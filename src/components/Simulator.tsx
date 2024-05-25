@@ -162,6 +162,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
               onSelect={setEnemyAbility}
               results={result?.dungeon ?? null}
               characters={characters}
+              keyDetails={keyDetails}
             />
           )}
         </div>

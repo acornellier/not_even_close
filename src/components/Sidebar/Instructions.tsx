@@ -16,9 +16,10 @@ export function Instructions() {
         >
           my addon
         </a>{' '}
-        to quickly output stats. Import them by clicking the paste icon to the right of
-        the character stats (not on Firefox), or by pressing ctrl-V/cmd-V if you only have
-        1 character. It accounts for vers phial, Fortitude and Mark of the Wild.
+        to quickly output your stats as well as your teammates&apos;. Import them by
+        clicking the paste icon to the right of the character stats, or by pressing
+        ctrl-V/cmd-V if you only have 1 character. It accounts for vers phial, Fortitude
+        and Mark of the Wild.
       </span>
       <span>
         If you have multiple characters or builds, create profiles for them with the +

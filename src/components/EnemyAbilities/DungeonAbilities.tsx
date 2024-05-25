@@ -1,7 +1,7 @@
 ﻿import type { Dungeon, EnemyAbility } from '../../backend/enemyAbilities/enemies'
 import { EnemyAbilityCard } from './EnemyAbilityCard'
 import { Button } from '../Common/Button'
-import type { AbilityResult } from '../../backend/sim/simTypes'
+import type { AbilityResult, KeyDetails } from '../../backend/sim/simTypes'
 import { useState } from 'react'
 import { useLocalStorage } from '../../util/useLocalStorage'
 import { Toggle } from '../Inputs/Toggle'
@@ -16,6 +16,7 @@ interface Props {
   deselectDungeon: () => void
   results: AbilityResult[] | null
   characters: Character[]
+  keyDetails: KeyDetails
 }
 
 export function DungeonAbilities({
@@ -25,6 +26,7 @@ export function DungeonAbilities({
   deselectDungeon,
   results,
   characters,
+  keyDetails,
 }: Props) {
   const [showPeriodic, setShowPeriodic] = useLocalStorage(
     `show-periodic-${dungeon.key}`,
@@ -116,6 +118,7 @@ export function DungeonAbilities({
                     result={abilityResult}
                     showExtras={abilityExtras.has(ability.name)}
                     toggleExtras={toggleAbilityExtras(ability)}
+                    keyDetails={keyDetails}
                   />
                 )
               })}

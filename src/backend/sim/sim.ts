@@ -34,6 +34,15 @@ function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isTrashAbility: boo
   return Math.round(scalingFactor * 100) / 100
 }
 
+export function scaleDamage(
+  keyDetails: KeyDetails,
+  enemyAbilityDetails: EnemyAbilityDetails,
+) {
+  const damageScaling = getScalingFactor(keyDetails, !!enemyAbilityDetails.trashAbility)
+  const scaledDamage = Math.round(enemyAbilityDetails.damage * damageScaling)
+  return { damageScaling, scaledDamage }
+}
+
 function getAdjustedStats(
   characterStats: CharacterStatsInput,
   abilities: SelectedAbility[],
@@ -142,8 +151,7 @@ function getAbilityResult(
   customAbsorbs: number[],
   customDrs: number[],
 ): AbilityResult {
-  const damageScaling = getScalingFactor(keyDetails, !!enemyAbilityDetails.trashAbility)
-  const scaledDamage = Math.round(enemyAbilityDetails.damage * damageScaling)
+  const { damageScaling, scaledDamage } = scaleDamage(keyDetails, enemyAbilityDetails)
 
   return {
     enemyAbilityDetails,
