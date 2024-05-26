@@ -208,6 +208,16 @@
     "cooldown": 50
   },
   {
+    "id": 374731,
+    "name": "Stomp with 1 flower",
+    "icon": "spell_arcane_blast",
+    "damage": 528021.6,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "cooldown": 50
+  },
+  {
     "id": 386910,
     "name": "Frost Bomb",
     "icon": "inv_10_elementalcombinedfoozles_frost",

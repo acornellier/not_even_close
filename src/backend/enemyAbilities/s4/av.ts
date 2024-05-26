@@ -17,6 +17,12 @@ const consumingStomp = getEnemySpell(374731, {
   cooldown: 50,
 })
 
+const consumingStomp1Flower = {
+  ...consumingStomp,
+  name: 'Stomp with 1 flower',
+  damage: consumingStomp.damage * 1.2,
+}
+
 const frostBomb = getEnemySpell(386910, {
   cooldown: [15, 30],
 })
@@ -53,6 +59,7 @@ export const avAbilities = [
   eruptingFissure,
   explosiveBrand,
   consumingStomp,
+  consumingStomp1Flower,
   frostBomb,
   absoluteZero,
   unleashedDestruction,
