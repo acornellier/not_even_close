@@ -714,11 +714,11 @@
     "notes": "Only the initial hit."
   },
   {
-    "id": 392486,
+    "id": 392488,
     "name": "Lightning Storm",
     "icon": "spell_shaman_thunderstorm",
     "damage": 586692,
-    "aoe": false,
+    "aoe": true,
     "physical": false,
     "variance": 0,
     "trashAbility": true,

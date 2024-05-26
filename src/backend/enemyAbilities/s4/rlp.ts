@@ -47,7 +47,7 @@ const inferno = getEnemySpell(384823, {
   notes: 'Only the initial hit.',
 })
 
-const lightningStorm = getEnemySpell(392486, {
+const lightningStorm = getEnemySpell(392488, {
   damage: 6 * getEnemySpell(392488).damage,
   trashAbility: true,
   periodic: true,
