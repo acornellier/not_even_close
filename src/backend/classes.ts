@@ -31,7 +31,11 @@ import {
   warriorFuryAbilities,
   warriorProtAbilities,
 } from './classAbilities/warrior'
-import { paladinHolyAbilities, paladinRetAbilities } from './classAbilities/paladin'
+import {
+  paladinHolyAbilities,
+  paladinProtAbilities,
+  paladinRetAbilities,
+} from './classAbilities/paladin'
 import { warlockAffDestroAbilities, warlockDemoAbilities } from './classAbilities/warlock'
 import {
   druidBalanceAbilities,
@@ -192,6 +196,12 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: paladinHolyAbilities,
       icon: 'spell_holy_holybolt',
       mainStat: 'intellect',
+    },
+    Protection: {
+      abilities: paladinProtAbilities,
+      icon: 'ability_paladin_shieldofthetemplar',
+      mainStat: 'other',
+      isTank: true,
     },
     Retribution: {
       abilities: paladinRetAbilities,

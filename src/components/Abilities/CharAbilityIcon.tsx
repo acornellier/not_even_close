@@ -91,7 +91,7 @@ export function CharAbilityIcon({
             return (
               value && (
                 <span key={field}>
-                  {getEffectText(field, value, ability)}
+                  {getEffectText(field, value, ability, selectedAbility)}
                   {field === 'absorb' && getExtraAbsorbText(calculatedAbsorb)}
                 </span>
               )
@@ -107,7 +107,7 @@ export function CharAbilityIcon({
               <Fragment key={augmentedAbility.spellId}>
                 <span>
                   Improves {augmentedAbility.name}:{' '}
-                  {getAugmentationText(augmentation, ability)}
+                  {getAugmentationText(augmentation, ability, selectedAbility)}
                 </span>
               </Fragment>
             )

@@ -71,6 +71,71 @@ const aegisOfProtection: Ability = {
   ],
 }
 
+const sentinel: Ability = {
+  name: 'Sentinel',
+  spellId: 389539,
+  iconName: 'spell_holy_holynova',
+  dr: 0.02,
+  healthIncrease: 0.01,
+  stacks: {
+    type: 'stacks',
+    max: 15,
+  },
+}
+
+const ardentDefender: Ability = {
+  name: 'Ardent Defender',
+  spellId: 31850,
+  iconName: 'spell_holy_ardentdefender',
+  dr: 0.2,
+}
+
+const improvedArdentDefender: Ability = {
+  name: 'Improved Ardent Defender',
+  spellId: 393114,
+  iconName: 'spell_holy_ardentdefender',
+  abilityAugmentations: [
+    {
+      otherSpellId: ardentDefender.spellId,
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
+}
+
+const guardianOfAncientKings: Ability = {
+  name: 'Guardian of Ancient Kings',
+  spellId: 212641,
+  iconName: 'spell_holy_heroism',
+  dr: 0.5,
+}
+
+const eyeOfTyr: Ability = {
+  name: 'Eye of Tyr',
+  spellId: 387174,
+  iconName: 'inv_shield_1h_artifactnorgannon_d_01',
+  damageDealtReduction: 0.25,
+}
+
+const allyOfTheLight: Ability = {
+  name: 'Ally of the Light',
+  spellId: 394714,
+  iconName: 'inv_lightforgedmatrixability_lightsjudgment',
+  versIncrease: 0.08,
+}
+
+const redoubt: Ability = {
+  name: 'Redoubt',
+  spellId: 280375,
+  iconName: 'ability_warrior_shieldguard',
+  onByDefault: true,
+  staminaIncrease: 0.02,
+  stacks: {
+    type: 'stacks',
+    max: 3,
+  },
+}
+
 export const paladinHolyAbilities = [
   obduracy,
   sanctifiedPlatesHoly,
@@ -85,4 +150,17 @@ export const paladinRetAbilities = [
   blessingOfDusk,
   divineProtection,
   shieldOfVengeance,
+]
+
+export const paladinProtAbilities = [
+  obduracy,
+  sanctifiedPlatesRetProt,
+  blessingOfDusk,
+  redoubt,
+  allyOfTheLight,
+  improvedArdentDefender,
+  ardentDefender,
+  guardianOfAncientKings,
+  sentinel,
+  eyeOfTyr,
 ]

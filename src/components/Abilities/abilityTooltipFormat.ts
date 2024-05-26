@@ -3,14 +3,15 @@ import type {
   AbilityAugmentation,
   AbilityField,
   AbsorbOptions,
+  SelectedAbility,
   StackOptions,
 } from '../../backend/ability.ts'
 import { formatNumber, getStackedValue, roundHundred } from '../../backend/utils.ts'
 import { barkskin } from '../../backend/classAbilities/druid.ts'
 
-function getStackArray(stacks: StackOptions | undefined) {
+function getStackArray(stacks: StackOptions | undefined, selectedStacks?: number) {
   return !stacks || stacks.type === 'stacks'
-    ? [1]
+    ? [selectedStacks && stacks ? selectedStacks : 1]
     : Array.from({ length: stacks.max }, (_, index) => index + 1)
 }
 
@@ -61,8 +62,13 @@ export function getExtraAbsorbText(calculatedAbsorb: number) {
   return ` - ${formatNumber(calculatedAbsorb)} absorb`
 }
 
-function getNumberText(field: AbilityField, value: number, { drType, stacks }: Ability) {
-  const stackArray = getStackArray(stacks)
+function getNumberText(
+  field: AbilityField,
+  value: number,
+  { drType, stacks }: Ability,
+  selectedStacks?: number,
+) {
+  const stackArray = getStackArray(stacks, selectedStacks)
 
   const values = mapStacks(value, stackArray, stacks, (calculatedValue) =>
     field === 'versRawIncrease' || field === 'armorRawIncrease'
@@ -99,6 +105,7 @@ export function getEffectText<T extends AbilityField>(
   field: T,
   value: Ability[T],
   ability: Ability,
+  selectedAbility: SelectedAbility | undefined,
 ) {
   let text = ''
   if (field === 'absorb') {
@@ -107,17 +114,25 @@ export function getEffectText<T extends AbilityField>(
     text += getNumberText(field, value as number, ability)
   }
 
-  if (ability?.stacks?.type === 'stacks') text += ` per stack`
+  if (ability?.stacks?.type === 'stacks') {
+    text += ` per stack`
+    if (selectedAbility && field !== 'absorb')
+      text += ` - ${getNumberText(field, value as number, ability, selectedAbility.stacks)}`
+  }
 
   return text
 }
 
-export function getAugmentationText(augmentation: AbilityAugmentation, ability: Ability) {
+export function getAugmentationText(
+  augmentation: AbilityAugmentation,
+  ability: Ability,
+  selectedAbility: SelectedAbility | undefined,
+) {
   if (augmentation.field === 'absorb' && augmentation.absorbField === 'healthMultiplier')
     return `${augmentation.value * 100}% more absorb`
 
   if (augmentation.otherSpellId === barkskin.spellId)
     return `+${augmentation.value * 100}% AP absorb`
 
-  return `+${getEffectText(augmentation.field, augmentation.value, ability)}`
+  return `+${getEffectText(augmentation.field, augmentation.value, ability, selectedAbility)}`
 }
