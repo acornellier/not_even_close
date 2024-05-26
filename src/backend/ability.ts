@@ -22,7 +22,9 @@ export type StackOptions = {
 export type Ability = {
   name: string
   spellId: number
+  iconName: string
   onByDefault?: boolean
+  notes?: string
 
   dr?: number
   drType?: DamageType
@@ -40,10 +42,6 @@ export type Ability = {
   abilityAugmentations?: AbilityAugmentation[]
   associatedClass?: WowClass
   associatedSpec?: ClassSpec
-
-  iconName: string
-  wowheadLink?: string
-  notes?: string
 }
 
 export type SelectedAbility = {
@@ -71,6 +69,6 @@ export type AbsorbAugmentations = Exclude<AbsorbField, 'versAffected' | 'absorbT
 export type AbilityAugmentation = {
   otherSpellId: number
   field: AbilityField
-  absorbField?: Exclude<AbsorbField, 'versAffected' | 'absorbType'>
+  absorbField?: AbsorbAugmentations
   value: number
 }

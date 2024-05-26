@@ -12,7 +12,6 @@ const elusiveness: Ability = {
   name: 'Elusiveness',
   spellId: 79008,
   onByDefault: true,
-  wowheadLink: 'https://www.wowhead.com/spell=79008/elusiveness',
   iconName: 'ability_rogue_turnthetables',
   abilityAugmentations: [
     {
@@ -32,7 +31,6 @@ const feint: Ability = {
   name: 'Feint',
   aoeDr: 0.4,
   spellId: 1966,
-  wowheadLink: 'https://www.wowhead.com/spell=1966/feint',
   iconName: 'ability_rogue_feint',
 }
 

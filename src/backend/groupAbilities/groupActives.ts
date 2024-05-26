@@ -11,7 +11,6 @@ export const zephyr: Ability = {
   aoeDr: 0.2,
   associatedClass: 'Evoker',
   iconName: 'ability_evoker_hoverblack',
-  wowheadLink: 'https://www.wowhead.com/spell=374227/zephyr',
 }
 
 export const chiCocoon: Ability = {
@@ -24,7 +23,6 @@ export const chiCocoon: Ability = {
     backup: 270_000,
   },
   iconName: 'inv_pet_crane',
-  wowheadLink: 'https://www.wowhead.com/spell=406220/chi-cocoon',
   notes: 'Assumes 270K absorb if you have no mistweaver selected',
 }
 
@@ -38,7 +36,6 @@ export const massBarrier: Ability = {
     backup: 300_000,
   },
   iconName: 'ability_racial_magicalresistance',
-  wowheadLink: 'https://www.wowhead.com/spell=414660/mass-barrier',
   notes: 'Assumes 300K absorb if you have no mage selected',
 }
 
@@ -71,7 +68,6 @@ export const rallyingCry: Ability = {
   healthIncrease: 0.1,
   associatedClass: 'Warrior',
   iconName: 'ability_warrior_rallyingcry',
-  wowheadLink: 'https://www.wowhead.com/spell=97462/rallying-cry',
 }
 
 export const auraMastery: Ability = {
@@ -80,7 +76,6 @@ export const auraMastery: Ability = {
   dr: 0.09,
   associatedSpec: { class: 'Paladin', spec: 'Holy' },
   iconName: 'spell_holy_auramastery',
-  wowheadLink: 'https://www.wowhead.com/spell=31821/aura-mastery',
   notes: 'Assumes you already have 3% devo aura selected',
 }
 
@@ -90,7 +85,6 @@ export const powerWordBarrier: Ability = {
   dr: 0.2,
   associatedSpec: { class: 'Priest', spec: 'Discipline' },
   iconName: 'spell_holy_powerwordbarrier',
-  wowheadLink: 'https://www.wowhead.com/spell=62618/power-word-barrier',
 }
 
 export const antiMagicZone: Ability = {
@@ -100,7 +94,6 @@ export const antiMagicZone: Ability = {
   drType: 'magic',
   associatedClass: 'Death Knight',
   iconName: 'spell_deathknight_antimagiczone',
-  wowheadLink: 'https://www.wowhead.com/spell=51052/anti-magic-zone',
 }
 
 export const stoneskinTotem: Ability = {
@@ -110,7 +103,6 @@ export const stoneskinTotem: Ability = {
   drType: 'physical',
   associatedClass: 'Shaman',
   iconName: 'ability_shaman_stoneskintotem',
-  wowheadLink: 'https://www.wowhead.com/spell=383017/stoneskin-totem',
 }
 
 export const spiritLinkTotem: Ability = {

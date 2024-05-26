@@ -15,7 +15,6 @@ const demonicWards: Ability = {
   dr: 0.1,
   drType: 'magic',
   iconName: 'inv_belt_leather_demonhunter_a_01',
-  wowheadLink: 'https://www.wowhead.com/spell=320381/demonic-wards',
 }
 
 const demonicWardsVdh: Ability = {
@@ -30,7 +29,6 @@ const illidariKnowledge: Ability = {
   dr: 0.05,
   drType: 'magic',
   iconName: 'spell_mage_overpowered',
-  wowheadLink: 'https://www.wowhead.com/spell=389696/illidari-knowledge',
 }
 
 const willOfTheIllidari: Ability = {
@@ -39,7 +37,6 @@ const willOfTheIllidari: Ability = {
   onByDefault: true,
   healthIncrease: 0.05,
   iconName: 'ability_demonhunter_spectank',
-  wowheadLink: 'https://www.wowhead.com/spell=389695/will-of-the-illidari',
 }
 
 const blur: Ability = {
@@ -47,7 +44,6 @@ const blur: Ability = {
   spellId: 198589,
   dr: 0.2,
   iconName: 'ability_demonhunter_blur',
-  wowheadLink: 'https://www.wowhead.com/spell=212800/blur',
 }
 
 const deflectingDance: Ability = {
@@ -57,7 +53,6 @@ const deflectingDance: Ability = {
     healthMultiplier: 0.15,
   },
   iconName: 'ability_ironmaidens_bladerush',
-  wowheadLink: 'https://www.wowhead.com/spell=427776/deflecting-dance',
 }
 
 const demonMuzzle: Ability = {

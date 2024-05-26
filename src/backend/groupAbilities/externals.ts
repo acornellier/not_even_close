@@ -13,7 +13,6 @@ const icyPreservation: Ability = {
   spellId: 191326,
   dr: 0.06,
   iconName: 'inv_10_alchemy_bottle_shape2_blue',
-  wowheadLink: 'https://www.wowhead.com/item=191326/phial-of-icy-preservation',
 }
 
 const blessingOfSacrifice: Ability = {
@@ -22,7 +21,6 @@ const blessingOfSacrifice: Ability = {
   dr: 0.3,
   associatedClass: 'Paladin',
   iconName: 'spell_holy_sealofsacrifice',
-  wowheadLink: 'https://www.wowhead.com/spell=6940/blessing-of-sacrifice',
   notes: 'Wrong for holy paladin where it is actually 32%',
 }
 
@@ -32,7 +30,6 @@ const ironBark: Ability = {
   dr: 0.2,
   associatedSpec: { class: 'Druid', spec: 'Restoration' },
   iconName: 'spell_druid_ironbark',
-  wowheadLink: 'https://www.wowhead.com/spell=102342/ironbark',
 }
 
 const painSuppression: Ability = {
@@ -41,7 +38,6 @@ const painSuppression: Ability = {
   dr: 0.4,
   associatedSpec: { class: 'Priest', spec: 'Discipline' },
   iconName: 'spell_holy_painsupression',
-  wowheadLink: 'https://www.wowhead.com/spell=33206/pain-suppression',
 }
 
 const lifeCocoon: Ability = {

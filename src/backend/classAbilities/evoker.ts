@@ -20,7 +20,6 @@ const obsidianScales: Ability = {
   dr: 0.3,
   spellId: 363916,
   iconName: 'inv_artifact_dragonscales',
-  wowheadLink: 'https://www.wowhead.com/spell=363916/obsidian-scales',
 }
 
 const rushOfVitality: Ability = {

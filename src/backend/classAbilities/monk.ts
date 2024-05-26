@@ -6,8 +6,6 @@ const calmingPresenceMistweaver: Ability = {
   onByDefault: true,
   dr: 0.06,
   iconName: 'inv_misc_orb_01',
-  wowheadLink:
-    'https://www.wowhead.com/spell=388664/calming-presence?spellModifier=428200',
 }
 
 const calmingPresenceWindwalker: Ability = {
@@ -74,7 +72,6 @@ export const dampenHarm: Ability = {
   name: 'Dampen Harm',
   spellId: 122278,
   iconName: 'ability_monk_dampenharm',
-  wowheadLink: 'https://www.wowhead.com/spell=122278/dampen-harm',
   notes: '20-50% DR based on damage taken',
 }
 
@@ -84,7 +81,6 @@ const diffuseMagic: Ability = {
   dr: 0.6,
   drType: 'magic',
   iconName: 'spell_monk_diffusemagic',
-  wowheadLink: 'https://www.wowhead.com/spell=122783/diffuse-magic',
 }
 
 const fortBrew: Ability = {
@@ -93,7 +89,6 @@ const fortBrew: Ability = {
   dr: 0.2,
   healthIncrease: 0.2,
   iconName: 'ability_monk_fortifyingale_new',
-  wowheadLink: 'https://www.wowhead.com/spell=388917/fortifying-brew',
 }
 
 const touchOfKarma: Ability = {

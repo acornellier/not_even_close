@@ -6,7 +6,6 @@ export const fortitude: Ability = {
   staminaIncrease: 0.05,
   associatedClass: 'Priest',
   iconName: 'spell_holy_wordfortitude',
-  wowheadLink: 'https://www.wowhead.com/spell=21562/power-word-fortitude',
 }
 
 export const generousPour: Ability = {
@@ -16,7 +15,6 @@ export const generousPour: Ability = {
   stacks: { type: 'talent', max: 2 },
   associatedClass: 'Monk',
   iconName: 'inv_misc_food_legion_goocaramel_bottle',
-  wowheadLink: 'https://www.wowhead.com/spell=389575/generous-pour?def=106502&rank=2',
 }
 
 export const blackAttunement: Ability = {
@@ -25,7 +23,6 @@ export const blackAttunement: Ability = {
   healthIncrease: 0.04,
   associatedSpec: { class: 'Evoker', spec: 'Augmentation' },
   iconName: 'ability_evoker_blackattunement',
-  wowheadLink: 'https://www.wowhead.com/spell=403264/black-attunement',
 }
 
 export const devotionAura: Ability = {
@@ -34,7 +31,6 @@ export const devotionAura: Ability = {
   dr: 0.03,
   associatedClass: 'Paladin',
   iconName: 'spell_holy_devotionaura',
-  wowheadLink: 'https://www.wowhead.com/spell=465/devotion-aura',
 }
 
 export const aspectsFavor: Ability = {
@@ -42,7 +38,6 @@ export const aspectsFavor: Ability = {
   spellId: 407243,
   associatedSpec: { class: 'Evoker', spec: 'Augmentation' },
   iconName: 'ability_evoker_aspectsfavor',
-  wowheadLink: 'https://www.wowhead.com/spell=407243/aspects-favor?rank=2',
   abilityAugmentations: [
     {
       otherSpellId: blackAttunement.spellId,
@@ -62,7 +57,6 @@ export const markOfTheWild: Ability = {
   versIncrease: 0.03,
   associatedClass: 'Druid',
   iconName: 'spell_nature_regeneration',
-  wowheadLink: 'https://www.wowhead.com/spell=1126/mark-of-the-wild',
 }
 
 export const atrophicPoison: Ability = {
@@ -70,7 +64,6 @@ export const atrophicPoison: Ability = {
   damageDealtReduction: 0.03,
   spellId: 381637,
   associatedClass: 'Rogue',
-  wowheadLink: 'https://www.wowhead.com/spell=381637/atrophic-poison',
   iconName: 'ability_rogue_nervesofsteel',
   notes: 'Does not necessarily work on all abilities',
 }
