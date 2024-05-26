@@ -19,7 +19,13 @@ export function OverkillText({ result, bold }: Props) {
           %)
         </span>
       ) : (
-        `Overkill: ${formatNumber(-result.healthRemaining)}`
+        <span>
+          Overkill: {formatNumber(-result.healthRemaining)} (
+          {formatNumber(
+            roundTo((-result.healthRemaining / result.startingHealth) * 100, 2),
+          )}
+          %)
+        </span>
       )}
     </div>
   )
