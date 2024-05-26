@@ -136,26 +136,51 @@ const redoubt: Ability = {
   },
 }
 
+const divineBulwark: Ability = {
+  name: 'Mastery: Divine Bulwark',
+  spellId: 76671,
+  iconName: 'spell_holy_holyprotection',
+  onByDefault: true,
+  dr: 0.05,
+  notes: 'Should scale off mastery but not implemented yet',
+}
+
+const sanctuary: Ability = {
+  name: 'Sanctuary',
+  spellId: 379021,
+  iconName: 'spell_holy_innerfire',
+  onByDefault: true,
+  abilityAugmentations: [
+    {
+      otherSpellId: divineBulwark.spellId,
+      field: 'dr',
+      value: 0.05,
+    },
+  ],
+}
+
 export const paladinHolyAbilities = [
-  obduracy,
   sanctifiedPlatesHoly,
+  obduracy,
   blessingOfDusk,
   divineProtection,
 ]
 
 export const paladinRetAbilities = [
-  obduracy,
   sanctifiedPlatesRetProt,
   aegisOfProtection,
+  obduracy,
   blessingOfDusk,
   divineProtection,
   shieldOfVengeance,
 ]
 
 export const paladinProtAbilities = [
-  obduracy,
   sanctifiedPlatesRetProt,
+  obduracy,
   blessingOfDusk,
+  sanctuary,
+  divineBulwark,
   redoubt,
   allyOfTheLight,
   improvedArdentDefender,
