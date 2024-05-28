@@ -21,7 +21,11 @@ import {
   priestHolyAbilities,
   priestShadowAbilities,
 } from './classAbilities/priest'
-import { hunterBmAbilities, hunterMmSurvAbilities } from './classAbilities/hunter'
+import {
+  hunterBmAbilities,
+  hunterMmAbilities,
+  hunterSurvAbilities,
+} from './classAbilities/hunter'
 import {
   deathKnightAbilities,
   deathKnightBloodAbilities,
@@ -152,12 +156,12 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       mainStat: 'other',
     },
     Marksmanship: {
-      abilities: hunterMmSurvAbilities,
+      abilities: hunterMmAbilities,
       icon: 'ability_hunter_focusedaim',
       mainStat: 'other',
     },
     Survival: {
-      abilities: hunterMmSurvAbilities,
+      abilities: hunterSurvAbilities,
       icon: 'ability_hunter_camouflage',
       mainStat: 'other',
     },

@@ -38,6 +38,11 @@ const enduranceTraining: Ability = {
   iconName: 'ability_hunter_huntervswild',
 }
 
+const enduranceTrainingMm: Ability = {
+  ...enduranceTraining,
+  onByDefault: false,
+}
+
 const survivalOfTheFittest: Ability = {
   name: 'Survival of the Fittest',
   dr: 0.2,
@@ -74,7 +79,8 @@ const fortitudeOfTheBear: Ability = {
   iconName: 'spell_druid_bearhug',
 }
 
-export const hunterMmSurvAbilities = [
+export const hunterBmAbilities = [
+  aspectOfTheBeast,
   naturesEndurance,
   rejuvenatingWind,
   huntersAvoidance,
@@ -84,8 +90,19 @@ export const hunterMmSurvAbilities = [
   fortitudeOfTheBear,
 ]
 
-export const hunterBmAbilities = [
-  aspectOfTheBeast,
+export const hunterMmAbilities = [
+  naturesEndurance,
+  rejuvenatingWind,
+  huntersAvoidance,
+  enduranceTrainingMm,
+  aspectOfTheTurtle,
+  survivalOfTheFittest,
+  fortitudeOfTheBear,
+]
+
+console.log(hunterMmAbilities)
+
+export const hunterSurvAbilities = [
   naturesEndurance,
   rejuvenatingWind,
   huntersAvoidance,
