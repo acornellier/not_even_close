@@ -100,8 +100,6 @@ export const hunterMmAbilities = [
   fortitudeOfTheBear,
 ]
 
-console.log(hunterMmAbilities)
-
 export const hunterSurvAbilities = [
   naturesEndurance,
   rejuvenatingWind,
