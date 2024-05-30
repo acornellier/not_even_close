@@ -7,10 +7,12 @@ interface Props {
   availableAbilities: Ability[]
   selectedAbilities: SelectedAbility[]
   setSelectedAbilities: (abilities: SelectedAbility[]) => void
+  characterIdx?: number
 }
 
 export function LabelledAbilitySelect({
   label,
+  characterIdx,
   availableAbilities,
   selectedAbilities,
   setSelectedAbilities,
@@ -19,6 +21,7 @@ export function LabelledAbilitySelect({
     <div className="flex gap-3 items-start flex-col md:flex-row md:items-center">
       <Label>{label}</Label>
       <AbilitySelect
+        characterIdx={characterIdx}
         availableAbilities={availableAbilities}
         selectedAbilities={selectedAbilities}
         setSelectedAbilities={setSelectedAbilities}

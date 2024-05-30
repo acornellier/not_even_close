@@ -4,7 +4,7 @@ import { defaultStacks } from '../../backend/utils'
 import { Fragment } from 'react'
 import { useSimContext } from '../../util/useSimContext.ts'
 import { TooltipStyled } from '../Common/TooltipStyled'
-import { getMultiplierAbsorb } from '../../backend/sim/absorbs'
+import { getAbsorb } from '../../backend/sim/absorbs'
 import { NumericInput } from '../Inputs/NumericInput.tsx'
 import {
   getAugmentationText,
@@ -48,7 +48,7 @@ export function CharAbilityIcon({
     const resultChar =
       characterIdx !== undefined ? result.main.characters[characterIdx] : undefined
 
-    calculatedAbsorb = getMultiplierAbsorb(
+    calculatedAbsorb = getAbsorb(
       ability.absorb,
       ability,
       ability.stacks ? selectedAbility?.stacks ?? defaultStacks(ability.stacks) : 1,

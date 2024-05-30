@@ -152,6 +152,7 @@ export function CharacterComponent({
 
       <LabelledAbilitySelect
         label="Externals"
+        characterIdx={idx}
         availableAbilities={availableExternals}
         selectedAbilities={character.externals}
         setSelectedAbilities={setExternals}

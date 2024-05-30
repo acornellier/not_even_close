@@ -69,6 +69,23 @@ export function getMultiplierAbsorb(
   return 0
 }
 
+export function getAbsorb(
+  absorb: AbsorbOptions,
+  ability: Ability,
+  stacks: number | undefined,
+  charResult: CharacterPartialResult | null,
+  charPartialResults: CharacterPartialResult[],
+) {
+  if (absorb.raw) {
+    let absorbValue = absorb.raw
+    if (absorb.versAffected)
+      absorbValue *= 1 + (charResult?.adjustedStats.versatility ?? 0)
+    return Math.round(absorbValue)
+  } else {
+    return getMultiplierAbsorb(absorb, ability, stacks, charResult, charPartialResults)
+  }
+}
+
 export function getAbsorbs(
   charResult: CharacterPartialResult,
   customAbsorbs: number[],
@@ -88,19 +105,13 @@ export function getAbsorbs(
       continue
     }
 
-    if (absorb.raw) {
-      let absorbValue = absorb.raw
-      if (absorb.versAffected) absorbValue *= 1 + charResult.adjustedStats.versatility
-      absorbs += absorbValue
-    } else {
-      absorbs += getMultiplierAbsorb(
-        absorb,
-        selectedAbility.ability,
-        selectedAbility.stacks,
-        charResult,
-        charPartialResults,
-      )
-    }
+    absorbs += getAbsorb(
+      absorb,
+      selectedAbility.ability,
+      selectedAbility.stacks,
+      charResult,
+      charPartialResults,
+    )
   }
 
   absorbs += customAbsorbs.reduce((acc, val) => acc + val, 0)
