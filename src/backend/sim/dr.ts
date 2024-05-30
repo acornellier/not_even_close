@@ -4,9 +4,6 @@ import { dampenHarm } from '../classAbilities/monk'
 import { armorToPhysicalDr } from '../stats'
 import { getStackedValue } from '../utils.ts'
 
-const isReducedByArmor = ({ physical, affectedByArmor, aoe }: EnemyAbilityDetails) =>
-  physical && (affectedByArmor || !aoe)
-
 export function getDamageReduction(
   characterStats: CharacterStats,
   selectedAbilities: SelectedAbility[],
@@ -21,7 +18,7 @@ export function getDamageReduction(
     inverseDr *= 1 - characterStats.avoidance
   }
 
-  if (isReducedByArmor(enemyAbilityDetails)) {
+  if (enemyAbilityDetails.physical && !enemyAbilityDetails.ignoresArmor) {
     inverseDr *= 1 - armorToPhysicalDr(characterStats.armor)
   }
 

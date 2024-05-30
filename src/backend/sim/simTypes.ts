@@ -57,7 +57,7 @@ export interface EnemyAbilityDetails {
   aoeMultiplier?: number
   trashAbility?: boolean
   physical?: boolean
-  affectedByArmor?: boolean
+  ignoresArmor?: boolean
 }
 
 export interface SimInput {

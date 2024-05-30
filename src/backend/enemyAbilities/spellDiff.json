@@ -271,7 +271,6 @@
     "physical": true,
     "variance": 0,
     "trashAbility": true,
-    "affectedByArmor": true,
     "cooldown": 12,
     "outrange": 40
   },
@@ -358,6 +357,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0,
+    "ignoresArmor": true,
     "periodic": true,
     "cooldown": 38
   },
@@ -573,8 +573,7 @@
     "physical": true,
     "variance": 0,
     "cooldown": 35,
-    "combatDrop": "cancel",
-    "affectedByArmor": true
+    "combatDrop": "cancel"
   },
   {
     "id": 376827,
@@ -800,6 +799,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0.025,
+    "ignoresArmor": true,
     "cooldown": 12
   },
   {
@@ -824,6 +824,7 @@
     "aoe": true,
     "physical": true,
     "variance": 0.025,
+    "ignoresArmor": true,
     "cooldown": 12
   },
   {

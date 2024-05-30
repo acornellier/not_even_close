@@ -44,7 +44,6 @@ const dragonStrike = getEnemySpell(384978, {
 
 const shoulderSlam = getEnemySpell(436652, {
   trashAbility: true,
-  affectedByArmor: true,
   cooldown: 12,
   outrange: 40,
 })

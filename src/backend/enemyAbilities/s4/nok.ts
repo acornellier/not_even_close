@@ -23,7 +23,6 @@ const rendingStrike = getEnemySpell(375937, {
 const ironSpear = getEnemySpell(376660, {
   cooldown: 35,
   combatDrop: 'cancel',
-  affectedByArmor: true,
 })
 
 const conductiveStrike = getEnemySpell(376827, {
