@@ -27,6 +27,10 @@ const arcaneFissure = getEnemySpell(388537, {
   cooldown: 45,
 })
 
+const dartingSting = getEnemySpell(390944, {
+  trashAbility: true,
+})
+
 const surge = getEnemySpell(388862, {
   trashAbility: true,
   avoidable: true,
@@ -90,6 +94,7 @@ const deafeningScreech6: EnemyAbility = {
 }
 
 export const aaAbilities = [
+  dartingSting,
   barkBreaker,
   burstForth,
   arcaneExpulsion,

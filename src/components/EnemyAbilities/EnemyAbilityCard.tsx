@@ -114,9 +114,7 @@ export function EnemyAbilityCard({
             </AbilityDetailsChip>
           </div>
           <div className="flex gap-2">
-            {result?.characters.length === 1 && (
-              <CardResult result={result.characters[0]!} />
-            )}
+            {result?.characters[0] && <CardResult result={result?.characters[0]} />}
             <Chevron
               height={24}
               onClick={(e) => {

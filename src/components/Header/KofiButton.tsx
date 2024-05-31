@@ -1,5 +1,4 @@
-﻿import kofi from '../../../public/kofi.svg'
-import { Button } from '../Common/Button.tsx'
+﻿import { Button } from '../Common/Button.tsx'
 
 export function KofiWidget() {
   return (
@@ -10,7 +9,7 @@ export function KofiWidget() {
       className="hidden sm:block"
     >
       <Button short className="gap-1">
-        <img alt="kofi" src={kofi} width={25} />
+        <img alt="kofi" src="/kofi.svg" width={25} />
         Donate
       </Button>
     </a>

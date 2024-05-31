@@ -1,5 +1,15 @@
 [
   {
+    "id": 390944,
+    "name": "Darting Sting",
+    "icon": "ability_poisonsting",
+    "damage": 205342,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
     "id": 388544,
     "name": "Barkbreaker",
     "icon": "ability_smash",
