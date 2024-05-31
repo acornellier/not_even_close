@@ -7,7 +7,7 @@ const inherentResistanceAug: Ability = {
   stacks: { type: 'talent', max: 2 },
   onByDefault: true,
   spellId: 375544,
-  iconName: 'inv_misc_rubysanctum1',
+  icon: 'inv_misc_rubysanctum1',
 }
 
 const inherentResistanceDevPres: Ability = {
@@ -19,14 +19,14 @@ const obsidianScales: Ability = {
   name: 'Obsidian Scales',
   dr: 0.3,
   spellId: 363916,
-  iconName: 'inv_artifact_dragonscales',
+  icon: 'inv_artifact_dragonscales',
 }
 
 const rushOfVitality: Ability = {
   name: 'Rush of Vitality',
   healthIncrease: 0.2,
   spellId: 377086,
-  iconName: 'trade_enchanting_greatermysteriousessence',
+  icon: 'trade_enchanting_greatermysteriousessence',
 }
 
 export const evokerAugAbilities = [inherentResistanceAug, obsidianScales]

@@ -4,7 +4,7 @@ const defensiveStance: Ability = {
   name: 'Defensive Stance',
   dr: 0.15,
   spellId: 197690,
-  iconName: 'ability_warrior_defensivestance',
+  icon: 'ability_warrior_defensivestance',
 }
 
 const defensiveStanceProt: Ability = {
@@ -17,28 +17,28 @@ const spellReflection: Ability = {
   dr: 0.2,
   drType: 'magic',
   spellId: 23920,
-  iconName: 'ability_warrior_shieldreflection',
+  icon: 'ability_warrior_shieldreflection',
 }
 
 const enragedRegeneration: Ability = {
   name: 'Enraged Regeneration',
   dr: 0.3,
   spellId: 184364,
-  iconName: 'ability_warrior_focusedrage',
+  icon: 'ability_warrior_focusedrage',
 }
 
 const dieByTheSword: Ability = {
   name: 'Die by the Sword',
   dr: 0.3,
   spellId: 118038,
-  iconName: 'ability_warrior_challange',
+  icon: 'ability_warrior_challange',
 }
 
 const warpaint: Ability = {
   name: 'Warpaint',
   dr: 0.1,
   spellId: 208154,
-  iconName: 'ability_rogue_preparation',
+  icon: 'ability_rogue_preparation',
   notes: 'Enrage is usually active, but not always',
 }
 
@@ -47,7 +47,7 @@ const seasonedSoldier: Ability = {
   aoeDr: 0.1,
   spellId: 279423,
   onByDefault: true,
-  iconName: 'inv_axe_09',
+  icon: 'inv_axe_09',
 }
 
 const ignorePain: Ability = {
@@ -62,7 +62,7 @@ const ignorePain: Ability = {
     default: 1,
     max: 10,
   },
-  iconName: 'ability_warrior_renewedvigor',
+  icon: 'ability_warrior_renewedvigor',
   notes: 'This is slightly off due to weapon dps missing.',
 }
 
@@ -75,28 +75,28 @@ const punish: Ability = {
     default: 1,
     max: 10,
   },
-  iconName: 'ability_deathknight_sanguinfortitude',
+  icon: 'ability_deathknight_sanguinfortitude',
 }
 
 const shieldWall: Ability = {
   name: 'Shield Wall',
   spellId: 871,
   dr: 0.4,
-  iconName: 'ability_warrior_shieldwall',
+  icon: 'ability_warrior_shieldwall',
 }
 
 const lastStand: Ability = {
   name: 'Shield Wall',
   spellId: 12975,
   healthIncrease: 0.3,
-  iconName: 'spell_holy_ashestoashes',
+  icon: 'spell_holy_ashestoashes',
 }
 
 const demoralizingShout: Ability = {
   name: 'Demoralizing Shout',
   spellId: 1160,
   dr: 0.2,
-  iconName: 'ability_warrior_warcry',
+  icon: 'ability_warrior_warcry',
 }
 
 export const warriorArmsAbilities = [

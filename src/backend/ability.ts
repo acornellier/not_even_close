@@ -22,7 +22,7 @@ export type StackOptions = {
 export type Ability = {
   name: string
   spellId: number
-  iconName: string
+  icon: string
   onByDefault?: boolean
   notes?: string
 

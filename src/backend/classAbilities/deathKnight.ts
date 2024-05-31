@@ -4,7 +4,7 @@ export const willOfTheNecropolis: Ability = {
   name: 'Will of the Necropolis',
   spellId: 206967,
   stacks: { type: 'talent', max: 2 },
-  iconName: 'achievement_boss_kelthuzad_01',
+  icon: 'achievement_boss_kelthuzad_01',
   notes: 'Damage below 30% Health is reduced by 20/35%',
 }
 
@@ -16,14 +16,14 @@ const antiMagicShell: Ability = {
     absorbType: 'magic',
     versAffected: true,
   },
-  iconName: 'spell_shadow_antimagicshell',
+  icon: 'spell_shadow_antimagicshell',
 }
 
 const antiMagicBarrier: Ability = {
   name: 'Anti-Magic Barrier',
   spellId: 205727,
   onByDefault: true,
-  iconName: 'spell_shadow_antimagicshell',
+  icon: 'spell_shadow_antimagicshell',
   abilityAugmentations: [
     {
       otherSpellId: antiMagicShell.spellId,
@@ -38,21 +38,21 @@ const iceboundFortitude: Ability = {
   name: 'Icebound Fortitude',
   dr: 0.3,
   spellId: 48792,
-  iconName: 'spell_deathknight_iceboundfortitude',
+  icon: 'spell_deathknight_iceboundfortitude',
 }
 
 const lichborne: Ability = {
   name: 'Lichborne',
   dr: 0.15,
   spellId: 49039,
-  iconName: 'spell_shadow_raisedead',
+  icon: 'spell_shadow_raisedead',
 }
 
 const runeTap: Ability = {
   name: 'Rune Tap',
   spellId: 194679,
   dr: 0.2,
-  iconName: 'spell_deathknight_runetap',
+  icon: 'spell_deathknight_runetap',
 }
 
 const tombstone: Ability = {
@@ -62,7 +62,7 @@ const tombstone: Ability = {
     healthMultiplier: 0.3,
     versAffected: true,
   },
-  iconName: 'ability_fiegndead',
+  icon: 'ability_fiegndead',
   notes: 'Assumes you consumed 5 stacks of Bone Shield',
 }
 
@@ -74,28 +74,28 @@ const foulBulwark: Ability = {
     type: 'stacks',
     max: 10,
   },
-  iconName: 'inv_armor_shield_naxxramas_d_02',
+  icon: 'inv_armor_shield_naxxramas_d_02',
 }
 
 const vampiricBlood: Ability = {
   name: 'Vampiric Blood',
   spellId: 55233,
   healthIncrease: 0.3,
-  iconName: 'spell_shadow_lifedrain',
+  icon: 'spell_shadow_lifedrain',
 }
 
 const ashenDecay: Ability = {
   name: 'Ashen Decay (S3 2pc)',
   spellId: 425719,
   damageDealtReduction: 0.1,
-  iconName: 'spell_holy_ashestoashes',
+  icon: 'spell_holy_ashestoashes',
 }
 
 const gloomWard: Ability = {
   name: 'Gloom Ward',
   spellId: 391571,
   onByDefault: true,
-  iconName: 'ability_rogue_envelopingshadows',
+  icon: 'ability_rogue_envelopingshadows',
   abilityAugmentations: [
     {
       otherSpellId: antiMagicShell.spellId,

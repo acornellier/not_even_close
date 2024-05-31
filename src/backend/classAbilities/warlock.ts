@@ -5,7 +5,7 @@ const felArmor: Ability = {
   dr: 0.03,
   onByDefault: true,
   spellId: 386124,
-  iconName: 'spell_shadow_felarmour',
+  icon: 'spell_shadow_felarmour',
 }
 
 const demonicFortitude: Ability = {
@@ -13,7 +13,7 @@ const demonicFortitude: Ability = {
   healthIncrease: 0.05,
   onByDefault: true,
   spellId: 386617,
-  iconName: 'spell_warlock_summonimpoutland',
+  icon: 'spell_warlock_summonimpoutland',
 }
 
 const soulLink: Ability = {
@@ -21,7 +21,7 @@ const soulLink: Ability = {
   dr: 0.1,
   onByDefault: true,
   spellId: 108415,
-  iconName: 'ability_warlock_soullink',
+  icon: 'ability_warlock_soullink',
   notes: 'Only while your pet is active',
 }
 
@@ -29,14 +29,14 @@ const soulburn: Ability = {
   name: 'Soulburn + Healthstone',
   healthIncrease: 0.2,
   spellId: 385899,
-  iconName: 'spell_warlock_soulburn',
+  icon: 'spell_warlock_soulburn',
 }
 
 const grimoireOfSacrifice: Ability = {
   name: 'Grimoire of Sacrifice',
   spellId: 108503,
   staminaIncrease: 0.05,
-  iconName: 'warlock_grimoireofsacrifice',
+  icon: 'warlock_grimoireofsacrifice',
   notes: 'Cannot have Soul Link while this is active',
 }
 
@@ -44,7 +44,7 @@ const abyssWalker: Ability = {
   name: 'Abyss Walker',
   spellId: 389609,
   dr: 0.04,
-  iconName: 'achievement_explore_argus',
+  icon: 'achievement_explore_argus',
 }
 
 const soulLeech: Ability = {
@@ -53,14 +53,14 @@ const soulLeech: Ability = {
   absorb: {
     healthMultiplier: 0.15,
   },
-  iconName: 'warlock_siphonlife',
+  icon: 'warlock_siphonlife',
 }
 
 const shadowBulwark: Ability = {
   name: 'Shadow Bulwark',
   spellId: 17767,
   healthIncrease: 0.3,
-  iconName: 'spell_shadow_antishadow',
+  icon: 'spell_shadow_antishadow',
   notes:
     'If activating this, be sure to disable Soul Link and enable Grimoire of Sacrifice.',
 }
@@ -73,21 +73,21 @@ const darkPact: Ability = {
     versAffected: true,
     spMultipler: 2.5,
   },
-  iconName: 'spell_shadow_deathpact',
+  icon: 'spell_shadow_deathpact',
 }
 
 const unendingResolve: Ability = {
   name: 'Unending Resolve',
   dr: 0.25,
   spellId: 104773,
-  iconName: 'spell_shadow_demonictactics',
+  icon: 'spell_shadow_demonictactics',
 }
 
 const strengthOfWill: Ability = {
   name: 'Strength of Will',
   spellId: 317138,
   onByDefault: true,
-  iconName: 'spell_shadow_demonictactics',
+  icon: 'spell_shadow_demonictactics',
   abilityAugmentations: [
     {
       otherSpellId: 104773,

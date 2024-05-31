@@ -10,7 +10,7 @@ export const zephyr: Ability = {
   spellId: 374227,
   aoeDr: 0.2,
   associatedClass: 'Evoker',
-  iconName: 'ability_evoker_hoverblack',
+  icon: 'ability_evoker_hoverblack',
 }
 
 export const chiCocoon: Ability = {
@@ -22,7 +22,7 @@ export const chiCocoon: Ability = {
     versAffected: true,
     backup: 270_000,
   },
-  iconName: 'inv_pet_crane',
+  icon: 'inv_pet_crane',
   notes: 'Assumes 270K absorb if you have no mistweaver selected',
 }
 
@@ -35,7 +35,7 @@ export const massBarrier: Ability = {
     versAffected: true,
     backup: 300_000,
   },
-  iconName: 'ability_racial_magicalresistance',
+  icon: 'ability_racial_magicalresistance',
   notes: 'Assumes 300K absorb if you have no mage selected',
 }
 
@@ -46,14 +46,14 @@ export const arcaneMassBarrier: Ability = {
   dr: prismaticBarrier.dr,
   drType: prismaticBarrier.drType,
   associatedSpec: { class: 'Mage', spec: 'Arcane' },
-  iconName: 'spell_holy_magicalsentry',
+  icon: 'spell_holy_magicalsentry',
 }
 
 export const improvedArcaneMassBarrier: Ability = {
   name: 'Improved Prismatic Barrier',
   spellId: improvedPrismaticBarrier.spellId + 1,
   associatedSpec: { class: 'Mage', spec: 'Arcane' },
-  iconName: 'spell_magearmor',
+  icon: 'spell_magearmor',
   abilityAugmentations: [
     {
       ...improvedPrismaticBarrierAugmentation,
@@ -67,7 +67,7 @@ export const rallyingCry: Ability = {
   spellId: 97462,
   healthIncrease: 0.1,
   associatedClass: 'Warrior',
-  iconName: 'ability_warrior_rallyingcry',
+  icon: 'ability_warrior_rallyingcry',
 }
 
 export const auraMastery: Ability = {
@@ -75,7 +75,7 @@ export const auraMastery: Ability = {
   spellId: 31821,
   dr: 0.09,
   associatedSpec: { class: 'Paladin', spec: 'Holy' },
-  iconName: 'spell_holy_auramastery',
+  icon: 'spell_holy_auramastery',
   notes: 'Assumes you already have 3% devo aura selected',
 }
 
@@ -84,7 +84,7 @@ export const powerWordBarrier: Ability = {
   spellId: 62618,
   dr: 0.2,
   associatedSpec: { class: 'Priest', spec: 'Discipline' },
-  iconName: 'spell_holy_powerwordbarrier',
+  icon: 'spell_holy_powerwordbarrier',
 }
 
 export const antiMagicZone: Ability = {
@@ -93,7 +93,7 @@ export const antiMagicZone: Ability = {
   dr: 0.2,
   drType: 'magic',
   associatedClass: 'Death Knight',
-  iconName: 'spell_deathknight_antimagiczone',
+  icon: 'spell_deathknight_antimagiczone',
 }
 
 export const stoneskinTotem: Ability = {
@@ -102,7 +102,7 @@ export const stoneskinTotem: Ability = {
   dr: 0.1,
   drType: 'physical',
   associatedClass: 'Shaman',
-  iconName: 'ability_shaman_stoneskintotem',
+  icon: 'ability_shaman_stoneskintotem',
 }
 
 export const spiritLinkTotem: Ability = {
@@ -110,7 +110,7 @@ export const spiritLinkTotem: Ability = {
   spellId: 98008,
   dr: 0.1,
   associatedSpec: { class: 'Shaman', spec: 'Restoration' },
-  iconName: 'spell_shaman_spiritlink',
+  icon: 'spell_shaman_spiritlink',
 }
 
 export const groupActives: Ability[] = [

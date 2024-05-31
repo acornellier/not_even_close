@@ -7,7 +7,7 @@ const elementalWardingEnh: Ability = {
   stacks: { type: 'talent', max: 2 },
   onByDefault: true,
   spellId: 381650,
-  iconName: 'inv_10_elementalcombinedfoozles_primordial',
+  icon: 'inv_10_elementalcombinedfoozles_primordial',
 }
 
 const elementalWardingEleResto: Ability = {
@@ -20,7 +20,7 @@ const brimmingWithLife: Ability = {
   healthIncrease: 0.08,
   onByDefault: true,
   spellId: 381689,
-  iconName: 'inv_jewelry_talisman_06',
+  icon: 'inv_jewelry_talisman_06',
 }
 
 const ancestralDefense: Ability = {
@@ -28,21 +28,21 @@ const ancestralDefense: Ability = {
   aoeDr: 0.02,
   onByDefault: true,
   spellId: 382947,
-  iconName: 'ability_earthen_pillar',
+  icon: 'ability_earthen_pillar',
 }
 
 const astralShift: Ability = {
   name: 'Astral Shift',
   dr: 0.4,
   spellId: 108271,
-  iconName: 'ability_shaman_astralshift',
+  icon: 'ability_shaman_astralshift',
 }
 
 const astralBulwark: Ability = {
   name: 'Astral Bulwark',
   spellId: 377933,
   onByDefault: false,
-  iconName: 'spell_shaman_ancestralawakening',
+  icon: 'spell_shaman_ancestralawakening',
   abilityAugmentations: [
     {
       otherSpellId: 108271,
@@ -56,7 +56,7 @@ const earthElemental: Ability = {
   name: 'Earth Elemental',
   healthIncrease: 0.15,
   spellId: 198103,
-  iconName: 'spell_nature_earthelemental_totem',
+  icon: 'spell_nature_earthelemental_totem',
 }
 
 const spiritWolf: Ability = {
@@ -64,14 +64,14 @@ const spiritWolf: Ability = {
   dr: 0.05,
   stacks: { type: 'stacks', max: 4 },
   spellId: 260878,
-  iconName: 'spell_hunter_lonewolf',
+  icon: 'spell_hunter_lonewolf',
 }
 
 const primordialBond: Ability = {
   name: 'Primordial Bond',
   spellId: 381764,
   dr: 0.05,
-  iconName: 'inv_elemental_primal_earth',
+  icon: 'inv_elemental_primal_earth',
 }
 
 export const shamanEnhAbilities = [

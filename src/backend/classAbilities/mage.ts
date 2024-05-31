@@ -7,7 +7,7 @@ const arcaneWarding: Ability = {
   stacks: { type: 'talent', max: 2 },
   onByDefault: true,
   spellId: 383092,
-  iconName: 'spell_arcane_arcaneresilience',
+  icon: 'spell_arcane_arcaneresilience',
 }
 
 const blazingBarrier: Ability = {
@@ -17,7 +17,7 @@ const blazingBarrier: Ability = {
     versAffected: true,
   },
   spellId: 382791,
-  iconName: 'ability_mage_moltenarmor',
+  icon: 'ability_mage_moltenarmor',
 }
 
 const iceBarrier: Ability = {
@@ -27,7 +27,7 @@ const iceBarrier: Ability = {
     versAffected: true,
   },
   spellId: 11426,
-  iconName: 'spell_ice_lament',
+  icon: 'spell_ice_lament',
 }
 
 export const prismaticBarrier: Ability = {
@@ -39,7 +39,7 @@ export const prismaticBarrier: Ability = {
   dr: 0.15,
   drType: 'magic',
   spellId: 235450,
-  iconName: 'spell_magearmor',
+  icon: 'spell_magearmor',
 }
 
 export const improvedPrismaticBarrierAugmentation: AbilityAugmentation = {
@@ -51,7 +51,7 @@ export const improvedPrismaticBarrierAugmentation: AbilityAugmentation = {
 export const improvedPrismaticBarrier: Ability = {
   name: 'Improved Prismatic Barrier',
   spellId: 321745,
-  iconName: 'spell_magearmor',
+  icon: 'spell_magearmor',
   abilityAugmentations: [improvedPrismaticBarrierAugmentation],
 }
 
@@ -63,28 +63,28 @@ const tempestBarrier: Ability = {
     versAffected: true,
   },
   stacks: { type: 'talent', max: 2 },
-  iconName: 'inv_shield_1h_artifactstormfist_d_04',
+  icon: 'inv_shield_1h_artifactstormfist_d_04',
 }
 
 const iceCold: Ability = {
   name: 'Ice Cold',
   dr: 0.7,
   spellId: 414658,
-  iconName: 'spell_fire_bluefire',
+  icon: 'spell_fire_bluefire',
 }
 
 const mirrorImage: Ability = {
   name: 'Mirror Image',
   dr: 0.2,
   spellId: 55342,
-  iconName: 'spell_magic_lesserinvisibilty',
+  icon: 'spell_magic_lesserinvisibilty',
 }
 
 const greaterInvisibility: Ability = {
   name: 'Greater Invisibility',
   dr: 0.6,
   spellId: 110959,
-  iconName: 'ability_mage_greaterinvisibility',
+  icon: 'ability_mage_greaterinvisibility',
 }
 
 export const mageArcaneAbilities = [

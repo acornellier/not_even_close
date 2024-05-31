@@ -5,7 +5,7 @@ const obduracy: Ability = {
   aoeDr: 0.02,
   onByDefault: true,
   spellId: 385427,
-  iconName: 'ability_paladin_speedoflight',
+  icon: 'ability_paladin_speedoflight',
 }
 
 const sanctifiedPlatesRetProt: Ability = {
@@ -13,7 +13,7 @@ const sanctifiedPlatesRetProt: Ability = {
   aoeDr: 0.1,
   onByDefault: true,
   spellId: 402964,
-  iconName: 'inv_chest_plate_raidpaladin_s_01',
+  icon: 'inv_chest_plate_raidpaladin_s_01',
 }
 
 const sanctifiedPlatesHoly: Ability = {
@@ -21,7 +21,7 @@ const sanctifiedPlatesHoly: Ability = {
   aoeDr: 0.06,
   onByDefault: true,
   spellId: 402964,
-  iconName: 'inv_chest_plate_raidpaladin_s_01',
+  icon: 'inv_chest_plate_raidpaladin_s_01',
 }
 
 const blessingOfDusk: Ability = {
@@ -29,7 +29,7 @@ const blessingOfDusk: Ability = {
   dr: 0.05,
   onByDefault: true,
   spellId: 385126,
-  iconName: 'achievement_zone_newshadowmoonvalley',
+  icon: 'achievement_zone_newshadowmoonvalley',
   notes: 'Blessing of Dusk is usually active, but not always',
 }
 
@@ -37,7 +37,7 @@ const divineProtection: Ability = {
   name: 'Divine Protection',
   dr: 0.2,
   spellId: 498,
-  iconName: 'spell_holy_divineprotection',
+  icon: 'spell_holy_divineprotection',
 }
 
 const shieldOfVengeance: Ability = {
@@ -47,14 +47,14 @@ const shieldOfVengeance: Ability = {
     versAffected: true,
   },
   spellId: 184662,
-  iconName: 'ability_paladin_shieldofthetemplar',
+  icon: 'ability_paladin_shieldofthetemplar',
 }
 
 const aegisOfProtection: Ability = {
   name: 'Aegis of Protection',
   spellId: 403654,
   onByDefault: true,
-  iconName: 'spell_holy_holyprotection',
+  icon: 'spell_holy_holyprotection',
   notes: 'Bugged. Increases Shield of Vengeance by 20% instead of 10%.',
   abilityAugmentations: [
     {
@@ -74,7 +74,7 @@ const aegisOfProtection: Ability = {
 const sentinel: Ability = {
   name: 'Sentinel',
   spellId: 389539,
-  iconName: 'spell_holy_holynova',
+  icon: 'spell_holy_holynova',
   dr: 0.02,
   healthIncrease: 0.01,
   stacks: {
@@ -86,14 +86,14 @@ const sentinel: Ability = {
 const ardentDefender: Ability = {
   name: 'Ardent Defender',
   spellId: 31850,
-  iconName: 'spell_holy_ardentdefender',
+  icon: 'spell_holy_ardentdefender',
   dr: 0.2,
 }
 
 const improvedArdentDefender: Ability = {
   name: 'Improved Ardent Defender',
   spellId: 393114,
-  iconName: 'spell_holy_ardentdefender',
+  icon: 'spell_holy_ardentdefender',
   abilityAugmentations: [
     {
       otherSpellId: ardentDefender.spellId,
@@ -106,28 +106,28 @@ const improvedArdentDefender: Ability = {
 const guardianOfAncientKings: Ability = {
   name: 'Guardian of Ancient Kings',
   spellId: 212641,
-  iconName: 'spell_holy_heroism',
+  icon: 'spell_holy_heroism',
   dr: 0.5,
 }
 
 const eyeOfTyr: Ability = {
   name: 'Eye of Tyr',
   spellId: 387174,
-  iconName: 'inv_shield_1h_artifactnorgannon_d_01',
+  icon: 'inv_shield_1h_artifactnorgannon_d_01',
   damageDealtReduction: 0.25,
 }
 
 const allyOfTheLight: Ability = {
   name: 'Ally of the Light',
   spellId: 394714,
-  iconName: 'inv_lightforgedmatrixability_lightsjudgment',
+  icon: 'inv_lightforgedmatrixability_lightsjudgment',
   versIncrease: 0.08,
 }
 
 const redoubt: Ability = {
   name: 'Redoubt',
   spellId: 280375,
-  iconName: 'ability_warrior_shieldguard',
+  icon: 'ability_warrior_shieldguard',
   onByDefault: true,
   staminaIncrease: 0.02,
   stacks: {
@@ -139,7 +139,7 @@ const redoubt: Ability = {
 const divineBulwark: Ability = {
   name: 'Mastery: Divine Bulwark',
   spellId: 76671,
-  iconName: 'spell_holy_holyprotection',
+  icon: 'spell_holy_holyprotection',
   onByDefault: true,
   dr: 0.05,
   notes: 'Should scale off mastery but not implemented yet',
@@ -148,7 +148,7 @@ const divineBulwark: Ability = {
 const sanctuary: Ability = {
   name: 'Sanctuary',
   spellId: 379021,
-  iconName: 'spell_holy_innerfire',
+  icon: 'spell_holy_innerfire',
   onByDefault: true,
   abilityAugmentations: [
     {

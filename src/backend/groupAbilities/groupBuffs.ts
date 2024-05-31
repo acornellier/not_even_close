@@ -5,7 +5,7 @@ export const fortitude: Ability = {
   spellId: 21562,
   staminaIncrease: 0.05,
   associatedClass: 'Priest',
-  iconName: 'spell_holy_wordfortitude',
+  icon: 'spell_holy_wordfortitude',
 }
 
 export const generousPour: Ability = {
@@ -14,7 +14,7 @@ export const generousPour: Ability = {
   aoeDr: 0.02,
   stacks: { type: 'talent', max: 2 },
   associatedClass: 'Monk',
-  iconName: 'inv_misc_food_legion_goocaramel_bottle',
+  icon: 'inv_misc_food_legion_goocaramel_bottle',
 }
 
 export const blackAttunement: Ability = {
@@ -22,7 +22,7 @@ export const blackAttunement: Ability = {
   spellId: 403264,
   healthIncrease: 0.04,
   associatedSpec: { class: 'Evoker', spec: 'Augmentation' },
-  iconName: 'ability_evoker_blackattunement',
+  icon: 'ability_evoker_blackattunement',
 }
 
 export const devotionAura: Ability = {
@@ -30,14 +30,14 @@ export const devotionAura: Ability = {
   spellId: 465,
   dr: 0.03,
   associatedClass: 'Paladin',
-  iconName: 'spell_holy_devotionaura',
+  icon: 'spell_holy_devotionaura',
 }
 
 export const aspectsFavor: Ability = {
   name: "Aspects' Favor",
   spellId: 407243,
   associatedSpec: { class: 'Evoker', spec: 'Augmentation' },
-  iconName: 'ability_evoker_aspectsfavor',
+  icon: 'ability_evoker_aspectsfavor',
   abilityAugmentations: [
     {
       otherSpellId: blackAttunement.spellId,
@@ -56,7 +56,7 @@ export const markOfTheWild: Ability = {
   spellId: 1126,
   versIncrease: 0.03,
   associatedClass: 'Druid',
-  iconName: 'spell_nature_regeneration',
+  icon: 'spell_nature_regeneration',
 }
 
 export const atrophicPoison: Ability = {
@@ -64,7 +64,7 @@ export const atrophicPoison: Ability = {
   damageDealtReduction: 0.03,
   spellId: 381637,
   associatedClass: 'Rogue',
-  iconName: 'ability_rogue_nervesofsteel',
+  icon: 'ability_rogue_nervesofsteel',
   notes: 'Does not necessarily work on all abilities',
 }
 
@@ -73,7 +73,7 @@ export const masterPoisoner: Ability = {
   spellId: 196864,
   onByDefault: true,
   associatedClass: 'Rogue',
-  iconName: 'ability_creature_poison_06',
+  icon: 'ability_creature_poison_06',
   abilityAugmentations: [
     {
       otherSpellId: 381637, // Atrophic Poison
@@ -88,7 +88,7 @@ export const lenience: Ability = {
   spellId: 238063,
   dr: 0.03,
   associatedSpec: { class: 'Priest', spec: 'Discipline' },
-  iconName: 'ability_priest_atonement',
+  icon: 'ability_priest_atonement',
 }
 
 export const groupBuffs: Ability[] = [

@@ -81,7 +81,7 @@ export function CharAbilityIcon({
             style={{ height: iconSize, width: iconSize }}
           />
         )}
-        <AbilityIcon size={iconSize} icon={ability.iconName} />
+        <AbilityIcon size={iconSize} icon={ability.icon} />
       </div>
       <TooltipStyled id={tooltipId} clickable={!!ability.stacks && !!selectedAbility}>
         <div className="flex flex-col">
