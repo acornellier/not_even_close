@@ -307,7 +307,7 @@
   },
   {
     "id": 378155,
-    "name": "Earth Bolt",
+    "name": "Earth Bolt (boss)",
     "icon": "inv_10_elementalshardfoozles_earth",
     "damage": 254233,
     "aoe": false,
@@ -324,6 +324,17 @@
     "physical": false,
     "variance": 0,
     "cooldown": 45
+  },
+  {
+    "id": 382249,
+    "name": "Earth Bolt (trash)",
+    "icon": "inv_10_elementalshardfoozles_earth",
+    "damage": 234676,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "avoidable": true
   },
   {
     "id": 385186,
