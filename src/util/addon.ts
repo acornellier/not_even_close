@@ -1,7 +1,7 @@
 ﻿import type { ClassSpec, WowClass } from '../backend/classes.ts'
 import { classSpecs } from '../backend/classes.ts'
 import type { CharacterStatsInput } from '../backend/characters.ts'
-import { roundTo } from '../backend/utils.ts'
+import { roundTo } from './utils.ts'
 import { fortitude, markOfTheWild } from '../backend/groupAbilities/groupBuffs.ts'
 import type { Ability } from '../backend/ability.ts'
 import { tepidVersatility } from '../backend/groupAbilities/externals.ts'

@@ -3,7 +3,7 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback } from 'react'
 import { defaultAbilities, equalSpecs } from '../../backend/classes'
 import { tepidVersatility } from '../../backend/groupAbilities/externals'
-import { isAbilitySelected } from '../../backend/utils'
+import { isAbilitySelected } from '../../util/utils.ts'
 import type { SelectedAbility } from '../../backend/ability'
 
 const uniqueExternalNames = ['phial']

@@ -2,7 +2,7 @@ import type { CharacterStats, EnemyAbilityDetails } from './simTypes'
 import type { SelectedAbility } from '../ability'
 import { dampenHarm } from '../classAbilities/monk'
 import { armorToPhysicalDr } from '../stats'
-import { getStackedValue } from '../utils.ts'
+import { getStackedValue } from '../../util/utils.ts'
 
 export function getDamageReduction(
   characterStats: CharacterStats,

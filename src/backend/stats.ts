@@ -1,4 +1,4 @@
-import { roundTo } from './utils'
+import { roundTo } from '../util/utils.ts'
 
 const healthPerStamina = 20
 const versConversionFactor = 204.9944775

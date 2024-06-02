@@ -1,6 +1,6 @@
 ﻿import type { CharacterResult } from '../../backend/sim/simTypes'
 import { AbilityDetailsChip } from './AbilityDetailsChip'
-import { formatNumber, roundTo, shortRoundedNumber } from '../../backend/utils.ts'
+import { formatNumber, roundTo, shortRoundedNumber } from '../../util/utils.ts'
 import { SkullIcon } from '../Common/Icons/SkullIcon.tsx'
 import { HeartIcon } from '@heroicons/react/16/solid'
 

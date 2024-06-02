@@ -3,7 +3,7 @@ import { OverkillText } from './OverkillText'
 import { ResultDetails } from './ResultDetails'
 import { EnemyAbilityResult } from './EnemyAbilityResult'
 import type { AbilityResult, KeyDetails } from '../../backend/sim/simTypes'
-import { formatNumber } from '../../backend/utils.ts'
+import { formatNumber } from '../../util/utils.ts'
 
 interface Props {
   result: AbilityResult

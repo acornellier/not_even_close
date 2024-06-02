@@ -1,4 +1,4 @@
-﻿import { formatNumber, roundTo } from '../../backend/utils'
+﻿import { formatNumber, roundTo } from '../../util/utils.ts'
 import type { CharacterResult } from '../../backend/sim/simTypes'
 
 interface Props {

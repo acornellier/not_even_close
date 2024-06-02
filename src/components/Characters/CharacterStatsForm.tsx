@@ -7,7 +7,7 @@ import {
   versRawToPercent,
 } from '../../backend/stats'
 import type { Ability } from '../../backend/ability'
-import { formatNumber, roundTo } from '../../backend/utils'
+import { formatNumber, roundTo } from '../../util/utils.ts'
 
 interface Props {
   characterStats: CharacterStatsInput

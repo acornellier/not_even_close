@@ -6,7 +6,7 @@ import type {
   SelectedAbility,
   StackOptions,
 } from '../../backend/ability.ts'
-import { formatNumber, getStackedValue, roundHundred } from '../../backend/utils.ts'
+import { formatNumber, getStackedValue, roundHundred } from '../../util/utils.ts'
 import { barkskin } from '../../backend/classAbilities/druid.ts'
 
 function getStackArray(stacks: StackOptions | undefined, selectedStacks?: number) {

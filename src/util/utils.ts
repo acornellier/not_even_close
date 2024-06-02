@@ -1,7 +1,7 @@
-﻿import type { Ability, SelectedAbility, StackOptions } from './ability'
-import type { EnemyAbility } from './enemyAbilities/enemies'
+﻿import type { Ability, SelectedAbility, StackOptions } from '../backend/ability.ts'
+import type { EnemyAbility } from '../backend/enemyAbilities/enemies.ts'
 
-import type { EnemyAbilityDetails } from './sim/simTypes'
+import type { EnemyAbilityDetails } from '../backend/sim/simTypes.ts'
 
 export function roundTo(number: number, to: number) {
   return Math.round(number * 10 ** to) / 10 ** to

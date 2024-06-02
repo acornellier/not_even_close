@@ -4,7 +4,7 @@ import {
   augmentSelectedAbilities,
   enemyAbilityToDetails,
   getStackedValue,
-} from '../utils'
+} from '../../util/utils.ts'
 import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from '../stats'
 import type {
   AbilityResult,

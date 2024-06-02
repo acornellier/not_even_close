@@ -1,6 +1,6 @@
 ﻿import type { Ability, SelectedAbility } from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
-import { augmentAbilities, getSelectedAbility } from '../../backend/utils'
+import { augmentAbilities, getSelectedAbility } from '../../util/utils.ts'
 import { CharAbilityIcon } from './CharAbilityIcon'
 import { dampenHarm } from '../../backend/classAbilities/monk.ts'
 import { willOfTheNecropolis } from '../../backend/classAbilities/deathKnight.ts'

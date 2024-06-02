@@ -11,7 +11,7 @@ import {
 import { AbilityCardExtras } from './AbilityCardExtras'
 import { CardResult } from './CardResult'
 import { AbilityIcon } from '../Common/AbilityIcon.tsx'
-import { shortRoundedNumber } from '../../backend/utils.ts'
+import { shortRoundedNumber } from '../../util/utils.ts'
 import { scaleDamage } from '../../backend/sim/sim.ts'
 
 interface Props {

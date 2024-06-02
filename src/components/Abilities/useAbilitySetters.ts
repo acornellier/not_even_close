@@ -5,7 +5,7 @@ import {
   getSelectedAbility,
   isAbilityAvailable,
   isAbilitySelected,
-} from '../../backend/utils.ts'
+} from '../../util/utils.ts'
 import type { Ability, SelectedAbility } from '../../backend/ability.ts'
 
 interface Props {

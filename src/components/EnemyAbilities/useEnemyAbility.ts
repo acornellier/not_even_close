@@ -2,7 +2,7 @@ import { useLocalStorage } from '../../util/useLocalStorage'
 import type { DungeonKey, EnemyAbility } from '../../backend/enemyAbilities/enemies'
 import { dungeonKeys } from '../../backend/enemyAbilities/enemies'
 import { useCallback, useEffect } from 'react'
-import { enemyAbilityToDetails } from '../../backend/utils'
+import { enemyAbilityToDetails } from '../../util/utils.ts'
 import type { EnemyAbilityDetails } from '../../backend/sim/simTypes'
 import { dungeons } from '../../backend/enemyAbilities/dungeons.ts'
 

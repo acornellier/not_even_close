@@ -1,6 +1,6 @@
 import type { Ability, SelectedAbility } from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
-import { defaultStacks } from '../../backend/utils'
+import { defaultStacks } from '../../util/utils.ts'
 import { Fragment } from 'react'
 import { useSimContext } from '../../util/useSimContext.ts'
 import { TooltipStyled } from '../Common/TooltipStyled'
