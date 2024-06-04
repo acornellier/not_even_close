@@ -9,6 +9,7 @@ export interface InputProps
   label?: string
   onChange: (newValue: string) => void
   value: string | number | undefined
+  tooltipSuffix?: string
   labelTooltip?: ReactNode
   inputTooltip?: ReactNode
   design?: 'minimal' | 'full'
@@ -20,6 +21,7 @@ export function Input({
   value,
   labelTooltip,
   inputTooltip,
+  tooltipSuffix,
   design,
   ...props
 }: InputProps) {
@@ -31,25 +33,28 @@ export function Input({
   const paddingClass = design === 'minimal' ? 'p-1' : 'py-1.5 px-4'
   const borderClass = design === 'minimal' ? '' : 'border-2'
 
+  const labelTooltipId = `${label}-label-tooltip-${tooltipSuffix}`
+  const inputTooltipId = `${label}-input-tooltip-${tooltipSuffix}`
+
   return (
     <div className={`flex ${flexDirectionClass} ${widthClass}`}>
       {label && (
         <label
-          data-tooltip-id={`${label}-label-tooltip`}
+          data-tooltip-id={labelTooltipId}
           className={`block font-bold whitespace-nowrap ${marginClass}`}
         >
           {label}
         </label>
       )}
-      <TooltipStyled id={`${label}-label-tooltip`}>{labelTooltip}</TooltipStyled>
+      <TooltipStyled id={labelTooltipId}>{labelTooltip}</TooltipStyled>
       <input
-        data-tooltip-id={`${label}-input-tooltip`}
+        data-tooltip-id={inputTooltipId}
         className={`${heightClass} ${inputWidthClass} bg-zinc-700 ${borderClass} border-zinc-600 text-sm text-white rounded ${paddingClass} focus:outline-none focus:bg-zinc-800 focus:border-teal-500`}
         onChange={({ target: { value } }) => onChange(value)}
         value={value ?? ''}
         {...props}
       />
-      <TooltipStyled id={`${label}-input-tooltip`} place="bottom">
+      <TooltipStyled id={inputTooltipId} place="bottom">
         {inputTooltip}
       </TooltipStyled>
     </div>

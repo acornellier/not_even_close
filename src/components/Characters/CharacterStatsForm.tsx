@@ -13,9 +13,15 @@ interface Props {
   characterStats: CharacterStatsInput
   onChange: (characterStats: CharacterStatsInput) => void
   specAbilities: Ability[]
+  idx?: number
 }
 
-export function CharacterStatsForm({ characterStats, onChange, specAbilities }: Props) {
+export function CharacterStatsForm({
+  characterStats,
+  onChange,
+  specAbilities,
+  idx,
+}: Props) {
   const onChangeStat =
     (field: keyof CharacterStatsInput) => (value: number | undefined) =>
       onChange({
@@ -45,6 +51,7 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
         value={characterStats.stamina}
         onChange={onChangeStat('stamina')}
         step={500}
+        tooltipSuffix={idx}
         inputTooltip={`${formatNumber(staminaToHp(characterStats.stamina ?? 0))} HP`}
       />
       <NumericInput
@@ -52,6 +59,7 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
         value={characterStats.versatilityRaw}
         onChange={onChangeStat('versatilityRaw')}
         step={100}
+        tooltipSuffix={idx}
         labelTooltip="Raw vers, NOT %"
         inputTooltip={`${versPercent}% vers, ${roundTo(versPercent / 2, 2)}% DR`}
       />
@@ -59,6 +67,7 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
         label="Avoidance"
         value={characterStats.avoidanceRaw}
         onChange={onChangeStat('avoidanceRaw')}
+        tooltipSuffix={idx}
         labelTooltip="Raw avoidance, NOT %"
         inputTooltip={`${avoidancePercent}% AoE DR`}
       />
@@ -67,6 +76,7 @@ export function CharacterStatsForm({ characterStats, onChange, specAbilities }: 
         value={characterStats.armor}
         onChange={onChangeStat('armor')}
         step={100}
+        tooltipSuffix={idx}
         inputTooltip={`${roundTo(physicalDr * 100, 2)}% physical DR`}
       />
       {showMainStat && (
