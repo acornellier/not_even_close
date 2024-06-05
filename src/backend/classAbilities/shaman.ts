@@ -17,7 +17,7 @@ const elementalWardingEleResto: Ability = {
 
 const brimmingWithLife: Ability = {
   name: 'Brimming With Life',
-  healthIncrease: 0.08,
+  healthIncrease: 0.1,
   onByDefault: true,
   spellId: 381689,
   icon: 'inv_jewelry_talisman_06',
