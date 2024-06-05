@@ -19,7 +19,7 @@ const brimmingWithLife: Ability = {
   name: 'Brimming With Life',
   healthIncrease: 0.1,
   onByDefault: true,
-  spellId: 381689,
+  spellId: 381689_2,
   icon: 'inv_jewelry_talisman_06',
 }
 
