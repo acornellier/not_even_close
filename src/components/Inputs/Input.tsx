@@ -9,7 +9,7 @@ export interface InputProps
   label?: string
   onChange: (newValue: string) => void
   value: string | number | undefined
-  tooltipSuffix?: string
+  tooltipSuffix?: string | number
   labelTooltip?: ReactNode
   inputTooltip?: ReactNode
   design?: 'minimal' | 'full'
