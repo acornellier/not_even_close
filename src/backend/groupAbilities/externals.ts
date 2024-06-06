@@ -66,26 +66,11 @@ const rescue: Ability = {
   notes: 'Assumes 400K absorb if you have no evoker selected',
 }
 
-const wardOfFacelessIre: Ability = {
-  name: 'Ward of Faceless Ire',
-  spellId: 401238,
-  absorb: {
-    raw: 618887,
-    versAffected: true,
-  },
-  icon: 'inv_10_dungeonjewelry_dragon_trinket_2arcanemagical_green',
-  notes: 'Assumes ilvl 522, Hero 6/6',
-}
-
-const fyrakksTaintedRageheart: Ability = {
-  name: "Fyrakk's Tainted Rageheart",
-  spellId: 422750,
-  absorb: {
-    raw: 1_394_780,
-    versAffected: true,
-  },
-  icon: 'inv_ragnaros_heart_shadowflame',
-  notes: 'Assumes ilvl 525',
+const elusiveMists: Ability = {
+  name: 'Elusive Mists',
+  spellId: 388681,
+  icon: 'ability_monk_soothingmists',
+  dr: 0.06,
 }
 
 const ancestralVigor: Ability = {
@@ -121,16 +106,10 @@ const blisteringScales: Ability = {
   notes: 'NOT EXACT. Based on an evoker at 526 ilvl',
 }
 
-export const aaVersBuff: Ability = {
-  name: 'Algethar Vers Buff',
-  versIncrease: 0.05,
-  spellId: 389501,
-  icon: 'inv_bijou_red',
-}
-
 export const externals: Ability[] = [
   tepidVersatility,
   icyPreservation,
+  elusiveMists,
   ancestralVigor,
   earthenHarmony,
   ironBark,
@@ -140,6 +119,4 @@ export const externals: Ability[] = [
   lifeCocoon,
   rescue,
   blisteringScales,
-  wardOfFacelessIre,
-  fyrakksTaintedRageheart,
 ]

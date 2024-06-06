@@ -98,19 +98,19 @@ export function CharAbilityIcon({
             )
           })}
           {augmentedAbilities?.map((augmentedAbility) => {
-            const augmentation = ability.abilityAugmentations?.find(
+            const augmentations = ability.abilityAugmentations?.filter(
               (augmentation) => augmentation.otherSpellId === augmentedAbility.spellId,
             )
-            if (!augmentation) return null
+            if (!augmentations || augmentations.length === 0) return null
 
-            return (
-              <Fragment key={augmentedAbility.spellId}>
+            return augmentations.map((augmentation, idx) => (
+              <Fragment key={`${augmentedAbility.spellId}-${idx}`}>
                 <span>
                   Improves {augmentedAbility.name}:{' '}
                   {getAugmentationText(augmentation, ability, selectedAbility)}
                 </span>
               </Fragment>
-            )
+            ))
           })}
           {ability.notes && <span>{ability.notes}</span>}
           {ability.stacks && selectedAbility && (

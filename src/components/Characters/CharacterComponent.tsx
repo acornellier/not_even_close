@@ -10,8 +10,8 @@ import { AbilitySelect } from '../Abilities/AbilitySelect'
 import type { ClassSpec } from '../../backend/classes'
 import { classSpecs } from '../../backend/classes'
 import { LabelledAbilitySelect } from '../Abilities/LabelledAbilitySelect'
-import { aaVersBuff, externals } from '../../backend/groupAbilities/externals'
-import { useCallback, useMemo } from 'react'
+import { externals } from '../../backend/groupAbilities/externals'
+import { useCallback } from 'react'
 import type { SelectedAbility } from '../../backend/ability'
 import { CreateProfile } from './CreateProfile'
 import { LoadProfile } from './LoadProfile'
@@ -66,12 +66,6 @@ export function CharacterComponent({
     (spec: ClassSpec) => updateCharacter({ classSpec: spec }),
     [updateCharacter],
   )
-
-  const availableExternals = useMemo(() => {
-    const res = [...externals]
-    if (dungeon?.key === 'aa') res.push(aaVersBuff)
-    return res
-  }, [dungeon])
 
   const specDetails = classSpecs[character.classSpec.class][character.classSpec.spec]!
   const specAbilities = specDetails.abilities
@@ -154,7 +148,7 @@ export function CharacterComponent({
       <LabelledAbilitySelect
         label="Externals"
         characterIdx={idx}
-        availableAbilities={availableExternals}
+        availableAbilities={externals}
         selectedAbilities={character.externals}
         setSelectedAbilities={setExternals}
       />

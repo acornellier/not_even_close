@@ -112,9 +112,18 @@ const gloomWard: Ability = {
   ],
 }
 
+const nullMagic: Ability = {
+  name: 'Null Magic',
+  spellId: 454842,
+  icon: 'spell_shadow_detectinvisibility',
+  dr: 0.1,
+  drType: 'magic',
+}
+
 export const deathKnightAbilities = [
   antiMagicBarrier,
   gloomWard,
+  nullMagic,
   willOfTheNecropolis,
   lichborne,
   antiMagicShell,
@@ -124,6 +133,7 @@ export const deathKnightAbilities = [
 export const deathKnightBloodAbilities = [
   antiMagicBarrier,
   gloomWard,
+  nullMagic,
   willOfTheNecropolis,
   foulBulwark,
   ashenDecay,

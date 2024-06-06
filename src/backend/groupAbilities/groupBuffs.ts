@@ -8,15 +8,6 @@ export const fortitude: Ability = {
   icon: 'spell_holy_wordfortitude',
 }
 
-export const generousPour: Ability = {
-  name: 'Generous Pour',
-  spellId: 389575,
-  aoeDr: 0.02,
-  stacks: { type: 'talent', max: 2 },
-  associatedClass: 'Monk',
-  icon: 'inv_misc_food_legion_goocaramel_bottle',
-}
-
 export const blackAttunement: Ability = {
   name: 'Black Attunement',
   spellId: 403264,
@@ -97,7 +88,6 @@ export const groupBuffs: Ability[] = [
   atrophicPoison,
   blackAttunement,
   devotionAura,
-  generousPour,
   markOfTheWild,
   fortitude,
   lenience,

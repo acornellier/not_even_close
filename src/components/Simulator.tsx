@@ -21,6 +21,7 @@ import { useEnemyAbility } from './EnemyAbilities/useEnemyAbility'
 import { dungeons } from '../backend/enemyAbilities/dungeons.ts'
 import { defaultCharacter } from './Characters/defaultCharacters.ts'
 import { useAbilities } from './Characters/useAbilities.ts'
+import { useTwwCacheWipe } from '../util/UseTwwCacheWipe.tsx'
 
 const defaultKeyDetails: KeyDetails = { keyLevel: 15, isTyran: true }
 
@@ -29,6 +30,8 @@ interface Props {
 }
 
 export function Simulator({ defaultEnemyAbility }: Props) {
+  useTwwCacheWipe()
+
   const {
     characters,
     setCharacters,

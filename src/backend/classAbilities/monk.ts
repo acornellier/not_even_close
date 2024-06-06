@@ -100,21 +100,52 @@ const touchOfKarma: Ability = {
   icon: 'ability_monk_touchofkarma',
 }
 
+const martialInstincts: Ability = {
+  name: 'Martial Instincts',
+  spellId: 450427,
+  icon: 'ability_monk_palmstrike',
+  aoeDr: 0.02,
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
+}
+
+const ironshellBrew: Ability = {
+  name: 'Ironshell Brew',
+  spellId: 388814,
+  icon: 'ability_monk_fortifyingale_new',
+  abilityAugmentations: [
+    {
+      otherSpellId: fortBrew.spellId,
+      field: 'healthIncrease',
+      value: 0.1,
+    },
+    {
+      otherSpellId: fortBrew.spellId,
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
+}
+
 export const monkMistweaverAbilities = [
+  ironshellBrew,
   calmingPresenceMistweaver,
+  martialInstincts,
   secretInfusion,
   ancientTeachings,
   expelHarm,
   yulonsGraceMistweaver,
-  dampenHarm,
   diffuseMagic,
   fortBrew,
 ]
 
 export const monkWindwalkerAbilities = [
+  ironshellBrew,
   calmingPresenceWindwalker,
+  martialInstincts,
   yulonsGraceWindwalker,
-  dampenHarm,
   diffuseMagic,
   fortBrew,
   touchOfKarma,

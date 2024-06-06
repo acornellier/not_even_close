@@ -2,14 +2,10 @@ import type { Ability } from '../ability'
 
 const thickHide: Ability = {
   name: 'Thick Hide',
-  dr: 0.03,
-  onByDefault: true,
   spellId: 16931,
   icon: 'inv_misc_pelt_bear_03',
-  stacks: {
-    type: 'talent',
-    max: 2,
-  },
+  dr: 0.04,
+  onByDefault: true,
 }
 
 const risingLight: Ability = {
@@ -37,28 +33,29 @@ const lycarasTeachings: Ability = {
     {
       otherSpellId: bearForm.spellId,
       field: 'versIncrease',
-      value: 0.02,
+      value: 0.03,
     },
   ],
   stacks: {
     type: 'talent',
-    max: 3,
+    max: 2,
   },
 }
 
 const ursineVigor: Ability = {
   name: 'Ursine Vigor',
   spellId: 377842,
-  stacks: {
-    type: 'talent',
-    max: 2,
-  },
   icon: 'ability_druid_markofursol',
   abilityAugmentations: [
     {
       otherSpellId: bearForm.spellId,
       field: 'healthIncrease',
-      value: 0.1,
+      value: 0.15,
+    },
+    {
+      otherSpellId: bearForm.spellId,
+      field: 'armorIncrease',
+      value: 0.15,
     },
   ],
 }
@@ -124,19 +121,54 @@ const innerPeace: Ability = {
   icon: 'ability_druid_dreamstate',
 }
 
+const oakskin: Ability = {
+  name: 'Oakskin',
+  spellId: 449191,
+  icon: 'spell_nature_stoneclawtotem',
+  abilityAugmentations: [
+    {
+      otherSpellId: barkskin.spellId,
+      field: 'dr',
+      value: 0.1,
+    },
+    {
+      otherSpellId: survivalInsticts.spellId,
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
+}
+
+const ursocsSpirit: Ability = {
+  name: "Ursoc's Spirit",
+  spellId: 449182,
+  icon: 'spell_nature_spiritarmor',
+  abilityAugmentations: [
+    {
+      otherSpellId: bearForm.spellId,
+      field: 'staminaIncrease',
+      value: 0.1,
+    },
+  ],
+}
+
 export const druidBalanceAbilities = [
   mattedFur,
+  oakskin,
+  ursocsSpirit,
   thickHide,
+  lycarasTeachings,
+  heartOfTheWild,
+  ursineVigor,
   risingLight,
   bearForm,
-  heartOfTheWild,
-  lycarasTeachings,
-  ursineVigor,
   barkskin,
 ]
 
 export const druidFeralAbilities = [
   mattedFur,
+  oakskin,
+  ursocsSpirit,
   thickHide,
   protectiveGrowth,
   risingLight,
@@ -150,6 +182,8 @@ export const druidFeralAbilities = [
 
 export const druidRestoAbilities = [
   mattedFur,
+  oakskin,
+  ursocsSpirit,
   risingLight,
   thickHide,
   bearForm,
