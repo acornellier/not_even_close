@@ -185,6 +185,15 @@ const fieryResolve: Ability = {
   },
 }
 
+const armyUntoOneself: Ability = {
+  name: 'Army Unto Oneself',
+  id: 442714,
+  icon: 'ability_warlock_avoidance',
+  heroTree: 'Aldrachi Reaver',
+  dr: 0.1,
+  drType: 'physical',
+}
+
 export const havocAbilities = [
   infernalArmor,
   scarsOfSuffering,
@@ -193,8 +202,8 @@ export const havocAbilities = [
   demonHide,
   willOfTheIllidari,
   demonMuzzle,
-  metamorphosis,
   immolationAura,
+  armyUntoOneself,
   deflectingDance,
   blur,
 ]

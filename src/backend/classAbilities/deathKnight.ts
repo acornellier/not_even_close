@@ -141,7 +141,7 @@ const pactOfTheApocalypse: Ability = {
 }
 
 const bloodSoakedGround: Ability = {
-  name: 'Blood Soaked Ground',
+  name: 'Blood-Soaked Ground',
   id: 434033,
   icon: 'ability_ironmaidens_corruptedblood',
   heroTree: "San'layn",

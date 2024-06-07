@@ -107,6 +107,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: havocAbilities,
       icon: 'ability_demonhunter_specdps',
       mainStat: 'other',
+      shortName: 'Havoc',
     },
     Vengeance: {
       abilities: vengeanceAbilities,
