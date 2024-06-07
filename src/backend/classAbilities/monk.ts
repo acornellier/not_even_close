@@ -132,23 +132,50 @@ const ironshellBrew: Ability = {
   ],
 }
 
+const niuzaosProtection: Ability = {
+  name: "Niuazo's Proection",
+  id: 442747,
+  icon: 'ability_monk_chargingoxwave',
+  heroTree: 'Conduit of the Celestials',
+  abilityAugmentations: [
+    {
+      otherAbilityId: fortBrew.id,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.25,
+    },
+  ],
+}
+
+const jadeSanctuary: Ability = {
+  name: 'Jade Sanctuary',
+  id: 443059,
+  icon: 'ability_monk_jadeserpentbreath',
+  heroTree: 'Conduit of the Celestials',
+  dr: 0.15,
+}
+
 export const monkMistweaverAbilities = [
   ironshellBrew,
+  niuzaosProtection,
   calmingPresenceMistweaver,
   martialInstincts,
   secretInfusion,
   ancientTeachings,
   expelHarm,
   yulonsGraceMistweaver,
+  jadeSanctuary,
   fortBrew,
   diffuseMagic,
 ]
 
 export const monkWindwalkerAbilities = [
   ironshellBrew,
+  niuzaosProtection,
   calmingPresenceWindwalker,
   martialInstincts,
   yulonsGraceWindwalker,
+  jadeSanctuary,
   fortBrew,
   diffuseMagic,
   touchOfKarma,

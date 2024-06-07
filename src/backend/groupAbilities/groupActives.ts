@@ -1,9 +1,5 @@
 ﻿import type { Ability } from '../ability'
-import {
-  improvedPrismaticBarrier,
-  improvedPrismaticBarrierAugmentation,
-  prismaticBarrier,
-} from '../classAbilities/mage'
+import { prismaticBarrier } from '../classAbilities/mage'
 
 export const zephyr: Ability = {
   name: 'Zephyr',
@@ -47,19 +43,6 @@ export const arcaneMassBarrier: Ability = {
   drType: prismaticBarrier.drType,
   associatedSpec: { class: 'Mage', spec: 'Arcane' },
   icon: 'spell_holy_magicalsentry',
-}
-
-export const improvedArcaneMassBarrier: Ability = {
-  name: 'Improved Prismatic Barrier',
-  id: improvedPrismaticBarrier.id + 1,
-  associatedSpec: { class: 'Mage', spec: 'Arcane' },
-  icon: 'spell_magearmor',
-  abilityAugmentations: [
-    {
-      ...improvedPrismaticBarrierAugmentation,
-      otherAbilityId: arcaneMassBarrier.id,
-    },
-  ],
 }
 
 export const rallyingCry: Ability = {
@@ -118,7 +101,6 @@ export const groupActives: Ability[] = [
   chiCocoon,
   massBarrier,
   arcaneMassBarrier,
-  improvedArcaneMassBarrier,
   rallyingCry,
   auraMastery,
   spiritLinkTotem,

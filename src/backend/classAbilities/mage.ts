@@ -1,4 +1,4 @@
-import type { Ability, AbilityAugmentation } from '../ability'
+import type { Ability } from '../ability'
 
 const arcaneWarding: Ability = {
   name: 'Arcane Warding',
@@ -36,23 +36,10 @@ export const prismaticBarrier: Ability = {
     healthMultiplier: 0.2,
     versAffected: true,
   },
-  dr: 0.15,
+  dr: 0.25,
   drType: 'magic',
   id: 235450,
   icon: 'spell_magearmor',
-}
-
-export const improvedPrismaticBarrierAugmentation: AbilityAugmentation = {
-  otherAbilityId: 235450,
-  field: 'dr',
-  value: 0.1,
-}
-
-export const improvedPrismaticBarrier: Ability = {
-  name: 'Improved Prismatic Barrier',
-  id: 321745,
-  icon: 'spell_magearmor',
-  abilityAugmentations: [improvedPrismaticBarrierAugmentation],
 }
 
 const tempestBarrier: Ability = {
@@ -87,12 +74,67 @@ const greaterInvisibility: Ability = {
   icon: 'ability_mage_greaterinvisibility',
 }
 
+const phantasmalImage: Ability = {
+  name: 'Phantasmal Image',
+  id: 444784,
+  icon: 'spell_arcane_prismaticcloak',
+  heroTree: 'Spellslinger',
+  abilityAugmentations: [
+    {
+      otherAbilityId: mirrorImage.id,
+      field: 'dr',
+      value: 0.05,
+    },
+  ],
+}
+
+const merelyASetback: Ability = {
+  name: 'Merely a Setback',
+  id: 449330,
+  icon: 'inv_helm_robe_raidmage_i_01',
+  heroTree: 'Sunfury',
+  abilityAugmentations: [
+    {
+      otherAbilityId: prismaticBarrier.id,
+      field: 'aoeDr',
+      value: 0.05,
+    },
+    {
+      otherAbilityId: blazingBarrier.id,
+      field: 'aoeDr',
+      value: 0.05,
+    },
+  ],
+}
+
+const imbuedWarding: Ability = {
+  name: 'Imbued Warding',
+  id: 431066,
+  icon: 'inv_10_jewelcrafting_gem3primal_fire_cut_blue',
+  heroTree: 'Frostfire',
+  abilityAugmentations: [
+    {
+      otherAbilityId: blazingBarrier.id,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.25,
+    },
+    {
+      otherAbilityId: iceBarrier.id,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.25,
+    },
+  ],
+}
+
 export const mageArcaneAbilities = [
   arcaneWarding,
   prismaticBarrier,
-  improvedPrismaticBarrier,
+  merelyASetback,
   tempestBarrier,
   mirrorImage,
+  phantasmalImage,
   greaterInvisibility,
   iceCold,
 ]
@@ -100,6 +142,8 @@ export const mageArcaneAbilities = [
 export const mageFireAbilities = [
   arcaneWarding,
   blazingBarrier,
+  merelyASetback,
+  imbuedWarding,
   tempestBarrier,
   mirrorImage,
   greaterInvisibility,
@@ -109,8 +153,10 @@ export const mageFireAbilities = [
 export const mageFrostAbilities = [
   arcaneWarding,
   iceBarrier,
+  imbuedWarding,
   tempestBarrier,
   mirrorImage,
+  phantasmalImage,
   greaterInvisibility,
   iceCold,
 ]
