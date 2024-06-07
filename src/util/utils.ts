@@ -76,8 +76,8 @@ function augmentAbility(
   )
     return
 
-  abilityAugmentations.forEach(({ otherSpellId, field, absorbField, value }) => {
-    if (otherSpellId !== abilityToAugment.id) return
+  abilityAugmentations.forEach(({ otherAbilityId, field, absorbField, value }) => {
+    if (otherAbilityId !== abilityToAugment.id) return
 
     const stackedValue = getStackedValue(value, stacks, stackOptions)
 

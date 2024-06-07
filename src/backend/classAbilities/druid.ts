@@ -31,7 +31,7 @@ const lycarasTeachings: Ability = {
     'You might not receive the vers buff for up to 5 seconds after swapping to Bear Form',
   abilityAugmentations: [
     {
-      otherSpellId: bearForm.id,
+      otherAbilityId: bearForm.id,
       field: 'versIncrease',
       value: 0.03,
     },
@@ -48,12 +48,12 @@ const ursineVigor: Ability = {
   icon: 'ability_druid_markofursol',
   abilityAugmentations: [
     {
-      otherSpellId: bearForm.id,
+      otherAbilityId: bearForm.id,
       field: 'healthIncrease',
       value: 0.15,
     },
     {
-      otherSpellId: bearForm.id,
+      otherAbilityId: bearForm.id,
       field: 'armorIncrease',
       value: 0.15,
     },
@@ -66,7 +66,7 @@ const heartOfTheWild: Ability = {
   icon: 'spell_holy_blessingofagility',
   abilityAugmentations: [
     {
-      otherSpellId: bearForm.id,
+      otherAbilityId: bearForm.id,
       field: 'staminaIncrease',
       value: 0.2,
     },
@@ -91,7 +91,7 @@ const mattedFur: Ability = {
   onByDefault: true,
   abilityAugmentations: [
     {
-      otherSpellId: barkskin.id,
+      otherAbilityId: barkskin.id,
       field: 'absorb',
       absorbField: 'apMultipler',
       value: 3.125,
@@ -127,12 +127,12 @@ const oakskin: Ability = {
   icon: 'spell_nature_stoneclawtotem',
   abilityAugmentations: [
     {
-      otherSpellId: barkskin.id,
+      otherAbilityId: barkskin.id,
       field: 'dr',
       value: 0.1,
     },
     {
-      otherSpellId: survivalInsticts.id,
+      otherAbilityId: survivalInsticts.id,
       field: 'dr',
       value: 0.1,
     },
@@ -145,7 +145,7 @@ const ursocsSpirit: Ability = {
   icon: 'spell_nature_spiritarmor',
   abilityAugmentations: [
     {
-      otherSpellId: bearForm.id,
+      otherAbilityId: bearForm.id,
       field: 'staminaIncrease',
       value: 0.1,
     },

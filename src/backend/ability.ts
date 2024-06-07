@@ -67,7 +67,7 @@ export type AbsorbField = keyof AbsorbOptions
 export type AbsorbAugmentations = Exclude<AbsorbField, 'versAffected' | 'absorbType'>
 
 export type AbilityAugmentation = {
-  otherSpellId: number
+  otherAbilityId: number
   field: AbilityField
   absorbField?: AbsorbAugmentations
   value: number

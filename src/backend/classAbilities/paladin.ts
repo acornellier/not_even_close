@@ -58,12 +58,12 @@ const aegisOfProtection: Ability = {
   notes: 'Bugged. Increases Shield of Vengeance by 20% instead of 10%.',
   abilityAugmentations: [
     {
-      otherSpellId: divineProtection.id,
+      otherAbilityId: divineProtection.id,
       field: 'dr',
       value: 0.1,
     },
     {
-      otherSpellId: shieldOfVengeance.id,
+      otherAbilityId: shieldOfVengeance.id,
       field: 'absorb',
       absorbField: 'healthMultiplier',
       value: 0.2,
@@ -96,7 +96,7 @@ const improvedArdentDefender: Ability = {
   icon: 'spell_holy_ardentdefender',
   abilityAugmentations: [
     {
-      otherSpellId: ardentDefender.id,
+      otherAbilityId: ardentDefender.id,
       field: 'dr',
       value: 0.1,
     },
@@ -152,7 +152,7 @@ const sanctuary: Ability = {
   onByDefault: true,
   abilityAugmentations: [
     {
-      otherSpellId: divineBulwark.id,
+      otherAbilityId: divineBulwark.id,
       field: 'dr',
       value: 0.05,
     },

@@ -43,7 +43,7 @@ export const prismaticBarrier: Ability = {
 }
 
 export const improvedPrismaticBarrierAugmentation: AbilityAugmentation = {
-  otherSpellId: 235450,
+  otherAbilityId: 235450,
   field: 'dr',
   value: 0.1,
 }

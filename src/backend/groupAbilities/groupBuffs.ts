@@ -31,7 +31,7 @@ export const aspectsFavor: Ability = {
   icon: 'ability_evoker_aspectsfavor',
   abilityAugmentations: [
     {
-      otherSpellId: blackAttunement.id,
+      otherAbilityId: blackAttunement.id,
       field: 'healthIncrease',
       value: 0.02,
     },
@@ -67,7 +67,7 @@ export const masterPoisoner: Ability = {
   icon: 'ability_creature_poison_06',
   abilityAugmentations: [
     {
-      otherSpellId: 381637, // Atrophic Poison
+      otherAbilityId: 381637, // Atrophic Poison
       field: 'damageDealtReduction',
       value: 0.006,
     },

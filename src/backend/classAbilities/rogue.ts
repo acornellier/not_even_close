@@ -15,12 +15,12 @@ const elusiveness: Ability = {
   icon: 'ability_rogue_turnthetables',
   abilityAugmentations: [
     {
-      otherSpellId: 1966, // Feint
+      otherAbilityId: 1966, // Feint
       field: 'dr',
       value: 0.2,
     },
     {
-      otherSpellId: 5277, // Evasion
+      otherAbilityId: 5277, // Evasion
       field: 'dr',
       value: 0.2,
     },

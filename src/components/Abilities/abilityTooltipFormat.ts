@@ -131,7 +131,7 @@ export function getAugmentationText(
   if (augmentation.field === 'absorb' && augmentation.absorbField === 'healthMultiplier')
     return `${augmentation.value * 100}% more absorb`
 
-  if (augmentation.otherSpellId === barkskin.id)
+  if (augmentation.otherAbilityId === barkskin.id)
     return `+${augmentation.value * 100}% AP absorb`
 
   return `+${getEffectText(augmentation.field, augmentation.value, ability, selectedAbility)}`

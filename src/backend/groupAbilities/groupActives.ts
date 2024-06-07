@@ -57,7 +57,7 @@ export const improvedArcaneMassBarrier: Ability = {
   abilityAugmentations: [
     {
       ...improvedPrismaticBarrierAugmentation,
-      otherSpellId: arcaneMassBarrier.id,
+      otherAbilityId: arcaneMassBarrier.id,
     },
   ],
 }

@@ -35,7 +35,7 @@ export function CharAbilityIcon({
   const augmentedAbilities = ability.abilityAugmentations
     ? allAbilities.filter(({ spellId }) =>
         ability.abilityAugmentations?.some(
-          (augmentation) => spellId === augmentation.otherSpellId,
+          (augmentation) => spellId === augmentation.otherAbilityId,
         ),
       )
     : null

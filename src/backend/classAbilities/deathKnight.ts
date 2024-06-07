@@ -26,7 +26,7 @@ const antiMagicBarrier: Ability = {
   icon: 'spell_shadow_antimagicshell',
   abilityAugmentations: [
     {
-      otherSpellId: antiMagicShell.id,
+      otherAbilityId: antiMagicShell.id,
       field: 'absorb',
       absorbField: 'healthMultiplier',
       value: 0.4,
@@ -98,13 +98,13 @@ const gloomWard: Ability = {
   icon: 'ability_rogue_envelopingshadows',
   abilityAugmentations: [
     {
-      otherSpellId: antiMagicShell.id,
+      otherAbilityId: antiMagicShell.id,
       field: 'absorb',
       absorbField: 'healthMultiplier',
       value: 0.15,
     },
     {
-      otherSpellId: tombstone.id,
+      otherAbilityId: tombstone.id,
       field: 'absorb',
       absorbField: 'healthMultiplier',
       value: 0.15,

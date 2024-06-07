@@ -87,7 +87,7 @@ const infernalArmor: Ability = {
   abilityAugmentations: [
     {
       field: 'armorIncrease',
-      otherSpellId: immolationAura.id,
+      otherAbilityId: immolationAura.id,
       value: 0.2,
     },
   ],
@@ -102,7 +102,7 @@ const felFlameFortification: Ability = {
   abilityAugmentations: [
     {
       field: 'dr',
-      otherSpellId: immolationAura.id,
+      otherAbilityId: immolationAura.id,
       value: 0.1,
     },
   ],

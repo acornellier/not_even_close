@@ -7,7 +7,7 @@ const aspectOfTheBeast: Ability = {
   icon: 'ability_deathwing_assualtaspects',
   abilityAugmentations: [
     {
-      otherSpellId: 264662,
+      otherAbilityId: 264662,
       field: 'healthIncrease',
       value: 0.025,
     },
@@ -65,7 +65,7 @@ const naturesEndurance: Ability = {
   icon: 'spell_nature_protectionformnature',
   abilityAugmentations: [
     {
-      otherSpellId: 264735,
+      otherAbilityId: 264735,
       field: 'dr',
       value: 0.2,
     },

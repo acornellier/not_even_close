@@ -36,7 +36,7 @@ const lightsInspiration: Ability = {
   icon: 'spell_holy_restoration',
   abilityAugmentations: [
     {
-      otherSpellId: 19236, // Desperate Prayer
+      otherAbilityId: 19236, // Desperate Prayer
       field: 'healthIncrease',
       value: 0.15,
     },

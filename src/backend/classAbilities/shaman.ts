@@ -45,7 +45,7 @@ const astralBulwark: Ability = {
   icon: 'spell_shaman_ancestralawakening',
   abilityAugmentations: [
     {
-      otherSpellId: 108271,
+      otherAbilityId: 108271,
       field: 'dr',
       value: 0.2,
     },

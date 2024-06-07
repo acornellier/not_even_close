@@ -27,7 +27,7 @@ const secretInfusion: Ability = {
   icon: 'ability_monk_chibrew',
   abilityAugmentations: [
     {
-      otherSpellId: 322101,
+      otherAbilityId: 322101,
       field: 'versIncrease',
       value: 0.08,
     },
@@ -117,12 +117,12 @@ const ironshellBrew: Ability = {
   icon: 'ability_monk_fortifyingale_new',
   abilityAugmentations: [
     {
-      otherSpellId: fortBrew.id,
+      otherAbilityId: fortBrew.id,
       field: 'healthIncrease',
       value: 0.1,
     },
     {
-      otherSpellId: fortBrew.id,
+      otherAbilityId: fortBrew.id,
       field: 'dr',
       value: 0.1,
     },

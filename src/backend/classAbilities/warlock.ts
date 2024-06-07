@@ -90,7 +90,7 @@ const strengthOfWill: Ability = {
   icon: 'spell_shadow_demonictactics',
   abilityAugmentations: [
     {
-      otherSpellId: 104773,
+      otherAbilityId: 104773,
       field: 'dr',
       value: 0.15,
     },
