@@ -174,17 +174,6 @@ const painbringer: Ability = {
   },
 }
 
-const fieryResolve: Ability = {
-  name: 'Fiery Resolve (2pc)',
-  id: 425653,
-  staminaIncrease: 0.02,
-  icon: 'spell_fire_moltenblood',
-  stacks: {
-    type: 'stacks',
-    max: 5,
-  },
-}
-
 const armyUntoOneself: Ability = {
   name: 'Army Unto Oneself',
   id: 442714,
@@ -214,7 +203,6 @@ export const vengeanceAbilities = [
   demonicWardsVdh,
   illidariKnowledge,
   willOfTheIllidari,
-  fieryResolve,
   soulmonger,
   calcifiedSpikes,
   painbringer,

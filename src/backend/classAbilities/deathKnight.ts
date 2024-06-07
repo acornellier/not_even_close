@@ -84,13 +84,6 @@ const vampiricBlood: Ability = {
   icon: 'spell_shadow_lifedrain',
 }
 
-const ashenDecay: Ability = {
-  name: 'Ashen Decay (S3 2pc)',
-  id: 425719,
-  damageDealtReduction: 0.1,
-  icon: 'spell_holy_ashestoashes',
-}
-
 const gloomWard: Ability = {
   name: 'Gloom Ward',
   id: 391571,
@@ -181,7 +174,6 @@ export const deathKnightBloodAbilities = [
   bloodSoakedGround,
   runeCarvedPlates,
   foulBulwark,
-  ashenDecay,
   lichborne,
   antiMagicShell,
   iceboundFortitude,

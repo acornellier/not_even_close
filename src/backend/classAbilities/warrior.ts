@@ -100,6 +100,34 @@ const demoralizingShout: Ability = {
   icon: 'ability_warrior_warcry',
 }
 
+const impendingVictory: Ability = {
+  name: 'Impending Victory',
+  id: 202168,
+  icon: 'spell_impending_victory',
+}
+
+const keepYourFeetOnTheGround: Ability = {
+  name: 'Keep Your Feet on the Ground',
+  id: 438590,
+  icon: 'ability_thunderking_overcharge',
+  heroTree: 'Mountain Thane',
+  dr: 0.08,
+}
+
+const steadfastAsThePeaks: Ability = {
+  name: 'Steadfast as the Peaks',
+  id: 437152,
+  icon: 'ability_warrior_devastate',
+  heroTree: 'Mountain Thane',
+  abilityAugmentations: [
+    {
+      otherAbilityId: impendingVictory.id,
+      field: 'healthIncrease',
+      value: 0.1,
+    },
+  ],
+}
+
 export const warriorArmsAbilities = [
   seasonedSoldier,
   ignorePain,
@@ -109,15 +137,21 @@ export const warriorArmsAbilities = [
 ]
 
 export const warriorFuryAbilities = [
-  defensiveStance,
+  steadfastAsThePeaks,
   warpaint,
+  impendingVictory,
+  keepYourFeetOnTheGround,
+  defensiveStance,
   spellReflection,
   enragedRegeneration,
 ]
 
 export const warriorProtAbilities = [
+  steadfastAsThePeaks,
   punish,
   ignorePain,
+  impendingVictory,
+  keepYourFeetOnTheGround,
   defensiveStanceProt,
   spellReflection,
   lastStand,
