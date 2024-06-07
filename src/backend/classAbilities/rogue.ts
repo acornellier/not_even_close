@@ -4,7 +4,7 @@ const thiefsVersatility: Ability = {
   name: "Thief's Versatility",
   id: 381619,
   onByDefault: true,
-  versIncrease: 0.04,
+  versIncrease: 0.03,
   icon: 'ability_rogue_versatility',
 }
 

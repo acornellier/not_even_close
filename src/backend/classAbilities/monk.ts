@@ -139,8 +139,8 @@ export const monkMistweaverAbilities = [
   ancientTeachings,
   expelHarm,
   yulonsGraceMistweaver,
-  diffuseMagic,
   fortBrew,
+  diffuseMagic,
 ]
 
 export const monkWindwalkerAbilities = [
@@ -148,7 +148,7 @@ export const monkWindwalkerAbilities = [
   calmingPresenceWindwalker,
   martialInstincts,
   yulonsGraceWindwalker,
-  diffuseMagic,
   fortBrew,
+  diffuseMagic,
   touchOfKarma,
 ]
