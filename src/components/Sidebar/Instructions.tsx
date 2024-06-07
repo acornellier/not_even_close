@@ -4,7 +4,7 @@ export function Instructions() {
       <span className="font-bold">Instructions</span>
       <span>
         Input your stats without any buffs that could affect your stamina and vers. Be
-        careful not to double count vers phial, Fortitude, Mark of the Wild.
+        careful not to double count vers flask, Fortitude, Mark of the Wild.
       </span>
       <span>
         Use{' '}
@@ -18,7 +18,7 @@ export function Instructions() {
         </a>{' '}
         to quickly output your stats as well as your teammates&apos;. Import them by
         clicking the paste icon to the right of the character stats, or by pressing
-        ctrl-V/cmd-V if you only have 1 character. It accounts for vers phial, Fortitude
+        ctrl-V/cmd-V if you only have 1 character. It accounts for vers flask, Fortitude
         and Mark of the Wild.
       </span>
       <span>

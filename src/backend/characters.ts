@@ -24,4 +24,7 @@ export interface Profile {
   stats: CharacterStatsInput
 }
 
-export type UpdateCharacter = (value: Partial<Character>, addTepidVers?: boolean) => void
+export type UpdateCharacter = (
+  value: Partial<Character>,
+  addTemperedVers?: boolean,
+) => void

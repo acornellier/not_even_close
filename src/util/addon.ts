@@ -4,11 +4,13 @@ import type { CharacterStatsInput } from '../backend/characters.ts'
 import { roundTo } from './utils.ts'
 import { fortitude, markOfTheWild } from '../backend/groupAbilities/groupBuffs.ts'
 import type { Ability } from '../backend/ability.ts'
+import { temperedVersatility } from '../backend/groupAbilities/externals.ts'
 
 export interface AddonCharacter {
   classSpec: ClassSpec
   stats: CharacterStatsInput
   groupBuffs: Ability[]
+  addTemperedVers: boolean
 }
 
 export type AddonOutput = AddonCharacter[]
@@ -73,6 +75,12 @@ export function getAddonOutput(text: string): AddonOutput {
       groupBuffs.push(markOfTheWild)
     }
 
+    let addTemperedVers = false
+    if (characterOutput.buffs.includes(temperedVersatility.id)) {
+      stats.versatilityRaw -= temperedVersatility.versRawIncrease!
+      addTemperedVers = true
+    }
+
     if (characterOutput.buffs.includes(fortitude.id)) {
       stats.stamina = Math.ceil(stats.stamina / 1.05)
       groupBuffs.push(fortitude)
@@ -82,6 +90,7 @@ export function getAddonOutput(text: string): AddonOutput {
       classSpec: characterOutput.spec,
       stats,
       groupBuffs,
+      addTemperedVers: addTemperedVers,
     }
   })
 }

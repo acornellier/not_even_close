@@ -1,5 +1,12 @@
 ﻿import type { Ability } from '../ability'
 
+export const temperedVersatility: Ability = {
+  name: 'Phial of Tempered Versatility',
+  id: 212277,
+  versRawIncrease: 2168,
+  icon: 'inv_misc_potiona2',
+}
+
 const blessingOfSacrifice: Ability = {
   name: 'Blessing of Sacrifice',
   id: 6940,
@@ -84,6 +91,7 @@ const timeDilation: Ability = {
 }
 
 export const externals: Ability[] = [
+  temperedVersatility,
   elusiveMists,
   ancestralVigor,
   earthenHarmony,
