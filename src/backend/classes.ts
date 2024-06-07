@@ -274,11 +274,13 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: warlockDemoAbilities,
       icon: 'spell_shadow_metamorphosis',
       mainStat: 'intellect',
+      shortName: 'Demo',
     },
     Destruction: {
       abilities: warlockAffDestroAbilities,
       icon: 'spell_shadow_rainoffire',
       mainStat: 'intellect',
+      shortName: 'Destro',
     },
   },
   Warrior: {

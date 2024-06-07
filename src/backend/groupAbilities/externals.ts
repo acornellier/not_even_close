@@ -83,14 +83,6 @@ const timeDilation: Ability = {
   icon: 'ability_evoker_timedilation',
 }
 
-const blisteringScales: Ability = {
-  name: 'Blistering Scales',
-  id: 360827,
-  armorRawIncrease: Math.round(17818 * 0.3),
-  icon: 'ability_evoker_blisteringscales',
-  notes: 'NOT EXACT. Based on an evoker at 526 ilvl',
-}
-
 export const externals: Ability[] = [
   elusiveMists,
   ancestralVigor,
@@ -101,5 +93,4 @@ export const externals: Ability[] = [
   timeDilation,
   lifeCocoon,
   rescue,
-  blisteringScales,
 ]
