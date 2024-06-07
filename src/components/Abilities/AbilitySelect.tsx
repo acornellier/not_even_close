@@ -1,4 +1,4 @@
-﻿import type { Ability, SelectedAbility } from '../../backend/ability'
+﻿import type { Ability, SelectedAbilityId } from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
 import { augmentAbilities, getSelectedAbility } from '../../util/utils.ts'
 import { CharAbilityIcon } from './CharAbilityIcon'
@@ -8,8 +8,8 @@ import { useAbilitySetters } from './useAbilitySetters.ts'
 
 interface Props {
   availableAbilities: Ability[]
-  selectedAbilities: SelectedAbility[]
-  setSelectedAbilities: (abilities: SelectedAbility[]) => void
+  selectedAbilities: SelectedAbilityId[]
+  setSelectedAbilities: (abilities: SelectedAbilityId[]) => void
   characterIdx?: number
 }
 

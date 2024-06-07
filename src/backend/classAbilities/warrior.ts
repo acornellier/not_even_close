@@ -10,6 +10,7 @@ const defensiveStance: Ability = {
 const defensiveStanceProt: Ability = {
   ...defensiveStance,
   dr: 0.2,
+  id: defensiveStance.id + 1,
 }
 
 const spellReflection: Ability = {

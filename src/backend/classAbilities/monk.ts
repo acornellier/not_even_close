@@ -10,6 +10,7 @@ const calmingPresenceMistweaver: Ability = {
 
 const calmingPresenceWindwalker: Ability = {
   ...calmingPresenceMistweaver,
+  id: calmingPresenceMistweaver.id + 1,
   dr: 0.03,
 }
 
@@ -62,6 +63,7 @@ const yulonsGraceMistweaver: Ability = {
 
 const yulonsGraceWindwalker: Ability = {
   ...yulonsGraceMistweaver,
+  id: yulonsGraceMistweaver.id + 1,
   absorb: {
     ...yulonsGraceMistweaver.absorb,
     healthMultiplier: 0.1,

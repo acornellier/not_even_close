@@ -6,12 +6,12 @@ import {
   isAbilityAvailable,
   isAbilitySelected,
 } from '../../util/utils.ts'
-import type { Ability, SelectedAbility } from '../../backend/ability.ts'
+import type { Ability, SelectedAbilityId } from '../../backend/ability.ts'
 
 interface Props {
   availableAbilities: Ability[]
-  selectedAbilities: SelectedAbility[]
-  setSelectedAbilities: (abilities: SelectedAbility[]) => void
+  selectedAbilities: SelectedAbilityId[]
+  setSelectedAbilities: (abilities: SelectedAbilityId[]) => void
 }
 
 export function useAbilitySetters({
@@ -23,12 +23,12 @@ export function useAbilitySetters({
     // Filter to available abilities
     if (
       selectedAbilities.some(
-        ({ ability }) => !isAbilityAvailable(ability, availableAbilities),
+        ({ abilityId }) => !isAbilityAvailable(abilityId, availableAbilities),
       )
     ) {
       setSelectedAbilities(
         selectedAbilities.filter((selectedAbility) =>
-          isAbilityAvailable(selectedAbility.ability, availableAbilities),
+          isAbilityAvailable(selectedAbility.abilityId, availableAbilities),
         ),
       )
 
@@ -38,22 +38,22 @@ export function useAbilitySetters({
     // Ensure stacks are set
     if (
       selectedAbilities.some(
-        ({ ability, stacks }) =>
+        ({ abilityId, stacks }) =>
           stacks === undefined &&
-          findMatchingAbility(ability.id, availableAbilities)?.stacks,
+          findMatchingAbility(abilityId, availableAbilities)?.stacks,
       )
     ) {
       setSelectedAbilities(
         selectedAbilities.map((selectedAbility) => {
           const matchingAbility = findMatchingAbility(
-            selectedAbility.ability.id,
+            selectedAbility.abilityId,
             availableAbilities,
           )
 
           if (selectedAbility.stacks || !matchingAbility?.stacks) return selectedAbility
 
           return {
-            ability: selectedAbility.ability,
+            abilityId: selectedAbility.abilityId,
             stacks: defaultStacks(matchingAbility.stacks),
           }
         }),
@@ -62,16 +62,16 @@ export function useAbilitySetters({
   }, [availableAbilities, selectedAbilities, setSelectedAbilities])
 
   const toggleAbility = useCallback(
-    (spellId: number) => {
-      if (isAbilitySelected(spellId, selectedAbilities)) {
+    (abilityId: number) => {
+      if (isAbilitySelected(abilityId, selectedAbilities)) {
         setSelectedAbilities(
           selectedAbilities.filter(
-            (selectedAbility) => selectedAbility.ability.id !== spellId,
+            (selectedAbility) => selectedAbility.abilityId !== abilityId,
           ),
         )
       } else {
         const ability = availableAbilities.find(
-          ({ id: otherSpellId }) => otherSpellId === spellId,
+          ({ id: otherSpellId }) => otherSpellId === abilityId,
         )
 
         if (!ability) return
@@ -81,7 +81,7 @@ export function useAbilitySetters({
         setSelectedAbilities([
           ...selectedAbilities,
           {
-            ability,
+            abilityId: ability.id,
             ...(stacks ? { stacks: defaultStacks(stacks) } : {}),
           },
         ])
@@ -98,7 +98,7 @@ export function useAbilitySetters({
 
       setSelectedAbilities([
         ...selectedAbilities.filter(
-          (selectedAbility) => selectedAbility.ability.id !== spellId,
+          (selectedAbility) => selectedAbility.abilityId !== spellId,
         ),
         { ...selectedAbility, stacks },
       ])

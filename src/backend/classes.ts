@@ -1,5 +1,5 @@
 ﻿import { havocAbilities, vengeanceAbilities } from './classAbilities/demonHunter'
-import type { Ability, SelectedAbility } from './ability'
+import type { Ability, SelectedAbilityId } from './ability'
 import {
   evokerAugAbilities,
   evokerDevAbilities,
@@ -301,11 +301,11 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
   },
 } as const
 
-export const defaultAbilities = (classSpec: ClassSpec): SelectedAbility[] => {
+export const defaultAbilities = (classSpec: ClassSpec): SelectedAbilityId[] => {
   const specDetails = classSpecs[classSpec.class][classSpec.spec]!
   return specDetails.abilities
     .filter(({ onByDefault }) => onByDefault)
-    .map((ability) => ({ ability }))
+    .map((ability) => ({ abilityId: ability.id }))
 }
 
 export const classColors: Record<WowClass, string> = {

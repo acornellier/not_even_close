@@ -12,7 +12,7 @@ import { classSpecs } from '../../backend/classes'
 import { LabelledAbilitySelect } from '../Abilities/LabelledAbilitySelect'
 import { externals } from '../../backend/groupAbilities/externals'
 import { useCallback } from 'react'
-import type { SelectedAbility } from '../../backend/ability'
+import type { SelectedAbilityId } from '../../backend/ability'
 import { CreateProfile } from './CreateProfile'
 import { LoadProfile } from './LoadProfile'
 import { TooltipStyled } from '../Common/TooltipStyled'
@@ -53,12 +53,12 @@ export function CharacterComponent({
   )
 
   const setAbilities = useCallback(
-    (abilities: SelectedAbility[]) => updateCharacter({ abilities }),
+    (abilities: SelectedAbilityId[]) => updateCharacter({ abilities }),
     [updateCharacter],
   )
 
   const setExternals = useCallback(
-    (newExternals: SelectedAbility[]) => updateCharacter({ externals: newExternals }),
+    (newExternals: SelectedAbilityId[]) => updateCharacter({ externals: newExternals }),
     [updateCharacter],
   )
 

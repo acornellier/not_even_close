@@ -12,6 +12,7 @@ const elementalWardingEnh: Ability = {
 
 const elementalWardingEleResto: Ability = {
   ...elementalWardingEnh,
+  id: elementalWardingEnh.id + 1,
   dr: 0.02,
 }
 

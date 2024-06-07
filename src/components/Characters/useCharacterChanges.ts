@@ -2,29 +2,6 @@ import type { Character, Profile } from '../../backend/characters'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback } from 'react'
 import { defaultAbilities, equalSpecs } from '../../backend/classes'
-import type { SelectedAbility } from '../../backend/ability'
-
-const uniqueExternalNames: string[] = []
-
-function uniqueAbilities(
-  abilities: SelectedAbility[],
-  uniqueNames: string[],
-): SelectedAbility[] {
-  for (const uniqueName of uniqueNames) {
-    const lastIndex = abilities.findLastIndex(({ ability }) =>
-      ability.name.toLowerCase().includes(uniqueName),
-    )
-
-    if (lastIndex !== -1) {
-      abilities = abilities.filter(
-        ({ ability }, idx) =>
-          idx === lastIndex || !ability.name.toLowerCase().includes(uniqueName),
-      )
-    }
-  }
-
-  return abilities
-}
 
 interface Props {
   setCharacters: Dispatch<SetStateAction<Character[]>>
@@ -48,15 +25,11 @@ export function useCharacterChanges({ setCharacters, setProfiles, characters }: 
                 }
               : {}
 
-          const res = {
+          return {
             ...character,
             ...charChanges,
             ...specChangeChanges,
           }
-
-          res.externals = uniqueAbilities(res.externals, uniqueExternalNames)
-
-          return res
         }),
       )
 

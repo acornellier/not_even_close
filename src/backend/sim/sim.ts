@@ -1,9 +1,10 @@
 import type { Character, CharacterStatsInput } from '../characters'
-import type { SelectedAbility } from '../ability'
+import type { SelectedAbility, SelectedAbilityId } from '../ability'
 import {
-  augmentSelectedAbilities,
+  augmentSelectedAbilityIds,
   enemyAbilityToDetails,
   getStackedValue,
+  mapSelectedAbilityIds,
 } from '../../util/utils.ts'
 import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from '../stats'
 import type {
@@ -103,19 +104,22 @@ function getStartingHealth(characterStats: CharacterStats, abilities: SelectedAb
 
 function getPartialResults(
   characters: Character[],
-  groupAbilities: SelectedAbility[],
+  groupAbilities: SelectedAbilityId[],
 ): CharacterPartialResult[] {
-  const augmentedGroupAbilities = augmentSelectedAbilities(groupAbilities, groupAbilities)
+  const augmentedGroupAbilities = augmentSelectedAbilityIds(
+    groupAbilities,
+    groupAbilities,
+  )
 
   return characters.map<CharacterPartialResult>((character) => {
-    const augmentedSelectedAbilities = augmentSelectedAbilities(
+    const augmentedSelectedAbilities = augmentSelectedAbilityIds(
       character.abilities,
       character.abilities,
     )
 
     const abilities = [
       ...augmentedSelectedAbilities,
-      ...character.externals,
+      ...mapSelectedAbilityIds(character.externals),
       ...augmentedGroupAbilities,
     ]
 

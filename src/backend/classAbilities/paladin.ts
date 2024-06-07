@@ -20,7 +20,7 @@ const sanctifiedPlatesHoly: Ability = {
   name: 'Sanctified Plates',
   aoeDr: 0.06,
   onByDefault: true,
-  id: 402964,
+  id: 402964_1,
   icon: 'inv_chest_plate_raidpaladin_s_01',
 }
 

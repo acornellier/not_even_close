@@ -40,6 +40,7 @@ const enduranceTraining: Ability = {
 
 const enduranceTrainingMm: Ability = {
   ...enduranceTraining,
+  id: enduranceTraining.id + 1,
   onByDefault: false,
 }
 

@@ -19,6 +19,7 @@ const demonicWards: Ability = {
 
 const demonicWardsVdh: Ability = {
   ...demonicWards,
+  id: demonicWards.id + 1,
   drType: undefined,
 }
 

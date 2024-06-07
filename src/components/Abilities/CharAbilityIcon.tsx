@@ -1,4 +1,4 @@
-import type { Ability, SelectedAbility } from '../../backend/ability'
+import type { Ability, SelectedAbilityId } from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
 import { defaultStacks } from '../../util/utils.ts'
 import { Fragment } from 'react'
@@ -17,7 +17,7 @@ const iconSize = 40
 
 interface AbilityIconProps {
   ability: Ability
-  selectedAbility: SelectedAbility | undefined
+  selectedAbility: SelectedAbilityId | undefined
   toggleAbility: (spellId: number) => void
   setAbilityStacks: (spellId: number, stacks: number) => void
   allAbilities: Ability[]
@@ -33,9 +33,9 @@ export function CharAbilityIcon({
   characterIdx,
 }: AbilityIconProps) {
   const augmentedAbilities = ability.abilityAugmentations
-    ? allAbilities.filter(({ spellId }) =>
+    ? allAbilities.filter(({ id }) =>
         ability.abilityAugmentations?.some(
-          (augmentation) => spellId === augmentation.otherAbilityId,
+          (augmentation) => id === augmentation.otherAbilityId,
         ),
       )
     : null
@@ -99,7 +99,7 @@ export function CharAbilityIcon({
           })}
           {augmentedAbilities?.map((augmentedAbility) => {
             const augmentations = ability.abilityAugmentations?.filter(
-              (augmentation) => augmentation.otherSpellId === augmentedAbility.id,
+              (augmentation) => augmentation.otherAbilityId === augmentedAbility.id,
             )
             if (!augmentations || augmentations.length === 0) return null
 

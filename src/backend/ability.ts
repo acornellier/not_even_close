@@ -1,4 +1,9 @@
 ﻿import type { ClassSpec, WowClass } from './classes'
+import { classSpecs } from './classes'
+import { externals } from './groupAbilities/externals.ts'
+import { groupBuffs } from './groupAbilities/groupBuffs.ts'
+import { groupActives } from './groupAbilities/groupActives.ts'
+import { groupBy, mapBy } from '../util/utils.ts'
 
 export type DamageType = 'magic' | 'physical'
 
@@ -44,6 +49,11 @@ export type Ability = {
   associatedSpec?: ClassSpec
 }
 
+export type SelectedAbilityId = {
+  abilityId: number
+  stacks?: number
+}
+
 export type SelectedAbility = {
   ability: Ability
   stacks?: number
@@ -71,4 +81,23 @@ export type AbilityAugmentation = {
   field: AbilityField
   absorbField?: AbsorbAugmentations
   value: number
+}
+
+const specAbilities = Object.values(classSpecs)
+  .flatMap((specs) => Object.values(specs))
+  .flatMap(({ abilities }) => abilities)
+
+export const allAbilities: Ability[] = [
+  ...specAbilities,
+  ...externals,
+  ...groupBuffs,
+  ...groupActives,
+]
+
+export const abilitiesById = mapBy(allAbilities, 'id')
+
+for (const abilities of Object.values(groupBy(allAbilities, 'id'))) {
+  const uniqueAbilities = new Set(abilities)
+  if (uniqueAbilities.size === 1) continue
+  console.error(`Multiple abilities with same ID`, ...uniqueAbilities)
 }

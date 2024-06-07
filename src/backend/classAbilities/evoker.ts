@@ -2,7 +2,7 @@ import type { Ability } from '../ability'
 
 const inherentResistanceAug: Ability = {
   name: 'Inherent Resistance',
-  dr: 0.02,
+  dr: 0.04,
   drType: 'magic',
   stacks: { type: 'talent', max: 2 },
   onByDefault: true,
@@ -12,6 +12,7 @@ const inherentResistanceAug: Ability = {
 
 const inherentResistanceDevPres: Ability = {
   ...inherentResistanceAug,
+  id: inherentResistanceAug.id + 1,
   dr: 0.04,
 }
 
