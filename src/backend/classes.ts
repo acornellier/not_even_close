@@ -190,6 +190,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: monkMistweaverAbilities,
       icon: 'spell_monk_mistweaver_spec',
       mainStat: 'intellect',
+      shortName: 'Mistweaver',
     },
     Windwalker: {
       abilities: monkWindwalkerAbilities,
@@ -208,6 +209,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       icon: 'ability_paladin_shieldofthetemplar',
       mainStat: 'other',
       isTank: true,
+      shortName: 'Prot Pally',
     },
     Retribution: {
       abilities: paladinRetAbilities,

@@ -32,6 +32,20 @@ const painSuppression: Ability = {
   icon: 'spell_holy_painsupression',
 }
 
+const foreseenCircumstances: Ability = {
+  name: 'Foreseen Circumstances',
+  id: 440738,
+  icon: 'spell_holy_guardianspirit',
+  heroTree: 'Oracle',
+  abilityAugmentations: [
+    {
+      otherAbilityId: painSuppression.id,
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
+}
+
 const lifeCocoon: Ability = {
   name: 'Life Cocoon',
   id: 116849,
@@ -98,6 +112,7 @@ export const externals: Ability[] = [
   ironBark,
   blessingOfSacrifice,
   painSuppression,
+  foreseenCircumstances,
   timeDilation,
   lifeCocoon,
   rescue,

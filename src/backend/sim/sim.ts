@@ -117,9 +117,14 @@ function getPartialResults(
       character.abilities,
     )
 
+    const augmentedExternals = augmentSelectedAbilityIds(
+      mapSelectedAbilityIds(character.externals),
+      character.externals,
+    )
+
     const abilities = [
       ...augmentedSelectedAbilities,
-      ...mapSelectedAbilityIds(character.externals),
+      ...augmentedExternals,
       ...augmentedGroupAbilities,
     ]
 

@@ -50,6 +50,16 @@ const shieldOfVengeance: Ability = {
   icon: 'ability_paladin_shieldofthetemplar',
 }
 
+const sacrosanctCrusade: Ability = {
+  name: 'Sacrosanct Crusade',
+  id: 431731,
+  icon: 'inv_plate_raidpaladinprimalist_d_01_cape',
+  absorb: {
+    healthMultiplier: shieldOfVengeance.absorb!.healthMultiplier! * 0.1,
+    versAffected: true,
+  },
+}
+
 const aegisOfProtection: Ability = {
   name: 'Aegis of Protection',
   id: 403654,
@@ -171,8 +181,9 @@ export const paladinRetAbilities = [
   aegisOfProtection,
   obduracy,
   blessingOfDusk,
-  divineProtection,
+  sacrosanctCrusade,
   shieldOfVengeance,
+  divineProtection,
 ]
 
 export const paladinProtAbilities = [

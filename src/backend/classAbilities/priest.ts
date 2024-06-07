@@ -64,8 +64,25 @@ const dispersion: Ability = {
   icon: 'spell_shadow_dispersion',
 }
 
+const embraceTheShadow: Ability = {
+  name: 'Embrace the Shadow',
+  id: 451569,
+  dr: 0.03,
+  icon: 'warlock_curse_shadow_aura',
+  heroTree: 'Voidweaver',
+}
+
+const wordOfSupremacy: Ability = {
+  name: 'Word of Supremacy',
+  id: 453726,
+  icon: 'spell_holy_wordfortitude',
+  heroTree: 'Archon',
+  staminaIncrease: 0.05,
+}
+
 export const priestDiscAbilities = [
   spellWarding,
+  embraceTheShadow,
   protectiveLight,
   fade,
   desperatePrayer,
@@ -74,6 +91,7 @@ export const priestDiscAbilities = [
 
 export const priestHolyAbilities = [
   spellWarding,
+  wordOfSupremacy,
   protectiveLight,
   fade,
   desperatePrayer,
@@ -82,6 +100,8 @@ export const priestHolyAbilities = [
 
 export const priestShadowAbilities = [
   spellWarding,
+  embraceTheShadow,
+  wordOfSupremacy,
   protectiveLight,
   fade,
   desperatePrayer,
