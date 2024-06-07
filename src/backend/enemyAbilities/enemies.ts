@@ -24,17 +24,7 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   notes?: string
 }
 
-export const dungeonKeys = [
-  'aa',
-  'av',
-  'bh',
-  'hoi',
-  'nelth',
-  'nok',
-  'rlp',
-  'uld',
-  'all_s4',
-] as const
+export const dungeonKeys = ['cot', 'all_tww_s1'] as const
 
 export type DungeonKey = (typeof dungeonKeys)[number]
 
