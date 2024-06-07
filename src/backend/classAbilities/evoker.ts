@@ -30,12 +30,50 @@ const rushOfVitality: Ability = {
   icon: 'trade_enchanting_greatermysteriousessence',
 }
 
-export const evokerAugAbilities = [inherentResistanceAug, obsidianScales]
+const hardenedScales: Ability = {
+  name: 'Hardened Scales',
+  id: 441675,
+  icon: 'inv_10_skinning_scales_black',
+  heroTree: 'Scalecommander',
+  abilityAugmentations: [
+    {
+      otherAbilityId: obsidianScales.id,
+      field: 'dr',
+      value: 0.05,
+    },
+  ],
+}
 
-export const evokerDevAbilities = [inherentResistanceDevPres, obsidianScales]
+const temporality: Ability = {
+  name: 'Temporality',
+  id: 441181,
+  icon: 'ability_evoker_return',
+  heroTree: 'Chronowarden',
+  dr: 0.05,
+  notes: 'Decays from 20% over 3 seconds',
+  stacks: {
+    type: 'stacks',
+    max: 4,
+    default: 2,
+  },
+}
+
+export const evokerAugAbilities = [
+  inherentResistanceAug,
+  hardenedScales,
+  temporality,
+  obsidianScales,
+]
+
+export const evokerDevAbilities = [
+  inherentResistanceDevPres,
+  hardenedScales,
+  obsidianScales,
+]
 
 export const evokerPresAbilities = [
   inherentResistanceDevPres,
   rushOfVitality,
+  temporality,
   obsidianScales,
 ]
