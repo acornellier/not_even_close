@@ -1,20 +1,5 @@
 ﻿import type { Ability } from '../ability'
 
-export const tepidVersatility: Ability = {
-  name: 'Phial of Tepid Versatility',
-  spellId: 371172,
-  versRawIncrease: 745,
-  icon: 'inv_10_alchemy_bottle_shape2_black',
-  notes: '3.63% vers = 1.82% DR when below 30% vers',
-}
-
-const icyPreservation: Ability = {
-  name: 'Phial of Icy Preservation',
-  spellId: 191326,
-  dr: 0.06,
-  icon: 'inv_10_alchemy_bottle_shape2_blue',
-}
-
 const blessingOfSacrifice: Ability = {
   name: 'Blessing of Sacrifice',
   spellId: 6940,
@@ -107,8 +92,6 @@ const blisteringScales: Ability = {
 }
 
 export const externals: Ability[] = [
-  tepidVersatility,
-  icyPreservation,
   elusiveMists,
   ancestralVigor,
   earthenHarmony,

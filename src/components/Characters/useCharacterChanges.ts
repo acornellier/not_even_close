@@ -2,11 +2,9 @@ import type { Character, Profile } from '../../backend/characters'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback } from 'react'
 import { defaultAbilities, equalSpecs } from '../../backend/classes'
-import { tepidVersatility } from '../../backend/groupAbilities/externals'
-import { isAbilitySelected } from '../../util/utils.ts'
 import type { SelectedAbility } from '../../backend/ability'
 
-const uniqueExternalNames = ['phial']
+const uniqueExternalNames: string[] = []
 
 function uniqueAbilities(
   abilities: SelectedAbility[],
@@ -36,55 +34,46 @@ interface Props {
 
 export function useCharacterChanges({ setCharacters, setProfiles, characters }: Props) {
   const updateCharacterIdx = useCallback(
-    (index: number) =>
-      (charChanges: Partial<Character>, addTepidVers = false) => {
-        setCharacters((characters) =>
-          characters.map((character, index2) => {
-            if (index2 !== index) return character
+    (index: number) => (charChanges: Partial<Character>) => {
+      setCharacters((characters) =>
+        characters.map((character, index2) => {
+          if (index2 !== index) return character
 
-            const specChangeChanges =
-              charChanges.classSpec &&
-              !equalSpecs(character.classSpec, charChanges.classSpec)
-                ? {
-                    abilities: defaultAbilities(charChanges.classSpec),
-                    externals: addTepidVers ? [{ ability: tepidVersatility }] : [],
-                  }
-                : {}
-
-            const res = {
-              ...character,
-              ...charChanges,
-              ...specChangeChanges,
-            }
-
-            if (addTepidVers) {
-              res.externals ??= []
-
-              if (!isAbilitySelected(tepidVersatility.spellId, res.externals)) {
-                res.externals.push({ ability: tepidVersatility })
-              }
-            }
-
-            res.externals = uniqueAbilities(res.externals, uniqueExternalNames)
-
-            return res
-          }),
-        )
-
-        if (charChanges.loadedProfileId) return
-
-        setProfiles((profiles) =>
-          profiles.map((profile) =>
-            profile.id === characters[index]!.loadedProfileId
+          const specChangeChanges =
+            charChanges.classSpec &&
+            !equalSpecs(character.classSpec, charChanges.classSpec)
               ? {
-                  ...profile,
-                  ...(charChanges.classSpec ? { classSpec: charChanges.classSpec } : {}),
-                  ...(charChanges.stats ? { stats: charChanges.stats } : {}),
+                  abilities: defaultAbilities(charChanges.classSpec),
+                  externals: [],
                 }
-              : profile,
-          ),
-        )
-      },
+              : {}
+
+          const res = {
+            ...character,
+            ...charChanges,
+            ...specChangeChanges,
+          }
+
+          res.externals = uniqueAbilities(res.externals, uniqueExternalNames)
+
+          return res
+        }),
+      )
+
+      if (charChanges.loadedProfileId) return
+
+      setProfiles((profiles) =>
+        profiles.map((profile) =>
+          profile.id === characters[index]!.loadedProfileId
+            ? {
+                ...profile,
+                ...(charChanges.classSpec ? { classSpec: charChanges.classSpec } : {}),
+                ...(charChanges.stats ? { stats: charChanges.stats } : {}),
+              }
+            : profile,
+        ),
+      )
+    },
     [characters, setCharacters, setProfiles],
   )
 

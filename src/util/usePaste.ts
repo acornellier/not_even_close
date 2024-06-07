@@ -5,7 +5,6 @@ import type { SelectedAbility } from '../backend/ability.ts'
 import type { Character, UpdateCharacter } from '../backend/characters.ts'
 import { useToasts } from '../components/Common/Toasts/useToasts.ts'
 import { defaultAbilities, equalSpecs } from '../backend/classes.ts'
-import { tepidVersatility } from '../backend/groupAbilities/externals.ts'
 
 interface Props {
   characters: Character[]
@@ -34,7 +33,7 @@ export function usePaste({
       const addonCharacters = getAddonOutput(text)
 
       const indexesUpdated = new Set<number>()
-      for (const { classSpec, stats, groupBuffs, addTepidVers } of addonCharacters) {
+      for (const { classSpec, stats, groupBuffs } of addonCharacters) {
         const idxToUpdate =
           addonCharacters.length === 1
             ? characterIdx
@@ -45,7 +44,7 @@ export function usePaste({
 
         if (idxToUpdate !== -1) {
           indexesUpdated.add(idxToUpdate)
-          updateCharacterIdx(idxToUpdate)({ classSpec: classSpec, stats }, addTepidVers)
+          updateCharacterIdx(idxToUpdate)({ classSpec: classSpec, stats })
 
           setGroupBuffs([
             ...selectedGroupBuffs,
@@ -63,7 +62,7 @@ export function usePaste({
             classSpec,
             stats,
             abilities: defaultAbilities(classSpec),
-            externals: addTepidVers ? [{ ability: tepidVersatility }] : [],
+            externals: [],
           }
 
           setCharacters((prevCharacters) => [...prevCharacters, newCharacter])
@@ -72,7 +71,14 @@ export function usePaste({
 
       addToast({ message: 'Paste success.', type: 'success' })
     },
-    [addToast, characters, updateCharacterIdx, setGroupBuffs, selectedGroupBuffs],
+    [
+      addToast,
+      characters,
+      updateCharacterIdx,
+      setGroupBuffs,
+      selectedGroupBuffs,
+      setCharacters,
+    ],
   )
 
   const pasteWithButton = useCallback(
