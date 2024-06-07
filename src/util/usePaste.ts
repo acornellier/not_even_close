@@ -64,7 +64,7 @@ export function usePaste({
             classSpec,
             stats,
             abilities: defaultAbilities(classSpec),
-            externals: addTemperedVers ? [{ ability: temperedVersatility }] : [],
+            externals: addTemperedVers ? [{ abilityId: temperedVersatility.id }] : [],
           }
 
           setCharacters((prevCharacters) => [...prevCharacters, newCharacter])

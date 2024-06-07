@@ -75,11 +75,20 @@ const primordialBond: Ability = {
   icon: 'inv_elemental_primal_earth',
 }
 
+const naturesProtection: Ability = {
+  name: "Nature's Protection",
+  id: 454029,
+  icon: 'spell_nature_lightningshield',
+  heroTree: 'Stormbringer',
+  damageDealtReduction: 0.1,
+}
+
 export const shamanEnhAbilities = [
   elementalWardingEnh,
   brimmingWithLife,
   ancestralDefense,
   astralBulwark,
+  naturesProtection,
   earthElemental,
   spiritWolf,
   astralShift,
@@ -89,6 +98,7 @@ export const shamanEleAbilities = [
   elementalWardingEleResto,
   brimmingWithLife,
   ancestralDefense,
+  naturesProtection,
   astralBulwark,
   earthElemental,
   primordialBond,

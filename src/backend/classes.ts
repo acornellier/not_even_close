@@ -80,7 +80,7 @@ type SpecDetails = {
   icon: string
   mainStat: 'intellect' | 'other'
   isTank?: boolean
-  shortName?: string
+  displayName?: string
 }
 
 export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
@@ -107,14 +107,13 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: havocAbilities,
       icon: 'ability_demonhunter_specdps',
       mainStat: 'other',
-      shortName: 'Havoc',
     },
     Vengeance: {
       abilities: vengeanceAbilities,
       icon: 'ability_demonhunter_spectank',
       mainStat: 'other',
       isTank: true,
-      shortName: 'VDH',
+      displayName: 'VDH',
     },
   },
   Druid: {
@@ -132,6 +131,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: druidRestoAbilities,
       icon: 'spell_nature_healingtouch',
       mainStat: 'intellect',
+      displayName: 'Resto Druid',
     },
   },
   Evoker: {
@@ -190,7 +190,6 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: monkMistweaverAbilities,
       icon: 'spell_monk_mistweaver_spec',
       mainStat: 'intellect',
-      shortName: 'Mistweaver',
     },
     Windwalker: {
       abilities: monkWindwalkerAbilities,
@@ -203,13 +202,14 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: paladinHolyAbilities,
       icon: 'spell_holy_holybolt',
       mainStat: 'intellect',
+      displayName: 'Holy Paladin',
     },
     Protection: {
       abilities: paladinProtAbilities,
       icon: 'ability_paladin_shieldofthetemplar',
       mainStat: 'other',
       isTank: true,
-      shortName: 'Prot Pally',
+      displayName: 'Prot Pally',
     },
     Retribution: {
       abilities: paladinRetAbilities,
@@ -227,6 +227,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: priestHolyAbilities,
       icon: 'spell_holy_guardianspirit',
       mainStat: 'intellect',
+      displayName: 'Holy Priest',
     },
     Shadow: {
       abilities: priestShadowAbilities,
@@ -266,6 +267,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: shamanRestoAbilities,
       icon: 'spell_nature_magicimmunity',
       mainStat: 'intellect',
+      displayName: 'Resto Shaman',
     },
   },
   Warlock: {
@@ -278,13 +280,11 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: warlockDemoAbilities,
       icon: 'spell_shadow_metamorphosis',
       mainStat: 'intellect',
-      shortName: 'Demo',
     },
     Destruction: {
       abilities: warlockAffDestroAbilities,
       icon: 'spell_shadow_rainoffire',
       mainStat: 'intellect',
-      shortName: 'Destro',
     },
   },
   Warrior: {
