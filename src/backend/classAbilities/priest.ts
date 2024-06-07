@@ -5,34 +5,34 @@ const spellWarding: Ability = {
   onByDefault: true,
   dr: 0.03,
   drType: 'magic',
-  spellId: 390667,
+  id: 390667,
   icon: 'spell_holy_spellwarding',
 }
 
 const protectiveLight: Ability = {
   name: 'Protective Light',
   dr: 0.1,
-  spellId: 193063,
+  id: 193063,
   icon: 'spell_holy_holyprotection',
 }
 
 const fade: Ability = {
   name: 'Fade',
   dr: 0.1,
-  spellId: 586,
+  id: 586,
   icon: 'spell_magic_lesserinvisibilty',
 }
 
 const desperatePrayer: Ability = {
   name: 'Desperate Prayer',
   healthIncrease: 0.25,
-  spellId: 19236,
+  id: 19236,
   icon: 'spell_holy_testoffaith',
 }
 
 const lightsInspiration: Ability = {
   name: "Light's Inspiration",
-  spellId: 373450,
+  id: 373450,
   icon: 'spell_holy_restoration',
   abilityAugmentations: [
     {
@@ -50,7 +50,7 @@ const lightsInspiration: Ability = {
 
 const mentalFortitude: Ability = {
   name: 'Mental Fortitude',
-  spellId: 377065,
+  id: 377065,
   absorb: {
     healthMultiplier: 0.1,
   },
@@ -60,7 +60,7 @@ const mentalFortitude: Ability = {
 const dispersion: Ability = {
   name: 'Dispersion',
   dr: 0.75,
-  spellId: 47585,
+  id: 47585,
   icon: 'spell_shadow_dispersion',
 }
 

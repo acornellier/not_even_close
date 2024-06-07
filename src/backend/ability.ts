@@ -21,7 +21,7 @@ export type StackOptions = {
 
 export type Ability = {
   name: string
-  spellId: number
+  id: number
   icon: string
   onByDefault?: boolean
   notes?: string

@@ -2,7 +2,7 @@ import type { Ability } from '../ability'
 
 const aspectOfTheBeast: Ability = {
   name: 'Aspect of the Beast',
-  spellId: 191384,
+  id: 191384,
   onByDefault: true,
   icon: 'ability_deathwing_assualtaspects',
   abilityAugmentations: [
@@ -18,7 +18,7 @@ const rejuvenatingWind: Ability = {
   name: 'Rejuvenating Wind',
   healthIncrease: 0.08,
   onByDefault: true,
-  spellId: 385539,
+  id: 385539,
   icon: 'ability_druid_galewinds',
 }
 
@@ -26,7 +26,7 @@ const huntersAvoidance: Ability = {
   name: "Hunter's Avoidance",
   aoeDr: 0.06,
   onByDefault: true,
-  spellId: 384799,
+  id: 384799,
   icon: 'rogue_burstofspeed',
 }
 
@@ -34,7 +34,7 @@ const enduranceTraining: Ability = {
   name: 'Endurance Training',
   healthIncrease: 0.05,
   onByDefault: true,
-  spellId: 264662,
+  id: 264662,
   icon: 'ability_hunter_huntervswild',
 }
 
@@ -46,21 +46,21 @@ const enduranceTrainingMm: Ability = {
 const survivalOfTheFittest: Ability = {
   name: 'Survival of the Fittest',
   dr: 0.2,
-  spellId: 264735,
+  id: 264735,
   icon: 'spell_nature_spiritarmor',
 }
 
 const aspectOfTheTurtle: Ability = {
   name: 'Aspect of the Turtle',
   dr: 0.3,
-  spellId: 186265,
+  id: 186265,
   icon: 'ability_hunter_pet_turtle',
   notes: 'Only the DR portion, does not calculate immunities',
 }
 
 const naturesEndurance: Ability = {
   name: "Nature's Endurance",
-  spellId: 388042,
+  id: 388042,
   onByDefault: true,
   icon: 'spell_nature_protectionformnature',
   abilityAugmentations: [
@@ -75,7 +75,7 @@ const naturesEndurance: Ability = {
 const fortitudeOfTheBear: Ability = {
   name: 'Fortitude of the Bear',
   healthIncrease: 0.2,
-  spellId: 388035,
+  id: 388035,
   icon: 'spell_druid_bearhug',
 }
 

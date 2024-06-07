@@ -2,7 +2,7 @@
 
 export const fortitude: Ability = {
   name: 'Power Word: Fortitude',
-  spellId: 21562,
+  id: 21562,
   staminaIncrease: 0.05,
   associatedClass: 'Priest',
   icon: 'spell_holy_wordfortitude',
@@ -10,7 +10,7 @@ export const fortitude: Ability = {
 
 export const blackAttunement: Ability = {
   name: 'Black Attunement',
-  spellId: 403264,
+  id: 403264,
   healthIncrease: 0.04,
   associatedSpec: { class: 'Evoker', spec: 'Augmentation' },
   icon: 'ability_evoker_blackattunement',
@@ -18,7 +18,7 @@ export const blackAttunement: Ability = {
 
 export const devotionAura: Ability = {
   name: 'Devotion Aura',
-  spellId: 465,
+  id: 465,
   dr: 0.03,
   associatedClass: 'Paladin',
   icon: 'spell_holy_devotionaura',
@@ -26,12 +26,12 @@ export const devotionAura: Ability = {
 
 export const aspectsFavor: Ability = {
   name: "Aspects' Favor",
-  spellId: 407243,
+  id: 407243,
   associatedSpec: { class: 'Evoker', spec: 'Augmentation' },
   icon: 'ability_evoker_aspectsfavor',
   abilityAugmentations: [
     {
-      otherSpellId: blackAttunement.spellId,
+      otherSpellId: blackAttunement.id,
       field: 'healthIncrease',
       value: 0.02,
     },
@@ -44,7 +44,7 @@ export const aspectsFavor: Ability = {
 
 export const markOfTheWild: Ability = {
   name: 'Mark of the Wild',
-  spellId: 1126,
+  id: 1126,
   versIncrease: 0.03,
   associatedClass: 'Druid',
   icon: 'spell_nature_regeneration',
@@ -53,7 +53,7 @@ export const markOfTheWild: Ability = {
 export const atrophicPoison: Ability = {
   name: 'Atrophic Poison',
   damageDealtReduction: 0.03,
-  spellId: 381637,
+  id: 381637,
   associatedClass: 'Rogue',
   icon: 'ability_rogue_nervesofsteel',
   notes: 'Does not necessarily work on all abilities',
@@ -61,7 +61,7 @@ export const atrophicPoison: Ability = {
 
 export const masterPoisoner: Ability = {
   name: 'Master Poisoner',
-  spellId: 196864,
+  id: 196864,
   onByDefault: true,
   associatedClass: 'Rogue',
   icon: 'ability_creature_poison_06',
@@ -76,7 +76,7 @@ export const masterPoisoner: Ability = {
 
 export const lenience: Ability = {
   name: 'Lenience',
-  spellId: 238063,
+  id: 238063,
   dr: 0.03,
   associatedSpec: { class: 'Priest', spec: 'Discipline' },
   icon: 'ability_priest_atonement',

@@ -52,7 +52,7 @@ export function usePaste({
               .filter(
                 (newBuff) =>
                   !selectedGroupBuffs.some(
-                    (curBuff) => curBuff.ability.spellId === newBuff.spellId,
+                    (curBuff) => curBuff.ability.id === newBuff.id,
                   ),
               )
               .map((ability) => ({ ability })),

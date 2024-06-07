@@ -26,7 +26,7 @@ export function getSelectedAbility(
   spellId: number,
   selectedAbilities: SelectedAbility[],
 ) {
-  return selectedAbilities.find(({ ability }) => ability.spellId === spellId)
+  return selectedAbilities.find(({ ability }) => ability.id === spellId)
 }
 
 export function isAbilitySelected(spellId: number, selectedAbilities: SelectedAbility[]) {
@@ -34,7 +34,7 @@ export function isAbilitySelected(spellId: number, selectedAbilities: SelectedAb
 }
 
 export function findMatchingAbility(spellId: number, abilities: Ability[]) {
-  return abilities.find((ability) => ability.spellId === spellId)
+  return abilities.find((ability) => ability.id === spellId)
 }
 
 export function defaultStacks(stacks: StackOptions) {
@@ -72,12 +72,12 @@ function augmentAbility(
 
   if (
     !abilityAugmentations ||
-    !isAbilitySelected(augmentingAbility.ability.spellId, selectedAbilities)
+    !isAbilitySelected(augmentingAbility.ability.id, selectedAbilities)
   )
     return
 
   abilityAugmentations.forEach(({ otherSpellId, field, absorbField, value }) => {
-    if (otherSpellId !== abilityToAugment.spellId) return
+    if (otherSpellId !== abilityToAugment.id) return
 
     const stackedValue = getStackedValue(value, stacks, stackOptions)
 
@@ -132,7 +132,7 @@ export function augmentSelectedAbilities(
 
 export function isAbilityAvailable(ability: Ability, availableAbililties: Ability[]) {
   return availableAbililties.some(
-    (availableAbility) => availableAbility.spellId === ability.spellId,
+    (availableAbility) => availableAbility.id === ability.id,
   )
 }
 

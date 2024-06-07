@@ -2,7 +2,7 @@ import type { Ability } from '../ability'
 
 const thiefsVersatility: Ability = {
   name: "Thief's Versatility",
-  spellId: 381619,
+  id: 381619,
   onByDefault: true,
   versIncrease: 0.04,
   icon: 'ability_rogue_versatility',
@@ -10,7 +10,7 @@ const thiefsVersatility: Ability = {
 
 const elusiveness: Ability = {
   name: 'Elusiveness',
-  spellId: 79008,
+  id: 79008,
   onByDefault: true,
   icon: 'ability_rogue_turnthetables',
   abilityAugmentations: [
@@ -30,26 +30,26 @@ const elusiveness: Ability = {
 const feint: Ability = {
   name: 'Feint',
   aoeDr: 0.4,
-  spellId: 1966,
+  id: 1966,
   icon: 'ability_rogue_feint',
 }
 
 const evasion: Ability = {
   name: 'Evasion',
-  spellId: 5277,
+  id: 5277,
   icon: 'spell_shadow_shadowward',
 }
 
 const fadeToNothing: Ability = {
   name: 'Fade to Nothing',
   dr: 0.1,
-  spellId: 382514,
+  id: 382514,
   icon: 'ability_warlock_everlastingaffliction',
 }
 
 const cloakedInShadows: Ability = {
   name: 'Cloaked in Shadows',
-  spellId: 382515,
+  id: 382515,
   absorb: {
     healthMultiplier: 0.3,
   },
@@ -59,14 +59,14 @@ const cloakedInShadows: Ability = {
 const precisionShot: Ability = {
   name: 'Precision Shot',
   damageDealtReduction: 0.05,
-  spellId: 428377,
+  id: 428377,
   icon: 'inv_legendary_gun',
 }
 
 const exhilaratingExecution: Ability = {
   name: 'Exhilarating Execution',
   healthIncrease: 0.1,
-  spellId: 428486,
+  id: 428486,
   icon: 'inv_weapon_hand_04',
 }
 

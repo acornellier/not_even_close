@@ -3,7 +3,7 @@ import type { Ability } from '../ability'
 const defensiveStance: Ability = {
   name: 'Defensive Stance',
   dr: 0.15,
-  spellId: 197690,
+  id: 197690,
   icon: 'ability_warrior_defensivestance',
 }
 
@@ -16,28 +16,28 @@ const spellReflection: Ability = {
   name: 'Spell Reflection',
   dr: 0.2,
   drType: 'magic',
-  spellId: 23920,
+  id: 23920,
   icon: 'ability_warrior_shieldreflection',
 }
 
 const enragedRegeneration: Ability = {
   name: 'Enraged Regeneration',
   dr: 0.3,
-  spellId: 184364,
+  id: 184364,
   icon: 'ability_warrior_focusedrage',
 }
 
 const dieByTheSword: Ability = {
   name: 'Die by the Sword',
   dr: 0.3,
-  spellId: 118038,
+  id: 118038,
   icon: 'ability_warrior_challange',
 }
 
 const warpaint: Ability = {
   name: 'Warpaint',
   dr: 0.1,
-  spellId: 208154,
+  id: 208154,
   icon: 'ability_rogue_preparation',
   notes: 'Enrage is usually active, but not always',
 }
@@ -45,14 +45,14 @@ const warpaint: Ability = {
 const seasonedSoldier: Ability = {
   name: 'Seasoned Soldier',
   aoeDr: 0.1,
-  spellId: 279423,
+  id: 279423,
   onByDefault: true,
   icon: 'inv_axe_09',
 }
 
 const ignorePain: Ability = {
   name: 'Ignore Pain',
-  spellId: 190456,
+  id: 190456,
   absorb: {
     apMultipler: 4.375,
     versAffected: true,
@@ -68,7 +68,7 @@ const ignorePain: Ability = {
 
 const punish: Ability = {
   name: 'Punish',
-  spellId: 275334,
+  id: 275334,
   damageDealtReduction: 0.03,
   stacks: {
     type: 'stacks',
@@ -80,21 +80,21 @@ const punish: Ability = {
 
 const shieldWall: Ability = {
   name: 'Shield Wall',
-  spellId: 871,
+  id: 871,
   dr: 0.4,
   icon: 'ability_warrior_shieldwall',
 }
 
 const lastStand: Ability = {
   name: 'Shield Wall',
-  spellId: 12975,
+  id: 12975,
   healthIncrease: 0.3,
   icon: 'spell_holy_ashestoashes',
 }
 
 const demoralizingShout: Ability = {
   name: 'Demoralizing Shout',
-  spellId: 1160,
+  id: 1160,
   dr: 0.2,
   icon: 'ability_warrior_warcry',
 }

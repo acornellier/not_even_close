@@ -2,7 +2,7 @@ import type { Ability } from '../ability'
 
 const calmingPresenceMistweaver: Ability = {
   name: 'Calming Presence',
-  spellId: 388664,
+  id: 388664,
   onByDefault: true,
   dr: 0.06,
   icon: 'inv_misc_orb_01',
@@ -15,14 +15,14 @@ const calmingPresenceWindwalker: Ability = {
 
 const ancientTeachings: Ability = {
   name: 'Ancient Teachings',
-  spellId: 388023,
+  id: 388023,
   staminaIncrease: 0.05,
   icon: 'inv_misc_book_07',
 }
 
 const secretInfusion: Ability = {
   name: 'Secret Infusion',
-  spellId: 388491,
+  id: 388491,
   onByDefault: true,
   icon: 'ability_monk_chibrew',
   abilityAugmentations: [
@@ -42,7 +42,7 @@ const secretInfusion: Ability = {
 
 const expelHarm: Ability = {
   name: 'TFT + Expel Harm',
-  spellId: 322101,
+  id: 322101,
   absorb: {
     healthMultiplier: 0.16,
     versAffected: true,
@@ -52,7 +52,7 @@ const expelHarm: Ability = {
 
 const yulonsGraceMistweaver: Ability = {
   name: "Yulon's Grace",
-  spellId: 414131,
+  id: 414131,
   absorb: {
     healthMultiplier: 0.15,
     absorbType: 'magic',
@@ -70,14 +70,14 @@ const yulonsGraceWindwalker: Ability = {
 
 export const dampenHarm: Ability = {
   name: 'Dampen Harm',
-  spellId: 122278,
+  id: 122278,
   icon: 'ability_monk_dampenharm',
   notes: '20-50% DR based on damage taken',
 }
 
 const diffuseMagic: Ability = {
   name: 'Diffuse Magic',
-  spellId: 122783,
+  id: 122783,
   dr: 0.6,
   drType: 'magic',
   icon: 'spell_monk_diffusemagic',
@@ -85,7 +85,7 @@ const diffuseMagic: Ability = {
 
 const fortBrew: Ability = {
   name: 'Fortifying Brew',
-  spellId: 388917,
+  id: 388917,
   dr: 0.2,
   healthIncrease: 0.2,
   icon: 'ability_monk_fortifyingale_new',
@@ -93,7 +93,7 @@ const fortBrew: Ability = {
 
 const touchOfKarma: Ability = {
   name: 'Touch of Karma',
-  spellId: 122470,
+  id: 122470,
   absorb: {
     healthMultiplier: 0.5,
   },
@@ -102,7 +102,7 @@ const touchOfKarma: Ability = {
 
 const martialInstincts: Ability = {
   name: 'Martial Instincts',
-  spellId: 450427,
+  id: 450427,
   icon: 'ability_monk_palmstrike',
   aoeDr: 0.02,
   stacks: {
@@ -113,16 +113,16 @@ const martialInstincts: Ability = {
 
 const ironshellBrew: Ability = {
   name: 'Ironshell Brew',
-  spellId: 388814,
+  id: 388814,
   icon: 'ability_monk_fortifyingale_new',
   abilityAugmentations: [
     {
-      otherSpellId: fortBrew.spellId,
+      otherSpellId: fortBrew.id,
       field: 'healthIncrease',
       value: 0.1,
     },
     {
-      otherSpellId: fortBrew.spellId,
+      otherSpellId: fortBrew.id,
       field: 'dr',
       value: 0.1,
     },

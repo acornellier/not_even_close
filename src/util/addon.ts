@@ -69,11 +69,11 @@ export function getAddonOutput(text: string): AddonOutput {
 
     const groupBuffs: Ability[] = []
 
-    if (characterOutput.buffs.includes(markOfTheWild.spellId)) {
+    if (characterOutput.buffs.includes(markOfTheWild.id)) {
       groupBuffs.push(markOfTheWild)
     }
 
-    if (characterOutput.buffs.includes(fortitude.spellId)) {
+    if (characterOutput.buffs.includes(fortitude.id)) {
       stats.stamina = Math.ceil(stats.stamina / 1.05)
       groupBuffs.push(fortitude)
     }

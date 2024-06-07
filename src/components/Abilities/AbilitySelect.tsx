@@ -14,8 +14,7 @@ interface Props {
 }
 
 function isAugmenter(ability: Ability) {
-  if ([dampenHarm.spellId, willOfTheNecropolis.spellId].includes(ability.spellId))
-    return false
+  if ([dampenHarm.id, willOfTheNecropolis.id].includes(ability.id)) return false
 
   return (
     ability.abilityAugmentations && !abilityEffectFields.some((field) => ability[field])
@@ -50,9 +49,9 @@ export function AbilitySelect({
     <div className="flex gap-1.5 flex-wrap">
       {augmenters.map((ability) => (
         <CharAbilityIcon
-          key={ability.spellId}
+          key={ability.id}
           ability={ability}
-          selectedAbility={getSelectedAbility(ability.spellId, selectedAbilities)}
+          selectedAbility={getSelectedAbility(ability.id, selectedAbilities)}
           toggleAbility={toggleAbility}
           setAbilityStacks={setAbilityStacks}
           allAbilities={availableAbilities}
@@ -64,9 +63,9 @@ export function AbilitySelect({
 
       {regulars.map((ability) => (
         <CharAbilityIcon
-          key={ability.spellId}
+          key={ability.id}
           ability={ability}
-          selectedAbility={getSelectedAbility(ability.spellId, selectedAbilities)}
+          selectedAbility={getSelectedAbility(ability.id, selectedAbilities)}
           toggleAbility={toggleAbility}
           setAbilityStacks={setAbilityStacks}
           allAbilities={availableAbilities}

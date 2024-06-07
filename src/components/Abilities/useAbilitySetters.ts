@@ -40,13 +40,13 @@ export function useAbilitySetters({
       selectedAbilities.some(
         ({ ability, stacks }) =>
           stacks === undefined &&
-          findMatchingAbility(ability.spellId, availableAbilities)?.stacks,
+          findMatchingAbility(ability.id, availableAbilities)?.stacks,
       )
     ) {
       setSelectedAbilities(
         selectedAbilities.map((selectedAbility) => {
           const matchingAbility = findMatchingAbility(
-            selectedAbility.ability.spellId,
+            selectedAbility.ability.id,
             availableAbilities,
           )
 
@@ -66,12 +66,12 @@ export function useAbilitySetters({
       if (isAbilitySelected(spellId, selectedAbilities)) {
         setSelectedAbilities(
           selectedAbilities.filter(
-            (selectedAbility) => selectedAbility.ability.spellId !== spellId,
+            (selectedAbility) => selectedAbility.ability.id !== spellId,
           ),
         )
       } else {
         const ability = availableAbilities.find(
-          ({ spellId: otherSpellId }) => otherSpellId === spellId,
+          ({ id: otherSpellId }) => otherSpellId === spellId,
         )
 
         if (!ability) return
@@ -98,7 +98,7 @@ export function useAbilitySetters({
 
       setSelectedAbilities([
         ...selectedAbilities.filter(
-          (selectedAbility) => selectedAbility.ability.spellId !== spellId,
+          (selectedAbility) => selectedAbility.ability.id !== spellId,
         ),
         { ...selectedAbility, stacks },
       ])

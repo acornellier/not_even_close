@@ -57,17 +57,17 @@ export function CharAbilityIcon({
     )
   }
 
-  const tooltipId = `ability-tooltip-${ability.spellId}${characterIdx ? `-${characterIdx}` : ''}`
+  const tooltipId = `ability-tooltip-${ability.id}${characterIdx ? `-${characterIdx}` : ''}`
 
   return (
     <>
       <div
-        key={ability.spellId}
+        key={ability.id}
         data-tooltip-id={tooltipId}
         className="cursor-pointer select-none relative"
         onClick={(e) => {
           e.preventDefault()
-          toggleAbility(ability.spellId)
+          toggleAbility(ability.id)
         }}
       >
         {ability.stacks && selectedAbility?.stacks ? (
@@ -99,12 +99,12 @@ export function CharAbilityIcon({
           })}
           {augmentedAbilities?.map((augmentedAbility) => {
             const augmentations = ability.abilityAugmentations?.filter(
-              (augmentation) => augmentation.otherSpellId === augmentedAbility.spellId,
+              (augmentation) => augmentation.otherSpellId === augmentedAbility.id,
             )
             if (!augmentations || augmentations.length === 0) return null
 
             return augmentations.map((augmentation, idx) => (
-              <Fragment key={`${augmentedAbility.spellId}-${idx}`}>
+              <Fragment key={`${augmentedAbility.id}-${idx}`}>
                 <span>
                   Improves {augmentedAbility.name}:{' '}
                   {getAugmentationText(augmentation, ability, selectedAbility)}
@@ -118,7 +118,7 @@ export function CharAbilityIcon({
               <NumericInput
                 label={ability.stacks.type === 'stacks' ? 'Stacks' : 'Talent points'}
                 design="minimal"
-                onChange={(newValue) => setAbilityStacks(ability.spellId, newValue ?? 0)}
+                onChange={(newValue) => setAbilityStacks(ability.id, newValue ?? 0)}
                 value={selectedAbility.stacks}
                 min={1}
                 max={ability.stacks.max}

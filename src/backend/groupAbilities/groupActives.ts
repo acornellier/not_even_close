@@ -7,7 +7,7 @@ import {
 
 export const zephyr: Ability = {
   name: 'Zephyr',
-  spellId: 374227,
+  id: 374227,
   aoeDr: 0.2,
   associatedClass: 'Evoker',
   icon: 'ability_evoker_hoverblack',
@@ -15,7 +15,7 @@ export const zephyr: Ability = {
 
 export const chiCocoon: Ability = {
   name: 'Chi Cocoon',
-  spellId: 406220,
+  id: 406220,
   associatedSpec: { class: 'Monk', spec: 'Mistweaver' },
   absorb: {
     healthMultiplier: 0.16,
@@ -28,7 +28,7 @@ export const chiCocoon: Ability = {
 
 export const massBarrier: Ability = {
   name: 'Mass Barrier',
-  spellId: 414660,
+  id: 414660,
   associatedClass: 'Mage',
   absorb: {
     healthMultiplier: 0.2,
@@ -42,7 +42,7 @@ export const massBarrier: Ability = {
 export const arcaneMassBarrier: Ability = {
   ...massBarrier,
   name: 'Arcane Mass Barrier',
-  spellId: massBarrier.spellId + 1,
+  id: massBarrier.id + 1,
   dr: prismaticBarrier.dr,
   drType: prismaticBarrier.drType,
   associatedSpec: { class: 'Mage', spec: 'Arcane' },
@@ -51,20 +51,20 @@ export const arcaneMassBarrier: Ability = {
 
 export const improvedArcaneMassBarrier: Ability = {
   name: 'Improved Prismatic Barrier',
-  spellId: improvedPrismaticBarrier.spellId + 1,
+  id: improvedPrismaticBarrier.id + 1,
   associatedSpec: { class: 'Mage', spec: 'Arcane' },
   icon: 'spell_magearmor',
   abilityAugmentations: [
     {
       ...improvedPrismaticBarrierAugmentation,
-      otherSpellId: arcaneMassBarrier.spellId,
+      otherSpellId: arcaneMassBarrier.id,
     },
   ],
 }
 
 export const rallyingCry: Ability = {
   name: 'Rallying Cry',
-  spellId: 97462,
+  id: 97462,
   healthIncrease: 0.1,
   associatedClass: 'Warrior',
   icon: 'ability_warrior_rallyingcry',
@@ -72,7 +72,7 @@ export const rallyingCry: Ability = {
 
 export const auraMastery: Ability = {
   name: 'Aura Mastery',
-  spellId: 31821,
+  id: 31821,
   dr: 0.09,
   associatedSpec: { class: 'Paladin', spec: 'Holy' },
   icon: 'spell_holy_auramastery',
@@ -81,7 +81,7 @@ export const auraMastery: Ability = {
 
 export const powerWordBarrier: Ability = {
   name: 'Power Word: Barrier',
-  spellId: 62618,
+  id: 62618,
   dr: 0.2,
   associatedSpec: { class: 'Priest', spec: 'Discipline' },
   icon: 'spell_holy_powerwordbarrier',
@@ -89,7 +89,7 @@ export const powerWordBarrier: Ability = {
 
 export const antiMagicZone: Ability = {
   name: 'Anti-Magic Zone',
-  spellId: 51052,
+  id: 51052,
   dr: 0.2,
   drType: 'magic',
   associatedClass: 'Death Knight',
@@ -98,7 +98,7 @@ export const antiMagicZone: Ability = {
 
 export const stoneskinTotem: Ability = {
   name: 'Stoneskin Totem',
-  spellId: 383017,
+  id: 383017,
   dr: 0.1,
   drType: 'physical',
   associatedClass: 'Shaman',
@@ -107,7 +107,7 @@ export const stoneskinTotem: Ability = {
 
 export const spiritLinkTotem: Ability = {
   name: 'Spirit Link Totem',
-  spellId: 98008,
+  id: 98008,
   dr: 0.1,
   associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   icon: 'spell_shaman_spiritlink',
