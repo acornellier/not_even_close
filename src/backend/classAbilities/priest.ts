@@ -78,6 +78,8 @@ const wordOfSupremacy: Ability = {
   icon: 'spell_holy_wordfortitude',
   heroTree: 'Archon',
   staminaIncrease: 0.05,
+  notes:
+    'If using this, make sure to have Power Word: Fortitude clicked off when checking your stamina, even when using the addon',
 }
 
 export const priestDiscAbilities = [
