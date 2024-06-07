@@ -17,8 +17,9 @@ import { CreateProfile } from './CreateProfile'
 import { LoadProfile } from './LoadProfile'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { PasteButton } from './PasteButton.tsx'
-import { useSimContext } from '../../util/useSimContext.ts'
 import { Label } from '../Common/Label.tsx'
+
+import { useAbilitiesThatExist } from './useAbilitiesThatExist.ts'
 
 interface Props {
   idx: number
@@ -45,8 +46,6 @@ export function CharacterComponent({
   loadProfile,
   deleteProfile,
 }: Props) {
-  const { dungeon } = useSimContext()
-
   const setCharacterStats = useCallback(
     (stats: CharacterStatsInput) => updateCharacter({ stats }),
     [updateCharacter],
@@ -57,10 +56,14 @@ export function CharacterComponent({
     [updateCharacter],
   )
 
+  useAbilitiesThatExist(character.abilities, setAbilities)
+
   const setExternals = useCallback(
     (newExternals: SelectedAbilityId[]) => updateCharacter({ externals: newExternals }),
     [updateCharacter],
   )
+
+  useAbilitiesThatExist(character.externals, setExternals)
 
   const setSpec = useCallback(
     (spec: ClassSpec) => updateCharacter({ classSpec: spec }),

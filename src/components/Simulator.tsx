@@ -20,7 +20,7 @@ import type { KeyDetails, Result } from '../backend/sim/simTypes'
 import { useEnemyAbility } from './EnemyAbilities/useEnemyAbility'
 import { dungeons } from '../backend/enemyAbilities/dungeons.ts'
 import { defaultCharacter } from './Characters/defaultCharacters.ts'
-import { useAbilities } from './Characters/useAbilities.ts'
+import { useCharacters } from './Characters/useCharacters.ts'
 import { useTwwCacheWipe } from '../util/UseTwwCacheWipe.tsx'
 
 const defaultKeyDetails: KeyDetails = { keyLevel: 15, isTyran: true }
@@ -39,7 +39,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     setGroupBuffs,
     selectedGroupActives,
     setGroupActives,
-  } = useAbilities()
+  } = useCharacters()
 
   const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
 
@@ -80,13 +80,13 @@ export function Simulator({ defaultEnemyAbility }: Props) {
       }),
     [
       characters,
+      selectedGroupBuffs,
+      selectedGroupActives,
       customDrs,
       customAbsorbs,
       keyDetails,
-      enemyAbilityDetails,
-      selectedGroupBuffs,
-      selectedGroupActives,
       selectedDungeon,
+      enemyAbilityDetails,
     ],
   )
 

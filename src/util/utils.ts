@@ -6,7 +6,6 @@
 } from '../backend/ability.ts'
 import { abilitiesById } from '../backend/ability.ts'
 import type { EnemyAbility } from '../backend/enemyAbilities/enemies.ts'
-
 import type { EnemyAbilityDetails } from '../backend/sim/simTypes.ts'
 
 export function roundTo(number: number, to: number) {
@@ -148,15 +147,10 @@ export function augmentAbilities(
 }
 
 export function augmentSelectedAbilityIds(
-  abilitiesToAugment: SelectedAbilityId[],
+  abilitiesToAugment: SelectedAbility[],
   selectedAbilities: SelectedAbilityId[],
 ): SelectedAbility[] {
-  return abilitiesToAugment.map<SelectedAbility>(({ abilityId, stacks }) => {
-    const ability = abilitiesById[abilityId]
-    if (!ability) {
-      throw new Error(`Invalid ability ID: ${abilityId}`)
-    }
-
+  return abilitiesToAugment.map<SelectedAbility>(({ ability, stacks }) => {
     const augmentedAbility = { ...ability }
 
     selectedAbilities.forEach((augmentingAbility) =>
@@ -170,14 +164,17 @@ export function augmentSelectedAbilityIds(
 export function mapSelectedAbilityIds(
   selectedAbilities: SelectedAbilityId[],
 ): SelectedAbility[] {
-  return selectedAbilities.map(({ abilityId, stacks }) => {
-    const ability = abilitiesById[abilityId]
-    if (!ability) {
-      throw new Error(`Invalid ability ID: ${abilityId}`)
-    }
+  return selectedAbilities
+    .map(({ abilityId, stacks }) => {
+      const ability = abilitiesById[abilityId]
+      if (!ability) {
+        console.error(`Invalid ability ID: ${abilityId}`)
+        return null
+      }
 
-    return { ability, stacks }
-  })
+      return { ability, stacks }
+    })
+    .filter(Boolean) as SelectedAbility[]
 }
 
 export function isAbilityAvailable(abilityId: number, availableAbililties: Ability[]) {

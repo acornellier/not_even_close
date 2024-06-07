@@ -107,13 +107,13 @@ function getPartialResults(
   groupAbilities: SelectedAbilityId[],
 ): CharacterPartialResult[] {
   const augmentedGroupAbilities = augmentSelectedAbilityIds(
-    groupAbilities,
+    mapSelectedAbilityIds(groupAbilities),
     groupAbilities,
   )
 
   return characters.map<CharacterPartialResult>((character) => {
     const augmentedSelectedAbilities = augmentSelectedAbilityIds(
-      character.abilities,
+      mapSelectedAbilityIds(character.abilities),
       character.abilities,
     )
 
