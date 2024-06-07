@@ -87,13 +87,6 @@ const survivalInsticts: Ability = {
   icon: 'ability_druid_tigersroar',
 }
 
-const protectiveGrowth: Ability = {
-  name: 'Protective Growth',
-  dr: 0.05,
-  id: 391947,
-  icon: 'spell_nature_resistnature',
-}
-
 const innerPeace: Ability = {
   name: 'Inner Peace (Tranq)',
   dr: 0.2,
@@ -132,14 +125,42 @@ const ursocsSpirit: Ability = {
   ],
 }
 
+const glisteningFur: Ability = {
+  name: 'Glistening Fur',
+  id: 429533,
+  icon: 'ability_druid_ironfur',
+  heroTree: "Elune's Chosen",
+  dr: 0.03,
+  drType: 'magic',
+  notes: 'Arcane 6% DR not implemented.',
+}
+
+const protectiveGrowth: Ability = {
+  name: 'Protective Growth',
+  id: 433749,
+  icon: 'spell_nature_resistnature',
+  heroTree: 'Keeper of the Grove',
+  dr: 0.08,
+}
+
+const fountOfStrength: Ability = {
+  name: 'Fount of Strength',
+  id: 441675,
+  icon: 'spell_nature_unyeildingstamina',
+  heroTree: 'Druid of the Claw',
+  healthIncrease: 0.1,
+}
+
 export const druidBalanceAbilities = [
   mattedFur,
   oakskin,
   ursocsSpirit,
   thickHide,
+  glisteningFur,
   heartOfTheWild,
   ursineVigor,
   risingLight,
+  protectiveGrowth,
   bearForm,
   barkskin,
 ]
@@ -149,8 +170,9 @@ export const druidFeralAbilities = [
   oakskin,
   ursocsSpirit,
   thickHide,
-  protectiveGrowth,
   risingLight,
+  protectiveGrowth,
+  fountOfStrength,
   bearForm,
   heartOfTheWild,
   ursineVigor,
@@ -164,6 +186,7 @@ export const druidRestoAbilities = [
   ursocsSpirit,
   thickHide,
   risingLight,
+  protectiveGrowth,
   bearForm,
   heartOfTheWild,
   ursineVigor,
