@@ -70,11 +70,74 @@ const exhilaratingExecution: Ability = {
   icon: 'inv_weapon_hand_04',
 }
 
-export const rogueAssAbilities = [elusiveness, evasion, feint]
+const cloakOfShadows: Ability = {
+  name: 'Cloak of Shadows',
+  id: 31224,
+  icon: 'spell_shadow_nethercloak',
+  notes: 'Only the DR from Bait and Switch, does not calculate immunities',
+  drType: 'physical',
+}
+
+const baitAndSwitch: Ability = {
+  name: 'Bait and Switch',
+  id: 457034,
+  icon: 'ability_druid_earthandsky',
+  heroTree: 'Deathstalker',
+  notes: 'WARNING: disable this for physical damage hits',
+  abilityAugmentations: [
+    {
+      otherAbilityId: evasion.id,
+      field: 'dr',
+      value: 0.2,
+    },
+    {
+      otherAbilityId: cloakOfShadows.id,
+      field: 'dr',
+      value: 0.2,
+    },
+  ],
+}
+
+const smoke: Ability = {
+  name: 'Smoke',
+  id: 441247,
+  icon: 'rogue_dirtytricks',
+  heroTree: 'Trickster',
+  damageDealtReduction: 0.05,
+}
+
+const mirrors: Ability = {
+  name: 'Mirrors',
+  id: 441250,
+  icon: 'trade_archaeology_highbornesoulmirror',
+  heroTree: 'Trickster',
+  abilityAugmentations: [
+    {
+      otherAbilityId: feint.id,
+      field: 'dr',
+      value: 0.1,
+    },
+    {
+      otherAbilityId: feint.id,
+      field: 'aoeDr',
+      value: 0.1,
+    },
+  ],
+}
+
+export const rogueAssAbilities = [
+  elusiveness,
+  cloakOfShadows,
+  baitAndSwitch,
+  evasion,
+  feint,
+]
 
 export const rogueOutlawAbilities = [
   thiefsVersatility,
   elusiveness,
+  mirrors,
+  smoke,
   precisionShot,
   evasion,
   feint,
@@ -82,6 +145,10 @@ export const rogueOutlawAbilities = [
 
 export const rogueSubAbilities = [
   elusiveness,
+  mirrors,
+  smoke,
+  cloakOfShadows,
+  baitAndSwitch,
   fadeToNothing,
   exhilaratingExecution,
   cloakedInShadows,
