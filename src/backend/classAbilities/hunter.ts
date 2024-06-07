@@ -80,6 +80,16 @@ const fortitudeOfTheBear: Ability = {
   icon: 'spell_druid_bearhug',
 }
 
+const dontLookBack: Ability = {
+  name: "Don't Look Back",
+  id: 450373,
+  icon: 'ability_racial_forceshield',
+  heroTree: 'Sentinel',
+  absorb: {
+    healthMultiplier: 0.1,
+  },
+}
+
 export const hunterBmAbilities = [
   aspectOfTheBeast,
   naturesEndurance,
@@ -87,8 +97,8 @@ export const hunterBmAbilities = [
   huntersAvoidance,
   enduranceTraining,
   aspectOfTheTurtle,
-  survivalOfTheFittest,
   fortitudeOfTheBear,
+  survivalOfTheFittest,
 ]
 
 export const hunterMmAbilities = [
@@ -96,9 +106,10 @@ export const hunterMmAbilities = [
   rejuvenatingWind,
   huntersAvoidance,
   enduranceTrainingMm,
+  dontLookBack,
   aspectOfTheTurtle,
-  survivalOfTheFittest,
   fortitudeOfTheBear,
+  survivalOfTheFittest,
 ]
 
 export const hunterSurvAbilities = [
@@ -106,7 +117,8 @@ export const hunterSurvAbilities = [
   rejuvenatingWind,
   huntersAvoidance,
   enduranceTraining,
+  dontLookBack,
   aspectOfTheTurtle,
-  survivalOfTheFittest,
   fortitudeOfTheBear,
+  survivalOfTheFittest,
 ]
