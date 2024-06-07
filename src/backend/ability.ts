@@ -100,5 +100,8 @@ export const abilitiesById = mapBy(allAbilities, 'id')
 for (const abilities of Object.values(groupBy(allAbilities, 'id'))) {
   const uniqueAbilities = new Set(abilities)
   if (uniqueAbilities.size === 1) continue
-  console.error(`Multiple abilities with same ID`, ...uniqueAbilities)
+
+  throw new Error(
+    `Multiple abilities with same ID: ${[...uniqueAbilities].map(({ name }) => name).join(', ')}`,
+  )
 }

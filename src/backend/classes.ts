@@ -41,7 +41,11 @@ import {
   paladinProtAbilities,
   paladinRetAbilities,
 } from './classAbilities/paladin'
-import { warlockAffDestroAbilities, warlockDemoAbilities } from './classAbilities/warlock'
+import {
+  warlockAffAbilities,
+  warlockDemoAbilities,
+  warlockDestroAbilities,
+} from './classAbilities/warlock'
 import {
   druidBalanceAbilities,
   druidFeralAbilities,
@@ -272,7 +276,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
   },
   Warlock: {
     Affliction: {
-      abilities: warlockAffDestroAbilities,
+      abilities: warlockAffAbilities,
       icon: 'spell_shadow_deathcoil',
       mainStat: 'intellect',
     },
@@ -282,7 +286,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       mainStat: 'intellect',
     },
     Destruction: {
-      abilities: warlockAffDestroAbilities,
+      abilities: warlockDestroAbilities,
       icon: 'spell_shadow_rainoffire',
       mainStat: 'intellect',
     },

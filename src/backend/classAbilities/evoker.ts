@@ -32,7 +32,7 @@ const rushOfVitality: Ability = {
 
 const hardenedScales: Ability = {
   name: 'Hardened Scales',
-  id: 441675,
+  id: 441180,
   icon: 'inv_10_skinning_scales_black',
   heroTree: 'Scalecommander',
   abilityAugmentations: [

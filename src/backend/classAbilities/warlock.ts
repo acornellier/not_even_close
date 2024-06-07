@@ -78,9 +78,10 @@ const darkPact: Ability = {
 
 const unendingResolve: Ability = {
   name: 'Unending Resolve',
-  dr: 0.25,
   id: 104773,
   icon: 'spell_shadow_demonictactics',
+  dr: 0.25,
+  absorb: {}, // For Infernal Bulwark
 }
 
 const strengthOfWill: Ability = {
@@ -97,7 +98,39 @@ const strengthOfWill: Ability = {
   ],
 }
 
-export const warlockAffDestroAbilities = [
+const friendsInDarkPlaces: Ability = {
+  name: 'Friends in Dark Places',
+  id: 449703,
+  icon: 'spell_shadow_deathpact',
+  heroTree: 'Soul Harvester',
+  abilityAugmentations: [
+    {
+      otherAbilityId: darkPact.id,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.5,
+    },
+  ],
+}
+
+const infernalBulwark: Ability = {
+  name: 'Infernal Bulwark',
+  id: 429130,
+  icon: 'spell_fire_felfireward',
+  heroTree: 'Diabolist',
+  abilityAugmentations: [
+    {
+      otherAbilityId: unendingResolve.id,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.1,
+    },
+  ],
+}
+
+export const warlockAffAbilities = [
+  friendsInDarkPlaces,
+  strengthOfWill,
   felArmor,
   demonicFortitude,
   soulLink,
@@ -108,16 +141,31 @@ export const warlockAffDestroAbilities = [
   soulburn,
   darkPact,
   unendingResolve,
+]
+
+export const warlockDestroAbilities = [
   strengthOfWill,
+  infernalBulwark,
+  felArmor,
+  demonicFortitude,
+  soulLink,
+  grimoireOfSacrifice,
+  shadowBulwark,
+  abyssWalker,
+  soulburn,
+  soulLeech,
+  darkPact,
+  unendingResolve,
 ]
 
 export const warlockDemoAbilities = [
   felArmor,
+  infernalBulwark,
   demonicFortitude,
   soulLink,
   abyssWalker,
-  soulLeech,
   soulburn,
+  soulLeech,
   darkPact,
   unendingResolve,
   strengthOfWill,

@@ -114,13 +114,17 @@ function augmentAbility(
 
     if (field === 'absorb') {
       const absorb = abilityToAugment.absorb
-      if (!absorb || !absorbField) return
+      if (absorb === undefined || absorbField === undefined) return
 
       abilityToAugment.absorb = { ...absorb }
 
       abilityToAugment.absorb[absorbField] ??= 0
       if (absorbField === 'healthMultiplier') {
-        abilityToAugment.absorb[absorbField]! *= 1 + stackedValue
+        if (!abilityToAugment.absorb[absorbField]) {
+          abilityToAugment.absorb[absorbField] = stackedValue
+        } else {
+          abilityToAugment.absorb[absorbField]! *= 1 + stackedValue
+        }
       } else {
         abilityToAugment.absorb[absorbField]! += stackedValue
       }
