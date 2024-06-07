@@ -107,6 +107,7 @@ const martialInstincts: Ability = {
   id: 450427,
   icon: 'ability_monk_palmstrike',
   aoeDr: 0.02,
+  onByDefault: true,
   stacks: {
     type: 'talent',
     max: 2,

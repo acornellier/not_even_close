@@ -120,11 +120,54 @@ const nullMagic: Ability = {
   drType: 'magic',
 }
 
-export const deathKnightAbilities = [
+const runeCarvedPlates: Ability = {
+  name: 'Rune Carved Plates',
+  id: 440282,
+  icon: 'spell_deathknight_runetap',
+  heroTree: 'Deathbringer',
+  dr: 0.02,
+  stacks: {
+    type: 'stacks',
+    max: 5,
+  },
+}
+
+const pactOfTheApocalypse: Ability = {
+  name: 'Pact of the Apocalypse',
+  id: 444726,
+  icon: 'spell_deathknight_subversion',
+  heroTree: 'Rider of the Apocalypse',
+  damageDealtReduction: 0.05,
+}
+
+const bloodSoakedGround: Ability = {
+  name: 'Blood Soaked Ground',
+  id: 434033,
+  icon: 'ability_ironmaidens_corruptedblood',
+  heroTree: "San'layn",
+  dr: 0.05,
+  drType: 'physical',
+}
+
+export const deathKnightFrostAbilities = [
   antiMagicBarrier,
   gloomWard,
   nullMagic,
   willOfTheNecropolis,
+  runeCarvedPlates,
+  pactOfTheApocalypse,
+  lichborne,
+  antiMagicShell,
+  iceboundFortitude,
+]
+
+export const deathKnightUnholyAbilities = [
+  antiMagicBarrier,
+  gloomWard,
+  nullMagic,
+  willOfTheNecropolis,
+  bloodSoakedGround,
+  pactOfTheApocalypse,
   lichborne,
   antiMagicShell,
   iceboundFortitude,
@@ -135,6 +178,8 @@ export const deathKnightBloodAbilities = [
   gloomWard,
   nullMagic,
   willOfTheNecropolis,
+  bloodSoakedGround,
+  runeCarvedPlates,
   foulBulwark,
   ashenDecay,
   lichborne,

@@ -27,8 +27,9 @@ import {
   hunterSurvAbilities,
 } from './classAbilities/hunter'
 import {
-  deathKnightAbilities,
   deathKnightBloodAbilities,
+  deathKnightFrostAbilities,
+  deathKnightUnholyAbilities,
 } from './classAbilities/deathKnight'
 import {
   warriorArmsAbilities,
@@ -91,12 +92,12 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       isTank: true,
     },
     Frost: {
-      abilities: deathKnightAbilities,
+      abilities: deathKnightFrostAbilities,
       icon: 'spell_deathknight_frostpresence',
       mainStat: 'other',
     },
     Unholy: {
-      abilities: deathKnightAbilities,
+      abilities: deathKnightUnholyAbilities,
       icon: 'spell_deathknight_unholypresence',
       mainStat: 'other',
     },

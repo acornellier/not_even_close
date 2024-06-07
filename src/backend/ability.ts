@@ -30,6 +30,7 @@ export type Ability = {
   icon: string
   onByDefault?: boolean
   notes?: string
+  heroTree?: string
 
   dr?: number
   drType?: DamageType
