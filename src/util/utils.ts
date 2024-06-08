@@ -1,4 +1,4 @@
-﻿import type {
+import type {
   Ability,
   SelectedAbility,
   SelectedAbilityId,
@@ -119,7 +119,11 @@ function augmentAbility(
       abilityToAugment.absorb = { ...absorb }
 
       abilityToAugment.absorb[absorbField] ??= 0
-      if (absorbField === 'healthMultiplier') {
+      if (
+        absorbField === 'healthMultiplier' ||
+        absorbField === 'spMultipler' ||
+        absorbField === 'apMultipler'
+      ) {
         if (!abilityToAugment.absorb[absorbField]) {
           abilityToAugment.absorb[absorbField] = stackedValue
         } else {

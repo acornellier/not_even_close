@@ -23,6 +23,48 @@ const fade: Ability = {
   icon: 'spell_magic_lesserinvisibilty',
 }
 
+const powerWordShield: Ability = {
+  name: 'Power Word: Shield',
+  id: 17,
+  icon: 'spell_holy_powerwordshield',
+  absorb: {
+    spMultipler: 3.36,
+    versAffected: true,
+  },
+}
+
+const powerWordShieldShadow: Ability = {
+  ...powerWordShield,
+  id: 17_1,
+  absorb: {
+    ...powerWordShield.absorb,
+    spMultipler: powerWordShield.absorb!.spMultipler! * 1.25,
+  },
+}
+
+const powerWordShieldDisc: Ability = {
+  ...powerWordShield,
+  id: 17_2,
+  absorb: {
+    ...powerWordShield.absorb,
+    spMultipler: powerWordShield.absorb!.spMultipler! * 1.37,
+  },
+}
+
+const aegisOfWrath: Ability = {
+  name: 'Aegis of Wrath',
+  id: 238135,
+  icon: 'spell_holy_powerwordshield',
+  abilityAugmentations: [
+    {
+      otherAbilityId: powerWordShieldDisc.id,
+      field: 'absorb',
+      absorbField: 'spMultipler',
+      value: 0.3,
+    },
+  ],
+}
+
 const desperatePrayer: Ability = {
   name: 'Desperate Prayer',
   healthIncrease: 0.25,
@@ -83,12 +125,14 @@ const wordOfSupremacy: Ability = {
 }
 
 export const priestDiscAbilities = [
+  lightsInspiration,
+  aegisOfWrath,
   spellWarding,
   embraceTheShadow,
   protectiveLight,
   fade,
+  powerWordShieldDisc,
   desperatePrayer,
-  lightsInspiration,
 ]
 
 export const priestHolyAbilities = [
@@ -96,6 +140,7 @@ export const priestHolyAbilities = [
   wordOfSupremacy,
   protectiveLight,
   fade,
+  powerWordShield,
   desperatePrayer,
   lightsInspiration,
 ]
@@ -106,6 +151,7 @@ export const priestShadowAbilities = [
   wordOfSupremacy,
   protectiveLight,
   fade,
+  powerWordShieldShadow,
   desperatePrayer,
   lightsInspiration,
   mentalFortitude,
