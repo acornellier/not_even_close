@@ -65,6 +65,27 @@ const aegisOfWrath: Ability = {
   ],
 }
 
+const preventiveMeasures: Ability = {
+  name: 'Preventive Measures',
+  id: 440662,
+  icon: 'spell_holy_powerwordshield',
+  heroTree: 'Oracle',
+  abilityAugmentations: [
+    {
+      otherAbilityId: powerWordShield.id,
+      field: 'absorb',
+      absorbField: 'spMultipler',
+      value: 0.15,
+    },
+    {
+      otherAbilityId: powerWordShieldDisc.id,
+      field: 'absorb',
+      absorbField: 'spMultipler',
+      value: 0.15,
+    },
+  ],
+}
+
 const desperatePrayer: Ability = {
   name: 'Desperate Prayer',
   healthIncrease: 0.25,
@@ -127,6 +148,7 @@ const wordOfSupremacy: Ability = {
 export const priestDiscAbilities = [
   lightsInspiration,
   aegisOfWrath,
+  preventiveMeasures,
   spellWarding,
   embraceTheShadow,
   protectiveLight,
@@ -136,6 +158,7 @@ export const priestDiscAbilities = [
 ]
 
 export const priestHolyAbilities = [
+  preventiveMeasures,
   spellWarding,
   wordOfSupremacy,
   protectiveLight,
