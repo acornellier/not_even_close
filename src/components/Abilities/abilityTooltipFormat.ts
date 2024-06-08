@@ -128,7 +128,12 @@ export function getAugmentationText(
   ability: Ability,
   selectedAbility: SelectedAbility | undefined,
 ) {
-  if (augmentation.field === 'absorb' && augmentation.absorbField === 'healthMultiplier')
+  if (
+    (augmentation.field === 'absorb' &&
+      augmentation.absorbField === 'healthMultiplier') ||
+    augmentation.absorbField === 'apMultipler' ||
+    augmentation.absorbField === 'spMultipler'
+  )
     return `${augmentation.value * 100}% more absorb`
 
   if (augmentation.otherSpellId === barkskin.spellId)

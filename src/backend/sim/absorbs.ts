@@ -41,7 +41,7 @@ export function calculateAbsorb(
   const healthAmount = (absorb.healthMultiplier ?? 0) * charResult.startingHealth
   const mainStatAmount = absorbMainStatAmount(absorb, charResult)
 
-  return Math.round(
+  return Math.floor(
     (healthAmount + mainStatAmount) * (stacks ?? 1) * (1 + versMultiplier),
   )
 }
@@ -80,7 +80,7 @@ export function getAbsorb(
     let absorbValue = absorb.raw
     if (absorb.versAffected)
       absorbValue *= 1 + (charResult?.adjustedStats.versatility ?? 0)
-    return Math.round(absorbValue)
+    return Math.floor(absorbValue)
   } else {
     return getMultiplierAbsorb(absorb, ability, stacks, charResult, charPartialResults)
   }
@@ -116,7 +116,7 @@ export function getAbsorbs(
 
   absorbs += customAbsorbs.reduce((acc, val) => acc + val, 0)
 
-  return Math.round(absorbs)
+  return Math.floor(absorbs)
 }
 
 export function getExtraAbsorbs(
@@ -137,5 +137,5 @@ export function getExtraAbsorbs(
     }
   }
 
-  return Math.round(extraAbsorbs)
+  return Math.floor(extraAbsorbs)
 }
