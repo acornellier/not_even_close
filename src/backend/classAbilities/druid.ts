@@ -82,6 +82,16 @@ export const barkskin: Ability = {
     'The Matted Fur absorb is exact for Balance and Resto, but slightly off for Feral and Guardian due to weapon dps missing.',
 }
 
+const survivalInsticts: Ability = {
+  name: 'Survival Instincts',
+  dr: 0.5,
+  spellId: 61336,
+  icon: 'ability_druid_tigersroar',
+  absorb: {
+    versAffected: true,
+  },
+}
+
 const mattedFur: Ability = {
   name: 'Matted Fur',
   spellId: 385786,
@@ -93,15 +103,14 @@ const mattedFur: Ability = {
       absorbField: 'apMultipler',
       value: 3.125,
     },
+    {
+      otherSpellId: survivalInsticts.spellId,
+      field: 'absorb',
+      absorbField: 'apMultipler',
+      value: 3.125,
+    },
   ],
   icon: 'inv_misc_pelt_15',
-}
-
-const survivalInsticts: Ability = {
-  name: 'Survival Instincts',
-  dr: 0.5,
-  spellId: 61336,
-  icon: 'ability_druid_tigersroar',
 }
 
 const protectiveGrowth: Ability = {
