@@ -11,13 +11,15 @@ import type { ClassSpec } from '../../backend/classes'
 import { classSpecs } from '../../backend/classes'
 import { LabelledAbilitySelect } from '../Abilities/LabelledAbilitySelect'
 import { externals } from '../../backend/groupAbilities/externals'
-import { useCallback } from 'react'
-import type { SelectedAbilityId } from '../../backend/ability'
+import { useCallback, useMemo } from 'react'
+import type { AbilityReplacement, SelectedAbilityId } from '../../backend/ability'
+import { abilitiesById } from '../../backend/ability'
 import { CreateProfile } from './CreateProfile'
 import { LoadProfile } from './LoadProfile'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { PasteButton } from './PasteButton.tsx'
 import { Label } from '../Common/Label.tsx'
+import { useLocalStorage } from '../../util/useLocalStorage.ts'
 
 import { useAbilitiesThatExist } from './useAbilitiesThatExist.ts'
 
@@ -46,6 +48,11 @@ export function CharacterComponent({
   loadProfile,
   deleteProfile,
 }: Props) {
+  const [replacements, setReplacements] = useLocalStorage<Record<number, number>>(
+    'replacements',
+    {},
+  )
+
   const setCharacterStats = useCallback(
     (stats: CharacterStatsInput) => updateCharacter({ stats }),
     [updateCharacter],
@@ -70,8 +77,27 @@ export function CharacterComponent({
     [updateCharacter],
   )
 
+  const replaceAbility = useCallback(
+    ({ sourceId, targetId }: AbilityReplacement) => {
+      setReplacements((oldReplacements) => {
+        const newReplacements = { ...oldReplacements }
+        delete newReplacements[targetId]
+        newReplacements[sourceId] = targetId
+        return newReplacements
+      })
+    },
+    [setReplacements],
+  )
+
   const specDetails = classSpecs[character.classSpec.class][character.classSpec.spec]!
   const specAbilities = specDetails.abilities
+
+  const availableAbilities = useMemo(() => {
+    return specAbilities.map((ability) => {
+      const replacement = replacements[ability.id]
+      return !replacement ? ability : abilitiesById[replacement] ?? ability
+    })
+  }, [replacements, specAbilities])
 
   const loadedProfile = profiles.find(
     (profile) => profile.id === character.loadedProfileId,
@@ -142,9 +168,10 @@ export function CharacterComponent({
         <ClassDropdown onChange={setSpec} selectedClassSpec={character.classSpec} />
         <AbilitySelect
           characterIdx={idx}
-          availableAbilities={specAbilities}
+          availableAbilities={availableAbilities}
           selectedAbilities={character.abilities}
           setSelectedAbilities={setAbilities}
+          replaceAbility={replaceAbility}
         />
       </div>
 

@@ -22,8 +22,8 @@ const bearForm: Ability = {
   icon: 'ability_racial_bearform',
 }
 
-const ursineVigor: Ability = {
-  name: 'Ursine Vigor',
+export const ursineVigorPassive: Ability = {
+  name: 'Ursine Vigor (passive)',
   id: 377842,
   icon: 'ability_druid_markofursol',
   abilityAugmentations: [
@@ -39,6 +39,17 @@ const ursineVigor: Ability = {
     },
   ],
 }
+
+export const ursineVigorActive: Ability = {
+  name: 'Ursine Vigor (active)',
+  id: 377842_1,
+  icon: 'ability_druid_markofursol',
+  healthIncrease: 0.15,
+  armorIncrease: 0.15,
+  replacedBy: ursineVigorPassive.id,
+}
+
+ursineVigorPassive.replacedBy = ursineVigorActive.id
 
 const heartOfTheWild: Ability = {
   name: 'Heart of the Wild',
@@ -158,9 +169,9 @@ export const druidBalanceAbilities = [
   thickHide,
   glisteningFur,
   heartOfTheWild,
-  ursineVigor,
   risingLight,
   protectiveGrowth,
+  ursineVigorPassive,
   bearForm,
   barkskin,
 ]
@@ -173,9 +184,9 @@ export const druidFeralAbilities = [
   risingLight,
   protectiveGrowth,
   fountOfStrength,
-  bearForm,
   heartOfTheWild,
-  ursineVigor,
+  ursineVigorPassive,
+  bearForm,
   barkskin,
   survivalInsticts,
 ]
@@ -187,9 +198,11 @@ export const druidRestoAbilities = [
   thickHide,
   risingLight,
   protectiveGrowth,
-  bearForm,
   heartOfTheWild,
-  ursineVigor,
+  ursineVigorPassive,
+  bearForm,
   barkskin,
   innerPeace,
 ]
+
+export const druidReplacements = [ursineVigorActive]

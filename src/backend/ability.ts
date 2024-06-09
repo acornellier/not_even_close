@@ -1,9 +1,10 @@
-﻿import type { ClassSpec, WowClass } from './classes'
+import type { ClassSpec, WowClass } from './classes'
 import { classSpecs } from './classes'
 import { externals } from './groupAbilities/externals.ts'
 import { groupBuffs } from './groupAbilities/groupBuffs.ts'
 import { groupActives } from './groupAbilities/groupActives.ts'
 import { groupBy, mapBy } from '../util/utils.ts'
+import { druidReplacements } from './classAbilities/druid.ts'
 
 export type DamageType = 'magic' | 'physical'
 
@@ -48,6 +49,7 @@ export type Ability = {
   abilityAugmentations?: AbilityAugmentation[]
   associatedClass?: WowClass
   associatedSpec?: ClassSpec
+  replacedBy?: number
 }
 
 export type SelectedAbilityId = {
@@ -84,6 +86,11 @@ export type AbilityAugmentation = {
   value: number
 }
 
+export type AbilityReplacement = {
+  sourceId: number
+  targetId: number
+}
+
 const specAbilities = Object.values(classSpecs)
   .flatMap((specs) => Object.values(specs))
   .flatMap(({ abilities }) => abilities)
@@ -93,6 +100,7 @@ export const allAbilities: Ability[] = [
   ...externals,
   ...groupBuffs,
   ...groupActives,
+  ...druidReplacements,
 ]
 
 export const abilitiesById = mapBy(allAbilities, 'id')
