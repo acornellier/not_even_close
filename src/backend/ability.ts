@@ -42,6 +42,7 @@ export type Ability = {
   abilityAugmentations?: AbilityAugmentation[]
   associatedClass?: WowClass
   associatedSpec?: ClassSpec
+  replacedBy?: number
 }
 
 export type SelectedAbility = {
@@ -71,4 +72,9 @@ export type AbilityAugmentation = {
   field: AbilityField
   absorbField?: AbsorbAugmentations
   value: number
+}
+
+export type AbilityReplacement = {
+  sourceId: number
+  targetId: number
 }

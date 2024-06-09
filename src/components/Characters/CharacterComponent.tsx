@@ -12,13 +12,18 @@ import { classSpecs } from '../../backend/classes'
 import { LabelledAbilitySelect } from '../Abilities/LabelledAbilitySelect'
 import { aaVersBuff, externals } from '../../backend/groupAbilities/externals'
 import { useCallback, useMemo } from 'react'
-import type { SelectedAbility } from '../../backend/ability'
+import type { AbilityReplacement, SelectedAbility } from '../../backend/ability'
 import { CreateProfile } from './CreateProfile'
 import { LoadProfile } from './LoadProfile'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { PasteButton } from './PasteButton.tsx'
 import { useSimContext } from '../../util/useSimContext.ts'
 import { Label } from '../Common/Label.tsx'
+import { useLocalStorage } from '../../util/useLocalStorage.ts'
+import {
+  ursineVigorActive,
+  ursineVigorPassive,
+} from '../../backend/classAbilities/druid.ts'
 
 interface Props {
   idx: number
@@ -47,6 +52,11 @@ export function CharacterComponent({
 }: Props) {
   const { dungeon } = useSimContext()
 
+  const [replacements, setReplacements] = useLocalStorage<Record<number, number>>(
+    'replacements',
+    {},
+  )
+
   const setCharacterStats = useCallback(
     (stats: CharacterStatsInput) => updateCharacter({ stats }),
     [updateCharacter],
@@ -67,6 +77,18 @@ export function CharacterComponent({
     [updateCharacter],
   )
 
+  const replaceAbility = useCallback(
+    ({ sourceId, targetId }: AbilityReplacement) => {
+      setReplacements((oldReplacements) => {
+        const newReplacements = { ...oldReplacements }
+        delete newReplacements[targetId]
+        newReplacements[sourceId] = targetId
+        return newReplacements
+      })
+    },
+    [setReplacements],
+  )
+
   const availableExternals = useMemo(() => {
     const res = [...externals]
     if (dungeon?.key === 'aa') res.push(aaVersBuff)
@@ -75,6 +97,19 @@ export function CharacterComponent({
 
   const specDetails = classSpecs[character.classSpec.class][character.classSpec.spec]!
   const specAbilities = specDetails.abilities
+
+  const availableAbilities = useMemo(() => {
+    return specAbilities.map((ability) => {
+      const replacement = replacements[ability.spellId]
+      return !replacement
+        ? ability
+        : replacement === ursineVigorActive.spellId
+          ? ursineVigorActive
+          : replacement === ursineVigorPassive.spellId
+            ? ursineVigorPassive
+            : ability
+    })
+  }, [replacements, specAbilities])
 
   const loadedProfile = profiles.find(
     (profile) => profile.id === character.loadedProfileId,
@@ -145,9 +180,10 @@ export function CharacterComponent({
         <ClassDropdown onChange={setSpec} selectedClassSpec={character.classSpec} />
         <AbilitySelect
           characterIdx={idx}
-          availableAbilities={specAbilities}
+          availableAbilities={availableAbilities}
           selectedAbilities={character.abilities}
           setSelectedAbilities={setAbilities}
+          replaceAbility={replaceAbility}
         />
       </div>
 

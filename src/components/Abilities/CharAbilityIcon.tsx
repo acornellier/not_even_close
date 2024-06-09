@@ -1,4 +1,4 @@
-import type { Ability, SelectedAbility } from '../../backend/ability'
+import type { Ability, AbilityReplacement, SelectedAbility } from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
 import { defaultStacks } from '../../util/utils.ts'
 import { Fragment } from 'react'
@@ -12,6 +12,7 @@ import {
   getExtraAbsorbText,
 } from './abilityTooltipFormat.ts'
 import { AbilityIcon } from '../Common/AbilityIcon.tsx'
+import { Button } from '../Common/Button.tsx'
 
 const iconSize = 40
 
@@ -20,8 +21,30 @@ interface AbilityIconProps {
   selectedAbility: SelectedAbility | undefined
   toggleAbility: (spellId: number) => void
   setAbilityStacks: (spellId: number, stacks: number) => void
+  replaceAbility?: (replacement: AbilityReplacement) => void
   allAbilities: Ability[]
   characterIdx?: number
+}
+
+interface UrsineVigorSwapperProps {
+  ability: Ability
+  replaceAbility?: (replacement: AbilityReplacement) => void
+}
+
+function UrsineVigorSwapper({ ability, replaceAbility }: UrsineVigorSwapperProps) {
+  if (!ability.replacedBy || !replaceAbility) return
+
+  return (
+    <Button
+      short
+      className="mt-1"
+      onClick={() =>
+        replaceAbility({ sourceId: ability.spellId, targetId: ability.replacedBy! })
+      }
+    >
+      Swap to {ability.abilityAugmentations ? 'active' : 'passive'} version
+    </Button>
+  )
 }
 
 export function CharAbilityIcon({
@@ -29,6 +52,7 @@ export function CharAbilityIcon({
   selectedAbility,
   toggleAbility,
   setAbilityStacks,
+  replaceAbility,
   allAbilities,
   characterIdx,
 }: AbilityIconProps) {
@@ -83,7 +107,13 @@ export function CharAbilityIcon({
         )}
         <AbilityIcon size={iconSize} icon={ability.icon} />
       </div>
-      <TooltipStyled id={tooltipId} clickable={!!ability.stacks && !!selectedAbility}>
+      <TooltipStyled
+        id={tooltipId}
+        clickable={
+          (!!ability.stacks && !!selectedAbility) ||
+          (!!ability.replacedBy && !!replaceAbility)
+        }
+      >
         <div className="flex flex-col">
           <span className="text-xl">{ability.name}</span>
           {abilityEffectFields.map((field) => {
@@ -125,6 +155,7 @@ export function CharAbilityIcon({
               />
             </div>
           )}
+          <UrsineVigorSwapper ability={ability} replaceAbility={replaceAbility} />
         </div>
       </TooltipStyled>
     </>

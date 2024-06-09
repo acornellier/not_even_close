@@ -1,4 +1,4 @@
-﻿import type { Ability, SelectedAbility } from '../../backend/ability'
+﻿import type { Ability, AbilityReplacement, SelectedAbility } from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
 import { augmentAbilities, getSelectedAbility } from '../../util/utils.ts'
 import { CharAbilityIcon } from './CharAbilityIcon'
@@ -10,6 +10,7 @@ interface Props {
   availableAbilities: Ability[]
   selectedAbilities: SelectedAbility[]
   setSelectedAbilities: (abilities: SelectedAbility[]) => void
+  replaceAbility?: (replacement: AbilityReplacement) => void
   characterIdx?: number
 }
 
@@ -26,6 +27,7 @@ export function AbilitySelect({
   availableAbilities,
   selectedAbilities,
   setSelectedAbilities,
+  replaceAbility,
   characterIdx,
 }: Props) {
   const { toggleAbility, setAbilityStacks } = useAbilitySetters({
@@ -55,6 +57,7 @@ export function AbilitySelect({
           selectedAbility={getSelectedAbility(ability.spellId, selectedAbilities)}
           toggleAbility={toggleAbility}
           setAbilityStacks={setAbilityStacks}
+          replaceAbility={replaceAbility}
           allAbilities={availableAbilities}
           characterIdx={characterIdx}
         />
@@ -69,6 +72,7 @@ export function AbilitySelect({
           selectedAbility={getSelectedAbility(ability.spellId, selectedAbilities)}
           toggleAbility={toggleAbility}
           setAbilityStacks={setAbilityStacks}
+          replaceAbility={replaceAbility}
           allAbilities={availableAbilities}
           characterIdx={characterIdx}
         />

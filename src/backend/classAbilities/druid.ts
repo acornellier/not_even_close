@@ -26,28 +26,8 @@ const bearForm: Ability = {
   icon: 'ability_racial_bearform',
 }
 
-const lycarasTeachings: Ability = {
-  name: "Lycara's Teachings",
-  onByDefault: false,
-  spellId: 378988,
-  icon: 'inv_trinket_ardenweald_02_green',
-  notes:
-    'You might not receive the vers buff for up to 5 seconds after swapping to Bear Form',
-  abilityAugmentations: [
-    {
-      otherSpellId: bearForm.spellId,
-      field: 'versIncrease',
-      value: 0.02,
-    },
-  ],
-  stacks: {
-    type: 'talent',
-    max: 3,
-  },
-}
-
-const ursineVigor: Ability = {
-  name: 'Ursine Vigor',
+export const ursineVigorPassive: Ability = {
+  name: 'Ursine Vigor (passive)',
   spellId: 377842,
   stacks: {
     type: 'talent',
@@ -62,6 +42,20 @@ const ursineVigor: Ability = {
     },
   ],
 }
+
+export const ursineVigorActive: Ability = {
+  name: 'Ursine Vigor (active)',
+  spellId: 377842_1,
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
+  icon: 'ability_druid_markofursol',
+  healthIncrease: 0.1,
+  replacedBy: ursineVigorPassive.spellId,
+}
+
+ursineVigorPassive.replacedBy = ursineVigorActive.spellId
 
 const heartOfTheWild: Ability = {
   name: 'Heart of the Wild',
@@ -128,10 +122,9 @@ export const druidBalanceAbilities = [
   mattedFur,
   thickHide,
   risingLight,
-  bearForm,
   heartOfTheWild,
-  lycarasTeachings,
-  ursineVigor,
+  ursineVigorPassive,
+  bearForm,
   barkskin,
 ]
 
@@ -140,10 +133,9 @@ export const druidFeralAbilities = [
   thickHide,
   protectiveGrowth,
   risingLight,
-  bearForm,
   heartOfTheWild,
-  lycarasTeachings,
-  ursineVigor,
+  ursineVigorPassive,
+  bearForm,
   barkskin,
   survivalInsticts,
 ]
@@ -152,10 +144,9 @@ export const druidRestoAbilities = [
   mattedFur,
   risingLight,
   thickHide,
-  bearForm,
   heartOfTheWild,
-  lycarasTeachings,
-  ursineVigor,
+  ursineVigorPassive,
+  bearForm,
   barkskin,
   innerPeace,
 ]
