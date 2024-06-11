@@ -556,6 +556,15 @@
     "cooldown": 20
   },
   {
+    "id": 386411,
+    "name": "Quick Shot",
+    "icon": "inv_ammo_arrow_06",
+    "damage": 273789,
+    "aoe": false,
+    "physical": true,
+    "variance": 0.025
+  },
+  {
     "id": 382836,
     "name": "Brutalize",
     "icon": "ability_warrior_bloodbath",

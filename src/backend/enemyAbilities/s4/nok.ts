@@ -12,6 +12,8 @@ const brutalize = getEnemySpell(382836, {
   tankOnly: true,
 })
 
+const quickShot = getEnemySpell(386411)
+
 const galeArrow = getEnemySpell(386016, {
   cooldown: 57,
 })
@@ -57,6 +59,7 @@ const chainLightning = getEnemySpell(387127, {
 export const nokAbilities = [
   shardsOfStone,
   lightningStrike,
+  quickShot,
   brutalize,
   galeArrow,
   rendingStrike,
