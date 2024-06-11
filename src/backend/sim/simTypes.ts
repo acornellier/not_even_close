@@ -21,6 +21,7 @@ export interface CharacterStats {
   avoidance: number
   armor: number
   mainStat: number
+  masteryPercent: number
 }
 
 export interface CharacterPartialResult {

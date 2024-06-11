@@ -49,6 +49,7 @@ import {
 import {
   druidBalanceAbilities,
   druidFeralAbilities,
+  druidGuardianAbilities,
   druidRestoAbilities,
 } from './classAbilities/druid'
 import {
@@ -130,6 +131,12 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: druidFeralAbilities,
       icon: 'ability_druid_catform',
       mainStat: 'other',
+    },
+    Guardian: {
+      abilities: druidGuardianAbilities,
+      icon: 'ability_racial_bearform',
+      mainStat: 'other',
+      isTank: true,
     },
     Restoration: {
       abilities: druidRestoAbilities,

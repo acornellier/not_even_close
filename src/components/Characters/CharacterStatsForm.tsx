@@ -40,6 +40,10 @@ export function CharacterStatsForm({
       ),
   )
 
+  const showMastery = specAbilities.some(({ notes }) =>
+    notes?.toLowerCase().includes('mastery'),
+  )
+
   const versPercent = versRawToPercent(characterStats.versatilityRaw ?? 0)
   const avoidancePercent = avoidanceRawToPercent(characterStats.avoidanceRaw ?? 0)
   const physicalDr = armorToPhysicalDr(characterStats.armor ?? 0)
@@ -84,6 +88,13 @@ export function CharacterStatsForm({
           label="Main stat"
           value={characterStats.mainStat}
           onChange={onChangeStat('mainStat')}
+        />
+      )}
+      {showMastery && (
+        <NumericInput
+          label="Mastery %"
+          value={characterStats.masteryPercent}
+          onChange={onChangeStat('masteryPercent')}
         />
       )}
     </div>

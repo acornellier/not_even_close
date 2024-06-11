@@ -7,7 +7,6 @@ import type {
   StackOptions,
 } from '../../backend/ability.ts'
 import { formatNumber, getStackedValue, roundHundred } from '../../util/utils.ts'
-import { barkskin } from '../../backend/classAbilities/druid.ts'
 
 function getStackArray(stacks: StackOptions | undefined, selectedStacks?: number) {
   return !stacks || stacks.type === 'stacks'
@@ -135,9 +134,6 @@ export function getAugmentationText(
     augmentation.absorbField === 'spMultipler'
   )
     return `${augmentation.value * 100}% more absorb`
-
-  if (augmentation.otherAbilityId === barkskin.id)
-    return `+${augmentation.value * 100}% AP absorb`
 
   return `+${getEffectText(augmentation.field, augmentation.value, ability, selectedAbility)}`
 }

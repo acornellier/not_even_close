@@ -1,4 +1,4 @@
-﻿import type { Dispatch, SetStateAction } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect } from 'react'
 import { getAddonOutput, isAddonPaste } from './addon.ts'
 import type { SelectedAbilityId } from '../backend/ability.ts'
@@ -45,8 +45,14 @@ export function usePaste({
 
         if (idxToUpdate !== -1) {
           indexesUpdated.add(idxToUpdate)
+
+          const newStats = {
+            ...stats,
+            masteryPercent: characters[idxToUpdate]!.stats.masteryPercent,
+          }
+
           updateCharacterIdx(idxToUpdate)(
-            { classSpec: classSpec, stats },
+            { classSpec: classSpec, stats: newStats },
             addTemperedVers,
           )
 
@@ -73,7 +79,14 @@ export function usePaste({
 
       addToast({ message: 'Paste success.', type: 'success' })
     },
-    [addToast, characters, updateCharacterIdx, setGroupBuffs, selectedGroupBuffs],
+    [
+      addToast,
+      characters,
+      updateCharacterIdx,
+      setGroupBuffs,
+      selectedGroupBuffs,
+      setCharacters,
+    ],
   )
 
   const pasteWithButton = useCallback(

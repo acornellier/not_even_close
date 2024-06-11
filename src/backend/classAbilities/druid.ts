@@ -73,7 +73,7 @@ export const barkskin: Ability = {
   },
   icon: 'spell_nature_stoneclawtotem',
   notes:
-    'The Matted Fur absorb is exact for Balance and Resto, but slightly off for Feral and Guardian due to weapon dps missing.',
+    'The Matted Fur absorb is exact for Balance and Resto, but slightly off for Feral due to weapon dps missing.',
 }
 
 const survivalInsticts: Ability = {
@@ -168,6 +168,70 @@ const fountOfStrength: Ability = {
   healthIncrease: 0.1,
 }
 
+export const naturesGuardian: Ability = {
+  name: "Mastery: Nature's Guardian",
+  id: 155783,
+  icon: 'spell_druid_primaltenacity',
+  onByDefault: true,
+  notes: '% HP equal to mastery %',
+}
+
+const rageOfTheSleeper: Ability = {
+  name: 'Rage of the Sleeper',
+  id: 200851,
+  icon: 'inv_hand_1h_artifactursoc_d_01',
+  dr: 0.25,
+}
+
+const reinforcedFur: Ability = {
+  name: 'Reinforced Fur',
+  id: 393618,
+  icon: 'spell_nature_spiritarmor',
+  abilityAugmentations: [
+    {
+      otherAbilityId: barkskin.id,
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
+}
+
+const rendAndTear: Ability = {
+  name: 'Rend and Tear',
+  id: 204053,
+  icon: 'ability_druid_swipe',
+  damageDealtReduction: 0.02,
+  stacks: {
+    type: 'stacks',
+    max: 5,
+  },
+}
+
+const scintillatingMoonlight: Ability = {
+  name: 'Scintillating Moonlight',
+  id: 238049,
+  icon: 'spell_fire_twilightfireward',
+  damageDealtReduction: 0.05,
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
+}
+
+const pulverize: Ability = {
+  name: 'Pulverize',
+  id: 80313,
+  icon: 'spell_druid_malfurionstenacity',
+  damageDealtReduction: 0.35,
+}
+
+const incarnationGuardian: Ability = {
+  name: 'Incarnation: Guardian of Ursoc',
+  id: 102558,
+  icon: 'spell_druid_incarnation',
+  healthIncrease: 0.3,
+}
+
 export const druidBalanceAbilities = [
   mattedFur,
   oakskin,
@@ -209,6 +273,20 @@ export const druidRestoAbilities = [
   bearForm,
   barkskin,
   innerPeace,
+]
+
+export const druidGuardianAbilities = [
+  reinforcedFur,
+  naturesGuardian,
+  thickHide,
+  risingLight,
+  rendAndTear,
+  scintillatingMoonlight,
+  pulverize,
+  incarnationGuardian,
+  survivalInsticts,
+  rageOfTheSleeper,
+  barkskin,
 ]
 
 export const druidReplacements = [ursineVigorActive]
