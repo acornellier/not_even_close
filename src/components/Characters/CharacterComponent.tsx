@@ -117,11 +117,16 @@ export function CharacterComponent({
 
   return (
     <div className="flex flex-col items-start gap-3 w-full">
-      {specDetails.isTank && (
-        <Label className="[&]:bg-red-700">
-          WARNING: Tanks are complex and may produce invalid results
-        </Label>
-      )}
+      <div className="flex gap-2 flex-wrap">
+        {specDetails.isTank && (
+          <Label className="[&]:bg-red-700">
+            WARNING: Tanks are complex and may produce invalid results
+          </Label>
+        )}
+        {character.classSpec.spec === 'Guardian' && (
+          <Label className="[&]:bg-orange-600">Input your stats in bear form</Label>
+        )}
+      </div>
       <div className="flex justify-between w-full gap-2">
         <CharacterStatsForm
           idx={idx}

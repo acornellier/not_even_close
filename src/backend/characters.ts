@@ -7,6 +7,7 @@ export interface CharacterStatsInput {
   avoidanceRaw: number | undefined
   armor: number | undefined
   mainStat: number | undefined
+  masteryPercent?: number | undefined
 }
 
 export interface Character {

@@ -79,7 +79,7 @@ export const barkskin: Ability = {
   },
   icon: 'spell_nature_stoneclawtotem',
   notes:
-    'The Matted Fur absorb is exact for Balance and Resto, but slightly off for Feral and Guardian due to weapon dps missing.',
+    'The Matted Fur absorb is exact for Balance and Resto, but slightly off for Feral due to weapon dps missing.',
 }
 
 const survivalInsticts: Ability = {
@@ -127,6 +127,70 @@ const innerPeace: Ability = {
   icon: 'ability_druid_dreamstate',
 }
 
+export const naturesGuardian: Ability = {
+  name: "Mastery: Nature's Guardian",
+  spellId: 155783,
+  icon: 'spell_druid_primaltenacity',
+  onByDefault: true,
+  notes: '% HP equal to mastery %',
+}
+
+const rageOfTheSleeper: Ability = {
+  name: 'Rage of the Sleeper',
+  spellId: 200851,
+  icon: 'inv_hand_1h_artifactursoc_d_01',
+  dr: 0.25,
+}
+
+const reinforcedFur: Ability = {
+  name: 'Reinforced Fur',
+  spellId: 393618,
+  icon: 'spell_nature_spiritarmor',
+  abilityAugmentations: [
+    {
+      otherSpellId: barkskin.spellId,
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
+}
+
+const rendAndTear: Ability = {
+  name: 'Rend and Tear',
+  spellId: 204053,
+  icon: 'ability_druid_swipe',
+  damageDealtReduction: 0.02,
+  stacks: {
+    type: 'stacks',
+    max: 5,
+  },
+}
+
+const scintillatingMoonlight: Ability = {
+  name: 'Scintillating Moonlight',
+  spellId: 238049,
+  icon: 'spell_fire_twilightfireward',
+  damageDealtReduction: 0.05,
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
+}
+
+const pulverize: Ability = {
+  name: 'Pulverize',
+  spellId: 80313,
+  icon: 'spell_druid_malfurionstenacity',
+  damageDealtReduction: 0.35,
+}
+
+const incarnationGuardian: Ability = {
+  name: 'Incarnation: Guardian of Ursoc',
+  spellId: 102558,
+  icon: 'spell_druid_incarnation',
+  healthIncrease: 0.3,
+}
+
 export const druidBalanceAbilities = [
   mattedFur,
   thickHide,
@@ -158,4 +222,18 @@ export const druidRestoAbilities = [
   bearForm,
   barkskin,
   innerPeace,
+]
+
+export const druidGuardianAbilities = [
+  reinforcedFur,
+  naturesGuardian,
+  thickHide,
+  risingLight,
+  rendAndTear,
+  scintillatingMoonlight,
+  pulverize,
+  incarnationGuardian,
+  survivalInsticts,
+  rageOfTheSleeper,
+  barkskin,
 ]

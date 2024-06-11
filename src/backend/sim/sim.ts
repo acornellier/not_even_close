@@ -18,6 +18,7 @@ import type {
 } from './simTypes'
 import { getAbsorbs, getExtraAbsorbs } from './absorbs'
 import { getDamageReduction } from './dr'
+import { naturesGuardian } from '../classAbilities/druid.ts'
 
 function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isTrashAbility: boolean) {
   let scalingFactor = 1
@@ -53,6 +54,7 @@ function getAdjustedStats(
     avoidance: avoidanceRawToPercent(characterStats.avoidanceRaw ?? 0) / 100,
     armor: characterStats.armor ?? 0,
     mainStat: characterStats.mainStat ?? 0,
+    masteryPercent: characterStats.masteryPercent ?? 0,
   }
 
   for (const { ability } of abilities) {
@@ -95,6 +97,8 @@ function getStartingHealth(characterStats: CharacterStats, abilities: SelectedAb
     if (ability.healthIncrease) {
       startingHealth *=
         1 + getStackedValue(ability.healthIncrease, stacks, ability.stacks)
+    } else if (ability.spellId === naturesGuardian.spellId) {
+      startingHealth *= 1 + characterStats.masteryPercent / 100
     }
   }
 

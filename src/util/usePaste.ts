@@ -45,7 +45,16 @@ export function usePaste({
 
         if (idxToUpdate !== -1) {
           indexesUpdated.add(idxToUpdate)
-          updateCharacterIdx(idxToUpdate)({ classSpec: classSpec, stats }, addTepidVers)
+
+          const newStats = {
+            ...stats,
+            masteryPercent: characters[idxToUpdate]!.stats.masteryPercent,
+          }
+
+          updateCharacterIdx(idxToUpdate)(
+            { classSpec: classSpec, stats: newStats },
+            addTepidVers,
+          )
 
           setGroupBuffs([
             ...selectedGroupBuffs,
@@ -72,7 +81,14 @@ export function usePaste({
 
       addToast({ message: 'Paste success.', type: 'success' })
     },
-    [addToast, characters, updateCharacterIdx, setGroupBuffs, selectedGroupBuffs],
+    [
+      addToast,
+      characters,
+      updateCharacterIdx,
+      setGroupBuffs,
+      selectedGroupBuffs,
+      setCharacters,
+    ],
   )
 
   const pasteWithButton = useCallback(
