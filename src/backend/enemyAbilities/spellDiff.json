@@ -346,7 +346,8 @@
     "variance": 0,
     "trashAbility": true,
     "cooldown": 15,
-    "outrange": 10
+    "outrange": 10,
+    "avoidable": true
   },
   {
     "id": 384015,
