@@ -13,6 +13,7 @@ import { CardResult } from './CardResult'
 import { AbilityIcon } from '../Common/AbilityIcon.tsx'
 import { shortRoundedNumber } from '../../util/utils.ts'
 import { scaleDamage } from '../../backend/sim/sim.ts'
+import { ShieldSlashIcon } from '../Common/Icons/ShieldSlashIcon.tsx'
 
 interface Props {
   ability: EnemyAbility
@@ -112,6 +113,10 @@ export function EnemyAbilityCard({
             >
               {ability.physical ? 'Physical' : 'Magic'}
             </AbilityDetailsChip>
+            {ability.ignoresArmor && (
+              <ShieldSlashIcon height={20} data-tooltip-id="ignores-armor-tooltip" />
+            )}
+            <TooltipStyled id="ignores-armor-tooltip">Ignores armor</TooltipStyled>
           </div>
           <div className="flex gap-2">
             {result?.characters[0] && <CardResult result={result?.characters[0]} />}
