@@ -113,8 +113,8 @@ function augmentAbility(
     const stackedValue = getStackedValue(value, stacks, stackOptions)
 
     if (field === 'absorb') {
-      const absorb = abilityToAugment.absorb
-      if (absorb === undefined || absorbField === undefined) return
+      const absorb = abilityToAugment.absorb ?? {}
+      if (absorbField === undefined) return
 
       abilityToAugment.absorb = { ...absorb }
 

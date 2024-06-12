@@ -7,5 +7,134 @@
     "aoe": false,
     "physical": false,
     "variance": 0
+  },
+  {
+    "id": 388817,
+    "name": "Shards of Stone",
+    "icon": "inv_10_elementalshardfoozles_earth",
+    "damage": 93607,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "cooldown": [
+      13,
+      25
+    ]
+  },
+  {
+    "id": 384186,
+    "name": "Lightning Strike",
+    "icon": "ability_vehicle_electrocharge",
+    "damage": 93517,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "cooldown": 20
+  },
+  {
+    "id": 382836,
+    "name": "Brutalize",
+    "icon": "ability_warrior_bloodbath",
+    "damage": 416032,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "tankOnly": true
+  },
+  {
+    "id": 386016,
+    "name": "Gale Arrow",
+    "icon": "ability_skyreach_four_wind",
+    "damage": 119609,
+    "aoe": false,
+    "physical": false,
+    "variance": 0.05,
+    "cooldown": 57
+  },
+  {
+    "id": 375937,
+    "name": "Rending Strike",
+    "icon": "ability_gouge",
+    "damage": 364257,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "tankOnly": true
+  },
+  {
+    "id": 376660,
+    "name": "Iron Spear",
+    "icon": "inv_spear_07",
+    "damage": 156012,
+    "aoe": true,
+    "physical": true,
+    "variance": 0,
+    "cooldown": 35,
+    "combatDrop": "cancel"
+  },
+  {
+    "id": 376827,
+    "name": "Conductive Strike",
+    "icon": "ability_thunderking_lightningwhip",
+    "damage": 181801,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "tankOnly": true
+  },
+  {
+    "id": 376866,
+    "name": "Static Spear",
+    "icon": "inv_spear_04",
+    "damage": 158612,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "cooldown": 39,
+    "combatDrop": "cancel"
+  },
+  {
+    "id": 376896,
+    "name": "Crackling Upheaval",
+    "icon": "spell_nature_unrelentingstorm",
+    "damage": 104008,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "cooldown": 37
+  },
+  {
+    "id": 376737,
+    "name": "Lightning",
+    "icon": "spell_nature_stormreach",
+    "damage": 182014,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "avoidable": true,
+    "notes": "Swirlies during Balakar Khan intermission and P2"
+  },
+  {
+    "id": 384479,
+    "name": "Rain of Arrows",
+    "icon": "ability_hunter_quickshot",
+    "damage": 104008,
+    "aoe": true,
+    "physical": true,
+    "variance": 0,
+    "trashAbility": true,
+    "avoidable": true,
+    "notes": "Swirlies cast by Nokhud Longbow in first area"
+  },
+  {
+    "id": 387127,
+    "name": "Chain Lightning",
+    "icon": "spell_nature_chainlightning",
+    "damage": 91007,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "cooldown": 24
   }
 ]

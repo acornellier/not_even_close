@@ -81,7 +81,6 @@ const unendingResolve: Ability = {
   id: 104773,
   icon: 'spell_shadow_demonictactics',
   dr: 0.25,
-  absorb: {}, // For Infernal Bulwark
 }
 
 const strengthOfWill: Ability = {
