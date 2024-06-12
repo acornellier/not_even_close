@@ -52,6 +52,8 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     setEnemyAbilityDetails,
   } = useEnemyAbility({ defaultEnemyAbility })
 
+  const [customDetailsShown, setCustomDetailsShown] = useState(false)
+
   const [moreShown, setMoreShown] = useLocalStorage('moreShown', false)
   const [customDrs, setCustomDrs] = useLocalStorage('customDrs', '')
   const [customAbsorbs, setCustomAbsorbs] = useLocalStorage('customAbsorbs', '')
@@ -100,12 +102,23 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     <SimContextProvider dungeon={selectedDungeon} result={result}>
       <div className="flex flex-col lg:flex-row gap-2 mb-24">
         <div className="flex flex-col gap-3 grow">
-          <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
+          <div className="flex justify-between">
+            <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
 
-          <EnemyAbilityDetailsInput
-            enemyAbilityDetails={enemyAbilityDetails}
-            setEnemyAbilityDetails={setEnemyAbilityDetails}
-          />
+            <div className="self-end">
+              <MoreLess
+                moreShown={customDetailsShown}
+                setMoreShown={setCustomDetailsShown}
+              />
+            </div>
+          </div>
+
+          {customDetailsShown && (
+            <EnemyAbilityDetailsInput
+              enemyAbilityDetails={enemyAbilityDetails}
+              setEnemyAbilityDetails={setEnemyAbilityDetails}
+            />
+          )}
 
           <div className="border-2 w-full border-gray-600" />
 
