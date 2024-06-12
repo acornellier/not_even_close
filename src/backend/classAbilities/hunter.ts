@@ -46,7 +46,7 @@ const enduranceTrainingMm: Ability = {
 
 const survivalOfTheFittest: Ability = {
   name: 'Survival of the Fittest',
-  dr: 0.2,
+  dr: 0.3,
   id: 264735,
   icon: 'spell_nature_spiritarmor',
 }
@@ -57,20 +57,6 @@ const aspectOfTheTurtle: Ability = {
   id: 186265,
   icon: 'ability_hunter_pet_turtle',
   notes: 'Only the DR portion, does not calculate immunities',
-}
-
-const naturesEndurance: Ability = {
-  name: "Nature's Endurance",
-  id: 388042,
-  onByDefault: true,
-  icon: 'spell_nature_protectionformnature',
-  abilityAugmentations: [
-    {
-      otherAbilityId: 264735,
-      field: 'dr',
-      value: 0.2,
-    },
-  ],
 }
 
 const fortitudeOfTheBear: Ability = {
@@ -92,7 +78,6 @@ const dontLookBack: Ability = {
 
 export const hunterBmAbilities = [
   aspectOfTheBeast,
-  naturesEndurance,
   rejuvenatingWind,
   huntersAvoidance,
   enduranceTraining,
@@ -102,7 +87,6 @@ export const hunterBmAbilities = [
 ]
 
 export const hunterMmAbilities = [
-  naturesEndurance,
   rejuvenatingWind,
   huntersAvoidance,
   enduranceTrainingMm,
@@ -113,7 +97,6 @@ export const hunterMmAbilities = [
 ]
 
 export const hunterSurvAbilities = [
-  naturesEndurance,
   rejuvenatingWind,
   huntersAvoidance,
   enduranceTraining,
