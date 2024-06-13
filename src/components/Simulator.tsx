@@ -52,7 +52,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     setEnemyAbilityDetails,
   } = useEnemyAbility({ defaultEnemyAbility })
 
-  const [customDetailsShown, setCustomDetailsShown] = useState(false)
+  const [customDetailsShown, setCustomDetailsShown] = useLocalStorage('moreKey', false)
 
   const [moreShown, setMoreShown] = useLocalStorage('moreShown', false)
   const [customDrs, setCustomDrs] = useLocalStorage('customDrs', '')
