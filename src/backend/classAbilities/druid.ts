@@ -191,6 +191,18 @@ const incarnationGuardian: Ability = {
   healthIncrease: 0.3,
 }
 
+const lycarasTeachings: Ability = {
+  name: "Lycara's Teachings",
+  onByDefault: true,
+  spellId: 378988,
+  icon: 'inv_trinket_ardenweald_02_green',
+  versIncrease: 0.02,
+  stacks: {
+    type: 'talent',
+    max: 3,
+  },
+}
+
 export const druidBalanceAbilities = [
   mattedFur,
   thickHide,
@@ -228,6 +240,7 @@ export const druidGuardianAbilities = [
   reinforcedFur,
   naturesGuardian,
   thickHide,
+  lycarasTeachings,
   risingLight,
   rendAndTear,
   scintillatingMoonlight,
