@@ -57,13 +57,13 @@ function getAdjustedStats(
     masteryPercent: characterStats.masteryPercent ?? 0,
   }
 
-  for (const { ability } of abilities) {
+  for (const { ability, stacks } of abilities) {
     if (ability.staminaIncrease) {
-      adjustedStats.stamina *= 1 + ability.staminaIncrease
+      adjustedStats.stamina *= 1 + ability.staminaIncrease * (stacks ?? 1)
     }
 
     if (ability.armorIncrease) {
-      adjustedStats.armor *= 1 + ability.armorIncrease
+      adjustedStats.armor *= 1 + ability.armorIncrease * (stacks ?? 1)
     }
   }
 
