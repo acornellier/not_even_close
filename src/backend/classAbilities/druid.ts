@@ -235,7 +235,7 @@ const incarnationGuardian: Ability = {
 const lycarasTeachings: Ability = {
   name: "Lycara's Teachings",
   onByDefault: true,
-  spellId: 378988,
+  id: 378988,
   icon: 'inv_trinket_ardenweald_02_green',
   versIncrease: 0.02,
   stacks: {
