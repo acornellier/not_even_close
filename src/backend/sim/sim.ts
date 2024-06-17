@@ -58,22 +58,22 @@ function getAdjustedStats(
     masteryPercent: characterStats.masteryPercent ?? 0,
   }
 
-  for (const { ability } of abilities) {
+  for (const { ability, stacks } of abilities) {
     if (ability.staminaIncrease) {
-      adjustedStats.stamina *= 1 + ability.staminaIncrease
+      adjustedStats.stamina *= 1 + ability.staminaIncrease * (stacks ?? 1)
     }
 
     if (ability.armorIncrease) {
-      adjustedStats.armor *= 1 + ability.armorIncrease
+      adjustedStats.armor *= 1 + ability.armorIncrease * (stacks ?? 1)
     }
   }
 
   adjustedStats.stamina = Math.floor(adjustedStats.stamina)
 
   let rawVers = characterStats.versatilityRaw ?? 0
-  for (const { ability } of abilities) {
+  for (const { ability, stacks } of abilities) {
     if (ability.versRawIncrease) {
-      rawVers += ability.versRawIncrease
+      rawVers += ability.versRawIncrease * (stacks ?? 1)
     }
 
     if (ability.armorRawIncrease) {
@@ -82,9 +82,9 @@ function getAdjustedStats(
   }
 
   adjustedStats.versatility = versRawToPercent(rawVers) / 100
-  for (const { ability } of abilities) {
+  for (const { ability, stacks } of abilities) {
     if (ability.versIncrease) {
-      adjustedStats.versatility += ability.versIncrease
+      adjustedStats.versatility += ability.versIncrease * (stacks ?? 1)
     }
   }
 
