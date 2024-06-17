@@ -9,142 +9,55 @@
     "variance": 0
   },
   {
-    "id": 388817,
-    "name": "Shards of Stone",
-    "icon": "inv_10_elementalshardfoozles_earth",
-    "damage": 1585883,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": [
-      13,
-      25
-    ]
-  },
-  {
-    "id": 384186,
-    "name": "Lightning Strike",
-    "icon": "ability_vehicle_electrocharge",
-    "damage": 1584348,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 20
-  },
-  {
-    "id": 382836,
-    "name": "Brutalize",
-    "icon": "ability_warrior_bloodbath",
-    "damage": 7048370,
-    "aoe": false,
-    "physical": true,
-    "variance": 0,
-    "tankOnly": true
-  },
-  {
-    "id": 386016,
-    "name": "Gale Arrow",
-    "icon": "ability_skyreach_four_wind",
-    "damage": 2026406,
-    "aoe": false,
-    "physical": false,
-    "variance": 0.05,
-    "cooldown": 57
-  },
-  {
-    "id": 375937,
-    "name": "Rending Strike",
-    "icon": "ability_gouge",
-    "damage": 6171201,
-    "aoe": false,
-    "physical": true,
-    "variance": 0,
-    "tankOnly": true
-  },
-  {
-    "id": 376660,
-    "name": "Iron Spear",
-    "icon": "inv_spear_07",
-    "damage": 2643139,
+    "id": 448847,
+    "name": "Commanding Roar",
+    "icon": "ability_warrior_dragonroar",
+    "damage": 1321569,
     "aoe": true,
     "physical": true,
     "variance": 0,
-    "cooldown": 35,
-    "combatDrop": "cancel"
+    "ignoresArmor": true
   },
   {
-    "id": 376827,
-    "name": "Conductive Strike",
-    "icon": "ability_thunderking_lightningwhip",
-    "damage": 3080061,
-    "aoe": false,
-    "physical": false,
-    "variance": 0,
-    "tankOnly": true
-  },
-  {
-    "id": 376866,
-    "name": "Static Spear",
-    "icon": "inv_spear_04",
-    "damage": 2687191,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 39,
-    "combatDrop": "cancel"
-  },
-  {
-    "id": 376896,
-    "name": "Crackling Upheaval",
-    "icon": "spell_nature_unrelentingstorm",
+    "id": 456751,
+    "name": "Twilight Buffet",
+    "icon": "ability_racial_wingbuffet",
     "damage": 1762092,
     "aoe": true,
     "physical": false,
-    "variance": 0,
-    "cooldown": 37
-  },
-  {
-    "id": 376737,
-    "name": "Lightning",
-    "icon": "spell_nature_stormreach",
-    "damage": 3083662,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "avoidable": true,
-    "notes": "Swirlies during Balakar Khan intermission and P2"
-  },
-  {
-    "id": 384479,
-    "name": "Rain of Arrows",
-    "icon": "ability_hunter_quickshot",
-    "damage": 1762092,
-    "aoe": true,
-    "physical": true,
-    "variance": 0,
-    "trashAbility": true,
-    "avoidable": true,
-    "notes": "Swirlies cast by Nokhud Longbow in first area"
-  },
-  {
-    "id": 387127,
-    "name": "Chain Lightning",
-    "icon": "spell_nature_chainlightning",
-    "damage": 1541831,
-    "aoe": false,
-    "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "cooldown": 24
-  },
-  {
-    "id": 448882,
-    "name": "Rock Spike",
-    "icon": "ability_earthen_pillar",
-    "damage": 705111,
-    "aoe": true,
-    "physical": true,
     "variance": 0
+  },
+  {
+    "id": 451939,
+    "name": "Umbral Wind",
+    "icon": "spell_shadow_shadowmend",
+    "damage": 1762092,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "los": true
+  },
+  {
+    "id": 451261,
+    "name": "Earth Bolt",
+    "icon": "ability_earthenfury_giftofearth",
+    "damage": 1057255,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "avoidable": true
+  },
+  {
+    "id": 451871,
+    "name": "Mass Tremor",
+    "icon": "spell_shaman_earthquake",
+    "damage": 1321569,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true
   },
   {
     "id": 451965,
