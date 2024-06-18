@@ -1,7 +1,47 @@
 [
   {
+    "id": 434252,
+    "name": "Massive Slam",
+    "icon": "inv_misc_volatileearth",
+    "damage": 1057255,
+    "aoe": true,
+    "physical": false,
+    "variance": 0.05,
+    "trashAbility": true
+  },
+  {
+    "id": 440238,
+    "name": "Ice Sickles",
+    "icon": "artifactability_frostmage_blackicicles",
+    "damage": 1321569,
+    "aoe": false,
+    "physical": false,
+    "variance": 0.0025
+  },
+  {
+    "id": 443427,
+    "name": "Web Bolt",
+    "icon": "inv_ability_web_missile",
+    "damage": 1409674,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true,
+    "avoidable": true
+  },
+  {
+    "id": 446718,
+    "name": "Umbral Weave (trash)",
+    "icon": "inv_misc_web_02",
+    "damage": 1321569,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
     "id": 439324,
-    "name": "Umbral Weave",
+    "name": "Umbral Weave (boss)",
     "icon": "inv_misc_web_02",
     "damage": 1321569,
     "aoe": false,
@@ -68,5 +108,54 @@
     "physical": false,
     "variance": 0,
     "trashAbility": true
+  },
+  {
+    "id": 322767,
+    "name": "Spirit Bolt",
+    "icon": "spell_fire_twilightflamebolt",
+    "damage": 1585883,
+    "aoe": false,
+    "physical": false,
+    "variance": 0,
+    "avoidable": true,
+    "trashAbility": true
+  },
+  {
+    "id": 324987,
+    "name": "Mistveil Bite",
+    "icon": "ability_druid_ferociousbite",
+    "damage": 1321569,
+    "aoe": false,
+    "physical": true,
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
+    "id": 460092,
+    "name": "Acid Nova",
+    "icon": "spell_nature_acid_01",
+    "damage": 1321569,
+    "aoe": true,
+    "physical": false,
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
+    "id": 327397,
+    "name": "Grim Fate",
+    "icon": "spell_necro_dischargenecroticcore",
+    "damage": 1762092,
+    "aoe": true,
+    "physical": false,
+    "variance": 0
+  },
+  {
+    "id": 320596,
+    "name": "Heaving Retch",
+    "icon": "spell_shadow_plaguecloud",
+    "damage": 2643139,
+    "aoe": true,
+    "physical": false,
+    "variance": 0
   }
 ]
