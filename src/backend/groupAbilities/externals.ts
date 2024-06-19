@@ -53,7 +53,7 @@ const lifeCocoon: Ability = {
   absorb: {
     healthMultiplier: 0.8,
     versAffected: true,
-    backup: 1_400_000,
+    backup: 3_600_000,
   },
   icon: 'ability_monk_chicocoon',
   notes: 'Assumes 1.4M absorb if you have no mistweaver selected',
@@ -66,7 +66,7 @@ const rescue: Ability = {
   absorb: {
     healthMultiplier: 0.3,
     versAffected: true,
-    backup: 400_000,
+    backup: 1_300_000,
   },
   icon: 'ability_skyreach_shielded',
   notes: 'Assumes 400K absorb if you have no evoker selected',

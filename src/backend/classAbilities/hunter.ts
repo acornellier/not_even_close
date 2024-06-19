@@ -76,6 +76,14 @@ const dontLookBack: Ability = {
   },
 }
 
+const spiritBond: Ability = {
+  name: 'Mastery: Spirit Bond',
+  id: 263135,
+  icon: 'ability_hunter_huntervswild',
+  dr: 0.06,
+  onByDefault: true,
+}
+
 export const hunterBmAbilities = [
   aspectOfTheBeast,
   rejuvenatingWind,
@@ -97,6 +105,7 @@ export const hunterMmAbilities = [
 ]
 
 export const hunterSurvAbilities = [
+  spiritBond,
   rejuvenatingWind,
   huntersAvoidance,
   enduranceTraining,

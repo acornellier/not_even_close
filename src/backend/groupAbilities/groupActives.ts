@@ -14,9 +14,9 @@ export const chiCocoon: Ability = {
   id: 406220,
   associatedSpec: { class: 'Monk', spec: 'Mistweaver' },
   absorb: {
-    healthMultiplier: 0.16,
+    healthMultiplier: 0.12,
     versAffected: true,
-    backup: 270_000,
+    backup: 540_000,
   },
   icon: 'inv_pet_crane',
   notes: 'Assumes 270K absorb if you have no mistweaver selected',
@@ -29,7 +29,7 @@ export const massBarrier: Ability = {
   absorb: {
     healthMultiplier: 0.2,
     versAffected: true,
-    backup: 300_000,
+    backup: 900_000,
   },
   icon: 'ability_racial_magicalresistance',
   notes: 'Assumes 300K absorb if you have no mage selected',
