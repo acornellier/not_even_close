@@ -79,17 +79,10 @@ const aegisOfProtection: Ability = {
   id: 403654,
   onByDefault: true,
   icon: 'spell_holy_holyprotection',
-  notes: 'Bugged. Increases Shield of Vengeance by 20% instead of 10%.',
   abilityAugmentations: [
     {
       otherAbilityId: divineProtection.id,
       field: 'dr',
-      value: 0.1,
-    },
-    {
-      otherAbilityId: shieldOfVengeance.id,
-      field: 'absorb',
-      absorbField: 'healthMultiplier',
       value: 0.2,
     },
   ],
