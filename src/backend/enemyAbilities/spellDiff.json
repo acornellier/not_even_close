@@ -147,7 +147,8 @@
     "damage": 1762092,
     "aoe": true,
     "physical": false,
-    "variance": 0
+    "variance": 0,
+    "trashAbility": true
   },
   {
     "id": 320596,

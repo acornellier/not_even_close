@@ -1,6 +1,8 @@
 import { getEnemySpell } from '../grimoire.ts'
 
-const grimFate = getEnemySpell(327397)
+const grimFate = getEnemySpell(327397, {
+  trashAbility: true,
+})
 
 const heavingWretch = getEnemySpell(320596)
 
