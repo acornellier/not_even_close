@@ -45,7 +45,7 @@ const warpaint: Ability = {
 
 const seasonedSoldier: Ability = {
   name: 'Seasoned Soldier',
-  aoeDr: 0.1,
+  aoeDr: 0.05,
   id: 279423,
   onByDefault: true,
   icon: 'inv_axe_09',

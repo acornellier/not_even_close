@@ -24,7 +24,7 @@ const rejuvenatingWind: Ability = {
 
 const huntersAvoidance: Ability = {
   name: "Hunter's Avoidance",
-  aoeDr: 0.06,
+  aoeDr: 0.05,
   onByDefault: true,
   id: 384799,
   icon: 'rogue_burstofspeed',

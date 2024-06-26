@@ -10,7 +10,7 @@ const obduracy: Ability = {
 
 const sanctifiedPlatesRetProt: Ability = {
   name: 'Sanctified Plates',
-  aoeDr: 0.1,
+  aoeDr: 0.03,
   onByDefault: true,
   id: 402964,
   icon: 'inv_chest_plate_raidpaladin_s_01',
@@ -18,7 +18,7 @@ const sanctifiedPlatesRetProt: Ability = {
 
 const sanctifiedPlatesHoly: Ability = {
   name: 'Sanctified Plates',
-  aoeDr: 0.06,
+  aoeDr: 0.03,
   onByDefault: true,
   id: 402964_1,
   icon: 'inv_chest_plate_raidpaladin_s_01',
@@ -64,12 +64,22 @@ const shieldOfVengeance: Ability = {
   icon: 'ability_paladin_shieldofthetemplar',
 }
 
-const sacrosanctCrusade: Ability = {
+const sacrosanctCrusadeProt: Ability = {
   name: 'Sacrosanct Crusade',
-  id: 431731,
+  id: 431731_1,
   icon: 'inv_plate_raidpaladinprimalist_d_01_cape',
   absorb: {
-    healthMultiplier: shieldOfVengeance.absorb!.healthMultiplier! * 0.1,
+    healthMultiplier: 0.15,
+    versAffected: true,
+  },
+}
+
+const sacrosanctCrusadeRet: Ability = {
+  name: 'Sacrosanct Crusade',
+  id: 431731_2,
+  icon: 'inv_plate_raidpaladinprimalist_d_01_cape',
+  absorb: {
+    healthMultiplier: 0.2,
     versAffected: true,
   },
 }
@@ -134,13 +144,6 @@ const eyeOfTyr: Ability = {
   damageDealtReduction: 0.25,
 }
 
-const allyOfTheLight: Ability = {
-  name: 'Ally of the Light',
-  id: 394714,
-  icon: 'inv_lightforgedmatrixability_lightsjudgment',
-  versIncrease: 0.08,
-}
-
 const redoubt: Ability = {
   name: 'Redoubt',
   id: 280375,
@@ -190,7 +193,7 @@ export const paladinRetAbilities = [
   aegisOfProtection,
   obduracy,
   blessingOfDusk,
-  sacrosanctCrusade,
+  sacrosanctCrusadeRet,
   shieldOfVengeance,
   divineProtection,
 ]
@@ -203,8 +206,8 @@ export const paladinProtAbilities = [
   sanctuary,
   divineBulwark,
   redoubt,
-  allyOfTheLight,
   improvedArdentDefender,
+  sacrosanctCrusadeProt,
   ardentDefender,
   guardianOfAncientKings,
   sentinel,
