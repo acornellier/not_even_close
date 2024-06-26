@@ -179,6 +179,14 @@ const sanctuary: Ability = {
   ],
 }
 
+const wrathfulDescent: Ability = {
+  name: 'Wrathful Descent',
+  id: 431551,
+  icon: 'ability_paladin_intercession',
+  damageDealtReduction: 0.05,
+  notes: 'Unreliable uptime',
+}
+
 export const paladinHolyAbilities = [
   sealOfOrder,
   sanctifiedPlatesHoly,
@@ -193,6 +201,7 @@ export const paladinRetAbilities = [
   aegisOfProtection,
   obduracy,
   blessingOfDusk,
+  wrathfulDescent,
   sacrosanctCrusadeRet,
   shieldOfVengeance,
   divineProtection,
@@ -207,6 +216,7 @@ export const paladinProtAbilities = [
   divineBulwark,
   redoubt,
   improvedArdentDefender,
+  wrathfulDescent,
   sacrosanctCrusadeProt,
   ardentDefender,
   guardianOfAncientKings,
