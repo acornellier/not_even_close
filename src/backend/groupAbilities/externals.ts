@@ -13,7 +13,21 @@ const blessingOfSacrifice: Ability = {
   dr: 0.3,
   associatedClass: 'Paladin',
   icon: 'spell_holy_sealofsacrifice',
-  notes: 'Wrong for holy paladin where it is actually 32%',
+}
+
+const echoingBlessings: Ability = {
+  name: 'Echoing Blessings',
+  id: 387801,
+  icon: 'achievement_dungeon_heroic_gloryoftheraider',
+  associatedSpec: { class: 'Paladin', spec: 'Holy' },
+  notes: 'Not 15% because of diminishing returns',
+  abilityAugmentations: [
+    {
+      otherAbilityId: blessingOfSacrifice.id,
+      field: 'dr',
+      value: 0.105,
+    },
+  ],
 }
 
 const ironBark: Ability = {
@@ -111,6 +125,7 @@ export const externals: Ability[] = [
   earthenHarmony,
   ironBark,
   blessingOfSacrifice,
+  echoingBlessings,
   painSuppression,
   foreseenCircumstances,
   timeDilation,
