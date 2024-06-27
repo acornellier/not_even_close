@@ -1,3 +1,9 @@
-import type { EnemyAbility } from '../enemies.ts'
+import { getEnemySpell } from '../grimoire.ts'
 
-export const dbAbilities: EnemyAbility[] = []
+const darkOrb = getEnemySpell(426826)
+
+const erosiveSpray = getEnemySpell(448888)
+
+const spinneretsStrands = getEnemySpell(434093)
+
+export const dbAbilities = [darkOrb, erosiveSpray, spinneretsStrands]

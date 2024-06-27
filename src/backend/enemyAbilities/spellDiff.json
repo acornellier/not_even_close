@@ -49,6 +49,33 @@
     "variance": 0
   },
   {
+    "id": 426826,
+    "name": "Dark Orb",
+    "icon": "spell_shadow_soulgem",
+    "damage": 4405231,
+    "aoe": true,
+    "physical": false,
+    "variance": 0.005
+  },
+  {
+    "id": 448888,
+    "name": "Erosive Spray",
+    "icon": "inv_ability_poison_missile",
+    "damage": 825981,
+    "aoe": true,
+    "physical": false,
+    "variance": 0.025
+  },
+  {
+    "id": 434093,
+    "name": "Spinneret's Strands",
+    "icon": "inv_ability_web_groundstate",
+    "damage": 1321569,
+    "aoe": true,
+    "physical": false,
+    "variance": 0.025
+  },
+  {
     "id": 448847,
     "name": "Commanding Roar",
     "icon": "ability_warrior_dragonroar",
