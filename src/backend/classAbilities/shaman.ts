@@ -2,18 +2,17 @@ import type { Ability } from '../ability'
 
 const elementalWardingEnh: Ability = {
   name: 'Elemental Warding',
-  dr: 0.03,
-  drType: 'magic',
-  stacks: { type: 'talent', max: 2 },
-  onByDefault: true,
   id: 381650,
   icon: 'inv_10_elementalcombinedfoozles_primordial',
+  dr: 0.06,
+  drType: 'magic',
+  onByDefault: true,
 }
 
 const elementalWardingEleResto: Ability = {
   ...elementalWardingEnh,
   id: elementalWardingEnh.id + 1,
-  dr: 0.02,
+  dr: 0.04,
 }
 
 const brimmingWithLife: Ability = {
@@ -22,14 +21,6 @@ const brimmingWithLife: Ability = {
   onByDefault: true,
   id: 381689_2,
   icon: 'inv_jewelry_talisman_06',
-}
-
-const ancestralDefense: Ability = {
-  name: 'Ancestral Defense',
-  aoeDr: 0.02,
-  onByDefault: true,
-  id: 382947,
-  icon: 'ability_earthen_pillar',
 }
 
 const astralShift: Ability = {
@@ -70,9 +61,22 @@ const spiritWolf: Ability = {
 
 const primordialBond: Ability = {
   name: 'Primordial Bond',
-  id: 381764,
+  id: 381764_1,
   dr: 0.05,
   icon: 'inv_elemental_primal_earth',
+}
+
+const primordialBondPassive: Ability = {
+  name: 'Primordial Bond',
+  id: 381764_2,
+  icon: 'inv_elemental_primal_earth',
+  abilityAugmentations: [
+    {
+      otherAbilityId: earthElemental.id,
+      field: 'dr',
+      value: 0.05,
+    },
+  ],
 }
 
 const naturesProtection: Ability = {
@@ -83,13 +87,23 @@ const naturesProtection: Ability = {
   damageDealtReduction: 0.1,
 }
 
+const seasonedWinds: Ability = {
+  name: 'Seasoned Winds',
+  id: 355630,
+  icon: 'spell_nature_cyclone',
+  dr: 0.15,
+  drType: 'magic',
+  stacks: { type: 'stacks', max: 2, default: 1 },
+}
+
 export const shamanEnhAbilities = [
   elementalWardingEnh,
   brimmingWithLife,
-  ancestralDefense,
   astralBulwark,
+  seasonedWinds,
   naturesProtection,
   earthElemental,
+  primordialBondPassive,
   spiritWolf,
   astralShift,
 ]
@@ -97,7 +111,7 @@ export const shamanEnhAbilities = [
 export const shamanEleAbilities = [
   elementalWardingEleResto,
   brimmingWithLife,
-  ancestralDefense,
+  seasonedWinds,
   naturesProtection,
   astralBulwark,
   earthElemental,
@@ -109,9 +123,10 @@ export const shamanEleAbilities = [
 export const shamanRestoAbilities = [
   elementalWardingEleResto,
   brimmingWithLife,
-  ancestralDefense,
+  seasonedWinds,
   astralBulwark,
   earthElemental,
+  primordialBondPassive,
   spiritWolf,
   astralShift,
 ]

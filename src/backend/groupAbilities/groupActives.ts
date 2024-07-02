@@ -91,7 +91,7 @@ export const stoneskinTotem: Ability = {
 export const spiritLinkTotem: Ability = {
   name: 'Spirit Link Totem',
   id: 98008,
-  dr: 0.1,
+  dr: 0.15,
   associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   icon: 'spell_shaman_spiritlink',
 }

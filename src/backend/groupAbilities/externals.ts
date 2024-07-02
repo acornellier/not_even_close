@@ -104,11 +104,18 @@ const ancestralVigor: Ability = {
 
 const earthenHarmony: Ability = {
   name: 'Earthen Harmony',
-  dr: 0.03,
-  stacks: { type: 'talent', max: 2 },
+  dr: 0.05,
   id: 382020,
   associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   icon: 'spell_shaman_improvedearthshield',
+}
+
+const elementalResistance: Ability = {
+  name: 'Elemental Resistance',
+  id: 12345,
+  icon: 'TODO',
+  dr: 0.06,
+  drType: 'magic',
 }
 
 const timeDilation: Ability = {
@@ -123,6 +130,7 @@ export const externals: Ability[] = [
   elusiveMists,
   ancestralVigor,
   earthenHarmony,
+  elementalResistance,
   ironBark,
   blessingOfSacrifice,
   echoingBlessings,
