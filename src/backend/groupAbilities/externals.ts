@@ -128,6 +128,7 @@ const timeDilation: Ability = {
 export const externals: Ability[] = [
   temperedVersatility,
   elusiveMists,
+  lifeCocoon,
   ancestralVigor,
   earthenHarmony,
   elementalResistance,
@@ -137,6 +138,5 @@ export const externals: Ability[] = [
   painSuppression,
   foreseenCircumstances,
   timeDilation,
-  lifeCocoon,
   rescue,
 ]
