@@ -6,6 +6,9 @@
     "damage": 1057255,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "nature"
+    ],
     "variance": 0.05,
     "trashAbility": true
   },
@@ -16,6 +19,9 @@
     "damage": 1321569,
     "aoe": false,
     "physical": false,
+    "schools": [
+      "frost"
+    ],
     "variance": 0.0025
   },
   {
@@ -25,6 +31,9 @@
     "damage": 1409674,
     "aoe": false,
     "physical": false,
+    "schools": [
+      "nature"
+    ],
     "variance": 0,
     "trashAbility": true,
     "avoidable": true
@@ -36,6 +45,9 @@
     "damage": 1321569,
     "aoe": false,
     "physical": false,
+    "schools": [
+      "shadow"
+    ],
     "variance": 0,
     "trashAbility": true
   },
@@ -46,6 +58,9 @@
     "damage": 1321569,
     "aoe": false,
     "physical": false,
+    "schools": [
+      "shadow"
+    ],
     "variance": 0
   },
   {
@@ -55,6 +70,9 @@
     "damage": 4405231,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "shadow"
+    ],
     "variance": 0.005
   },
   {
@@ -64,6 +82,9 @@
     "damage": 825981,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "nature"
+    ],
     "variance": 0.025
   },
   {
@@ -73,6 +94,9 @@
     "damage": 1321569,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "shadow"
+    ],
     "variance": 0.025
   },
   {
@@ -82,6 +106,9 @@
     "damage": 1321569,
     "aoe": true,
     "physical": true,
+    "schools": [
+      "physical"
+    ],
     "variance": 0,
     "ignoresArmor": true
   },
@@ -92,6 +119,10 @@
     "damage": 1762092,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "fire",
+      "shadow"
+    ],
     "variance": 0
   },
   {
@@ -101,6 +132,9 @@
     "damage": 1762092,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "shadow"
+    ],
     "variance": 0,
     "trashAbility": true,
     "los": true
@@ -112,6 +146,9 @@
     "damage": 1057255,
     "aoe": false,
     "physical": false,
+    "schools": [
+      "nature"
+    ],
     "variance": 0,
     "trashAbility": true,
     "avoidable": true
@@ -123,6 +160,9 @@
     "damage": 1321569,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "nature"
+    ],
     "variance": 0,
     "trashAbility": true
   },
@@ -133,6 +173,9 @@
     "damage": 1233465,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "fire"
+    ],
     "variance": 0,
     "trashAbility": true
   },
@@ -143,6 +186,9 @@
     "damage": 1585883,
     "aoe": false,
     "physical": false,
+    "schools": [
+      "shadow"
+    ],
     "variance": 0,
     "avoidable": true,
     "trashAbility": true
@@ -154,6 +200,9 @@
     "damage": 1321569,
     "aoe": false,
     "physical": true,
+    "schools": [
+      "physical"
+    ],
     "variance": 0,
     "trashAbility": true
   },
@@ -164,6 +213,9 @@
     "damage": 1321569,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "nature"
+    ],
     "variance": 0,
     "trashAbility": true
   },
@@ -174,6 +226,9 @@
     "damage": 1762092,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "shadow"
+    ],
     "variance": 0,
     "trashAbility": true
   },
@@ -184,6 +239,73 @@
     "damage": 2643139,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "nature"
+    ],
     "variance": 0
+  },
+  {
+    "id": 275014,
+    "name": "Putrid Waters",
+    "icon": "inv_misc_volatilewater",
+    "damage": 1321569,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "frost"
+    ],
+    "variance": 0.005
+  },
+  {
+    "id": 257326,
+    "name": "Gore Crash",
+    "icon": "ability_warrior_decisivestrike",
+    "damage": 1409674,
+    "aoe": true,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
+    "variance": 0.05,
+    "effectIndex": 1
+  },
+  {
+    "id": 256639,
+    "name": "Fire Bomb",
+    "icon": "inv_misc_blackironbomb",
+    "damage": 1069783,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "fire"
+    ],
+    "variance": 0.005,
+    "trashAbility": true
+  },
+  {
+    "id": 454439,
+    "name": "Azerite Charge",
+    "icon": "inv_azeriteexplosion",
+    "damage": 1321569,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "arcane"
+    ],
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
+    "id": 272711,
+    "name": "Crushing Slam",
+    "icon": "spell_nature_earthquake",
+    "damage": 1585883,
+    "aoe": true,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
+    "variance": 0,
+    "trashAbility": true
   }
 ]

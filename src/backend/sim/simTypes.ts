@@ -58,6 +58,7 @@ export interface EnemyAbilityDetails {
   aoeMultiplier?: number
   trashAbility?: boolean
   physical?: boolean
+  schools: string[]
   ignoresArmor?: boolean
 }
 

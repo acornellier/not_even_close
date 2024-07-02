@@ -2,18 +2,19 @@ import type { EnemyAbility } from './enemies'
 import { getGrimoireSpell } from 'grimoire-wow'
 import { grimoireToEnemyAbility } from './grimoireConverter.ts'
 
-type Overrides =
+type Options = (
   | Partial<EnemyAbility>
   | ((baseAbility: EnemyAbility) => Partial<EnemyAbility>)
+) & {
+  effectIndex?: number
+}
 
-export function getEnemySpell(spellId: number, overrides?: Overrides): EnemyAbility {
+export function getEnemySpell(spellId: number, options?: Options): EnemyAbility {
   const spell = getGrimoireSpell(spellId)
-  const baseSpell = grimoireToEnemyAbility(spell)
+  const baseSpell = grimoireToEnemyAbility(spell, options?.effectIndex ?? 0)
 
   return {
     ...baseSpell,
-    ...((overrides && typeof overrides === 'function'
-      ? overrides(baseSpell)
-      : overrides) || {}),
+    ...((options && typeof options === 'function' ? options(baseSpell) : options) || {}),
   }
 }

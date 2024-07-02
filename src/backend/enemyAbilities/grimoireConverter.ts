@@ -1,14 +1,21 @@
 import type { EnemyAbility } from './enemies.ts'
 import type { GrimoireSpell } from 'grimoire-wow'
 
-export function grimoireToEnemyAbility(spell: GrimoireSpell): EnemyAbility {
+export function grimoireToEnemyAbility(
+  spell: GrimoireSpell,
+  index: number,
+): EnemyAbility {
+  const effect = spell.effects?.[index]
+  if (!effect) throw new Error(`Spell missing effects: ${spell}`)
+
   return {
     id: spell.id,
     name: spell.name,
     icon: spell.icon,
-    damage: spell.damage ?? 0,
-    aoe: !!spell.aoe,
-    physical: !!spell.physical,
-    variance: (spell.variance ?? 0) / 2,
+    damage: effect.damage ?? 0,
+    aoe: effect.aoe,
+    physical: spell.schools && spell.schools[0] === 'physical',
+    schools: spell.schools ?? [],
+    variance: (effect.variance ?? 0) / 2,
   }
 }
