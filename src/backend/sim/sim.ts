@@ -27,10 +27,17 @@ function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isTrashAbility: boo
     scalingFactor *= 1.1
   }
 
-  if (!isTyran && isTrashAbility) {
+  const fort = !isTyran || keyLevel >= 10
+  const tyran = isTyran || keyLevel >= 10
+
+  if (fort && isTrashAbility) {
     scalingFactor *= 1.3
-  } else if (isTyran && !isTrashAbility) {
+  } else if (tyran && !isTrashAbility) {
     scalingFactor *= 1.15
+  }
+
+  if (keyLevel >= 12) {
+    scalingFactor *= 1.2
   }
 
   return Math.round(scalingFactor * 100) / 100

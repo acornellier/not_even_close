@@ -20,13 +20,15 @@ export function KeyDetailsInput({ keyDetails, setKeyDetails }: Props) {
         onChange={(val) => setKeyLevel(val ?? 0)}
         value={keyDetails.keyLevel}
       />
-      <OnOffStateSelector
-        label="Affix"
-        label1="Fortified"
-        label2="Tyrannical"
-        enabled={keyDetails.isTyran}
-        setIsEnabled={setIsTyran}
-      />
+      {keyDetails.keyLevel < 10 && (
+        <OnOffStateSelector
+          label="Affix"
+          label1="Fortified"
+          label2="Tyrannical"
+          enabled={keyDetails.isTyran}
+          setIsEnabled={setIsTyran}
+        />
+      )}
     </div>
   )
 }

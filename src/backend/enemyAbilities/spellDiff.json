@@ -245,18 +245,6 @@
     "variance": 0
   },
   {
-    "id": 275014,
-    "name": "Putrid Waters",
-    "icon": "inv_misc_volatilewater",
-    "damage": 1321569,
-    "aoe": false,
-    "physical": false,
-    "schools": [
-      "frost"
-    ],
-    "variance": 0.005
-  },
-  {
     "id": 257326,
     "name": "Gore Crash",
     "icon": "ability_warrior_decisivestrike",
@@ -268,6 +256,18 @@
     ],
     "variance": 0.05,
     "effectIndex": 1
+  },
+  {
+    "id": 275014,
+    "name": "Putrid Waters",
+    "icon": "inv_misc_volatilewater",
+    "damage": 1321569,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "frost"
+    ],
+    "variance": 0.005
   },
   {
     "id": 256639,
@@ -307,5 +307,19 @@
     ],
     "variance": 0,
     "trashAbility": true
+  },
+  {
+    "id": 272581,
+    "name": "Water Bolt",
+    "icon": "ability_mage_waterjet",
+    "damage": 1057255,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "nature"
+    ],
+    "variance": 0.005,
+    "trashAbility": true,
+    "avoidable": true
   }
 ]
