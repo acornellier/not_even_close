@@ -100,6 +100,21 @@ const windBarrier: Ability = {
   },
 }
 
+const stoneBulwark: Ability = {
+  name: 'Stone Bulwark Totem',
+  id: 108270,
+  icon: 'ability_shaman_stonebulwark',
+  absorb: {
+    spMultipler: 0.875,
+  },
+  stacks: {
+    type: 'stacks',
+    default: 4,
+    max: 5,
+  },
+  notes: 'Starts at 4 stacks, gains 1 stack every 5 seconds. Lasts 10 seconds.',
+}
+
 export const shamanEnhAbilities = [
   elementalWarding,
   brimmingWithLife,
@@ -109,6 +124,7 @@ export const shamanEnhAbilities = [
   windBarrier,
   earthElemental,
   primordialBondPassive,
+  stoneBulwark,
   spiritWolf,
   astralShift,
 ]
@@ -121,6 +137,7 @@ export const shamanEleAbilities = [
   astralBulwark,
   earthElemental,
   primordialBond,
+  stoneBulwark,
   spiritWolf,
   astralShift,
 ]
@@ -133,6 +150,7 @@ export const shamanRestoAbilities = [
   astralBulwark,
   earthElemental,
   primordialBondPassive,
+  stoneBulwark,
   spiritWolf,
   astralShift,
 ]
