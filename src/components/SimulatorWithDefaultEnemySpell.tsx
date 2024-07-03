@@ -16,7 +16,7 @@ export function SimulatorWithDefaultEnemySpell() {
     if (!spellId) return
 
     spellByIdApi(Number(spellId)).then((grimoireSpell) => {
-      const enemyAbility = grimoireToEnemyAbility(grimoireSpell)
+      const enemyAbility = grimoireToEnemyAbility(grimoireSpell, 0)
       setDefaultEnemyAbility({
         ...enemyAbility,
         trashAbility: searchParams.get('trash') === 'true',

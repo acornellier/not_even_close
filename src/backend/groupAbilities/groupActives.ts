@@ -1,7 +1,7 @@
 ﻿import type { Ability } from '../ability'
 import { prismaticBarrier } from '../classAbilities/mage'
 
-export const zephyr: Ability = {
+const zephyr: Ability = {
   name: 'Zephyr',
   id: 374227,
   aoeDr: 0.2,
@@ -9,7 +9,7 @@ export const zephyr: Ability = {
   icon: 'ability_evoker_hoverblack',
 }
 
-export const chiCocoon: Ability = {
+const chiCocoon: Ability = {
   name: 'Chi Cocoon',
   id: 406220,
   associatedSpec: { class: 'Monk', spec: 'Mistweaver' },
@@ -22,7 +22,7 @@ export const chiCocoon: Ability = {
   notes: 'Assumes 270K absorb if you have no mistweaver selected',
 }
 
-export const massBarrier: Ability = {
+const massBarrier: Ability = {
   name: 'Mass Barrier',
   id: 414660,
   associatedClass: 'Mage',
@@ -35,7 +35,7 @@ export const massBarrier: Ability = {
   notes: 'Assumes 300K absorb if you have no mage selected',
 }
 
-export const arcaneMassBarrier: Ability = {
+const arcaneMassBarrier: Ability = {
   ...massBarrier,
   name: 'Arcane Mass Barrier',
   id: massBarrier.id + 1,
@@ -45,7 +45,7 @@ export const arcaneMassBarrier: Ability = {
   icon: 'spell_holy_magicalsentry',
 }
 
-export const rallyingCry: Ability = {
+const rallyingCry: Ability = {
   name: 'Rallying Cry',
   id: 97462,
   healthIncrease: 0.1,
@@ -53,7 +53,7 @@ export const rallyingCry: Ability = {
   icon: 'ability_warrior_rallyingcry',
 }
 
-export const auraMastery: Ability = {
+const auraMastery: Ability = {
   name: 'Aura Mastery',
   id: 31821,
   dr: 0.09,
@@ -62,7 +62,7 @@ export const auraMastery: Ability = {
   notes: 'Assumes you already have 3% devo aura selected',
 }
 
-export const powerWordBarrier: Ability = {
+const powerWordBarrier: Ability = {
   name: 'Power Word: Barrier',
   id: 62618,
   dr: 0.2,
@@ -70,7 +70,7 @@ export const powerWordBarrier: Ability = {
   icon: 'spell_holy_powerwordbarrier',
 }
 
-export const antiMagicZone: Ability = {
+const antiMagicZone: Ability = {
   name: 'Anti-Magic Zone',
   id: 51052,
   dr: 0.2,
@@ -79,16 +79,7 @@ export const antiMagicZone: Ability = {
   icon: 'spell_deathknight_antimagiczone',
 }
 
-export const stoneskinTotem: Ability = {
-  name: 'Stoneskin Totem',
-  id: 383017,
-  dr: 0.1,
-  drType: 'physical',
-  associatedClass: 'Shaman',
-  icon: 'ability_shaman_stoneskintotem',
-}
-
-export const spiritLinkTotem: Ability = {
+const spiritLinkTotem: Ability = {
   name: 'Spirit Link Totem',
   id: 98008,
   dr: 0.15,
@@ -113,6 +104,5 @@ export const groupActives: Ability[] = [
   spiritLinkTotem,
   powerWordBarrier,
   antiMagicZone,
-  stoneskinTotem,
   downpour,
 ]
