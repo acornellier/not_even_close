@@ -82,7 +82,7 @@ const antiMagicZone: Ability = {
 const spiritLinkTotem: Ability = {
   name: 'Spirit Link Totem',
   id: 98008,
-  dr: 0.15,
+  dr: 0.1,
   associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   icon: 'spell_shaman_spiritlink',
 }
@@ -94,6 +94,19 @@ const downpour: Ability = {
   healthIncrease: 0.1,
 }
 
+const spoutingSpirits: Ability = {
+  name: 'Spouting Spirits',
+  id: 288384,
+  icon: 'spell_shaman_spiritlink',
+  abilityAugmentations: [
+    {
+      otherAbilityId: spiritLinkTotem.id,
+      field: 'dr',
+      value: 0.05,
+    },
+  ],
+}
+
 export const groupActives: Ability[] = [
   zephyr,
   chiCocoon,
@@ -102,6 +115,7 @@ export const groupActives: Ability[] = [
   rallyingCry,
   auraMastery,
   spiritLinkTotem,
+  spoutingSpirits,
   powerWordBarrier,
   antiMagicZone,
   downpour,
