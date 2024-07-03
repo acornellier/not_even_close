@@ -93,15 +93,6 @@ const elusiveMists: Ability = {
   dr: 0.06,
 }
 
-const ancestralVigor: Ability = {
-  name: 'Ancestral Vigor',
-  healthIncrease: 0.05,
-  stacks: { type: 'talent', max: 2 },
-  id: 207401,
-  associatedSpec: { class: 'Shaman', spec: 'Restoration' },
-  icon: 'spell_shaman_blessingoftheeternals',
-}
-
 const earthenHarmony: Ability = {
   name: 'Earthen Harmony',
   dr: 0.05,
@@ -112,24 +103,23 @@ const earthenHarmony: Ability = {
 
 const elementalResistance: Ability = {
   name: 'Elemental Resistance',
-  id: 12345,
-  icon: 'TODO',
+  id: 462369,
+  icon: 'spell_fireresistancetotem_01',
   dr: 0.06,
   drType: 'magic',
 }
 
 const timeDilation: Ability = {
   name: 'Time Dilation',
-  dr: 0.5,
   id: 357170,
   icon: 'ability_evoker_timedilation',
+  dr: 0.5,
 }
 
 export const externals: Ability[] = [
   temperedVersatility,
   elusiveMists,
   lifeCocoon,
-  ancestralVigor,
   earthenHarmony,
   elementalResistance,
   ironBark,

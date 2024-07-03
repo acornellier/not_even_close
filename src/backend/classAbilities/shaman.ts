@@ -1,18 +1,12 @@
 import type { Ability } from '../ability'
 
-const elementalWardingEnh: Ability = {
+const elementalWarding: Ability = {
   name: 'Elemental Warding',
   id: 381650,
   icon: 'inv_10_elementalcombinedfoozles_primordial',
   dr: 0.06,
   drType: 'magic',
   onByDefault: true,
-}
-
-const elementalWardingEleResto: Ability = {
-  ...elementalWardingEnh,
-  id: elementalWardingEnh.id + 1,
-  dr: 0.04,
 }
 
 const brimmingWithLife: Ability = {
@@ -96,12 +90,23 @@ const seasonedWinds: Ability = {
   stacks: { type: 'stacks', max: 2, default: 1 },
 }
 
+const windBarrier: Ability = {
+  name: 'Wind Barrier',
+  id: 445031,
+  icon: 'spell_nature_eyeofthestorm',
+  heroTree: 'Totemic',
+  absorb: {
+    healthMultiplier: 0.06,
+  },
+}
+
 export const shamanEnhAbilities = [
-  elementalWardingEnh,
+  elementalWarding,
   brimmingWithLife,
   astralBulwark,
   seasonedWinds,
   naturesProtection,
+  windBarrier,
   earthElemental,
   primordialBondPassive,
   spiritWolf,
@@ -109,7 +114,7 @@ export const shamanEnhAbilities = [
 ]
 
 export const shamanEleAbilities = [
-  elementalWardingEleResto,
+  elementalWarding,
   brimmingWithLife,
   seasonedWinds,
   naturesProtection,
@@ -121,9 +126,10 @@ export const shamanEleAbilities = [
 ]
 
 export const shamanRestoAbilities = [
-  elementalWardingEleResto,
+  elementalWarding,
   brimmingWithLife,
   seasonedWinds,
+  windBarrier,
   astralBulwark,
   earthElemental,
   primordialBondPassive,

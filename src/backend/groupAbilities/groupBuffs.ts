@@ -82,6 +82,14 @@ export const lenience: Ability = {
   icon: 'ability_priest_atonement',
 }
 
+const ancestralVigor: Ability = {
+  name: 'Ancestral Vigor',
+  healthIncrease: 0.1,
+  id: 207401,
+  associatedSpec: { class: 'Shaman', spec: 'Restoration' },
+  icon: 'spell_shaman_blessingoftheeternals',
+}
+
 export const groupBuffs: Ability[] = [
   aspectsFavor,
   masterPoisoner,
@@ -91,4 +99,5 @@ export const groupBuffs: Ability[] = [
   markOfTheWild,
   fortitude,
   lenience,
+  ancestralVigor,
 ]
