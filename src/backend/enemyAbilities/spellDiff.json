@@ -245,6 +245,19 @@
     "variance": 0
   },
   {
+    "id": 338653,
+    "name": "Throw Flesh",
+    "icon": "inv_skinning_80_bloodsoakedbone",
+    "damage": 1321569,
+    "aoe": false,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
     "id": 257326,
     "name": "Gore Crash",
     "icon": "ability_warrior_decisivestrike",

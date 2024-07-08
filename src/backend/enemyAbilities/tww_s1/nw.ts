@@ -6,4 +6,8 @@ const grimFate = getEnemySpell(327397, {
 
 const heavingWretch = getEnemySpell(320596)
 
-export const nwAbilities = [grimFate, heavingWretch]
+const throwFlesh = getEnemySpell(338653, {
+  trashAbility: true,
+})
+
+export const nwAbilities = [grimFate, heavingWretch, throwFlesh]
