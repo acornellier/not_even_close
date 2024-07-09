@@ -1,3 +1,7 @@
-import type { EnemyAbility } from '../enemies.ts'
+import { getEnemySpell } from '../grimoire.ts'
 
-export const svAbilities: EnemyAbility[] = []
+const metalSplinters = getEnemySpell(428535, {
+  effectIndex: 1,
+})
+
+export const svAbilities = [metalSplinters]
