@@ -51,7 +51,7 @@ const cloakedInShadows: Ability = {
   name: 'Cloaked in Shadows',
   id: 382515,
   absorb: {
-    healthMultiplier: 0.3,
+    healthMultiplier: 0.18,
   },
   icon: 'inv_helm_cloth_shadowmoonclan_b_01',
 }

@@ -51,7 +51,7 @@ const soulLeech: Ability = {
   name: 'Soul Leech',
   id: 108370,
   absorb: {
-    healthMultiplier: 0.15,
+    healthMultiplier: 0.1,
   },
   icon: 'warlock_siphonlife',
 }
