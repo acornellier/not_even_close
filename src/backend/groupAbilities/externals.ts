@@ -65,7 +65,7 @@ const lifeCocoon: Ability = {
   id: 116849,
   associatedSpec: { class: 'Monk', spec: 'Mistweaver' },
   absorb: {
-    healthMultiplier: 0.8,
+    healthMultiplier: 0.48,
     versAffected: true,
     backup: 3_600_000,
   },
