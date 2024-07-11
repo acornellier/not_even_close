@@ -35,3 +35,11 @@ input.hide-arrows::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.maze {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 160px);
+  grid-template-rows: repeat(3, 160px);
+  gap: 20px;
+}
