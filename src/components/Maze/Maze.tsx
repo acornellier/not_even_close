@@ -98,8 +98,12 @@ export function Maze() {
         </div>
       ))}
       <div className="col-start-2 row-start-2 place-self-center text-4xl">{streak}</div>
-      <div className="col-start-2 row-start-3 place-self-center">
+      <div
+        className="col-start-2 row-start-3 place-self-center flex flex-col items-center gap-2"
+        onClick={() => onAnswer(puzzle.start)}
+      >
         <MazeItemImage item={puzzle.start} />
+        <div>Entrance</div>
       </div>
     </div>
   )
