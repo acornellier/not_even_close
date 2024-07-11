@@ -2,24 +2,43 @@
 import type { MazeItem } from './mazeUtil.ts'
 import { makePuzzle } from './mazeUtil.ts'
 import { MazeItemImage } from './MazeItemImage.tsx'
+import { Timer } from './Timer.tsx'
+
+const mazeLength = 7
 
 export function Maze() {
   const [streak, setStreak] = useState(0)
   const [puzzle, setPuzzle] = useState(makePuzzle())
+  const [startTime, setStartTime] = useState<DOMHighResTimeStamp | null>(null)
+  const [endTime, setEndTime] = useState<DOMHighResTimeStamp | null>(null)
+
+  const solved = streak >= mazeLength
 
   const onAnswer = useCallback(
     (item: MazeItem) => {
-      if (item == puzzle.choices[puzzle.solutionIdx]) {
-        setStreak((val) => val + 1)
-      } else {
+      const correct = item == puzzle.solution
+
+      if (!correct || solved) {
         setStreak(0)
+        setStartTime(() => null)
+        setEndTime(() => null)
+      }
+
+      if (correct) {
+        setStreak((val) => val + 1)
+        if (streak + 1 == mazeLength) {
+          setEndTime(() => performance.now())
+        } else {
+          setStartTime((v) => (v == null ? performance.now() : v))
+        }
       }
 
       setPuzzle(makePuzzle())
     },
-    [puzzle],
+    [puzzle.solution, solved, startTime, streak],
   )
 
+  console.log(startTime)
   return (
     <div className="h-full flex flex-col items-between mb-12">
       <div className="h-full flex justify-center items-center">
@@ -33,8 +52,9 @@ export function Maze() {
               <MazeItemImage item={choice} />
             </div>
           ))}
-          <div className="col-start-2 row-start-2 place-self-center text-4xl">
-            {streak}
+          <div className="col-start-2 row-start-2 place-self-center flex flex-col justify-center items-center">
+            <div className="text-4xl">{solved ? 'Solved!' : streak}</div>
+            <Timer startTime={startTime} endTime={endTime} />
           </div>
           <div
             className="col-start-2 row-start-3 place-self-center flex flex-col items-center gap-2"

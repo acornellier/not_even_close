@@ -8,7 +8,9 @@ export function Header() {
     <div className="flex flex-col gap-2">
       <div className="flex justify-between items-center">
         <div className="flex flex-col sm:flex-row items-end gap-4">
-          <h1 className="text-4xl font-bold text-teal-500">Not Even Close</h1>
+          <a href={location.origin}>
+            <h1 className="text-4xl font-bold text-teal-500">Not Even Close</h1>
+          </a>
           <h1 className="hidden lg:block text-xl font-bold text-teal-500">by Ortemis</h1>
         </div>
         <div className="items-center hidden md:flex">

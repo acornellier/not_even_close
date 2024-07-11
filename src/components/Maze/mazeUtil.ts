@@ -1,7 +1,7 @@
 ﻿export type MazeItem = [boolean, boolean, boolean]
 export type MazeChoices = [MazeItem, MazeItem, MazeItem]
 export interface MazePuzzle {
-  solutionIdx: number
+  solution: MazeItem
   start: MazeItem
   choices: MazeChoices
 }
@@ -46,12 +46,9 @@ export function makePuzzle(): MazePuzzle {
   const twoIncorrectSymbols = threeIncorrectSymbols.slice(0, 2)
   const start = threeIncorrectSymbols[2]!
   const choices = shuffle([solution, ...twoIncorrectSymbols]) as MazeChoices
-  const solutionIdx = choices.indexOf(solution)
-  if (![0, 1, 2].includes(solutionIdx))
-    throw new Error(`Solution index is ${solutionIdx}`)
 
   return {
-    solutionIdx,
+    solution,
     start,
     choices,
   }
