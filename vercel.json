@@ -1,5 +1,5 @@
 {
-  "rewrites": [{ "source": "/spell/(.*)", "destination": "/" }],
+  "rewrites": [{ "source": "/spell/(.*)", "destination": "/" }, { "source": "/maze", "destination": "/" }],
   "images": {
     "sizes": [56],
     "minimumCacheTTL": 2592000,
