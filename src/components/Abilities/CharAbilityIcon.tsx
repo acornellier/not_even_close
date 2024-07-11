@@ -89,7 +89,7 @@ export function CharAbilityIcon({
 
   return (
     <>
-      <div key={ability.id} data-tooltip-id={tooltipId}>
+      <div key={ability.id} data-tooltip-id={tooltipId} className="relative">
         {ability.stacks && selectedAbility?.stacks ? (
           <div className="absolute rounded bottom-0 right-1 text-sm text-white text-outline">
             {selectedAbility.stacks}/{ability.stacks.max}

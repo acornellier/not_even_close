@@ -18,7 +18,7 @@ const crushingSlam = getEnemySpell(272711, {
   trashAbility: true,
 })
 
-const waterBolt = getEnemySpell(272581, {
+const brackishBolt = getEnemySpell(257063, {
   trashAbility: true,
   avoidable: true,
 })
@@ -27,7 +27,7 @@ export const sobAbilities = [
   goreCrash,
   putridBomb,
   fireBomb,
+  brackishBolt,
   azeriteCharge,
   crushingSlam,
-  waterBolt,
 ]

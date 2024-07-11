@@ -16,7 +16,7 @@ export function AbilityDetailsChip({
 }: Props) {
   return (
     <div
-      className={`flex rounded-3xl px-3 whitespace-nowrap ${color} ${
+      className={`flex rounded-lg px-2 whitespace-nowrap ${color} ${
         textColor ?? 'text-white'
       } ${className}`}
       {...props}

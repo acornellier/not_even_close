@@ -13,6 +13,7 @@ export interface InputProps
   labelTooltip?: ReactNode
   inputTooltip?: ReactNode
   design?: 'minimal' | 'full'
+  hideArrows?: boolean
 }
 
 export function Input({
@@ -23,6 +24,7 @@ export function Input({
   inputTooltip,
   tooltipSuffix,
   design,
+  hideArrows,
   ...props
 }: InputProps) {
   const flexDirectionClass = design === 'minimal' ? 'flex-row items-center' : 'flex-col'
@@ -32,6 +34,8 @@ export function Input({
   const marginClass = design === 'minimal' ? 'mr-2' : 'mb-1'
   const paddingClass = design === 'minimal' ? 'p-1' : 'py-1.5 px-4'
   const borderClass = design === 'minimal' ? '' : 'border-2'
+  const hideArrowsClass = hideArrows ? 'hide-arrows' : ''
+  console.log(hideArrowsClass)
 
   const labelTooltipId = `${label}-label-tooltip-${tooltipSuffix}`
   const inputTooltipId = `${label}-input-tooltip-${tooltipSuffix}`
@@ -49,7 +53,7 @@ export function Input({
       <TooltipStyled id={labelTooltipId}>{labelTooltip}</TooltipStyled>
       <input
         data-tooltip-id={inputTooltipId}
-        className={`${heightClass} ${inputWidthClass} bg-zinc-700 ${borderClass} border-zinc-600 text-sm text-white rounded ${paddingClass} focus:outline-none focus:bg-zinc-800 focus:border-teal-500`}
+        className={`${heightClass} ${inputWidthClass} ${hideArrowsClass} bg-zinc-700 ${borderClass} border-zinc-600 text-sm text-white rounded ${paddingClass} focus:outline-none focus:bg-zinc-800 focus:border-teal-500`}
         onChange={({ target: { value } }) => onChange(value)}
         value={value ?? ''}
         {...props}

@@ -54,18 +54,18 @@ export function CharacterStatsForm({
         label="Stamina"
         value={characterStats.stamina}
         onChange={onChangeStat('stamina')}
-        step={500}
         tooltipSuffix={idx}
         inputTooltip={`${formatNumber(staminaToHp(characterStats.stamina ?? 0))} HP`}
+        hideArrows
       />
       <NumericInput
         label="Versatility"
         value={characterStats.versatilityRaw}
         onChange={onChangeStat('versatilityRaw')}
-        step={100}
         tooltipSuffix={idx}
         labelTooltip="Raw vers, NOT %"
         inputTooltip={`${versPercent}% vers, ${roundTo(versPercent / 2, 2)}% DR`}
+        hideArrows
       />
       <NumericInput
         label="Avoidance"
@@ -74,20 +74,22 @@ export function CharacterStatsForm({
         tooltipSuffix={idx}
         labelTooltip="Raw avoidance, NOT %"
         inputTooltip={`${avoidancePercent}% AoE DR`}
+        hideArrows
       />
       <NumericInput
         label="Armor"
         value={characterStats.armor}
         onChange={onChangeStat('armor')}
-        step={100}
         tooltipSuffix={idx}
         inputTooltip={`${roundTo(physicalDr * 100, 2)}% physical DR`}
+        hideArrows
       />
       {showMainStat && (
         <NumericInput
           label="Main stat"
           value={characterStats.mainStat}
           onChange={onChangeStat('mainStat')}
+          hideArrows
         />
       )}
       {showMastery && (
@@ -95,6 +97,7 @@ export function CharacterStatsForm({
           label="Mastery %"
           value={characterStats.masteryPercent}
           onChange={onChangeStat('masteryPercent')}
+          hideArrows
         />
       )}
     </div>

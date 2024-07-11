@@ -30,8 +30,8 @@ html {
     -1px 1px 0 #000;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input.hide-arrows::-webkit-outer-spin-button,
+input.hide-arrows::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

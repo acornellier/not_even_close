@@ -28,7 +28,7 @@ export function KeyDetailsInput({ keyDetails, setKeyDetails }: Props) {
       <div className="flex gap-1 items-end">
         <NumericInput
           label="Key level"
-          buttons
+          hideArrows
           min={2}
           onChange={(val) => setKeyLevel(val ?? 0)}
           value={keyDetails.keyLevel}
