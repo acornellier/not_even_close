@@ -29,3 +29,11 @@ html {
     1px -1px 0 #000,
     -1px 1px 0 #000;
 }
+
+.maze {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(3, 160px);
+  grid-template-rows: repeat(3, 160px);
+  gap: 20px;
+}
