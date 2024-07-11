@@ -15,8 +15,8 @@ import {
   getEffectText,
   getExtraAbsorbText,
 } from './abilityTooltipFormat.ts'
-import { AbilityIcon } from '../Common/AbilityIcon.tsx'
 import { Button } from '../Common/Button.tsx'
+import { SelectableAbilityIcon } from '../Common/SelectableAbilityIcon.tsx'
 
 const iconSize = 40
 
@@ -89,27 +89,21 @@ export function CharAbilityIcon({
 
   return (
     <>
-      <div
-        key={ability.id}
-        data-tooltip-id={tooltipId}
-        className="cursor-pointer select-none relative"
-        onClick={(e) => {
-          e.preventDefault()
-          toggleAbility(ability.id)
-        }}
-      >
+      <div key={ability.id} data-tooltip-id={tooltipId}>
         {ability.stacks && selectedAbility?.stacks ? (
           <div className="absolute rounded bottom-0 right-1 text-sm text-white text-outline">
             {selectedAbility.stacks}/{ability.stacks.max}
           </div>
         ) : null}
-        {isSelected && (
-          <div
-            className="absolute rounded icon-highlight"
-            style={{ height: iconSize, width: iconSize }}
-          />
-        )}
-        <AbilityIcon size={iconSize} icon={ability.icon} />
+        <SelectableAbilityIcon
+          icon={ability.icon}
+          size={iconSize}
+          selected={isSelected}
+          onClick={(e) => {
+            e.preventDefault()
+            toggleAbility(ability.id)
+          }}
+        />
       </div>
       <TooltipStyled
         id={tooltipId}

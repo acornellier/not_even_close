@@ -6,7 +6,7 @@ import type {
 } from '../backend/ability.ts'
 import { abilitiesById } from '../backend/ability.ts'
 import type { EnemyAbility } from '../backend/enemyAbilities/enemies.ts'
-import type { EnemyAbilityDetails } from '../backend/sim/simTypes.ts'
+import type { EnemyAbilityDetails, KeyDetails } from '../backend/sim/simTypes.ts'
 
 export function roundTo(number: number, to: number) {
   return Math.round(number * 10 ** to) / 10 ** to
@@ -194,4 +194,20 @@ export function enemyAbilityToDetails(ability: EnemyAbility): EnemyAbilityDetail
   if (ability.variance) damage = Math.round(damage * (1 + ability.variance))
 
   return { ...ability, damage }
+}
+
+export function tyranActive(keyDetails: KeyDetails) {
+  return keyDetails.isTyran || bothFortTyranActive(keyDetails)
+}
+
+export function fortActive(keyDetails: KeyDetails) {
+  return !keyDetails.isTyran || bothFortTyranActive(keyDetails)
+}
+
+export function bothFortTyranActive(keyDetails: KeyDetails) {
+  return keyDetails.keyLevel >= 10
+}
+
+export function guileActive(keyDetails: KeyDetails) {
+  return keyDetails.keyLevel >= 12
 }

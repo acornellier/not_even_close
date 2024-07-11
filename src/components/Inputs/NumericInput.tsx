@@ -7,9 +7,10 @@ interface Props extends Omit<InputProps, 'onChange' | 'value'> {
   step?: number
   onChange: (newValue: number | undefined) => void
   value: number | undefined
+  buttons?: boolean
 }
 
-export function NumericInput({ max, min, step = 1, onChange, ...props }: Props) {
+export function NumericInput({ max, min, step = 1, onChange, buttons, ...props }: Props) {
   return (
     <Input
       type="number"

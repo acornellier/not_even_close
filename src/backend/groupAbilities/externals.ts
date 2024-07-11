@@ -101,15 +101,6 @@ const earthenHarmony: Ability = {
   icon: 'spell_shaman_improvedearthshield',
 }
 
-const elementalResistance: Ability = {
-  name: 'Elemental Resistance',
-  id: 462369,
-  icon: 'spell_fireresistancetotem_01',
-  dr: 0.03,
-  drType: 'magic',
-  stacks: { type: 'talent', max: 2, default: 1, values: [0.03, 0.06] },
-}
-
 const timeDilation: Ability = {
   name: 'Time Dilation',
   id: 357170,
@@ -121,7 +112,6 @@ export const externals: Ability[] = [
   temperedVersatility,
   elusiveMists,
   lifeCocoon,
-  elementalResistance,
   earthenHarmony,
   ironBark,
   blessingOfSacrifice,

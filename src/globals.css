@@ -29,3 +29,9 @@ html {
     1px -1px 0 #000,
     -1px 1px 0 #000;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

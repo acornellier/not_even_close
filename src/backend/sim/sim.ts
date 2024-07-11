@@ -3,8 +3,11 @@ import type { SelectedAbility, SelectedAbilityId } from '../ability'
 import {
   augmentSelectedAbilityIds,
   enemyAbilityToDetails,
+  fortActive,
   getStackedValue,
+  guileActive,
   mapSelectedAbilityIds,
+  tyranActive,
 } from '../../util/utils.ts'
 import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from '../stats'
 import type {
@@ -21,22 +24,19 @@ import { getAbsorbs, getExtraAbsorbs } from './absorbs'
 import { getDamageReduction } from './dr'
 import { naturesGuardian } from '../classAbilities/druid.ts'
 
-function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isTrashAbility: boolean) {
+function getScalingFactor(keyDetails: KeyDetails, isTrashAbility: boolean) {
   let scalingFactor = 1
-  for (let i = 2; i <= keyLevel; ++i) {
+  for (let i = 2; i <= keyDetails.keyLevel; ++i) {
     scalingFactor *= 1.1
   }
 
-  const fort = !isTyran || keyLevel >= 10
-  const tyran = isTyran || keyLevel >= 10
-
-  if (fort && isTrashAbility) {
+  if (fortActive(keyDetails) && isTrashAbility) {
     scalingFactor *= 1.3
-  } else if (tyran && !isTrashAbility) {
+  } else if (tyranActive(keyDetails) && !isTrashAbility) {
     scalingFactor *= 1.15
   }
 
-  if (keyLevel >= 12) {
+  if (guileActive(keyDetails)) {
     scalingFactor *= 1.2
   }
 
