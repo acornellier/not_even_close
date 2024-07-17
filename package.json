@@ -7,8 +7,7 @@
     "dev": "vite --port 3000",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint --ext .ts,.tsx src",
-    "prepare": "husky"
+    "lint": "eslint --ext .ts,.tsx src"
   },
   "engines": {
     "node": "20"
@@ -35,7 +34,6 @@
     "eslint-plugin-react": "7.34.1",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-react-refresh": "0.4.6",
-    "husky": "9.0.11",
     "postcss": "8.4.38",
     "prettier": "3.2.5",
     "tailwindcss": "3.4.3",
