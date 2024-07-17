@@ -5,7 +5,6 @@ import { Header } from './components/Header/Header'
 import { Toasts } from './components/Common/Toasts/Toasts'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { SimulatorWithDefaultEnemySpell } from './components/SimulatorWithDefaultEnemySpell.tsx'
-import { Maze } from './components/Maze/Maze.tsx'
 
 // Be sure to update vercel.json when changing routes
 const router = createBrowserRouter([
@@ -16,10 +15,6 @@ const router = createBrowserRouter([
   {
     path: '/spell/:spellId',
     element: <SimulatorWithDefaultEnemySpell />,
-  },
-  {
-    path: '/maze',
-    element: <Maze />,
   },
 ])
 
