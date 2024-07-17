@@ -54,11 +54,15 @@ const expelHarm: Ability = {
 const yulonsGraceMistweaver: Ability = {
   name: "Yulon's Grace",
   id: 414131,
+  icon: 'ability_monk_dragonkick',
   absorb: {
-    healthMultiplier: 0.15,
+    healthMultiplier: 0.1,
     absorbType: 'magic',
   },
-  icon: 'ability_monk_dragonkick',
+  stacks: {
+    type: 'stacks',
+    max: 10,
+  },
 }
 
 const yulonsGraceWindwalker: Ability = {
@@ -66,7 +70,7 @@ const yulonsGraceWindwalker: Ability = {
   id: yulonsGraceMistweaver.id + 1,
   absorb: {
     ...yulonsGraceMistweaver.absorb,
-    healthMultiplier: 0.1,
+    healthMultiplier: 0.06,
   },
 }
 

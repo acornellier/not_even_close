@@ -11,7 +11,7 @@ export const fortitude: Ability = {
 export const blackAttunement: Ability = {
   name: 'Black Attunement',
   id: 403264,
-  healthIncrease: 0.04,
+  healthIncrease: 0.02,
   associatedSpec: { class: 'Evoker', spec: 'Augmentation' },
   icon: 'ability_evoker_blackattunement',
 }
@@ -33,7 +33,7 @@ export const aspectsFavor: Ability = {
     {
       otherAbilityId: blackAttunement.id,
       field: 'healthIncrease',
-      value: 0.02,
+      value: 0.01,
     },
   ],
   stacks: {

@@ -23,6 +23,7 @@ const fade: Ability = {
   icon: 'spell_magic_lesserinvisibilty',
 }
 
+// TODO: buffed
 const powerWordShield: Ability = {
   name: 'Power Word: Shield',
   id: 17,

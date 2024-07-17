@@ -20,6 +20,7 @@ const demonicWards: Ability = {
 const demonicWardsVdh: Ability = {
   ...demonicWards,
   id: demonicWards.id + 1,
+  dr: 0.08,
   drType: undefined,
 }
 
@@ -117,6 +118,11 @@ const metamorphosis: Ability = {
   icon: 'ability_demonhunter_metamorphasistank',
 }
 
+const metamorphosisVdh: Ability = {
+  ...metamorphosis,
+  id: metamorphosis.id + 1,
+}
+
 const fieryBrand: Ability = {
   name: 'Fiery Brand',
   id: 204021,
@@ -153,7 +159,7 @@ const calcifiedSpikes: Ability = {
 const voidReaver: Ability = {
   name: 'Void Reaver (Frailty)',
   id: 268175,
-  damageDealtReduction: 0.04,
+  damageDealtReduction: 0.03,
   icon: 'spell_shadow_demonicempathy',
   stacks: {
     type: 'stacks',
@@ -207,7 +213,7 @@ export const vengeanceAbilities = [
   calcifiedSpikes,
   painbringer,
   immolationAura,
-  metamorphosis,
+  metamorphosisVdh,
   voidReaver,
   demonMuzzle,
   fieryBrand,

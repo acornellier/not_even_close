@@ -109,7 +109,7 @@ const nullMagic: Ability = {
   name: 'Null Magic',
   id: 454842,
   icon: 'spell_shadow_detectinvisibility',
-  dr: 0.1,
+  dr: 0.08,
   drType: 'magic',
 }
 

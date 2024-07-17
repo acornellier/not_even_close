@@ -26,7 +26,7 @@ const sanctifiedPlatesHoly: Ability = {
 
 const blessingOfDusk: Ability = {
   name: 'Blessing of Dusk',
-  dr: 0.05,
+  dr: 0.04,
   onByDefault: true,
   id: 385126,
   icon: 'achievement_zone_newshadowmoonvalley',
@@ -161,7 +161,7 @@ const divineBulwark: Ability = {
   id: 76671,
   icon: 'spell_holy_holyprotection',
   onByDefault: true,
-  dr: 0.05,
+  dr: 0.04,
   notes: 'Should scale off mastery but not implemented yet',
 }
 

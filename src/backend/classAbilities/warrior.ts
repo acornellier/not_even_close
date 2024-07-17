@@ -9,7 +9,7 @@ const defensiveStance: Ability = {
 
 const defensiveStanceProt: Ability = {
   ...defensiveStance,
-  dr: 0.2,
+  dr: 0.16,
   id: defensiveStance.id + 1,
 }
 
@@ -70,7 +70,7 @@ const ignorePain: Ability = {
 const punish: Ability = {
   name: 'Punish',
   id: 275334,
-  damageDealtReduction: 0.03,
+  damageDealtReduction: 0.02,
   stacks: {
     type: 'stacks',
     default: 1,

@@ -180,7 +180,7 @@ const rageOfTheSleeper: Ability = {
   name: 'Rage of the Sleeper',
   id: 200851,
   icon: 'inv_hand_1h_artifactursoc_d_01',
-  dr: 0.25,
+  dr: 0.2,
 }
 
 const reinforcedFur: Ability = {
