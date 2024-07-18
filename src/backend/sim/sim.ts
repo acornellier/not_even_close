@@ -31,7 +31,7 @@ function getScalingFactor(keyDetails: KeyDetails, isTrashAbility: boolean) {
   }
 
   if (fortActive(keyDetails) && isTrashAbility) {
-    scalingFactor *= 1.3
+    scalingFactor *= 1.2
   } else if (tyranActive(keyDetails) && !isTrashAbility) {
     scalingFactor *= 1.15
   }
