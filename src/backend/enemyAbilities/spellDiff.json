@@ -3,7 +3,7 @@
     "id": 438495,
     "name": "Alerting Shrill",
     "icon": "ability_vehicle_sonicshockwave",
-    "damage": 3083661,
+    "damage": 2158562,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -55,7 +55,7 @@
     "id": 440238,
     "name": "Ice Sickles",
     "icon": "artifactability_frostmage_blackicicles",
-    "damage": 1321569,
+    "damage": 528628,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -118,7 +118,7 @@
     "id": 448888,
     "name": "Erosive Spray",
     "icon": "inv_ability_poison_missile",
-    "damage": 825981,
+    "damage": 704837,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -339,7 +339,7 @@
     "id": 256639,
     "name": "Fire Bomb",
     "icon": "inv_misc_blackironbomb",
-    "damage": 1069783,
+    "damage": 792942,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -366,7 +366,7 @@
     "id": 454439,
     "name": "Azerite Charge",
     "icon": "inv_azeriteexplosion",
-    "damage": 1321569,
+    "damage": 1057255,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -390,16 +390,15 @@
   },
   {
     "id": 428535,
-    "name": "Metal Splinters",
-    "icon": "ability_rhyolith_magmaflow_wave",
+    "name": "Blazing Crescendo",
+    "icon": "ability_siege_engineer_superheated",
     "damage": 1939219,
     "aoe": true,
     "physical": false,
     "schools": [
       "fire"
     ],
-    "variance": 0,
-    "effectIndex": 1
+    "variance": 0
   },
   {
     "id": 425974,

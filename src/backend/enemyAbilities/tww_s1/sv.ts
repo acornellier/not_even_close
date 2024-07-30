@@ -1,8 +1,6 @@
 import { getEnemySpell } from '../grimoire.ts'
 
-const metalSplinters = getEnemySpell(428535, {
-  effectIndex: 1,
-})
+const metalSplinters = getEnemySpell(428535)
 
 const groundPound = getEnemySpell(425974, {
   trashAbility: true,

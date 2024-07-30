@@ -112,7 +112,7 @@ const stoneBulwark: Ability = {
     default: 4,
     max: 5,
   },
-  notes: 'Starts at 4 stacks, gains 1 stack every 5 seconds. Lasts 10 seconds.',
+  notes: 'Starts at 4 stacks, gains 1 stack every 5 seconds. Lasts 15 seconds.',
 }
 
 export const shamanEnhAbilities = [
