@@ -39,7 +39,7 @@ const hardenedScales: Ability = {
     {
       otherAbilityId: obsidianScales.id,
       field: 'dr',
-      value: 0.05,
+      value: 0.1,
     },
   ],
 }
