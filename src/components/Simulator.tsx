@@ -22,7 +22,10 @@ import { dungeons } from '../backend/enemyAbilities/dungeons.ts'
 import { defaultCharacter } from './Characters/defaultCharacters.ts'
 import { useAbilities } from './Characters/useAbilities.ts'
 import { Label } from './Common/Label.tsx'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import {
+  ArrowTopRightOnSquareIcon,
+  ExclamationTriangleIcon,
+} from '@heroicons/react/24/outline'
 
 const defaultKeyDetails: KeyDetails = { keyLevel: 15, isTyran: true }
 
@@ -99,11 +102,23 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     <SimContextProvider dungeon={selectedDungeon} result={result}>
       <div className="flex flex-col lg:flex-row gap-2 mb-24">
         <div className="flex flex-col gap-3 grow">
-          <Label className="[&]:bg-red-700">
-            <ExclamationTriangleIcon height={24} className="mr-1" />
-            Not Even Close has NOT been updated for prepatch
-            <ExclamationTriangleIcon height={24} className="ml-1" />
-          </Label>
+          <div className="flex gap-2">
+            <Label className="[&]:bg-red-700">
+              <ExclamationTriangleIcon height={20} className="mr-1" />
+              Not Even Close has NOT been updated for prepatch.
+              <ExclamationTriangleIcon height={20} className="ml-1" />
+            </Label>
+            <a
+              href="https://not-even-close-tww.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Button>
+                <ArrowTopRightOnSquareIcon height={20} className="mr-1" />
+                View TWW version (WIP!)
+              </Button>
+            </a>
+          </div>
           <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
 
           <EnemyAbilityDetailsInput
