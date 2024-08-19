@@ -11,7 +11,7 @@ import {
 import { AbilityCardExtras } from './AbilityCardExtras'
 import { CardResult } from './CardResult'
 import { AbilityIcon } from '../Common/AbilityIcon.tsx'
-import { shortRoundedNumber } from '../../util/utils.ts'
+import { roundHundred, shortRoundedNumber } from '../../util/utils.ts'
 import { scaleDamage } from '../../backend/sim/sim.ts'
 import { ShieldSlashIcon } from '../Common/Icons/ShieldSlashIcon.tsx'
 
@@ -85,7 +85,7 @@ export function EnemyAbilityCard({
               {shortRoundedNumber(scaleDamage(keyDetails, ability).scaledDamage)} dmg
               {ability.variance !== undefined &&
                 ability.variance !== 0 &&
-                ` ±${ability.variance * 100}%`}
+                ` ±${roundHundred(ability.variance)}%`}
             </AbilityDetailsChip>
             {ability.variance !== undefined && ability.variance !== 0 && (
               <TooltipStyled id={`chip-damage-${ability.name}`}>
