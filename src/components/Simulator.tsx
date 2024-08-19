@@ -22,6 +22,7 @@ import { dungeons } from '../backend/enemyAbilities/dungeons.ts'
 import { defaultCharacter } from './Characters/defaultCharacters.ts'
 import { useCharacters } from './Characters/useCharacters.ts'
 import { useTwwCacheWipe } from '../util/UseTwwCacheWipe.tsx'
+import { Label } from './Common/Label.tsx'
 
 const defaultKeyDetails: KeyDetails = { keyLevel: 15, isTyran: true }
 
@@ -102,13 +103,12 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     <SimContextProvider dungeon={selectedDungeon} result={result}>
       <div className="flex flex-col lg:flex-row gap-2 mb-24">
         <div className="flex flex-col gap-3 grow">
+          <Label className="[&]:bg-green-700">
+            Not Even Close has been updated for level 80 TWW characters.
+          </Label>
+
           <div className="flex justify-between">
             <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
-            <Label className="[&]:bg-red-700">
-              <ExclamationTriangleIcon height={20} className="mr-1" />
-              Not Even Close has NOT been updated for prepatch.
-              <ExclamationTriangleIcon height={20} className="ml-1" />
-            </Label>
 
             <div className="self-end">
               <MoreLess
