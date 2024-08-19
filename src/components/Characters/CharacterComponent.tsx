@@ -10,20 +10,18 @@ import { AbilitySelect } from '../Abilities/AbilitySelect'
 import type { ClassSpec } from '../../backend/classes'
 import { classSpecs } from '../../backend/classes'
 import { LabelledAbilitySelect } from '../Abilities/LabelledAbilitySelect'
-import { aaVersBuff, externals } from '../../backend/groupAbilities/externals'
+import { externals } from '../../backend/groupAbilities/externals'
 import { useCallback, useMemo } from 'react'
-import type { AbilityReplacement, SelectedAbility } from '../../backend/ability'
+import type { AbilityReplacement, SelectedAbilityId } from '../../backend/ability'
+import { abilitiesById } from '../../backend/ability'
 import { CreateProfile } from './CreateProfile'
 import { LoadProfile } from './LoadProfile'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import { PasteButton } from './PasteButton.tsx'
-import { useSimContext } from '../../util/useSimContext.ts'
 import { Label } from '../Common/Label.tsx'
 import { useLocalStorage } from '../../util/useLocalStorage.ts'
-import {
-  ursineVigorActive,
-  ursineVigorPassive,
-} from '../../backend/classAbilities/druid.ts'
+
+import { useAbilitiesThatExist } from './useAbilitiesThatExist.ts'
 
 interface Props {
   idx: number
@@ -50,8 +48,6 @@ export function CharacterComponent({
   loadProfile,
   deleteProfile,
 }: Props) {
-  const { dungeon } = useSimContext()
-
   const [replacements, setReplacements] = useLocalStorage<Record<number, number>>(
     'replacements',
     {},
@@ -63,14 +59,18 @@ export function CharacterComponent({
   )
 
   const setAbilities = useCallback(
-    (abilities: SelectedAbility[]) => updateCharacter({ abilities }),
+    (abilities: SelectedAbilityId[]) => updateCharacter({ abilities }),
     [updateCharacter],
   )
 
+  useAbilitiesThatExist(character.abilities, setAbilities)
+
   const setExternals = useCallback(
-    (newExternals: SelectedAbility[]) => updateCharacter({ externals: newExternals }),
+    (newExternals: SelectedAbilityId[]) => updateCharacter({ externals: newExternals }),
     [updateCharacter],
   )
+
+  useAbilitiesThatExist(character.externals, setExternals)
 
   const setSpec = useCallback(
     (spec: ClassSpec) => updateCharacter({ classSpec: spec }),
@@ -89,25 +89,13 @@ export function CharacterComponent({
     [setReplacements],
   )
 
-  const availableExternals = useMemo(() => {
-    const res = [...externals]
-    if (dungeon?.key === 'aa') res.push(aaVersBuff)
-    return res
-  }, [dungeon])
-
   const specDetails = classSpecs[character.classSpec.class][character.classSpec.spec]!
   const specAbilities = specDetails.abilities
 
   const availableAbilities = useMemo(() => {
     return specAbilities.map((ability) => {
-      const replacement = replacements[ability.spellId]
-      return !replacement
-        ? ability
-        : replacement === ursineVigorActive.spellId
-          ? ursineVigorActive
-          : replacement === ursineVigorPassive.spellId
-            ? ursineVigorPassive
-            : ability
+      const replacement = replacements[ability.id]
+      return !replacement ? ability : abilitiesById[replacement] ?? ability
     })
   }, [replacements, specAbilities])
 
@@ -195,7 +183,7 @@ export function CharacterComponent({
       <LabelledAbilitySelect
         label="Externals"
         characterIdx={idx}
-        availableAbilities={availableExternals}
+        availableAbilities={externals}
         selectedAbilities={character.externals}
         setSelectedAbilities={setExternals}
       />

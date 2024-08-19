@@ -1,116 +1,122 @@
 ﻿import type { Ability } from '../ability'
-import {
-  improvedPrismaticBarrier,
-  improvedPrismaticBarrierAugmentation,
-  prismaticBarrier,
-} from '../classAbilities/mage'
+import { prismaticBarrier } from '../classAbilities/mage.ts'
 
-export const zephyr: Ability = {
+const zephyr: Ability = {
   name: 'Zephyr',
-  spellId: 374227,
+  id: 374227,
   aoeDr: 0.2,
   associatedClass: 'Evoker',
   icon: 'ability_evoker_hoverblack',
 }
 
-export const chiCocoon: Ability = {
+const chiCocoon: Ability = {
   name: 'Chi Cocoon',
-  spellId: 406220,
+  id: 406220,
   associatedSpec: { class: 'Monk', spec: 'Mistweaver' },
   absorb: {
-    healthMultiplier: 0.16,
+    healthMultiplier: 0.12,
     versAffected: true,
-    backup: 270_000,
+    backup: 540_000,
   },
   icon: 'inv_pet_crane',
   notes: 'Assumes 270K absorb if you have no mistweaver selected',
 }
 
-export const massBarrier: Ability = {
+const massBarrier: Ability = {
   name: 'Mass Barrier',
-  spellId: 414660,
+  id: 414660,
   associatedClass: 'Mage',
   absorb: {
     healthMultiplier: 0.2,
     versAffected: true,
-    backup: 300_000,
+    backup: 900_000,
   },
   icon: 'ability_racial_magicalresistance',
   notes: 'Assumes 300K absorb if you have no mage selected',
 }
 
-export const arcaneMassBarrier: Ability = {
-  ...massBarrier,
-  name: 'Arcane Mass Barrier',
-  spellId: massBarrier.spellId + 1,
-  dr: prismaticBarrier.dr,
-  drType: prismaticBarrier.drType,
-  associatedSpec: { class: 'Mage', spec: 'Arcane' },
-  icon: 'spell_holy_magicalsentry',
-}
-
-export const improvedArcaneMassBarrier: Ability = {
-  name: 'Improved Prismatic Barrier',
-  spellId: improvedPrismaticBarrier.spellId + 1,
-  associatedSpec: { class: 'Mage', spec: 'Arcane' },
-  icon: 'spell_magearmor',
+const arcaneMassBarrier: Ability = {
+  id: massBarrier.id + 1,
+  name: 'Prismatic Barrier',
+  icon: prismaticBarrier.icon,
   abilityAugmentations: [
     {
-      ...improvedPrismaticBarrierAugmentation,
-      otherSpellId: arcaneMassBarrier.spellId,
+      otherAbilityId: massBarrier.id,
+      field: 'dr',
+      value: 0.25,
     },
   ],
 }
 
-export const rallyingCry: Ability = {
+const rallyingCry: Ability = {
   name: 'Rallying Cry',
-  spellId: 97462,
+  id: 97462,
   healthIncrease: 0.1,
   associatedClass: 'Warrior',
   icon: 'ability_warrior_rallyingcry',
 }
 
-export const auraMastery: Ability = {
+const auraMastery: Ability = {
   name: 'Aura Mastery',
-  spellId: 31821,
+  id: 31821,
   dr: 0.09,
   associatedSpec: { class: 'Paladin', spec: 'Holy' },
   icon: 'spell_holy_auramastery',
   notes: 'Assumes you already have 3% devo aura selected',
 }
 
-export const powerWordBarrier: Ability = {
+const powerWordBarrier: Ability = {
   name: 'Power Word: Barrier',
-  spellId: 62618,
+  id: 62618,
   dr: 0.2,
   associatedSpec: { class: 'Priest', spec: 'Discipline' },
   icon: 'spell_holy_powerwordbarrier',
 }
 
-export const antiMagicZone: Ability = {
+const antiMagicZone: Ability = {
   name: 'Anti-Magic Zone',
-  spellId: 51052,
+  id: 51052,
   dr: 0.2,
   drType: 'magic',
   associatedClass: 'Death Knight',
   icon: 'spell_deathknight_antimagiczone',
 }
 
-export const stoneskinTotem: Ability = {
-  name: 'Stoneskin Totem',
-  spellId: 383017,
-  dr: 0.1,
-  drType: 'physical',
-  associatedClass: 'Shaman',
-  icon: 'ability_shaman_stoneskintotem',
-}
-
-export const spiritLinkTotem: Ability = {
+const spiritLinkTotem: Ability = {
   name: 'Spirit Link Totem',
-  spellId: 98008,
+  id: 98008,
   dr: 0.1,
   associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   icon: 'spell_shaman_spiritlink',
+}
+
+const downpour: Ability = {
+  name: 'Downpour',
+  id: 207778,
+  icon: 'ability_mage_waterjet',
+  healthIncrease: 0.1,
+}
+
+const spoutingSpirits: Ability = {
+  name: 'Spouting Spirits',
+  id: 288384,
+  icon: 'spell_shaman_spiritlink',
+  abilityAugmentations: [
+    {
+      otherAbilityId: spiritLinkTotem.id,
+      field: 'dr',
+      value: 0.05,
+    },
+  ],
+}
+
+const elementalResistance: Ability = {
+  name: 'Elemental Resistance',
+  id: 462369,
+  icon: 'spell_fireresistancetotem_01',
+  dr: 0.03,
+  drType: 'magic',
+  stacks: { type: 'talent', max: 2, default: 1, values: [0.03, 0.06] },
 }
 
 export const groupActives: Ability[] = [
@@ -118,11 +124,12 @@ export const groupActives: Ability[] = [
   chiCocoon,
   massBarrier,
   arcaneMassBarrier,
-  improvedArcaneMassBarrier,
   rallyingCry,
   auraMastery,
-  spiritLinkTotem,
+  spoutingSpirits,
   powerWordBarrier,
   antiMagicZone,
-  stoneskinTotem,
+  elementalResistance,
+  downpour,
+  spiritLinkTotem,
 ]

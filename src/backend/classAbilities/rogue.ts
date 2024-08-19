@@ -2,25 +2,25 @@ import type { Ability } from '../ability'
 
 const thiefsVersatility: Ability = {
   name: "Thief's Versatility",
-  spellId: 381619,
+  id: 381619,
   onByDefault: true,
-  versIncrease: 0.04,
+  versIncrease: 0.03,
   icon: 'ability_rogue_versatility',
 }
 
 const elusiveness: Ability = {
   name: 'Elusiveness',
-  spellId: 79008,
+  id: 79008,
   onByDefault: true,
   icon: 'ability_rogue_turnthetables',
   abilityAugmentations: [
     {
-      otherSpellId: 1966, // Feint
+      otherAbilityId: 1966, // Feint
       field: 'dr',
       value: 0.2,
     },
     {
-      otherSpellId: 5277, // Evasion
+      otherAbilityId: 5277, // Evasion
       field: 'dr',
       value: 0.2,
     },
@@ -30,28 +30,28 @@ const elusiveness: Ability = {
 const feint: Ability = {
   name: 'Feint',
   aoeDr: 0.4,
-  spellId: 1966,
+  id: 1966,
   icon: 'ability_rogue_feint',
 }
 
 const evasion: Ability = {
   name: 'Evasion',
-  spellId: 5277,
+  id: 5277,
   icon: 'spell_shadow_shadowward',
 }
 
 const fadeToNothing: Ability = {
   name: 'Fade to Nothing',
   dr: 0.1,
-  spellId: 382514,
+  id: 382514,
   icon: 'ability_warlock_everlastingaffliction',
 }
 
 const cloakedInShadows: Ability = {
   name: 'Cloaked in Shadows',
-  spellId: 382515,
+  id: 382515,
   absorb: {
-    healthMultiplier: 0.3,
+    healthMultiplier: 0.18,
   },
   icon: 'inv_helm_cloth_shadowmoonclan_b_01',
 }
@@ -59,22 +59,85 @@ const cloakedInShadows: Ability = {
 const precisionShot: Ability = {
   name: 'Precision Shot',
   damageDealtReduction: 0.05,
-  spellId: 428377,
+  id: 428377,
   icon: 'inv_legendary_gun',
 }
 
 const exhilaratingExecution: Ability = {
   name: 'Exhilarating Execution',
   healthIncrease: 0.1,
-  spellId: 428486,
+  id: 428486,
   icon: 'inv_weapon_hand_04',
 }
 
-export const rogueAssAbilities = [elusiveness, evasion, feint]
+const cloakOfShadows: Ability = {
+  name: 'Cloak of Shadows',
+  id: 31224,
+  icon: 'spell_shadow_nethercloak',
+  notes: 'Only the DR from Bait and Switch, does not calculate immunities',
+  drType: 'physical',
+}
+
+const baitAndSwitch: Ability = {
+  name: 'Bait and Switch',
+  id: 457034,
+  icon: 'ability_druid_earthandsky',
+  heroTree: 'Deathstalker',
+  notes: 'WARNING: disable this for physical damage hits',
+  abilityAugmentations: [
+    {
+      otherAbilityId: evasion.id,
+      field: 'dr',
+      value: 0.2,
+    },
+    {
+      otherAbilityId: cloakOfShadows.id,
+      field: 'dr',
+      value: 0.2,
+    },
+  ],
+}
+
+const smoke: Ability = {
+  name: 'Smoke',
+  id: 441247,
+  icon: 'rogue_dirtytricks',
+  heroTree: 'Trickster',
+  damageDealtReduction: 0.05,
+}
+
+const mirrors: Ability = {
+  name: 'Mirrors',
+  id: 441250,
+  icon: 'trade_archaeology_highbornesoulmirror',
+  heroTree: 'Trickster',
+  abilityAugmentations: [
+    {
+      otherAbilityId: feint.id,
+      field: 'dr',
+      value: 0.1,
+    },
+    {
+      otherAbilityId: feint.id,
+      field: 'aoeDr',
+      value: 0.1,
+    },
+  ],
+}
+
+export const rogueAssAbilities = [
+  elusiveness,
+  cloakOfShadows,
+  baitAndSwitch,
+  evasion,
+  feint,
+]
 
 export const rogueOutlawAbilities = [
   thiefsVersatility,
   elusiveness,
+  mirrors,
+  smoke,
   precisionShot,
   evasion,
   feint,
@@ -82,6 +145,10 @@ export const rogueOutlawAbilities = [
 
 export const rogueSubAbilities = [
   elusiveness,
+  mirrors,
+  smoke,
+  cloakOfShadows,
+  baitAndSwitch,
   fadeToNothing,
   exhilaratingExecution,
   cloakedInShadows,

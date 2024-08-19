@@ -1,4 +1,8 @@
-﻿import type { Ability, AbilityReplacement, SelectedAbility } from '../../backend/ability'
+import type {
+  Ability,
+  AbilityReplacement,
+  SelectedAbilityId,
+} from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
 import { augmentAbilities, getSelectedAbility } from '../../util/utils.ts'
 import { CharAbilityIcon } from './CharAbilityIcon'
@@ -8,15 +12,14 @@ import { useAbilitySetters } from './useAbilitySetters.ts'
 
 interface Props {
   availableAbilities: Ability[]
-  selectedAbilities: SelectedAbility[]
-  setSelectedAbilities: (abilities: SelectedAbility[]) => void
+  selectedAbilities: SelectedAbilityId[]
+  setSelectedAbilities: (abilities: SelectedAbilityId[]) => void
   replaceAbility?: (replacement: AbilityReplacement) => void
   characterIdx?: number
 }
 
 function isAugmenter(ability: Ability) {
-  if ([dampenHarm.spellId, willOfTheNecropolis.spellId].includes(ability.spellId))
-    return false
+  if ([dampenHarm.id, willOfTheNecropolis.id].includes(ability.id)) return false
 
   return (
     ability.abilityAugmentations && !abilityEffectFields.some((field) => ability[field])
@@ -52,9 +55,9 @@ export function AbilitySelect({
     <div className="flex gap-1.5 flex-wrap">
       {augmenters.map((ability) => (
         <CharAbilityIcon
-          key={ability.spellId}
+          key={ability.id}
           ability={ability}
-          selectedAbility={getSelectedAbility(ability.spellId, selectedAbilities)}
+          selectedAbility={getSelectedAbility(ability.id, selectedAbilities)}
           toggleAbility={toggleAbility}
           setAbilityStacks={setAbilityStacks}
           replaceAbility={replaceAbility}
@@ -67,9 +70,9 @@ export function AbilitySelect({
 
       {regulars.map((ability) => (
         <CharAbilityIcon
-          key={ability.spellId}
+          key={ability.id}
           ability={ability}
-          selectedAbility={getSelectedAbility(ability.spellId, selectedAbilities)}
+          selectedAbility={getSelectedAbility(ability.id, selectedAbilities)}
           toggleAbility={toggleAbility}
           setAbilityStacks={setAbilityStacks}
           replaceAbility={replaceAbility}

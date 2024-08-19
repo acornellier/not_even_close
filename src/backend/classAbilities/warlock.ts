@@ -4,7 +4,7 @@ const felArmor: Ability = {
   name: 'Fel Armor',
   dr: 0.03,
   onByDefault: true,
-  spellId: 386124,
+  id: 386124,
   icon: 'spell_shadow_felarmour',
 }
 
@@ -12,7 +12,7 @@ const demonicFortitude: Ability = {
   name: 'Demonic Fortitude',
   healthIncrease: 0.05,
   onByDefault: true,
-  spellId: 386617,
+  id: 386617,
   icon: 'spell_warlock_summonimpoutland',
 }
 
@@ -20,7 +20,7 @@ const soulLink: Ability = {
   name: 'Soul Link',
   dr: 0.1,
   onByDefault: true,
-  spellId: 108415,
+  id: 108415,
   icon: 'ability_warlock_soullink',
   notes: 'Only while your pet is active',
 }
@@ -28,13 +28,13 @@ const soulLink: Ability = {
 const soulburn: Ability = {
   name: 'Soulburn + Healthstone',
   healthIncrease: 0.2,
-  spellId: 385899,
+  id: 385899,
   icon: 'spell_warlock_soulburn',
 }
 
 const grimoireOfSacrifice: Ability = {
   name: 'Grimoire of Sacrifice',
-  spellId: 108503,
+  id: 108503,
   staminaIncrease: 0.05,
   icon: 'warlock_grimoireofsacrifice',
   notes: 'Cannot have Soul Link while this is active',
@@ -42,23 +42,23 @@ const grimoireOfSacrifice: Ability = {
 
 const abyssWalker: Ability = {
   name: 'Abyss Walker',
-  spellId: 389609,
+  id: 389609,
   dr: 0.04,
   icon: 'achievement_explore_argus',
 }
 
 const soulLeech: Ability = {
   name: 'Soul Leech',
-  spellId: 108370,
+  id: 108370,
   absorb: {
-    healthMultiplier: 0.15,
+    healthMultiplier: 0.1,
   },
   icon: 'warlock_siphonlife',
 }
 
 const shadowBulwark: Ability = {
   name: 'Shadow Bulwark',
-  spellId: 17767,
+  id: 17767,
   healthIncrease: 0.3,
   icon: 'spell_shadow_antishadow',
   notes:
@@ -67,7 +67,7 @@ const shadowBulwark: Ability = {
 
 const darkPact: Ability = {
   name: 'Dark Pact',
-  spellId: 108416,
+  id: 108416,
   absorb: {
     healthMultiplier: 0.4,
     versAffected: true,
@@ -78,26 +78,58 @@ const darkPact: Ability = {
 
 const unendingResolve: Ability = {
   name: 'Unending Resolve',
-  dr: 0.25,
-  spellId: 104773,
+  id: 104773,
   icon: 'spell_shadow_demonictactics',
+  dr: 0.25,
 }
 
 const strengthOfWill: Ability = {
   name: 'Strength of Will',
-  spellId: 317138,
+  id: 317138,
   onByDefault: true,
   icon: 'spell_shadow_demonictactics',
   abilityAugmentations: [
     {
-      otherSpellId: 104773,
+      otherAbilityId: 104773,
       field: 'dr',
       value: 0.15,
     },
   ],
 }
 
-export const warlockAffDestroAbilities = [
+const friendsInDarkPlaces: Ability = {
+  name: 'Friends in Dark Places',
+  id: 449703,
+  icon: 'spell_shadow_deathpact',
+  heroTree: 'Soul Harvester',
+  abilityAugmentations: [
+    {
+      otherAbilityId: darkPact.id,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.5,
+    },
+  ],
+}
+
+const infernalBulwark: Ability = {
+  name: 'Infernal Bulwark',
+  id: 429130,
+  icon: 'spell_fire_felfireward',
+  heroTree: 'Diabolist',
+  abilityAugmentations: [
+    {
+      otherAbilityId: unendingResolve.id,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.1,
+    },
+  ],
+}
+
+export const warlockAffAbilities = [
+  friendsInDarkPlaces,
+  strengthOfWill,
   felArmor,
   demonicFortitude,
   soulLink,
@@ -108,16 +140,31 @@ export const warlockAffDestroAbilities = [
   soulburn,
   darkPact,
   unendingResolve,
+]
+
+export const warlockDestroAbilities = [
   strengthOfWill,
+  infernalBulwark,
+  felArmor,
+  demonicFortitude,
+  soulLink,
+  grimoireOfSacrifice,
+  shadowBulwark,
+  abyssWalker,
+  soulburn,
+  soulLeech,
+  darkPact,
+  unendingResolve,
 ]
 
 export const warlockDemoAbilities = [
   felArmor,
+  infernalBulwark,
   demonicFortitude,
   soulLink,
   abyssWalker,
-  soulLeech,
   soulburn,
+  soulLeech,
   darkPact,
   unendingResolve,
   strengthOfWill,

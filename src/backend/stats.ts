@@ -1,8 +1,8 @@
 import { roundTo } from '../util/utils.ts'
 
 const healthPerStamina = 20
-const versConversionFactor = 204.9944775
-const avoidanceConversionFactor = 71.9980604
+const versConversionFactor = 780
+const avoidanceConversionFactor = 271.9987
 
 // Changes every patch
 const armorKValueMplusS4 = 24308.556

@@ -1,4 +1,8 @@
-import type { Ability, AbilityReplacement, SelectedAbility } from '../../backend/ability'
+import type {
+  Ability,
+  AbilityReplacement,
+  SelectedAbilityId,
+} from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
 import { defaultStacks } from '../../util/utils.ts'
 import { Fragment } from 'react'
@@ -11,14 +15,14 @@ import {
   getEffectText,
   getExtraAbsorbText,
 } from './abilityTooltipFormat.ts'
-import { AbilityIcon } from '../Common/AbilityIcon.tsx'
 import { Button } from '../Common/Button.tsx'
+import { SelectableAbilityIcon } from '../Common/SelectableAbilityIcon.tsx'
 
 const iconSize = 40
 
 interface AbilityIconProps {
   ability: Ability
-  selectedAbility: SelectedAbility | undefined
+  selectedAbility: SelectedAbilityId | undefined
   toggleAbility: (spellId: number) => void
   setAbilityStacks: (spellId: number, stacks: number) => void
   replaceAbility?: (replacement: AbilityReplacement) => void
@@ -39,7 +43,7 @@ function UrsineVigorSwapper({ ability, replaceAbility }: UrsineVigorSwapperProps
       short
       className="mt-1"
       onClick={() =>
-        replaceAbility({ sourceId: ability.spellId, targetId: ability.replacedBy! })
+        replaceAbility({ sourceId: ability.id, targetId: ability.replacedBy! })
       }
     >
       Swap to {ability.abilityAugmentations ? 'active' : 'passive'} version
@@ -57,9 +61,9 @@ export function CharAbilityIcon({
   characterIdx,
 }: AbilityIconProps) {
   const augmentedAbilities = ability.abilityAugmentations
-    ? allAbilities.filter(({ spellId }) =>
+    ? allAbilities.filter(({ id }) =>
         ability.abilityAugmentations?.some(
-          (augmentation) => spellId === augmentation.otherSpellId,
+          (augmentation) => id === augmentation.otherAbilityId,
         ),
       )
     : null
@@ -81,31 +85,25 @@ export function CharAbilityIcon({
     )
   }
 
-  const tooltipId = `ability-tooltip-${ability.spellId}${characterIdx ? `-${characterIdx}` : ''}`
+  const tooltipId = `ability-tooltip-${ability.id}${characterIdx ? `-${characterIdx}` : ''}`
 
   return (
     <>
-      <div
-        key={ability.spellId}
-        data-tooltip-id={tooltipId}
-        className="cursor-pointer select-none relative"
-        onClick={(e) => {
-          e.preventDefault()
-          toggleAbility(ability.spellId)
-        }}
-      >
+      <div key={ability.id} data-tooltip-id={tooltipId} className="relative">
         {ability.stacks && selectedAbility?.stacks ? (
           <div className="absolute rounded bottom-0 right-1 text-sm text-white text-outline">
             {selectedAbility.stacks}/{ability.stacks.max}
           </div>
         ) : null}
-        {isSelected && (
-          <div
-            className="absolute rounded icon-highlight"
-            style={{ height: iconSize, width: iconSize }}
-          />
-        )}
-        <AbilityIcon size={iconSize} icon={ability.icon} />
+        <SelectableAbilityIcon
+          icon={ability.icon}
+          size={iconSize}
+          selected={isSelected}
+          onClick={(e) => {
+            e.preventDefault()
+            toggleAbility(ability.id)
+          }}
+        />
       </div>
       <TooltipStyled
         id={tooltipId}
@@ -128,19 +126,19 @@ export function CharAbilityIcon({
             )
           })}
           {augmentedAbilities?.map((augmentedAbility) => {
-            const augmentation = ability.abilityAugmentations?.find(
-              (augmentation) => augmentation.otherSpellId === augmentedAbility.spellId,
+            const augmentations = ability.abilityAugmentations?.filter(
+              (augmentation) => augmentation.otherAbilityId === augmentedAbility.id,
             )
-            if (!augmentation) return null
+            if (!augmentations || augmentations.length === 0) return null
 
-            return (
-              <Fragment key={augmentedAbility.spellId}>
+            return augmentations.map((augmentation, idx) => (
+              <Fragment key={`${augmentedAbility.id}-${idx}`}>
                 <span>
                   Improves {augmentedAbility.name}:{' '}
                   {getAugmentationText(augmentation, ability, selectedAbility)}
                 </span>
               </Fragment>
-            )
+            ))
           })}
           {ability.notes && <span>{ability.notes}</span>}
           {ability.stacks && selectedAbility && (
@@ -148,7 +146,7 @@ export function CharAbilityIcon({
               <NumericInput
                 label={ability.stacks.type === 'stacks' ? 'Stacks' : 'Talent points'}
                 design="minimal"
-                onChange={(newValue) => setAbilityStacks(ability.spellId, newValue ?? 0)}
+                onChange={(newValue) => setAbilityStacks(ability.id, newValue ?? 0)}
                 value={selectedAbility.stacks}
                 min={1}
                 max={ability.stacks.max}

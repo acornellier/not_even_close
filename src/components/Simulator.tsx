@@ -20,12 +20,8 @@ import type { KeyDetails, Result } from '../backend/sim/simTypes'
 import { useEnemyAbility } from './EnemyAbilities/useEnemyAbility'
 import { dungeons } from '../backend/enemyAbilities/dungeons.ts'
 import { defaultCharacter } from './Characters/defaultCharacters.ts'
-import { useAbilities } from './Characters/useAbilities.ts'
-import { Label } from './Common/Label.tsx'
-import {
-  ArrowTopRightOnSquareIcon,
-  ExclamationTriangleIcon,
-} from '@heroicons/react/24/outline'
+import { useCharacters } from './Characters/useCharacters.ts'
+import { useTwwCacheWipe } from '../util/UseTwwCacheWipe.tsx'
 
 const defaultKeyDetails: KeyDetails = { keyLevel: 15, isTyran: true }
 
@@ -34,6 +30,8 @@ interface Props {
 }
 
 export function Simulator({ defaultEnemyAbility }: Props) {
+  useTwwCacheWipe()
+
   const {
     characters,
     setCharacters,
@@ -41,7 +39,7 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     setGroupBuffs,
     selectedGroupActives,
     setGroupActives,
-  } = useAbilities()
+  } = useCharacters()
 
   const [keyDetails, setKeyDetails] = useLocalStorage('keyDetails', defaultKeyDetails)
 
@@ -53,6 +51,8 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     setEnemyAbility,
     setEnemyAbilityDetails,
   } = useEnemyAbility({ defaultEnemyAbility })
+
+  const [customDetailsShown, setCustomDetailsShown] = useLocalStorage('moreKey', false)
 
   const [moreShown, setMoreShown] = useLocalStorage('moreShown', false)
   const [customDrs, setCustomDrs] = useLocalStorage('customDrs', '')
@@ -82,13 +82,13 @@ export function Simulator({ defaultEnemyAbility }: Props) {
       }),
     [
       characters,
+      selectedGroupBuffs,
+      selectedGroupActives,
       customDrs,
       customAbsorbs,
       keyDetails,
-      enemyAbilityDetails,
-      selectedGroupBuffs,
-      selectedGroupActives,
       selectedDungeon,
+      enemyAbilityDetails,
     ],
   )
 
@@ -102,29 +102,28 @@ export function Simulator({ defaultEnemyAbility }: Props) {
     <SimContextProvider dungeon={selectedDungeon} result={result}>
       <div className="flex flex-col lg:flex-row gap-2 mb-24">
         <div className="flex flex-col gap-3 grow">
-          <div className="flex gap-2">
+          <div className="flex justify-between">
+            <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
             <Label className="[&]:bg-red-700">
               <ExclamationTriangleIcon height={20} className="mr-1" />
               Not Even Close has NOT been updated for prepatch.
               <ExclamationTriangleIcon height={20} className="ml-1" />
             </Label>
-            <a
-              href="https://not-even-close-tww.vercel.app/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Button>
-                <ArrowTopRightOnSquareIcon height={20} className="mr-1" />
-                View TWW version (WIP!)
-              </Button>
-            </a>
-          </div>
-          <KeyDetailsInput keyDetails={keyDetails} setKeyDetails={setKeyDetails} />
 
-          <EnemyAbilityDetailsInput
-            enemyAbilityDetails={enemyAbilityDetails}
-            setEnemyAbilityDetails={setEnemyAbilityDetails}
-          />
+            <div className="self-end">
+              <MoreLess
+                moreShown={customDetailsShown}
+                setMoreShown={setCustomDetailsShown}
+              />
+            </div>
+          </div>
+
+          {customDetailsShown && (
+            <EnemyAbilityDetailsInput
+              enemyAbilityDetails={enemyAbilityDetails}
+              setEnemyAbilityDetails={setEnemyAbilityDetails}
+            />
+          )}
 
           <div className="border-2 w-full border-gray-600" />
 

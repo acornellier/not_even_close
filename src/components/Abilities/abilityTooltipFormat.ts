@@ -3,7 +3,7 @@ import type {
   AbilityAugmentation,
   AbilityField,
   AbsorbOptions,
-  SelectedAbility,
+  SelectedAbilityId,
   StackOptions,
 } from '../../backend/ability.ts'
 import { formatNumber, getStackedValue, roundHundred } from '../../util/utils.ts'
@@ -104,7 +104,7 @@ export function getEffectText<T extends AbilityField>(
   field: T,
   value: Ability[T],
   ability: Ability,
-  selectedAbility: SelectedAbility | undefined,
+  selectedAbility: SelectedAbilityId | undefined,
 ) {
   let text = ''
   if (field === 'absorb') {
@@ -125,7 +125,7 @@ export function getEffectText<T extends AbilityField>(
 export function getAugmentationText(
   augmentation: AbilityAugmentation,
   ability: Ability,
-  selectedAbility: SelectedAbility | undefined,
+  selectedAbility: SelectedAbilityId | undefined,
 ) {
   if (
     (augmentation.field === 'absorb' &&

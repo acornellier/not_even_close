@@ -11,6 +11,7 @@ const defaultEnemyDetails: EnemyAbilityDetails = {
   aoe: false,
   trashAbility: false,
   physical: false,
+  schools: [],
 }
 
 interface Props {

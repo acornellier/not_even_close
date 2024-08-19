@@ -1,9 +1,13 @@
 import type { Character, CharacterStatsInput } from '../characters'
-import type { SelectedAbility } from '../ability'
+import type { SelectedAbility, SelectedAbilityId } from '../ability'
 import {
-  augmentSelectedAbilities,
+  augmentSelectedAbilityIds,
   enemyAbilityToDetails,
+  fortActive,
   getStackedValue,
+  guileActive,
+  mapSelectedAbilityIds,
+  tyranActive,
 } from '../../util/utils.ts'
 import { avoidanceRawToPercent, staminaToHp, versRawToPercent } from '../stats'
 import type {
@@ -20,16 +24,20 @@ import { getAbsorbs, getExtraAbsorbs } from './absorbs'
 import { getDamageReduction } from './dr'
 import { naturesGuardian } from '../classAbilities/druid.ts'
 
-function getScalingFactor({ keyLevel, isTyran }: KeyDetails, isTrashAbility: boolean) {
+function getScalingFactor(keyDetails: KeyDetails, isTrashAbility: boolean) {
   let scalingFactor = 1
-  for (let i = 2; i <= keyLevel; ++i) {
+  for (let i = 2; i <= keyDetails.keyLevel; ++i) {
     scalingFactor *= 1.1
   }
 
-  if (!isTyran && isTrashAbility) {
-    scalingFactor *= 1.3
-  } else if (isTyran && !isTrashAbility) {
+  if (fortActive(keyDetails) && isTrashAbility) {
+    scalingFactor *= 1.2
+  } else if (tyranActive(keyDetails) && !isTrashAbility) {
     scalingFactor *= 1.15
+  }
+
+  if (guileActive(keyDetails)) {
+    scalingFactor *= 1.2
   }
 
   return Math.round(scalingFactor * 100) / 100
@@ -97,7 +105,7 @@ function getStartingHealth(characterStats: CharacterStats, abilities: SelectedAb
     if (ability.healthIncrease) {
       startingHealth *=
         1 + getStackedValue(ability.healthIncrease, stacks, ability.stacks)
-    } else if (ability.spellId === naturesGuardian.spellId) {
+    } else if (ability.id === naturesGuardian.id) {
       startingHealth *= 1 + characterStats.masteryPercent / 100
     }
   }
@@ -107,19 +115,27 @@ function getStartingHealth(characterStats: CharacterStats, abilities: SelectedAb
 
 function getPartialResults(
   characters: Character[],
-  groupAbilities: SelectedAbility[],
+  groupAbilities: SelectedAbilityId[],
 ): CharacterPartialResult[] {
-  const augmentedGroupAbilities = augmentSelectedAbilities(groupAbilities, groupAbilities)
+  const augmentedGroupAbilities = augmentSelectedAbilityIds(
+    mapSelectedAbilityIds(groupAbilities),
+    groupAbilities,
+  )
 
   return characters.map<CharacterPartialResult>((character) => {
-    const augmentedSelectedAbilities = augmentSelectedAbilities(
+    const augmentedSelectedAbilities = augmentSelectedAbilityIds(
+      mapSelectedAbilityIds(character.abilities),
       character.abilities,
-      character.abilities,
+    )
+
+    const augmentedExternals = augmentSelectedAbilityIds(
+      mapSelectedAbilityIds(character.externals),
+      character.externals,
     )
 
     const abilities = [
       ...augmentedSelectedAbilities,
-      ...character.externals,
+      ...augmentedExternals,
       ...augmentedGroupAbilities,
     ]
 

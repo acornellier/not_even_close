@@ -46,7 +46,7 @@ export function getDamageReduction(
       inverseDr *= 1 - dr
     } else if (aoeDr && enemyAbilityDetails.aoe) {
       inverseDr *= 1 - aoeDr
-    } else if (ability.spellId === dampenHarm.spellId) {
+    } else if (ability.id === dampenHarm.id) {
       const dampenDr = 0.2 + (damageTaken / startingHealth) * 0.3
       inverseDr *= 1 - Math.min(dampenDr, 0.5)
     }

@@ -2,68 +2,62 @@ import type { Ability } from '../ability'
 
 const thickHide: Ability = {
   name: 'Thick Hide',
-  dr: 0.03,
-  onByDefault: true,
-  spellId: 16931,
+  id: 16931,
   icon: 'inv_misc_pelt_bear_03',
-  stacks: {
-    type: 'talent',
-    max: 2,
-  },
+  dr: 0.04,
+  onByDefault: true,
 }
 
 const risingLight: Ability = {
   name: 'Rising Light, Falling Night',
   versIncrease: 0.02,
-  spellId: 417712,
+  id: 417712,
   icon: 'spell_druid_equinox',
 }
 
 const bearForm: Ability = {
   name: 'Bear Form',
   staminaIncrease: 0.25,
-  spellId: 5487,
+  id: 5487,
   icon: 'ability_racial_bearform',
 }
 
 export const ursineVigorPassive: Ability = {
   name: 'Ursine Vigor (passive)',
-  spellId: 377842,
-  stacks: {
-    type: 'talent',
-    max: 2,
-  },
+  id: 377842,
   icon: 'ability_druid_markofursol',
   abilityAugmentations: [
     {
-      otherSpellId: bearForm.spellId,
+      otherAbilityId: bearForm.id,
       field: 'healthIncrease',
-      value: 0.1,
+      value: 0.15,
+    },
+    {
+      otherAbilityId: bearForm.id,
+      field: 'armorIncrease',
+      value: 0.15,
     },
   ],
 }
 
 export const ursineVigorActive: Ability = {
   name: 'Ursine Vigor (active)',
-  spellId: 377842_1,
-  stacks: {
-    type: 'talent',
-    max: 2,
-  },
+  id: 377842_1,
   icon: 'ability_druid_markofursol',
-  healthIncrease: 0.1,
-  replacedBy: ursineVigorPassive.spellId,
+  healthIncrease: 0.15,
+  armorIncrease: 0.15,
+  replacedBy: ursineVigorPassive.id,
 }
 
-ursineVigorPassive.replacedBy = ursineVigorActive.spellId
+ursineVigorPassive.replacedBy = ursineVigorActive.id
 
 const heartOfTheWild: Ability = {
   name: 'Heart of the Wild',
-  spellId: 319454,
+  id: 319454,
   icon: 'spell_holy_blessingofagility',
   abilityAugmentations: [
     {
-      otherSpellId: bearForm.spellId,
+      otherAbilityId: bearForm.id,
       field: 'staminaIncrease',
       value: 0.2,
     },
@@ -73,7 +67,7 @@ const heartOfTheWild: Ability = {
 export const barkskin: Ability = {
   name: 'Barkskin',
   dr: 0.2,
-  spellId: 22812,
+  id: 22812,
   absorb: {
     versAffected: true,
   },
@@ -85,26 +79,23 @@ export const barkskin: Ability = {
 const survivalInsticts: Ability = {
   name: 'Survival Instincts',
   dr: 0.5,
-  spellId: 61336,
+  id: 61336,
   icon: 'ability_druid_tigersroar',
-  absorb: {
-    versAffected: true,
-  },
 }
 
 const mattedFur: Ability = {
   name: 'Matted Fur',
-  spellId: 385786,
+  id: 385786,
   onByDefault: true,
   abilityAugmentations: [
     {
-      otherSpellId: barkskin.spellId,
+      otherAbilityId: barkskin.id,
       field: 'absorb',
       absorbField: 'apMultipler',
       value: 3.125,
     },
     {
-      otherSpellId: survivalInsticts.spellId,
+      otherAbilityId: survivalInsticts.id,
       field: 'absorb',
       absorbField: 'apMultipler',
       value: 3.125,
@@ -113,23 +104,73 @@ const mattedFur: Ability = {
   icon: 'inv_misc_pelt_15',
 }
 
-const protectiveGrowth: Ability = {
-  name: 'Protective Growth',
-  dr: 0.05,
-  spellId: 391947,
-  icon: 'spell_nature_resistnature',
-}
-
 const innerPeace: Ability = {
   name: 'Inner Peace (Tranq)',
   dr: 0.2,
-  spellId: 197073,
+  id: 197073,
   icon: 'ability_druid_dreamstate',
+}
+
+const oakskin: Ability = {
+  name: 'Oakskin',
+  id: 449191,
+  icon: 'spell_nature_stoneclawtotem',
+  abilityAugmentations: [
+    {
+      otherAbilityId: barkskin.id,
+      field: 'dr',
+      value: 0.1,
+    },
+    {
+      otherAbilityId: survivalInsticts.id,
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
+}
+
+const ursocsSpirit: Ability = {
+  name: "Ursoc's Spirit",
+  id: 449182,
+  icon: 'spell_nature_spiritarmor',
+  abilityAugmentations: [
+    {
+      otherAbilityId: bearForm.id,
+      field: 'staminaIncrease',
+      value: 0.1,
+    },
+  ],
+}
+
+const glisteningFur: Ability = {
+  name: 'Glistening Fur',
+  id: 429533,
+  icon: 'ability_druid_ironfur',
+  heroTree: "Elune's Chosen",
+  dr: 0.03,
+  drType: 'magic',
+  notes: 'Arcane 6% DR not implemented.',
+}
+
+const protectiveGrowth: Ability = {
+  name: 'Protective Growth',
+  id: 433749,
+  icon: 'spell_nature_resistnature',
+  heroTree: 'Keeper of the Grove',
+  dr: 0.08,
+}
+
+const fountOfStrength: Ability = {
+  name: 'Fount of Strength',
+  id: 441675,
+  icon: 'spell_nature_unyeildingstamina',
+  heroTree: 'Druid of the Claw',
+  healthIncrease: 0.1,
 }
 
 export const naturesGuardian: Ability = {
   name: "Mastery: Nature's Guardian",
-  spellId: 155783,
+  id: 155783,
   icon: 'spell_druid_primaltenacity',
   onByDefault: true,
   notes: '% HP equal to mastery %',
@@ -137,18 +178,18 @@ export const naturesGuardian: Ability = {
 
 const rageOfTheSleeper: Ability = {
   name: 'Rage of the Sleeper',
-  spellId: 200851,
+  id: 200851,
   icon: 'inv_hand_1h_artifactursoc_d_01',
-  dr: 0.25,
+  dr: 0.2,
 }
 
 const reinforcedFur: Ability = {
   name: 'Reinforced Fur',
-  spellId: 393618,
+  id: 393618,
   icon: 'spell_nature_spiritarmor',
   abilityAugmentations: [
     {
-      otherSpellId: barkskin.spellId,
+      otherAbilityId: barkskin.id,
       field: 'dr',
       value: 0.1,
     },
@@ -157,7 +198,7 @@ const reinforcedFur: Ability = {
 
 const rendAndTear: Ability = {
   name: 'Rend and Tear',
-  spellId: 204053,
+  id: 204053,
   icon: 'ability_druid_swipe',
   damageDealtReduction: 0.02,
   stacks: {
@@ -168,7 +209,7 @@ const rendAndTear: Ability = {
 
 const scintillatingMoonlight: Ability = {
   name: 'Scintillating Moonlight',
-  spellId: 238049,
+  id: 238049,
   icon: 'spell_fire_twilightfireward',
   damageDealtReduction: 0.05,
   stacks: {
@@ -179,14 +220,14 @@ const scintillatingMoonlight: Ability = {
 
 const pulverize: Ability = {
   name: 'Pulverize',
-  spellId: 80313,
+  id: 80313,
   icon: 'spell_druid_malfurionstenacity',
   damageDealtReduction: 0.35,
 }
 
 const incarnationGuardian: Ability = {
   name: 'Incarnation: Guardian of Ursoc',
-  spellId: 102558,
+  id: 102558,
   icon: 'spell_druid_incarnation',
   healthIncrease: 0.3,
 }
@@ -194,7 +235,7 @@ const incarnationGuardian: Ability = {
 const lycarasTeachings: Ability = {
   name: "Lycara's Teachings",
   onByDefault: true,
-  spellId: 378988,
+  id: 378988,
   icon: 'inv_trinket_ardenweald_02_green',
   versIncrease: 0.02,
   stacks: {
@@ -205,9 +246,13 @@ const lycarasTeachings: Ability = {
 
 export const druidBalanceAbilities = [
   mattedFur,
+  oakskin,
+  ursocsSpirit,
   thickHide,
-  risingLight,
+  glisteningFur,
   heartOfTheWild,
+  risingLight,
+  protectiveGrowth,
   ursineVigorPassive,
   bearForm,
   barkskin,
@@ -215,9 +260,12 @@ export const druidBalanceAbilities = [
 
 export const druidFeralAbilities = [
   mattedFur,
+  oakskin,
+  ursocsSpirit,
   thickHide,
-  protectiveGrowth,
   risingLight,
+  protectiveGrowth,
+  fountOfStrength,
   heartOfTheWild,
   ursineVigorPassive,
   bearForm,
@@ -227,8 +275,11 @@ export const druidFeralAbilities = [
 
 export const druidRestoAbilities = [
   mattedFur,
-  risingLight,
+  oakskin,
+  ursocsSpirit,
   thickHide,
+  risingLight,
+  protectiveGrowth,
   heartOfTheWild,
   ursineVigorPassive,
   bearForm,
@@ -241,12 +292,16 @@ export const druidGuardianAbilities = [
   naturesGuardian,
   thickHide,
   lycarasTeachings,
+  glisteningFur,
   risingLight,
   rendAndTear,
   scintillatingMoonlight,
   pulverize,
+  fountOfStrength,
   incarnationGuardian,
   survivalInsticts,
   rageOfTheSleeper,
   barkskin,
 ]
+
+export const druidReplacements = [ursineVigorActive]

@@ -1,5 +1,5 @@
 import type { ClassSpec } from '../classes'
-import type { SelectedAbility } from '../ability'
+import type { SelectedAbility, SelectedAbilityId } from '../ability'
 import type { Character } from '../characters'
 import type { Dungeon } from '../enemyAbilities/enemies'
 
@@ -58,12 +58,13 @@ export interface EnemyAbilityDetails {
   aoeMultiplier?: number
   trashAbility?: boolean
   physical?: boolean
+  schools: string[]
   ignoresArmor?: boolean
 }
 
 export interface SimInput {
   characters: Character[]
-  groupAbilities: SelectedAbility[]
+  groupAbilities: SelectedAbilityId[]
   customDrs: number[]
   customAbsorbs: number[]
   keyDetails: KeyDetails

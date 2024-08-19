@@ -28,7 +28,7 @@ export function ClassDropdown({ selectedClassSpec, onChange }: DropdownProps) {
           spec={selectedClassSpec.spec}
           size={20}
         />
-        {specDetails?.shortName ?? `${selectedClassSpec.spec} ${selectedClassSpec.class}`}
+        {specDetails?.displayName ?? selectedClassSpec.spec}
         <svg
           className="w-2.5 h-2.5 ml-2"
           aria-hidden="true"

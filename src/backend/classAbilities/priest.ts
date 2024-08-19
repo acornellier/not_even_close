@@ -5,27 +5,28 @@ const spellWarding: Ability = {
   onByDefault: true,
   dr: 0.03,
   drType: 'magic',
-  spellId: 390667,
+  id: 390667,
   icon: 'spell_holy_spellwarding',
 }
 
 const protectiveLight: Ability = {
   name: 'Protective Light',
   dr: 0.1,
-  spellId: 193063,
+  id: 193063,
   icon: 'spell_holy_holyprotection',
 }
 
 const fade: Ability = {
   name: 'Fade',
   dr: 0.1,
-  spellId: 586,
+  id: 586,
   icon: 'spell_magic_lesserinvisibilty',
 }
 
+// TODO: buffed
 const powerWordShield: Ability = {
   name: 'Power Word: Shield',
-  spellId: 17,
+  id: 17,
   icon: 'spell_holy_powerwordshield',
   absorb: {
     spMultipler: 3.36,
@@ -35,7 +36,7 @@ const powerWordShield: Ability = {
 
 const powerWordShieldShadow: Ability = {
   ...powerWordShield,
-  spellId: 17_1,
+  id: 17_1,
   absorb: {
     ...powerWordShield.absorb,
     spMultipler: powerWordShield.absorb!.spMultipler! * 1.25,
@@ -44,7 +45,7 @@ const powerWordShieldShadow: Ability = {
 
 const powerWordShieldDisc: Ability = {
   ...powerWordShield,
-  spellId: 17_2,
+  id: 17_2,
   absorb: {
     ...powerWordShield.absorb,
     spMultipler: powerWordShield.absorb!.spMultipler! * 1.37,
@@ -53,11 +54,11 @@ const powerWordShieldDisc: Ability = {
 
 const aegisOfWrath: Ability = {
   name: 'Aegis of Wrath',
-  spellId: 238135,
+  id: 238135,
   icon: 'spell_holy_powerwordshield',
   abilityAugmentations: [
     {
-      otherSpellId: powerWordShieldDisc.spellId,
+      otherAbilityId: powerWordShieldDisc.id,
       field: 'absorb',
       absorbField: 'spMultipler',
       value: 0.3,
@@ -65,20 +66,41 @@ const aegisOfWrath: Ability = {
   ],
 }
 
+const preventiveMeasures: Ability = {
+  name: 'Preventive Measures',
+  id: 440662,
+  icon: 'spell_holy_powerwordshield',
+  heroTree: 'Oracle',
+  abilityAugmentations: [
+    {
+      otherAbilityId: powerWordShield.id,
+      field: 'absorb',
+      absorbField: 'spMultipler',
+      value: 0.15,
+    },
+    {
+      otherAbilityId: powerWordShieldDisc.id,
+      field: 'absorb',
+      absorbField: 'spMultipler',
+      value: 0.15,
+    },
+  ],
+}
+
 const desperatePrayer: Ability = {
   name: 'Desperate Prayer',
   healthIncrease: 0.25,
-  spellId: 19236,
+  id: 19236,
   icon: 'spell_holy_testoffaith',
 }
 
 const lightsInspiration: Ability = {
   name: "Light's Inspiration",
-  spellId: 373450,
+  id: 373450,
   icon: 'spell_holy_restoration',
   abilityAugmentations: [
     {
-      otherSpellId: 19236, // Desperate Prayer
+      otherAbilityId: 19236, // Desperate Prayer
       field: 'healthIncrease',
       value: 0.15,
     },
@@ -92,7 +114,7 @@ const lightsInspiration: Ability = {
 
 const mentalFortitude: Ability = {
   name: 'Mental Fortitude',
-  spellId: 377065,
+  id: 377065,
   absorb: {
     healthMultiplier: 0.1,
   },
@@ -102,14 +124,34 @@ const mentalFortitude: Ability = {
 const dispersion: Ability = {
   name: 'Dispersion',
   dr: 0.75,
-  spellId: 47585,
+  id: 47585,
   icon: 'spell_shadow_dispersion',
+}
+
+const embraceTheShadow: Ability = {
+  name: 'Embrace the Shadow',
+  id: 451569,
+  dr: 0.03,
+  icon: 'warlock_curse_shadow_aura',
+  heroTree: 'Voidweaver',
+}
+
+const wordOfSupremacy: Ability = {
+  name: 'Word of Supremacy',
+  id: 453726,
+  icon: 'spell_holy_wordfortitude',
+  heroTree: 'Archon',
+  staminaIncrease: 0.05,
+  notes:
+    'If using this, make sure to have Power Word: Fortitude clicked off when checking your stamina, even when using the addon',
 }
 
 export const priestDiscAbilities = [
   lightsInspiration,
   aegisOfWrath,
+  preventiveMeasures,
   spellWarding,
+  embraceTheShadow,
   protectiveLight,
   fade,
   powerWordShieldDisc,
@@ -117,7 +159,9 @@ export const priestDiscAbilities = [
 ]
 
 export const priestHolyAbilities = [
+  preventiveMeasures,
   spellWarding,
+  wordOfSupremacy,
   protectiveLight,
   fade,
   powerWordShield,
@@ -127,6 +171,8 @@ export const priestHolyAbilities = [
 
 export const priestShadowAbilities = [
   spellWarding,
+  embraceTheShadow,
+  wordOfSupremacy,
   protectiveLight,
   fade,
   powerWordShieldShadow,

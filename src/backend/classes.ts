@@ -1,5 +1,5 @@
 ﻿import { havocAbilities, vengeanceAbilities } from './classAbilities/demonHunter'
-import type { Ability, SelectedAbility } from './ability'
+import type { Ability, SelectedAbilityId } from './ability'
 import {
   evokerAugAbilities,
   evokerDevAbilities,
@@ -27,8 +27,9 @@ import {
   hunterSurvAbilities,
 } from './classAbilities/hunter'
 import {
-  deathKnightAbilities,
   deathKnightBloodAbilities,
+  deathKnightFrostAbilities,
+  deathKnightUnholyAbilities,
 } from './classAbilities/deathKnight'
 import {
   warriorArmsAbilities,
@@ -40,7 +41,11 @@ import {
   paladinProtAbilities,
   paladinRetAbilities,
 } from './classAbilities/paladin'
-import { warlockAffDestroAbilities, warlockDemoAbilities } from './classAbilities/warlock'
+import {
+  warlockAffAbilities,
+  warlockDemoAbilities,
+  warlockDestroAbilities,
+} from './classAbilities/warlock'
 import {
   druidBalanceAbilities,
   druidFeralAbilities,
@@ -80,7 +85,7 @@ type SpecDetails = {
   icon: string
   mainStat: 'intellect' | 'other'
   isTank?: boolean
-  shortName?: string
+  displayName?: string
 }
 
 export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
@@ -92,12 +97,12 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       isTank: true,
     },
     Frost: {
-      abilities: deathKnightAbilities,
+      abilities: deathKnightFrostAbilities,
       icon: 'spell_deathknight_frostpresence',
       mainStat: 'other',
     },
     Unholy: {
-      abilities: deathKnightAbilities,
+      abilities: deathKnightUnholyAbilities,
       icon: 'spell_deathknight_unholypresence',
       mainStat: 'other',
     },
@@ -113,7 +118,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       icon: 'ability_demonhunter_spectank',
       mainStat: 'other',
       isTank: true,
-      shortName: 'VDH',
+      displayName: 'VDH',
     },
   },
   Druid: {
@@ -137,6 +142,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: druidRestoAbilities,
       icon: 'spell_nature_healingtouch',
       mainStat: 'intellect',
+      displayName: 'Resto Druid',
     },
   },
   Evoker: {
@@ -207,12 +213,14 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: paladinHolyAbilities,
       icon: 'spell_holy_holybolt',
       mainStat: 'intellect',
+      displayName: 'Holy Paladin',
     },
     Protection: {
       abilities: paladinProtAbilities,
       icon: 'ability_paladin_shieldofthetemplar',
       mainStat: 'other',
       isTank: true,
+      displayName: 'Prot Pally',
     },
     Retribution: {
       abilities: paladinRetAbilities,
@@ -230,6 +238,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: priestHolyAbilities,
       icon: 'spell_holy_guardianspirit',
       mainStat: 'intellect',
+      displayName: 'Holy Priest',
     },
     Shadow: {
       abilities: priestShadowAbilities,
@@ -269,11 +278,12 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       abilities: shamanRestoAbilities,
       icon: 'spell_nature_magicimmunity',
       mainStat: 'intellect',
+      displayName: 'Resto Shaman',
     },
   },
   Warlock: {
     Affliction: {
-      abilities: warlockAffDestroAbilities,
+      abilities: warlockAffAbilities,
       icon: 'spell_shadow_deathcoil',
       mainStat: 'intellect',
     },
@@ -283,7 +293,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
       mainStat: 'intellect',
     },
     Destruction: {
-      abilities: warlockAffDestroAbilities,
+      abilities: warlockDestroAbilities,
       icon: 'spell_shadow_rainoffire',
       mainStat: 'intellect',
     },
@@ -308,11 +318,11 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
   },
 } as const
 
-export const defaultAbilities = (classSpec: ClassSpec): SelectedAbility[] => {
+export const defaultAbilities = (classSpec: ClassSpec): SelectedAbilityId[] => {
   const specDetails = classSpecs[classSpec.class][classSpec.spec]!
   return specDetails.abilities
     .filter(({ onByDefault }) => onByDefault)
-    .map((ability) => ({ ability }))
+    .map((ability) => ({ abilityId: ability.id }))
 }
 
 export const classColors: Record<WowClass, string> = {

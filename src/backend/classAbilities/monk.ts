@@ -2,7 +2,7 @@ import type { Ability } from '../ability'
 
 const calmingPresenceMistweaver: Ability = {
   name: 'Calming Presence',
-  spellId: 388664,
+  id: 388664,
   onByDefault: true,
   dr: 0.06,
   icon: 'inv_misc_orb_01',
@@ -10,24 +10,25 @@ const calmingPresenceMistweaver: Ability = {
 
 const calmingPresenceWindwalker: Ability = {
   ...calmingPresenceMistweaver,
+  id: calmingPresenceMistweaver.id + 1,
   dr: 0.03,
 }
 
 const ancientTeachings: Ability = {
   name: 'Ancient Teachings',
-  spellId: 388023,
+  id: 388023,
   staminaIncrease: 0.05,
   icon: 'inv_misc_book_07',
 }
 
 const secretInfusion: Ability = {
   name: 'Secret Infusion',
-  spellId: 388491,
+  id: 388491,
   onByDefault: true,
   icon: 'ability_monk_chibrew',
   abilityAugmentations: [
     {
-      otherSpellId: 322101,
+      otherAbilityId: 322101,
       field: 'versIncrease',
       value: 0.08,
     },
@@ -42,7 +43,7 @@ const secretInfusion: Ability = {
 
 const expelHarm: Ability = {
   name: 'TFT + Expel Harm',
-  spellId: 322101,
+  id: 322101,
   absorb: {
     healthMultiplier: 0.16,
     versAffected: true,
@@ -52,32 +53,37 @@ const expelHarm: Ability = {
 
 const yulonsGraceMistweaver: Ability = {
   name: "Yulon's Grace",
-  spellId: 414131,
+  id: 414131,
+  icon: 'ability_monk_dragonkick',
   absorb: {
-    healthMultiplier: 0.15,
+    healthMultiplier: 0.1,
     absorbType: 'magic',
   },
-  icon: 'ability_monk_dragonkick',
+  stacks: {
+    type: 'stacks',
+    max: 10,
+  },
 }
 
 const yulonsGraceWindwalker: Ability = {
   ...yulonsGraceMistweaver,
+  id: yulonsGraceMistweaver.id + 1,
   absorb: {
     ...yulonsGraceMistweaver.absorb,
-    healthMultiplier: 0.1,
+    healthMultiplier: 0.06,
   },
 }
 
 export const dampenHarm: Ability = {
   name: 'Dampen Harm',
-  spellId: 122278,
+  id: 122278,
   icon: 'ability_monk_dampenharm',
   notes: '20-50% DR based on damage taken',
 }
 
 const diffuseMagic: Ability = {
   name: 'Diffuse Magic',
-  spellId: 122783,
+  id: 122783,
   dr: 0.6,
   drType: 'magic',
   icon: 'spell_monk_diffusemagic',
@@ -85,7 +91,7 @@ const diffuseMagic: Ability = {
 
 const fortBrew: Ability = {
   name: 'Fortifying Brew',
-  spellId: 388917,
+  id: 388917,
   dr: 0.2,
   healthIncrease: 0.2,
   icon: 'ability_monk_fortifyingale_new',
@@ -93,29 +99,88 @@ const fortBrew: Ability = {
 
 const touchOfKarma: Ability = {
   name: 'Touch of Karma',
-  spellId: 122470,
+  id: 122470,
   absorb: {
     healthMultiplier: 0.5,
   },
   icon: 'ability_monk_touchofkarma',
 }
 
+const martialInstincts: Ability = {
+  name: 'Martial Instincts',
+  id: 450427,
+  icon: 'ability_monk_palmstrike',
+  aoeDr: 0.02,
+  onByDefault: true,
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
+}
+
+const ironshellBrew: Ability = {
+  name: 'Ironshell Brew',
+  id: 388814,
+  icon: 'ability_monk_fortifyingale_new',
+  abilityAugmentations: [
+    {
+      otherAbilityId: fortBrew.id,
+      field: 'healthIncrease',
+      value: 0.1,
+    },
+    {
+      otherAbilityId: fortBrew.id,
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
+}
+
+const niuzaosProtection: Ability = {
+  name: "Niuazo's Proection",
+  id: 442747,
+  icon: 'ability_monk_chargingoxwave',
+  heroTree: 'Conduit of the Celestials',
+  abilityAugmentations: [
+    {
+      otherAbilityId: fortBrew.id,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.25,
+    },
+  ],
+}
+
+const jadeSanctuary: Ability = {
+  name: 'Jade Sanctuary',
+  id: 443059,
+  icon: 'ability_monk_jadeserpentbreath',
+  heroTree: 'Conduit of the Celestials',
+  dr: 0.15,
+}
+
 export const monkMistweaverAbilities = [
+  ironshellBrew,
+  niuzaosProtection,
   calmingPresenceMistweaver,
+  martialInstincts,
   secretInfusion,
   ancientTeachings,
   expelHarm,
   yulonsGraceMistweaver,
-  dampenHarm,
-  diffuseMagic,
+  jadeSanctuary,
   fortBrew,
+  diffuseMagic,
 ]
 
 export const monkWindwalkerAbilities = [
+  ironshellBrew,
+  niuzaosProtection,
   calmingPresenceWindwalker,
+  martialInstincts,
   yulonsGraceWindwalker,
-  dampenHarm,
-  diffuseMagic,
+  jadeSanctuary,
   fortBrew,
+  diffuseMagic,
   touchOfKarma,
 ]

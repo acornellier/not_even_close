@@ -1,4 +1,10 @@
-﻿import type { ClassSpec, WowClass } from './classes'
+import type { ClassSpec, WowClass } from './classes'
+import { classSpecs } from './classes'
+import { externals } from './groupAbilities/externals.ts'
+import { groupBuffs } from './groupAbilities/groupBuffs.ts'
+import { groupActives } from './groupAbilities/groupActives.ts'
+import { groupBy, mapBy } from '../util/utils.ts'
+import { druidReplacements } from './classAbilities/druid.ts'
 
 export type DamageType = 'magic' | 'physical'
 
@@ -21,10 +27,11 @@ export type StackOptions = {
 
 export type Ability = {
   name: string
-  spellId: number
+  id: number
   icon: string
   onByDefault?: boolean
   notes?: string
+  heroTree?: string
 
   dr?: number
   drType?: DamageType
@@ -43,6 +50,11 @@ export type Ability = {
   associatedClass?: WowClass
   associatedSpec?: ClassSpec
   replacedBy?: number
+}
+
+export type SelectedAbilityId = {
+  abilityId: number
+  stacks?: number
 }
 
 export type SelectedAbility = {
@@ -68,7 +80,7 @@ export type AbsorbField = keyof AbsorbOptions
 export type AbsorbAugmentations = Exclude<AbsorbField, 'versAffected' | 'absorbType'>
 
 export type AbilityAugmentation = {
-  otherSpellId: number
+  otherAbilityId: number
   field: AbilityField
   absorbField?: AbsorbAugmentations
   value: number
@@ -77,4 +89,27 @@ export type AbilityAugmentation = {
 export type AbilityReplacement = {
   sourceId: number
   targetId: number
+}
+
+const specAbilities = Object.values(classSpecs)
+  .flatMap((specs) => Object.values(specs))
+  .flatMap(({ abilities }) => abilities)
+
+export const allAbilities: Ability[] = [
+  ...specAbilities,
+  ...externals,
+  ...groupBuffs,
+  ...groupActives,
+  ...druidReplacements,
+]
+
+export const abilitiesById = mapBy(allAbilities, 'id')
+
+for (const abilities of Object.values(groupBy(allAbilities, 'id'))) {
+  const uniqueAbilities = new Set(abilities)
+  if (uniqueAbilities.size === 1) continue
+
+  throw new Error(
+    `Multiple abilities with same ID: ${[...uniqueAbilities].map(({ name }) => name).join(', ')}`,
+  )
 }

@@ -2,31 +2,8 @@ import type { Character, Profile } from '../../backend/characters'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback } from 'react'
 import { defaultAbilities, equalSpecs } from '../../backend/classes'
-import { tepidVersatility } from '../../backend/groupAbilities/externals'
+import { temperedVersatility } from '../../backend/groupAbilities/externals.ts'
 import { isAbilitySelected } from '../../util/utils.ts'
-import type { SelectedAbility } from '../../backend/ability'
-
-const uniqueExternalNames = ['phial']
-
-function uniqueAbilities(
-  abilities: SelectedAbility[],
-  uniqueNames: string[],
-): SelectedAbility[] {
-  for (const uniqueName of uniqueNames) {
-    const lastIndex = abilities.findLastIndex(({ ability }) =>
-      ability.name.toLowerCase().includes(uniqueName),
-    )
-
-    if (lastIndex !== -1) {
-      abilities = abilities.filter(
-        ({ ability }, idx) =>
-          idx === lastIndex || !ability.name.toLowerCase().includes(uniqueName),
-      )
-    }
-  }
-
-  return abilities
-}
 
 interface Props {
   setCharacters: Dispatch<SetStateAction<Character[]>>
@@ -37,7 +14,7 @@ interface Props {
 export function useCharacterChanges({ setCharacters, setProfiles, characters }: Props) {
   const updateCharacterIdx = useCallback(
     (index: number) =>
-      (charChanges: Partial<Character>, addTepidVers = false) => {
+      (charChanges: Partial<Character>, addTemperedVers = false) => {
         setCharacters((characters) =>
           characters.map((character, index2) => {
             if (index2 !== index) return character
@@ -47,25 +24,25 @@ export function useCharacterChanges({ setCharacters, setProfiles, characters }: 
               !equalSpecs(character.classSpec, charChanges.classSpec)
                 ? {
                     abilities: defaultAbilities(charChanges.classSpec),
-                    externals: addTepidVers ? [{ ability: tepidVersatility }] : [],
+                    externals: addTemperedVers
+                      ? [{ abilityId: temperedVersatility.id }]
+                      : [],
                   }
                 : {}
 
-            const res = {
+            const res: Character = {
               ...character,
               ...charChanges,
               ...specChangeChanges,
             }
 
-            if (addTepidVers) {
+            if (addTemperedVers) {
               res.externals ??= []
 
-              if (!isAbilitySelected(tepidVersatility.spellId, res.externals)) {
-                res.externals.push({ ability: tepidVersatility })
+              if (!isAbilitySelected(temperedVersatility.id, res.externals)) {
+                res.externals.push({ abilityId: temperedVersatility.id })
               }
             }
-
-            res.externals = uniqueAbilities(res.externals, uniqueExternalNames)
 
             return res
           }),

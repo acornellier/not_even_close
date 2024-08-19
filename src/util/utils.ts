@@ -1,7 +1,12 @@
-﻿import type { Ability, SelectedAbility, StackOptions } from '../backend/ability.ts'
+import type {
+  Ability,
+  SelectedAbility,
+  SelectedAbilityId,
+  StackOptions,
+} from '../backend/ability.ts'
+import { abilitiesById } from '../backend/ability.ts'
 import type { EnemyAbility } from '../backend/enemyAbilities/enemies.ts'
-
-import type { EnemyAbilityDetails } from '../backend/sim/simTypes.ts'
+import type { EnemyAbilityDetails, KeyDetails } from '../backend/sim/simTypes.ts'
 
 export function roundTo(number: number, to: number) {
   return Math.round(number * 10 ** to) / 10 ** to
@@ -22,19 +27,44 @@ export function shortRoundedNumber(number: number) {
   return `${formatNumber(roundTo(number / 1_000_000, 2))}M`
 }
 
-export function getSelectedAbility(
-  spellId: number,
-  selectedAbilities: SelectedAbility[],
-) {
-  return selectedAbilities.find(({ ability }) => ability.spellId === spellId)
+export function mapBy<T extends object>(array: T[], field: keyof T) {
+  return array.reduce(
+    (acc, item) => {
+      acc[item[field] as number] = item
+      return acc
+    },
+    {} as Record<number, T>,
+  )
 }
 
-export function isAbilitySelected(spellId: number, selectedAbilities: SelectedAbility[]) {
+export function groupBy<T extends object>(array: T[], field: keyof T) {
+  return array.reduce(
+    (acc, item) => {
+      const key = item[field] as number
+      acc[key] ??= []
+      acc[key]!.push(item)
+      return acc
+    },
+    {} as Record<number, T[]>,
+  )
+}
+
+export function getSelectedAbility(
+  spellId: number,
+  selectedAbilities: SelectedAbilityId[],
+) {
+  return selectedAbilities.find(({ abilityId }) => abilityId === spellId)
+}
+
+export function isAbilitySelected(
+  spellId: number,
+  selectedAbilities: SelectedAbilityId[],
+) {
   return !!getSelectedAbility(spellId, selectedAbilities)
 }
 
 export function findMatchingAbility(spellId: number, abilities: Ability[]) {
-  return abilities.find((ability) => ability.spellId === spellId)
+  return abilities.find((ability) => ability.id === spellId)
 }
 
 export function defaultStacks(stacks: StackOptions) {
@@ -62,28 +92,29 @@ export function getStackedValue(
 
 function augmentAbility(
   abilityToAugment: Ability,
-  augmentingAbility: SelectedAbility,
-  selectedAbilities: SelectedAbility[],
+  augmentingAbility: SelectedAbilityId,
+  selectedAbilities: SelectedAbilityId[],
 ) {
-  const {
-    ability: { abilityAugmentations, stacks: stackOptions },
-    stacks,
-  } = augmentingAbility
+  const { abilityId, stacks } = augmentingAbility
+  const ability = abilitiesById[abilityId]
+  if (!ability) return
+
+  const { abilityAugmentations, stacks: stackOptions } = ability
 
   if (
     !abilityAugmentations ||
-    !isAbilitySelected(augmentingAbility.ability.spellId, selectedAbilities)
+    !isAbilitySelected(augmentingAbility.abilityId, selectedAbilities)
   )
     return
 
-  abilityAugmentations.forEach(({ otherSpellId, field, absorbField, value }) => {
-    if (otherSpellId !== abilityToAugment.spellId) return
+  abilityAugmentations.forEach(({ otherAbilityId, field, absorbField, value }) => {
+    if (otherAbilityId !== abilityToAugment.id) return
 
     const stackedValue = getStackedValue(value, stacks, stackOptions)
 
     if (field === 'absorb') {
-      const absorb = abilityToAugment.absorb
-      if (!absorb || !absorbField) return
+      const absorb = abilityToAugment.absorb ?? {}
+      if (absorbField === undefined) return
 
       abilityToAugment.absorb = { ...absorb }
 
@@ -110,8 +141,8 @@ function augmentAbility(
 
 export function augmentAbilities(
   abilitiesToAugment: Ability[],
-  selectedAbilities: SelectedAbility[],
-) {
+  selectedAbilities: SelectedAbilityId[],
+): Ability[] {
   return abilitiesToAugment.map<Ability>((ability) => {
     const augmentedAbility = { ...ability }
 
@@ -123,25 +154,39 @@ export function augmentAbilities(
   })
 }
 
-export function augmentSelectedAbilities(
+export function augmentSelectedAbilityIds(
   abilitiesToAugment: SelectedAbility[],
-  selectedAbilities: SelectedAbility[],
-) {
-  return abilitiesToAugment.map<SelectedAbility>((ability) => {
-    const augmentedAbility = { ...ability.ability }
+  selectedAbilities: SelectedAbilityId[],
+): SelectedAbility[] {
+  return abilitiesToAugment.map<SelectedAbility>(({ ability, stacks }) => {
+    const augmentedAbility = { ...ability }
 
     selectedAbilities.forEach((augmentingAbility) =>
       augmentAbility(augmentedAbility, augmentingAbility, selectedAbilities),
     )
 
-    return { ...ability, ability: augmentedAbility }
+    return { ability: augmentedAbility, stacks }
   })
 }
 
-export function isAbilityAvailable(ability: Ability, availableAbililties: Ability[]) {
-  return availableAbililties.some(
-    (availableAbility) => availableAbility.spellId === ability.spellId,
-  )
+export function mapSelectedAbilityIds(
+  selectedAbilities: SelectedAbilityId[],
+): SelectedAbility[] {
+  return selectedAbilities
+    .map(({ abilityId, stacks }) => {
+      const ability = abilitiesById[abilityId]
+      if (!ability) {
+        console.error(`Invalid ability ID: ${abilityId}`)
+        return null
+      }
+
+      return { ability, stacks }
+    })
+    .filter(Boolean) as SelectedAbility[]
+}
+
+export function isAbilityAvailable(abilityId: number, availableAbililties: Ability[]) {
+  return availableAbililties.some((availableAbility) => availableAbility.id === abilityId)
 }
 
 export function enemyAbilityToDetails(ability: EnemyAbility): EnemyAbilityDetails {
@@ -149,4 +194,20 @@ export function enemyAbilityToDetails(ability: EnemyAbility): EnemyAbilityDetail
   if (ability.variance) damage = Math.round(damage * (1 + ability.variance))
 
   return { ...ability, damage }
+}
+
+export function tyranActive(keyDetails: KeyDetails) {
+  return keyDetails.isTyran || bothFortTyranActive(keyDetails)
+}
+
+export function fortActive(keyDetails: KeyDetails) {
+  return !keyDetails.isTyran || bothFortTyranActive(keyDetails)
+}
+
+export function bothFortTyranActive(keyDetails: KeyDetails) {
+  return keyDetails.keyLevel >= 10
+}
+
+export function guileActive(keyDetails: KeyDetails) {
+  return keyDetails.keyLevel >= 12
 }

@@ -1,934 +1,429 @@
 [
   {
-    "id": 390944,
-    "name": "Darting Sting",
-    "icon": "ability_poisonsting",
-    "damage": 205342,
-    "aoe": false,
+    "id": 438495,
+    "name": "Alerting Shrill",
+    "icon": "ability_vehicle_sonicshockwave",
+    "damage": 2158562,
+    "aoe": true,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
+    "variance": 0.01,
+    "periodic": true
+  },
+  {
+    "id": 432117,
+    "name": "Cosmic Singularity",
+    "icon": "inv_cosmicvoid_orb",
+    "damage": 6607847,
+    "aoe": true,
     "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0,
+    "avoidable": true
+  },
+  {
+    "id": 438879,
+    "name": "Call of the Brood",
+    "icon": "inv_minespider2_cave",
+    "damage": 2114511,
+    "aoe": true,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
     "variance": 0,
     "trashAbility": true
   },
   {
-    "id": 388544,
-    "name": "Barkbreaker",
-    "icon": "ability_smash",
-    "damage": 938705,
+    "id": 434252,
+    "name": "Massive Slam",
+    "icon": "inv_misc_volatileearth",
+    "damage": 1057255,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "nature"
+    ],
+    "variance": 0.05,
+    "trashAbility": true
+  },
+  {
+    "id": 440238,
+    "name": "Ice Sickles",
+    "icon": "artifactability_frostmage_blackicicles",
+    "damage": 528628,
     "aoe": false,
+    "physical": false,
+    "schools": [
+      "frost"
+    ],
+    "variance": 0.0025
+  },
+  {
+    "id": 443427,
+    "name": "Web Bolt",
+    "icon": "inv_ability_web_missile",
+    "damage": 1409674,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "nature"
+    ],
+    "variance": 0,
+    "trashAbility": true,
+    "avoidable": true
+  },
+  {
+    "id": 446718,
+    "name": "Umbral Weave (trash)",
+    "icon": "inv_misc_web_02",
+    "damage": 1321569,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
+    "id": 439324,
+    "name": "Umbral Weave (boss)",
+    "icon": "inv_misc_web_02",
+    "damage": 1321569,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0
+  },
+  {
+    "id": 426826,
+    "name": "Dark Orb",
+    "icon": "spell_shadow_soulgem",
+    "damage": 4405231,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0.005
+  },
+  {
+    "id": 448888,
+    "name": "Erosive Spray",
+    "icon": "inv_ability_poison_missile",
+    "damage": 704837,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "nature"
+    ],
+    "variance": 0.025
+  },
+  {
+    "id": 434093,
+    "name": "Spinneret's Strands",
+    "icon": "inv_ability_web_groundstate",
+    "damage": 1321569,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0.025
+  },
+  {
+    "id": 448847,
+    "name": "Commanding Roar",
+    "icon": "ability_warrior_dragonroar",
+    "damage": 1321569,
+    "aoe": true,
     "physical": true,
+    "schools": [
+      "physical"
+    ],
     "variance": 0,
-    "tankOnly": true
+    "ignoresArmor": true
   },
   {
-    "id": 388923,
-    "name": "Burst Forth",
-    "icon": "spell_nature_earthquake",
-    "damage": 391127,
+    "id": 456751,
+    "name": "Twilight Buffet",
+    "icon": "ability_racial_wingbuffet",
+    "damage": 1762092,
     "aoe": true,
     "physical": false,
-    "variance": 0,
-    "cooldown": 60
+    "schools": [
+      "fire",
+      "shadow"
+    ],
+    "variance": 0
   },
   {
-    "id": 385958,
-    "name": "Arcane Expulsion",
-    "icon": "spell_arcane_arcanetorrent",
-    "damage": 880036,
+    "id": 451939,
+    "name": "Umbral Wind",
+    "icon": "spell_shadow_shadowmend",
+    "damage": 1762092,
     "aoe": true,
     "physical": false,
-    "variance": 0,
-    "tankOnly": true
-  },
-  {
-    "id": 386181,
-    "name": "Mana Bomb (1 tick + hit)",
-    "icon": "spell_mage_flameorb_blue",
-    "damage": 286752,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "aoeMultiplier": 0.714,
-    "cooldown": 25,
-    "notes": "The final hit is always preceded immediately by a tick of damage. The dot is ST but the final hit is AoE."
-  },
-  {
-    "id": 388537,
-    "name": "Arcane Fissure",
-    "icon": "spell_arcane_invocation",
-    "damage": 254233,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 45
-  },
-  {
-    "id": 388862,
-    "name": "Surge",
-    "icon": "spell_arcane_arcane04",
-    "damage": 234676,
-    "aoe": false,
-    "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "avoidable": true,
-    "cooldown": 25,
-    "combatDrop": "recast",
-    "spellReflect": true
-  },
-  {
-    "id": 377912,
-    "name": "Expel Intruders",
-    "icon": "ability_druid_galewinds",
-    "damage": 586691,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "avoidable": true,
-    "cooldown": 26,
-    "los": true,
-    "outrange": 30
-  },
-  {
-    "id": 388940,
-    "name": "Vicious Ambush",
-    "icon": "ability_ambush",
-    "damage": 234676,
-    "aoe": true,
-    "physical": false,
+    "schools": [
+      "shadow"
+    ],
     "variance": 0,
     "trashAbility": true,
     "los": true
   },
   {
-    "id": 376997,
-    "name": "Savage Peck",
-    "icon": "inv_misc_raptortalon_nightmare",
-    "damage": 1271163,
-    "aoe": false,
-    "physical": true,
-    "variance": 0,
-    "tankOnly": true,
-    "notes": "Only the initial hit"
-  },
-  {
-    "id": 377009,
-    "name": "Deafening Screech 1",
-    "icon": "ability_vehicle_sonicshockwave",
-    "damage": 234676,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "los": true,
-    "cooldown": 23
-  },
-  {
-    "id": 377009,
-    "name": "Deafening Screech 2",
-    "icon": "ability_vehicle_sonicshockwave",
-    "damage": 352014,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "los": true,
-    "cooldown": 23
-  },
-  {
-    "id": 377009,
-    "name": "Deafening Screech 3",
-    "icon": "ability_vehicle_sonicshockwave",
-    "damage": 469352,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "los": true,
-    "cooldown": 23
-  },
-  {
-    "id": 377009,
-    "name": "Deafening Screech 4",
-    "icon": "ability_vehicle_sonicshockwave",
-    "damage": 586690,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "los": true,
-    "cooldown": 23
-  },
-  {
-    "id": 377009,
-    "name": "Deafening Screech 5",
-    "icon": "ability_vehicle_sonicshockwave",
-    "damage": 704028,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "los": true,
-    "cooldown": 23
-  },
-  {
-    "id": 377009,
-    "name": "Deafening Screech 6",
-    "icon": "ability_vehicle_sonicshockwave",
-    "damage": 821366,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "los": true,
-    "cooldown": 23
-  },
-  {
-    "id": 374789,
-    "name": "Infused Strike",
-    "icon": "spell_frost_manaburn",
-    "damage": 782254,
+    "id": 451261,
+    "name": "Earth Bolt",
+    "icon": "ability_earthenfury_giftofearth",
+    "damage": 1057255,
     "aoe": false,
     "physical": false,
-    "variance": 0,
-    "tankOnly": true
-  },
-  {
-    "id": 386660,
-    "name": "Erupting Fissure",
-    "icon": "inv_enchant_essencearcanelarge",
-    "damage": 977818,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "tankOnly": true
-  },
-  {
-    "id": 374582,
-    "name": "Explosive Brand",
-    "icon": "spell_mage_arcaneorb",
-    "damage": 331247,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 50
-  },
-  {
-    "id": 374731,
-    "name": "Consuming Stomp",
-    "icon": "spell_arcane_blast",
-    "damage": 440018,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 50
-  },
-  {
-    "id": 374731,
-    "name": "Stomp with 1 flower",
-    "icon": "spell_arcane_blast",
-    "damage": 528021.6,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 50
-  },
-  {
-    "id": 386910,
-    "name": "Frost Bomb",
-    "icon": "inv_10_elementalcombinedfoozles_frost",
-    "damage": 293345,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": [
-      15,
-      30
-    ]
-  },
-  {
-    "id": 388008,
-    "name": "Absolute Zero",
-    "icon": "spell_frost_arcticwinds",
-    "damage": 440018,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 60,
-    "notes": "Assumes you have 50% DR"
-  },
-  {
-    "id": 388804,
-    "name": "Unleashed Destruction",
-    "icon": "spell_arcane_blast",
-    "damage": 234676,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 105
-  },
-  {
-    "id": 384978,
-    "name": "Dragon Strike",
-    "icon": "achievement_boss_malygos_01",
-    "damage": 977818,
-    "aoe": false,
-    "physical": false,
-    "variance": 0.05,
-    "tankOnly": true,
-    "cooldown": 18
-  },
-  {
-    "id": 436652,
-    "name": "Shoulder Slam",
-    "icon": "ability_warrior_shieldcharge",
-    "damage": 352014,
-    "aoe": true,
-    "physical": true,
-    "variance": 0,
-    "trashAbility": true,
-    "cooldown": 12,
-    "outrange": 40
-  },
-  {
-    "id": 396991,
-    "name": "Bestial Roar",
-    "icon": "ability_warrior_dragonroar",
-    "damage": 293345,
-    "aoe": true,
-    "physical": true,
-    "variance": 0,
-    "trashAbility": true,
-    "outrange": 30
-  },
-  {
-    "id": 378020,
-    "name": "Gash Frenzy",
-    "icon": "ability_rogue_murderspree",
-    "damage": 293345,
-    "aoe": false,
-    "physical": true,
-    "variance": 0,
-    "cooldown": 60
-  },
-  {
-    "id": 378155,
-    "name": "Earth Bolt (boss)",
-    "icon": "inv_10_elementalshardfoozles_earth",
-    "damage": 254233,
-    "aoe": false,
-    "physical": false,
-    "variance": 0,
-    "avoidable": true
-  },
-  {
-    "id": 387264,
-    "name": "Withered Eruption",
-    "icon": "warlock_curse_weakness_aura",
-    "damage": 352014,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 45
-  },
-  {
-    "id": 382249,
-    "name": "Earth Bolt (trash)",
-    "icon": "inv_10_elementalshardfoozles_earth",
-    "damage": 234676,
-    "aoe": false,
-    "physical": false,
+    "schools": [
+      "nature"
+    ],
     "variance": 0,
     "trashAbility": true,
     "avoidable": true
   },
   {
-    "id": 385186,
-    "name": "Stink Breath",
-    "icon": "ability_creature_poison_02",
-    "damage": 586691,
-    "aoe": true,
-    "physical": true,
-    "variance": 0,
-    "trashAbility": true,
-    "cooldown": 15,
-    "outrange": 10,
-    "avoidable": true
-  },
-  {
-    "id": 384015,
-    "name": "Static Surge",
-    "icon": "spell_nature_unrelentingstorm",
-    "damage": 498687,
+    "id": 451871,
+    "name": "Mass Tremor",
+    "icon": "spell_shaman_earthquake",
+    "damage": 1321569,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "nature"
+    ],
     "variance": 0,
-    "periodic": true,
-    "cooldown": 28
+    "trashAbility": true
   },
   {
-    "id": 389179,
-    "name": "Power Overload",
-    "icon": "ability_thunderking_lightningwhip",
-    "damage": 328278,
+    "id": 451965,
+    "name": "Molten Wake",
+    "icon": "spell_shaman_lavaflow",
+    "damage": 1233465,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "fire"
+    ],
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
+    "id": 322767,
+    "name": "Spirit Bolt",
+    "icon": "spell_fire_twilightflamebolt",
+    "damage": 1585883,
     "aoe": false,
     "physical": false,
+    "schools": [
+      "shadow"
+    ],
     "variance": 0,
-    "periodic": true,
-    "cooldown": 28
+    "avoidable": true,
+    "trashAbility": true
   },
   {
-    "id": 385187,
-    "name": "Overpowering Croak",
-    "icon": "ability_vehicle_sonicshockwave",
-    "damage": 469353,
-    "aoe": true,
-    "physical": true,
-    "variance": 0,
-    "ignoresArmor": true,
-    "periodic": true,
-    "cooldown": 38
-  },
-  {
-    "id": 385451,
-    "name": "Toxic Effluvia",
-    "icon": "ability_creature_poison_02",
-    "damage": 352014,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "periodic": true,
-    "cooldown": 26
-  },
-  {
-    "id": 387504,
-    "name": "Squall Buffet",
-    "icon": "ability_mage_waterjet",
-    "damage": 782254,
+    "id": 324987,
+    "name": "Mistveil Bite",
+    "icon": "ability_druid_ferociousbite",
+    "damage": 1321569,
     "aoe": false,
-    "physical": false,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
     "variance": 0,
-    "tankOnly": true
+    "trashAbility": true
   },
   {
-    "id": 388424,
-    "name": "Tempest's Fury",
-    "icon": "spell_druid_astralstorm",
-    "damage": 400905,
+    "id": 460092,
+    "name": "Acid Nova",
+    "icon": "spell_nature_acid_01",
+    "damage": 1321569,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "nature"
+    ],
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
+    "id": 327397,
+    "name": "Grim Fate",
+    "icon": "spell_necro_dischargenecroticcore",
+    "damage": 1762092,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
+    "id": 320596,
+    "name": "Heaving Retch",
+    "icon": "spell_shadow_plaguecloud",
+    "damage": 2643139,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "nature"
+    ],
     "variance": 0
   },
   {
-    "id": 388424,
-    "name": "Fury @ 20 stacks",
-    "icon": "spell_druid_astralstorm",
-    "damage": 481086,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "notes": "Assumes all 4 ads channel for 25 seconds each. More likely to be ~15 stacks."
-  },
-  {
-    "id": 395690,
-    "name": "Lightning Blast",
-    "icon": "spell_nature_lightning",
-    "damage": 234676,
+    "id": 333479,
+    "name": "Spew Disease",
+    "icon": "spell_shadow_plaguecloud",
+    "damage": 1762092,
     "aoe": false,
     "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "outrange": 40
-  },
-  {
-    "id": 391634,
-    "name": "Deep Chill",
-    "icon": "ability_mage_wintersgrasp",
-    "damage": 312902,
-    "aoe": true,
-    "physical": false,
+    "schools": [
+      "nature",
+      "shadow"
+    ],
     "variance": 0,
     "trashAbility": true
   },
   {
-    "id": 388882,
-    "name": "Inundate",
-    "icon": "spell_frost_frostbolt02",
-    "damage": 352014,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "outrange": 35
-  },
-  {
-    "id": 375251,
-    "name": "Lava Spray (max stacks)",
-    "icon": "spell_shaman_lavasurge",
-    "damage": 234530,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 30,
-    "combatDrop": "cancel",
-    "outrange": 40
-  },
-  {
-    "id": 375890,
-    "name": "Volatile Mutation",
-    "icon": "ability_rhyolith_magmaflow_whole",
-    "damage": 293345,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 33
-  },
-  {
-    "id": 373735,
-    "name": "Dragon Strike",
-    "icon": "spell_warrior_wildstrike",
-    "damage": 352014,
+    "id": 338653,
+    "name": "Throw Flesh",
+    "icon": "inv_skinning_80_bloodsoakedbone",
+    "damage": 1321569,
     "aoe": false,
     "physical": true,
-    "variance": 0.025,
-    "cooldown": 57
-  },
-  {
-    "id": 396672,
-    "name": "Grounding Spear",
-    "icon": "inv_spear_11",
-    "damage": 312902,
-    "aoe": false,
-    "physical": true,
-    "variance": 0,
-    "cooldown": 57
-  },
-  {
-    "id": 375046,
-    "name": "Blazing Aegis",
-    "icon": "inv_shield_1h_dragondungeon_c_01",
-    "damage": 481471,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "periodic": true,
-    "cooldown": 31,
-    "combatDrop": "cancel",
-    "notes": "Initial hit + 4 ticks"
-  },
-  {
-    "id": 372542,
-    "name": "Scorching Fusillade",
-    "icon": "inv_gizmo_supersappercharge",
-    "damage": 293345,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "cooldown": 23
-  },
-  {
-    "id": 381662,
-    "name": "Candescent Tempest",
-    "icon": "spell_fire_burnout",
-    "damage": 437703,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "periodic": true,
-    "cooldown": 28
-  },
-  {
-    "id": 388817,
-    "name": "Shards of Stone",
-    "icon": "inv_10_elementalshardfoozles_earth",
-    "damage": 352014,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": [
-      13,
-      25
-    ]
-  },
-  {
-    "id": 384186,
-    "name": "Lightning Strike",
-    "icon": "ability_vehicle_electrocharge",
-    "damage": 352014,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 20
-  },
-  {
-    "id": 386411,
-    "name": "Quick Shot",
-    "icon": "inv_ammo_arrow_06",
-    "damage": 273789,
-    "aoe": false,
-    "physical": true,
-    "variance": 0.025
-  },
-  {
-    "id": 382836,
-    "name": "Brutalize",
-    "icon": "ability_warrior_bloodbath",
-    "damage": 1564508,
-    "aoe": false,
-    "physical": true,
-    "variance": 0,
-    "tankOnly": true
-  },
-  {
-    "id": 386016,
-    "name": "Gale Arrow",
-    "icon": "ability_skyreach_four_wind",
-    "damage": 449796,
-    "aoe": false,
-    "physical": false,
-    "variance": 0.05,
-    "cooldown": 57
-  },
-  {
-    "id": 375937,
-    "name": "Rending Strike",
-    "icon": "ability_gouge",
-    "damage": 1368945,
-    "aoe": false,
-    "physical": true,
-    "variance": 0,
-    "tankOnly": true
-  },
-  {
-    "id": 376660,
-    "name": "Iron Spear",
-    "icon": "inv_spear_07",
-    "damage": 586691,
-    "aoe": true,
-    "physical": true,
-    "variance": 0,
-    "cooldown": 35,
-    "combatDrop": "cancel"
-  },
-  {
-    "id": 376827,
-    "name": "Conductive Strike",
-    "icon": "ability_thunderking_lightningwhip",
-    "damage": 684472,
-    "aoe": false,
-    "physical": false,
-    "variance": 0,
-    "tankOnly": true
-  },
-  {
-    "id": 376866,
-    "name": "Static Spear",
-    "icon": "inv_spear_04",
-    "damage": 596469,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 39,
-    "combatDrop": "cancel"
-  },
-  {
-    "id": 376896,
-    "name": "Crackling Upheaval",
-    "icon": "spell_nature_unrelentingstorm",
-    "damage": 391127,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 37
-  },
-  {
-    "id": 376737,
-    "name": "Lightning",
-    "icon": "spell_nature_stormreach",
-    "damage": 684472,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "avoidable": true,
-    "notes": "Swirlies during Balakar Khan intermission and P2"
-  },
-  {
-    "id": 384479,
-    "name": "Rain of Arrows",
-    "icon": "ability_hunter_quickshot",
-    "damage": 391127,
-    "aoe": true,
-    "physical": true,
-    "variance": 0,
-    "trashAbility": true,
-    "avoidable": true,
-    "notes": "Swirlies cast by Nokhud Longbow in first area"
-  },
-  {
-    "id": 387127,
-    "name": "Chain Lightning",
-    "icon": "spell_nature_chainlightning",
-    "damage": 342236,
-    "aoe": false,
-    "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "cooldown": 24
-  },
-  {
-    "id": 372808,
-    "name": "Frigid Shard",
-    "icon": "spell_frost_iceshard",
-    "damage": 391127,
-    "aoe": false,
-    "physical": false,
-    "variance": 0,
-    "tankOnly": true
-  },
-  {
-    "id": 383925,
-    "name": "Chillstorm",
-    "icon": "spell_shadow_soulleech_2",
-    "damage": 293345,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 23,
-    "notes": "1 tick + final hit"
-  },
-  {
-    "id": 372735,
-    "name": "Tectonic Slam",
-    "icon": "inv_misc_volatileearth",
-    "damage": 273789,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "avoidable": true,
-    "cooldown": 10,
-    "outrange": 40
-  },
-  {
-    "id": 373694,
-    "name": "Living Bomb",
-    "icon": "inv_summerfest_firespirit",
-    "damage": 273789,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "aoeMultiplier": 0.714,
-    "trashAbility": true,
-    "cooldown": 17,
-    "notes": "1 tick + final hit."
-  },
-  {
-    "id": 373692,
-    "name": "Inferno (Trash)",
-    "icon": "ability_warlock_inferno",
-    "damage": 234676,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "cooldown": 19,
-    "combatDrop": "cancel",
-    "notes": "Only the initial hit."
-  },
-  {
-    "id": 392642,
-    "name": "Rolling Thunder",
-    "icon": "spell_nature_lightningoverload",
-    "damage": 195564,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "notes": "Only the initial hit"
-  },
-  {
-    "id": 384823,
-    "name": "Inferno (Boss)",
-    "icon": "ability_warlock_inferno",
-    "damage": 312902,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 35,
-    "notes": "Only the initial hit."
-  },
-  {
-    "id": 392488,
-    "name": "Lightning Storm",
-    "icon": "spell_shaman_thunderstorm",
-    "damage": 586692,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "trashAbility": true,
-    "periodic": true,
-    "cooldown": 28
-  },
-  {
-    "id": 381607,
-    "name": "Flamespit",
-    "icon": "spell_fire_firebolt",
-    "damage": 195564,
-    "aoe": false,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 22,
-    "notes": "Only the initial hit"
-  },
-  {
-    "id": 381516,
-    "name": "Interrupting Cloudburst",
-    "icon": "spell_nature_cyclone",
-    "damage": 195564,
-    "aoe": true,
-    "physical": false,
-    "variance": 0.05,
-    "cooldown": 19
-  },
-  {
-    "id": 381862,
-    "name": "Infernocore",
-    "icon": "ability_mage_livingbomb",
-    "damage": 410224,
-    "aoe": false,
-    "physical": false,
-    "variance": 0,
-    "periodic": true,
-    "cooldown": 22,
-    "notes": "Initial Flamespit hit + ticking damage + final hit."
-  },
-  {
-    "id": 369677,
-    "name": "Ricocheting Shield",
-    "icon": "spell_holy_avengersshield",
-    "damage": 488909,
-    "aoe": false,
-    "physical": true,
-    "variance": 0,
-    "cooldown": 17
-  },
-  {
-    "id": 372718,
-    "name": "Earthen Shards",
-    "icon": "6bf_blackrock_nova",
-    "damage": 293345,
-    "aoe": false,
-    "physical": true,
-    "variance": 0.025,
-    "cooldown": [
-      10,
-      30
+    "schools": [
+      "physical"
     ],
-    "notes": "Only the initial hit."
+    "variance": 0,
+    "trashAbility": true
   },
   {
-    "id": 372701,
-    "name": "Crushing Stomp",
-    "icon": "warrior_talent_icon_thunderstruck",
-    "damage": 293345,
+    "id": 257326,
+    "name": "Gore Crash",
+    "icon": "ability_warrior_decisivestrike",
+    "damage": 1409674,
     "aoe": true,
     "physical": true,
-    "variance": 0.025,
-    "ignoresArmor": true,
-    "cooldown": 12
-  },
-  {
-    "id": 372718,
-    "name": "Shards @ 5 stacks",
-    "icon": "6bf_blackrock_nova",
-    "damage": 366681,
-    "aoe": false,
-    "physical": true,
-    "variance": 0.025,
-    "cooldown": [
-      10,
-      30
+    "schools": [
+      "physical"
     ],
-    "notes": "Only the initial hit."
+    "variance": 0.05,
+    "effectIndex": 1
   },
   {
-    "id": 372701,
-    "name": "Stomp @ 5 stacks",
-    "icon": "warrior_talent_icon_thunderstruck",
-    "damage": 366681,
-    "aoe": true,
-    "physical": true,
-    "variance": 0.025,
-    "ignoresArmor": true,
-    "cooldown": 12
-  },
-  {
-    "id": 369328,
-    "name": "Earthquake",
-    "icon": "spell_nature_earthquake",
-    "damage": 1095157,
+    "id": 275014,
+    "name": "Putrid Waters",
+    "icon": "inv_misc_volatilewater",
+    "damage": 1321569,
     "aoe": false,
-    "physical": true,
-    "variance": 0,
+    "physical": false,
+    "schools": [
+      "frost"
+    ],
+    "variance": 0.005
+  },
+  {
+    "id": 256639,
+    "name": "Fire Bomb",
+    "icon": "inv_misc_blackironbomb",
+    "damage": 792942,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "fire"
+    ],
+    "variance": 0.005,
+    "trashAbility": true
+  },
+  {
+    "id": 257063,
+    "name": "Brackish Bolt",
+    "icon": "sha_inv_misc_slime_01",
+    "damage": 1057255,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "nature"
+    ],
+    "variance": 0.005,
     "trashAbility": true,
-    "periodic": true,
-    "cooldown": 25
-  },
-  {
-    "id": 369061,
-    "name": "Searing Clap",
-    "icon": "spell_fire_immolation",
-    "damage": 684472,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "tankOnly": true
-  },
-  {
-    "id": 369116,
-    "name": "Unstable Embers",
-    "icon": "spell_shaman_improvedfirenova",
-    "damage": 352014,
-    "aoe": true,
-    "physical": false,
-    "variance": 0,
-    "cooldown": 12
-  },
-  {
-    "id": 369052,
-    "name": "Seeking Flame",
-    "icon": "spell_fire_fireball02",
-    "damage": 488909,
-    "aoe": false,
-    "physical": false,
-    "variance": 0,
     "avoidable": true
   },
   {
-    "id": 381593,
-    "name": "Thunderous Clap",
-    "icon": "ability_earthenfury_giftofearth",
-    "damage": 312902,
+    "id": 454439,
+    "name": "Azerite Charge",
+    "icon": "inv_azeriteexplosion",
+    "damage": 1057255,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "arcane"
+    ],
     "variance": 0,
-    "cooldown": 20,
     "trashAbility": true
   },
   {
-    "id": 375727,
-    "name": "Sand Breath",
-    "icon": "inv_elementalearth2",
-    "damage": 880036,
+    "id": 272711,
+    "name": "Crushing Slam",
+    "icon": "spell_nature_earthquake",
+    "damage": 1585883,
     "aoe": true,
-    "physical": false,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
     "variance": 0,
-    "tankOnly": true
+    "trashAbility": true
   },
   {
-    "id": 376049,
-    "name": "Wing Buffet",
-    "icon": "inv_icon_wing07e",
-    "damage": 342236,
+    "id": 428535,
+    "name": "Blazing Crescendo",
+    "icon": "ability_siege_engineer_superheated",
+    "damage": 1939219,
     "aoe": true,
     "physical": false,
+    "schools": [
+      "fire"
+    ],
+    "variance": 0
+  },
+  {
+    "id": 425974,
+    "name": "Ground Pound",
+    "icon": "spell_shaman_earthquake",
+    "damage": 1321569,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "nature"
+    ],
     "variance": 0,
-    "cooldown": 23
+    "trashAbility": true
+  },
+  {
+    "id": 428879,
+    "name": "Smash Rock",
+    "icon": "ability_earthen_pillar",
+    "damage": 1321569,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "nature"
+    ],
+    "variance": 0,
+    "trashAbility": true
   }
 ]

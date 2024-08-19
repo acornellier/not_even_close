@@ -1,66 +1,66 @@
-import { aaAbilities } from './s4/aa'
-import { avAbilities } from './s4/av'
-import { bhAbilities } from './s4/bh'
-import { hoiAbilities } from './s4/hoi'
-import { nelthAbilities } from './s4/nelth'
-import { nokAbilities } from './s4/nok'
-import { rlpSpells } from './s4/rlp'
-import { uldAbilities } from './s4/uld'
 import type { Dungeon } from './enemies'
+import { cotAbilities } from './tww_s1/cot.ts'
+import { gbAbilities } from './tww_s1/gb.ts'
+import { akAbilities } from './tww_s1/ak.ts'
+import { motAbilities } from './tww_s1/mot.ts'
+import { nwAbilities } from './tww_s1/nw.ts'
+import { svAbilities } from './tww_s1/sv.ts'
+import { dbAbilities } from './tww_s1/db.ts'
+import { sobAbilities } from './tww_s1/sob.ts'
 
 export const dungeonsUncompiled: Dungeon[] = [
   {
-    key: 'aa',
-    name: 'Algethar Academy',
-    abilities: aaAbilities,
-    icon: 'achievement_dungeon_dragonacademy',
+    key: 'ak',
+    name: 'Ara-Kara',
+    abilities: akAbilities,
+    icon: 'inv_achievement_dungeon_arak-ara',
   },
   {
-    key: 'av',
-    name: 'Azure Vault',
-    abilities: avAbilities,
-    icon: 'achievement_dungeon_arcanevaults',
+    key: 'cot',
+    name: 'City of Threads',
+    abilities: cotAbilities,
+    icon: 'inv_achievement_dungeon_cityofthreads',
   },
   {
-    key: 'bh',
-    name: 'Brackenhide Hollow',
-    abilities: bhAbilities,
-    icon: 'achievement_dungeon_brackenhidehollow',
+    key: 'db',
+    name: 'Dawnbreaker',
+    abilities: dbAbilities,
+    icon: 'inv_achievement_dungeon_dawnbreaker',
   },
   {
-    key: 'hoi',
-    name: 'Halls of Infusion',
-    abilities: hoiAbilities,
-    icon: 'achievement_dungeon_hallsofinfusion',
+    key: 'gb',
+    name: 'Grim Batol',
+    abilities: gbAbilities,
+    icon: 'achievement_dungeon_grimbatol',
   },
   {
-    key: 'nelth',
-    name: 'Neltharus',
-    abilities: nelthAbilities,
-    icon: 'achievement_dungeon_neltharus',
+    key: 'mot',
+    name: 'Mists of Tirna-Scithe',
+    abilities: motAbilities,
+    icon: 'achievement_dungeon_mistsoftirnascithe',
   },
   {
-    key: 'nok',
-    name: 'Nokhud Offensive',
-    abilities: nokAbilities,
-    icon: 'achievement_dungeon_centaurplains',
+    key: 'nw',
+    name: 'Necrotic Wake',
+    abilities: nwAbilities,
+    icon: 'achievement_dungeon_theneroticwake',
   },
   {
-    key: 'rlp',
-    name: 'Ruby Life Pools',
-    abilities: rlpSpells,
-    icon: 'achievement_dungeon_lifepools',
+    key: 'sob',
+    name: 'Siege of Boralus',
+    abilities: sobAbilities,
+    icon: 'achievement_dungeon_siegeofboralus',
   },
   {
-    key: 'uld',
-    name: 'Uldaman',
-    abilities: uldAbilities,
-    icon: 'achievement_dungeon_uldaman',
+    key: 'sv',
+    name: 'Stonevault',
+    abilities: svAbilities,
+    icon: 'inv_achievement_dungeon_stonevault',
   },
 ]
 
 dungeonsUncompiled.push({
-  key: 'all_s4',
+  key: 'all_tww_s1',
   name: 'All dungeons',
   abilities: dungeonsUncompiled.flatMap(({ abilities }) => abilities),
   icon: 'achievement_challengemode_arakkoaspires_gold',

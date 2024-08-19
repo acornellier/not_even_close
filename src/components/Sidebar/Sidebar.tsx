@@ -3,7 +3,6 @@ import { ResultsMini } from './ResultsMini'
 import { Instructions } from './Instructions'
 import type { EnemyAbility } from '../../backend/enemyAbilities/enemies'
 import type { KeyDetails, Result } from '../../backend/sim/simTypes'
-import { TwitchStream } from './TwitchStream.tsx'
 
 interface Props {
   result: Result
@@ -30,7 +29,7 @@ export function Sidebar({ result, enemyAbility, keyDetails }: Props) {
 
       <div className="border-2 my-4 border-gray-600" />
 
-      <TwitchStream />
+      {/*<TwitchStream />*/}
 
       <Instructions />
     </div>

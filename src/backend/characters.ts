@@ -1,5 +1,5 @@
 ﻿import type { ClassSpec } from './classes'
-import type { Ability, SelectedAbility } from './ability'
+import type { SelectedAbilityId } from './ability'
 
 export interface CharacterStatsInput {
   stamina: number | undefined
@@ -13,14 +13,9 @@ export interface CharacterStatsInput {
 export interface Character {
   classSpec: ClassSpec
   stats: CharacterStatsInput
-  abilities: SelectedAbility[]
-  externals: SelectedAbility[]
+  abilities: SelectedAbilityId[]
+  externals: SelectedAbilityId[]
   loadedProfileId?: string
-}
-
-export interface OldCharacter extends Omit<Character, 'abilities' | 'externals'> {
-  abilities: Ability[]
-  externals: Ability[]
 }
 
 export interface Profile {
@@ -30,4 +25,7 @@ export interface Profile {
   stats: CharacterStatsInput
 }
 
-export type UpdateCharacter = (value: Partial<Character>, addTepidVers?: boolean) => void
+export type UpdateCharacter = (
+  value: Partial<Character>,
+  addTemperedVers?: boolean,
+) => void

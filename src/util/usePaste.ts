@@ -1,18 +1,18 @@
-﻿import type { Dispatch, SetStateAction } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect } from 'react'
 import { getAddonOutput, isAddonPaste } from './addon.ts'
-import type { SelectedAbility } from '../backend/ability.ts'
+import type { SelectedAbilityId } from '../backend/ability.ts'
 import type { Character, UpdateCharacter } from '../backend/characters.ts'
 import { useToasts } from '../components/Common/Toasts/useToasts.ts'
 import { defaultAbilities, equalSpecs } from '../backend/classes.ts'
-import { tepidVersatility } from '../backend/groupAbilities/externals.ts'
+import { temperedVersatility } from '../backend/groupAbilities/externals.ts'
 
 interface Props {
   characters: Character[]
   setCharacters: Dispatch<SetStateAction<Character[]>>
   updateCharacterIdx: (index: number) => UpdateCharacter
-  selectedGroupBuffs: SelectedAbility[]
-  setGroupBuffs: (abilities: SelectedAbility[]) => void
+  selectedGroupBuffs: SelectedAbilityId[]
+  setGroupBuffs: (abilities: SelectedAbilityId[]) => void
 }
 
 export function usePaste({
@@ -34,7 +34,7 @@ export function usePaste({
       const addonCharacters = getAddonOutput(text)
 
       const indexesUpdated = new Set<number>()
-      for (const { classSpec, stats, groupBuffs, addTepidVers } of addonCharacters) {
+      for (const { classSpec, stats, groupBuffs, addTemperedVers } of addonCharacters) {
         const idxToUpdate =
           addonCharacters.length === 1
             ? characterIdx
@@ -53,7 +53,7 @@ export function usePaste({
 
           updateCharacterIdx(idxToUpdate)(
             { classSpec: classSpec, stats: newStats },
-            addTepidVers,
+            addTemperedVers,
           )
 
           setGroupBuffs([
@@ -61,18 +61,16 @@ export function usePaste({
             ...groupBuffs
               .filter(
                 (newBuff) =>
-                  !selectedGroupBuffs.some(
-                    (curBuff) => curBuff.ability.spellId === newBuff.spellId,
-                  ),
+                  !selectedGroupBuffs.some((curBuff) => curBuff.abilityId === newBuff.id),
               )
-              .map((ability) => ({ ability })),
+              .map<SelectedAbilityId>((ability) => ({ abilityId: ability.id })),
           ])
         } else {
           const newCharacter: Character = {
             classSpec,
             stats,
             abilities: defaultAbilities(classSpec),
-            externals: addTepidVers ? [{ ability: tepidVersatility }] : [],
+            externals: addTemperedVers ? [{ abilityId: temperedVersatility.id }] : [],
           }
 
           setCharacters((prevCharacters) => [...prevCharacters, newCharacter])

@@ -17,7 +17,11 @@ export function EnemyAbilityResult({ ability, keyDetails }: Props) {
         </a>
         <div className="text-white">
           {ability.name} | +{keyDetails.keyLevel}{' '}
-          {keyDetails.isTyran ? 'Tyrannical' : 'Fortified'}
+          {keyDetails.keyLevel >= 10
+            ? ''
+            : keyDetails.isTyran
+              ? 'Tyrannical'
+              : 'Fortified'}
         </div>
       </div>
     )

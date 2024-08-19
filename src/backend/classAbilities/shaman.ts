@@ -1,51 +1,37 @@
 import type { Ability } from '../ability'
 
-const elementalWardingEnh: Ability = {
+const elementalWarding: Ability = {
   name: 'Elemental Warding',
-  dr: 0.03,
-  drType: 'magic',
-  stacks: { type: 'talent', max: 2 },
-  onByDefault: true,
-  spellId: 381650,
+  id: 381650,
   icon: 'inv_10_elementalcombinedfoozles_primordial',
-}
-
-const elementalWardingEleResto: Ability = {
-  ...elementalWardingEnh,
-  dr: 0.02,
+  dr: 0.06,
+  drType: 'magic',
+  onByDefault: true,
 }
 
 const brimmingWithLife: Ability = {
   name: 'Brimming With Life',
   healthIncrease: 0.1,
   onByDefault: true,
-  spellId: 381689_2,
+  id: 381689_2,
   icon: 'inv_jewelry_talisman_06',
-}
-
-const ancestralDefense: Ability = {
-  name: 'Ancestral Defense',
-  aoeDr: 0.02,
-  onByDefault: true,
-  spellId: 382947,
-  icon: 'ability_earthen_pillar',
 }
 
 const astralShift: Ability = {
   name: 'Astral Shift',
   dr: 0.4,
-  spellId: 108271,
+  id: 108271,
   icon: 'ability_shaman_astralshift',
 }
 
 const astralBulwark: Ability = {
   name: 'Astral Bulwark',
-  spellId: 377933,
+  id: 377933,
   onByDefault: false,
   icon: 'spell_shaman_ancestralawakening',
   abilityAugmentations: [
     {
-      otherSpellId: 108271,
+      otherAbilityId: 108271,
       field: 'dr',
       value: 0.2,
     },
@@ -55,7 +41,7 @@ const astralBulwark: Ability = {
 const earthElemental: Ability = {
   name: 'Earth Elemental',
   healthIncrease: 0.15,
-  spellId: 198103,
+  id: 198103,
   icon: 'spell_nature_earthelemental_totem',
 }
 
@@ -63,44 +49,108 @@ const spiritWolf: Ability = {
   name: 'Spirit Wolf',
   dr: 0.05,
   stacks: { type: 'stacks', max: 4 },
-  spellId: 260878,
+  id: 260878,
   icon: 'spell_hunter_lonewolf',
 }
 
 const primordialBond: Ability = {
   name: 'Primordial Bond',
-  spellId: 381764,
+  id: 381764_1,
   dr: 0.05,
   icon: 'inv_elemental_primal_earth',
 }
 
+const primordialBondPassive: Ability = {
+  name: 'Primordial Bond',
+  id: 381764_2,
+  icon: 'inv_elemental_primal_earth',
+  abilityAugmentations: [
+    {
+      otherAbilityId: earthElemental.id,
+      field: 'dr',
+      value: 0.05,
+    },
+  ],
+}
+
+const naturesProtection: Ability = {
+  name: "Nature's Protection",
+  id: 454029,
+  icon: 'spell_nature_lightningshield',
+  heroTree: 'Stormbringer',
+  damageDealtReduction: 0.1,
+}
+
+const seasonedWinds: Ability = {
+  name: 'Seasoned Winds',
+  id: 355630,
+  icon: 'spell_nature_cyclone',
+  dr: 0.15,
+  drType: 'magic',
+  stacks: { type: 'stacks', max: 2, default: 1 },
+}
+
+const windBarrier: Ability = {
+  name: 'Wind Barrier',
+  id: 445031,
+  icon: 'spell_nature_eyeofthestorm',
+  heroTree: 'Totemic',
+  absorb: {
+    healthMultiplier: 0.06,
+  },
+}
+
+const stoneBulwark: Ability = {
+  name: 'Stone Bulwark Totem',
+  id: 108270,
+  icon: 'ability_shaman_stonebulwark',
+  absorb: {
+    spMultipler: 0.875,
+  },
+  stacks: {
+    type: 'stacks',
+    default: 4,
+    max: 5,
+  },
+  notes: 'Starts at 4 stacks, gains 1 stack every 5 seconds. Lasts 15 seconds.',
+}
+
 export const shamanEnhAbilities = [
-  elementalWardingEnh,
+  elementalWarding,
   brimmingWithLife,
-  ancestralDefense,
   astralBulwark,
+  seasonedWinds,
+  naturesProtection,
+  windBarrier,
   earthElemental,
+  primordialBondPassive,
+  stoneBulwark,
   spiritWolf,
   astralShift,
 ]
 
 export const shamanEleAbilities = [
-  elementalWardingEleResto,
+  elementalWarding,
   brimmingWithLife,
-  ancestralDefense,
+  seasonedWinds,
+  naturesProtection,
   astralBulwark,
   earthElemental,
   primordialBond,
+  stoneBulwark,
   spiritWolf,
   astralShift,
 ]
 
 export const shamanRestoAbilities = [
-  elementalWardingEleResto,
+  elementalWarding,
   brimmingWithLife,
-  ancestralDefense,
+  seasonedWinds,
+  windBarrier,
   astralBulwark,
   earthElemental,
+  primordialBondPassive,
+  stoneBulwark,
   spiritWolf,
   astralShift,
 ]

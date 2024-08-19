@@ -7,11 +7,11 @@ const defaultClassSpec: ClassSpec = { class: 'Monk', spec: 'Mistweaver' }
 export const defaultCharacter: Character = {
   classSpec: defaultClassSpec,
   stats: {
-    stamina: 65_000,
-    versatilityRaw: 3_000,
+    stamina: 200_000,
+    versatilityRaw: 10_000,
     avoidanceRaw: 325,
-    armor: 5_000,
-    mainStat: 20_000,
+    armor: 10_000,
+    mainStat: 50_000,
   },
   abilities: defaultAbilities(defaultClassSpec),
   externals: [],

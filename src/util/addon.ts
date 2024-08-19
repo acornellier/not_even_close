@@ -4,13 +4,13 @@ import type { CharacterStatsInput } from '../backend/characters.ts'
 import { roundTo } from './utils.ts'
 import { fortitude, markOfTheWild } from '../backend/groupAbilities/groupBuffs.ts'
 import type { Ability } from '../backend/ability.ts'
-import { tepidVersatility } from '../backend/groupAbilities/externals.ts'
+import { temperedVersatility } from '../backend/groupAbilities/externals.ts'
 
 export interface AddonCharacter {
   classSpec: ClassSpec
   stats: CharacterStatsInput
   groupBuffs: Ability[]
-  addTepidVers: boolean
+  addTemperedVers: boolean
 }
 
 export type AddonOutput = AddonCharacter[]
@@ -71,17 +71,17 @@ export function getAddonOutput(text: string): AddonOutput {
 
     const groupBuffs: Ability[] = []
 
-    if (characterOutput.buffs.includes(markOfTheWild.spellId)) {
+    if (characterOutput.buffs.includes(markOfTheWild.id)) {
       groupBuffs.push(markOfTheWild)
     }
 
-    let addTepidVers = false
-    if (characterOutput.buffs.includes(tepidVersatility.spellId)) {
-      stats.versatilityRaw -= tepidVersatility.versRawIncrease!
-      addTepidVers = true
+    let addTemperedVers = false
+    if (characterOutput.buffs.includes(temperedVersatility.id)) {
+      stats.versatilityRaw -= temperedVersatility.versRawIncrease!
+      addTemperedVers = true
     }
 
-    if (characterOutput.buffs.includes(fortitude.spellId)) {
+    if (characterOutput.buffs.includes(fortitude.id)) {
       stats.stamina = Math.ceil(stats.stamina / 1.05)
       groupBuffs.push(fortitude)
     }
@@ -90,7 +90,7 @@ export function getAddonOutput(text: string): AddonOutput {
       classSpec: characterOutput.spec,
       stats,
       groupBuffs,
-      addTepidVers,
+      addTemperedVers: addTemperedVers,
     }
   })
 }
