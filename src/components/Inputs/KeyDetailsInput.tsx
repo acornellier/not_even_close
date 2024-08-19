@@ -72,7 +72,7 @@ export function KeyDetailsInput({ keyDetails, setKeyDetails }: Props) {
         )}
       </div>
       <TooltipStyled id="fort-tooltip">
-        <p>Fortified Affix. 30% more trash damage.</p>
+        <p>Fortified Affix. 20% more trash damage.</p>
         <p>{!bothFortTyranActive(keyDetails) && 'Click to swap'}</p>
       </TooltipStyled>
       <TooltipStyled id="tyran-tooltip">
@@ -80,7 +80,8 @@ export function KeyDetailsInput({ keyDetails, setKeyDetails }: Props) {
         <p>{!bothFortTyranActive(keyDetails) && 'Click to swap'}</p>
       </TooltipStyled>
       <TooltipStyled id="guile-tooltip">
-        Xal&apos;atath&apos;s Guile. 20% more enemy damage.
+        Xal&apos;atath&apos;s Guile. 20% more enemy damage. Currently bugged in-game and
+        doing nothing.
       </TooltipStyled>
     </div>
   )

@@ -1,5 +1,7 @@
 import { getEnemySpell } from '../grimoire.ts'
 
+const refractingBeam = getEnemySpell(424805)
+
 const earthShaterer = getEnemySpell(424879)
 
 const metalSplinters = getEnemySpell(428535)
@@ -12,4 +14,10 @@ const smashGround = getEnemySpell(428879, {
   trashAbility: true,
 })
 
-export const svAbilities = [earthShaterer, metalSplinters, groundPound, smashGround]
+export const svAbilities = [
+  refractingBeam,
+  earthShaterer,
+  metalSplinters,
+  groundPound,
+  smashGround,
+]

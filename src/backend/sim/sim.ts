@@ -37,7 +37,7 @@ function getScalingFactor(keyDetails: KeyDetails, isTrashAbility: boolean) {
   }
 
   if (guileActive(keyDetails)) {
-    scalingFactor *= 1.2
+    // scalingFactor *= 1.2
   }
 
   return Math.round(scalingFactor * 100) / 100
