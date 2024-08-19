@@ -35,7 +35,6 @@ export function Input({
   const paddingClass = design === 'minimal' ? 'p-1' : 'py-1.5 px-4'
   const borderClass = design === 'minimal' ? '' : 'border-2'
   const hideArrowsClass = hideArrows ? 'hide-arrows' : ''
-  console.log(hideArrowsClass)
 
   const labelTooltipId = `${label}-label-tooltip-${tooltipSuffix}`
   const inputTooltipId = `${label}-input-tooltip-${tooltipSuffix}`

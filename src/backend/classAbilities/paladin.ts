@@ -1,5 +1,7 @@
 import type { Ability } from '../ability'
 
+// TODO: sotr
+
 const obduracy: Ability = {
   name: 'Obduracy',
   aoeDr: 0.02,
@@ -10,7 +12,7 @@ const obduracy: Ability = {
 
 const sanctifiedPlatesRetProt: Ability = {
   name: 'Sanctified Plates',
-  aoeDr: 0.03,
+  aoeDr: 0.06,
   onByDefault: true,
   id: 402964,
   icon: 'inv_chest_plate_raidpaladin_s_01',
@@ -79,7 +81,7 @@ const sacrosanctCrusadeRet: Ability = {
   id: 431731_2,
   icon: 'inv_plate_raidpaladinprimalist_d_01_cape',
   absorb: {
-    healthMultiplier: 0.2,
+    healthMultiplier: 0.1,
     versAffected: true,
   },
 }
@@ -156,13 +158,12 @@ const redoubt: Ability = {
   },
 }
 
-const divineBulwark: Ability = {
+export const divineBulwark: Ability = {
   name: 'Mastery: Divine Bulwark',
   id: 76671,
   icon: 'spell_holy_holyprotection',
   onByDefault: true,
-  dr: 0.04,
-  notes: 'Should scale off mastery but not implemented yet',
+  notes: 'DR = 5% + 0.026 x mastery %',
 }
 
 const sanctuary: Ability = {
