@@ -10,7 +10,6 @@ import { AbilitySelect } from '../Abilities/AbilitySelect'
 import type { ClassSpec } from '../../backend/classes'
 import { classSpecs } from '../../backend/classes'
 import { LabelledAbilitySelect } from '../Abilities/LabelledAbilitySelect'
-import { externals } from '../../backend/groupAbilities/externals'
 import { useCallback, useMemo } from 'react'
 import type { AbilityReplacement, SelectedAbilityId } from '../../backend/ability'
 import { abilitiesById } from '../../backend/ability'
@@ -22,6 +21,8 @@ import { Label } from '../Common/Label.tsx'
 import { useLocalStorage } from '../../util/useLocalStorage.ts'
 
 import { useAbilitiesThatExist } from './useAbilitiesThatExist.ts'
+import { externals, svVersBuff } from '../../backend/groupAbilities/externals.ts'
+import { useSimContext } from '../../util/useSimContext.ts'
 
 interface Props {
   idx: number
@@ -48,6 +49,8 @@ export function CharacterComponent({
   loadProfile,
   deleteProfile,
 }: Props) {
+  const { dungeon } = useSimContext()
+
   const [replacements, setReplacements] = useLocalStorage<Record<number, number>>(
     'replacements',
     {},
@@ -88,6 +91,12 @@ export function CharacterComponent({
     },
     [setReplacements],
   )
+
+  const availableExternals = useMemo(() => {
+    const res = [...externals]
+    if (dungeon?.key === 'sv') res.push(svVersBuff)
+    return res
+  }, [dungeon])
 
   const specDetails = classSpecs[character.classSpec.class][character.classSpec.spec]!
   const specAbilities = specDetails.abilities
@@ -183,7 +192,7 @@ export function CharacterComponent({
       <LabelledAbilitySelect
         label="Externals"
         characterIdx={idx}
-        availableAbilities={externals}
+        availableAbilities={availableExternals}
         selectedAbilities={character.externals}
         setSelectedAbilities={setExternals}
       />

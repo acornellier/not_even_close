@@ -108,6 +108,13 @@ const timeDilation: Ability = {
   dr: 0.5,
 }
 
+export const svVersBuff: Ability = {
+  name: 'Stonevault Vers Buff',
+  versIncrease: 0.1,
+  id: 462500,
+  icon: 'inv_enchanting_craftedreagent_bar',
+}
+
 export const externals: Ability[] = [
   temperedVersatility,
   elusiveMists,
