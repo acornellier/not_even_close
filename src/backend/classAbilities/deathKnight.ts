@@ -142,6 +142,13 @@ const bloodSoakedGround: Ability = {
   drType: 'physical',
 }
 
+const subduingGrasp: Ability = {
+  name: 'Subduing Grasp',
+  id: 454822,
+  icon: 'spell_nature_elementalshields',
+  damageDealtReduction: 0.06,
+}
+
 export const deathKnightFrostAbilities = [
   antiMagicBarrier,
   gloomWard,
@@ -149,6 +156,7 @@ export const deathKnightFrostAbilities = [
   willOfTheNecropolis,
   runeCarvedPlates,
   pactOfTheApocalypse,
+  subduingGrasp,
   lichborne,
   antiMagicShell,
   iceboundFortitude,
@@ -161,6 +169,7 @@ export const deathKnightUnholyAbilities = [
   willOfTheNecropolis,
   bloodSoakedGround,
   pactOfTheApocalypse,
+  subduingGrasp,
   lichborne,
   antiMagicShell,
   iceboundFortitude,
@@ -174,6 +183,7 @@ export const deathKnightBloodAbilities = [
   bloodSoakedGround,
   runeCarvedPlates,
   foulBulwark,
+  subduingGrasp,
   lichborne,
   antiMagicShell,
   iceboundFortitude,
