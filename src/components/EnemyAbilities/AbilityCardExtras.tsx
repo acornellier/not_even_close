@@ -44,6 +44,7 @@ export function AbilityCardExtras({
             } Meld, Invis, or Feign Death`}
           >
             <AbilityIcon icon="ability_ambush" size={24} />
+            {combatDrop === 'cancel' ? 'Cancels' : 'Recasts'}
           </div>
         )}
         {los && (

@@ -2,10 +2,12 @@ import { getEnemySpell } from '../grimoire.ts'
 
 const putridWaters = getEnemySpell(275014, {
   cooldown: 20,
+  combatDrop: 'cancel',
 })
 
 const azeriteCharge = getEnemySpell(454439, {
   trashAbility: true,
+  combatDrop: 'cancel',
 })
 
 const fireBomb = getEnemySpell(256639, {
@@ -15,6 +17,7 @@ const fireBomb = getEnemySpell(256639, {
 const crushingSlam = getEnemySpell(272711, {
   trashAbility: true,
   cooldown: 20,
+  los: true,
 })
 
 const brackishBolt = getEnemySpell(257063, {
