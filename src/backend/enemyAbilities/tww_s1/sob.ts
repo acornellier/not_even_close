@@ -1,10 +1,8 @@
 import { getEnemySpell } from '../grimoire.ts'
 
-const goreCrash = getEnemySpell(257326, {
-  effectIndex: 1,
+const putridWaters = getEnemySpell(275014, {
+  cooldown: 20,
 })
-
-const putridBomb = getEnemySpell(275014)
 
 const azeriteCharge = getEnemySpell(454439, {
   trashAbility: true,
@@ -16,6 +14,7 @@ const fireBomb = getEnemySpell(256639, {
 
 const crushingSlam = getEnemySpell(272711, {
   trashAbility: true,
+  cooldown: 20,
 })
 
 const brackishBolt = getEnemySpell(257063, {
@@ -23,11 +22,24 @@ const brackishBolt = getEnemySpell(257063, {
   avoidable: true,
 })
 
+const breakWaterBase = getEnemySpell(257883, { effectIndex: 1 })
+const breakWater = {
+  ...breakWaterBase,
+  name: `${breakWaterBase.name} (x3)`,
+  damage: 3 * breakWaterBase.damage,
+  cooldown: 20,
+}
+
+const slam = getEnemySpell(269266, {
+  cooldown: [13, 18],
+})
+
 export const sobAbilities = [
-  goreCrash,
-  putridBomb,
   fireBomb,
   brackishBolt,
   azeriteCharge,
   crushingSlam,
+  breakWater,
+  putridWaters,
+  slam,
 ]

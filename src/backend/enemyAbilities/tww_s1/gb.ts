@@ -8,7 +8,7 @@ const commandingRoar = getEnemySpell(448847, {
 const umbralWind = getEnemySpell(451939, {
   trashAbility: true,
   los: true,
-  cooldown: 23,
+  cooldown: 30,
 })
 
 const earthBolt = getEnemySpell(451261, {

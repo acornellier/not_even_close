@@ -8,8 +8,8 @@ export const defaultCharacter: Character = {
   classSpec: defaultClassSpec,
   stats: {
     stamina: 200_000,
-    versatilityRaw: 10_000,
-    avoidanceRaw: 325,
+    versatilityRaw: 2_000,
+    avoidanceRaw: 1635,
     armor: 10_000,
     mainStat: 50_000,
   },
