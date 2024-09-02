@@ -7,7 +7,8 @@ const versConversionFactor = versConversionFactorLevel80
 const avoidanceConversionFactor = 543.9974
 
 // Changes every patch
-const armorKValueMplusS4 = 24308.556
+// TODO: fix
+const armorKValueMplusS4 = 100_000
 
 interface StatBracketBasic {
   size: number
