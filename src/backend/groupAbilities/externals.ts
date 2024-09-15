@@ -70,7 +70,7 @@ const lifeCocoon: Ability = {
     backup: 3_600_000,
   },
   icon: 'ability_monk_chicocoon',
-  notes: 'Assumes 1.4M absorb if you have no mistweaver selected',
+  notes: 'Assumes {{backup}} absorb if you have no mistweaver selected',
 }
 
 const rescue: Ability = {
@@ -83,7 +83,7 @@ const rescue: Ability = {
     backup: 1_300_000,
   },
   icon: 'ability_skyreach_shielded',
-  notes: 'Assumes 400K absorb if you have no evoker selected',
+  notes: 'Assumes {{backup}} absorb if you have no evoker selected',
 }
 
 const elusiveMists: Ability = {

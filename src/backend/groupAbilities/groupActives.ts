@@ -19,7 +19,7 @@ const chiCocoon: Ability = {
     backup: 540_000,
   },
   icon: 'inv_pet_crane',
-  notes: 'Assumes 270K absorb if you have no mistweaver selected',
+  notes: 'Assumes {{backup}} absorb if you have no mistweaver selected',
 }
 
 const massBarrier: Ability = {
@@ -32,7 +32,7 @@ const massBarrier: Ability = {
     backup: 900_000,
   },
   icon: 'ability_racial_magicalresistance',
-  notes: 'Assumes 300K absorb if you have no mage selected',
+  notes: 'Assumes {{backup}} absorb if you have no mage selected',
 }
 
 const arcaneMassBarrier: Ability = {

@@ -4,7 +4,7 @@ import type {
   SelectedAbilityId,
 } from '../../backend/ability'
 import { abilityEffectFields } from '../../backend/ability'
-import { defaultStacks } from '../../util/utils.ts'
+import { defaultStacks, formatNumber } from '../../util/utils.ts'
 import { Fragment } from 'react'
 import { useSimContext } from '../../util/useSimContext.ts'
 import { TooltipStyled } from '../Common/TooltipStyled'
@@ -140,7 +140,14 @@ export function CharAbilityIcon({
               </Fragment>
             ))
           })}
-          {ability.notes && <span>{ability.notes}</span>}
+          {ability.notes && (
+            <span>
+              {ability.notes.replace(
+                '{{backup}}',
+                `${ability.absorb?.backup ? formatNumber(ability.absorb?.backup) : ''}`,
+              )}
+            </span>
+          )}
           {ability.stacks && selectedAbility && (
             <div className="mt-1">
               <NumericInput
