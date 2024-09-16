@@ -1,9 +1,9 @@
 ﻿import type { Ability } from '../ability'
 
 export const temperedVersatility: Ability = {
-  name: 'Phial of Tempered Versatility',
+  name: 'Flask of Tempered Versatility',
   id: 212277,
-  versRawIncrease: 2168,
+  versRawIncrease: 2825,
   icon: 'inv_misc_potiona2',
 }
 
