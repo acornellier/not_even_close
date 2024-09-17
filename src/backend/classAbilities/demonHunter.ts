@@ -186,7 +186,6 @@ const armyUntoOneself: Ability = {
   icon: 'ability_warlock_avoidance',
   heroTree: 'Aldrachi Reaver',
   dr: 0.1,
-  drType: 'physical',
 }
 
 export const havocAbilities = [
