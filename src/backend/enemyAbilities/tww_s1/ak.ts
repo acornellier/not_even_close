@@ -19,20 +19,9 @@ const gossamerOnslaught = getEnemySpell(438960, (spell) => ({
   periodic: true,
 }))
 
-const burrowCharge = getEnemySpell(433731, {
-  cooldown: 60,
-  combatDrop: 'cancel',
-})
-
 const slam = getEnemySpell(465012, {
   trashAbility: true,
   cooldown: 25,
 })
 
-export const akAbilities = [
-  alertingShrill,
-  gossamerOnslaught,
-  callOfTheBrood,
-  burrowCharge,
-  slam,
-]
+export const akAbilities = [alertingShrill, gossamerOnslaught, callOfTheBrood, slam]

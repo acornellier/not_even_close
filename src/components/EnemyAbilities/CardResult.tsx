@@ -21,7 +21,13 @@ export function CardResult({ result }: Props) {
         <div className="hidden md:block">
           {remainingHp} ({remainingHpPercent}%)
         </div>
-        <div>{survival ? <HeartIcon height={22} /> : <SkullIcon height={16} />}</div>
+        <div>
+          {survival ? (
+            <HeartIcon height={22} style={{ margin: -2 }} />
+          ) : (
+            <SkullIcon height={16} />
+          )}
+        </div>
       </div>
     </AbilityDetailsChip>
   )
