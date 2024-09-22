@@ -4,6 +4,7 @@ import { dampenHarm } from '../classAbilities/monk'
 import { armorToPhysicalDr } from '../stats'
 import { getStackedValue } from '../../util/utils.ts'
 import { divineBulwark } from '../classAbilities/paladin.ts'
+import { setFireToThePain } from '../classAbilities/demonHunter.ts'
 
 export function getDamageReduction(
   characterStats: CharacterStats,
@@ -52,6 +53,13 @@ export function getDamageReduction(
     } else if (ability.id === dampenHarm.id) {
       const dampenDr = 0.2 + (damageTaken / startingHealth) * 0.3
       inverseDr *= 1 - Math.min(dampenDr, 0.5)
+    } else if (ability.id === setFireToThePain.id) {
+      console.log(enemyAbilityDetails)
+      if (enemyAbilityDetails.schools.includes('fire')) {
+        inverseDr *= 1 - 0.1
+      } else {
+        inverseDr *= 1 - 0.05
+      }
     }
   }
 

@@ -57,6 +57,13 @@ const deflectingDance: Ability = {
   icon: 'ability_ironmaidens_bladerush',
 }
 
+export const setFireToThePain: Ability = {
+  name: 'Set Fire to the Pain',
+  id: 452406,
+  icon: 'ability_demonhunter_empowerwards',
+  notes: '5% non-Fire DR, 10% Fire DR',
+}
+
 const demonMuzzle: Ability = {
   name: 'Demon Muzzle',
   id: 388111,
@@ -195,6 +202,7 @@ export const havocAbilities = [
   illidariKnowledge,
   demonHide,
   willOfTheIllidari,
+  setFireToThePain,
   demonMuzzle,
   immolationAura,
   armyUntoOneself,
@@ -208,6 +216,7 @@ export const vengeanceAbilities = [
   demonicWardsVdh,
   illidariKnowledge,
   willOfTheIllidari,
+  setFireToThePain,
   soulmonger,
   calcifiedSpikes,
   painbringer,
