@@ -7,6 +7,7 @@ const obduracy: Ability = {
   aoeDr: 0.02,
   onByDefault: true,
   id: 385427,
+  passive: true,
   icon: 'ability_paladin_speedoflight',
 }
 
@@ -23,6 +24,8 @@ const sanctifiedPlatesHoly: Ability = {
   aoeDr: 0.03,
   onByDefault: true,
   id: 402964_1,
+  spellId: 402964,
+  passive: true,
   icon: 'inv_chest_plate_raidpaladin_s_01',
 }
 
@@ -30,7 +33,8 @@ const blessingOfDusk: Ability = {
   name: 'Blessing of Dusk',
   dr: 0.04,
   onByDefault: true,
-  id: 385126,
+  id: 409439,
+  passive: true,
   icon: 'achievement_zone_newshadowmoonvalley',
   notes: 'Blessing of Dusk is usually active, but not always',
 }
@@ -38,6 +42,7 @@ const blessingOfDusk: Ability = {
 const sealOfOrder: Ability = {
   name: 'Seal of Order',
   id: 385129,
+  passive: true,
   icon: 'spell_holy_sealofwisdom',
   onByDefault: true,
   abilityAugmentations: [
@@ -89,6 +94,7 @@ const sacrosanctCrusadeRet: Ability = {
 const aegisOfProtection: Ability = {
   name: 'Aegis of Protection',
   id: 403654,
+  passive: true,
   onByDefault: true,
   icon: 'spell_holy_holyprotection',
   abilityAugmentations: [
@@ -122,6 +128,7 @@ const ardentDefender: Ability = {
 const improvedArdentDefender: Ability = {
   name: 'Improved Ardent Defender',
   id: 393114,
+  passive: true,
   icon: 'spell_holy_ardentdefender',
   abilityAugmentations: [
     {
@@ -149,6 +156,7 @@ const eyeOfTyr: Ability = {
 const redoubt: Ability = {
   name: 'Redoubt',
   id: 280375,
+  passive: true,
   icon: 'ability_warrior_shieldguard',
   onByDefault: true,
   staminaIncrease: 0.02,
@@ -161,6 +169,7 @@ const redoubt: Ability = {
 export const divineBulwark: Ability = {
   name: 'Mastery: Divine Bulwark',
   id: 76671,
+  passive: true,
   icon: 'spell_holy_holyprotection',
   onByDefault: true,
   notes: 'DR = 5% + 0.026 x mastery %',
@@ -169,6 +178,7 @@ export const divineBulwark: Ability = {
 const sanctuary: Ability = {
   name: 'Sanctuary',
   id: 379021,
+  passive: true,
   icon: 'spell_holy_innerfire',
   onByDefault: true,
   abilityAugmentations: [

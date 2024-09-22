@@ -3,6 +3,7 @@ import type { Ability } from '../ability'
 const scarsOfSuffering: Ability = {
   name: 'Scars of Suffering',
   id: 428232,
+  passive: true,
   onByDefault: true,
   versIncrease: 0.04,
   icon: 'spell_fire_felimmolation',
@@ -20,6 +21,8 @@ const demonicWards: Ability = {
 const demonicWardsVdh: Ability = {
   ...demonicWards,
   id: demonicWards.id + 1,
+  spellId: demonicWards.id,
+  passive: true,
   dr: 0.08,
   drType: undefined,
 }
@@ -27,6 +30,7 @@ const demonicWardsVdh: Ability = {
 const illidariKnowledge: Ability = {
   name: 'Illidari Knowledge',
   id: 389696,
+  passive: true,
   onByDefault: true,
   dr: 0.05,
   drType: 'magic',
@@ -36,6 +40,7 @@ const illidariKnowledge: Ability = {
 const willOfTheIllidari: Ability = {
   name: 'Will of the Illidari',
   id: 389695,
+  passive: true,
   onByDefault: true,
   healthIncrease: 0.05,
   icon: 'ability_demonhunter_spectank',
@@ -60,6 +65,7 @@ const deflectingDance: Ability = {
 export const setFireToThePain: Ability = {
   name: 'Set Fire to the Pain',
   id: 452406,
+  passive: true,
   icon: 'ability_demonhunter_empowerwards',
   notes: '5% non-Fire DR, 10% Fire DR',
 }
@@ -75,6 +81,7 @@ const demonMuzzle: Ability = {
 const demonHide: Ability = {
   name: 'Demon Hide',
   id: 428241,
+  passive: true,
   onByDefault: true,
   dr: 0.05,
   drType: 'physical',
@@ -91,6 +98,7 @@ const immolationAura: Ability = {
 const infernalArmor: Ability = {
   name: 'Infernal Armor',
   id: 320331,
+  passive: true,
   onByDefault: true,
   icon: 'ability_demonhunter_immolation',
   abilityAugmentations: [
@@ -105,6 +113,7 @@ const infernalArmor: Ability = {
 const felFlameFortification: Ability = {
   name: 'Fel Flame Fortification',
   id: 389705,
+  passive: true,
   onByDefault: true,
   drType: 'magic',
   icon: 'spell_fire_felfire',

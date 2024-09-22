@@ -3,6 +3,7 @@ import type { Ability } from '../ability'
 const elementalWarding: Ability = {
   name: 'Elemental Warding',
   id: 381650,
+  passive: true,
   icon: 'inv_10_elementalcombinedfoozles_primordial',
   dr: 0.06,
   drType: 'magic',
@@ -13,7 +14,8 @@ const brimmingWithLife: Ability = {
   name: 'Brimming With Life',
   healthIncrease: 0.1,
   onByDefault: true,
-  id: 381689_2,
+  id: 381689,
+  passive: true,
   icon: 'inv_jewelry_talisman_06',
 }
 
@@ -27,6 +29,7 @@ const astralShift: Ability = {
 const astralBulwark: Ability = {
   name: 'Astral Bulwark',
   id: 377933,
+  passive: true,
   onByDefault: false,
   icon: 'spell_shaman_ancestralawakening',
   abilityAugmentations: [
@@ -62,7 +65,8 @@ const primordialBond: Ability = {
 
 const primordialBondPassive: Ability = {
   name: 'Primordial Bond',
-  id: 381764_2,
+  id: 381764,
+  passive: true,
   icon: 'inv_elemental_primal_earth',
   abilityAugmentations: [
     {

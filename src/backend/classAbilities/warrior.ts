@@ -47,6 +47,7 @@ const seasonedSoldier: Ability = {
   name: 'Seasoned Soldier',
   aoeDr: 0.05,
   id: 279423,
+  passive: true,
   onByDefault: true,
   icon: 'inv_axe_09',
 }
@@ -116,7 +117,8 @@ const keepYourFeetOnTheGround: Ability = {
 
 const steadfastAsThePeaks: Ability = {
   name: 'Steadfast as the Peaks',
-  id: 437152,
+  id: 434970,
+  passive: true,
   icon: 'ability_warrior_devastate',
   heroTree: 'Mountain Thane',
   abilityAugmentations: [

@@ -10,6 +10,8 @@ export interface AddonCharacter {
   classSpec: ClassSpec
   stats: CharacterStatsInput
   groupBuffs: Ability[]
+  spellIds: number[]
+  talents: Array<[number, number]>
   addTemperedVers: boolean
 }
 
@@ -48,6 +50,8 @@ function parseAddon(text: string) {
     const armor = Number(findValue(lines, 'armor'))
     const mainStat = Number(findValue(lines, 'mainStat'))
     const buffs = findValue(lines, 'buffs')
+    const spells = findValue(lines, 'spells')
+    const talentsStr = findValue(lines, 'talents')
 
     return {
       spec: { class: wowClass, spec },
@@ -59,6 +63,9 @@ function parseAddon(text: string) {
         mainStat,
       },
       buffs: buffs.split(',').map(Number),
+      spellIds: spells.split(',').map(Number),
+      talents:
+        talentsStr == '' ? [] : (JSON.parse(talentsStr) as Array<[number, number]>),
     }
   })
 }
@@ -90,6 +97,8 @@ export function getAddonOutput(text: string): AddonOutput {
       classSpec: characterOutput.spec,
       stats,
       groupBuffs,
+      spellIds: characterOutput.spellIds,
+      talents: characterOutput.talents,
       addTemperedVers: addTemperedVers,
     }
   })

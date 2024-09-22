@@ -6,6 +6,7 @@ const spellWarding: Ability = {
   dr: 0.03,
   drType: 'magic',
   id: 390667,
+  passive: true,
   icon: 'spell_holy_spellwarding',
 }
 
@@ -55,6 +56,7 @@ const powerWordShieldDisc: Ability = {
 const aegisOfWrath: Ability = {
   name: 'Aegis of Wrath',
   id: 238135,
+  passive: true,
   icon: 'spell_holy_powerwordshield',
   abilityAugmentations: [
     {
@@ -69,6 +71,7 @@ const aegisOfWrath: Ability = {
 const preventiveMeasures: Ability = {
   name: 'Preventive Measures',
   id: 440662,
+  passive: true,
   icon: 'spell_holy_powerwordshield',
   heroTree: 'Oracle',
   abilityAugmentations: [
@@ -97,6 +100,7 @@ const desperatePrayer: Ability = {
 const lightsInspiration: Ability = {
   name: "Light's Inspiration",
   id: 373450,
+  passive: true,
   icon: 'spell_holy_restoration',
   abilityAugmentations: [
     {
@@ -131,6 +135,7 @@ const dispersion: Ability = {
 const embraceTheShadow: Ability = {
   name: 'Embrace the Shadow',
   id: 451569,
+  passive: true,
   dr: 0.03,
   icon: 'warlock_curse_shadow_aura',
   heroTree: 'Voidweaver',
@@ -139,11 +144,10 @@ const embraceTheShadow: Ability = {
 const wordOfSupremacy: Ability = {
   name: 'Word of Supremacy',
   id: 453726,
+  passive: true,
   icon: 'spell_holy_wordfortitude',
   heroTree: 'Archon',
   staminaIncrease: 0.05,
-  notes:
-    'If using this, make sure to have Power Word: Fortitude clicked off when checking your stamina, even when using the addon',
 }
 
 export const priestDiscAbilities = [

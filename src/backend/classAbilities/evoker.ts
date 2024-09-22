@@ -2,6 +2,7 @@ import type { Ability } from '../ability'
 
 const inherentResistanceAug: Ability = {
   name: 'Inherent Resistance',
+  passive: true,
   dr: 0.04,
   drType: 'magic',
   stacks: { type: 'talent', max: 2 },
@@ -13,6 +14,7 @@ const inherentResistanceAug: Ability = {
 const inherentResistanceDevPres: Ability = {
   ...inherentResistanceAug,
   id: inherentResistanceAug.id + 1,
+  spellId: inherentResistanceAug.id,
   dr: 0.04,
 }
 
@@ -33,6 +35,7 @@ const rushOfVitality: Ability = {
 const hardenedScales: Ability = {
   name: 'Hardened Scales',
   id: 441180,
+  passive: true,
   icon: 'inv_10_skinning_scales_black',
   heroTree: 'Scalecommander',
   abilityAugmentations: [

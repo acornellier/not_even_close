@@ -325,6 +325,20 @@ export const defaultAbilities = (classSpec: ClassSpec): SelectedAbilityId[] => {
     .map((ability) => ({ abilityId: ability.id }))
 }
 
+export const importSelectedAbilities = (
+  classSpec: ClassSpec,
+  spellsKnown: Record<number, number>,
+): SelectedAbilityId[] => {
+  const specDetails = classSpecs[classSpec.class][classSpec.spec]!
+  const abilities: SelectedAbilityId[] = []
+  for (const ability of specDetails.abilities) {
+    const stacks = spellsKnown[ability.spellId ?? ability.id]
+    if (!stacks || !ability.passive) continue
+    abilities.push({ abilityId: ability.id, stacks })
+  }
+  return abilities
+}
+
 export const classColors: Record<WowClass, string> = {
   'Death Knight': '#C41E3A',
   'Demon Hunter': '#A330C9',

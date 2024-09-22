@@ -3,6 +3,7 @@ import type { Ability } from '../ability'
 const calmingPresenceMistweaver: Ability = {
   name: 'Calming Presence',
   id: 388664,
+  passive: true,
   onByDefault: true,
   dr: 0.06,
   icon: 'inv_misc_orb_01',
@@ -11,6 +12,7 @@ const calmingPresenceMistweaver: Ability = {
 const calmingPresenceWindwalker: Ability = {
   ...calmingPresenceMistweaver,
   id: calmingPresenceMistweaver.id + 1,
+  spellId: calmingPresenceMistweaver.id,
   dr: 0.03,
 }
 
@@ -24,6 +26,7 @@ const ancientTeachings: Ability = {
 const secretInfusion: Ability = {
   name: 'Secret Infusion',
   id: 388491,
+  passive: true,
   onByDefault: true,
   icon: 'ability_monk_chibrew',
   abilityAugmentations: [
@@ -109,6 +112,7 @@ const touchOfKarma: Ability = {
 const martialInstincts: Ability = {
   name: 'Martial Instincts',
   id: 450427,
+  passive: true,
   icon: 'ability_monk_palmstrike',
   aoeDr: 0.02,
   onByDefault: true,
@@ -121,6 +125,7 @@ const martialInstincts: Ability = {
 const ironshellBrew: Ability = {
   name: 'Ironshell Brew',
   id: 388814,
+  passive: true,
   icon: 'ability_monk_fortifyingale_new',
   abilityAugmentations: [
     {
@@ -139,6 +144,7 @@ const ironshellBrew: Ability = {
 const niuzaosProtection: Ability = {
   name: "Niuazo's Proection",
   id: 442747,
+  passive: true,
   icon: 'ability_monk_chargingoxwave',
   heroTree: 'Conduit of the Celestials',
   abilityAugmentations: [

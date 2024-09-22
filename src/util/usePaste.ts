@@ -2,9 +2,14 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect } from 'react'
 import { getAddonOutput, isAddonPaste } from './addon.ts'
 import type { SelectedAbilityId } from '../backend/ability.ts'
+import { abilitiesById } from '../backend/ability.ts'
 import type { Character, UpdateCharacter } from '../backend/characters.ts'
 import { useToasts } from '../components/Common/Toasts/useToasts.ts'
-import { defaultAbilities, equalSpecs } from '../backend/classes.ts'
+import {
+  defaultAbilities,
+  equalSpecs,
+  importSelectedAbilities,
+} from '../backend/classes.ts'
 import { temperedVersatility } from '../backend/groupAbilities/externals.ts'
 
 interface Props {
@@ -34,7 +39,14 @@ export function usePaste({
       const addonCharacters = getAddonOutput(text)
 
       const indexesUpdated = new Set<number>()
-      for (const { classSpec, stats, groupBuffs, addTemperedVers } of addonCharacters) {
+      for (const {
+        classSpec,
+        stats,
+        groupBuffs,
+        talents,
+        spellIds,
+        addTemperedVers,
+      } of addonCharacters) {
         const idxToUpdate =
           addonCharacters.length === 1
             ? characterIdx
@@ -43,18 +55,41 @@ export function usePaste({
                   equalSpecs(char.classSpec, classSpec) && !indexesUpdated.has(index),
               )
 
+        const spellsKnown: Record<number, number> = {}
+        for (const spellId of spellIds) spellsKnown[spellId] = 1
+        for (const talent of talents) spellsKnown[talent[0]] = talent[1]
+
+        const importedAbilities = importSelectedAbilities(classSpec, spellsKnown)
+
         if (idxToUpdate !== -1) {
           indexesUpdated.add(idxToUpdate)
 
+          const prevChar = characters[idxToUpdate]!
           const newStats = {
             ...stats,
-            masteryPercent: characters[idxToUpdate]!.stats.masteryPercent,
+            masteryPercent: prevChar.stats.masteryPercent,
           }
 
-          updateCharacterIdx(idxToUpdate)(
-            { classSpec: classSpec, stats: newStats },
-            addTemperedVers,
-          )
+          const characterUpdate: Partial<Character> = {
+            classSpec: classSpec,
+            stats: newStats,
+          }
+
+          if (importedAbilities.length) {
+            // Keep any previous abilities that are not passive and not in the new abilities
+            const abilitiesToKeep = prevChar.abilities.filter((curAbility) => {
+              return (
+                !abilitiesById[curAbility.abilityId]?.passive &&
+                !importedAbilities.some(
+                  (newAbility) => curAbility.abilityId === newAbility.abilityId,
+                )
+              )
+            })
+
+            characterUpdate.abilities = [...abilitiesToKeep, ...importedAbilities]
+          }
+
+          updateCharacterIdx(idxToUpdate)(characterUpdate, addTemperedVers)
 
           setGroupBuffs([
             ...selectedGroupBuffs,
@@ -69,7 +104,9 @@ export function usePaste({
           const newCharacter: Character = {
             classSpec,
             stats,
-            abilities: defaultAbilities(classSpec),
+            abilities: importedAbilities.length
+              ? importedAbilities
+              : defaultAbilities(classSpec),
             externals: addTemperedVers ? [{ abilityId: temperedVersatility.id }] : [],
           }
 

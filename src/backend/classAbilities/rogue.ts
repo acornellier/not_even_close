@@ -3,6 +3,7 @@ import type { Ability } from '../ability'
 const thiefsVersatility: Ability = {
   name: "Thief's Versatility",
   id: 381619,
+  passive: true,
   onByDefault: true,
   versIncrease: 0.03,
   icon: 'ability_rogue_versatility',
@@ -11,6 +12,7 @@ const thiefsVersatility: Ability = {
 const elusiveness: Ability = {
   name: 'Elusiveness',
   id: 79008,
+  passive: true,
   onByDefault: true,
   icon: 'ability_rogue_turnthetables',
   abilityAugmentations: [
@@ -81,6 +83,7 @@ const cloakOfShadows: Ability = {
 const baitAndSwitch: Ability = {
   name: 'Bait and Switch',
   id: 457034,
+  passive: true,
   icon: 'ability_druid_earthandsky',
   heroTree: 'Deathstalker',
   notes: 'WARNING: disable this for physical damage hits',
@@ -101,6 +104,7 @@ const baitAndSwitch: Ability = {
 const smoke: Ability = {
   name: 'Smoke',
   id: 441247,
+  passive: true,
   icon: 'rogue_dirtytricks',
   heroTree: 'Trickster',
   damageDealtReduction: 0.05,
@@ -109,14 +113,10 @@ const smoke: Ability = {
 const mirrors: Ability = {
   name: 'Mirrors',
   id: 441250,
+  passive: true,
   icon: 'trade_archaeology_highbornesoulmirror',
   heroTree: 'Trickster',
   abilityAugmentations: [
-    {
-      otherAbilityId: feint.id,
-      field: 'dr',
-      value: 0.1,
-    },
     {
       otherAbilityId: feint.id,
       field: 'aoeDr',

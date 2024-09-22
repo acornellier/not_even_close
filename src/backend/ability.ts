@@ -27,8 +27,10 @@ export type StackOptions = {
 
 export type Ability = {
   name: string
-  id: number
+  id: number // MUST be unique across all spells. By default matches spellId
+  spellId?: number // For spells with same spellId but different ids, like Calming Presence
   icon: string
+  passive?: boolean
   onByDefault?: boolean
   notes?: string
   heroTree?: string

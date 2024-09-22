@@ -7,6 +7,7 @@ const arcaneWarding: Ability = {
   stacks: { type: 'talent', max: 2 },
   onByDefault: true,
   id: 383092,
+  passive: true,
   icon: 'spell_arcane_arcaneresilience',
 }
 
@@ -77,6 +78,7 @@ const greaterInvisibility: Ability = {
 const phantasmalImage: Ability = {
   name: 'Phantasmal Image',
   id: 444784,
+  passive: true,
   icon: 'spell_arcane_prismaticcloak',
   heroTree: 'Spellslinger',
   abilityAugmentations: [
@@ -91,6 +93,7 @@ const phantasmalImage: Ability = {
 const merelyASetback: Ability = {
   name: 'Merely a Setback',
   id: 449330,
+  passive: true,
   icon: 'inv_helm_robe_raidmage_i_01',
   heroTree: 'Sunfury',
   abilityAugmentations: [
@@ -110,6 +113,7 @@ const merelyASetback: Ability = {
 const imbuedWarding: Ability = {
   name: 'Imbued Warding',
   id: 431066,
+  passive: true,
   icon: 'inv_10_jewelcrafting_gem3primal_fire_cut_blue',
   heroTree: 'Frostfire',
   abilityAugmentations: [

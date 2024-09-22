@@ -5,6 +5,7 @@ const felArmor: Ability = {
   dr: 0.03,
   onByDefault: true,
   id: 386124,
+  passive: true,
   icon: 'spell_shadow_felarmour',
 }
 
@@ -13,6 +14,7 @@ const demonicFortitude: Ability = {
   healthIncrease: 0.05,
   onByDefault: true,
   id: 386617,
+  passive: true,
   icon: 'spell_warlock_summonimpoutland',
 }
 
@@ -21,6 +23,7 @@ const soulLink: Ability = {
   dr: 0.1,
   onByDefault: true,
   id: 108415,
+  passive: true,
   icon: 'ability_warlock_soullink',
   notes: 'Only while your pet is active',
 }
@@ -86,6 +89,7 @@ const unendingResolve: Ability = {
 const strengthOfWill: Ability = {
   name: 'Strength of Will',
   id: 317138,
+  passive: true,
   onByDefault: true,
   icon: 'spell_shadow_demonictactics',
   abilityAugmentations: [
@@ -100,6 +104,7 @@ const strengthOfWill: Ability = {
 const friendsInDarkPlaces: Ability = {
   name: 'Friends in Dark Places',
   id: 449703,
+  passive: true,
   icon: 'spell_shadow_deathpact',
   heroTree: 'Soul Harvester',
   abilityAugmentations: [
@@ -115,6 +120,7 @@ const friendsInDarkPlaces: Ability = {
 const infernalBulwark: Ability = {
   name: 'Infernal Bulwark',
   id: 429130,
+  passive: true,
   icon: 'spell_fire_felfireward',
   heroTree: 'Diabolist',
   abilityAugmentations: [

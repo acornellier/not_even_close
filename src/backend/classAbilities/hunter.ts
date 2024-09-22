@@ -3,6 +3,7 @@ import type { Ability } from '../ability'
 const aspectOfTheBeast: Ability = {
   name: 'Aspect of the Beast',
   id: 191384,
+  passive: true,
   onByDefault: true,
   icon: 'ability_deathwing_assualtaspects',
   abilityAugmentations: [
@@ -19,6 +20,7 @@ const rejuvenatingWind: Ability = {
   healthIncrease: 0.08,
   onByDefault: true,
   id: 385539,
+  passive: true,
   icon: 'ability_druid_galewinds',
 }
 
@@ -27,6 +29,7 @@ const huntersAvoidance: Ability = {
   aoeDr: 0.05,
   onByDefault: true,
   id: 384799,
+  passive: true,
   icon: 'rogue_burstofspeed',
 }
 
@@ -35,12 +38,14 @@ const enduranceTraining: Ability = {
   healthIncrease: 0.05,
   onByDefault: true,
   id: 264662,
+  passive: true,
   icon: 'ability_hunter_huntervswild',
 }
 
 const enduranceTrainingMm: Ability = {
   ...enduranceTraining,
   id: enduranceTraining.id + 1,
+  spellId: enduranceTraining.id,
   onByDefault: false,
 }
 
@@ -69,6 +74,7 @@ const fortitudeOfTheBear: Ability = {
 const dontLookBack: Ability = {
   name: "Don't Look Back",
   id: 450373,
+  passive: true,
   icon: 'ability_racial_forceshield',
   heroTree: 'Sentinel',
   absorb: {

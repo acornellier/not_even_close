@@ -3,6 +3,7 @@ import type { Ability } from '../ability'
 const thickHide: Ability = {
   name: 'Thick Hide',
   id: 16931,
+  passive: true,
   icon: 'inv_misc_pelt_bear_03',
   dr: 0.04,
   onByDefault: true,
@@ -25,6 +26,7 @@ const bearForm: Ability = {
 export const ursineVigorPassive: Ability = {
   name: 'Ursine Vigor (passive)',
   id: 377842,
+  passive: true,
   icon: 'ability_druid_markofursol',
   abilityAugmentations: [
     {
@@ -86,6 +88,7 @@ const survivalInsticts: Ability = {
 const mattedFur: Ability = {
   name: 'Matted Fur',
   id: 385786,
+  passive: true,
   onByDefault: true,
   abilityAugmentations: [
     {
@@ -114,6 +117,7 @@ const innerPeace: Ability = {
 const oakskin: Ability = {
   name: 'Oakskin',
   id: 449191,
+  passive: true,
   icon: 'spell_nature_stoneclawtotem',
   abilityAugmentations: [
     {
@@ -132,6 +136,7 @@ const oakskin: Ability = {
 const ursocsSpirit: Ability = {
   name: "Ursoc's Spirit",
   id: 449182,
+  passive: true,
   icon: 'spell_nature_spiritarmor',
   abilityAugmentations: [
     {
@@ -145,6 +150,7 @@ const ursocsSpirit: Ability = {
 const glisteningFur: Ability = {
   name: 'Glistening Fur',
   id: 429533,
+  passive: true,
   icon: 'ability_druid_ironfur',
   heroTree: "Elune's Chosen",
   dr: 0.03,
@@ -171,6 +177,7 @@ const fountOfStrength: Ability = {
 export const naturesGuardian: Ability = {
   name: "Mastery: Nature's Guardian",
   id: 155783,
+  passive: true,
   icon: 'spell_druid_primaltenacity',
   onByDefault: true,
   notes: '% HP equal to mastery %',
@@ -186,6 +193,7 @@ const rageOfTheSleeper: Ability = {
 const reinforcedFur: Ability = {
   name: 'Reinforced Fur',
   id: 393618,
+  passive: true,
   icon: 'spell_nature_spiritarmor',
   abilityAugmentations: [
     {
@@ -236,6 +244,7 @@ const lycarasTeachings: Ability = {
   name: "Lycara's Teachings",
   onByDefault: true,
   id: 378988,
+  passive: true,
   icon: 'inv_trinket_ardenweald_02_green',
   versIncrease: 0.02,
   stacks: {
