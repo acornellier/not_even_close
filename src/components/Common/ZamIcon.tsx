@@ -9,6 +9,7 @@ interface Props
 
 export const ZamIcon = forwardRef<HTMLImageElement, Props>(
   ({ alt, size, icon, ...props }, ref) => {
+    icon = icon.replace('-', '_')
     return (
       <img
         {...props}
@@ -16,7 +17,7 @@ export const ZamIcon = forwardRef<HTMLImageElement, Props>(
         alt={alt}
         width={size}
         height={size}
-        src={`https://wow.zamimg.com/images/wow/icons/large/${icon}.jpg`}
+        src={`https://icons.wowdb.com/retail/large/${icon}.jpg`}
       />
     )
   },
