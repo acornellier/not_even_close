@@ -1,8 +1,14 @@
 import { getEnemySpell } from '../grimoire.ts'
 
+const shatteringBelow = getEnemySpell(257732, {
+  cooldown: 19,
+  ignoresArmor: true,
+})
+
 const putridWaters = getEnemySpell(275014, {
   cooldown: 20,
   combatDrop: 'cancel',
+  notes: 'Only the initial hit',
 })
 
 const azeriteCharge = getEnemySpell(454439, {
@@ -38,6 +44,7 @@ const slam = getEnemySpell(269266, {
 })
 
 export const sobAbilities = [
+  shatteringBelow,
   fireBomb,
   brackishBolt,
   azeriteCharge,
