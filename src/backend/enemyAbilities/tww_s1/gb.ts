@@ -5,6 +5,11 @@ const commandingRoar = getEnemySpell(448847, {
   cooldown: 25,
 })
 
+const rockSpike = getEnemySpell(448882, {
+  ignoresArmor: true,
+  cooldown: 25,
+})
+
 const umbralWind = getEnemySpell(451939, {
   trashAbility: true,
   los: true,
@@ -32,6 +37,7 @@ const twilightBuffet = getEnemySpell(456751, {
 
 export const gbAbilities = [
   commandingRoar,
+  rockSpike,
   twilightBuffet,
   umbralWind,
   earthBolt,

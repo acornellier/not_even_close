@@ -20,11 +20,13 @@ const fireBomb = getEnemySpell(256639, {
   trashAbility: true,
 })
 
-const crushingSlam = getEnemySpell(272711, {
+const crushingSlam = getEnemySpell(272711, (spell) => ({
+  damage: spell.damage * 0.6,
   trashAbility: true,
+  ignoresArmor: true,
   cooldown: 20,
   los: true,
-})
+}))
 
 const brackishBolt = getEnemySpell(257063, {
   trashAbility: true,
@@ -40,6 +42,7 @@ const breakWater = {
 }
 
 const slam = getEnemySpell(269266, {
+  ignoresArmor: true,
   cooldown: [13, 18],
 })
 

@@ -43,20 +43,6 @@
     "periodic": true
   },
   {
-    "id": 433731,
-    "name": "Burrow Charge",
-    "icon": "ability_demonhunter_demonspikes2",
-    "damage": 2252443,
-    "aoe": true,
-    "physical": true,
-    "schools": [
-      "physical"
-    ],
-    "variance": 0,
-    "cooldown": 60,
-    "combatDrop": "cancel"
-  },
-  {
     "id": 465012,
     "name": "Slam",
     "icon": "inv_misc_volatileearth",
@@ -248,6 +234,20 @@
     "name": "Commanding Roar",
     "icon": "ability_warrior_dragonroar",
     "damage": 1621759,
+    "aoe": true,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
+    "variance": 0,
+    "ignoresArmor": true,
+    "cooldown": 25
+  },
+  {
+    "id": 448882,
+    "name": "Rock Spike",
+    "icon": "ability_earthen_pillar",
+    "damage": 1801954,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -455,6 +455,20 @@
     "trashAbility": true
   },
   {
+    "id": 257732,
+    "name": "Shattering Bellow",
+    "icon": "warrior_disruptingshout",
+    "damage": 1459583,
+    "aoe": true,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
+    "variance": 0.025,
+    "cooldown": 19,
+    "ignoresArmor": true
+  },
+  {
     "id": 256639,
     "name": "Fire Bomb",
     "icon": "inv_misc_blackironbomb",
@@ -499,7 +513,7 @@
     "id": 272711,
     "name": "Crushing Slam",
     "icon": "spell_nature_earthquake",
-    "damage": 2252443,
+    "damage": 1351465.8,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -507,6 +521,7 @@
     ],
     "variance": 0,
     "trashAbility": true,
+    "ignoresArmor": true,
     "cooldown": 20,
     "los": true
   },
@@ -536,7 +551,8 @@
     ],
     "variance": 0.005,
     "cooldown": 20,
-    "combatDrop": "cancel"
+    "combatDrop": "cancel",
+    "notes": "Only the initial hit"
   },
   {
     "id": 269266,
@@ -549,6 +565,7 @@
       "physical"
     ],
     "variance": 0.005,
+    "ignoresArmor": true,
     "cooldown": [
       13,
       18
