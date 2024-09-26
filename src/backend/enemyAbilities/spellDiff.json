@@ -10,6 +10,7 @@
       "physical"
     ],
     "variance": 0.01,
+    "ignoresArmor": true,
     "cooldown": 40,
     "periodic": true
   },
@@ -190,6 +191,19 @@
     "cooldown": 25
   },
   {
+    "id": 426826,
+    "name": "Dark Orb (boss)",
+    "icon": "spell_shadow_soulgem",
+    "damage": 1351465.5,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0.005,
+    "notes": "Estimated at 30% of base damage"
+  },
+  {
     "id": 426793,
     "name": "Shadowy Decay (boss)",
     "icon": "ability_priest_surgeofdarkness",
@@ -214,7 +228,8 @@
       "nature"
     ],
     "variance": 0.025,
-    "cooldown": 30
+    "cooldown": 30,
+    "notes": "Only the initial hit"
   },
   {
     "id": 434093,

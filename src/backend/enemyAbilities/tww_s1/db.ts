@@ -23,6 +23,12 @@ const shadowyDecayTrash = getEnemySpell(451101, (spell) => ({
   cooldown: 25,
 }))
 
+const darkOrbBoss = getEnemySpell(426826, (spell) => ({
+  name: `${spell.name} (boss)`,
+  damage: spell.damage * 0.3,
+  notes: 'Estimated at 30% of base damage',
+}))
+
 const shadowyDecayBoss = getEnemySpell(426793, (spell) => ({
   name: `${spell.name} (boss)`,
   damage: 6 * spell.damage,
@@ -32,6 +38,7 @@ const shadowyDecayBoss = getEnemySpell(426793, (spell) => ({
 
 const erosiveSpray = getEnemySpell(448888, {
   cooldown: 30,
+  notes: 'Only the initial hit',
 })
 
 const spinneretsStrands = getEnemySpell(434093, {
@@ -42,6 +49,7 @@ export const dbAbilities = [
   burstingCocoon,
   obsidianBeam,
   shadowyDecayTrash,
+  darkOrbBoss,
   shadowyDecayBoss,
   erosiveSpray,
   spinneretsStrands,

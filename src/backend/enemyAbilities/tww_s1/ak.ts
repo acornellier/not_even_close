@@ -9,6 +9,7 @@ const callOfTheBrood = getEnemySpell(438879, (spell) => ({
 
 const alertingShrill = getEnemySpell(438495, (spell) => ({
   damage: spell.damage * 7,
+  ignoresArmor: true,
   cooldown: 40,
   periodic: true,
 }))
