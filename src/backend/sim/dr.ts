@@ -54,7 +54,6 @@ export function getDamageReduction(
       const dampenDr = 0.2 + (damageTaken / startingHealth) * 0.3
       inverseDr *= 1 - Math.min(dampenDr, 0.5)
     } else if (ability.id === setFireToThePain.id) {
-      console.log(enemyAbilityDetails)
       if (enemyAbilityDetails.schools.includes('fire')) {
         inverseDr *= 1 - 0.1
       } else {
