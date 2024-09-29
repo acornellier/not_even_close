@@ -1,6 +1,6 @@
 import type { ClassSpec, WowClass } from './classes'
 import { classSpecs } from './classes'
-import { externals } from './groupAbilities/externals.ts'
+import { externals, svVersBuff } from './groupAbilities/externals.ts'
 import { groupBuffs } from './groupAbilities/groupBuffs.ts'
 import { groupActives } from './groupAbilities/groupActives.ts'
 import { groupBy, mapBy } from '../util/utils.ts'
@@ -103,6 +103,7 @@ export const allAbilities: Ability[] = [
   ...groupBuffs,
   ...groupActives,
   ...druidReplacements,
+  svVersBuff,
 ]
 
 export const abilitiesById = mapBy(allAbilities, 'id')
