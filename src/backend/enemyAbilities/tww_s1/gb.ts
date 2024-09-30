@@ -6,7 +6,6 @@ const commandingRoar = getEnemySpell(448847, {
 })
 
 const rockSpike = getEnemySpell(448882, {
-  ignoresArmor: true,
   cooldown: 25,
 })
 
