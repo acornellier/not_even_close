@@ -7,7 +7,6 @@ const shatteringBelow = getEnemySpell(257732, {
 
 const putridWaters = getEnemySpell(275014, {
   cooldown: 20,
-  combatDrop: 'cancel',
   notes: 'Only the initial hit',
 })
 
