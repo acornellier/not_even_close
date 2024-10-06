@@ -3,7 +3,7 @@ import type { Ability } from '../ability'
 const inherentResistanceAug: Ability = {
   name: 'Inherent Resistance',
   passive: true,
-  dr: 0.04,
+  dr: 0.02,
   drType: 'magic',
   stacks: { type: 'talent', max: 2 },
   onByDefault: true,
