@@ -59,7 +59,7 @@ const yulonsGraceMistweaver: Ability = {
   id: 414131,
   icon: 'ability_monk_dragonkick',
   absorb: {
-    healthMultiplier: 0.1,
+    healthMultiplier: 0.01,
     absorbType: 'magic',
   },
   stacks: {
@@ -73,7 +73,7 @@ const yulonsGraceWindwalker: Ability = {
   id: yulonsGraceMistweaver.id + 1,
   absorb: {
     ...yulonsGraceMistweaver.absorb,
-    healthMultiplier: 0.06,
+    healthMultiplier: 0.006,
   },
 }
 
