@@ -95,7 +95,6 @@ const aegisOfProtection: Ability = {
   name: 'Aegis of Protection',
   id: 403654,
   passive: true,
-  onByDefault: true,
   icon: 'spell_holy_holyprotection',
   abilityAugmentations: [
     {
