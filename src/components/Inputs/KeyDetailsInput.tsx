@@ -80,7 +80,7 @@ export function KeyDetailsInput({ keyDetails, setKeyDetails }: Props) {
         <p>{!bothFortTyranActive(keyDetails) && 'Click to swap'}</p>
       </TooltipStyled>
       <TooltipStyled id="guile-tooltip">
-        Xal&apos;atath&apos;s Guile. 20% more enemy damage.
+        Xal&apos;atath&apos;s Guile. 10% more enemy damage.
       </TooltipStyled>
     </div>
   )

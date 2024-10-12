@@ -102,7 +102,7 @@ const elusiveMists: Ability = {
 
 const earthenHarmony: Ability = {
   name: 'Earthen Harmony',
-  dr: 0.05,
+  dr: 0.03,
   id: 382020,
   associatedSpec: { class: 'Shaman', spec: 'Restoration' },
   icon: 'spell_shaman_improvedearthshield',
