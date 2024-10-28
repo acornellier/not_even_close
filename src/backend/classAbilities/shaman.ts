@@ -82,7 +82,7 @@ const naturesProtection: Ability = {
   id: 454029,
   icon: 'spell_nature_lightningshield',
   heroTree: 'Stormbringer',
-  damageDealtReduction: 0.1,
+  damageDealtReduction: 0.03,
 }
 
 const seasonedWinds: Ability = {
