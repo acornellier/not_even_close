@@ -39,21 +39,6 @@ const blessingOfDusk: Ability = {
   notes: 'Blessing of Dusk is usually active, but not always',
 }
 
-const sealOfOrder: Ability = {
-  name: 'Seal of Order',
-  id: 385129,
-  passive: true,
-  icon: 'spell_holy_sealofwisdom',
-  onByDefault: true,
-  abilityAugmentations: [
-    {
-      otherAbilityId: blessingOfDusk.id,
-      field: 'armorIncrease',
-      value: 0.1,
-    },
-  ],
-}
-
 const divineProtection: Ability = {
   name: 'Divine Protection',
   dr: 0.2,
@@ -198,7 +183,6 @@ const wrathfulDescent: Ability = {
 }
 
 export const paladinHolyAbilities = [
-  sealOfOrder,
   sanctifiedPlatesHoly,
   obduracy,
   blessingOfDusk,
@@ -206,7 +190,6 @@ export const paladinHolyAbilities = [
 ]
 
 export const paladinRetAbilities = [
-  sealOfOrder,
   sanctifiedPlatesRetProt,
   aegisOfProtection,
   obduracy,
@@ -218,7 +201,6 @@ export const paladinRetAbilities = [
 ]
 
 export const paladinProtAbilities = [
-  sealOfOrder,
   sanctifiedPlatesRetProt,
   obduracy,
   blessingOfDusk,
