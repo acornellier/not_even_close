@@ -3,7 +3,7 @@ import { Button } from '../Common/Button'
 import { useExternalScript } from '../../util/useExternalScript.ts'
 
 const channel = 'ortemismw'
-const videoWidth = 380
+const videoWidth = 320
 const videoHeight = videoWidth * (9 / 16)
 const chatHeight = 400
 
