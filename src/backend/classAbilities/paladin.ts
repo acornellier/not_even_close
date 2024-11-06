@@ -159,21 +159,6 @@ export const divineBulwark: Ability = {
   notes: 'DR = 5% + 0.026 x mastery %',
 }
 
-const sanctuary: Ability = {
-  name: 'Sanctuary',
-  id: 379021,
-  passive: true,
-  icon: 'spell_holy_innerfire',
-  onByDefault: true,
-  abilityAugmentations: [
-    {
-      otherAbilityId: divineBulwark.id,
-      field: 'dr',
-      value: 0.05,
-    },
-  ],
-}
-
 const wrathfulDescent: Ability = {
   name: 'Wrathful Descent',
   id: 431551,
@@ -204,7 +189,6 @@ export const paladinProtAbilities = [
   sanctifiedPlatesRetProt,
   obduracy,
   blessingOfDusk,
-  sanctuary,
   divineBulwark,
   redoubt,
   improvedArdentDefender,
