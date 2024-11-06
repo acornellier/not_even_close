@@ -11,6 +11,20 @@ const webBolt = getEnemySpell(443427, {
   avoidable: true,
 })
 
+const subjugateShadow = getEnemySpell(434722, (spell) => ({
+  name: `${spell.name} shadow`,
+  tankOnly: true,
+  notes:
+    'This is only the shadow damage part of the spell, you will need to check this and its pair separately',
+}))
+
+const subjugatePhys = getEnemySpell(434723, (spell) => ({
+  name: `${spell.name} physical`,
+  tankOnly: true,
+  notes:
+    'This is only the physical damage part of the spell, you will need to check this and its pair separately',
+}))
+
 const darkPulse = getEnemySpell(437533, (spell) => ({
   damage: 7 * spell.damage,
   periodic: true,
@@ -39,6 +53,8 @@ const oozingSmash = getEnemySpell(461842, {
 export const cotAbilities = [
   vociferousIndoctrination,
   webBolt,
+  subjugateShadow,
+  subjugatePhys,
   oozingSmash,
   darkPulse,
   umbrealWeaveTrash,
