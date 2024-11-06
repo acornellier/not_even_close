@@ -20,12 +20,23 @@ const smashGround = getEnemySpell(428879, {
 
 const entropicReckoning = getEnemySpell(427854)
 
+const igneousHammer = getEnemySpell(428711, {
+  tankOnly: true,
+})
+
+const shadowClaw = getEnemySpell(459210, {
+  tankOnly: true,
+  trashAbility: true,
+})
+
 export const svAbilities = [
   refractingBeam,
   earthShaterer,
   seismicSmash,
+  igneousHammer,
   metalSplinters,
   groundPound,
+  shadowClaw,
   smashGround,
   entropicReckoning,
 ]

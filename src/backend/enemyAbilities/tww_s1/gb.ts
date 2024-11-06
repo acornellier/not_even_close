@@ -25,6 +25,11 @@ const massTremor = getEnemySpell(451871, {
   avoidable: true,
 })
 
+const lavaFist = getEnemySpell(451971, {
+  tankOnly: true,
+  trashAbility: true,
+})
+
 const moltenWake = getEnemySpell(451965, {
   trashAbility: true,
   cooldown: 20,
@@ -41,5 +46,6 @@ export const gbAbilities = [
   umbralWind,
   earthBolt,
   massTremor,
+  lavaFist,
   moltenWake,
 ]

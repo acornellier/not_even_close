@@ -32,9 +32,14 @@ const umbralWeave = getEnemySpell(439324, {
   cooldown: [40, 60],
 })
 
+const oozingSmash = getEnemySpell(461842, {
+  tankOnly: true,
+})
+
 export const cotAbilities = [
   vociferousIndoctrination,
   webBolt,
+  oozingSmash,
   darkPulse,
   umbrealWeaveTrash,
   tremorSlam,
