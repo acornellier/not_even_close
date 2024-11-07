@@ -24,13 +24,12 @@ const fade: Ability = {
   icon: 'spell_magic_lesserinvisibilty',
 }
 
-// TODO: buffed
 const powerWordShield: Ability = {
   name: 'Power Word: Shield',
   id: 17,
   icon: 'spell_holy_powerwordshield',
   absorb: {
-    spMultipler: 3.36,
+    spMultipler: 4.032,
     versAffected: true,
   },
 }
@@ -40,7 +39,7 @@ const powerWordShieldShadow: Ability = {
   id: 17_1,
   absorb: {
     ...powerWordShield.absorb,
-    spMultipler: powerWordShield.absorb!.spMultipler! * 1.25,
+    spMultipler: powerWordShield.absorb!.spMultipler!,
   },
 }
 
@@ -49,7 +48,7 @@ const powerWordShieldDisc: Ability = {
   id: 17_2,
   absorb: {
     ...powerWordShield.absorb,
-    spMultipler: powerWordShield.absorb!.spMultipler! * 1.37,
+    spMultipler: powerWordShield.absorb!.spMultipler! * 1.73,
   },
 }
 
@@ -76,16 +75,10 @@ const preventiveMeasures: Ability = {
   heroTree: 'Oracle',
   abilityAugmentations: [
     {
-      otherAbilityId: powerWordShield.id,
-      field: 'absorb',
-      absorbField: 'spMultipler',
-      value: 0.15,
-    },
-    {
       otherAbilityId: powerWordShieldDisc.id,
       field: 'absorb',
       absorbField: 'spMultipler',
-      value: 0.15,
+      value: 0.4,
     },
   ],
 }
@@ -163,7 +156,6 @@ export const priestDiscAbilities = [
 ]
 
 export const priestHolyAbilities = [
-  preventiveMeasures,
   spellWarding,
   wordOfSupremacy,
   protectiveLight,
