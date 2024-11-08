@@ -2,7 +2,7 @@ import { memo, useEffect, useRef, useState } from 'react'
 import { Button } from '../Common/Button'
 import { useExternalScript } from '../../util/useExternalScript.ts'
 
-const channel = 'meerestv'
+const channel = 'ortemismw'
 const videoWidth = 320
 const videoHeight = videoWidth * (9 / 16)
 const chatHeight = 400
