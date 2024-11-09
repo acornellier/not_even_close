@@ -23,6 +23,7 @@ import type {
 import { getAbsorbs, getExtraAbsorbs } from './absorbs'
 import { getDamageReduction } from './dr'
 import { naturesGuardian } from '../classAbilities/druid.ts'
+import { shieldOfTheRighteous } from '../classAbilities/paladin.ts'
 
 function getScalingFactor(keyDetails: KeyDetails, isTrashAbility: boolean) {
   let scalingFactor = 1
@@ -72,6 +73,10 @@ function getAdjustedStats(
 
     if (ability.armorIncrease) {
       adjustedStats.armor *= 1 + ability.armorIncrease * (stacks ?? 1)
+    }
+
+    if (ability.id === shieldOfTheRighteous.id) {
+      adjustedStats.armor += 1.6 * adjustedStats.mainStat
     }
   }
 

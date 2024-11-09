@@ -1,7 +1,5 @@
 import type { Ability } from '../ability'
 
-// TODO: sotr
-
 const obduracy: Ability = {
   name: 'Obduracy',
   aoeDr: 0.02,
@@ -167,6 +165,13 @@ const wrathfulDescent: Ability = {
   notes: 'Unreliable uptime',
 }
 
+export const shieldOfTheRighteous: Ability = {
+  name: 'Shield of the Righteous',
+  id: 53600,
+  icon: 'ability_paladin_shieldofvengeance',
+  notes: '160% strength as armor',
+}
+
 export const paladinHolyAbilities = [
   sanctifiedPlatesHoly,
   obduracy,
@@ -191,6 +196,7 @@ export const paladinProtAbilities = [
   blessingOfDusk,
   divineBulwark,
   redoubt,
+  shieldOfTheRighteous,
   improvedArdentDefender,
   wrathfulDescent,
   sacrosanctCrusadeProt,

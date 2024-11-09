@@ -83,7 +83,7 @@ export type WowSpec = string
 type SpecDetails = {
   abilities: Ability[]
   icon: string
-  mainStat: 'intellect' | 'other'
+  mainStat: 'intellect' | 'strength' | 'other'
   isTank?: boolean
   displayName?: string
 }
@@ -218,7 +218,7 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
     Protection: {
       abilities: paladinProtAbilities,
       icon: 'ability_paladin_shieldofthetemplar',
-      mainStat: 'other',
+      mainStat: 'strength',
       isTank: true,
       displayName: 'Prot Pally',
     },

@@ -8,8 +8,12 @@ import {
 } from '../../backend/stats'
 import type { Ability } from '../../backend/ability'
 import { formatNumber, roundTo } from '../../util/utils.ts'
+import { shieldOfTheRighteous } from '../../backend/classAbilities/paladin.ts'
+import type { ClassSpec } from '../../backend/classes.ts'
+import { classSpecs } from '../../backend/classes.ts'
 
 interface Props {
+  classSpec: ClassSpec
   characterStats: CharacterStatsInput
   onChange: (characterStats: CharacterStatsInput) => void
   specAbilities: Ability[]
@@ -17,6 +21,7 @@ interface Props {
 }
 
 export function CharacterStatsForm({
+  classSpec,
   characterStats,
   onChange,
   specAbilities,
@@ -31,6 +36,7 @@ export function CharacterStatsForm({
 
   const showMainStat = specAbilities.some(
     (ability) =>
+      ability.id === shieldOfTheRighteous.id ||
       ability.absorb?.apMultipler ||
       ability.absorb?.spMultipler ||
       ability.abilityAugmentations?.some(
@@ -39,6 +45,8 @@ export function CharacterStatsForm({
           augmentation.absorbField === 'spMultipler',
       ),
   )
+
+  const mainStat = classSpecs[classSpec.class][classSpec.spec]!.mainStat
 
   const showMastery = specAbilities.some(({ notes }) =>
     notes?.toLowerCase().includes('mastery'),
@@ -86,7 +94,7 @@ export function CharacterStatsForm({
       />
       {showMainStat && (
         <NumericInput
-          label="Main stat"
+          label={mainStat === 'strength' ? 'Strength' : 'Intellect'}
           value={characterStats.mainStat}
           onChange={onChangeStat('mainStat')}
           hideArrows

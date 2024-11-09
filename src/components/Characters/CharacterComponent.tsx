@@ -127,6 +127,7 @@ export function CharacterComponent({
       <div className="flex justify-between w-full gap-2">
         <CharacterStatsForm
           idx={idx}
+          classSpec={character.classSpec}
           characterStats={character.stats}
           onChange={setCharacterStats}
           specAbilities={specAbilities}
