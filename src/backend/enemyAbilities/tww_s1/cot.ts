@@ -25,6 +25,8 @@ const subjugatePhys = getEnemySpell(434723, (spell) => ({
     'This is only the physical damage part of the spell, you will need to check this and its pair separately',
 }))
 
+const visciousDarkness = getEnemySpell(443150)
+
 const darkPulse = getEnemySpell(437533, (spell) => ({
   damage: 7 * spell.damage,
   periodic: true,
@@ -56,6 +58,7 @@ export const cotAbilities = [
   subjugateShadow,
   subjugatePhys,
   oozingSmash,
+  visciousDarkness,
   darkPulse,
   umbrealWeaveTrash,
   tremorSlam,
