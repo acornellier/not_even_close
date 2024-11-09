@@ -23,10 +23,15 @@ const shadowyDecayTrash = getEnemySpell(451101, (spell) => ({
   cooldown: 25,
 }))
 
-const terrifyingSlamTrash = getEnemySpell(451115, (spell) => ({
-  name: `${spell.name} (trash)`,
+const terrifyingSlamTrashShadow = getEnemySpell(451115, {
+  name: `Slam (trash magic)`,
   tankOnly: true,
-}))
+})
+
+const terrifyingSlamTrashPhys = getEnemySpell(451116, {
+  name: `Slam (trash phys)`,
+  tankOnly: true,
+})
 
 const darkOrbBoss = getEnemySpell(426826, (spell) => ({
   name: `${spell.name} (boss)`,
@@ -41,10 +46,19 @@ const shadowyDecayBoss = getEnemySpell(426793, (spell) => ({
   cooldown: 35,
 }))
 
-const terrifyingSlamBoss = getEnemySpell(427007, (spell) => ({
-  name: `${spell.name} (boss)`,
+const terrifyingSlamBossShadow = getEnemySpell(427007, {
+  name: `Slam (boss magic)`,
   tankOnly: true,
-}))
+  notes:
+    'This is only the magic damage part of the spell, you will need to check this and its pair separately',
+})
+
+const terrifyingSlamBossPhys = getEnemySpell(427002, {
+  name: `Slam (boss phys)`,
+  tankOnly: true,
+  notes:
+    'This is only the physical damage part of the spell, you will need to check this and its pair separately',
+})
 
 const erosiveSpray = getEnemySpell(448888, {
   cooldown: 30,
@@ -59,10 +73,12 @@ export const dbAbilities = [
   burstingCocoon,
   obsidianBeam,
   shadowyDecayTrash,
-  terrifyingSlamTrash,
+  terrifyingSlamTrashShadow,
+  terrifyingSlamTrashPhys,
   darkOrbBoss,
   shadowyDecayBoss,
-  terrifyingSlamBoss,
+  terrifyingSlamBossShadow,
+  terrifyingSlamBossPhys,
   erosiveSpray,
   spinneretsStrands,
 ]

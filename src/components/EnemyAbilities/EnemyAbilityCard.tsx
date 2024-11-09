@@ -83,13 +83,13 @@ export function EnemyAbilityCard({
               data-tooltip-id={`chip-damage-${ability.name}`}
             >
               {shortRoundedNumber(scaleDamage(keyDetails, ability).scaledDamage)} dmg
-              {ability.variance !== undefined &&
-                ability.variance !== 0 &&
-                ` ±${roundHundred(ability.variance)}%`}
             </AbilityDetailsChip>
             {ability.variance !== undefined && ability.variance !== 0 && (
               <TooltipStyled id={`chip-damage-${ability.name}`}>
-                <p>This ability has variance in its damage.</p>
+                <p>
+                  This ability has {roundHundred(ability.variance)}% variance in its
+                  damage.
+                </p>
                 <p>
                   Not Even Close assumes you will take the upper bound of this variance.
                 </p>

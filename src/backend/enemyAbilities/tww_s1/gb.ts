@@ -39,6 +39,20 @@ const twilightBuffet = getEnemySpell(456751, {
   cooldown: 35,
 })
 
+const crushMagic = getEnemySpell(450102, (spell) => ({
+  name: `${spell.name} (magic)`,
+  tankOnly: true,
+  notes:
+    'This is only the magic damage part of the spell, you will need to check this and its pair separately',
+}))
+
+const crushPhys = getEnemySpell(450101, (spell) => ({
+  name: `${spell.name} (physical)`,
+  tankOnly: true,
+  notes:
+    'This is only the physical damage part of the spell, you will need to check this and its pair separately',
+}))
+
 export const gbAbilities = [
   commandingRoar,
   rockSpike,
@@ -48,4 +62,6 @@ export const gbAbilities = [
   massTremor,
   lavaFist,
   moltenWake,
+  crushMagic,
+  crushPhys,
 ]
