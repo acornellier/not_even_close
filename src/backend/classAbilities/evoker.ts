@@ -47,6 +47,15 @@ const hardenedScales: Ability = {
   ],
 }
 
+const nimbleFlyer: Ability = {
+  name: 'Nimble Flyer',
+  id: 441253,
+  passive: true,
+  icon: 'ability_evoker_hover',
+  heroTree: 'Scalecommander',
+  aoeDr: 0.1,
+}
+
 const temporality: Ability = {
   name: 'Temporality',
   id: 441181,
@@ -64,6 +73,7 @@ const temporality: Ability = {
 export const evokerAugAbilities = [
   inherentResistanceAug,
   hardenedScales,
+  nimbleFlyer,
   temporality,
   obsidianScales,
 ]
@@ -71,6 +81,7 @@ export const evokerAugAbilities = [
 export const evokerDevAbilities = [
   inherentResistanceDevPres,
   hardenedScales,
+  nimbleFlyer,
   obsidianScales,
 ]
 
