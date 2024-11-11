@@ -143,10 +143,27 @@ const wordOfSupremacy: Ability = {
   staminaIncrease: 0.05,
 }
 
+const innerQuietus: Ability = {
+  name: 'Inner Quietus',
+  id: 448278,
+  passive: true,
+  icon: 'inv_cosmicvoid_buff',
+  heroTree: 'Voidweaver',
+  abilityAugmentations: [
+    {
+      otherAbilityId: powerWordShieldDisc.id,
+      field: 'absorb',
+      absorbField: 'spMultipler',
+      value: 0.2,
+    },
+  ],
+}
+
 export const priestDiscAbilities = [
   lightsInspiration,
   aegisOfWrath,
   preventiveMeasures,
+  innerQuietus,
   spellWarding,
   embraceTheShadow,
   protectiveLight,
