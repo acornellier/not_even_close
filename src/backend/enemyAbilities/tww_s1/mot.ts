@@ -1,18 +1,15 @@
-import { getEnemySpell } from '../grimoire.ts'
+import { getEnemySpell, trashSpell } from '../grimoire.ts'
 
-const spiritBolt = getEnemySpell(322767, {
+const spiritBolt = trashSpell(322767, {
   avoidable: true,
-  trashAbility: true,
 })
 
-const furiousTrashing = getEnemySpell(324922, (spell) => ({
+const furiousTrashing = trashSpell(324922, (spell) => ({
   damage: spell.damage * 7,
-  trashAbility: true,
   periodic: true,
 }))
 
-const mistveilBite = getEnemySpell(324987, {
-  trashAbility: true,
+const mistveilBite = trashSpell(324987, {
   cooldown: 15,
 })
 
@@ -20,15 +17,17 @@ const dodgeBall = getEnemySpell(321834, {
   avoidable: true,
 })
 
-const acidNova = getEnemySpell(460092, {
-  trashAbility: true,
+const acidNova = trashSpell(460092, {
   cooldown: 22,
 })
+
+const expel = trashSpell(463247)
 
 export const motAbilities = [
   spiritBolt,
   furiousTrashing,
   mistveilBite,
+  expel,
   dodgeBall,
   acidNova,
 ]

@@ -18,3 +18,7 @@ export function getEnemySpell(spellId: number, options?: Options): EnemyAbility 
     ...((options && typeof options === 'function' ? options(baseSpell) : options) || {}),
   }
 }
+
+export function trashSpell(spellId: number, options?: Options): EnemyAbility {
+  return getEnemySpell(spellId, { ...options, trashAbility: true })
+}
