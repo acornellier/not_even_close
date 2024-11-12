@@ -86,6 +86,59 @@
     "avoidable": true
   },
   {
+    "id": 434722,
+    "name": "Subjugate magic",
+    "icon": "spell_shadow_shadowfiend",
+    "damage": 2883127,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0,
+    "tankOnly": true,
+    "notes": "This is only the magic damage part of the spell, you will need to check this and its pair separately"
+  },
+  {
+    "id": 434723,
+    "name": "Subjugate phys",
+    "icon": "spell_shadow_shadowfiend",
+    "damage": 3153420,
+    "aoe": false,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
+    "variance": 0,
+    "tankOnly": true,
+    "notes": "This is only the physical damage part of the spell, you will need to check this and its pair separately"
+  },
+  {
+    "id": 461842,
+    "name": "Oozing Smash",
+    "icon": "inv_inscription_pigment_indigo",
+    "damage": 3153420,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0,
+    "tankOnly": true
+  },
+  {
+    "id": 443150,
+    "name": "Viscous Darkness",
+    "icon": "inv_enchant_voidsphere",
+    "damage": 1351466,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0
+  },
+  {
     "id": 437533,
     "name": "Dark Pulse",
     "icon": "inv_enchant_voidsphere",
@@ -100,8 +153,22 @@
     "cooldown": 70
   },
   {
+    "id": 447271,
+    "name": "Tremor Slam (Trash)",
+    "icon": "spell_shaman_earthquake",
+    "damage": 4324690,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "nature"
+    ],
+    "variance": 0,
+    "effectIndex": 1,
+    "trashAbility": true
+  },
+  {
     "id": 446718,
-    "name": "Umbral Weave (trash)",
+    "name": "Umbral Weave (Trash)",
     "icon": "inv_misc_web_02",
     "damage": 1351466,
     "aoe": false,
@@ -114,9 +181,9 @@
   },
   {
     "id": 437700,
-    "name": "Tremor Slam",
+    "name": "Tremor Slam (Boss)",
     "icon": "spell_shaman_earthquake",
-    "damage": 1441563,
+    "damage": 4324690,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -191,6 +258,32 @@
     "cooldown": 25
   },
   {
+    "id": 451115,
+    "name": "Slam (trash magic)",
+    "icon": "inv_misc_nightsaberclaw_mana",
+    "damage": 1126221,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0.025,
+    "tankOnly": true
+  },
+  {
+    "id": 451116,
+    "name": "Slam (trash phys)",
+    "icon": "inv_misc_nightsaberclaw_mana",
+    "damage": 3603908,
+    "aoe": false,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
+    "variance": 0.025,
+    "tankOnly": true
+  },
+  {
     "id": 426826,
     "name": "Dark Orb (boss)",
     "icon": "spell_shadow_soulgem",
@@ -216,6 +309,34 @@
     "variance": 0,
     "periodic": true,
     "cooldown": 35
+  },
+  {
+    "id": 427007,
+    "name": "Slam (boss magic)",
+    "icon": "inv_misc_nightsaberclaw_mana",
+    "damage": 1801954,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0.025,
+    "tankOnly": true,
+    "notes": "This is only the magic damage part of the spell, you will need to check this and its pair separately"
+  },
+  {
+    "id": 427002,
+    "name": "Slam (boss phys)",
+    "icon": "inv_misc_nightsaberclaw_mana",
+    "damage": 6036546,
+    "aoe": false,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
+    "variance": 0.025,
+    "tankOnly": true,
+    "notes": "This is only the physical damage part of the spell, you will need to check this and its pair separately"
   },
   {
     "id": 448888,
@@ -269,7 +390,6 @@
       "physical"
     ],
     "variance": 0,
-    "ignoresArmor": true,
     "cooldown": 25
   },
   {
@@ -330,6 +450,20 @@
     "avoidable": true
   },
   {
+    "id": 451971,
+    "name": "Lava Fist",
+    "icon": "spell_shadow_deathpact",
+    "damage": 3423713,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "fire"
+    ],
+    "variance": 0,
+    "tankOnly": true,
+    "trashAbility": true
+  },
+  {
     "id": 451965,
     "name": "Molten Wake",
     "icon": "spell_shaman_lavaflow",
@@ -342,6 +476,34 @@
     "variance": 0,
     "trashAbility": true,
     "cooldown": 20
+  },
+  {
+    "id": 450102,
+    "name": "Crush (magic)",
+    "icon": "spell_holy_devotion",
+    "damage": 2702931,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0,
+    "tankOnly": true,
+    "notes": "This is only the magic damage part of the spell, you will need to check this and its pair separately"
+  },
+  {
+    "id": 450101,
+    "name": "Crush (physical)",
+    "icon": "spell_holy_devotion",
+    "damage": 4504885,
+    "aoe": false,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
+    "variance": 0,
+    "tankOnly": true,
+    "notes": "This is only the physical damage part of the spell, you will need to check this and its pair separately"
   },
   {
     "id": 322767,
@@ -368,8 +530,8 @@
       "physical"
     ],
     "variance": 0,
-    "trashAbility": true,
-    "periodic": true
+    "periodic": true,
+    "trashAbility": true
   },
   {
     "id": 324987,
@@ -382,8 +544,21 @@
       "physical"
     ],
     "variance": 0,
-    "trashAbility": true,
-    "cooldown": 15
+    "cooldown": 15,
+    "trashAbility": true
+  },
+  {
+    "id": 463247,
+    "name": "Expel",
+    "icon": "ability_warrior_charge",
+    "damage": 1351466,
+    "aoe": false,
+    "physical": true,
+    "schools": [
+      "physical"
+    ],
+    "variance": 0,
+    "trashAbility": true
   },
   {
     "id": 321834,
@@ -409,8 +584,8 @@
       "nature"
     ],
     "variance": 0,
-    "trashAbility": true,
-    "cooldown": 22
+    "cooldown": 22,
+    "trashAbility": true
   },
   {
     "id": 327397,
@@ -566,7 +741,6 @@
     ],
     "variance": 0.005,
     "cooldown": 20,
-    "combatDrop": "cancel",
     "notes": "Only the initial hit"
   },
   {
@@ -624,6 +798,19 @@
     "tankOnly": true
   },
   {
+    "id": 428711,
+    "name": "Igneous Hammer",
+    "icon": "spell_fire_flameblades",
+    "damage": 2702931,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "fire"
+    ],
+    "variance": 0,
+    "tankOnly": true
+  },
+  {
     "id": 428535,
     "name": "Blazing Crescendo",
     "icon": "ability_siege_engineer_superheated",
@@ -646,6 +833,20 @@
       "nature"
     ],
     "variance": 0,
+    "trashAbility": true
+  },
+  {
+    "id": 459210,
+    "name": "Shadow Claw",
+    "icon": "ability_creature_disease_05",
+    "damage": 2702931,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0,
+    "tankOnly": true,
     "trashAbility": true
   },
   {

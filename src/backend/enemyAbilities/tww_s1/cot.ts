@@ -33,10 +33,10 @@ const darkPulse = getEnemySpell(437533, (spell) => ({
   cooldown: 70,
 }))
 
-const umbrealWeaveTrash = getEnemySpell(446718, {
-  name: 'Umbral Weave (trash)',
+const umbrealWeaveTrash = getEnemySpell(446718, (spell) => ({
+  name: `${spell.name} (Trash)`,
   trashAbility: true,
-})
+}))
 
 const tremorSlam = getEnemySpell(437700, (spell) => ({
   name: `${spell.name} (Boss)`,
