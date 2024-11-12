@@ -1,4 +1,4 @@
-import { getEnemySpell } from '../grimoire.ts'
+import { getEnemySpell, trashSpell } from '../grimoire.ts'
 
 const vociferousIndoctrination = getEnemySpell(434832, (spell) => ({
   damage: 5 * spell.damage,
@@ -38,10 +38,11 @@ const umbrealWeaveTrash = getEnemySpell(446718, {
   trashAbility: true,
 })
 
-const tremorSlam = getEnemySpell(437700, {
+const tremorSlam = getEnemySpell(437700, (spell) => ({
+  name: `${spell.name} (Boss)`,
   effectIndex: 1,
   cooldown: [40, 60],
-})
+}))
 
 const umbralWeave = getEnemySpell(439324, {
   name: 'Umbral Weave (boss)',
@@ -52,6 +53,11 @@ const oozingSmash = getEnemySpell(461842, {
   tankOnly: true,
 })
 
+const tremorSlamTrash = trashSpell(447271, (spell) => ({
+  name: `${spell.name} (Trash)`,
+  effectIndex: 1,
+}))
+
 export const cotAbilities = [
   vociferousIndoctrination,
   webBolt,
@@ -60,6 +66,7 @@ export const cotAbilities = [
   oozingSmash,
   visciousDarkness,
   darkPulse,
+  tremorSlamTrash,
   umbrealWeaveTrash,
   tremorSlam,
   umbralWeave,
