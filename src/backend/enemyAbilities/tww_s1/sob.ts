@@ -32,7 +32,7 @@ const brackishBolt = getEnemySpell(257063, {
   avoidable: true,
 })
 
-const breakWaterBase = getEnemySpell(257883, { effectIndex: 1 })
+const breakWaterBase = getEnemySpell(257883, {}, { effectIndex: 1 })
 const breakWater = {
   ...breakWaterBase,
   name: `${breakWaterBase.name} (x3)`,

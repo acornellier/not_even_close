@@ -38,11 +38,14 @@ const umbrealWeaveTrash = getEnemySpell(446718, (spell) => ({
   trashAbility: true,
 }))
 
-const tremorSlam = getEnemySpell(437700, (spell) => ({
-  name: `${spell.name} (Boss)`,
-  effectIndex: 1,
-  cooldown: [40, 60],
-}))
+const tremorSlam = getEnemySpell(
+  437700,
+  (spell) => ({
+    name: `${spell.name} (Boss)`,
+    cooldown: [40, 60],
+  }),
+  { effectIndex: 1 },
+)
 
 const umbralWeave = getEnemySpell(439324, {
   name: 'Umbral Weave (boss)',
@@ -53,10 +56,13 @@ const oozingSmash = getEnemySpell(461842, {
   tankOnly: true,
 })
 
-const tremorSlamTrash = trashSpell(447271, (spell) => ({
-  name: `${spell.name} (Trash)`,
-  effectIndex: 1,
-}))
+const tremorSlamTrash = trashSpell(
+  447271,
+  (spell) => ({
+    name: `${spell.name} (Trash)`,
+  }),
+  { effectIndex: 1 },
+)
 
 export const cotAbilities = [
   vociferousIndoctrination,

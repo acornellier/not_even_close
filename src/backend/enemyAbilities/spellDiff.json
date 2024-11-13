@@ -156,14 +156,13 @@
     "id": 447271,
     "name": "Tremor Slam (Trash)",
     "icon": "spell_shaman_earthquake",
-    "damage": 4324690,
+    "damage": 1441563,
     "aoe": true,
     "physical": false,
     "schools": [
       "nature"
     ],
     "variance": 0,
-    "effectIndex": 1,
     "trashAbility": true
   },
   {
@@ -183,14 +182,13 @@
     "id": 437700,
     "name": "Tremor Slam (Boss)",
     "icon": "spell_shaman_earthquake",
-    "damage": 4324690,
+    "damage": 1441563,
     "aoe": true,
     "physical": false,
     "schools": [
       "nature"
     ],
     "variance": 0,
-    "effectIndex": 1,
     "cooldown": [
       40,
       60
@@ -726,7 +724,6 @@
       "frost"
     ],
     "variance": 0.05,
-    "effectIndex": 1,
     "cooldown": 20
   },
   {

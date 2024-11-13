@@ -2,20 +2,18 @@ import type { EnemyAbility } from './enemies'
 import { getGrimoireSpell } from 'grimoire-wow'
 import { grimoireToEnemyAbility } from './grimoireConverter.ts'
 
-type Options = (
+type Options =
   | Partial<EnemyAbility>
   | ((baseAbility: EnemyAbility) => Partial<EnemyAbility>)
-) & {
-  effectIndex?: number
-}
 
 export function getEnemySpell(
   spellId: number,
   options?: Options,
+  extraOptions?: { effectIndex?: number },
   trashAbility?: boolean,
 ): EnemyAbility {
   const spell = getGrimoireSpell(spellId)
-  const baseSpell = grimoireToEnemyAbility(spell, options?.effectIndex ?? 0)
+  const baseSpell = grimoireToEnemyAbility(spell, extraOptions?.effectIndex ?? 0)
 
   return {
     ...baseSpell,
@@ -24,6 +22,10 @@ export function getEnemySpell(
   }
 }
 
-export function trashSpell(spellId: number, options?: Options): EnemyAbility {
-  return getEnemySpell(spellId, options, true)
+export function trashSpell(
+  spellId: number,
+  options?: Options,
+  extraOptions?: { effectIndex?: number },
+): EnemyAbility {
+  return getEnemySpell(spellId, options, extraOptions, true)
 }
