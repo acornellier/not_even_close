@@ -34,14 +34,14 @@ const darkPulse = getEnemySpell(437533, (spell) => ({
 }))
 
 const umbrealWeaveTrash = getEnemySpell(446718, (spell) => ({
-  name: `${spell.name} (Trash)`,
+  name: `${spell.name} (trash)`,
   trashAbility: true,
 }))
 
 const tremorSlam = getEnemySpell(
   437700,
   (spell) => ({
-    name: `${spell.name} (Boss)`,
+    name: `${spell.name} (boss)`,
     cooldown: [40, 60],
   }),
   { effectIndex: 1 },
@@ -59,7 +59,7 @@ const oozingSmash = getEnemySpell(461842, {
 const tremorSlamTrash = trashSpell(
   447271,
   (spell) => ({
-    name: `${spell.name} (Trash)`,
+    name: `${spell.name} (trash)`,
   }),
   { effectIndex: 1 },
 )
