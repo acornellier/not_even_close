@@ -16,7 +16,7 @@ const chiCocoon: Ability = {
   absorb: {
     healthMultiplier: 0.12,
     versAffected: true,
-    backup: 540_000,
+    backup: 800_000,
   },
   icon: 'inv_pet_crane',
   notes: 'Assumes {{backup}} absorb if you have no mistweaver selected',
