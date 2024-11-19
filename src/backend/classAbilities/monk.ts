@@ -48,7 +48,7 @@ const expelHarm: Ability = {
   name: 'TFT + Expel Harm',
   id: 322101,
   absorb: {
-    healthMultiplier: 0.16,
+    healthMultiplier: 0.12,
     versAffected: true,
   },
   icon: 'ability_monk_expelharm',
