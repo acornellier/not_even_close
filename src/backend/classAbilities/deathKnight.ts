@@ -136,6 +136,10 @@ const pactOfTheApocalypse: Ability = {
   icon: 'spell_deathknight_subversion',
   heroTree: 'Rider of the Apocalypse',
   damageDealtReduction: 0.05,
+  stacks: {
+    type: 'stacks',
+    max: 4,
+  },
 }
 
 const bloodSoakedGround: Ability = {
