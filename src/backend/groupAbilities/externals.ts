@@ -2,7 +2,7 @@
 
 export const temperedVersatility: Ability = {
   name: 'Flask of Tempered Versatility',
-  id: 212277,
+  id: 431973,
   versRawIncrease: 2825,
   icon: 'inv_misc_potiona2',
 }
