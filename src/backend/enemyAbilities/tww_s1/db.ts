@@ -69,9 +69,15 @@ const spinneretsStrands = getEnemySpell(434093, {
   cooldown: 30,
 })
 
+const darkFloes = getEnemySpell(431305, (spell) => ({
+  damage: spell.damage * 10,
+  trashAbility: true,
+}))
+
 export const dbAbilities = [
   burstingCocoon,
   obsidianBeam,
+  darkFloes,
   shadowyDecayTrash,
   terrifyingSlamTrashShadow,
   terrifyingSlamTrashPhys,
