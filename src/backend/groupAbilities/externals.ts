@@ -74,10 +74,11 @@ const lifeCocoon: Ability = {
   absorb: {
     healthMultiplier: 0.864,
     versAffected: true,
-    backup: 3_600_000,
+    backup: 7_000_000,
   },
   icon: 'ability_monk_chicocoon',
-  notes: 'Assumes {{backup}} absorb if you have no mistweaver selected',
+  notes:
+    'Assumes Calming Coalescence is talented. Assumes {{backup}} absorb if you have no mistweaver selected.',
 }
 
 const rescue: Ability = {
