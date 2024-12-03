@@ -130,6 +130,7 @@ const embraceTheShadow: Ability = {
   id: 451569,
   passive: true,
   dr: 0.03,
+  drType: 'magic',
   icon: 'warlock_curse_shadow_aura',
   heroTree: 'Voidweaver',
 }
