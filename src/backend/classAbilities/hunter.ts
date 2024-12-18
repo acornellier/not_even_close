@@ -79,6 +79,7 @@ const dontLookBack: Ability = {
   heroTree: 'Sentinel',
   absorb: {
     healthMultiplier: 0.1,
+    versAffected: true,
   },
 }
 

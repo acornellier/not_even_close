@@ -114,9 +114,8 @@ const elementalResistance: Ability = {
   name: 'Elemental Resistance',
   id: 462369,
   icon: 'spell_fireresistancetotem_01',
-  dr: 0.03,
+  dr: 0.06,
   drType: 'magic',
-  stacks: { type: 'talent', max: 2, default: 1, values: [0.03, 0.06] },
 }
 
 export const groupActives: Ability[] = [
