@@ -1,4 +1,5 @@
 import { getEnemySpell, trashSpell } from '../grimoire.ts'
+import type { EnemyAbility } from '../enemies.ts'
 
 const refractingBeam = getEnemySpell(424805)
 
@@ -31,12 +32,23 @@ const shadowClaw = getEnemySpell(459210, {
 
 const moltenMortar = trashSpell(449154)
 
+const exhaustVents: EnemyAbility = {
+  id: 443954,
+  name: 'Exhaust Vents',
+  icon: 'ability_evoker_firebreath',
+  damage: 360391 * 7,
+  aoe: false,
+  schools: ['fire'],
+  periodic: true,
+}
+
 export const svAbilities = [
   refractingBeam,
   earthShaterer,
   seismicSmash,
   igneousHammer,
   metalSplinters,
+  exhaustVents,
   groundPound,
   moltenMortar,
   shadowClaw,
