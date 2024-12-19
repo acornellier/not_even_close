@@ -89,7 +89,7 @@
     "id": 434722,
     "name": "Subjugate magic",
     "icon": "spell_shadow_shadowfiend",
-    "damage": 2883127,
+    "damage": 2306501,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -154,7 +154,7 @@
   },
   {
     "id": 447271,
-    "name": "Tremor Slam (Trash)",
+    "name": "Tremor Slam (trash)",
     "icon": "spell_shaman_earthquake",
     "damage": 1441563,
     "aoe": true,
@@ -167,7 +167,7 @@
   },
   {
     "id": 446718,
-    "name": "Umbral Weave (Trash)",
+    "name": "Umbral Weave (trash)",
     "icon": "inv_misc_web_02",
     "damage": 1351466,
     "aoe": false,
@@ -180,7 +180,7 @@
   },
   {
     "id": 437700,
-    "name": "Tremor Slam (Boss)",
+    "name": "Tremor Slam (boss)",
     "icon": "spell_shaman_earthquake",
     "damage": 1441563,
     "aoe": true,
@@ -239,6 +239,19 @@
     "variance": 0.025,
     "tankOnly": true,
     "cooldown": 30
+  },
+  {
+    "id": 431305,
+    "name": "Dark Floes",
+    "icon": "inv_10_gearupgrade_aspectsshadowflamefragment",
+    "damage": 1801950,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0,
+    "trashAbility": true
   },
   {
     "id": 451101,
@@ -451,7 +464,7 @@
     "id": 451971,
     "name": "Lava Fist",
     "icon": "spell_shadow_deathpact",
-    "damage": 3423713,
+    "damage": 2702931,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -564,9 +577,9 @@
     "icon": "inv_ammo_snowball",
     "damage": 3603849,
     "aoe": true,
-    "physical": true,
+    "physical": false,
     "schools": [
-      "physical"
+      "nature"
     ],
     "variance": 0,
     "avoidable": true
@@ -701,7 +714,7 @@
     "id": 272711,
     "name": "Crushing Slam",
     "icon": "spell_nature_earthquake",
-    "damage": 1351465.8,
+    "damage": 810879.6,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -736,7 +749,7 @@
     "schools": [
       "frost"
     ],
-    "variance": 0.005,
+    "variance": 0,
     "cooldown": 20,
     "notes": "Only the initial hit"
   },
@@ -750,7 +763,7 @@
     "schools": [
       "physical"
     ],
-    "variance": 0.005,
+    "variance": 0.025,
     "ignoresArmor": true,
     "cooldown": [
       13,
@@ -798,7 +811,7 @@
     "id": 428711,
     "name": "Igneous Hammer",
     "icon": "spell_fire_flameblades",
-    "damage": 2702931,
+    "damage": 2162345,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -820,6 +833,17 @@
     "variance": 0
   },
   {
+    "id": 443954,
+    "name": "Exhaust Vents",
+    "icon": "ability_evoker_firebreath",
+    "damage": 2522737,
+    "aoe": false,
+    "schools": [
+      "fire"
+    ],
+    "periodic": true
+  },
+  {
     "id": 425974,
     "name": "Ground Pound",
     "icon": "spell_shaman_earthquake",
@@ -828,6 +852,19 @@
     "physical": false,
     "schools": [
       "nature"
+    ],
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
+    "id": 449154,
+    "name": "Molten Mortar",
+    "icon": "spell_shaman_spewlava",
+    "damage": 1351466,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "fire"
     ],
     "variance": 0,
     "trashAbility": true
