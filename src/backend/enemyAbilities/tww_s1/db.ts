@@ -41,7 +41,13 @@ const darkOrbBoss = getEnemySpell(426826, (spell) => ({
 
 const shadowyDecayBoss = getEnemySpell(426793, (spell) => ({
   name: `${spell.name} (boss)`,
-  damage: 6 * spell.damage,
+  damage:
+    1 * spell.damage +
+    1.1 * spell.damage +
+    1.2 * spell.damage +
+    1.3 * spell.damage +
+    1.4 * spell.damage +
+    1.5 * spell.damage,
   periodic: true,
   cooldown: 35,
 }))
