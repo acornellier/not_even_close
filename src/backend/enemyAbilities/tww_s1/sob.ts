@@ -20,7 +20,7 @@ const fireBomb = getEnemySpell(256639, {
 })
 
 const crushingSlam = getEnemySpell(272711, (spell) => ({
-  damage: spell.damage * 0.6,
+  damage: spell.damage,
   trashAbility: true,
   ignoresArmor: true,
   cooldown: 20,
