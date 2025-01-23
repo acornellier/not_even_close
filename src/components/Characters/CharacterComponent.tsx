@@ -21,7 +21,7 @@ import { Label } from '../Common/Label.tsx'
 import { useLocalStorage } from '../../util/useLocalStorage.ts'
 
 import { useAbilitiesThatExist } from './useAbilitiesThatExist.ts'
-import { externals, svVersBuff } from '../../backend/groupAbilities/externals.ts'
+import { externals } from '../../backend/groupAbilities/externals.ts'
 import { useSimContext } from '../../util/useSimContext.ts'
 
 interface Props {
@@ -94,7 +94,6 @@ export function CharacterComponent({
 
   const availableExternals = useMemo(() => {
     const res = [...externals]
-    if (dungeon?.key === 'sv') res.push(svVersBuff)
     return res
   }, [dungeon])
 
