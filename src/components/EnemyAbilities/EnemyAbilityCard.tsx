@@ -49,7 +49,7 @@ export function EnemyAbilityCard({
           <a
             key={ability.name}
             className="min-w-[30px]"
-            href={`https://www.wowhead.com/spell=${ability.id}?dd=23&ddsize=5`}
+            href={`https://www.wowhead.com/ptr-2/spell=${ability.id}?dd=23&ddsize=5`}
             target="_blank"
             rel="noreferrer"
           >
