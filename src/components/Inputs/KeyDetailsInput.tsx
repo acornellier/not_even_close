@@ -65,7 +65,7 @@ export function KeyDetailsInput({ keyDetails, setKeyDetails }: Props) {
             tooltipId="tyran-tooltip"
           />
         )}
-        {guileActive(keyDetails) && (
+        {guileActive(keyDetails.keyLevel) && (
           <div data-tooltip-id="guile-tooltip">
             <AbilityIcon icon="ability_racial_chillofnight" size={36} />
           </div>

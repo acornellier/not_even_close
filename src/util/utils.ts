@@ -208,6 +208,6 @@ export function bothFortTyranActive(keyDetails: KeyDetails) {
   return keyDetails.keyLevel >= 10
 }
 
-export function guileActive(keyDetails: KeyDetails) {
-  return keyDetails.keyLevel >= 12
+export function guileActive(keyLevel: number) {
+  return keyLevel >= 12
 }

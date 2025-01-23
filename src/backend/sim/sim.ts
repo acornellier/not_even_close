@@ -27,8 +27,8 @@ import { shieldOfTheRighteous } from '../classAbilities/paladin.ts'
 
 function getScalingFactor(keyDetails: KeyDetails, isTrashAbility: boolean) {
   let scalingFactor = 1
-  for (let i = 2; i <= keyDetails.keyLevel; ++i) {
-    scalingFactor *= guileActive(keyDetails) ? 1.12 : 1.1
+  for (let keyLevel = 2; keyLevel <= keyDetails.keyLevel; ++keyLevel) {
+    scalingFactor *= guileActive(keyLevel) ? 1.12 : 1.1
   }
 
   if (fortActive(keyDetails) && isTrashAbility) {
