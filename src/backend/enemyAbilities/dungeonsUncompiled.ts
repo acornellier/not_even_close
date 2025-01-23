@@ -1,66 +1,66 @@
 import type { Dungeon } from './enemies'
-import { cotAbilities } from './tww_s1/cot.ts'
-import { gbAbilities } from './tww_s1/gb.ts'
-import { akAbilities } from './tww_s1/ak.ts'
-import { motAbilities } from './tww_s1/mot.ts'
-import { nwAbilities } from './tww_s1/nw.ts'
-import { svAbilities } from './tww_s1/sv.ts'
-import { dbAbilities } from './tww_s1/db.ts'
-import { sobAbilities } from './tww_s1/sob.ts'
+import { cmAbilities } from './tww_s2/cm.ts'
+import { dcAbilities } from './tww_s2/dc.ts'
+import { mwAbilities } from './tww_s2/mw.ts'
+import { ofAbilities } from './tww_s2/of.ts'
+import { psfAbilities } from './tww_s2/psf.ts'
+import { tmAbilities } from './tww_s2/tm.ts'
+import { trAbilities } from './tww_s2/tr.ts'
+import { topAbilities } from './tww_s2/top.ts'
 
 export const dungeonsUncompiled: Dungeon[] = [
   {
-    key: 'ak',
-    name: 'Ara-Kara',
-    abilities: akAbilities,
-    icon: 'inv_achievement_dungeon_arak-ara',
+    key: 'cm',
+    name: 'Cinderbrew Meadery',
+    icon: 'inv_achievement_dungeon_cinderbrewmeadery',
+    abilities: cmAbilities,
   },
   {
-    key: 'cot',
-    name: 'City of Threads',
-    abilities: cotAbilities,
-    icon: 'inv_achievement_dungeon_cityofthreads',
+    name: 'Darkflame Crest',
+    key: 'dc',
+    icon: 'inv_achievement_dungeon_darkflamecleft',
+    abilities: dcAbilities,
   },
   {
-    key: 'db',
-    name: 'Dawnbreaker',
-    abilities: dbAbilities,
-    icon: 'inv_achievement_dungeon_dawnbreaker',
+    name: 'Mechagon',
+    key: 'mw',
+    icon: 'achievement_boss_mechagon',
+    abilities: mwAbilities,
   },
   {
-    key: 'gb',
-    name: 'Grim Batol',
-    abilities: gbAbilities,
-    icon: 'achievement_dungeon_grimbatol',
+    name: 'The Motherlode',
+    key: 'tm',
+    icon: 'achievement_dungeon_kezan',
+    abilities: tmAbilities,
   },
   {
-    key: 'mot',
-    name: 'Mists of Tirna-Scithe',
-    abilities: motAbilities,
-    icon: 'achievement_dungeon_mistsoftirnascithe',
+    name: 'Operation: Floodgate',
+    key: 'of',
+    icon: 'inv_achievement_dungeon_waterworks',
+    abilities: ofAbilities,
   },
   {
-    key: 'nw',
-    name: 'Necrotic Wake',
-    abilities: nwAbilities,
-    icon: 'achievement_dungeon_theneroticwake',
+    name: 'Priory',
+    key: 'psf',
+    icon: 'inv_achievement_dungeon_prioryofthesacredflame',
+    abilities: psfAbilities,
   },
   {
-    key: 'sob',
-    name: 'Siege of Boralus',
-    abilities: sobAbilities,
-    icon: 'achievement_dungeon_siegeofboralus',
+    name: 'The Rookery',
+    key: 'tr',
+    icon: 'inv_achievement_dungeon_rookery',
+    abilities: trAbilities,
   },
   {
-    key: 'sv',
-    name: 'Stonevault',
-    abilities: svAbilities,
-    icon: 'inv_achievement_dungeon_stonevault',
+    name: 'Theater of Pain',
+    key: 'top',
+    icon: 'achievement_dungeon_theatreofpain',
+    abilities: topAbilities,
   },
 ]
 
 dungeonsUncompiled.push({
-  key: 'all_tww_s1',
+  key: 'all_tww_s2',
   name: 'All dungeons',
   abilities: dungeonsUncompiled.flatMap(({ abilities }) => abilities),
   icon: 'achievement_challengemode_arakkoaspires_gold',
