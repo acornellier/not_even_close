@@ -3,6 +3,7 @@ import { getEnemySpell } from '../grimoire.ts'
 const shatteringBelow = getEnemySpell(257732, {
   cooldown: 19,
   ignoresArmor: true,
+  trashAbility: true,
 })
 
 const putridWaters = getEnemySpell(275014, {

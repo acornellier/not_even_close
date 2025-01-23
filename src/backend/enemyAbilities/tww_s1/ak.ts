@@ -5,6 +5,7 @@ const callOfTheBrood = getEnemySpell(438879, (spell) => ({
   trashAbility: true,
   cooldown: 30,
   periodic: true,
+  ignoresArmor: true,
 }))
 
 const alertingShrill = getEnemySpell(438495, (spell) => ({
