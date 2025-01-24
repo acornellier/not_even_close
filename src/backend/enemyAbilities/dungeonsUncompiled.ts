@@ -28,12 +28,6 @@ export const dungeonsUncompiled: Dungeon[] = [
     abilities: mwAbilities,
   },
   {
-    name: 'The Motherlode',
-    key: 'tm',
-    icon: 'achievement_dungeon_kezan',
-    abilities: tmAbilities,
-  },
-  {
     name: 'Operation: Floodgate',
     key: 'of',
     icon: 'inv_achievement_dungeon_waterworks',
@@ -44,6 +38,12 @@ export const dungeonsUncompiled: Dungeon[] = [
     key: 'psf',
     icon: 'inv_achievement_dungeon_prioryofthesacredflame',
     abilities: psfAbilities,
+  },
+  {
+    name: 'The Motherlode',
+    key: 'tm',
+    icon: 'achievement_dungeon_kezan',
+    abilities: tmAbilities,
   },
   {
     name: 'The Rookery',
