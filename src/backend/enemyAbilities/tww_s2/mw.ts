@@ -1,16 +1,18 @@
-import { getEnemySpell } from '../grimoire.ts'
+import { bossSpell, trashSpell } from '../grimoire.ts'
 
-const blazingChomp = getEnemySpell(294961)
-
-const gigaWallop = getEnemySpell(293827, {
-  trashAbility: true,
+const blazingChomp = bossSpell(294961, {
+  notes: 'The explosion from the dispel',
 })
 
-const gigazapP1 = getEnemySpell(291928, (spell) => ({
+const gigaWallop = trashSpell(293827, {
+  avoidable: true,
+})
+
+const gigazapP1 = bossSpell(291928, (spell) => ({
   name: `${spell.name} (P1)`,
 }))
 
-const gigazapP2 = getEnemySpell(292267, (spell) => ({
+const gigazapP2 = bossSpell(292267, (spell) => ({
   name: `${spell.name} (P2)`,
 }))
 

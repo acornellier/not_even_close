@@ -11,7 +11,7 @@
     "diff": "tsx ./scripts/differ.ts"
   },
   "engines": {
-    "node": "20"
+    "node": ">=20"
   },
   "dependencies": {
     "@heroicons/react": "2.1.3",
