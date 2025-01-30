@@ -1,3 +1,7 @@
-import type { EnemyAbility } from '../enemies.ts'
+import { bossSpell, trashSpell } from '../grimoire.ts'
 
-export const trAbilities: EnemyAbility[] = []
+const lightningBolt = trashSpell(430109, { avoidable: true })
+
+const crashReality = bossSpell(425113)
+
+export const trAbilities = [lightningBolt, crashReality]
