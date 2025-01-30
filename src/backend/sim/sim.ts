@@ -5,7 +5,6 @@ import {
   enemyAbilityToDetails,
   fortActive,
   getStackedValue,
-  guileActive,
   mapSelectedAbilityIds,
   tyranActive,
 } from '../../util/utils.ts'
@@ -28,7 +27,7 @@ import { shieldOfTheRighteous } from '../classAbilities/paladin.ts'
 function getScalingFactor(keyDetails: KeyDetails, isTrashAbility: boolean) {
   let scalingFactor = 1
   for (let keyLevel = 2; keyLevel <= keyDetails.keyLevel; ++keyLevel) {
-    scalingFactor *= guileActive(keyLevel) ? 1.12 : 1.1
+    scalingFactor *= keyLevel >= 11 ? 1.1 : 1.07
   }
 
   if (fortActive(keyDetails) && isTrashAbility) {

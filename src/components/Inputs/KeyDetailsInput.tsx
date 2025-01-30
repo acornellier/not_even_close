@@ -4,14 +4,8 @@ import type { KeyDetails } from '../../backend/sim/simTypes'
 import { Button } from '../Common/Button.tsx'
 import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/outline'
 import { SelectableAbilityIcon } from '../Common/SelectableAbilityIcon.tsx'
-import {
-  bothFortTyranActive,
-  fortActive,
-  guileActive,
-  tyranActive,
-} from '../../util/utils.ts'
+import { bothFortTyranActive, fortActive, tyranActive } from '../../util/utils.ts'
 import { TooltipStyled } from '../Common/TooltipStyled.tsx'
-import { AbilityIcon } from '../Common/AbilityIcon.tsx'
 
 interface Props {
   keyDetails: KeyDetails
@@ -65,11 +59,6 @@ export function KeyDetailsInput({ keyDetails, setKeyDetails }: Props) {
             tooltipId="tyran-tooltip"
           />
         )}
-        {guileActive(keyDetails.keyLevel) && (
-          <div data-tooltip-id="guile-tooltip">
-            <AbilityIcon icon="ability_racial_chillofnight" size={36} />
-          </div>
-        )}
       </div>
       <TooltipStyled id="fort-tooltip">
         <p>Fortified Affix. 20% more trash damage.</p>
@@ -78,9 +67,6 @@ export function KeyDetailsInput({ keyDetails, setKeyDetails }: Props) {
       <TooltipStyled id="tyran-tooltip">
         <p>Tyrannical Affix. 15% more boss damage.</p>
         <p>{!bothFortTyranActive(keyDetails) && 'Click to swap'}</p>
-      </TooltipStyled>
-      <TooltipStyled id="guile-tooltip">
-        Xal&apos;atath&apos;s Guile. 12% scaling per key level instead of 10%.
       </TooltipStyled>
     </div>
   )
