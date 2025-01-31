@@ -172,6 +172,13 @@ export const shieldOfTheRighteous: Ability = {
   notes: '160% strength as armor',
 }
 
+const empyrealWard: Ability = {
+  name: 'Empyreal Ward',
+  id: 387791,
+  icon: 'spell_holy_layonhands',
+  armorIncrease: 0.3,
+}
+
 export const paladinHolyAbilities = [
   sanctifiedPlatesHoly,
   obduracy,
@@ -204,4 +211,5 @@ export const paladinProtAbilities = [
   guardianOfAncientKings,
   sentinel,
   eyeOfTyr,
+  empyrealWard,
 ]
