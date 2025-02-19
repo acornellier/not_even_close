@@ -1940,10 +1940,10 @@ graphemer@^1.4.0:
   resolved "https://registry.yarnpkg.com/graphemer/-/graphemer-1.4.0.tgz#fb2f1d55e0e3a1849aeffc90c4fa0dd53a0e66c6"
   integrity sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==
 
-grimoire-wow@11.1.0-58819.1:
-  version "11.1.0-58819.1"
-  resolved "https://registry.yarnpkg.com/grimoire-wow/-/grimoire-wow-11.1.0-58819.1.tgz#ffb3f73a1c3d48c673a66a909cd2395ecaa1231f"
-  integrity sha512-imSNPhsum7xHrxrLqGl5XPKJRd5oIamtaRs/E9iv4qknWh3eOBGdAQWTEOk4yNaxTXQyDlo8ME8C4ARUFA2UEQ==
+grimoire-wow@11.1.0-59241:
+  version "11.1.0-59241"
+  resolved "https://registry.yarnpkg.com/grimoire-wow/-/grimoire-wow-11.1.0-59241.tgz#633a18f20ec7a46865ef8a551e8176098653eb5d"
+  integrity sha512-Cyw6+zezOzhwWYFdgIA/GInN5HevaFsdWwtWgPPIHsNj4ttft1cPdMxsyvz0Ri6q+fUZqvhU+/Ck863TkI6A2A==
   dependencies:
     "@types/node" "22.10.10"
     csv-parse "5.5.6"
