@@ -24,7 +24,7 @@ const blazingBarrier: Ability = {
 const iceBarrier: Ability = {
   name: 'Ice Barrier',
   absorb: {
-    healthMultiplier: 0.22,
+    healthMultiplier: 0.24,
     versAffected: true,
   },
   id: 11426,

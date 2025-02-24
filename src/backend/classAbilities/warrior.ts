@@ -130,8 +130,18 @@ const steadfastAsThePeaks: Ability = {
   ],
 }
 
+const mountainOfMuscleAndScars: Ability = {
+  name: 'Mountain of Muscle and Scars',
+  id: 429642,
+  passive: true,
+  icon: 'ability_warrior_intensifyrage',
+  heroTree: 'Colossus',
+  dr: 0.05,
+}
+
 export const warriorArmsAbilities = [
   seasonedSoldier,
+  mountainOfMuscleAndScars,
   ignorePain,
   defensiveStance,
   spellReflection,
@@ -150,6 +160,7 @@ export const warriorFuryAbilities = [
 
 export const warriorProtAbilities = [
   steadfastAsThePeaks,
+  mountainOfMuscleAndScars,
   punish,
   ignorePain,
   impendingVictory,
