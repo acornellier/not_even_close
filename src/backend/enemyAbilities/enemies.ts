@@ -25,15 +25,15 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
 }
 
 export const dungeonKeys = [
-  'ak',
-  'cot',
-  'db',
-  'gb',
-  'mot',
-  'nw',
-  'sob',
-  'sv',
-  'all_tww_s1',
+  'cm',
+  'dc',
+  'mw',
+  'of',
+  'psf',
+  'tm',
+  'tr',
+  'top',
+  'all_tww_s2',
 ] as const
 
 export type DungeonKey = (typeof dungeonKeys)[number]

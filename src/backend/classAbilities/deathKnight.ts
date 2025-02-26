@@ -114,7 +114,7 @@ const nullMagic: Ability = {
   passive: true,
   onByDefault: true,
   icon: 'spell_shadow_detectinvisibility',
-  dr: 0.08,
+  dr: 0.05,
   drType: 'magic',
 }
 

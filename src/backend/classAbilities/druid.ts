@@ -142,7 +142,7 @@ const ursocsSpirit: Ability = {
     {
       otherAbilityId: bearForm.id,
       field: 'staminaIncrease',
-      value: 0.1,
+      value: 0.05,
     },
   ],
 }

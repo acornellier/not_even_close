@@ -22,6 +22,14 @@ export function getEnemySpell(
   }
 }
 
+export function bossSpell(
+  spellId: number,
+  options?: Options,
+  extraOptions?: { effectIndex?: number },
+): EnemyAbility {
+  return getEnemySpell(spellId, options, extraOptions, false)
+}
+
 export function trashSpell(
   spellId: number,
   options?: Options,
