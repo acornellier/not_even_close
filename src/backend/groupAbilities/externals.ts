@@ -7,13 +7,6 @@ export const temperedVersatility: Ability = {
   icon: 'inv_misc_potiona2',
 }
 
-export const phialOfIcyPreservation: Ability = {
-  name: 'Phial of Icy Preservation',
-  id: 191324,
-  dr: 0.06,
-  icon: 'inv_10_alchemy_bottle_shape2_blue',
-}
-
 const blessingOfSacrifice: Ability = {
   name: 'Blessing of Sacrifice',
   id: 6940,
@@ -118,7 +111,6 @@ const timeDilation: Ability = {
 
 export const externals: Ability[] = [
   temperedVersatility,
-  phialOfIcyPreservation,
   elusiveMists,
   lifeCocoon,
   earthenHarmony,
