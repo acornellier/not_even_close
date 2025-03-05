@@ -4,7 +4,7 @@ import { dcAbilities } from './tww_s2/dc.ts'
 import { mwAbilities } from './tww_s2/mw.ts'
 import { ofAbilities } from './tww_s2/of.ts'
 import { psfAbilities } from './tww_s2/psf.ts'
-import { tmAbilities } from './tww_s2/tm.ts'
+import { tmAbilities } from './tww_s2/ml.ts'
 import { trAbilities } from './tww_s2/tr.ts'
 import { topAbilities } from './tww_s2/top.ts'
 
@@ -20,6 +20,12 @@ export const dungeonsUncompiled: Dungeon[] = [
     key: 'dc',
     icon: 'inv_achievement_dungeon_darkflamecleft',
     abilities: dcAbilities,
+  },
+  {
+    name: 'The Motherlode',
+    key: 'ml',
+    icon: 'achievement_dungeon_kezan',
+    abilities: tmAbilities,
   },
   {
     name: 'Mechagon',
@@ -38,12 +44,6 @@ export const dungeonsUncompiled: Dungeon[] = [
     key: 'psf',
     icon: 'inv_achievement_dungeon_prioryofthesacredflame',
     abilities: psfAbilities,
-  },
-  {
-    name: 'The Motherlode',
-    key: 'tm',
-    icon: 'achievement_dungeon_kezan',
-    abilities: tmAbilities,
   },
   {
     name: 'The Rookery',
