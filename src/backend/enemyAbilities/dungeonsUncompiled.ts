@@ -4,7 +4,7 @@ import { dcAbilities } from './tww_s2/dc.ts'
 import { mwAbilities } from './tww_s2/mw.ts'
 import { ofAbilities } from './tww_s2/of.ts'
 import { psfAbilities } from './tww_s2/psf.ts'
-import { tmAbilities } from './tww_s2/ml.ts'
+import { mlAbilities } from './tww_s2/ml.ts'
 import { trAbilities } from './tww_s2/tr.ts'
 import { topAbilities } from './tww_s2/top.ts'
 
@@ -25,7 +25,7 @@ export const dungeonsUncompiled: Dungeon[] = [
     name: 'The Motherlode',
     key: 'ml',
     icon: 'achievement_dungeon_kezan',
-    abilities: tmAbilities,
+    abilities: mlAbilities,
   },
   {
     name: 'Mechagon',
