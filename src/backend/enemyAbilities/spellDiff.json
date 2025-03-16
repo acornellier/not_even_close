@@ -3,7 +3,7 @@
     "id": 434758,
     "name": "Throw Chair",
     "icon": "spell_nature_strength",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -16,7 +16,7 @@
     "id": 463206,
     "name": "Tenderize",
     "icon": "spell_nature_earthquake",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -29,7 +29,7 @@
     "id": 448935,
     "name": "Reckless Delivery",
     "icon": "ability_warrior_victoryrush",
-    "damage": 2432465,
+    "damage": 1768542,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -43,7 +43,7 @@
     "id": 439645,
     "name": "Spouting Stout",
     "icon": "ability_creature_amber_01",
-    "damage": 6486575,
+    "damage": 5895140,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -56,7 +56,7 @@
     "id": 442995,
     "name": "Swarming Surprise",
     "icon": "inv_ability_honey_nova",
-    "damage": 1945972,
+    "damage": 1768542,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -69,7 +69,7 @@
     "id": 442484,
     "name": "Let It Hail!",
     "icon": "inv_legendary_gun",
-    "damage": 3891942,
+    "damage": 3537084,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -82,7 +82,7 @@
     "id": 428066,
     "name": "Overpowering Roar",
     "icon": "ability_druid_tigersroar",
-    "damage": 1945972,
+    "damage": 1768542,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -96,7 +96,7 @@
     "id": 428089,
     "name": "Throw Rock",
     "icon": "inv_stone_10",
-    "damage": 1945972,
+    "damage": 1768542,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -109,7 +109,7 @@
     "id": 425394,
     "name": "Dousing Breath",
     "icon": "ability_skyreach_four_wind",
-    "damage": 3243287,
+    "damage": 2947570,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -121,7 +121,7 @@
     "id": 1218117,
     "name": "Massive Stomp",
     "icon": "ability_earthen_pillar",
-    "damage": 2594629,
+    "damage": 2358056,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -135,7 +135,7 @@
     "id": 427011,
     "name": "Shadowblast",
     "icon": "inv_elemental_primal_shadow",
-    "damage": 4054109,
+    "damage": 3684462,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -147,7 +147,7 @@
     "id": 1217280,
     "name": "Uppercut",
     "icon": "inv_relics_totemofrage",
-    "damage": 3243287,
+    "damage": 2947570,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -160,7 +160,7 @@
     "id": 262066,
     "name": "Charged Shield",
     "icon": "spell_nature_chainlightning",
-    "damage": 1621643,
+    "damage": 1473785,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -173,7 +173,7 @@
     "id": 262347,
     "name": "Static Pulse",
     "icon": "spell_nature_lightningoverload",
-    "damage": 2918958,
+    "damage": 2652813,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -185,7 +185,7 @@
     "id": 1215934,
     "name": "Rock Lance",
     "icon": "inv_elemental_crystal_earth",
-    "damage": 1945972,
+    "damage": 1768542,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -199,7 +199,7 @@
     "id": 471894,
     "name": "Resonant Quake",
     "icon": "spell_shaman_earthquake",
-    "damage": 1945972,
+    "damage": 1768542,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -211,7 +211,7 @@
     "id": 260838,
     "name": "Homing Missile",
     "icon": "ability_racial_rocketbarrage",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -223,7 +223,7 @@
     "id": 260202,
     "name": "Drill Smash",
     "icon": "ability_siege_engineer_sockwave_missile",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -235,7 +235,7 @@
     "id": 294961,
     "name": "Blazing Chomp",
     "icon": "inv_gizmo_supersappercharge",
-    "damage": 2594629,
+    "damage": 2358056,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -248,7 +248,7 @@
     "id": 293827,
     "name": "Giga-Wallop",
     "icon": "spell_nature_unrelentingstorm",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -262,7 +262,7 @@
     "id": 291928,
     "name": "Mega-Zap (P1)",
     "icon": "ability_siege_engineer_magnetic_lasso",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -274,7 +274,7 @@
     "id": 292267,
     "name": "Mega-Zap (P2)",
     "icon": "ability_siege_engineer_magnetic_lasso",
-    "damage": 2918958,
+    "damage": 2652813,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -286,7 +286,7 @@
     "id": 460602,
     "name": "Quick Shot",
     "icon": "ability_hunter_rapidregeneration",
-    "damage": 2675712,
+    "damage": 2431745,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -298,7 +298,7 @@
     "id": 460814,
     "name": "Deflagration",
     "icon": "spell_shaman_firenova",
-    "damage": 3243287,
+    "damage": 2652813,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -310,7 +310,7 @@
     "id": 459799,
     "name": "Wallop",
     "icon": "inv_relics_totemofrage",
-    "damage": 8919039,
+    "damage": 8105817,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -323,7 +323,7 @@
     "id": 469479,
     "name": "Sludge Claws phys",
     "icon": "artifactability_guardiandruid_goryfur",
-    "damage": 12973147,
+    "damage": 10316494,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -337,7 +337,7 @@
     "id": 469480,
     "name": "Sludge Claws magic",
     "icon": "artifactability_guardiandruid_goryfur",
-    "damage": 3243287,
+    "damage": 2947570,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -351,7 +351,7 @@
     "id": 468815,
     "name": "Gigazap",
     "icon": "spell_shaman_crashlightning",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -363,7 +363,7 @@
     "id": 466189,
     "name": "Thunder Punch",
     "icon": "ability_thunderking_balllightning",
-    "damage": 16216434,
+    "damage": 12527171,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -376,7 +376,7 @@
     "id": 427621,
     "name": "Impale",
     "icon": "inv_spear_05",
-    "damage": 2270301,
+    "damage": 2063299,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -389,7 +389,7 @@
     "id": 448492,
     "name": "Thunderclap",
     "icon": "ability_thunderclap",
-    "damage": 2270301,
+    "damage": 2063299,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -402,7 +402,7 @@
     "id": 448485,
     "name": "Shield Slam",
     "icon": "ability_warrior_shieldbash",
-    "damage": 12162326,
+    "damage": 11053386,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -416,7 +416,7 @@
     "id": 424426,
     "name": "Lunging Strike",
     "icon": "inv_spear_11",
-    "damage": 2270301,
+    "damage": 2063299,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -429,7 +429,7 @@
     "id": 427897,
     "name": "Heat Wave",
     "icon": "ability_rhyolith_lavapool",
-    "damage": 1945972,
+    "damage": 1326406,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -442,7 +442,7 @@
     "id": 448515,
     "name": "Divine Judgment",
     "icon": "spell_holy_righteousfury",
-    "damage": 3243287,
+    "damage": 2947570,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -456,7 +456,7 @@
     "id": 424414,
     "name": "Pierce Armor",
     "icon": "inv_polearm_2h_arathoroutdoor_d_01",
-    "damage": 6486574,
+    "damage": 5895139,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -469,7 +469,7 @@
     "id": 448791,
     "name": "Sacred Toll",
     "icon": "ability_bastion_paladin",
-    "damage": 2270301,
+    "damage": 2063299,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -482,7 +482,7 @@
     "id": 427469,
     "name": "Fireball",
     "icon": "spell_fire_flamebolt",
-    "damage": 1945972,
+    "damage": 1768542,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -508,7 +508,7 @@
     "id": 427357,
     "name": "Holy Smite",
     "icon": "spell_holy_holysmite",
-    "damage": 1945972,
+    "damage": 1473785,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -522,7 +522,7 @@
     "id": 430109,
     "name": "Lightning Bolt",
     "icon": "spell_nature_lightning",
-    "damage": 1945972,
+    "damage": 1768542,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -536,7 +536,7 @@
     "id": 425113,
     "name": "Crush Reality",
     "icon": "spell_priest_void-blast",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -548,7 +548,7 @@
     "id": 1215741,
     "name": "Mighty Smash",
     "icon": "ability_smash",
-    "damage": 2594629,
+    "damage": 2358056,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -561,7 +561,7 @@
     "id": 330720,
     "name": "Soulstorm",
     "icon": "spell_animamaldraxxus_nova",
-    "damage": 7297395,
+    "damage": 6632030,
     "aoe": true,
     "physical": false,
     "schools": [
@@ -575,7 +575,7 @@
     "id": 330532,
     "name": "Jagged Quarrel",
     "icon": "inv_bow_2h_crossbow_pvpdraenors1_d_01",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -588,7 +588,7 @@
     "id": 333861,
     "name": "Ricocheting Blade",
     "icon": "inv_axe_1h_maldraxxus_d_01",
-    "damage": 2918958,
+    "damage": 2652813,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -602,7 +602,7 @@
     "id": 1215850,
     "name": "Earthcrusher",
     "icon": "spell_nature_earthquake",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -616,7 +616,7 @@
     "id": 342135,
     "name": "Interrupting Roar",
     "icon": "warrior_disruptingshout",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -631,7 +631,7 @@
     "id": 333827,
     "name": "Seismic Stomp",
     "icon": "spell_nature_earthquake",
-    "damage": 2432465,
+    "damage": 2210677,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -647,7 +647,7 @@
     "id": 320789,
     "name": "Seismic Leap",
     "icon": "ability_heroicleap",
-    "damage": 3648698,
+    "damage": 2652813,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -664,7 +664,7 @@
     "id": 323110,
     "name": "Leaping Thrash",
     "icon": "ability_racial_flayer",
-    "damage": 2594629,
+    "damage": 2358056,
     "aoe": true,
     "physical": true,
     "schools": [
@@ -676,7 +676,7 @@
     "id": 324424,
     "name": "Reaping Scythe phys",
     "icon": "inv_archaeology_80_witch_bonescythe",
-    "damage": 5675752,
+    "damage": 5158247,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -690,7 +690,7 @@
     "id": 324079,
     "name": "Reaping Scythe magic",
     "icon": "inv_misc_2h_farmscythe_a_01",
-    "damage": 5351423,
+    "damage": 4863490,
     "aoe": false,
     "physical": false,
     "schools": [
@@ -704,7 +704,7 @@
     "id": 339573,
     "name": "Echoes of Carnage",
     "icon": "ability_deathknight_soulreaper",
-    "damage": 3243287,
+    "damage": 2947570,
     "aoe": true,
     "physical": false,
     "schools": [
