@@ -56,6 +56,14 @@ const rallyingCry: Ability = {
   icon: 'ability_warrior_rallyingcry',
 }
 
+const lightsProtection: Ability = {
+  name: "Light's Protection",
+  id: 461243,
+  dr: 0.05,
+  associatedSpec: { class: 'Paladin', spec: 'Holy' },
+  icon: 'spell_holy_absolution',
+}
+
 const auraMastery: Ability = {
   name: 'Aura Mastery',
   id: 31821,
@@ -122,8 +130,9 @@ export const groupActives: Ability[] = [
   zephyr,
   chiCocoon,
   massBarrier,
-  arcaneMassBarrier,
+  // arcaneMassBarrier,
   rallyingCry,
+  lightsProtection,
   auraMastery,
   spoutingSpirits,
   powerWordBarrier,
