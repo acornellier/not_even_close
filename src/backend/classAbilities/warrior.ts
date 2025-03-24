@@ -71,7 +71,7 @@ const ignorePain: Ability = {
 const punish: Ability = {
   name: 'Punish',
   id: 275334,
-  damageDealtReduction: 0.02,
+  damageDealtReduction: 0.03,
   stacks: {
     type: 'stacks',
     default: 1,
