@@ -9,13 +9,6 @@ const thickHide: Ability = {
   onByDefault: true,
 }
 
-const risingLight: Ability = {
-  name: 'Rising Light, Falling Night',
-  versIncrease: 0.02,
-  id: 417712,
-  icon: 'spell_druid_equinox',
-}
-
 const bearForm: Ability = {
   name: 'Bear Form',
   staminaIncrease: 0.25,
@@ -260,7 +253,6 @@ export const druidBalanceAbilities = [
   thickHide,
   glisteningFur,
   heartOfTheWild,
-  risingLight,
   protectiveGrowth,
   ursineVigorPassive,
   bearForm,
@@ -272,7 +264,6 @@ export const druidFeralAbilities = [
   oakskin,
   ursocsSpirit,
   thickHide,
-  risingLight,
   protectiveGrowth,
   fountOfStrength,
   heartOfTheWild,
@@ -287,7 +278,6 @@ export const druidRestoAbilities = [
   oakskin,
   ursocsSpirit,
   thickHide,
-  risingLight,
   protectiveGrowth,
   heartOfTheWild,
   ursineVigorPassive,
@@ -302,7 +292,6 @@ export const druidGuardianAbilities = [
   thickHide,
   lycarasTeachings,
   glisteningFur,
-  risingLight,
   rendAndTear,
   scintillatingMoonlight,
   pulverize,
