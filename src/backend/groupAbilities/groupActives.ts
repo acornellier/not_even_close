@@ -22,6 +22,20 @@ const chiCocoon: Ability = {
   notes: 'Assumes {{backup}} absorb if you have no mistweaver selected',
 }
 
+const jadeBond: Ability = {
+  name: 'Jade Bond',
+  id: 388031,
+  icon: 'inv_inscription_deck_jadeserpent',
+  abilityAugmentations: [
+    {
+      otherAbilityId: chiCocoon.id,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 1,
+    },
+  ],
+}
+
 const massBarrier: Ability = {
   name: 'Mass Barrier',
   id: 414660,
@@ -129,6 +143,7 @@ const elementalResistance: Ability = {
 export const groupActives: Ability[] = [
   zephyr,
   chiCocoon,
+  jadeBond,
   massBarrier,
   // arcaneMassBarrier,
   rallyingCry,
@@ -137,7 +152,7 @@ export const groupActives: Ability[] = [
   spoutingSpirits,
   powerWordBarrier,
   antiMagicZone,
-  elementalResistance,
+  // elementalResistance,
   downpour,
   spiritLinkTotem,
 ]
