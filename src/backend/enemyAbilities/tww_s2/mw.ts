@@ -16,4 +16,9 @@ const gigazapP2 = bossSpell(292267, (spell) => ({
   name: `${spell.name} (P2)`,
 }))
 
-export const mwAbilities = [blazingChomp, gigaWallop, gigazapP1, gigazapP2]
+const shortOut = trashSpell(297127, (spell) => ({
+  damage: spell.damage * 6,
+  periodic: true,
+}))
+
+export const mwAbilities = [blazingChomp, gigaWallop, gigazapP1, gigazapP2, shortOut]
