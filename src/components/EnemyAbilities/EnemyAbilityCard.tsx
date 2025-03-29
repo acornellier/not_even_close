@@ -31,7 +31,6 @@ export function EnemyAbilityCard({
   selected,
   result,
   showExtras,
-  toggleExtras,
   keyDetails,
 }: Props) {
   const cardColor = selected ? 'bg-teal-600' : 'bg-teal-900'
@@ -41,7 +40,7 @@ export function EnemyAbilityCard({
 
   return (
     <div
-      className={`flex flex-col gap-2 cursor-pointer rounded-md px-4 py-1 select-none ${hoverColor} ${cardColor}`}
+      className={`flex flex-col gap-2 cursor-pointer rounded-md px-1 py-1 select-none ${hoverColor} ${cardColor}`}
       onClick={onSelect}
     >
       <div className="flex items-center gap-2">
@@ -120,13 +119,6 @@ export function EnemyAbilityCard({
           </div>
           <div className="flex gap-2">
             {result?.characters[0] && <CardResult result={result?.characters[0]} />}
-            <Chevron
-              height={24}
-              onClick={(e) => {
-                e.stopPropagation()
-                toggleExtras()
-              }}
-            />
           </div>
         </div>
       </div>

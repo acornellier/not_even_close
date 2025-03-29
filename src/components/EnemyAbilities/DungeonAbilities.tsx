@@ -71,7 +71,7 @@ export function DungeonAbilities({
     <div className="flex flex-col gap-2">
       <div className="flex justify-between">
         <div className="flex items-center gap-3">
-          <Button short bigText onClick={deselectDungeon} className="gap-2 px-2">
+          <Button short bigText onClick={deselectDungeon} className="gap-2 [&]:pl-1 pr-2">
             <AbilityIcon icon={dungeon.icon} size={32} />
             <div className="hidden sm:block">{dungeon.name}</div>
           </Button>
