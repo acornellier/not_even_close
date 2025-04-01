@@ -283,6 +283,20 @@
     "variance": 0
   },
   {
+    "id": 297127,
+    "name": "Short Out",
+    "icon": "ability_priest_cascade",
+    "damage": 3316014,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "nature"
+    ],
+    "variance": 0,
+    "periodic": true,
+    "trashAbility": true
+  },
+  {
     "id": 460602,
     "name": "Quick Shot",
     "icon": "ability_hunter_rapidregeneration",
