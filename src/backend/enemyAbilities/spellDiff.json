@@ -96,13 +96,13 @@
     "id": 428089,
     "name": "Throw Rock",
     "icon": "inv_stone_10",
-    "damage": 1768542,
+    "damage": 1326406,
     "aoe": false,
     "physical": true,
     "schools": [
       "physical"
     ],
-    "variance": 0.071065992115,
+    "variance": 0.025000000375,
     "trashAbility": true
   },
   {
@@ -377,7 +377,7 @@
     "id": 466189,
     "name": "Thunder Punch",
     "icon": "ability_thunderking_balllightning",
-    "damage": 12527171,
+    "damage": 7368924,
     "aoe": false,
     "physical": true,
     "schools": [
@@ -510,7 +510,7 @@
     "id": 446649,
     "name": "Castigator's Shield",
     "icon": "spell_holy_avengersshield",
-    "damage": 757066,
+    "damage": 2144196,
     "aoe": false,
     "physical": false,
     "schools": [
