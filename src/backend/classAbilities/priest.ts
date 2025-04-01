@@ -52,7 +52,7 @@ const powerWordShieldDisc: Ability = {
   },
 }
 
-const aegisOfWrath: Ability = {
+const eternalBarrier: Ability = {
   name: 'Aegis of Wrath',
   id: 238135,
   passive: true,
@@ -62,7 +62,7 @@ const aegisOfWrath: Ability = {
       otherAbilityId: powerWordShieldDisc.id,
       field: 'absorb',
       absorbField: 'spMultipler',
-      value: 0.3,
+      value: 0.2,
     },
   ],
 }
@@ -162,7 +162,7 @@ const innerQuietus: Ability = {
 
 export const priestDiscAbilities = [
   lightsInspiration,
-  aegisOfWrath,
+  eternalBarrier,
   preventiveMeasures,
   innerQuietus,
   spellWarding,

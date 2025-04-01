@@ -77,7 +77,7 @@ export const masterPoisoner: Ability = {
 export const lenience: Ability = {
   name: 'Lenience',
   id: 238063,
-  dr: 0.03,
+  dr: 0.02,
   associatedSpec: { class: 'Priest', spec: 'Discipline' },
   icon: 'ability_priest_atonement',
 }
