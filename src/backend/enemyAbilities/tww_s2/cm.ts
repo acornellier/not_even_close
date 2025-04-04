@@ -20,11 +20,18 @@ const letItHail = bossSpell(442484, (spell) => ({
   periodic: true,
 }))
 
+const flutteringWing = bossSpell(439586, {
+  damage: 589_513 * 5,
+  aoe: false,
+  periodic: true,
+})
+
 export const cmAbilities = [
   throwChair,
   tenderize,
   recklessDelivery,
   spoutingStout,
   swarmingSurprise,
+  flutteringWing,
   letItHail,
 ]
