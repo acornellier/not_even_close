@@ -46,7 +46,8 @@ const enduranceTrainingMm: Ability = {
   ...enduranceTraining,
   id: enduranceTraining.id + 1,
   spellId: enduranceTraining.id,
-  onByDefault: false,
+  dr: 0.03,
+  notes: 'Includes Air Superiority',
 }
 
 const survivalOfTheFittest: Ability = {
