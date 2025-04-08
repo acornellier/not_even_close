@@ -39,7 +39,6 @@ const secretInfusion: Ability = {
   stacks: {
     type: 'talent',
     max: 2,
-    default: 1,
     values: [0.08, 0.15],
   },
 }
