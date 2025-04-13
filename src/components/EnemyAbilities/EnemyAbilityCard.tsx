@@ -3,8 +3,6 @@ import { AbilityDetailsChip } from './AbilityDetailsChip'
 import { TooltipStyled } from '../Common/TooltipStyled'
 import type { AbilityResult, KeyDetails } from '../../backend/sim/simTypes'
 import {
-  ChevronDownIcon,
-  ChevronUpIcon,
   QuestionMarkCircleIcon,
   ShieldExclamationIcon,
 } from '@heroicons/react/24/outline'
@@ -35,8 +33,6 @@ export function EnemyAbilityCard({
 }: Props) {
   const cardColor = selected ? 'bg-teal-600' : 'bg-teal-900'
   const hoverColor = !selected && 'hover:bg-teal-800'
-
-  const Chevron = showExtras ? ChevronUpIcon : ChevronDownIcon
 
   return (
     <div
@@ -79,12 +75,12 @@ export function EnemyAbilityCard({
             <AbilityDetailsChip
               color="bg-gray-500"
               className="hidden sm:block"
-              data-tooltip-id={`chip-damage-${ability.name}`}
+              data-tooltip-id={`chip-damage-${ability.id}`}
             >
               {shortRoundedNumber(scaleDamage(keyDetails, ability).scaledDamage)} dmg
             </AbilityDetailsChip>
             {ability.variance !== undefined && ability.variance !== 0 && (
-              <TooltipStyled id={`chip-damage-${ability.name}`}>
+              <TooltipStyled id={`chip-damage-${ability.id}`}>
                 <p>
                   This ability has {roundHundred(ability.variance)}% variance in its
                   damage.
