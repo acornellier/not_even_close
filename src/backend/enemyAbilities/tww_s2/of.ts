@@ -28,7 +28,12 @@ const thunderPunch = bossSpell(466189, {
   tankOnly: true,
 })
 
+const electroCrush = bossSpell(473351, {
+  tankOnly: true,
+})
+
 export const ofAbilities = [
+  electroCrush,
   quickShot,
   deflagration,
   wallop,
