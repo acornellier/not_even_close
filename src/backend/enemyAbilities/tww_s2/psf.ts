@@ -2,6 +2,8 @@ import { bossSpell, trashSpell } from '../grimoire.ts'
 
 const impale = trashSpell(427621)
 
+const potShot = trashSpell(462859)
+
 const thunderclap = trashSpell(448492)
 
 const shieldSlam = trashSpell(448485, {
@@ -26,6 +28,7 @@ const holySmite = trashSpell(427357, { avoidable: true })
 
 export const psfAbilities = [
   impale,
+  potShot,
   thunderclap,
   shieldSlam,
   lungingStrike,
