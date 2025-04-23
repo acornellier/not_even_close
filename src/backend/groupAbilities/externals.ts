@@ -70,7 +70,7 @@ const lifeCocoon: Ability = {
   },
   icon: 'ability_monk_chicocoon',
   notes:
-    'Assumes Calming Coalescence is talented. Assumes {{backup}} absorb if you have no mistweaver selected.',
+    'Assumes Calming Coalescence is talented. Assumes {{backup}} absorb if you have no mistweaver selected. Probably more since it scales with vers.',
 }
 
 const rescue: Ability = {
@@ -82,7 +82,8 @@ const rescue: Ability = {
     versAffected: true,
   },
   icon: 'ability_skyreach_shielded',
-  notes: 'Assumes {{backup}} absorb if you have no evoker selected',
+  notes:
+    'Assumes {{backup}} absorb if you have no Evoker selected. Probably more since it scales with vers.',
 }
 
 const elusiveMists: Ability = {

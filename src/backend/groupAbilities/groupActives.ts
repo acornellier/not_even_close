@@ -18,7 +18,8 @@ const chiCocoon: Ability = {
     versAffected: true,
   },
   icon: 'inv_pet_crane',
-  notes: 'Assumes {{backup}} absorb if you have no mistweaver selected',
+  notes:
+    'Assumes {{backup}} absorb if you have no mistweaver selected. Probably more since it scales with vers.',
 }
 
 const jadeBond: Ability = {
@@ -44,7 +45,8 @@ const massBarrier: Ability = {
     versAffected: true,
   },
   icon: 'ability_racial_magicalresistance',
-  notes: 'Assumes {{backup}} absorb if you have no mage selected',
+  notes:
+    'Assumes {{backup}} absorb if you have no mage selected. Probably more since it scales with vers.',
 }
 
 const arcaneMassBarrier: Ability = {
