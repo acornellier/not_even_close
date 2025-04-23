@@ -17,6 +17,7 @@ import {
 } from './abilityTooltipFormat.ts'
 import { Button } from '../Common/Button.tsx'
 import { SelectableAbilityIcon } from '../Common/SelectableAbilityIcon.tsx'
+import { baseHp } from '../../backend/stats.ts'
 
 const iconSize = 40
 
@@ -144,7 +145,7 @@ export function CharAbilityIcon({
             <span>
               {ability.notes.replace(
                 '{{backup}}',
-                `${ability.absorb?.backup ? formatNumber(ability.absorb?.backup) : ''}`,
+                `${formatNumber((ability.absorb?.healthMultiplier ?? 0) * baseHp)}`,
               )}
             </span>
           )}

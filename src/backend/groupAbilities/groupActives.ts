@@ -16,7 +16,6 @@ const chiCocoon: Ability = {
   absorb: {
     healthMultiplier: 0.12,
     versAffected: true,
-    backup: 800_000,
   },
   icon: 'inv_pet_crane',
   notes: 'Assumes {{backup}} absorb if you have no mistweaver selected',
@@ -43,7 +42,6 @@ const massBarrier: Ability = {
   absorb: {
     healthMultiplier: 0.2,
     versAffected: true,
-    backup: 900_000,
   },
   icon: 'ability_racial_magicalresistance',
   notes: 'Assumes {{backup}} absorb if you have no mage selected',

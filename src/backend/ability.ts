@@ -15,7 +15,6 @@ export type AbsorbOptions = {
   apMultipler?: number
   spMultipler?: number
   versAffected?: boolean
-  backup?: number
 }
 
 export type StackOptions = {

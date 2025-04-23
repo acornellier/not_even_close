@@ -3,6 +3,7 @@ import type { CharacterPartialResult, EnemyAbilityDetails } from './simTypes'
 import { willOfTheNecropolis } from '../classAbilities/deathKnight'
 import type { ClassSpec } from '../classes'
 import { classSpecs, equalSpecs } from '../classes'
+import { baseHp } from '../stats.ts'
 
 export function findAssociatedCharacter<T extends { spec: ClassSpec }>(
   ability: Ability,
@@ -59,8 +60,8 @@ export function getMultiplierAbsorb(
     const associatedCharacter = findAssociatedCharacter(ability, charPartialResults)
     if (associatedCharacter) {
       return calculateAbsorb(absorb, stacks, associatedCharacter)
-    } else if (absorb.backup) {
-      return absorb.backup
+    } else {
+      return (absorb.healthMultiplier ?? 0) * baseHp
     }
   } else if (charResult) {
     return calculateAbsorb(absorb, stacks, charResult)

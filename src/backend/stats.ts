@@ -5,6 +5,7 @@ const versConversionFactor = 780
 const avoidanceConversionFactor = 543.9974
 
 // Changes every patch
+export const baseHp = 10_000_000
 const armorKValueMplus = 128_752
 
 interface StatBracketBasic {
