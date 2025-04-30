@@ -1,4 +1,4 @@
-import { bossSpell } from '../grimoire.ts'
+import { bossSpell, trashSpell } from '../grimoire.ts'
 
 const quickShot = bossSpell(460602)
 
@@ -22,6 +22,8 @@ const sludgeClawsMagic = bossSpell(469480, (spell) => ({
     'This is only the magic damage part of the spell, you will need to check this and its pair separately',
 }))
 
+const discharge = trashSpell(1216611)
+
 const gigazap = bossSpell(468815)
 
 const thunderPunch = bossSpell(466189, {
@@ -39,6 +41,7 @@ export const ofAbilities = [
   wallop,
   sludgeClawsPhys,
   sludgeClawsMagic,
+  discharge,
   gigazap,
   thunderPunch,
 ]
