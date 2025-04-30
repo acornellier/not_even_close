@@ -8,6 +8,10 @@ const gigaWallop = trashSpell(293827, {
   avoidable: true,
 })
 
+const selfTrimmingHedge = bossSpell(294954, {
+  avoidable: true,
+})
+
 const gigazapP1 = bossSpell(291928, (spell) => ({
   name: `${spell.name} (P1)`,
 }))
@@ -21,4 +25,11 @@ const shortOut = trashSpell(297127, (spell) => ({
   periodic: true,
 }))
 
-export const mwAbilities = [blazingChomp, gigaWallop, gigazapP1, gigazapP2, shortOut]
+export const mwAbilities = [
+  blazingChomp,
+  gigaWallop,
+  selfTrimmingHedge,
+  gigazapP1,
+  gigazapP2,
+  shortOut,
+]
