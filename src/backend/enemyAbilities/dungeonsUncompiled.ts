@@ -16,7 +16,7 @@ export const dungeonsUncompiled: Dungeon[] = [
     abilities: cmAbilities,
   },
   {
-    name: 'Darkflame Crest',
+    name: 'Darkflame Cleft',
     key: 'dc',
     icon: 'inv_achievement_dungeon_darkflamecleft',
     abilities: dcAbilities,
