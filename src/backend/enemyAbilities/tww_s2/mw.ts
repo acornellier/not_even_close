@@ -10,6 +10,7 @@ const gigaWallop = trashSpell(293827, {
 
 const selfTrimmingHedge = bossSpell(294954, {
   avoidable: true,
+  ignoresArmor: true,
 })
 
 const gigazapP1 = bossSpell(291928, (spell) => ({
