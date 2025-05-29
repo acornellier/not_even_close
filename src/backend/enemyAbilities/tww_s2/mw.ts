@@ -1,5 +1,9 @@
 import { bossSpell, trashSpell } from '../grimoire.ts'
 
+const detonate = trashSpell(301088, {
+  avoidable: true,
+})
+
 const blazingChomp = bossSpell(294961, {
   notes: 'The explosion from the dispel',
 })
@@ -27,6 +31,7 @@ const shortOut = trashSpell(297127, (spell) => ({
 }))
 
 export const mwAbilities = [
+  detonate,
   blazingChomp,
   gigaWallop,
   selfTrimmingHedge,
