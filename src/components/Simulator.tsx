@@ -7,7 +7,7 @@ import { useLocalStorage } from '../util/useLocalStorage'
 import { CustomDrs } from './Abilities/CustomDrs'
 import { CustomAbsorbs } from './Abilities/CustomAbsorbs'
 import { KeyDetailsInput } from './Inputs/KeyDetailsInput'
-import { EnemyAbilityDetailsInput } from './EnemyAbilities/EnemyAbilityDetailsInput'
+import { CustomAbilityInput } from './EnemyAbilities/CustomAbilityInput.tsx'
 import { MoreLess } from './Abilities/MoreLess'
 import type { EnemyAbility } from '../backend/enemyAbilities/enemies'
 import { Sidebar } from './Sidebar/Sidebar'
@@ -114,9 +114,10 @@ export function Simulator({ defaultEnemyAbility }: Props) {
           </div>
 
           {customDetailsShown && (
-            <EnemyAbilityDetailsInput
+            <CustomAbilityInput
               enemyAbilityDetails={enemyAbilityDetails}
               setEnemyAbilityDetails={setEnemyAbilityDetails}
+              setEnemyAbility={setEnemyAbility}
             />
           )}
 

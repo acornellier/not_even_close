@@ -15,16 +15,17 @@ export function ToastComponent({ toast }: Props) {
     toast.type === 'success'
       ? CheckCircleIcon
       : toast.type === 'info'
-      ? InformationCircleIcon
-      : ExclamationTriangleIcon
+        ? InformationCircleIcon
+        : ExclamationTriangleIcon
 
   const background =
     toast.type === 'error'
-      ? 'bg-red-600'
+      ? '[&]:bg-red-600'
       : toast.type === 'success'
-      ? 'bg-green-600'
-      : 'bg-blue-600'
+        ? '[&]:bg-green-600'
+        : '[&]:bg-blue-600'
 
+  console.log(background)
   return (
     <Label
       className={`flex items-center gap-2 transition-opacity duration-500
