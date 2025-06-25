@@ -1,37 +1,43 @@
 import type { Dungeon } from './enemies'
-import { cmAbilities } from './tww_s2/cm.ts'
-import { dcAbilities } from './tww_s2/dc.ts'
-import { mwAbilities } from './tww_s2/mw.ts'
-import { ofAbilities } from './tww_s2/of.ts'
-import { psfAbilities } from './tww_s2/psf.ts'
-import { mlAbilities } from './tww_s2/ml.ts'
-import { trAbilities } from './tww_s2/tr.ts'
-import { topAbilities } from './tww_s2/top.ts'
+import { ofAbilities } from './tww_s3/of.ts'
+import { psfAbilities } from './tww_s3/psf.ts'
+import { akAbilities } from './tww_s3/ak.ts'
+import { dbAbilities } from './tww_s3/db.ts'
+import { hoaAbilities } from './tww_s3/hoa.ts'
+import { gmbtAbilities } from './tww_s3/gmbt.ts'
+import { strtAbilities } from './tww_s3/strt.ts'
+import { edaAbilities } from './tww_s3/edaAbilities.ts'
 
 export const dungeonsUncompiled: Dungeon[] = [
   {
-    key: 'cm',
-    name: 'Cinderbrew Meadery',
-    icon: 'inv_achievement_dungeon_cinderbrewmeadery',
-    abilities: cmAbilities,
+    key: 'ak',
+    name: 'Ara-Kara',
+    abilities: akAbilities,
+    icon: 'inv_achievement_dungeon_arak-ara',
   },
   {
-    name: 'Darkflame Cleft',
-    key: 'dc',
-    icon: 'inv_achievement_dungeon_darkflamecleft',
-    abilities: dcAbilities,
+    key: 'db',
+    name: 'Dawnbreaker',
+    abilities: dbAbilities,
+    icon: 'inv_achievement_dungeon_dawnbreaker',
   },
   {
-    name: 'The Motherlode',
-    key: 'ml',
-    icon: 'achievement_dungeon_kezan',
-    abilities: mlAbilities,
+    key: 'eda',
+    name: "Eco-Dome Al'dani",
+    abilities: edaAbilities,
+    icon: 'inv_112_achievement_dungeon_ecodome',
   },
   {
-    name: 'Mechagon',
-    key: 'mw',
-    icon: 'achievement_boss_mechagon',
-    abilities: mwAbilities,
+    key: 'gmbt',
+    name: "So'leah's Gambit",
+    abilities: gmbtAbilities,
+    icon: 'achievement_dungeon_brokerdungeon',
+  },
+  {
+    key: 'hoa',
+    name: 'Halls of Atonement',
+    abilities: hoaAbilities,
+    icon: 'achievement_dungeon_hallsofattonement',
   },
   {
     name: 'Operation: Floodgate',
@@ -46,21 +52,15 @@ export const dungeonsUncompiled: Dungeon[] = [
     abilities: psfAbilities,
   },
   {
-    name: 'The Rookery',
-    key: 'tr',
-    icon: 'inv_achievement_dungeon_rookery',
-    abilities: trAbilities,
-  },
-  {
-    name: 'Theater of Pain',
-    key: 'top',
-    icon: 'achievement_dungeon_theatreofpain',
-    abilities: topAbilities,
+    name: 'Streets of Wonder',
+    key: 'strt',
+    abilities: strtAbilities,
+    icon: 'ability_brokerjazzband_trumpet',
   },
 ]
 
 dungeonsUncompiled.push({
-  key: 'all_tww_s2',
+  key: 'all_dungeons',
   name: 'All dungeons',
   abilities: dungeonsUncompiled.flatMap(({ abilities }) => abilities),
   icon: 'achievement_challengemode_arakkoaspires_gold',

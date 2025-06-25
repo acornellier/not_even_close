@@ -12,6 +12,7 @@ import { AbilityIcon } from '../Common/AbilityIcon.tsx'
 import { roundHundred, shortRoundedNumber } from '../../util/utils.ts'
 import { scaleDamage } from '../../backend/sim/sim.ts'
 import { ShieldSlashIcon } from '../Common/Icons/ShieldSlashIcon.tsx'
+import { isPtr } from '../../util/env.ts'
 
 interface Props {
   ability: EnemyAbility
@@ -44,7 +45,7 @@ export function EnemyAbilityCard({
           <a
             key={ability.name}
             className="min-w-[30px]"
-            href={`https://www.wowhead.com/spell=${ability.id}?dd=23&ddsize=5`}
+            href={`https://www.wowhead.com/${isPtr ? 'ptr-2/' : ''}spell=${ability.id}?dd=23&ddsize=5`}
             target="_blank"
             rel="noreferrer"
           >
