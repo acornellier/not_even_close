@@ -6,7 +6,7 @@ import { dbAbilities } from './tww_s3/db.ts'
 import { hoaAbilities } from './tww_s3/hoa.ts'
 import { gmbtAbilities } from './tww_s3/gmbt.ts'
 import { strtAbilities } from './tww_s3/strt.ts'
-import { edaAbilities } from './tww_s3/edaAbilities.ts'
+import { eda } from './tww_s3/eda.ts'
 
 export const dungeonsUncompiled: Dungeon[] = [
   {
@@ -24,7 +24,7 @@ export const dungeonsUncompiled: Dungeon[] = [
   {
     key: 'eda',
     name: "Eco-Dome Al'dani",
-    abilities: edaAbilities,
+    abilities: eda,
     icon: 'inv_112_achievement_dungeon_ecodome',
   },
   {

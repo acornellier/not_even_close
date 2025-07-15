@@ -2,4 +2,4 @@
 
 const volatileEjection = trashSpell(1226165)
 
-export const edaAbilities = [volatileEjection]
+export const eda = [volatileEjection]
