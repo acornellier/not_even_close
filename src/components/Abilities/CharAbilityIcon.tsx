@@ -161,7 +161,6 @@ export function CharAbilityIcon({
               />
             </div>
           )}
-          <UrsineVigorSwapper ability={ability} replaceAbility={replaceAbility} />
         </div>
       </TooltipStyled>
     </>

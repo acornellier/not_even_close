@@ -4,7 +4,6 @@ import { externals } from './groupAbilities/externals.ts'
 import { groupBuffs } from './groupAbilities/groupBuffs.ts'
 import { groupActives } from './groupAbilities/groupActives.ts'
 import { groupBy, mapBy } from '../util/utils.ts'
-import { druidReplacements } from './classAbilities/druid.ts'
 
 export type DamageType = 'magic' | 'physical'
 
@@ -101,7 +100,6 @@ export const allAbilities: Ability[] = [
   ...externals,
   ...groupBuffs,
   ...groupActives,
-  ...druidReplacements,
 ]
 
 export const abilitiesById = mapBy(allAbilities, 'id')
