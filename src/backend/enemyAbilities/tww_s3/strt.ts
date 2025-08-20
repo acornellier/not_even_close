@@ -1,5 +1,7 @@
 ﻿import { bossSpell, trashSpell } from '../grimoire.ts'
 
+const impoundContraband = bossSpell(345770)
+
 const energizedSlam = trashSpell(1240811)
 
 const purificationProtocol = bossSpell(349954)
@@ -14,6 +16,7 @@ const moneyOrder = bossSpell(346967, (spell) => ({
 }))
 
 export const strtAbilities = [
+  impoundContraband,
   energizedSlam,
   purificationProtocol,
   junkMail,
