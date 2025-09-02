@@ -14,6 +14,11 @@ const lungingStrike = trashSpell(424426)
 
 const heatWave = trashSpell(427897)
 
+const fireballTaener = trashSpell(424421, {
+  name: 'Fireball (Taener)',
+  avoidable: true,
+})
+
 const divineJudgment = trashSpell(448515, { tankOnly: true })
 
 const pierceArmor = bossSpell(424414, { tankOnly: true })
@@ -33,6 +38,7 @@ export const psfAbilities = [
   shieldSlam,
   lungingStrike,
   heatWave,
+  fireballTaener,
   divineJudgment,
   pierceArmor,
   sacredToll,

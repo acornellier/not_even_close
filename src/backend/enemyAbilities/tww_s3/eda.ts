@@ -2,4 +2,6 @@
 
 const volatileEjection = trashSpell(1226165)
 
-export const eda = [volatileEjection]
+const unstableCore = trashSpell(1231252)
+
+export const eda = [volatileEjection, unstableCore]
