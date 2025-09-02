@@ -18,6 +18,7 @@ const stoneShatteringLeap = bossSpell(319592)
 const telekineticOnslaught = bossSpell(1237642, (spell) => ({
   name: `${spell.name} x4`,
   damage: spell.damage * 4,
+  ignoresArmor: true,
 }))
 
 export const hoaAbilities = [

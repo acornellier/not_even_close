@@ -10,10 +10,7 @@ const burstingCocoon = getEnemySpell(451104, (spell) => ({
     '1 tick + last hit. The final hit is always preceded immediately by a tick of damage. The dot is ST but the final hit is AoE.',
 }))
 
-const obsidianBeam = getEnemySpell(453310, {
-  tankOnly: true,
-  cooldown: 30,
-})
+const obsidianBeam = getEnemySpell(453310, undefined, { effectIndex: 1 })
 
 const shadowyDecayTrash = getEnemySpell(451101, (spell) => ({
   name: `${spell.name} (trash)`,
