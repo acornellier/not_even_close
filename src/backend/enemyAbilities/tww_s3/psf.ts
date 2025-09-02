@@ -14,8 +14,13 @@ const lungingStrike = trashSpell(424426)
 
 const heatWave = trashSpell(427897)
 
-const fireballTaener = trashSpell(424421, {
-  name: 'Fireball (Taener)',
+const fireballTaenerBoss = bossSpell(424421, {
+  name: 'Fireball (Taener Boss)',
+  avoidable: true,
+})
+
+const fireballTaenerTrash = trashSpell(424421, {
+  name: 'Fireball (Taener Trash)',
   avoidable: true,
 })
 
@@ -25,7 +30,10 @@ const pierceArmor = bossSpell(424414, { tankOnly: true })
 
 const sacredToll = trashSpell(448791)
 
-const fireball = trashSpell(427469, { avoidable: true })
+const fireball = trashSpell(427469, {
+  name: 'Fireball (conjuror)',
+  avoidable: true,
+})
 
 const catigatorsShield = bossSpell(446649)
 
@@ -38,7 +46,8 @@ export const psfAbilities = [
   shieldSlam,
   lungingStrike,
   heatWave,
-  fireballTaener,
+  fireballTaenerBoss,
+  fireballTaenerTrash,
   divineJudgment,
   pierceArmor,
   sacredToll,
