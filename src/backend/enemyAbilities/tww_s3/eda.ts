@@ -1,4 +1,4 @@
-﻿import { trashSpell } from '../grimoire.ts'
+﻿import { bossSpell, trashSpell } from '../grimoire.ts'
 
 const volatileEjection = trashSpell(1226165)
 
@@ -8,4 +8,17 @@ const gloomBite = trashSpell(1222341, {
   tankOnly: true,
 })
 
-export const eda = [volatileEjection, unstableCore, gloomBite]
+const whispersOfFate = bossSpell(1249985)
+
+const dreadOfTheUnknown = bossSpell(1225308)
+
+const splintersOfFate = bossSpell(1224868)
+
+export const eda = [
+  volatileEjection,
+  unstableCore,
+  gloomBite,
+  whispersOfFate,
+  dreadOfTheUnknown,
+  splintersOfFate,
+]
