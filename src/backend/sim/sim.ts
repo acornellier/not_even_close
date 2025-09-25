@@ -151,14 +151,23 @@ function getPartialResults(
   })
 }
 
-function getDamageDealtReduction(abilities: SelectedAbility[]) {
+function getDamageDealtReduction(
+  abilities: SelectedAbility[],
+  enemyAbilityDetails: EnemyAbilityDetails,
+) {
   let damageDealtReduction = 1
 
   for (const { ability, stacks } of abilities) {
-    if (ability.damageDealtReduction) {
-      damageDealtReduction *=
-        1 - getStackedValue(ability.damageDealtReduction, stacks, ability.stacks)
-    }
+    if (!ability.damageDealtReduction) continue
+
+    if (
+      (ability.drType === 'magic' && enemyAbilityDetails.physical) ||
+      (ability.drType === 'physical' && !enemyAbilityDetails.physical)
+    )
+      continue
+
+    damageDealtReduction *=
+      1 - getStackedValue(ability.damageDealtReduction, stacks, ability.stacks)
   }
 
   return 1 - damageDealtReduction
@@ -180,7 +189,7 @@ function getAbilityResult(
     characters: charPartialResults.map<CharacterResult>((charResult) => {
       const { spec, startingHealth, adjustedStats, abilities } = charResult
 
-      const damageDealtReduction = getDamageDealtReduction(abilities)
+      const damageDealtReduction = getDamageDealtReduction(abilities, enemyAbilityDetails)
       const reducedDamage = Math.round(scaledDamage * (1 - damageDealtReduction))
 
       const absorbs = getAbsorbs(

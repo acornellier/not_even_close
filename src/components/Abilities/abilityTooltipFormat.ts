@@ -81,7 +81,7 @@ function getNumberText(
     case 'aoeDr':
       return `${values}% AoE DR`
     case 'damageDealtReduction':
-      return `${values}% less enemy damage`
+      return `${values}% less enemy ${drType ? drType + ' ' : ''}damage`
     case 'healthIncrease':
       return `${values}% HP`
     case 'staminaIncrease':
