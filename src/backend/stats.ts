@@ -79,7 +79,7 @@ function rawToPercent(
     }
   }
 
-  return roundTo(percent, 2)
+  return Math.max(0, roundTo(percent, 2))
 }
 
 export const staminaToHp = (stamina: number) => stamina * healthPerStamina
