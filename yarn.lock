@@ -1940,10 +1940,10 @@ graphemer@^1.4.0:
   resolved "https://registry.yarnpkg.com/graphemer/-/graphemer-1.4.0.tgz#fb2f1d55e0e3a1849aeffc90c4fa0dd53a0e66c6"
   integrity sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==
 
-grimoire-wow@11.2.0-62748:
-  version "11.2.0-62748"
-  resolved "https://registry.yarnpkg.com/grimoire-wow/-/grimoire-wow-11.2.0-62748.tgz#662cedba9f7f69a4452c81a0b8788fca3b99f6f2"
-  integrity sha512-dfRklWA5HCgpiJsFvQb2hhLl7jB08Yk7BCYd+nNeONlQR3paSbbiDWRbNgXXuOBm7l7FkENq7vs+qod++6Qxow==
+grimoire-wow@11.2.7-63853:
+  version "11.2.7-63853"
+  resolved "https://registry.yarnpkg.com/grimoire-wow/-/grimoire-wow-11.2.7-63853.tgz#bac88c384c13963a4c348a0d7db4cb698d93e7d3"
+  integrity sha512-49xdUUf0qx5YgUv3qloxADDUE7oEDBcueOSvP5rRjWD8mp/jSUBUj1j7esyyhRNy7YIH4nsCvHryRrYVsIb+vg==
   dependencies:
     "@types/node" "22.10.10"
     csv-parse "5.5.6"
@@ -3016,6 +3016,7 @@ source-map-js@^1.2.0:
   integrity sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
