@@ -29,36 +29,6 @@
     "periodic": true
   },
   {
-    "id": 438879,
-    "name": "Call of the Brood",
-    "icon": "inv_minespider2_cave",
-    "damage": 1636503,
-    "aoe": true,
-    "physical": true,
-    "schools": [
-      "physical"
-    ],
-    "variance": 0,
-    "trashAbility": true,
-    "cooldown": 30,
-    "periodic": true,
-    "ignoresArmor": true
-  },
-  {
-    "id": 465012,
-    "name": "Slam",
-    "icon": "inv_misc_volatileearth",
-    "damage": 3636671,
-    "aoe": true,
-    "physical": false,
-    "schools": [
-      "nature"
-    ],
-    "variance": 0.050000000745,
-    "trashAbility": true,
-    "cooldown": 25
-  },
-  {
     "id": 451104,
     "name": "Bursting Cocoon",
     "icon": "inv_ability_web_orb",
@@ -78,28 +48,13 @@
     "id": 453310,
     "name": "Obsidian Beam",
     "icon": "inv_elemental_primal_shadow",
-    "damage": 9697789,
-    "aoe": false,
-    "physical": false,
-    "schools": [
-      "shadow"
-    ],
-    "variance": 0.025000000375,
-    "tankOnly": true,
-    "cooldown": 30
-  },
-  {
-    "id": 431305,
-    "name": "Dark Floes",
-    "icon": "inv_10_gearupgrade_aspectsshadowflamefragment",
-    "damage": 4848890,
+    "damage": 2424447,
     "aoe": true,
     "physical": false,
     "schools": [
       "shadow"
     ],
-    "variance": 0,
-    "trashAbility": true
+    "variance": 0.025000000375
   },
   {
     "id": 451101,
@@ -236,6 +191,69 @@
     ],
     "variance": 0,
     "trashAbility": true
+  },
+  {
+    "id": 1231252,
+    "name": "Unstable Core",
+    "icon": "spell_arcane_arcanetorrent",
+    "damage": 2424447,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "arcane"
+    ],
+    "variance": 0,
+    "trashAbility": true
+  },
+  {
+    "id": 1222341,
+    "name": "Gloom Bite",
+    "icon": "ability_rogue_envelopingshadows",
+    "damage": 6788452,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "shadow"
+    ],
+    "variance": 0,
+    "tankOnly": true,
+    "trashAbility": true
+  },
+  {
+    "id": 1249985,
+    "name": "Whispers of Fate",
+    "icon": "spell_fire_twilightflamestrike",
+    "damage": 2424447,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "arcane"
+    ],
+    "variance": 0
+  },
+  {
+    "id": 1225308,
+    "name": "Dread of the Unknown",
+    "icon": "ability_rogue_deadlymomentum",
+    "damage": 2424447,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "arcane"
+    ],
+    "variance": 0
+  },
+  {
+    "id": 1224868,
+    "name": "Splinters of Fate",
+    "icon": "spell_fire_twilightflamestrike",
+    "damage": 2424447,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "arcane"
+    ],
+    "variance": 0
   },
   {
     "id": 355429,
@@ -378,7 +396,8 @@
     "schools": [
       "physical"
     ],
-    "variance": 0
+    "variance": 0,
+    "ignoresArmor": true
   },
   {
     "id": 473351,
@@ -576,6 +595,33 @@
     "trashAbility": true
   },
   {
+    "id": 424421,
+    "name": "Fireball (Taener Boss)",
+    "icon": "spell_fire_flamebolt",
+    "damage": 4364005,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "fire"
+    ],
+    "variance": 0,
+    "avoidable": true
+  },
+  {
+    "id": 424421,
+    "name": "Fireball (Taener Trash)",
+    "icon": "spell_fire_flamebolt",
+    "damage": 4364005,
+    "aoe": false,
+    "physical": false,
+    "schools": [
+      "fire"
+    ],
+    "variance": 0,
+    "avoidable": true,
+    "trashAbility": true
+  },
+  {
     "id": 448515,
     "name": "Divine Judgment",
     "icon": "spell_holy_righteousfury",
@@ -617,7 +663,7 @@
   },
   {
     "id": 427469,
-    "name": "Fireball",
+    "name": "Fireball (conjuror)",
     "icon": "spell_fire_flamebolt",
     "damage": 2909337,
     "aoe": false,
@@ -679,18 +725,6 @@
     ],
     "variance": 0,
     "trashAbility": true
-  },
-  {
-    "id": 349954,
-    "name": "Purification Protocol",
-    "icon": "spell_animabastion_groundstate",
-    "damage": 0,
-    "aoe": false,
-    "physical": false,
-    "schools": [
-      "holy"
-    ],
-    "variance": 0
   },
   {
     "id": 347903,
