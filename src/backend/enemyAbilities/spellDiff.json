@@ -685,7 +685,8 @@
     "schools": [
       "holy"
     ],
-    "variance": 0.07480315119
+    "variance": 0.07480315119,
+    "notes": "Damage is actually 10-15% lower than this, data is bugged."
   },
   {
     "id": 427357,
@@ -725,6 +726,18 @@
     ],
     "variance": 0,
     "trashAbility": true
+  },
+  {
+    "id": 350468,
+    "name": "Purification Protocol",
+    "icon": "spell_animabastion_groundstate",
+    "damage": 4364005,
+    "aoe": true,
+    "physical": false,
+    "schools": [
+      "holy"
+    ],
+    "variance": 0
   },
   {
     "id": 347903,

@@ -35,7 +35,9 @@ const fireball = trashSpell(427469, {
   avoidable: true,
 })
 
-const catigatorsShield = bossSpell(446649)
+const castigatorsShield = bossSpell(446649, {
+  notes: 'Damage is actually 10-15% lower than this, data is bugged.',
+})
 
 const holySmite = trashSpell(427357, { avoidable: true })
 
@@ -52,6 +54,6 @@ export const psfAbilities = [
   pierceArmor,
   sacredToll,
   fireball,
-  catigatorsShield,
+  castigatorsShield,
   holySmite,
 ]

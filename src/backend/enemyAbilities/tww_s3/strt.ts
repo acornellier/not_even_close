@@ -4,7 +4,9 @@ const impoundContraband = bossSpell(345770)
 
 const energizedSlam = trashSpell(1240811)
 
-// const purificationProtocol = bossSpell(349954)
+const purificationProtocol = bossSpell(350468, {
+  name: 'Purification Protocol',
+})
 
 const junkMail = trashSpell(347903)
 
@@ -18,7 +20,7 @@ const moneyOrder = bossSpell(346967, (spell) => ({
 export const strtAbilities = [
   impoundContraband,
   energizedSlam,
-  // purificationProtocol,
+  purificationProtocol,
   junkMail,
   mailShoot,
   moneyOrder,
