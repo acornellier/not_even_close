@@ -14,10 +14,15 @@ const dreadOfTheUnknown = bossSpell(1225308)
 
 const splintersOfFate = bossSpell(1224868)
 
+const echoesOfFate = bossSpell(1242006, {
+  periodic: true,
+})
+
 export const eda = [
   volatileEjection,
   unstableCore,
   gloomBite,
+  echoesOfFate,
   whispersOfFate,
   dreadOfTheUnknown,
   splintersOfFate,
