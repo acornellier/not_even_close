@@ -9,6 +9,7 @@ const curseOfObliteration = trashSpell(325879)
 const thrash = trashSpell(326426, (spell) => ({
   damage: spell.damage * 9,
   periodic: true,
+  ignoresArmor: true,
 }))
 
 const disruptingScreech = trashSpell(1235326)
