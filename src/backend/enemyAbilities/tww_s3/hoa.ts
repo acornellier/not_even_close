@@ -12,7 +12,9 @@ const thrash = trashSpell(326426, (spell) => ({
   ignoresArmor: true,
 }))
 
-const disruptingScreech = trashSpell(1235326)
+const disruptingScreech = trashSpell(1235326, {
+  ignoresArmor: true,
+})
 
 const stoneShatteringLeap = bossSpell(319592)
 
