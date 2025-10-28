@@ -1,6 +1,6 @@
 ﻿import { bossSpell, trashSpell } from '../grimoire.ts'
 
-const wickedBolt = trashSpell(326829, {
+const wickedBolt = trashSpell(338003, {
   avoidable: true,
 })
 
