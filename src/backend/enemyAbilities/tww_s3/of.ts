@@ -2,6 +2,10 @@ import { bossSpell, trashSpell } from '../grimoire.ts'
 
 const quickShot = bossSpell(460602)
 
+const kineticExplosiveGel = bossSpell(473719, {
+  notes: "Damage taken on dispel"
+})
+
 const deflagration = bossSpell(460814)
 
 const wallop = bossSpell(459799, {
@@ -37,6 +41,7 @@ const electroCrush = bossSpell(473351, {
 export const ofAbilities = [
   electroCrush,
   quickShot,
+  kineticExplosiveGel,
   deflagration,
   wallop,
   sludgeClawsPhys,
