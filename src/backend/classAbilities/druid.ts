@@ -225,6 +225,14 @@ const lycarasTeachings: Ability = {
   },
 }
 
+const lycarasInpiration: Ability = {
+  name: "Lycara's Inspiration",
+  id: 1232897,
+  icon: 'inv_trinket_ardenweald_02_yellow',
+  passive: true,
+  staminaIncrease: 0.04,
+}
+
 export const druidBalanceAbilities = [
   mattedFur,
   oakskin,
@@ -245,6 +253,7 @@ export const druidFeralAbilities = [
   thickHide,
   protectiveGrowth,
   fountOfStrength,
+  lycarasInpiration,
   heartOfTheWild,
   ursineVigor,
   bearForm,
@@ -258,6 +267,7 @@ export const druidRestoAbilities = [
   ursocsSpirit,
   thickHide,
   protectiveGrowth,
+  lycarasInpiration,
   heartOfTheWild,
   ursineVigor,
   bearForm,
