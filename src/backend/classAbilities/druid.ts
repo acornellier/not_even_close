@@ -1,4 +1,5 @@
 import type { Ability } from '../ability'
+import { markOfTheWild } from '../groupAbilities/groupBuffs.ts'
 
 const thickHide: Ability = {
   name: 'Thick Hide',
@@ -26,16 +27,10 @@ export const ursineVigor: Ability = {
 }
 
 const heartOfTheWild: Ability = {
-  name: 'Heart of the Wild',
+  name: 'Heart of the Wild (Bear Form)',
   id: 319454,
   icon: 'spell_holy_blessingofagility',
-  abilityAugmentations: [
-    {
-      otherAbilityId: bearForm.id,
-      field: 'staminaIncrease',
-      value: 0.2,
-    },
-  ],
+  healthIncrease: 0.3,
 }
 
 export const barkskin: Ability = {
@@ -48,6 +43,20 @@ export const barkskin: Ability = {
   icon: 'spell_nature_stoneclawtotem',
   notes:
     'The Matted Fur absorb is exact for Balance and Resto, but slightly off for Feral due to weapon dps missing.',
+}
+
+const wardOfTheForest: Ability = {
+  name: 'Ward of the Forest',
+  id: 385785,
+  passive: true,
+  icon: 'achievement_zone_grizzlyhills_01',
+  abilityAugmentations: [
+    {
+      otherAbilityId: barkskin.id,
+      field: 'healthIncrease',
+      value: 0.2,
+    },
+  ],
 }
 
 const survivalInsticts: Ability = {
@@ -67,13 +76,13 @@ const mattedFur: Ability = {
       otherAbilityId: barkskin.id,
       field: 'absorb',
       absorbField: 'apMultipler',
-      value: 3.125,
+      value: 7.5,
     },
     {
       otherAbilityId: survivalInsticts.id,
       field: 'absorb',
       absorbField: 'apMultipler',
-      value: 3.125,
+      value: 7.5,
     },
   ],
   icon: 'inv_misc_pelt_15',
@@ -233,7 +242,17 @@ const lycarasInpiration: Ability = {
   staminaIncrease: 0.04,
 }
 
+const giftOfTheWild: Ability = {
+  name: 'Gift of the Wild',
+  id: 1262034,
+  icon: 'spell_nature_giftofthewild',
+  versIncrease: markOfTheWild.versIncrease,
+  passive: true,
+  onByDefault: true,
+}
+
 export const druidBalanceAbilities = [
+  giftOfTheWild,
   mattedFur,
   oakskin,
   ursocsSpirit,
@@ -247,6 +266,7 @@ export const druidBalanceAbilities = [
 ]
 
 export const druidFeralAbilities = [
+  giftOfTheWild,
   mattedFur,
   oakskin,
   ursocsSpirit,
@@ -262,6 +282,7 @@ export const druidFeralAbilities = [
 ]
 
 export const druidRestoAbilities = [
+  giftOfTheWild,
   mattedFur,
   oakskin,
   ursocsSpirit,
@@ -276,6 +297,7 @@ export const druidRestoAbilities = [
 ]
 
 export const druidGuardianAbilities = [
+  giftOfTheWild,
   reinforcedFur,
   naturesGuardian,
   thickHide,
@@ -289,4 +311,5 @@ export const druidGuardianAbilities = [
   survivalInsticts,
   rageOfTheSleeper,
   barkskin,
+  wardOfTheForest,
 ]
