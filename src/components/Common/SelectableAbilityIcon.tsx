@@ -21,7 +21,7 @@ export function SelectableAbilityIcon({
   return (
     <div
       onClick={onClick}
-      className={disabled ? '' : 'cursor-pointer'}
+      className={disabled ? '' : 'cursor-pointer select-none'}
       data-tooltip-id={tooltipId}
     >
       {selected && (

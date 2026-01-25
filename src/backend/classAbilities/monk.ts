@@ -16,41 +16,25 @@ const calmingPresenceWindwalker: Ability = {
   dr: 0.03,
 }
 
-const ancientTeachings: Ability = {
-  name: 'Ancient Teachings',
-  id: 388023,
-  staminaIncrease: 0.05,
+const jadefireTeachings: Ability = {
+  name: 'Jadefire Teachings',
+  id: 467293,
+  staminaIncrease: 0.08,
   icon: 'inv_misc_book_07',
+  passive: true,
+  onByDefault: true,
 }
 
 const secretInfusion: Ability = {
   name: 'Secret Infusion',
   id: 388491,
-  passive: true,
   onByDefault: true,
   icon: 'ability_monk_chibrew',
-  abilityAugmentations: [
-    {
-      otherAbilityId: 322101,
-      field: 'versIncrease',
-      value: 0.08,
-    },
-  ],
+  versIncrease: 0.04,
   stacks: {
     type: 'talent',
     max: 2,
-    values: [0.08, 0.15],
   },
-}
-
-const expelHarm: Ability = {
-  name: 'TFT + Expel Harm',
-  id: 322101,
-  absorb: {
-    healthMultiplier: 0.12,
-    versAffected: true,
-  },
-  icon: 'ability_monk_expelharm',
 }
 
 const yulonsGraceMistweaver: Ability = {
@@ -81,14 +65,6 @@ export const dampenHarm: Ability = {
   id: 122278,
   icon: 'ability_monk_dampenharm',
   notes: '20-50% DR based on damage taken',
-}
-
-const diffuseMagic: Ability = {
-  name: 'Diffuse Magic',
-  id: 122783,
-  dr: 0.6,
-  drType: 'magic',
-  icon: 'spell_monk_diffusemagic',
 }
 
 const fortBrew: Ability = {
@@ -170,12 +146,10 @@ export const monkMistweaverAbilities = [
   calmingPresenceMistweaver,
   martialInstincts,
   secretInfusion,
-  ancientTeachings,
-  expelHarm,
+  jadefireTeachings,
   yulonsGraceMistweaver,
   jadeSanctuary,
   fortBrew,
-  diffuseMagic,
 ]
 
 export const monkWindwalkerAbilities = [
@@ -186,6 +160,5 @@ export const monkWindwalkerAbilities = [
   yulonsGraceWindwalker,
   jadeSanctuary,
   fortBrew,
-  diffuseMagic,
   touchOfKarma,
 ]
