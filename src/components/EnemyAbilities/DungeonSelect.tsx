@@ -14,7 +14,7 @@ export function DungeonSelect({ dungeons, setSelectedDungeon }: Props) {
         <Button
           key={key}
           bigText
-          className="flex gap-2 py-2 px-2"
+          className="flex gap-2 py-2 px-[10px]"
           onClick={() => setSelectedDungeon(key)}
         >
           <AbilityIcon icon={icon} size={36} />
