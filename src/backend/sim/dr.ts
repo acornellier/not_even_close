@@ -3,7 +3,6 @@ import type { SelectedAbility } from '../ability'
 import { dampenHarm } from '../classAbilities/monk'
 import { armorToPhysicalDr } from '../stats'
 import { getStackedValue } from '../../util/utils.ts'
-import { divineBulwark } from '../classAbilities/paladin.ts'
 import { setFireToThePain } from '../classAbilities/demonHunter.ts'
 
 export function getDamageReduction(
@@ -35,8 +34,6 @@ export function getDamageReduction(
       } else {
         dr = getStackedValue(ability.dr ?? 0, stacks, ability.stacks)
       }
-    } else if (ability.id === divineBulwark.id) {
-      dr = 0.05 + characterStats.masteryPercent * 0.0028
     }
 
     let aoeDr = (ability.aoeDr ?? 0) * (stacks ?? 1)

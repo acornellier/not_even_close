@@ -71,7 +71,7 @@ function getAdjustedStats(
     }
 
     if (ability.id === shieldOfTheRighteous.id) {
-      adjustedStats.armor += 1.6 * adjustedStats.mainStat
+      adjustedStats.armor += 2.24 * adjustedStats.mainStat
     }
   }
 
