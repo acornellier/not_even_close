@@ -50,24 +50,6 @@ const lichborne: Ability = {
   icon: 'spell_shadow_raisedead',
 }
 
-const runeTap: Ability = {
-  name: 'Rune Tap',
-  id: 194679,
-  dr: 0.2,
-  icon: 'spell_deathknight_runetap',
-}
-
-const tombstone: Ability = {
-  name: 'Tombstone',
-  id: 219809,
-  absorb: {
-    healthMultiplier: 0.3,
-    versAffected: true,
-  },
-  icon: 'ability_fiegndead',
-  notes: 'Assumes you consumed 5 stacks of Bone Shield',
-}
-
 const foulBulwark: Ability = {
   name: 'Foul Bulwark',
   id: 206974,
@@ -97,13 +79,7 @@ const gloomWard: Ability = {
       otherAbilityId: antiMagicShell.id,
       field: 'absorb',
       absorbField: 'healthMultiplier',
-      value: 0.15,
-    },
-    {
-      otherAbilityId: tombstone.id,
-      field: 'absorb',
-      absorbField: 'healthMultiplier',
-      value: 0.15,
+      value: 0.3,
     },
   ],
 }
@@ -197,6 +173,4 @@ export const deathKnightBloodAbilities = [
   antiMagicShell,
   iceboundFortitude,
   vampiricBlood,
-  tombstone,
-  runeTap,
 ]
