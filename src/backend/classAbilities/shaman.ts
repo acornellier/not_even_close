@@ -12,11 +12,15 @@ const elementalWarding: Ability = {
 
 const brimmingWithLife: Ability = {
   name: 'Brimming With Life',
-  healthIncrease: 0.1,
+  healthIncrease: 0.05,
   onByDefault: true,
   id: 381689,
   passive: true,
   icon: 'inv_jewelry_talisman_06',
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
 }
 
 const astralShift: Ability = {
@@ -41,13 +45,6 @@ const astralBulwark: Ability = {
   ],
 }
 
-const earthElemental: Ability = {
-  name: 'Earth Elemental',
-  healthIncrease: 0.15,
-  id: 198103,
-  icon: 'spell_nature_earthelemental_totem',
-}
-
 const spiritWolf: Ability = {
   name: 'Spirit Wolf',
   dr: 0.05,
@@ -59,22 +56,8 @@ const spiritWolf: Ability = {
 const primordialBond: Ability = {
   name: 'Primordial Bond',
   id: 381764_1,
-  dr: 0.05,
+  healthIncrease: 0.15,
   icon: 'inv_elemental_primal_earth',
-}
-
-const primordialBondPassive: Ability = {
-  name: 'Primordial Bond',
-  id: 381764,
-  passive: true,
-  icon: 'inv_elemental_primal_earth',
-  abilityAugmentations: [
-    {
-      otherAbilityId: earthElemental.id,
-      field: 'dr',
-      value: 0.05,
-    },
-  ],
 }
 
 const naturesProtection: Ability = {
@@ -85,13 +68,12 @@ const naturesProtection: Ability = {
   damageDealtReduction: 0.03,
 }
 
-const seasonedWinds: Ability = {
-  name: 'Seasoned Winds',
+const windveil: Ability = {
+  name: 'Windviel',
   id: 355630,
-  icon: 'spell_nature_cyclone',
+  icon: 'inv_elemental_primal_air',
   dr: 0.15,
   drType: 'magic',
-  stacks: { type: 'stacks', max: 2, default: 1 },
 }
 
 const windBarrier: Ability = {
@@ -104,52 +86,36 @@ const windBarrier: Ability = {
   },
 }
 
-const stoneBulwark: Ability = {
-  name: 'Stone Bulwark Totem',
-  id: 108270,
-  icon: 'ability_shaman_stonebulwark',
-  absorb: {
-    spMultipler: 36,
-    versAffected: true,
-  },
-}
-
 export const shamanEnhAbilities = [
   elementalWarding,
   brimmingWithLife,
   astralBulwark,
-  seasonedWinds,
+  windveil,
   naturesProtection,
   windBarrier,
-  earthElemental,
-  primordialBondPassive,
+  primordialBond,
   spiritWolf,
-  stoneBulwark,
   astralShift,
 ]
 
 export const shamanEleAbilities = [
   elementalWarding,
   brimmingWithLife,
-  seasonedWinds,
+  windveil,
   naturesProtection,
   astralBulwark,
-  earthElemental,
   primordialBond,
   spiritWolf,
-  stoneBulwark,
   astralShift,
 ]
 
 export const shamanRestoAbilities = [
   elementalWarding,
   brimmingWithLife,
-  seasonedWinds,
+  windveil,
   windBarrier,
   astralBulwark,
-  earthElemental,
-  primordialBondPassive,
+  primordialBond,
   spiritWolf,
-  stoneBulwark,
   astralShift,
 ]
