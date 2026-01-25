@@ -38,7 +38,7 @@ const jadeBond: Ability = {
 const rallyingCry: Ability = {
   name: 'Rallying Cry',
   id: 97462,
-  healthIncrease: 0.1,
+  healthIncrease: 0.15,
   associatedClass: 'Warrior',
   icon: 'ability_warrior_rallyingcry',
 }

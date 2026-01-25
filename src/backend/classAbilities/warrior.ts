@@ -90,8 +90,14 @@ const shieldWall: Ability = {
 const lastStand: Ability = {
   name: 'Shield Wall',
   id: 12975,
-  healthIncrease: 0.3,
   icon: 'spell_holy_ashestoashes',
+  abilityAugmentations: [
+    {
+      otherAbilityId: shieldWall.id,
+      field: 'healthIncrease',
+      value: 0.3,
+    },
+  ],
 }
 
 const demoralizingShout: Ability = {
