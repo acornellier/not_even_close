@@ -97,16 +97,11 @@ const lightsInspiration: Ability = {
   icon: 'spell_holy_restoration',
   abilityAugmentations: [
     {
-      otherAbilityId: 19236, // Desperate Prayer
+      otherAbilityId: desperatePrayer.id,
       field: 'healthIncrease',
-      value: 0.15,
+      value: 0.1,
     },
   ],
-  stacks: {
-    type: 'talent',
-    max: 2,
-    values: [0.08, 0.15],
-  },
 }
 
 const mentalFortitude: Ability = {
