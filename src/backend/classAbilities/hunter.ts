@@ -65,11 +65,33 @@ const aspectOfTheTurtle: Ability = {
   notes: 'Only the DR portion, does not calculate immunities',
 }
 
+const shellWall: Ability = {
+  name: 'Shell Wall',
+  id: 1267218,
+  icon: 'inv_cape_special_turtleshell_c_01',
+  abilityAugmentations: [
+    {
+      otherAbilityId: aspectOfTheTurtle.id,
+      field: 'dr',
+      value: 0.2,
+    },
+  ],
+}
+
 const fortitudeOfTheBear: Ability = {
   name: 'Fortitude of the Bear',
-  healthIncrease: 0.2,
+  dr: 0.03,
   id: 388035,
   icon: 'spell_druid_bearhug',
+  passive: true,
+}
+
+const guardiansHide: Ability = {
+  name: "Guardian's Hide",
+  dr: 0.03,
+  id: 1272094,
+  icon: 'spell_druid_bristlingfur',
+  passive: true,
 }
 
 const dontLookBack: Ability = {
@@ -92,33 +114,54 @@ const spiritBond: Ability = {
   onByDefault: true,
 }
 
+const shellCover: Ability = {
+  name: 'Shell Cover',
+  id: 472707,
+  icon: 'inv_babyturtle2',
+  passive: true,
+  abilityAugmentations: [
+    {
+      otherAbilityId: survivalOfTheFittest.id,
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
+}
+
 export const hunterBmAbilities = [
+  shellCover,
+  shellWall,
   aspectOfTheBeast,
   rejuvenatingWind,
   huntersAvoidance,
   enduranceTraining,
-  aspectOfTheTurtle,
+  guardiansHide,
   fortitudeOfTheBear,
+  aspectOfTheTurtle,
   survivalOfTheFittest,
 ]
 
 export const hunterMmAbilities = [
+  shellWall,
   rejuvenatingWind,
   huntersAvoidance,
   enduranceTrainingMm,
+  guardiansHide,
   dontLookBack,
   aspectOfTheTurtle,
-  fortitudeOfTheBear,
   survivalOfTheFittest,
 ]
 
 export const hunterSurvAbilities = [
+  shellCover,
+  shellWall,
   spiritBond,
   rejuvenatingWind,
   huntersAvoidance,
   enduranceTraining,
+  guardiansHide,
+  fortitudeOfTheBear,
   dontLookBack,
   aspectOfTheTurtle,
-  fortitudeOfTheBear,
   survivalOfTheFittest,
 ]

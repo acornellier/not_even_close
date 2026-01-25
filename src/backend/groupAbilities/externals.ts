@@ -73,19 +73,6 @@ const lifeCocoon: Ability = {
     'Assumes Calming Coalescence is talented. Assumes {{backup}} absorb if you have no mistweaver selected. Probably more since it scales with vers.',
 }
 
-const rescue: Ability = {
-  name: 'Rescue',
-  id: 370888,
-  associatedClass: 'Evoker',
-  absorb: {
-    healthMultiplier: 0.3,
-    versAffected: true,
-  },
-  icon: 'ability_skyreach_shielded',
-  notes:
-    'Assumes {{backup}} absorb if you have no Evoker selected. Probably more since it scales with vers.',
-}
-
 const elusiveMists: Ability = {
   name: 'Elusive Mists',
   id: 388681,
@@ -108,16 +95,23 @@ const timeDilation: Ability = {
   dr: 0.5,
 }
 
+const roarOfSacrifice: Ability = {
+  name: 'Roar of Sacrifice',
+  id: 53480,
+  icon: 'ability_hunter_fervor',
+  dr: 0.15,
+}
+
 export const externals: Ability[] = [
   temperedVersatility,
   elusiveMists,
   lifeCocoon,
   earthenHarmony,
+  roarOfSacrifice,
   ironBark,
   blessingOfSacrifice,
   echoingBlessings,
   painSuppression,
   foreseenCircumstances,
   timeDilation,
-  rescue,
 ]
