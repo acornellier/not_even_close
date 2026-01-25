@@ -6,7 +6,6 @@ import type {
 import { abilityEffectFields } from '../../backend/ability'
 import { augmentAbilities, getSelectedAbility } from '../../util/utils.ts'
 import { CharAbilityIcon } from './CharAbilityIcon'
-import { dampenHarm } from '../../backend/classAbilities/monk.ts'
 import { willOfTheNecropolis } from '../../backend/classAbilities/deathKnight.ts'
 import { useAbilitySetters } from './useAbilitySetters.ts'
 
@@ -19,7 +18,7 @@ interface Props {
 }
 
 function isAugmenter(ability: Ability) {
-  if ([dampenHarm.id, willOfTheNecropolis.id].includes(ability.id)) return false
+  if ([willOfTheNecropolis.id].includes(ability.id)) return false
 
   return (
     ability.abilityAugmentations && !abilityEffectFields.some((field) => ability[field])

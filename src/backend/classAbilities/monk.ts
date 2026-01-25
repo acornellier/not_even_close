@@ -60,13 +60,6 @@ const yulonsGraceWindwalker: Ability = {
   },
 }
 
-export const dampenHarm: Ability = {
-  name: 'Dampen Harm',
-  id: 122278,
-  icon: 'ability_monk_dampenharm',
-  notes: '20-50% DR based on damage taken',
-}
-
 const fortBrew: Ability = {
   name: 'Fortifying Brew',
   id: 388917,

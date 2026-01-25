@@ -1,6 +1,5 @@
 import type { CharacterStats, EnemyAbilityDetails } from './simTypes'
 import type { SelectedAbility } from '../ability'
-import { dampenHarm } from '../classAbilities/monk'
 import { armorToPhysicalDr } from '../stats'
 import { getStackedValue } from '../../util/utils.ts'
 import { setFireToThePain } from '../classAbilities/demonHunter.ts'
@@ -10,8 +9,6 @@ export function getDamageReduction(
   selectedAbilities: SelectedAbility[],
   customDrs: number[],
   enemyAbilityDetails: EnemyAbilityDetails,
-  startingHealth: number,
-  damageTaken: number,
 ) {
   let inverseDr = 1 - characterStats.versatility / 2
 
@@ -47,9 +44,6 @@ export function getDamageReduction(
       inverseDr *= 1 - dr
     } else if (aoeDr && enemyAbilityDetails.aoe) {
       inverseDr *= 1 - aoeDr
-    } else if (ability.id === dampenHarm.id) {
-      const dampenDr = 0.2 + (damageTaken / startingHealth) * 0.3
-      inverseDr *= 1 - Math.min(dampenDr, 0.5)
     } else if (ability.id === setFireToThePain.id) {
       if (enemyAbilityDetails.schools.includes('fire')) {
         inverseDr *= 1 - 0.1

@@ -204,8 +204,6 @@ function getAbilityResult(
         abilities,
         customDrs,
         enemyAbilityDetails,
-        startingHealth,
-        reducedDamage,
       )
 
       const healthWithAbsorbs = startingHealth + absorbs
