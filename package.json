@@ -8,7 +8,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .ts,.tsx src",
-    "diff": "tsx ./scripts/differ.ts"
+    "diff": "tsx ./scripts/differ.ts",
+    "guess": "tsx ./scripts/guessAbilities.ts",
+    "write": "tsx ./scripts/writeAbilities.ts"
   },
   "engines": {
     "node": ">=20"
@@ -31,6 +33,7 @@
     "@typescript-eslint/parser": "7.6.0",
     "@vitejs/plugin-react-swc": "3.6.0",
     "autoprefixer": "10.4.19",
+    "dotenv-flow": "4.1.0",
     "eslint": "8.57.0",
     "eslint-plugin-react": "7.34.1",
     "eslint-plugin-react-hooks": "4.6.0",

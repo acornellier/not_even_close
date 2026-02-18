@@ -1,3 +1,14 @@
-import type { EnemyAbility } from '../enemies'
+import { bossSpell, trashSpell } from '../grimoire.ts'
 
-export const seatAbilities: EnemyAbility[] = []
+const decimate = bossSpell(244579, {
+  avoidable: true,
+})
+
+const backlash = bossSpell(1266001, {
+  avoidable: true,
+})
+
+export const seatAbilities = [
+  decimate,
+  backlash,
+]

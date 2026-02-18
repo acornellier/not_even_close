@@ -1,3 +1,9 @@
-import type { EnemyAbility } from '../enemies'
+import { bossSpell, trashSpell } from '../grimoire.ts'
 
-export const pitAbilities: EnemyAbility[] = []
+const orebreaker = bossSpell(1261546, {
+  tankOnly: true,
+})
+
+export const pitAbilities = [
+  orebreaker,
+]

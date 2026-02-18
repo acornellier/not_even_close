@@ -1,3 +1,14 @@
-import type { EnemyAbility } from '../enemies'
+import { bossSpell, trashSpell } from '../grimoire.ts'
 
-export const xenasAbilities: EnemyAbility[] = []
+const erraticZap = trashSpell(1257105, {
+  avoidable: true,
+})
+
+const leylineArray = bossSpell(1251626, {
+  avoidable: true,
+})
+
+export const xenasAbilities = [
+  erraticZap,
+  leylineArray,
+]
