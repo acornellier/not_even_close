@@ -94,6 +94,12 @@ const nullMagic: Ability = {
   drType: 'magic',
 }
 
+const nullMagicBlood: Ability = {
+  ...nullMagic,
+  id: nullMagic.id + 1,
+  dr: 0.08,
+}
+
 const runeCarvedPlates: Ability = {
   name: 'Rune Carved Plates',
   id: 440282,
@@ -163,7 +169,7 @@ export const deathKnightUnholyAbilities = [
 export const deathKnightBloodAbilities = [
   antiMagicBarrier,
   gloomWard,
-  nullMagic,
+  nullMagicBlood,
   willOfTheNecropolis,
   bloodSoakedGround,
   runeCarvedPlates,
