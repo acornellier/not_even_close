@@ -1,12 +1,18 @@
 import { roundTo } from '../util/utils.ts'
 
+/* Changes every expansion */
+// https://github.com/simulationcraft/simc/blob/midnight/engine/dbc/generated/sc_scale_data.inc
 const healthPerStamina = 20
-const versConversionFactor = 780
-const avoidanceConversionFactor = 543.9974
+const versConversionFactor = 54
+const avoidanceConversionFactor = 36.80052531
+/****/
 
-// Changes every patch
+/* Changes every patch */
+// Just an estimate for % HP group abilities
 export const baseHp = 10_000_000
-const armorKValueMplus = 128_752
+// Calculate this in game by hovering over Armor in Character pane
+const armorKValueMplus = 1_000 // TODO
+/****/
 
 interface StatBracketBasic {
   size: number

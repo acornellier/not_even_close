@@ -1,5 +1,4 @@
 ﻿import type { Ability } from '../ability'
-import { prismaticBarrier } from '../classAbilities/mage.ts'
 
 const zephyr: Ability = {
   name: 'Zephyr',
@@ -36,36 +35,10 @@ const jadeBond: Ability = {
   ],
 }
 
-const massBarrier: Ability = {
-  name: 'Mass Barrier',
-  id: 414660,
-  associatedClass: 'Mage',
-  absorb: {
-    healthMultiplier: 0.2,
-    versAffected: true,
-  },
-  icon: 'ability_racial_magicalresistance',
-  notes:
-    'Assumes {{backup}} absorb if you have no mage selected. Probably more since it scales with vers.',
-}
-
-const arcaneMassBarrier: Ability = {
-  id: massBarrier.id + 1,
-  name: 'Prismatic Barrier',
-  icon: prismaticBarrier.icon,
-  abilityAugmentations: [
-    {
-      otherAbilityId: massBarrier.id,
-      field: 'dr',
-      value: 0.25,
-    },
-  ],
-}
-
 const rallyingCry: Ability = {
   name: 'Rallying Cry',
   id: 97462,
-  healthIncrease: 0.1,
+  healthIncrease: 0.15,
   associatedClass: 'Warrior',
   icon: 'ability_warrior_rallyingcry',
 }
@@ -132,27 +105,16 @@ const spoutingSpirits: Ability = {
   ],
 }
 
-const elementalResistance: Ability = {
-  name: 'Elemental Resistance',
-  id: 462369,
-  icon: 'spell_fireresistancetotem_01',
-  dr: 0.06,
-  drType: 'magic',
-}
-
 export const groupActives: Ability[] = [
   zephyr,
   chiCocoon,
   jadeBond,
-  massBarrier,
-  // arcaneMassBarrier,
   rallyingCry,
   lightsProtection,
   auraMastery,
   spoutingSpirits,
   powerWordBarrier,
   antiMagicZone,
-  // elementalResistance,
   downpour,
   spiritLinkTotem,
 ]

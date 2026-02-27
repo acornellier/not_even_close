@@ -54,9 +54,23 @@ const soulLeech: Ability = {
   name: 'Soul Leech',
   id: 108370,
   absorb: {
-    healthMultiplier: 0.1,
+    healthMultiplier: 0.15,
   },
   icon: 'warlock_siphonlife',
+}
+
+const fortifiedSoul: Ability = {
+  name: 'Fortified Soul',
+  id: 1271694,
+  icon: 'spell_warlock_demonsoul',
+  abilityAugmentations: [
+    {
+      otherAbilityId: soulLeech.id,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.05,
+    },
+  ],
 }
 
 const shadowBulwark: Ability = {
@@ -143,6 +157,7 @@ export const warlockAffAbilities = [
   shadowBulwark,
   abyssWalker,
   soulLeech,
+  fortifiedSoul,
   soulburn,
   darkPact,
   unendingResolve,
@@ -159,6 +174,7 @@ export const warlockDestroAbilities = [
   abyssWalker,
   soulburn,
   soulLeech,
+  fortifiedSoul,
   darkPact,
   unendingResolve,
 ]
@@ -171,6 +187,7 @@ export const warlockDemoAbilities = [
   abyssWalker,
   soulburn,
   soulLeech,
+  fortifiedSoul,
   darkPact,
   unendingResolve,
   strengthOfWill,

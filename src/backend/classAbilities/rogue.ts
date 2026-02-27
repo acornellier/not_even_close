@@ -91,7 +91,7 @@ const baitAndSwitch: Ability = {
     {
       otherAbilityId: evasion.id,
       field: 'dr',
-      value: 0.2,
+      value: 0.15,
     },
     {
       otherAbilityId: cloakOfShadows.id,

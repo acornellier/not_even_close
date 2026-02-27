@@ -4,6 +4,7 @@ import { willOfTheNecropolis } from '../classAbilities/deathKnight'
 import type { ClassSpec } from '../classes'
 import { classSpecs, equalSpecs } from '../classes'
 import { baseHp } from '../stats.ts'
+import { desperateInstincts } from '../classAbilities/demonHunter.ts'
 
 export function findAssociatedCharacter<T extends { spec: ClassSpec }>(
   ability: Ability,
@@ -135,6 +136,13 @@ export function getExtraAbsorbs(
 
       const multiplier = (stacks ?? 2) < 2 ? 0.2 : 0.35
       extraAbsorbs += damageTakenBelow30 * multiplier
+    } else if (ability.id === desperateInstincts.id) {
+      const damageToReach35 = startingHealth * 0.65
+      const damageTakenBelow35 = actualDamageTaken - damageToReach35
+      if (damageTakenBelow35 <= 0) continue
+
+      const multiplier = 0.1
+      extraAbsorbs += damageTakenBelow35 * multiplier
     }
   }
 

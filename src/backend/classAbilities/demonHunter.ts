@@ -13,7 +13,6 @@ const demonicWards: Ability = {
   name: 'Demonic Wards',
   id: 203513,
   onByDefault: true,
-  dr: 0.1,
   drType: 'magic',
   icon: 'inv_belt_leather_demonhunter_a_01',
 }
@@ -32,9 +31,13 @@ const illidariKnowledge: Ability = {
   id: 389696,
   passive: true,
   onByDefault: true,
-  dr: 0.05,
+  dr: 0.03,
   drType: 'magic',
   icon: 'spell_mage_overpowered',
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
 }
 
 const willOfTheIllidari: Ability = {
@@ -42,8 +45,12 @@ const willOfTheIllidari: Ability = {
   id: 389695,
   passive: true,
   onByDefault: true,
-  healthIncrease: 0.05,
+  healthIncrease: 0.03,
   icon: 'ability_demonhunter_spectank',
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
 }
 
 const blur: Ability = {
@@ -51,6 +58,21 @@ const blur: Ability = {
   id: 198589,
   dr: 0.2,
   icon: 'ability_demonhunter_blur',
+}
+
+export const desperateInstincts: Ability = {
+  name: 'Desperate Instincts',
+  id: 205411,
+  passive: true,
+  icon: 'spell_shadow_manafeed',
+  abilityAugmentations: [
+    {
+      otherAbilityId: blur.id,
+      field: 'dr',
+      value: 0.1,
+    },
+  ],
+  notes: 'Damage below 30% Health is reduced by 10%',
 }
 
 const deflectingDance: Ability = {
@@ -163,19 +185,14 @@ const soulmonger: Ability = {
 const calcifiedSpikes: Ability = {
   name: 'Calcified Spikes',
   id: 389720,
-  dr: 0.01,
+  dr: 0.05,
   icon: 'ability_demonhunter_demonspikes',
-  stacks: {
-    type: 'stacks',
-    max: 12,
-    default: 6,
-  },
 }
 
 const voidReaver: Ability = {
   name: 'Void Reaver (Frailty)',
   id: 268175,
-  damageDealtReduction: 0.03,
+  damageDealtReduction: 0.04,
   icon: 'spell_shadow_demonicempathy',
   stacks: {
     type: 'stacks',
@@ -187,12 +204,11 @@ const voidReaver: Ability = {
 const painbringer: Ability = {
   name: 'Painbringer',
   id: 207387,
-  dr: 0.02,
+  dr: 0.03,
   icon: 'artifactability_vengeancedemonhunter_painbringer',
   stacks: {
     type: 'stacks',
-    max: 20,
-    default: 5,
+    max: 2,
   },
 }
 
@@ -217,6 +233,7 @@ export const havocAbilities = [
   armyUntoOneself,
   deflectingDance,
   blur,
+  desperateInstincts,
 ]
 
 export const vengeanceAbilities = [

@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# WCL scripts
+scripts/.cache/
+scripts/output/

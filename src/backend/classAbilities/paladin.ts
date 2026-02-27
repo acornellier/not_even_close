@@ -7,6 +7,10 @@ const obduracy: Ability = {
   id: 385427,
   passive: true,
   icon: 'ability_paladin_speedoflight',
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
 }
 
 const sanctifiedPlatesRetProt: Ability = {
@@ -27,16 +31,6 @@ const sanctifiedPlatesHoly: Ability = {
   icon: 'inv_chest_plate_raidpaladin_s_01',
 }
 
-const blessingOfDusk: Ability = {
-  name: 'Blessing of Dusk',
-  dr: 0.04,
-  onByDefault: true,
-  id: 409439,
-  passive: true,
-  icon: 'achievement_zone_newshadowmoonvalley',
-  notes: 'Blessing of Dusk is usually active, but not always',
-}
-
 const divineProtection: Ability = {
   name: 'Divine Protection',
   dr: 0.2,
@@ -46,12 +40,22 @@ const divineProtection: Ability = {
 
 const shieldOfVengeance: Ability = {
   name: 'Shield of Vengeance',
-  absorb: {
-    healthMultiplier: 0.3,
-    versAffected: true,
-  },
   id: 184662,
   icon: 'ability_paladin_shieldofthetemplar',
+  passive: true,
+  abilityAugmentations: [
+    {
+      otherAbilityId: divineProtection.id,
+      field: 'dr',
+      value: 0.1,
+    },
+    {
+      otherAbilityId: divineProtection.id,
+      field: 'absorb',
+      absorbField: 'healthMultiplier',
+      value: 0.3,
+    },
+  ],
 }
 
 const sacrosanctCrusadeProt: Ability = {
@@ -72,20 +76,6 @@ const sacrosanctCrusadeRet: Ability = {
     healthMultiplier: 0.1,
     versAffected: true,
   },
-}
-
-const aegisOfProtection: Ability = {
-  name: 'Aegis of Protection',
-  id: 403654,
-  passive: true,
-  icon: 'spell_holy_holyprotection',
-  abilityAugmentations: [
-    {
-      otherAbilityId: divineProtection.id,
-      field: 'dr',
-      value: 0.2,
-    },
-  ],
 }
 
 const sentinel: Ability = {
@@ -128,35 +118,6 @@ const guardianOfAncientKings: Ability = {
   dr: 0.5,
 }
 
-const eyeOfTyr: Ability = {
-  name: 'Eye of Tyr',
-  id: 387174,
-  icon: 'inv_shield_1h_artifactnorgannon_d_01',
-  damageDealtReduction: 0.25,
-}
-
-const redoubt: Ability = {
-  name: 'Redoubt',
-  id: 280375,
-  passive: true,
-  icon: 'ability_warrior_shieldguard',
-  onByDefault: true,
-  staminaIncrease: 0.02,
-  stacks: {
-    type: 'stacks',
-    max: 3,
-  },
-}
-
-export const divineBulwark: Ability = {
-  name: 'Mastery: Divine Bulwark',
-  id: 76671,
-  passive: true,
-  icon: 'spell_holy_holyprotection',
-  onByDefault: true,
-  notes: 'DR = 5% + 0.026 x mastery %',
-}
-
 const wrathfulDescent: Ability = {
   name: 'Wrathful Descent',
   id: 431551,
@@ -169,7 +130,7 @@ export const shieldOfTheRighteous: Ability = {
   name: 'Shield of the Righteous',
   id: 53600,
   icon: 'ability_paladin_shieldofvengeance',
-  notes: '160% strength as armor',
+  notes: '224% strength as armor',
 }
 
 const empyrealWard: Ability = {
@@ -179,18 +140,11 @@ const empyrealWard: Ability = {
   armorIncrease: 0.3,
 }
 
-export const paladinHolyAbilities = [
-  sanctifiedPlatesHoly,
-  obduracy,
-  blessingOfDusk,
-  divineProtection,
-]
+export const paladinHolyAbilities = [sanctifiedPlatesHoly, obduracy, divineProtection]
 
 export const paladinRetAbilities = [
   sanctifiedPlatesRetProt,
-  aegisOfProtection,
   obduracy,
-  blessingOfDusk,
   wrathfulDescent,
   sacrosanctCrusadeRet,
   shieldOfVengeance,
@@ -200,9 +154,6 @@ export const paladinRetAbilities = [
 export const paladinProtAbilities = [
   sanctifiedPlatesRetProt,
   obduracy,
-  blessingOfDusk,
-  divineBulwark,
-  redoubt,
   shieldOfTheRighteous,
   improvedArdentDefender,
   wrathfulDescent,
@@ -210,6 +161,5 @@ export const paladinProtAbilities = [
   ardentDefender,
   guardianOfAncientKings,
   sentinel,
-  eyeOfTyr,
   empyrealWard,
 ]

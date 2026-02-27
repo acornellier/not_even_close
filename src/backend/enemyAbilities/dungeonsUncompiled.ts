@@ -1,63 +1,65 @@
 import type { Dungeon } from './enemies'
-import { ofAbilities } from './tww_s3/of.ts'
-import { psfAbilities } from './tww_s3/psf.ts'
-import { akAbilities } from './tww_s3/ak.ts'
-import { dbAbilities } from './tww_s3/db.ts'
-import { hoaAbilities } from './tww_s3/hoa.ts'
-import { gmbtAbilities } from './tww_s3/gmbt.ts'
-import { strtAbilities } from './tww_s3/strt.ts'
-import { eda } from './tww_s3/eda.ts'
+import { magiAbilities } from './midnight/magi.ts'
+import { cavnsAbilities } from './midnight/cavns.ts'
+import { xenasAbilities } from './midnight/xenas.ts'
+import { windAbilities } from './midnight/wind.ts'
+import { aaAbilities } from './midnight/aa.ts'
+import { pitAbilities } from './midnight/pit.ts'
+import { seatAbilities } from './midnight/seat.ts'
+import { skyAbilities } from './midnight/sky.ts'
 
-export const dungeonsUncompiled: Dungeon[] = [
-  {
-    key: 'ak',
-    name: 'Ara-Kara',
-    abilities: akAbilities,
-    icon: 'inv_achievement_dungeon_arak-ara',
-  },
-  {
-    key: 'db',
-    name: 'Dawnbreaker',
-    abilities: dbAbilities,
-    icon: 'inv_achievement_dungeon_dawnbreaker',
-  },
-  {
-    key: 'eda',
-    name: "Eco-Dome Al'dani",
-    abilities: eda,
-    icon: 'inv_112_achievement_dungeon_ecodome',
-  },
-  {
-    key: 'gmbt',
-    name: "So'leah's Gambit",
-    abilities: gmbtAbilities,
-    icon: 'achievement_dungeon_brokerdungeon',
-  },
-  {
-    key: 'hoa',
-    name: 'Halls of Atonement',
-    abilities: hoaAbilities,
-    icon: 'achievement_dungeon_hallsofattonement',
-  },
-  {
-    name: 'Operation: Floodgate',
-    key: 'of',
-    icon: 'inv_achievement_dungeon_waterworks',
-    abilities: ofAbilities,
-  },
-  {
-    name: 'Priory',
-    key: 'psf',
-    icon: 'inv_achievement_dungeon_prioryofthesacredflame',
-    abilities: psfAbilities,
-  },
-  {
-    name: 'Streets of Wonder',
-    key: 'strt',
-    abilities: strtAbilities,
-    icon: 'ability_brokerjazzband_trumpet',
-  },
-]
+export const dungeonsUncompiled = (
+  [
+    {
+      key: 'magi',
+      name: "Magister's Terrace",
+      abilities: magiAbilities,
+      icon: 'inv_achievement_dungeon_magistersterrace',
+    },
+    {
+      key: 'cavns',
+      name: 'Maisara Caverns',
+      abilities: cavnsAbilities,
+      icon: 'inv_achievement_dungeon_maisarahills',
+    },
+    {
+      key: 'xenas',
+      name: 'Nexus-Point Xenas',
+      abilities: xenasAbilities,
+      icon: 'inv_achievement_dungeon_nexuspointxenas',
+    },
+    {
+      key: 'wind',
+      name: 'Windrunner Spire',
+      abilities: windAbilities,
+      icon: 'inv_achievement_dungeon_windrunnerspire',
+    },
+    {
+      key: 'aa',
+      name: "Algeth'ar Academy",
+      abilities: aaAbilities,
+      icon: 'achievement_dungeon_dragonacademy',
+    },
+    {
+      key: 'pit',
+      name: 'Pit of Saron',
+      abilities: pitAbilities,
+      icon: 'achievement_dungeon_icecrown_pitofsaron',
+    },
+    {
+      key: 'seat',
+      name: 'Seat of the Triumvirate',
+      abilities: seatAbilities,
+      icon: 'achievement_dungeon_argusdungeon',
+    },
+    {
+      key: 'sky',
+      name: 'Skyreach',
+      abilities: skyAbilities,
+      icon: 'achievement_dungeon_arakkoaspires',
+    },
+  ] as Dungeon[]
+).sort((a, b) => a.key.localeCompare(b.key))
 
 dungeonsUncompiled.push({
   key: 'all_dungeons',
