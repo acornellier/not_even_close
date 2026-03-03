@@ -22,18 +22,18 @@ export function useCharacterChanges({ setCharacters, setProfiles, characters }: 
             const specChangeChanges =
               charChanges.classSpec &&
               !equalSpecs(character.classSpec, charChanges.classSpec)
-                ? {
+                ? ({
                     abilities: defaultAbilities(charChanges.classSpec),
                     externals: addTemperedVers
                       ? [{ abilityId: temperedVersatility.id }]
                       : [],
-                  }
+                  } satisfies Partial<Character>)
                 : {}
 
             const res: Character = {
               ...character,
-              ...charChanges,
               ...specChangeChanges,
+              ...charChanges,
             }
 
             if (addTemperedVers) {

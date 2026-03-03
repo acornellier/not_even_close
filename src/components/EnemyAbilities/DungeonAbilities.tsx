@@ -34,7 +34,7 @@ export function DungeonAbilities({
   )
   const [showAvoidable, setShowAvoidable] = useLocalStorage(
     `show-avoidable-${dungeon.key}`,
-    false,
+    true,
   )
   const [abilityExtras, setAbilityExtras] = useState(new Set<string>())
 
