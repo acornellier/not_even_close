@@ -5,14 +5,14 @@ const elementalWarding: Ability = {
   id: 381650,
   passive: true,
   icon: 'inv_10_elementalcombinedfoozles_primordial',
-  dr: 0.06,
+  dr: 0.08,
   drType: 'magic',
   onByDefault: true,
 }
 
 const brimmingWithLife: Ability = {
   name: 'Brimming With Life',
-  healthIncrease: 0.05,
+  healthIncrease: 0.075,
   onByDefault: true,
   id: 381689,
   passive: true,
