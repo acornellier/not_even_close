@@ -8,6 +8,10 @@ const spellWarding: Ability = {
   id: 390667,
   passive: true,
   icon: 'spell_holy_spellwarding',
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
 }
 
 const protectiveLight: Ability = {
