@@ -4,14 +4,8 @@ const brutalChop = trashSpell(1277799, {
   tankOnly: true,
 })
 
-const fallingRubble = bossSpell(1283357, {
-  avoidable: true,
-})
+const flameNova = trashSpell(1270618)
 
 const rallyingBellow = bossSpell(468221)
 
-export const windAbilities = [
-  brutalChop,
-  fallingRubble,
-  rallyingBellow,
-]
+export const windAbilities = [brutalChop, flameNova, rallyingBellow]

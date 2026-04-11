@@ -1,27 +1,26 @@
 import { bossSpell, trashSpell } from '../grimoire.ts'
 
+const bladeRush = trashSpell(1254475)
+
+const dreadWind = trashSpell(1258174)
+
+const galeSurge = bossSpell(1252691)
+
 const supernova = bossSpell(154135)
 
-const fierySmash = bossSpell(154132, {
-  tankOnly: true,
-})
+const sunbreak = bossSpell(1253510)
 
-const solarFire = trashSpell(1258220, {
+const searingQuills = bossSpell(159381, (spell) => ({
+  damage: spell.damage * 4,
   avoidable: true,
-})
-
-const coalescedWind = bossSpell(1258140, {
-  avoidable: true,
-})
-
-const searingQuills = bossSpell(159381, {
-  avoidable: true,
-})
+  periodic: true,
+}))
 
 export const skyAbilities = [
+  bladeRush,
+  dreadWind,
+  galeSurge,
   supernova,
-  fierySmash,
-  solarFire,
-  coalescedWind,
+  sunbreak,
   searingQuills,
 ]

@@ -1,14 +1,11 @@
 import { bossSpell, trashSpell } from '../grimoire.ts'
 
-const erraticZap = trashSpell(1257105, {
+const holyBolt = trashSpell(1263892, {
   avoidable: true,
 })
 
-const leylineArray = bossSpell(1251626, {
-  avoidable: true,
-})
+const eclipsingStep = bossSpell(1252875)
 
-export const xenasAbilities = [
-  erraticZap,
-  leylineArray,
-]
+const brilliantDispersion = bossSpell(1255503)
+
+export const xenasAbilities = [eclipsingStep, holyBolt, brilliantDispersion]
