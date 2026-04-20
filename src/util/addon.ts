@@ -4,7 +4,7 @@ import type { CharacterStatsInput } from '../backend/characters.ts'
 import { roundTo } from './utils.ts'
 import { fortitude, markOfTheWild } from '../backend/groupAbilities/groupBuffs.ts'
 import type { Ability } from '../backend/ability.ts'
-import { temperedVersatility } from '../backend/groupAbilities/externals.ts'
+import { versFlask } from '../backend/groupAbilities/externals.ts'
 
 export interface AddonCharacter {
   classSpec: ClassSpec
@@ -83,8 +83,8 @@ export function getAddonOutput(text: string): AddonOutput {
     }
 
     let addTemperedVers = false
-    if (characterOutput.buffs.includes(temperedVersatility.id)) {
-      stats.versatilityRaw -= temperedVersatility.versRawIncrease!
+    if (characterOutput.buffs.includes(versFlask.id)) {
+      stats.versatilityRaw -= versFlask.versRawIncrease!
       addTemperedVers = true
     }
 

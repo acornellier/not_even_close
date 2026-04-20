@@ -2,7 +2,7 @@ import type { Character, Profile } from '../../backend/characters'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback } from 'react'
 import { defaultAbilities, equalSpecs } from '../../backend/classes'
-import { temperedVersatility } from '../../backend/groupAbilities/externals.ts'
+import { versFlask } from '../../backend/groupAbilities/externals.ts'
 import { isAbilitySelected } from '../../util/utils.ts'
 
 interface Props {
@@ -24,9 +24,7 @@ export function useCharacterChanges({ setCharacters, setProfiles, characters }: 
               !equalSpecs(character.classSpec, charChanges.classSpec)
                 ? ({
                     abilities: defaultAbilities(charChanges.classSpec),
-                    externals: addTemperedVers
-                      ? [{ abilityId: temperedVersatility.id }]
-                      : [],
+                    externals: addTemperedVers ? [{ abilityId: versFlask.id }] : [],
                   } satisfies Partial<Character>)
                 : {}
 
@@ -39,8 +37,8 @@ export function useCharacterChanges({ setCharacters, setProfiles, characters }: 
             if (addTemperedVers) {
               res.externals ??= []
 
-              if (!isAbilitySelected(temperedVersatility.id, res.externals)) {
-                res.externals.push({ abilityId: temperedVersatility.id })
+              if (!isAbilitySelected(versFlask.id, res.externals)) {
+                res.externals.push({ abilityId: versFlask.id })
               }
             }
 

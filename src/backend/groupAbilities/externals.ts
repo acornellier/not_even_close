@@ -1,10 +1,10 @@
 ﻿import type { Ability } from '../ability'
 
-export const temperedVersatility: Ability = {
-  name: 'Flask of Tempered Versatility',
-  id: 431973,
-  versRawIncrease: 2825,
-  icon: 'inv_misc_potiona2',
+export const versFlask: Ability = {
+  name: 'Flask of Thalassian Resistance',
+  id: 1235057,
+  versRawIncrease: 165,
+  icon: 'inv_12_profession_alchemy_flask_sindoreipotion_yellow',
 }
 
 const blessingOfSacrifice: Ability = {
@@ -103,7 +103,7 @@ const roarOfSacrifice: Ability = {
 }
 
 export const externals: Ability[] = [
-  temperedVersatility,
+  versFlask,
   elusiveMists,
   lifeCocoon,
   earthenHarmony,

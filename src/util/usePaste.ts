@@ -10,7 +10,7 @@ import {
   equalSpecs,
   importSelectedAbilities,
 } from '../backend/classes.ts'
-import { temperedVersatility } from '../backend/groupAbilities/externals.ts'
+import { versFlask } from '../backend/groupAbilities/externals.ts'
 
 interface Props {
   characters: Character[]
@@ -107,7 +107,7 @@ export function usePaste({
             abilities: importedAbilities.length
               ? importedAbilities
               : defaultAbilities(classSpec),
-            externals: addTemperedVers ? [{ abilityId: temperedVersatility.id }] : [],
+            externals: addTemperedVers ? [{ abilityId: versFlask.id }] : [],
           }
 
           setCharacters((prevCharacters) => [...prevCharacters, newCharacter])
