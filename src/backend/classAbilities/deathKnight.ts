@@ -45,7 +45,7 @@ const iceboundFortitude: Ability = {
 
 const lichborne: Ability = {
   name: 'Lichborne',
-  dr: 0.15,
+  dr: 0.06,
   id: 49039,
   icon: 'spell_shadow_raisedead',
 }
@@ -105,7 +105,7 @@ const runeCarvedPlates: Ability = {
   id: 440282,
   icon: 'spell_deathknight_runetap',
   heroTree: 'Deathbringer',
-  dr: 0.02,
+  dr: 0.015,
   stacks: {
     type: 'stacks',
     max: 5,
