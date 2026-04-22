@@ -1,4 +1,8 @@
-﻿import { havocAbilities, vengeanceAbilities } from './classAbilities/demonHunter'
+﻿import {
+  devourerAbilities,
+  havocAbilities,
+  vengeanceAbilities,
+} from './classAbilities/demonHunter'
 import type { Ability, SelectedAbilityId } from './ability'
 import {
   evokerAugAbilities,
@@ -108,6 +112,11 @@ export const classSpecs: Record<WowClass, Record<WowSpec, SpecDetails>> = {
     },
   },
   'Demon Hunter': {
+    Devourer: {
+      abilities: devourerAbilities,
+      icon: 'classicon_demonhunter_void',
+      mainStat: 'intellect',
+    },
     Havoc: {
       abilities: havocAbilities,
       icon: 'ability_demonhunter_specdps',

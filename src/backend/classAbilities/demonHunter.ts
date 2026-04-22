@@ -13,6 +13,7 @@ const demonicWards: Ability = {
   name: 'Demonic Wards',
   id: 203513,
   onByDefault: true,
+  dr: 0.1,
   drType: 'magic',
   icon: 'inv_belt_leather_demonhunter_a_01',
 }
@@ -219,6 +220,17 @@ const armyUntoOneself: Ability = {
   heroTree: 'Aldrachi Reaver',
   dr: 0.1,
 }
+
+export const devourerAbilities = [
+  infernalArmor,
+  demonicWards,
+  illidariKnowledge,
+  willOfTheIllidari,
+  setFireToThePain,
+  demonMuzzle,
+  immolationAura,
+  blur,
+]
 
 export const havocAbilities = [
   infernalArmor,
