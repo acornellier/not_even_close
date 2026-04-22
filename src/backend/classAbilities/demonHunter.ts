@@ -220,6 +220,17 @@ const armyUntoOneself: Ability = {
   dr: 0.1,
 }
 
+export const devourerAbilities = [
+  infernalArmor,
+  demonicWards,
+  illidariKnowledge,
+  willOfTheIllidari,
+  setFireToThePain,
+  demonMuzzle,
+  immolationAura,
+  blur,
+]
+
 export const havocAbilities = [
   infernalArmor,
   scarsOfSuffering,
