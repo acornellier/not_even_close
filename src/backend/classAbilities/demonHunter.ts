@@ -13,6 +13,7 @@ const demonicWards: Ability = {
   name: 'Demonic Wards',
   id: 203513,
   onByDefault: true,
+  dr: 0.1,
   drType: 'magic',
   icon: 'inv_belt_leather_demonhunter_a_01',
 }
