@@ -1,6 +1,8 @@
 import { bossSpell, trashSpell } from '../grimoire.ts'
 
-const deafeningRoar = trashSpell(1256047)
+const deafeningRoar = trashSpell(1256047, {
+  ignoresArmor: true,
+})
 
 const flankingSpear = bossSpell(1266485, {
   tankOnly: true,
