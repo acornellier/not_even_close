@@ -23,7 +23,7 @@ export function SimContextProvider({ dungeon, result, children }: Props) {
       dungeon,
       result,
     }
-  }, [result])
+  }, [dungeon, result])
 
   return <SimContext.Provider value={simContext}>{children}</SimContext.Provider>
 }

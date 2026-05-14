@@ -36,22 +36,6 @@ interface UrsineVigorSwapperProps {
   replaceAbility?: (replacement: AbilityReplacement) => void
 }
 
-function UrsineVigorSwapper({ ability, replaceAbility }: UrsineVigorSwapperProps) {
-  if (!ability.replacedBy || !replaceAbility) return
-
-  return (
-    <Button
-      short
-      className="mt-1"
-      onClick={() =>
-        replaceAbility({ sourceId: ability.id, targetId: ability.replacedBy! })
-      }
-    >
-      Swap to {ability.abilityAugmentations ? 'active' : 'passive'} version
-    </Button>
-  )
-}
-
 export function CharAbilityIcon({
   ability,
   selectedAbility,

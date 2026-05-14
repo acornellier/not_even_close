@@ -95,7 +95,7 @@ export function CharacterComponent({
   const availableExternals = useMemo(() => {
     const res = [...externals]
     return res
-  }, [dungeon])
+  }, [])
 
   const specDetails = classSpecs[character.classSpec.class][character.classSpec.spec]!
   const specAbilities = specDetails.abilities
