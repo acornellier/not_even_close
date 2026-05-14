@@ -1,4 +1,5 @@
 import { bossSpell, trashSpell } from '../grimoire.ts'
+import { scaledDamage, scalingTickingDamage } from './s1-mult.ts'
 
 const bladeRush = trashSpell(1254475)
 
@@ -16,6 +17,10 @@ const searingQuills = bossSpell(159381, (spell) => ({
   periodic: true,
 }))
 
+const scorchingRay = bossSpell(1253543, () => ({
+  damage: scaledDamage(10) + scalingTickingDamage(5, 5),
+}))
+
 export const skyAbilities = [
   bladeRush,
   dreadWind,
@@ -23,4 +28,5 @@ export const skyAbilities = [
   supernova,
   sunbreak,
   searingQuills,
+  scorchingRay,
 ]
