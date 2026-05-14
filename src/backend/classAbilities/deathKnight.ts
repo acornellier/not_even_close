@@ -43,13 +43,6 @@ const iceboundFortitude: Ability = {
   icon: 'spell_deathknight_iceboundfortitude',
 }
 
-const lichborne: Ability = {
-  name: 'Lichborne',
-  dr: 0.06,
-  id: 49039,
-  icon: 'spell_shadow_raisedead',
-}
-
 const foulBulwark: Ability = {
   name: 'Foul Bulwark',
   id: 206974,
@@ -140,6 +133,13 @@ const subduingGrasp: Ability = {
   damageDealtReduction: 0.06,
 }
 
+const suppression: Ability = {
+  name: 'Suppression',
+  id: 374049,
+  icon: 'ability_racial_forceshield',
+  aoeDr: 0.03,
+}
+
 export const deathKnightFrostAbilities = [
   antiMagicBarrier,
   gloomWard,
@@ -148,9 +148,9 @@ export const deathKnightFrostAbilities = [
   runeCarvedPlates,
   pactOfTheApocalypse,
   subduingGrasp,
-  lichborne,
   antiMagicShell,
   iceboundFortitude,
+  suppression,
 ]
 
 export const deathKnightUnholyAbilities = [
@@ -161,9 +161,9 @@ export const deathKnightUnholyAbilities = [
   bloodSoakedGround,
   pactOfTheApocalypse,
   subduingGrasp,
-  lichborne,
   antiMagicShell,
   iceboundFortitude,
+  suppression,
 ]
 
 export const deathKnightBloodAbilities = [
@@ -175,8 +175,8 @@ export const deathKnightBloodAbilities = [
   runeCarvedPlates,
   foulBulwark,
   subduingGrasp,
-  lichborne,
   antiMagicShell,
   iceboundFortitude,
   vampiricBlood,
+  suppression,
 ]

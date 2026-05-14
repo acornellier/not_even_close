@@ -16,4 +16,20 @@ const lingeringDread = bossSpell(1251813, (spell) => ({
   notes: 'Damage taken when 2 ghosts collide',
 }))
 
-export const cavnsAbilities = [deafeningRoar, flankingSpear, frostNova, lingeringDread]
+const ritualDrums = trashSpell(1262900, () => ({
+  notes: `Damage of a single tick.`,
+  ignoresArmor: true,
+}))
+
+const barrage = bossSpell(1260648, (spell) => ({
+  damage: spell.damage * 11,
+}))
+
+export const cavnsAbilities = [
+  deafeningRoar,
+  flankingSpear,
+  frostNova,
+  lingeringDread,
+  ritualDrums,
+  barrage,
+]
