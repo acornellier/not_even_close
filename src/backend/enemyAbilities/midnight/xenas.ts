@@ -7,14 +7,17 @@ const holyBolt = trashSpell(1263892, {
 
 const eclipsingStep = bossSpell(1252875, (spell) => ({
   damage: spell.damage + scalingTickingDamage(8, 4),
+  periodic: true,
 }))
 
 const brilliantDispersion = bossSpell(1255503, (spell) => ({
   damage: spell.damage + scalingTickingDamage(6, 4),
+  periodic: true,
 }))
 
 const blisteringSmite = trashSpell(1281657, (spell) => ({
   damage: spell.damage + scalingTickingDamage(5, 5),
+  periodic: true,
 }))
 
 const arcingMana = trashSpell(1249806, () => ({
@@ -26,6 +29,7 @@ const entropicLeech = trashSpell(1252062, () => ({
   damage: scalingTickingDamage(12, 5),
   notes:
     'Removing the healing absorb stops the damage. The value assumes full duration of the debuff.',
+  periodic: true,
 }))
 
 export const xenasAbilities = [

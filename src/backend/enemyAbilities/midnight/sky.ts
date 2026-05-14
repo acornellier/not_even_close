@@ -19,6 +19,7 @@ const searingQuills = bossSpell(159381, (spell) => ({
 
 const scorchingRay = bossSpell(1253543, () => ({
   damage: scaledDamage(10) + scalingTickingDamage(5, 5),
+  periodic: true,
 }))
 
 export const skyAbilities = [

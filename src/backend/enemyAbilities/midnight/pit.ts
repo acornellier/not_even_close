@@ -28,16 +28,17 @@ const deathBolt = bossSpell(1278893, {
 
 const cryoburst = bossSpell(1259202)
 
-const shadeShift = bossSpell(1264246, (spell) => ({
+const shadeShift = bossSpell(1264246, () => ({
   damage: scalingTickingDamage(12, 2) + scaledDamage(8),
+  periodic: true,
 }))
 
-const focusedGuard = trashSpell(1278754, (spell) => ({
+const focusedGuard = trashSpell(1278754, () => ({
   damage: scalingTickingDamage(9, 4),
   periodic: true,
 }))
 
-const boneInfusion = bossSpell(1276648, (spell) => ({
+const boneInfusion = bossSpell(1276648, () => ({
   periodic: true,
   damage: scalingTickingDamage(3, 8) + scaledDamage(8),
 }))

@@ -15,7 +15,7 @@ const hulkingFragment = bossSpell(1280119, {
 
 const waveOfSilence = bossSpell(1225201)
 
-const astralGrasp = bossSpell(1224299, (spell) => ({
+const astralGrasp = bossSpell(1224299, () => ({
   damage: scalingTickingDamage(9, 4),
   periodic: true,
 }))
@@ -25,7 +25,7 @@ const arcaneBeam = trashSpell(1282051, (spell) => ({
   damage: spell.damage * 6,
 }))
 
-const ignition = trashSpell(1254338, (spell) => ({
+const ignition = trashSpell(1254338, () => ({
   aoe: true,
   damage: scalingTickingDamage(10, 3),
   periodic: true,
