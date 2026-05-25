@@ -10,9 +10,9 @@ const elementalWarding: Ability = {
   onByDefault: true,
 }
 
-const brimmingWithLife: Ability = {
+export const brimmingWithLife: Ability = {
   name: 'Brimming With Life',
-  healthIncrease: 0.075,
+  staminaIncrease: 0.075,
   onByDefault: true,
   id: 381689,
   passive: true,

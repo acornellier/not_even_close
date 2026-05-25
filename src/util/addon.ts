@@ -5,6 +5,7 @@ import { roundTo } from './utils.ts'
 import { fortitude, markOfTheWild } from '../backend/groupAbilities/groupBuffs.ts'
 import type { Ability } from '../backend/ability.ts'
 import { versFlask } from '../backend/groupAbilities/externals.ts'
+import { brimmingWithLife } from '../backend/classAbilities/shaman.ts'
 
 export interface AddonCharacter {
   classSpec: ClassSpec
@@ -91,6 +92,14 @@ export function getAddonOutput(text: string): AddonOutput {
     if (characterOutput.buffs.includes(fortitude.id)) {
       stats.stamina = Math.ceil(stats.stamina / 1.05)
       groupBuffs.push(fortitude)
+    }
+
+    const brimmingTalent = characterOutput.talents.find(
+      ([talentId]) => talentId === brimmingWithLife.id,
+    )
+    if (brimmingTalent) {
+      const increase = brimmingTalent[1] * brimmingWithLife.staminaIncrease!
+      stats.stamina = Math.ceil(stats.stamina / (1 + increase))
     }
 
     return {
