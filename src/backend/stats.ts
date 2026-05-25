@@ -9,7 +9,7 @@ const avoidanceConversionFactor = 36.80052531
 
 /* Changes every patch */
 // Just an estimate for % HP group abilities
-export const baseHp = 10_000_000
+export const baseHp = 350_000
 // Calculate this in game by hovering over Armor in Character pane
 const armorKValueMplus = 1_000 // TODO
 /****/
