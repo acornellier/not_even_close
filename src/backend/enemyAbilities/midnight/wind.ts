@@ -7,7 +7,9 @@ const brutalChop = trashSpell(1277799, {
 
 const flameNova = trashSpell(1270618)
 
-const rallyingBellow = bossSpell(468221)
+const rallyingBellow = bossSpell(468221, {
+  ignoresArmor: true,
+})
 
 const splatteringSpew = bossSpell(472758, (spell) => ({
   damage: spell.damage + scalingTickingDamage(5, 3),
