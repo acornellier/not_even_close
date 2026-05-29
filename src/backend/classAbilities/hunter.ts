@@ -15,13 +15,13 @@ const aspectOfTheBeast: Ability = {
   ],
 }
 
-const rejuvenatingWind: Ability = {
-  name: 'Rejuvenating Wind',
-  healthIncrease: 0.08,
+const touchOfGrass: Ability = {
+  name: 'Touch of Grass',
+  healthIncrease: 0.1,
   onByDefault: true,
-  id: 385539,
+  id: 1258402,
   passive: true,
-  icon: 'ability_druid_galewinds',
+  icon: 'inv12_ability_druid_lifetreading',
 }
 
 const huntersAvoidance: Ability = {
@@ -132,7 +132,7 @@ export const hunterBmAbilities = [
   shellCover,
   shellWall,
   aspectOfTheBeast,
-  rejuvenatingWind,
+  touchOfGrass,
   huntersAvoidance,
   enduranceTraining,
   guardiansHide,
@@ -143,7 +143,7 @@ export const hunterBmAbilities = [
 
 export const hunterMmAbilities = [
   shellWall,
-  rejuvenatingWind,
+  touchOfGrass,
   huntersAvoidance,
   enduranceTrainingMm,
   guardiansHide,
@@ -156,7 +156,7 @@ export const hunterSurvAbilities = [
   shellCover,
   shellWall,
   spiritBond,
-  rejuvenatingWind,
+  touchOfGrass,
   huntersAvoidance,
   enduranceTraining,
   guardiansHide,
