@@ -17,11 +17,15 @@ const aspectOfTheBeast: Ability = {
 
 const touchOfGrass: Ability = {
   name: 'Touch of Grass',
-  healthIncrease: 0.1,
+  healthIncrease: 0.05,
   onByDefault: true,
   id: 1258402,
   passive: true,
   icon: 'inv12_ability_druid_lifetreading',
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
 }
 
 const huntersAvoidance: Ability = {
