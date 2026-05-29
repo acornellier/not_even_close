@@ -16,7 +16,7 @@ const calmingPresenceWindwalker: Ability = {
   dr: 0.03,
 }
 
-const jadefireTeachings: Ability = {
+export const jadefireTeachings: Ability = {
   name: 'Jadefire Teachings',
   id: 467293,
   staminaIncrease: 0.08,

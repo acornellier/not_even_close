@@ -6,6 +6,7 @@ import { fortitude, markOfTheWild } from '../backend/groupAbilities/groupBuffs.t
 import type { Ability } from '../backend/ability.ts'
 import { versFlask } from '../backend/groupAbilities/externals.ts'
 import { brimmingWithLife } from '../backend/classAbilities/shaman.ts'
+import { jadefireTeachings } from '../backend/classAbilities/monk.ts'
 
 export interface AddonCharacter {
   classSpec: ClassSpec
@@ -99,6 +100,14 @@ export function getAddonOutput(text: string): AddonOutput {
     )
     if (brimmingTalent) {
       const increase = brimmingTalent[1] * brimmingWithLife.staminaIncrease!
+      stats.stamina = Math.ceil(stats.stamina / (1 + increase))
+    }
+
+    const jadefireTeachingsTalent = characterOutput.talents.find(
+      ([talentId]) => talentId === jadefireTeachings.id,
+    )
+    if (jadefireTeachingsTalent) {
+      const increase = jadefireTeachingsTalent[1] * jadefireTeachings.staminaIncrease!
       stats.stamina = Math.ceil(stats.stamina / (1 + increase))
     }
 
