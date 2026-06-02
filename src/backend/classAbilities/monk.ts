@@ -1,19 +1,12 @@
 import type { Ability } from '../ability'
 
-const calmingPresenceMistweaver: Ability = {
+const calmingPresence: Ability = {
   name: 'Calming Presence',
   id: 388664,
   passive: true,
   onByDefault: true,
   dr: 0.06,
   icon: 'inv_misc_orb_01',
-}
-
-const calmingPresenceWindwalker: Ability = {
-  ...calmingPresenceMistweaver,
-  id: calmingPresenceMistweaver.id + 1,
-  spellId: calmingPresenceMistweaver.id,
-  dr: 0.03,
 }
 
 export const jadefireTeachings: Ability = {
@@ -90,6 +83,13 @@ const martialInstincts: Ability = {
   },
 }
 
+const martialInstinctsWindwalker: Ability = {
+  ...martialInstincts,
+  id: martialInstincts.id + 1,
+  spellId: martialInstincts.id,
+  dr: 0.03,
+}
+
 const ironshellBrew: Ability = {
   name: 'Ironshell Brew',
   id: 388814,
@@ -136,7 +136,7 @@ const jadeSanctuary: Ability = {
 export const monkMistweaverAbilities = [
   ironshellBrew,
   niuzaosProtection,
-  calmingPresenceMistweaver,
+  calmingPresence,
   martialInstincts,
   secretInfusion,
   jadefireTeachings,
@@ -148,8 +148,8 @@ export const monkMistweaverAbilities = [
 export const monkWindwalkerAbilities = [
   ironshellBrew,
   niuzaosProtection,
-  calmingPresenceWindwalker,
-  martialInstincts,
+  calmingPresence,
+  martialInstinctsWindwalker,
   yulonsGraceWindwalker,
   jadeSanctuary,
   fortBrew,
