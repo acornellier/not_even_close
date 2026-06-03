@@ -3,6 +3,8 @@ import { scaledDamage, scalingTickingDamage } from './s1-mult.ts'
 
 const bladeRush = trashSpell(1254475)
 
+const ricochetingChakram = trashSpell(1254666)
+
 const dreadWind = trashSpell(1258174)
 
 const galeSurge = bossSpell(1252691)
@@ -24,6 +26,7 @@ const scorchingRay = bossSpell(1253543, () => ({
 
 export const skyAbilities = [
   bladeRush,
+  ricochetingChakram,
   dreadWind,
   galeSurge,
   supernova,
