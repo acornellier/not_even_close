@@ -1,6 +1,10 @@
 import { bossSpell, trashSpell } from '../grimoire.ts'
 import { scalingTickingDamage } from './s1-mult.ts'
 
+const ferociousPounce = trashSpell(1217021, {
+  ignoresArmor: true,
+})
+
 const brutalChop = trashSpell(1277799, {
   tankOnly: true,
 })
@@ -32,6 +36,7 @@ const boltGale = bossSpell(472672, (spell) => ({
 }))
 
 export const windAbilities = [
+  ferociousPounce,
   brutalChop,
   flameNova,
   rallyingBellow,
