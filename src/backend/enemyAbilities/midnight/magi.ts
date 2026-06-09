@@ -1,5 +1,5 @@
 import { bossSpell, trashSpell } from '../grimoire.ts'
-import { scalingTickingDamage } from './s1-mult.ts'
+import { scaledDamage, scalingTickingDamage } from './s1-mult.ts'
 
 const crowdDispersal = trashSpell(473258)
 
@@ -31,6 +31,11 @@ const ignition = trashSpell(1254338, () => ({
   periodic: true,
 }))
 
+const cosmicSting = bossSpell(1284958, (spell) => ({
+  damage: spell.damage + scalingTickingDamage(7, 5),
+  periodic: true,
+}))
+
 export const magiAbilities = [
   crowdDispersal,
   arcaneExpulsion,
@@ -40,4 +45,5 @@ export const magiAbilities = [
   astralGrasp,
   arcaneBeam,
   ignition,
+  cosmicSting,
 ]
