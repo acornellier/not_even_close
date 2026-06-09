@@ -49,6 +49,10 @@ const manaVoid = trashSpell(388866, () => ({
   aoeMultiplier: 1, // just so it shows up as mixed
 }))
 
+const powerVacuum = bossSpell(388822, {
+  avoidable: true,
+})
+
 export const aaAbilities = [
   burstForth,
   expelIntruders,
@@ -61,4 +65,5 @@ export const aaAbilities = [
   manaBomb,
   viciousAmbush,
   manaVoid,
+  powerVacuum,
 ]
