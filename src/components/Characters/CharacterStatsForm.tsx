@@ -94,7 +94,7 @@ export function CharacterStatsForm({
       />
       {showMainStat && (
         <NumericInput
-          label={mainStat === 'strength' ? 'Strength' : 'Intellect'}
+          label={mainStat === 'strength' ? 'Strength' : mainStat === 'intellect' ? 'Intellect' : 'Agility'}
           value={characterStats.mainStat}
           onChange={onChangeStat('mainStat')}
           hideArrows

@@ -76,13 +76,13 @@ const mattedFur: Ability = {
       otherAbilityId: barkskin.id,
       field: 'absorb',
       absorbField: 'apMultipler',
-      value: 7.5,
+      value: 30,
     },
     {
       otherAbilityId: survivalInsticts.id,
       field: 'absorb',
       absorbField: 'apMultipler',
-      value: 7.5,
+      value: 30,
     },
   ],
   icon: 'inv_misc_pelt_15',
@@ -221,25 +221,35 @@ const incarnationGuardian: Ability = {
   healthIncrease: 0.3,
 }
 
-const lycarasTeachings: Ability = {
+const lycarasTeachingsBear: Ability = {
   name: "Lycara's Teachings",
   onByDefault: true,
   id: 378988,
   passive: true,
   icon: 'inv_trinket_ardenweald_02_green',
-  versIncrease: 0.02,
+  versIncrease: 0.03,
   stacks: {
     type: 'talent',
-    max: 3,
+    max: 2,
   },
 }
 
-const lycarasInpiration: Ability = {
-  name: "Lycara's Inspiration",
-  id: 1232897,
-  icon: 'inv_trinket_ardenweald_02_yellow',
-  passive: true,
-  staminaIncrease: 0.04,
+const lycarasTeachings: Ability = {
+  ...lycarasTeachingsBear,
+  id: lycarasTeachingsBear.id + 1,
+  passive: false,
+  versIncrease: undefined,
+  abilityAugmentations: [
+    {
+      otherAbilityId: bearForm.id,
+      field: 'versIncrease',
+      value: 0.03,
+    },
+  ],
+  stacks: {
+    type: 'talent',
+    max: 2,
+  },
 }
 
 const giftOfTheWild: Ability = {
@@ -257,6 +267,7 @@ export const druidBalanceAbilities = [
   oakskin,
   ursocsSpirit,
   thickHide,
+  lycarasTeachings,
   glisteningFur,
   heartOfTheWild,
   protectiveGrowth,
@@ -271,9 +282,8 @@ export const druidFeralAbilities = [
   oakskin,
   ursocsSpirit,
   thickHide,
-  protectiveGrowth,
+  lycarasTeachings,
   fountOfStrength,
-  lycarasInpiration,
   heartOfTheWild,
   ursineVigor,
   bearForm,
@@ -287,8 +297,8 @@ export const druidRestoAbilities = [
   oakskin,
   ursocsSpirit,
   thickHide,
+  lycarasTeachings,
   protectiveGrowth,
-  lycarasInpiration,
   heartOfTheWild,
   ursineVigor,
   bearForm,
@@ -301,7 +311,7 @@ export const druidGuardianAbilities = [
   reinforcedFur,
   naturesGuardian,
   thickHide,
-  lycarasTeachings,
+  lycarasTeachingsBear,
   glisteningFur,
   rendAndTear,
   scintillatingMoonlight,

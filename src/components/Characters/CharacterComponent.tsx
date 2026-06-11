@@ -113,6 +113,9 @@ export function CharacterComponent({
 
   return (
     <div className="flex flex-col items-start gap-3 w-full">
+      {character.classSpec.spec === 'Feral' && (
+        <Label className="[&]:bg-orange-600">Input your stats in HUMAN form</Label>
+      )}
       {specDetails.isTank && (
         <div className="flex gap-2 flex-wrap">
           <Label className="[&]:bg-red-700">
