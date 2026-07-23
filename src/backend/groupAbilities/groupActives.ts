@@ -85,13 +85,6 @@ const spiritLinkTotem: Ability = {
   icon: 'spell_shaman_spiritlink',
 }
 
-const downpour: Ability = {
-  name: 'Downpour',
-  id: 207778,
-  icon: 'ability_mage_waterjet',
-  healthIncrease: 0.1,
-}
-
 const spoutingSpirits: Ability = {
   name: 'Spouting Spirits',
   id: 288384,
@@ -115,6 +108,5 @@ export const groupActives: Ability[] = [
   spoutingSpirits,
   powerWordBarrier,
   antiMagicZone,
-  downpour,
   spiritLinkTotem,
 ]
