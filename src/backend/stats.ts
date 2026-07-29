@@ -11,7 +11,8 @@ const avoidanceConversionFactor = 36.80052531
 // Just an estimate for % HP group abilities
 export const baseHp = 480_000
 // Calculate this in game by hovering over Armor in Character pane
-const armorKValueMplus = 1_000 // TODO
+// k = (armor - dr% * armor) / dr%
+const armorKValueMplus = 4464
 /****/
 
 interface StatBracketBasic {
