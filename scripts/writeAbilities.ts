@@ -4,14 +4,14 @@ import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const outputDir = path.join(__dirname, 'output')
-const abilitiesDir = path.resolve(__dirname, '../src/backend/enemyAbilities/midnight')
+const abilitiesDir = path.resolve(__dirname, '../src/backend/enemyAbilities/midnight_s2')
 
 // Typical player HP at current gear level — adjust as needed
 const PLAYER_HP = 500_000
 const HP_THRESHOLD = 0.7
 const TANK_HP_THRESHOLD = 1.5
 
-const allDungeonKeys = ['magi', 'cavns', 'xenas', 'wind', 'aa', 'pit', 'seat', 'sky']
+const allDungeonKeys = ['murd', 'nalo', 'vale', 'void', 'fang', 'rlp', 'tos', 'kr']
 
 // hitsPerRun thresholds for classification
 const AVOIDABLE_MAX_HITS_PER_RUN = 9

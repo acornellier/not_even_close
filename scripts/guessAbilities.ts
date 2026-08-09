@@ -33,14 +33,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const outputDir = path.join(__dirname, 'output')
 
 const dungeonEncounters: Record<string, number> = {
-  magi: 62811,
-  cavns: 62874,
-  xenas: 62915,
-  wind: 62805,
-  aa: 162526,
-  pit: 60658,
-  seat: 411753,
-  sky: 111209,
+  murd: 62813, // live: 12813
+  nalo: 62825, // live: 12825
+  vale: 62859, // live: 12859
+  void: 62923, // live: 12923
+  fang: 62993, // live: 12993
+  rlp: 162521, // live: 112521
+  tos: 111877, // live: 61877
+  kr: 111762, // live: 61762
 }
 
 /** Reports sampled per dungeon, spread across keystone levels. */
