@@ -13,7 +13,7 @@ const infernalCrush = bossSpell(1295455, (spell) => ({
   aoe: true,
 }))
 
-const envenom = trashSpell(1223939, { tankOnly: true })
+const envenom = bossSpell(1223939, { tankOnly: true })
 
 const cutpurse = trashSpell(1216300, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
@@ -55,13 +55,13 @@ const glaiveToss = trashSpell(1295035, (spell) => ({
 
 const doomBolt = trashSpell(1258420)
 
-const heartstopPoison = trashSpell(1216590, (spell) => ({
+const heartstopPoison = bossSpell(1216590, (spell) => ({
   damage: spell.periodicDamage,
   tankOnly: true,
   periodic: true,
 }))
 
-const heartstopPoison474515 = trashSpell(474515, (spell) => ({
+const heartstopPoison474515 = bossSpell(474515, (spell) => ({
   damage: spell.periodicDamage,
   notes: 'Assumes full duration (15s); players typically took 2 of 15 ticks.',
   tankOnly: true,

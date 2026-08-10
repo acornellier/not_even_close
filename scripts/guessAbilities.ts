@@ -18,6 +18,7 @@ import { normalizeToBase, oneShotKeyLevel, pctMaxHpAtKeyLevel } from './scaling.
 import { getRateLimit, summarizeCacheUsage } from './wclClient.ts'
 import type { Actor, DamageEvent, PlayerDetail } from './wclQueries.ts'
 import {
+  bossActorIds,
   fetchDeaths,
   fetchEnemyCasts,
   fetchEnemyDamage,
@@ -402,6 +403,7 @@ async function collectRun(
   if (master.actors.length === 0 || master.abilities.length === 0) return null
 
   const actorById = new Map<number, Actor>(master.actors.map((actor) => [actor.id, actor]))
+  const bossIds = bossActorIds(fight, master.actors)
   const abilityById = new Map(master.abilities.map((a) => [a.gameID, a]))
 
   const players = new Map<number, { name: string; isTank: boolean; maxHp: number }>()
@@ -447,7 +449,7 @@ async function collectRun(
     const sources = sourceNames.get(name) ?? new Set<string>()
     sources.add(source.name)
     sourceNames.set(name, sources)
-    isBoss.set(name, (isBoss.get(name) ?? false) || source.subType === 'Boss')
+    isBoss.set(name, (isBoss.get(name) ?? false) || bossIds.has(source.id))
 
     const bitmask = Number(abilityById.get(event.abilityGameID)?.type ?? 0)
     if (bitmask > 0 && !schools.has(name)) schools.set(name, schoolsFromBitmask(bitmask))

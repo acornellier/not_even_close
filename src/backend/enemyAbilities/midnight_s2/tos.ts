@@ -66,7 +66,7 @@ const poisonSpit = trashSpell(267027, (spell) => ({
 
 const looseSparks = trashSpell(267483)
 
-const lightningSpire = trashSpell(1291598, { aoe: true })
+const lightningSpire = bossSpell(1291598, { aoe: true })
 
 const sunderSlam = trashSpell(1291468, { tankOnly: true })
 
@@ -93,7 +93,7 @@ const slitherStrike = trashSpell(1295635, (spell) => ({
   periodic: true,
 }))
 
-const induction = trashSpell(1290531, { aoe: true })
+const induction = bossSpell(1290531, { aoe: true })
 
 const overload = bossSpell(1288428, () => ({
   damage: scalingTickingDamage(1, 15),
@@ -104,7 +104,7 @@ const lightningBolt = trashSpell(1291262)
 
 const venomBolt = trashSpell(1310683)
 
-const inductionField = trashSpell(1291815, (spell) => ({
+const inductionField = bossSpell(1291815, (spell) => ({
   damage: spell.damage * 2,
   periodic: true,
 }))
