@@ -104,6 +104,18 @@ export interface PlayerDetail {
 }
 
 /**
+ * WCL hitType codes: 0 miss, 1 hit, 2 crit, 3 absorbedHit, 4 blocked, 5 blockedCrit,
+ * 6 glancing, 7 dodge, 8 parry, 9 deflect, 10 immune, 11 misfire, 12 reflect, 13 evade,
+ * 14 resist, 15 crushing.
+ *
+ * A missed swing still produces a damage event, with no damage on it. Counting those as hits
+ * drags median damage to zero and makes an ability look far less avoidable than it is.
+ */
+export function isMiss(hitType: number) {
+  return hitType === 0 || (hitType > 6 && hitType < 15)
+}
+
+/**
  * True unmitigated damage.
  *
  * WCL omits these keys rather than sending zeros, and `amount` is fully net — post-mitigation,
@@ -158,7 +170,9 @@ export async function fetchFight(code: string, fightID: number): Promise<Fight |
 export async function fetchMasterData(code: string) {
   const data = await fetchWclCached<{
     reportData: {
-      report: { masterData: { actors: Actor[]; abilities: MasterAbility[] } }
+      report: {
+        masterData: { actors: Actor[] | null; abilities: MasterAbility[] | null } | null
+      }
     }
   }>(
     `query {
@@ -171,7 +185,13 @@ export async function fetchMasterData(code: string) {
     { label: `masterData ${code}` },
   )
 
-  return data.reportData.report.masterData
+  // Some reports come back with a null masterData (or null sub-arrays) rather than an error.
+  // Without actor/ability names a run is unusable, so hand back empty and let the caller skip it.
+  const masterData = data.reportData.report.masterData
+  return {
+    actors: masterData?.actors ?? [],
+    abilities: masterData?.abilities ?? [],
+  }
 }
 
 export async function fetchPlayerDetails(

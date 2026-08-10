@@ -25,6 +25,7 @@ import {
   fetchMasterData,
   fetchPlayerDetails,
   fetchRankings,
+  isMiss,
   schoolsFromBitmask,
   unmitigatedDamage,
 } from './wclQueries.ts'
@@ -55,12 +56,36 @@ const CAST_LANDING_WINDOW_MS = 10_000
 const DEATH_ATTRIBUTION_MS = 1000
 /** Key level the report's headline percentages are quoted at. */
 export const REFERENCE_KEY_LEVEL = 15
+
 /** Ignore abilities seen in fewer runs than this — too little evidence. */
 const MIN_RUNS_SEEN_IN = 2
-/** Below this fraction of max HP at the reference key an ability is chip damage. */
-const CHIP_PCT_MAX_HP = 0.4
+/**
+ * An ability that can't reach 100% of a player's health by this key level isn't a one-shot
+ * problem — it's damage the healer covers.
+ *
+ * Expressed as a key level rather than a % of max HP because that's the question being asked.
+ * (For reference, +21 lands at ~59% of max HP at the +15 the report quotes.) Logs currently
+ * top out around +21, so anything needing +22 or beyond is extrapolation either way.
+ */
+const MAX_ONE_SHOT_KEY_LEVEL = 21
 /** Above this fraction of casts landing on nobody, it's a "don't stand in it" mechanic. */
 const AVOIDABLE_DODGE_FRACTION = 0.5
+/**
+ * Above this fraction of *exposed players* dodging it, likewise.
+ *
+ * Counting only casts that hit nobody badly under-reports avoidance: a 5-player AoE where one
+ * person eats it every time reads as "always lands", when four out of five dodged it. Measuring
+ * per exposed player instead catches those.
+ */
+const AVOIDABLE_AVOIDED_FRACTION = 0.6
+/** Mythic+ is always a 5-player group. */
+const GROUP_SIZE = 5
+/**
+ * When an ability has no cast events of its own, neither avoidance metric can be computed, so
+ * exposure rate is the only signal left. Fewer than this many players hit per run — and never
+ * having killed anyone — means it's being avoided, not that it's unavoidable.
+ */
+const LOW_EXPOSURE_PER_RUN = 1
 /** At or above this fraction of unique targets being tanks, it's a tankbuster. */
 const TANK_ONLY_MIN_FRACTION = 0.8
 /**
@@ -90,9 +115,12 @@ interface Instance {
   isTank: boolean
   targetMaxHp: number
   startedAt: number
+  lastEventAt: number
   /** Summed unmitigated damage across every tick and component. */
   damage: number
   ticks: number
+  /** Events carrying WCL's tick flag — genuine periodic damage. */
+  tickEvents: number
   wasMitigated: boolean
   /** Summed mitigated / summed unmitigated across the instance's events. */
   mitigatedRatio: number
@@ -133,7 +161,10 @@ export interface AbilityCandidate {
   schools: string[]
 
   runsSeenIn: number
+  runsAnalyzed: number
   instanceCount: number
+  /** Player-instances per analyzed run. An unavoidable group-wide hit runs well above 1. */
+  instancesPerRun: number
 
   baseDamageP50: number
   baseDamageP95: number
@@ -145,7 +176,12 @@ export interface AbilityCandidate {
   oneShotKeyLevel: number | null
 
   medianTicks: number
+  /** Median count of genuine periodic ticks, excluding any initial direct hit. */
+  medianTickEvents: number
+  /** Robust stand-in for "full duration" — max is too easily skewed by one merged outlier. */
+  p95Ticks: number
   maxTicks: number
+  /** Fraction of instances containing at least one genuine periodic tick. */
   tickFraction: number
   aoeFraction: number
   playersHitPerCast: number
@@ -153,6 +189,8 @@ export interface AbilityCandidate {
   castsFullyDodged: number
   /** null when the ability has no cast event of its own (damage-only spell id). */
   dodgeFraction: number | null
+  /** Share of exposed players who weren't hit. null when there are no cast events. */
+  avoidedFraction: number | null
 
   tankFraction: number
   tankOnly: boolean
@@ -175,6 +213,15 @@ export interface AbilityCandidate {
 
   grimoireDamage: number | null
   grimoireEffectIndex: number | null
+  /** Exact DBC tick count, when grimoire has periodic data for this spell. */
+  grimoireTicks: number | null
+  /** Full DBC duration in ms — how long "full duration" damage would take to land. */
+  grimoireDuration: number | null
+  grimoireDirectDamage: number | null
+  grimoirePeriodicDamage: number | null
+  grimoirePeriodicTicks: number | null
+  /** First tick lands with the hit — already folded into grimoirePeriodicTicks. */
+  grimoireTickOnApply: boolean
   /** baseDamageP50 / grimoireDamage — the `spell.damage * N` a human would hand-write. */
   tickMultiplier: number | null
 
@@ -189,9 +236,30 @@ export interface AbilityCandidate {
  * chain); a multi-tick one lands near the tick count, which is the `spell.damage * N` a
  * human would otherwise reverse-engineer by hand.
  */
-function lookupGrimoire(spellIds: number[], observedBaseDamage: number) {
-  let best: { damage: number; effectIndex: number; error: number; spellId: number } | null =
-    null
+interface GrimoireMatch {
+  /** Damage of the effect the observation matched. */
+  damage: number
+  effectIndex: number
+  error: number
+  spellId: number
+  /** Exact DBC tick count when that effect is a periodic aura. */
+  ticks: number | null
+  /** Full DBC duration of the spell in ms. */
+  duration: number | null
+  /** The spell's direct-damage effect, when it also has one. */
+  directDamage: number | null
+  /** Per-tick damage and count of the spell's periodic effect, when it has one. */
+  periodicDamage: number | null
+  periodicTicks: number | null
+  /** The DoT lands its first tick on application, so `ticks` already counts that one. */
+  periodicTickOnApply: boolean
+}
+
+function lookupGrimoire(
+  spellIds: number[],
+  observedBaseDamage: number,
+): GrimoireMatch | null {
+  let best: GrimoireMatch | null = null
 
   for (const spellId of spellIds) {
     let spell
@@ -202,18 +270,50 @@ function lookupGrimoire(spellIds: number[], observedBaseDamage: number) {
     }
     if (!spell?.effects) continue
 
-    spell.effects.forEach((effect, effectIndex) => {
-      if (!effect.damage || effect.damage <= 0) return
-      const multiple = observedBaseDamage / effect.damage
-      // Distance from the nearest whole number of ticks, relative to that tick count.
-      const error = Math.abs(multiple - Math.round(multiple)) / Math.max(1, Math.round(multiple))
+    const direct = spell.effects.find((effect) => !effect.periodic && effect.damage > 0)
+    const periodic = spell.effects.find((effect) => effect.periodic && effect.damage > 0)
+
+    for (const effect of spell.effects) {
+      if (!effect.damage || effect.damage <= 0) continue
+      // A periodic effect's damage is per tick, so compare the observation against the whole
+      // DoT; otherwise a 12-tick bleed looks like a 12x multiple of a single tick.
+      const total = effect.periodic ? effect.damage * (effect.ticks ?? 1) : effect.damage
+      const multiple = observedBaseDamage / total
+      // Distance from the nearest whole number, relative to it.
+      const error =
+        Math.abs(multiple - Math.round(multiple)) / Math.max(1, Math.round(multiple))
+
       if (!best || error < best.error) {
-        best = { damage: effect.damage, effectIndex, error, spellId }
+        best = {
+          damage: effect.damage,
+          effectIndex: effect.index,
+          error,
+          spellId,
+          ticks: effect.periodic ? (effect.ticks ?? null) : null,
+          duration: spell.duration ?? null,
+          directDamage: direct?.damage ?? null,
+          periodicDamage: periodic?.damage ?? null,
+          periodicTicks: periodic?.ticks ?? null,
+          periodicTickOnApply: periodic?.tickOnApply === true,
+        }
       }
-    })
+    }
   }
 
-  return best as { damage: number; effectIndex: number; error: number; spellId: number } | null
+  return best
+}
+
+const AUTO_ATTACK_NAMES = new Set(['Melee'])
+
+/**
+ * Auto-attacks, which the app deliberately doesn't model.
+ *
+ * WCL reports melee under ability id 1, under negative pseudo-ids (-2, -8 seen in S2), and
+ * under several ordinary-looking spell ids that differ per dungeon, so the name is the only
+ * reliable discriminator. Negative ids are WCL internals and never a real spell.
+ */
+function isAutoAttack(abilityGameID: number, name: string) {
+  return abilityGameID <= 1 || AUTO_ATTACK_NAMES.has(name)
 }
 
 function percentile(values: number[], fraction: number) {
@@ -297,6 +397,10 @@ async function collectRun(
     fetchDeaths(code, fightID, fight.startTime, fight.endTime),
   ])
 
+  // A run without actor/ability names can't be attributed to anything. Skip it rather than
+  // silently contributing "Unknown 12345" rows to the aggregate.
+  if (master.actors.length === 0 || master.abilities.length === 0) return null
+
   const actorById = new Map<number, Actor>(master.actors.map((actor) => [actor.id, actor]))
   const abilityById = new Map(master.abilities.map((a) => [a.gameID, a]))
 
@@ -324,14 +428,17 @@ async function collectRun(
   // which the old duplicate-name filter used to throw away entirely.
   const buckets = new Map<string, DamageEvent[]>()
   for (const event of damageEvents) {
-    if (event.abilityGameID === 1) continue // melee
+    const name = nameFor(event.abilityGameID)
+    if (isAutoAttack(event.abilityGameID, name)) continue
+    // Dodges, parries, immunes and evades still arrive as damage events carrying no damage.
+    if (isMiss(event.hitType)) continue
+
     const target = players.get(event.targetID)
     if (!target || target.maxHp <= 0) continue
 
     const source = actorById.get(event.sourceID)
     if (!source || source.type !== 'NPC' || source.id === -1) continue
 
-    const name = nameFor(event.abilityGameID)
     const key = `${name} ${event.targetID}`
     const bucket = buckets.get(key) ?? []
     bucket.push(event)
@@ -364,7 +471,17 @@ async function collectRun(
 
     let current: Instance | null = null
     for (const event of events) {
-      if (!current || event.timestamp - current.startedAt > INSTANCE_GAP_MS) {
+      // A direct hit always begins a new application; only genuine DoT ticks fold into the
+      // one before them. Without this, two separate shots at the same player inside the gap
+      // window merge into a fake 2-tick "instance".
+      // Gap is measured from the previous event, not the instance start — measuring from the
+      // start silently truncated every DoT longer than the window (a 1s-period DoT could never
+      // record more than 5 ticks).
+      if (
+        !current ||
+        !event.tick ||
+        event.timestamp - current.lastEventAt > INSTANCE_GAP_MS
+      ) {
         if (current) instances.push(current)
         current = {
           name: name!,
@@ -373,8 +490,10 @@ async function collectRun(
           isTank: target.isTank,
           targetMaxHp: target.maxHp,
           startedAt: event.timestamp,
+          lastEventAt: event.timestamp,
           damage: 0,
           ticks: 0,
+          tickEvents: 0,
           wasMitigated: false,
           mitigatedRatio: 0,
           mitigatedAmount: 0,
@@ -387,8 +506,10 @@ async function collectRun(
         }
       }
 
+      current.lastEventAt = event.timestamp
       current.damage += unmitigatedDamage(event)
       current.ticks += 1
+      if (event.tick) current.tickEvents += 1
       current.mitigatedAmount += event.mitigated ?? 0
       current.wasMitigated ||= (event.mitigated ?? 0) > 0
       current.isAoE ||= event.isAoE === true
@@ -430,6 +551,10 @@ async function collectRun(
 
   const castsByName = new Map<string, number[]>()
   for (const cast of castEvents) {
+    // The Casts stream carries a `begincast` alongside the `cast` for anything with a cast
+    // time. Counting both double-counts those abilities and halves their hits-per-cast.
+    if (cast.type !== 'cast') continue
+
     const source = actorById.get(cast.sourceID)
     if (!source || source.type !== 'NPC' || source.id === -1) continue
     const name = nameFor(cast.abilityGameID)
@@ -463,6 +588,7 @@ async function collectRun(
 }
 
 function aggregate(runs: Run[]): AbilityCandidate[] {
+  const runsAnalyzed = runs.length
   const names = new Set(runs.flatMap((run) => run.instances.map((i) => i.name)))
   const candidates: AbilityCandidate[] = []
 
@@ -562,11 +688,37 @@ function aggregate(runs: Run[]): AbilityCandidate[] {
     // something you plan a defensive for — even when a hit would kill you.
     const castsFullyDodged = castCount - castsThatLanded
     const dodgeFraction = castCount > 0 ? castsFullyDodged / castCount : null
+    const aoeFraction = instances.filter((i) => i.isAoE).length / instances.length
+    const playersHitPerCast = castCount > 0 ? instances.length / castCount : 0
+
+    // An AoE is "aimed at" the whole group; anything else at a single player. Comparing hits
+    // per cast against that tells you what share of the people who could have been hit weren't.
+    const expectedTargetsPerCast = aoeFraction > 0.5 ? GROUP_SIZE : 1
+    const avoidedFraction =
+      castCount > 0
+        ? Math.min(1, Math.max(0, 1 - playersHitPerCast / expectedTargetsPerCast))
+        : null
+
+    const instancesPerRun = instances.length / runsAnalyzed
 
     let classification: AbilityCandidate['classification']
-    if (pctMaxHpP95 < CHIP_PCT_MAX_HP) {
+    const oneShotAt = oneShotKeyLevel(pctMaxHpP95, REFERENCE_KEY_LEVEL, isTrash)
+    if (oneShotAt === null || oneShotAt > MAX_ONE_SHOT_KEY_LEVEL) {
       classification = 'chip'
-    } else if (dodgeFraction !== null && dodgeFraction > AVOIDABLE_DODGE_FRACTION) {
+    } else if (
+      (dodgeFraction !== null && dodgeFraction > AVOIDABLE_DODGE_FRACTION) ||
+      (avoidedFraction !== null && avoidedFraction > AVOIDABLE_AVOIDED_FRACTION)
+    ) {
+      classification = 'avoidable'
+    } else if (
+      // No cast events, so avoidance is unmeasurable. Falling through to `lethal` treated
+      // "we couldn't tell" as "unavoidable". Rate stands in instead — but a mechanic that has
+      // actually killed someone stays lethal however rarely it lands, since that's precisely
+      // the rare-but-deadly case worth planning a defensive for.
+      castCount === 0 &&
+      instancesPerRun < LOW_EXPOSURE_PER_RUN &&
+      deathsCaused === 0
+    ) {
       classification = 'avoidable'
     } else {
       classification = 'lethal'
@@ -584,7 +736,9 @@ function aggregate(runs: Run[]): AbilityCandidate[] {
       schools,
 
       runsSeenIn,
+      runsAnalyzed,
       instanceCount: instances.length,
+      instancesPerRun,
 
       baseDamageP50,
       baseDamageP95: Math.round(percentile(instances.map((i) => i.baseDamage), 0.95)),
@@ -596,14 +750,17 @@ function aggregate(runs: Run[]): AbilityCandidate[] {
       oneShotKeyLevel: oneShotKeyLevel(pctMaxHpP95, REFERENCE_KEY_LEVEL, isTrash),
 
       medianTicks: median(instances.map((i) => i.ticks)),
+      medianTickEvents: median(instances.map((i) => i.tickEvents)),
+      p95Ticks: Math.round(percentile(instances.map((i) => i.ticks), 0.95)),
       maxTicks: Math.max(...instances.map((i) => i.ticks)),
       tickFraction:
-        instances.filter((i) => i.ticks > 1).length / instances.length,
-      aoeFraction: instances.filter((i) => i.isAoE).length / instances.length,
-      playersHitPerCast: castCount > 0 ? instances.length / castCount : 0,
+        instances.filter((i) => i.tickEvents > 0).length / instances.length,
+      aoeFraction,
+      playersHitPerCast,
       castCount,
       castsFullyDodged,
       dodgeFraction,
+      avoidedFraction,
 
       tankFraction,
       tankOnly: tankFraction >= TANK_ONLY_MIN_FRACTION,
@@ -633,6 +790,12 @@ function aggregate(runs: Run[]): AbilityCandidate[] {
 
       grimoireDamage: grimoire?.damage ?? null,
       grimoireEffectIndex: grimoire?.effectIndex ?? null,
+      grimoireTicks: grimoire?.ticks ?? null,
+      grimoireDuration: grimoire?.duration ?? null,
+      grimoireDirectDamage: grimoire?.directDamage ?? null,
+      grimoirePeriodicDamage: grimoire?.periodicDamage ?? null,
+      grimoirePeriodicTicks: grimoire?.periodicTicks ?? null,
+      grimoireTickOnApply: grimoire?.periodicTickOnApply ?? false,
       tickMultiplier: grimoire ? baseDamageP50 / grimoire.damage : null,
 
       classification,

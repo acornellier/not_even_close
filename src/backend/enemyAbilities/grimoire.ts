@@ -13,7 +13,8 @@ export function getEnemySpell(
   trashAbility?: boolean,
 ): EnemyAbility {
   const spell = getGrimoireSpell(spellId)
-  const baseSpell = grimoireToEnemyAbility(spell, extraOptions?.effectIndex ?? 0)
+  // effectIndex is the DBC EffectIndex; omitting it picks the direct-damage effect.
+  const baseSpell = grimoireToEnemyAbility(spell, extraOptions?.effectIndex)
 
   return {
     ...baseSpell,

@@ -9,14 +9,15 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import type { AbilityCandidate } from './guessAbilities.ts'
 import { REFERENCE_KEY_LEVEL } from './guessAbilities.ts'
-import { deriveMultiplier, samplesForSpellIds } from './deriveMultiplier.ts'
+import { getDamageMultiplier } from 'grimoire-wow'
+import { suggestedDeclaration } from './abilitySource.ts'
 import { pctMaxHpAtKeyLevel } from './scaling.ts'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const outputDir = path.join(__dirname, 'output')
 
-/** Grimoire multiples within this much of a whole number are treated as exact. */
-const CLEAN_MULTIPLE_TOLERANCE = 0.06
+/** Below this many observations, a tick-count disagreement isn't worth reporting. */
+const MIN_INSTANCES_TO_TRUST_TICKS = 20
 
 const pct = (value: number) => `${Math.round(value * 100)}%`
 const short = (value: number) =>
@@ -25,66 +26,6 @@ const short = (value: number) =>
     : value >= 1000
       ? `${Math.round(value / 1000)}k`
       : String(Math.round(value))
-
-function varName(name: string) {
-  return name
-    .replace(/[^a-zA-Z0-9 ]/g, '')
-    .trim()
-    .split(/\s+/)
-    .map((word, index) =>
-      index === 0
-        ? word.toLowerCase()
-        : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
-    )
-    .join('')
-}
-
-/**
- * Build the ability-file line.
- *
- * Damage is authored at full duration rather than the median observation: the app answers
- * "can I survive this", so the worst case is the useful number. The hand-tuned S1 files make
- * the same choice (arcaneBeam x6 where the median player ate one tick).
- */
-function suggestedLine(candidate: AbilityCandidate, multiplier: number | null) {
-  const fn = candidate.isBoss ? 'bossSpell' : 'trashSpell'
-  const options: string[] = []
-
-  if (candidate.tankOnly) options.push('tankOnly: true')
-  if (candidate.maxTicks > 1) options.push('periodic: true')
-  if (candidate.aoeFraction > 0.5) options.push('aoe: true')
-
-  const hasCleanGrimoire =
-    candidate.tickMultiplier !== null &&
-    Math.abs(candidate.tickMultiplier - Math.round(candidate.tickMultiplier)) <
-      CLEAN_MULTIPLE_TOLERANCE
-
-  // Single hit that grimoire already has exactly right — no damage override needed.
-  if (hasCleanGrimoire && Math.round(candidate.tickMultiplier!) === 1 && candidate.maxTicks === 1) {
-    const suffix = options.length > 0 ? `, { ${options.join(', ')} }` : ''
-    return `${varName(candidate.name)} = ${fn}(${candidate.primarySpellId}${suffix})`
-  }
-
-  const effect =
-    candidate.grimoireEffectIndex && candidate.grimoireEffectIndex > 0
-      ? `, { effectIndex: ${candidate.grimoireEffectIndex} }`
-      : ''
-
-  if (candidate.grimoireDamage) {
-    options.unshift(`damage: spell.damage * ${candidate.maxTicks}`)
-    return `${varName(candidate.name)} = ${fn}(${candidate.primarySpellId}, (spell) => ({ ${options.join(', ')} })${effect})`
-  }
-
-  // No grimoire effect at all — the only route is the season multiplier.
-  const perTick = candidate.baseDamageP50 / Math.max(1, candidate.medianTicks)
-  const coefficient = multiplier ? Math.round(perTick / multiplier) : null
-  const damage = coefficient
-    ? `scalingTickingDamage(${candidate.maxTicks}, ${coefficient})`
-    : `${Math.round(perTick * candidate.maxTicks)}`
-
-  options.unshift(`damage: ${damage}`)
-  return `${varName(candidate.name)} = ${fn}(${candidate.primarySpellId}, () => ({ ${options.join(', ')} }))`
-}
 
 function renderCandidate(candidate: AbilityCandidate, multiplier: number | null) {
   const lines: string[] = []
@@ -110,9 +51,13 @@ function renderCandidate(candidate: AbilityCandidate, multiplier: number | null)
   )
 
   if (candidate.grimoireDamage) {
+    const dbcTicks = candidate.grimoirePeriodicTicks
+    const ticksInfo = dbcTicks
+      ? `${dbcTicks} DBC ticks${candidate.grimoireTickOnApply ? ' (ticks on apply)' : ''},` +
+        ` observed ${candidate.medianTickEvents} median`
+      : `ticks ${candidate.medianTicks} median / ${candidate.maxTicks} max`
     lines.push(
-      `grimoire        ${short(candidate.grimoireDamage)}  ->  ${candidate.tickMultiplier!.toFixed(2)}x` +
-        `   (ticks ${candidate.medianTicks} median / ${candidate.maxTicks} max)`,
+      `grimoire        ${short(candidate.grimoireDamage)}  ->  ${candidate.tickMultiplier!.toFixed(2)}x   (${ticksInfo})`,
     )
   } else {
     lines.push(
@@ -146,6 +91,18 @@ function renderCandidate(candidate: AbilityCandidate, multiplier: number | null)
     candidate.aoeFraction > 0.5 ? `aoe (${pct(candidate.aoeFraction)})` : null,
   ].filter(Boolean)
   lines.push(`traits          ${traits.join(', ')}`)
+  // Observing more ticks than the spell data allows means the DBC extraction is missing
+  // something — most likely the tick-on-apply attribute.
+  if (
+    candidate.grimoirePeriodicTicks &&
+    candidate.instanceCount >= MIN_INSTANCES_TO_TRUST_TICKS &&
+    candidate.medianTickEvents > candidate.grimoirePeriodicTicks
+  ) {
+    lines.push(
+      `CHECK           observed ${candidate.medianTickEvents} ticks but grimoire says ${candidate.grimoirePeriodicTicks}` +
+        ` over ${candidate.instanceCount} instances — grimoire may be missing tickOnApply`,
+    )
+  }
   if (candidate.possiblyIgnoresArmor) {
     lines.push(
       `CHECK           armor sensitivity only ${Math.round(candidate.armorSensitivity * 100)}pp` +
@@ -153,12 +110,13 @@ function renderCandidate(candidate: AbilityCandidate, multiplier: number | null)
     )
   }
   lines.push(
-    `evidence        ${candidate.instanceCount} instances over ${candidate.runsSeenIn} runs at +${candidate.keyLevels.join('/+')}`,
+    `evidence        ${candidate.instanceCount} instances, ${candidate.runsSeenIn}/${candidate.runsAnalyzed} runs` +
+      ` (${candidate.instancesPerRun.toFixed(2)} hits/run) at +${candidate.keyLevels.join('/+')}`,
   )
   lines.push('```')
   lines.push('')
   lines.push('```ts')
-  lines.push(`const ${suggestedLine(candidate, multiplier)}`)
+  lines.push(suggestedDeclaration(candidate, multiplier).code)
   lines.push('```')
   lines.push('')
 
@@ -166,10 +124,7 @@ function renderCandidate(candidate: AbilityCandidate, multiplier: number | null)
 }
 
 function renderReport(dungeonKey: string, candidates: AbilityCandidate[]) {
-  const multiplierFit = deriveMultiplier(
-    samplesForSpellIds(candidates.flatMap((c) => c.spellIds)),
-  )
-  const multiplier = multiplierFit?.multiplier ?? null
+  const multiplier = getDamageMultiplier()
 
   const lines: string[] = []
   lines.push(`# ${dungeonKey} — near-lethal ability candidates`)
@@ -177,11 +132,7 @@ function renderReport(dungeonKey: string, candidates: AbilityCandidate[]) {
   lines.push(
     `Damage is unmitigated and normalized to the +1 baseline; percentages are quoted at +${REFERENCE_KEY_LEVEL}.`,
   )
-  if (multiplier) {
-    lines.push(
-      `Season multiplier derived from grimoire: \`${multiplier}\` (${multiplierFit!.accepted.length} effects, worst deviation ${multiplierFit!.worstDeviation.toFixed(2)}).`,
-    )
-  }
+  lines.push(`Season damage multiplier (grimoire-wow): \`${multiplier}\`.`)
   lines.push('')
 
   const lethal = candidates.filter((c) => c.classification === 'lethal')
