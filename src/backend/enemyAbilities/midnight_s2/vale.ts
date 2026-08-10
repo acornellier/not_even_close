@@ -5,31 +5,25 @@ const sporeSpines = trashSpell(1238084, (spell) => ({
   periodic: true,
 }))
 
-const grievousGash = trashSpell(1242135, (spell) => ({
-  damage: spell.damage + spell.periodicDamage,
-  notes: 'Assumes full duration (16s); players typically took 1 of 16 ticks.',
-  tankOnly: true,
-  periodic: true,
-}))
-
-const thornspike = bossSpell(1247685, (spell) => ({
-  damage: spell.damage * 11,
-  tankOnly: true,
+const thornblade = bossSpell(1238071, (spell) => ({
+  damage: spell.damage * 5,
   periodic: true,
 }))
 
 const earthruptureStrike = trashSpell(1237855, { tankOnly: true })
 
-const lightfireBeams = bossSpell(1239919, (spell) => ({
-  damage: spell.periodicDamage,
+const rupturedEarth = trashSpell(1237858, (spell) => ({
+  damage: spell.damage * 2,
   periodic: true,
-  aoe: true,
 }))
 
-const lightfire = bossSpell(1239825, (spell) => ({
-  damage: spell.periodicDamage,
-  periodic: true,
-}))
+const uproot = trashSpell(1255205, { aoe: true })
+
+const spoutingFloret = trashSpell(1263628, { aoe: true })
+
+const lightBolt = bossSpell(1238063)
+
+const lightBoltVolley = trashSpell(1301834, { aoe: true })
 
 const bedrockSurge = bossSpell(1276586, (spell) => ({
   damage: spell.periodicDamage,
@@ -37,16 +31,57 @@ const bedrockSurge = bossSpell(1276586, (spell) => ({
   aoe: true,
 }))
 
+const bedrockSlam1234773 = bossSpell(1234773, { tankOnly: true })
+
+const bedrockSlam = bossSpell(1234753, { tankOnly: true })
+
+const fertileLoam = bossSpell(1234802, (spell) => ({
+  damage: spell.damage * 3,
+  periodic: true,
+}))
+
 const lightblossomBeam = bossSpell(1235574, (spell) => ({
   damage: spell.damage * 4,
   periodic: true,
 }))
 
+const lightscorchedEarth = bossSpell(1235828)
+
+const huntingLeap = trashSpell(1303039, (spell) => ({
+  damage: spell.damage + spell.periodicDamage,
+  periodic: true,
+}))
+
+const huntingLeap270503 = trashSpell(270503, { aoe: true })
+
+const verdantStomp = bossSpell(1236746, { aoe: true })
+
+const incise = bossSpell(1237267, (spell) => ({
+  damage: spell.periodicDamage,
+  periodic: true,
+}))
+
+const grievousGash = trashSpell(1242135, (spell) => ({
+  damage: spell.damage + spell.periodicDamage,
+  notes: 'Assumes full duration (16s); players typically took 1 of 16 ticks.',
+  tankOnly: true,
+  periodic: true,
+}))
+
+const seedShot = trashSpell(1238232)
+
+const lightfireBeams = bossSpell(1239919, (spell) => ({
+  damage: spell.periodicDamage,
+  periodic: true,
+  aoe: true,
+}))
+
 const lightwardensBlight = trashSpell(1242200, { aoe: true })
 
-const bedrockSlam = bossSpell(1234753, { tankOnly: true })
-
-const tongueToss = trashSpell(1250100)
+const lightfire = bossSpell(1239825, (spell) => ({
+  damage: spell.periodicDamage,
+  periodic: true,
+}))
 
 const grievousThrash = bossSpell(1241058, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
@@ -55,83 +90,48 @@ const grievousThrash = bossSpell(1241058, (spell) => ({
   aoe: true,
 }))
 
-const huntingLeap = trashSpell(1303039, (spell) => ({
-  damage: spell.damage + spell.periodicDamage,
+const tongueToss = trashSpell(1250100)
+
+const thornspike = bossSpell(1247685, (spell) => ({
+  damage: spell.damage * 11,
+  tankOnly: true,
   periodic: true,
 }))
-
-const thornblade = bossSpell(1238071, (spell) => ({
-  damage: spell.damage * 5,
-  periodic: true,
-}))
-
-const incise = bossSpell(1237267, (spell) => ({
-  damage: spell.periodicDamage,
-  periodic: true,
-}))
-
-const lightBoltVolley = trashSpell(1301834, { aoe: true })
-
-const verdantStomp = bossSpell(1236746, { aoe: true })
-
-const uproot = trashSpell(1255205, { aoe: true })
-
-const fertileLoam = bossSpell(1234802, (spell) => ({
-  damage: spell.damage * 3,
-  periodic: true,
-}))
-
-const lightBolt = bossSpell(1238063)
-
-const seedShot = trashSpell(1238232)
 
 const concentratedLightbeam = bossSpell(1246751, (spell) => ({
   damage: spell.damage * 3,
   periodic: true,
 }))
 
-const rupturedEarth = trashSpell(1237858, (spell) => ({
-  damage: spell.damage * 2,
-  periodic: true,
-}))
-
 const fluorescentOutburst = bossSpell(1247039, { aoe: true })
-
-const lightscorchedEarth = bossSpell(1235828)
-
-const spoutingFloret = trashSpell(1263628, { aoe: true })
-
-const huntingLeap270503 = trashSpell(270503, { aoe: true })
-
-const bedrockSlam1234773 = bossSpell(1234773, { tankOnly: true })
 
 export const valeAbilities = [
   sporeSpines,
-  grievousGash,
-  thornspike,
-  earthruptureStrike,
-  lightfireBeams,
-  lightfire,
-  bedrockSurge,
-  lightblossomBeam,
-  lightwardensBlight,
-  bedrockSlam,
-  tongueToss,
-  grievousThrash,
-  huntingLeap,
   thornblade,
-  incise,
-  lightBoltVolley,
-  verdantStomp,
-  uproot,
-  fertileLoam,
-  lightBolt,
-  seedShot,
-  concentratedLightbeam,
+  earthruptureStrike,
   rupturedEarth,
-  fluorescentOutburst,
-  lightscorchedEarth,
+  uproot,
   spoutingFloret,
-  huntingLeap270503,
+  lightBolt,
+  lightBoltVolley,
+  bedrockSurge,
   bedrockSlam1234773,
+  bedrockSlam,
+  fertileLoam,
+  lightblossomBeam,
+  lightscorchedEarth,
+  huntingLeap,
+  huntingLeap270503,
+  verdantStomp,
+  incise,
+  grievousGash,
+  seedShot,
+  lightfireBeams,
+  lightwardensBlight,
+  lightfire,
+  grievousThrash,
+  tongueToss,
+  thornspike,
+  concentratedLightbeam,
+  fluorescentOutburst,
 ]

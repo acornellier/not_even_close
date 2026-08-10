@@ -275,6 +275,52 @@ function deduplicateNames(declarations: Declaration[], existingSource: string | 
   })
 }
 
+/**
+ * Rewrite the file with declarations and export entries in candidate (route) order.
+ *
+ * Existing declaration text is reused verbatim, so hand edits survive a reorder — only the
+ * order changes. Declarations that don't correspond to a candidate are kept at the end rather
+ * than dropped; removing things is prune's job, not this function's.
+ */
+function reorderFile(
+  source: string,
+  dungeonKey: string,
+  candidates: AbilityCandidate[],
+): string | null {
+  const firstConst = source.search(/^const /m)
+  if (firstConst === -1) return null
+
+  const header = source.slice(0, firstConst).trimEnd()
+  const blocks: Array<{ varName: string; text: string }> = []
+  const claimed = new Set<number>()
+
+  for (const candidate of candidates) {
+    const found = findDeclaration(source, candidate.primarySpellId)
+    if (!found) continue
+    claimed.add(candidate.primarySpellId)
+    blocks.push({ varName: found.varName, text: source.slice(found.start, found.end) })
+  }
+
+  // Anything declared in the file that no candidate claimed — keep it, in its original order.
+  for (const match of source.matchAll(
+    /^const (\w+) = (?:boss|trash)Spell\(\s*(\d+)/gm,
+  )) {
+    const spellId = Number(match[2])
+    if (claimed.has(spellId)) continue
+    const found = findDeclaration(source, spellId)
+    if (!found) continue
+    blocks.push({ varName: found.varName, text: source.slice(found.start, found.end) })
+  }
+
+  return (
+    `${header}\n\n` +
+    blocks.map((b) => b.text).join('\n\n') +
+    `\n\nexport const ${exportName(dungeonKey)} = [\n` +
+    blocks.map((b) => `  ${b.varName},`).join('\n') +
+    `\n]\n`
+  )
+}
+
 function main() {
   const args = process.argv.slice(2)
   const dryRun = args.includes('--dry')
@@ -354,8 +400,25 @@ function main() {
       console.log(`    ${verb}: ${stale.join(', ')}`)
     }
 
+    // Route order can change on its own when new log data shifts where an ability first
+    // appears, without any declaration text changing.
+    const fileOrder = existingSource
+      ? [...existingSource.matchAll(/^const \w+ = (?:boss|trash)Spell\(\s*(\d+)/gm)].map(
+          (m) => Number(m[1]),
+        )
+      : []
+    const wantedOrder = candidates
+      .map((c) => c.primarySpellId)
+      .filter((id) => fileOrder.includes(id))
+    const orderChanged =
+      fresh.length === 0 &&
+      wantedOrder.join(',') !== fileOrder.filter((id) => wantedOrder.includes(id)).join(',')
+
+    if (orderChanged) console.log(`    reordering to match dungeon route`)
+
     if (
       fresh.length === 0 &&
+      !orderChanged &&
       !(prune && stale.length > 0) &&
       !(refresh && drift.length > 0)
     ) {
@@ -396,6 +459,10 @@ function main() {
     } else {
       content = renderNewFile(dungeonKey, declarations, needsScalingHelper)
     }
+
+    // Abilities are listed in the order you meet them in the dungeon, so re-sort after any
+    // merge — appended declarations would otherwise sit at the end regardless of route order.
+    content = reorderFile(content, dungeonKey, candidates) ?? content
 
     fs.mkdirSync(abilitiesDir, { recursive: true })
     fs.writeFileSync(outPath, pruneUnusedImports(content))

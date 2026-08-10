@@ -144,6 +144,8 @@ interface Run {
   code: string
   fightID: number
   keyLevel: number
+  startTime: number
+  endTime: number
   instances: Instance[]
   perAbility: Map<string, RunAbilityData>
   deathsByAbility: Map<number, number>
@@ -161,6 +163,8 @@ export interface AbilityCandidate {
   physical: boolean
   schools: string[]
 
+  /** How far into a run this is first met, 0-1. Drives the order abilities are listed in. */
+  firstSeenFraction: number
   runsSeenIn: number
   runsAnalyzed: number
   instanceCount: number
@@ -583,6 +587,8 @@ async function collectRun(
     code,
     fightID,
     keyLevel: fight.keystoneLevel,
+    startTime: fight.startTime,
+    endTime: fight.endTime,
     instances,
     perAbility,
     deathsByAbility,
@@ -756,6 +762,20 @@ function aggregate(runs: Run[]): AbilityCandidate[] {
 
     const instancesPerRun = instances.length / runsAnalyzed
 
+    // Where in the dungeon you first meet this, as a fraction of the run. Taken per run and
+    // then medianed, so a single unusual route or a wildly different run length can't skew it.
+    const firstSeenPerRun = runs
+      .map((run) => {
+        const first = run.instances
+          .filter((i) => groupKey(i) === group)
+          .reduce((min, i) => Math.min(min, i.startedAt), Infinity)
+        if (first === Infinity) return null
+        const duration = run.endTime - run.startTime
+        return duration > 0 ? (first - run.startTime) / duration : 0
+      })
+      .filter((value): value is number => value !== null)
+    const firstSeenFraction = median(firstSeenPerRun)
+
     let classification: AbilityCandidate['classification']
     const oneShotAt = oneShotKeyLevel(pctMaxHpP95, REFERENCE_KEY_LEVEL, isTrash)
     if (oneShotAt === null || oneShotAt > MAX_ONE_SHOT_KEY_LEVEL) {
@@ -790,6 +810,7 @@ function aggregate(runs: Run[]): AbilityCandidate[] {
       physical,
       schools,
 
+      firstSeenFraction,
       runsSeenIn,
       runsAnalyzed,
       instanceCount: instances.length,
@@ -858,7 +879,9 @@ function aggregate(runs: Run[]): AbilityCandidate[] {
     })
   }
 
-  return candidates.sort((a, b) => b.pctMaxHpP95 - a.pctMaxHpP95)
+  // Route order: the order you actually meet these running the dungeon, which is how the
+  // ability list is read in the app.
+  return candidates.sort((a, b) => a.firstSeenFraction - b.firstSeenFraction)
 }
 
 async function main() {

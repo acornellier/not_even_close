@@ -1,14 +1,39 @@
 import { bossSpell, trashSpell } from '../grimoire.ts'
 import { scalingTickingDamage } from '../grimoireConverter.ts'
 
-const bladeCombo = bossSpell(268587, () => ({
-  damage: scalingTickingDamage(1, 59),
+const shadowWhirlwind = trashSpell(1305945, { aoe: true })
+
+const shadowfrostBolt = trashSpell(1294815)
+
+const necroticEnergy = trashSpell(1310758, { aoe: true })
+
+const tailThrash = bossSpell(265910, { tankOnly: true })
+
+const serpentineGust265781 = bossSpell(265781, { aoe: true })
+
+const suddenRupture = trashSpell(1297781, (spell) => ({
+  damage: spell.periodicDamage,
+  periodic: true,
+}))
+
+const mortalBleed = trashSpell(1297918, (spell) => ({
+  damage: spell.damage + spell.periodicDamage,
   tankOnly: true,
+  periodic: true,
+}))
+
+const bloodDrain = trashSpell(1297970, () => ({
+  damage: scalingTickingDamage(1, 16),
+  aoe: true,
 }))
 
 const bladestorm = trashSpell(270928, { aoe: true })
 
-const soulCrush = trashSpell(1302028, { tankOnly: true })
+const huntingLeap270503 = bossSpell(270503, { aoe: true })
+
+const soulBolt = trashSpell(1294972)
+
+const purificationStrike = trashSpell(270293, { aoe: true })
 
 const putridSeekers = trashSpell(1298104, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
@@ -17,19 +42,21 @@ const putridSeekers = trashSpell(1298104, (spell) => ({
   aoe: true,
 }))
 
-const tailThrash = bossSpell(265910, { tankOnly: true })
-
-const mortalBleed = trashSpell(1297918, (spell) => ({
-  damage: spell.damage + spell.periodicDamage,
-  tankOnly: true,
+const embalm = trashSpell(1312569, (spell) => ({
+  damage: spell.periodicDamage,
   periodic: true,
 }))
 
-const impalingSpear = bossSpell(1302945, (spell) => ({
+const awakeningSlam = bossSpell(1312146, { aoe: true })
+
+const spectralBolt = trashSpell(1295125)
+
+const bloodthirstyAxe = trashSpell(1301851, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
   periodic: true,
-  aoe: true,
 }))
+
+const soulCrush = trashSpell(1302028, { tankOnly: true })
 
 const whirlingAxe = trashSpell(266191, (spell) => ({
   damage: spell.periodicDamage,
@@ -41,47 +68,7 @@ const severingAxe = trashSpell(266231, (spell) => ({
   periodic: true,
 }))
 
-const necroticEnergy = trashSpell(1310758, { aoe: true })
-
-const gildedDestruction = bossSpell(1303267, (spell) => ({
-  damage: spell.damage + spell.periodicDamage,
-  periodic: true,
-  aoe: true,
-}))
-
-const savageMaul = bossSpell(1303490, (spell) => ({
-  damage: spell.damage + spell.periodicDamage,
-  tankOnly: true,
-  periodic: true,
-}))
-
-const spectralBolt = trashSpell(1295125)
-
-const suddenRupture = trashSpell(1297781, (spell) => ({
-  damage: spell.periodicDamage,
-  periodic: true,
-}))
-
-const awakeningSlam = bossSpell(1312146, { aoe: true })
-
-const purificationStrike = trashSpell(270293, { aoe: true })
-
-const bloodthirstyAxe = trashSpell(1301851, (spell) => ({
-  damage: spell.damage + spell.periodicDamage,
-  periodic: true,
-}))
-
-const shadowWhirlwind = trashSpell(1305945, { aoe: true })
-
-const bloodDrain = trashSpell(1297970, () => ({
-  damage: scalingTickingDamage(1, 16),
-  aoe: true,
-}))
-
-const embalm = trashSpell(1312569, (spell) => ({
-  damage: spell.periodicDamage,
-  periodic: true,
-}))
+const arcLightning = trashSpell(1305810)
 
 const torrent = trashSpell(267105, { aoe: true })
 
@@ -90,13 +77,10 @@ const shadowBarrage = trashSpell(272388, (spell) => ({
   periodic: true,
 }))
 
-const arcLightning = trashSpell(1305810)
-
-const searingGold = bossSpell(1303374, { aoe: true })
-
-const shadowfrostBolt = trashSpell(1294815)
-
-const soulBolt = trashSpell(1294972)
+const huntingLeap = bossSpell(1303039, (spell) => ({
+  damage: spell.damage + spell.periodicDamage,
+  periodic: true,
+}))
 
 const bladeCombo268591 = bossSpell(268591, () => ({
   damage: scalingTickingDamage(1, 114),
@@ -113,46 +97,62 @@ const bladeCombo268589 = bossSpell(268589, () => ({
   tankOnly: true,
 }))
 
-const huntingLeap = bossSpell(1303039, (spell) => ({
+const gildedDestruction = bossSpell(1303267, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
+  periodic: true,
+  aoe: true,
+}))
+
+const searingGold = bossSpell(1303374, { aoe: true })
+
+const bladeCombo = bossSpell(268587, () => ({
+  damage: scalingTickingDamage(1, 59),
+  tankOnly: true,
+}))
+
+const impalingSpear = bossSpell(1302945, (spell) => ({
+  damage: spell.damage + spell.periodicDamage,
+  periodic: true,
+  aoe: true,
+}))
+
+const savageMaul = bossSpell(1303490, (spell) => ({
+  damage: spell.damage + spell.periodicDamage,
+  tankOnly: true,
   periodic: true,
 }))
 
-const serpentineGust265781 = bossSpell(265781, { aoe: true })
-
-const huntingLeap270503 = bossSpell(270503, { aoe: true })
-
 export const krAbilities = [
-  bladeCombo,
-  bladestorm,
-  soulCrush,
-  putridSeekers,
+  shadowWhirlwind,
+  shadowfrostBolt,
+  necroticEnergy,
   tailThrash,
+  serpentineGust265781,
+  suddenRupture,
   mortalBleed,
-  impalingSpear,
+  bloodDrain,
+  bladestorm,
+  huntingLeap270503,
+  soulBolt,
+  purificationStrike,
+  putridSeekers,
+  embalm,
+  awakeningSlam,
+  spectralBolt,
+  bloodthirstyAxe,
+  soulCrush,
   whirlingAxe,
   severingAxe,
-  necroticEnergy,
-  gildedDestruction,
-  savageMaul,
-  spectralBolt,
-  suddenRupture,
-  awakeningSlam,
-  purificationStrike,
-  bloodthirstyAxe,
-  shadowWhirlwind,
-  bloodDrain,
-  embalm,
+  arcLightning,
   torrent,
   shadowBarrage,
-  arcLightning,
-  searingGold,
-  shadowfrostBolt,
-  soulBolt,
+  huntingLeap,
   bladeCombo268591,
   bladeCombo268590,
   bladeCombo268589,
-  huntingLeap,
-  serpentineGust265781,
-  huntingLeap270503,
+  gildedDestruction,
+  searingGold,
+  bladeCombo,
+  impalingSpear,
+  savageMaul,
 ]
