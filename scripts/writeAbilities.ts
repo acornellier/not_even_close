@@ -18,6 +18,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { getDamageMultiplier } from 'grimoire-wow'
 import type { AbilityCandidate } from './guessAbilities.ts'
+import type { Declaration } from './abilitySource.ts'
 import { spellIdsInSource, suggestedDeclaration } from './abilitySource.ts'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -243,6 +244,37 @@ function formatFiles(filePaths: string[]) {
   }
 }
 
+/**
+ * Make variable names unique.
+ *
+ * Two spells can share a name while being distinct mechanics, and each gets its own
+ * declaration — so the bare camel-cased name would collide. Colliding ones take the spell id
+ * as a suffix; the first/most damaging keeps the clean name.
+ */
+function deduplicateNames(declarations: Declaration[], existingSource: string | null) {
+  const taken = new Set<string>(
+    existingSource
+      ? [...existingSource.matchAll(/^const (\w+) =/gm)].map((m) => m[1]!)
+      : [],
+  )
+
+  return declarations.map((declaration) => {
+    if (!taken.has(declaration.varName)) {
+      taken.add(declaration.varName)
+      return declaration
+    }
+
+    const spellId = declaration.code.match(/Spell\(\s*(\d+)/)?.[1] ?? ''
+    const unique = `${declaration.varName}${spellId}`
+    taken.add(unique)
+    return {
+      ...declaration,
+      varName: unique,
+      code: declaration.code.replace(/^const \w+ =/, `const ${unique} =`),
+    }
+  })
+}
+
 function main() {
   const args = process.argv.slice(2)
   const dryRun = args.includes('--dry')
@@ -279,8 +311,9 @@ function main() {
       candidate.spellIds.some((spellId) => known.has(spellId)),
     )
 
-    const declarations = fresh.map((candidate) =>
-      suggestedDeclaration(candidate, multiplier),
+    const declarations = deduplicateNames(
+      fresh.map((candidate) => suggestedDeclaration(candidate, multiplier)),
+      existingSource,
     )
 
     // Entries written by an earlier run that the scraper no longer rates lethal — usually

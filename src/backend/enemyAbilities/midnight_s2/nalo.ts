@@ -67,6 +67,8 @@ const bonespiked = bossSpell(1235405, (spell) => ({
 
 const echoingFury = bossSpell(1243408)
 
+const ragingSquall = bossSpell(1235635, { aoe: true })
+
 export const naloAbilities = [
   glacialTorment,
   heartyBellow,
@@ -87,4 +89,5 @@ export const naloAbilities = [
   wintersShroud,
   bonespiked,
   echoingFury,
+  ragingSquall,
 ]

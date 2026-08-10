@@ -1,25 +1,13 @@
 import { bossSpell, trashSpell } from '../grimoire.ts'
 import { scalingTickingDamage } from '../grimoireConverter.ts'
 
-const flamingBarrage = trashSpell(385567, (spell) => ({
-  damage: spell.damage * 16,
-  tankOnly: true,
-  periodic: true,
-}))
-
-const steelBarrage = trashSpell(1309705, { aoe: true })
-
 const fireMaw = trashSpell(395292, (spell) => ({
-  damage: spell.damage * 6,
+  damage: spell.damage + spell.periodicDamage,
   tankOnly: true,
   periodic: true,
 }))
 
-const crushingSmash = trashSpell(1305213, (spell) => ({
-  damage: spell.damage * 2,
-  tankOnly: true,
-  periodic: true,
-}))
+const crushingSmash = trashSpell(1305213, { tankOnly: true })
 
 const frigidShard = bossSpell(372808, { tankOnly: true })
 
@@ -29,11 +17,7 @@ const searingWounds = bossSpell(372860, (spell) => ({
   periodic: true,
 }))
 
-const stormslam = trashSpell(381513, (spell) => ({
-  damage: spell.damage * 3,
-  tankOnly: true,
-  periodic: true,
-}))
+const stormslam = trashSpell(381513, { tankOnly: true })
 
 const livingBomb = trashSpell(373693, (spell) => ({
   damage: spell.periodicDamage,
@@ -95,9 +79,29 @@ const windsOfChange = trashSpell(381518, (spell) => ({
   periodic: true,
 }))
 
+const fireMaw392394 = trashSpell(392394, { tankOnly: true })
+
+const inferno384823 = trashSpell(384823, (spell) => ({
+  damage: spell.damage + spell.periodicDamage,
+  periodic: true,
+  aoe: true,
+}))
+
+const crushingSmash372730 = trashSpell(372730, { tankOnly: true })
+
+const stormslam381514 = trashSpell(381514, { tankOnly: true })
+
+const chillstorm = bossSpell(397077, (spell) => ({
+  damage: spell.damage * 6,
+  periodic: true,
+  aoe: true,
+}))
+
+const flamingBarrage1305865 = trashSpell(1305865, { tankOnly: true })
+
+const steelBarrage372794 = trashSpell(372794, { tankOnly: true })
+
 export const rlpAbilities = [
-  flamingBarrage,
-  steelBarrage,
   fireMaw,
   crushingSmash,
   frigidShard,
@@ -118,4 +122,11 @@ export const rlpAbilities = [
   interruptingCloudburst,
   searingBlows,
   windsOfChange,
+  fireMaw392394,
+  inferno384823,
+  crushingSmash372730,
+  stormslam381514,
+  chillstorm,
+  flamingBarrage1305865,
+  steelBarrage372794,
 ]

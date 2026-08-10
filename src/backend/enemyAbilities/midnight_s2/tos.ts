@@ -70,8 +70,8 @@ const lightningSpire = trashSpell(1291598, { aoe: true })
 
 const sunderSlam = trashSpell(1291468, { tankOnly: true })
 
-const latentHex = bossSpell(1302153, (spell) => ({
-  damage: spell.periodicDamage,
+const latentHex = bossSpell(1302153, () => ({
+  damage: scalingTickingDamage(5, 5),
   periodic: true,
 }))
 
@@ -96,7 +96,7 @@ const slitherStrike = trashSpell(1295635, (spell) => ({
 const induction = trashSpell(1290531, { aoe: true })
 
 const overload = bossSpell(1288428, () => ({
-  damage: scalingTickingDamage(1, 14),
+  damage: scalingTickingDamage(1, 15),
   aoe: true,
 }))
 
@@ -114,6 +114,21 @@ const hexMuck = bossSpell(1300684)
 const serpentsStormcall = trashSpell(1310402, () => ({
   damage: scalingTickingDamage(1, 12),
   tankOnly: true,
+}))
+
+const latentHex1311981 = bossSpell(1311981, (spell) => ({
+  damage: spell.periodicDamage,
+  periodic: true,
+}))
+
+const latentHex1311979 = bossSpell(1311979, (spell) => ({
+  damage: spell.periodicDamage,
+  periodic: true,
+}))
+
+const lingeringStorm = bossSpell(1293133, (spell) => ({
+  damage: spell.damage * 2,
+  periodic: true,
 }))
 
 export const tosAbilities = [
@@ -147,4 +162,7 @@ export const tosAbilities = [
   inductionField,
   hexMuck,
   serpentsStormcall,
+  latentHex1311981,
+  latentHex1311979,
+  lingeringStorm,
 ]

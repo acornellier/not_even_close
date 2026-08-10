@@ -55,6 +55,25 @@ const glaiveToss = trashSpell(1295035, (spell) => ({
 
 const doomBolt = trashSpell(1258420)
 
+const heartstopPoison = trashSpell(1216590, (spell) => ({
+  damage: spell.periodicDamage,
+  tankOnly: true,
+  periodic: true,
+}))
+
+const heartstopPoison474515 = trashSpell(474515, (spell) => ({
+  damage: spell.periodicDamage,
+  notes: 'Assumes full duration (15s); players typically took 2 of 15 ticks.',
+  tankOnly: true,
+  periodic: true,
+}))
+
+const corrodingSpittle1217633 = trashSpell(1217633, (spell) => ({
+  damage: spell.damage + spell.periodicDamage,
+  notes: 'Assumes full duration (15s); players typically took 0 of 5 ticks.',
+  periodic: true,
+}))
+
 export const murdAbilities = [
   shieldBash,
   felLightning,
@@ -72,4 +91,7 @@ export const murdAbilities = [
   chaosBolt,
   glaiveToss,
   doomBolt,
+  heartstopPoison,
+  heartstopPoison474515,
+  corrodingSpittle1217633,
 ]

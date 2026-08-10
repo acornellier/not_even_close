@@ -27,8 +27,6 @@ const toxicBreath = trashSpell(1306669, (spell) => ({
   periodic: true,
 }))
 
-const tripleShot = bossSpell(1307573, { aoe: true })
-
 const paralyzingShots = trashSpell(1307269, (spell) => ({
   damage: spell.damage * 3,
   periodic: true,
@@ -79,6 +77,8 @@ const ravenousClaws = trashSpell(1306338, () => ({
   tankOnly: true,
 }))
 
+const tripleShot1297876 = bossSpell(1297876)
+
 export const fangAbilities = [
   hydrastrike,
   dismember,
@@ -87,7 +87,6 @@ export const fangAbilities = [
   tailScythe,
   boneslicer,
   toxicBreath,
-  tripleShot,
   paralyzingShots,
   noxiousSpray,
   envenom,
@@ -102,4 +101,5 @@ export const fangAbilities = [
   toxicAtrophy,
   bloodSacrifice,
   ravenousClaws,
+  tripleShot1297876,
 ]

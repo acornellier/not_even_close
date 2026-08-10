@@ -541,7 +541,10 @@ async function collectRun(
     )
   }
 
-  // --- cast bookkeeping: how often a cast produced no damage at all ----------------------
+  // --- cast bookkeeping ------------------------------------------------------------------
+  // Keyed by ability NAME, not spell id: a cast event usually carries a different spell id
+  // than the damage it produces, so keying by id loses the association for most abilities.
+  // The ambiguity that introduces (two spells sharing a name) is resolved in aggregate().
   const instancesByName = new Map<string, Instance[]>()
   for (const instance of instances) {
     const list = instancesByName.get(instance.name) ?? []
@@ -587,17 +590,68 @@ async function collectRun(
   }
 }
 
+/**
+ * Group spell ids that belong to the same mechanic.
+ *
+ * Instances are keyed by ability name so an initial hit and its DoT — which are separate spell
+ * ids — merge into one application. But distinct spells sometimes share a name, and fusing
+ * those conflates two different damage profiles. Ids are therefore only grouped when they
+ * actually co-occur inside an instance; ids that merely share a name stay separate.
+ */
+function groupSpellIds(instances: Instance[]) {
+  const parent = new Map<number, number>()
+  const find = (id: number): number => {
+    const seen = parent.get(id)
+    if (seen === undefined || seen === id) {
+      parent.set(id, id)
+      return id
+    }
+    const root = find(seen)
+    parent.set(id, root)
+    return root
+  }
+  const union = (a: number, b: number) => {
+    const rootA = find(a)
+    const rootB = find(b)
+    if (rootA !== rootB) parent.set(rootB, rootA)
+  }
+
+  for (const instance of instances) {
+    const [first, ...rest] = instance.spellIds
+    if (first === undefined) continue
+    find(first)
+    for (const spellId of rest) union(first, spellId)
+  }
+
+  return find
+}
+
 function aggregate(runs: Run[]): AbilityCandidate[] {
   const runsAnalyzed = runs.length
-  const names = new Set(runs.flatMap((run) => run.instances.map((i) => i.name)))
+  const allInstances = runs.flatMap((run) => run.instances)
+  const find = groupSpellIds(allInstances)
+
+  const groupKey = (instance: Instance) =>
+    instance.spellIds[0] === undefined ? -1 : find(instance.spellIds[0])
+  const groups = new Set(allInstances.map(groupKey))
   const candidates: AbilityCandidate[] = []
 
-  for (const name of names) {
-    const instances = runs.flatMap((run) => run.instances.filter((i) => i.name === name))
+  // Casts are recorded per name. When a name covers more than one mechanic, there's no honest
+  // way to split them, so those groups get no cast data and fall back to exposure rate.
+  const groupsPerName = new Map<string, Set<number>>()
+  for (const instance of allInstances) {
+    const seen = groupsPerName.get(instance.name) ?? new Set<number>()
+    seen.add(groupKey(instance))
+    groupsPerName.set(instance.name, seen)
+  }
+
+  for (const group of groups) {
+    const instances = allInstances.filter((i) => groupKey(i) === group)
     if (instances.length === 0) continue
 
+    const name = instances[0]!.name
     const runsSeenIn = runs.filter((run) =>
-      run.instances.some((i) => i.name === name),
+      run.instances.some((i) => groupKey(i) === group),
     ).length
     if (runsSeenIn < MIN_RUNS_SEEN_IN) continue
 
@@ -624,14 +678,13 @@ function aggregate(runs: Run[]): AbilityCandidate[] {
       .sort(([, a], [, b]) => b - a)
       .map(([spellId]) => spellId)
 
-    const castCount = runs.reduce(
-      (sum, run) => sum + (run.perAbility.get(name)?.casts ?? 0),
-      0,
-    )
-    const castsThatLanded = runs.reduce(
-      (sum, run) => sum + (run.perAbility.get(name)?.castsThatLanded ?? 0),
-      0,
-    )
+    const nameIsUnambiguous = (groupsPerName.get(name)?.size ?? 1) === 1
+    const castCount = nameIsUnambiguous
+      ? runs.reduce((sum, run) => sum + (run.perAbility.get(name)?.casts ?? 0), 0)
+      : 0
+    const castsThatLanded = nameIsUnambiguous
+      ? runs.reduce((sum, run) => sum + (run.perAbility.get(name)?.castsThatLanded ?? 0), 0)
+      : 0
 
     const deathsCaused = runs.reduce(
       (sum, run) =>

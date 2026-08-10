@@ -74,6 +74,8 @@ const unstableSingularity = trashSpell(1264188, (spell) => ({
   periodic: true,
 }))
 
+const darkBloom1300262 = bossSpell(1300262)
+
 export const voidAbilities = [
   brutalize,
   ripAndSlice,
@@ -94,4 +96,5 @@ export const voidAbilities = [
   mindnumbingPoison,
   monstrousRoar,
   unstableSingularity,
+  darkBloom1300262,
 ]

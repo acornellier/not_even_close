@@ -101,6 +101,10 @@ const lightscorchedEarth = bossSpell(1235828)
 
 const spoutingFloret = trashSpell(1263628, { aoe: true })
 
+const huntingLeap270503 = trashSpell(270503, { aoe: true })
+
+const bedrockSlam1234773 = bossSpell(1234773, { tankOnly: true })
+
 export const valeAbilities = [
   sporeSpines,
   grievousGash,
@@ -128,4 +132,6 @@ export const valeAbilities = [
   fluorescentOutburst,
   lightscorchedEarth,
   spoutingFloret,
+  huntingLeap270503,
+  bedrockSlam1234773,
 ]

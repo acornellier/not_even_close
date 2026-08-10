@@ -2,9 +2,8 @@ import { bossSpell, trashSpell } from '../grimoire.ts'
 import { scalingTickingDamage } from '../grimoireConverter.ts'
 
 const bladeCombo = bossSpell(268587, () => ({
-  damage: scalingTickingDamage(4, 35),
+  damage: scalingTickingDamage(1, 59),
   tankOnly: true,
-  periodic: true,
 }))
 
 const bladestorm = trashSpell(270928, { aoe: true })
@@ -31,8 +30,6 @@ const impalingSpear = bossSpell(1302945, (spell) => ({
   periodic: true,
   aoe: true,
 }))
-
-const serpentineGust = bossSpell(1311988, { aoe: true })
 
 const whirlingAxe = trashSpell(266191, (spell) => ({
   damage: spell.periodicDamage,
@@ -101,6 +98,30 @@ const shadowfrostBolt = trashSpell(1294815)
 
 const soulBolt = trashSpell(1294972)
 
+const bladeCombo268591 = bossSpell(268591, () => ({
+  damage: scalingTickingDamage(1, 114),
+  tankOnly: true,
+}))
+
+const bladeCombo268590 = bossSpell(268590, () => ({
+  damage: scalingTickingDamage(1, 87),
+  tankOnly: true,
+}))
+
+const bladeCombo268589 = bossSpell(268589, () => ({
+  damage: scalingTickingDamage(1, 65),
+  tankOnly: true,
+}))
+
+const huntingLeap = bossSpell(1303039, (spell) => ({
+  damage: spell.damage + spell.periodicDamage,
+  periodic: true,
+}))
+
+const serpentineGust265781 = bossSpell(265781, { aoe: true })
+
+const huntingLeap270503 = bossSpell(270503, { aoe: true })
+
 export const krAbilities = [
   bladeCombo,
   bladestorm,
@@ -109,7 +130,6 @@ export const krAbilities = [
   tailThrash,
   mortalBleed,
   impalingSpear,
-  serpentineGust,
   whirlingAxe,
   severingAxe,
   necroticEnergy,
@@ -129,4 +149,10 @@ export const krAbilities = [
   searingGold,
   shadowfrostBolt,
   soulBolt,
+  bladeCombo268591,
+  bladeCombo268590,
+  bladeCombo268589,
+  huntingLeap,
+  serpentineGust265781,
+  huntingLeap270503,
 ]
