@@ -35,7 +35,7 @@ export function CustomAbilityInput({
     if (!spellId) return
     try {
       const grimoireSpell = await spellByIdApi(Number(spellId))
-      const enemyAbility = grimoireToEnemyAbility(grimoireSpell, 0)
+      const enemyAbility = grimoireToEnemyAbility(grimoireSpell)
       setEnemyAbility({
         ...enemyAbility,
         trashAbility: customSpellIdTrash,

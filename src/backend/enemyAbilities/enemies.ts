@@ -11,6 +11,13 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   variance?: number
   cooldown?: TimeBetweenCasts
   periodic?: boolean
+  /**
+   * Full-duration total of the spell's periodic effect, from grimoire; 0 when it has no DoT.
+   * Always set by grimoireToEnemyAbility, so ability files can add it without a null check.
+   */
+  periodicDamage: number
+  /** DBC tick count of the periodic effect, including a tick-on-apply one. 0 when not periodic. */
+  ticks: number
   avoidable?: boolean
   tankOnly?: boolean
 
@@ -25,14 +32,14 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
 }
 
 export const dungeonKeys = [
-  'magi',
-  'cavns',
-  'xenas',
-  'wind',
-  'aa',
-  'pit',
-  'seat',
-  'sky',
+  'murd',
+  'nalo',
+  'vale',
+  'void',
+  'fang',
+  'rlp',
+  'tos',
+  'kr',
   'all_dungeons',
 ] as const
 

@@ -1,62 +1,62 @@
 import type { Dungeon } from './enemies'
-import { magiAbilities } from './midnight/magi.ts'
-import { cavnsAbilities } from './midnight/cavns.ts'
-import { xenasAbilities } from './midnight/xenas.ts'
-import { windAbilities } from './midnight/wind.ts'
-import { aaAbilities } from './midnight/aa.ts'
-import { pitAbilities } from './midnight/pit.ts'
-import { seatAbilities } from './midnight/seat.ts'
-import { skyAbilities } from './midnight/sky.ts'
+import { murdAbilities } from './midnight_s2/murd.ts'
+import { naloAbilities } from './midnight_s2/nalo.ts'
+import { valeAbilities } from './midnight_s2/vale.ts'
+import { voidAbilities } from './midnight_s2/void.ts'
+import { fangAbilities } from './midnight_s2/fang.ts'
+import { rlpAbilities } from './midnight_s2/rlp.ts'
+import { tosAbilities } from './midnight_s2/tos.ts'
+import { krAbilities } from './midnight_s2/kr.ts'
 
 export const dungeonsUncompiled = (
   [
     {
-      key: 'magi',
-      name: "Magister's Terrace",
-      abilities: magiAbilities,
-      icon: 'inv_achievement_dungeon_magistersterrace',
+      key: 'murd',
+      name: 'Murder Row',
+      abilities: murdAbilities,
+      icon: 'inv_achievement_dungeon_murderrow',
     },
     {
-      key: 'cavns',
-      name: 'Maisara Caverns',
-      abilities: cavnsAbilities,
-      icon: 'inv_achievement_dungeon_maisarahills',
+      key: 'nalo',
+      name: 'Den of Nalorakk',
+      abilities: naloAbilities,
+      icon: 'inv_achievement_dungeon_proveyourworth',
     },
     {
-      key: 'xenas',
-      name: 'Nexus-Point Xenas',
-      abilities: xenasAbilities,
-      icon: 'inv_achievement_dungeon_nexuspointxenas',
+      key: 'vale',
+      name: 'The Blinding Vale',
+      abilities: valeAbilities,
+      icon: 'inv_achievement_dungeon_lightbloom',
     },
     {
-      key: 'wind',
-      name: 'Windrunner Spire',
-      abilities: windAbilities,
-      icon: 'inv_achievement_dungeon_windrunnerspire',
+      key: 'void',
+      name: 'Voidscar Arena',
+      abilities: voidAbilities,
+      icon: 'inv_achievement_dungeon_voidscararena',
     },
     {
-      key: 'aa',
-      name: "Algeth'ar Academy",
-      abilities: aaAbilities,
-      icon: 'achievement_dungeon_dragonacademy',
+      key: 'fang',
+      name: 'Altar of Fangs',
+      abilities: fangAbilities,
+      icon: 'inv_achievement_dungeon_altaroffangs',
     },
     {
-      key: 'pit',
-      name: 'Pit of Saron',
-      abilities: pitAbilities,
-      icon: 'achievement_dungeon_icecrown_pitofsaron',
+      key: 'rlp',
+      name: 'Ruby Life Pools',
+      abilities: rlpAbilities,
+      icon: 'achievement_dungeon_lifepools',
     },
     {
-      key: 'seat',
-      name: 'Seat of the Triumvirate',
-      abilities: seatAbilities,
-      icon: 'achievement_dungeon_argusdungeon',
+      key: 'tos',
+      name: 'Temple of Sethraliss',
+      abilities: tosAbilities,
+      icon: 'achievement_dungeon_templeofsethraliss',
     },
     {
-      key: 'sky',
-      name: 'Skyreach',
-      abilities: skyAbilities,
-      icon: 'achievement_dungeon_arakkoaspires',
+      key: 'kr',
+      name: "Kings' Rest",
+      abilities: krAbilities,
+      icon: 'achievement_dungeon_kingsrest',
     },
   ] as Dungeon[]
 ).sort((a, b) => a.key.localeCompare(b.key))

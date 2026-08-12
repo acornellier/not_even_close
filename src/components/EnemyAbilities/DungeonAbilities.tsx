@@ -109,11 +109,13 @@ export function DungeonAbilities({
 
                 return (
                   <EnemyAbilityCard
-                    key={ability.name}
+                    key={`${ability.name}-${ability.id}`}
                     ability={ability}
                     onSelect={() => onSelect(ability)}
                     selected={
-                      selectedAbility !== null && selectedAbility.name === ability.name
+                      selectedAbility !== null &&
+                      selectedAbility.name === ability.name &&
+                      selectedAbility.id === ability.id
                     }
                     result={abilityResult}
                     showExtras={abilityExtras.has(ability.name)}

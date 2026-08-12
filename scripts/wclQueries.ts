@@ -32,6 +32,13 @@ export interface Ranking {
   affixes: number[]
 }
 
+export interface DungeonPull {
+  name: string
+  /** Non-zero for a boss pull. */
+  encounterID: number
+  enemyNPCs: Array<{ id: number; gameID: number }>
+}
+
 export interface Fight {
   id: number
   encounterID: number
@@ -41,6 +48,7 @@ export interface Fight {
   startTime: number
   endTime: number
   friendlyPlayers: number[]
+  dungeonPulls: DungeonPull[] | null
 }
 
 export interface Actor {
@@ -104,6 +112,18 @@ export interface PlayerDetail {
 }
 
 /**
+ * WCL hitType codes: 0 miss, 1 hit, 2 crit, 3 absorbedHit, 4 blocked, 5 blockedCrit,
+ * 6 glancing, 7 dodge, 8 parry, 9 deflect, 10 immune, 11 misfire, 12 reflect, 13 evade,
+ * 14 resist, 15 crushing.
+ *
+ * A missed swing still produces a damage event, with no damage on it. Counting those as hits
+ * drags median damage to zero and makes an ability look far less avoidable than it is.
+ */
+export function isMiss(hitType: number) {
+  return hitType === 0 || (hitType > 6 && hitType < 15)
+}
+
+/**
  * True unmitigated damage.
  *
  * WCL omits these keys rather than sending zeros, and `amount` is fully net — post-mitigation,
@@ -145,6 +165,7 @@ export async function fetchFight(code: string, fightID: number): Promise<Fight |
     report(code: "${code}") {
       fights(fightIDs: [${fightID}]) {
         id encounterID name keystoneLevel keystoneAffixes startTime endTime friendlyPlayers
+        dungeonPulls { name encounterID enemyNPCs { id gameID } }
       }
     }
   }
@@ -155,10 +176,40 @@ export async function fetchFight(code: string, fightID: number): Promise<Fight |
   return data.reportData.report.fights[0] ?? null
 }
 
+/**
+ * Identify the encounter bosses.
+ *
+ * WCL's `subType: 'Boss'` is unreliable for multi-actor encounters — in Ruby Life Pools,
+ * Kyrakka and Erkhart Stormvein are both typed plain `NPC`, so their abilities would be
+ * scaled as trash (Fortified) rather than boss (Tyrannical).
+ *
+ * A boss pull's `name` is the encounter name, which is built from the boss names, while the
+ * adds pulled with it are not in that name. So membership in a boss pull plus a name match
+ * identifies the bosses precisely.
+ */
+export function bossActorIds(fight: Fight, actors: Actor[]): Set<number> {
+  const byId = new Map(actors.map((actor) => [actor.id, actor]))
+  const bosses = new Set(
+    actors.filter((actor) => actor.subType === 'Boss' && actor.id !== -1).map((a) => a.id),
+  )
+
+  for (const pull of fight.dungeonPulls ?? []) {
+    if (!pull.encounterID) continue
+    for (const npc of pull.enemyNPCs) {
+      const actor = byId.get(npc.id)
+      if (actor && actor.name && pull.name.includes(actor.name)) bosses.add(actor.id)
+    }
+  }
+
+  return bosses
+}
+
 export async function fetchMasterData(code: string) {
   const data = await fetchWclCached<{
     reportData: {
-      report: { masterData: { actors: Actor[]; abilities: MasterAbility[] } }
+      report: {
+        masterData: { actors: Actor[] | null; abilities: MasterAbility[] | null } | null
+      }
     }
   }>(
     `query {
@@ -171,7 +222,13 @@ export async function fetchMasterData(code: string) {
     { label: `masterData ${code}` },
   )
 
-  return data.reportData.report.masterData
+  // Some reports come back with a null masterData (or null sub-arrays) rather than an error.
+  // Without actor/ability names a run is unusable, so hand back empty and let the caller skip it.
+  const masterData = data.reportData.report.masterData
+  return {
+    actors: masterData?.actors ?? [],
+    abilities: masterData?.abilities ?? [],
+  }
 }
 
 export async function fetchPlayerDetails(
