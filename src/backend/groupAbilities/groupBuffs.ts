@@ -52,7 +52,7 @@ export const markOfTheWild: Ability = {
 
 export const atrophicPoison: Ability = {
   name: 'Atrophic Poison',
-  damageDealtReduction: 0.03,
+  damageDealtReduction: 0.04,
   id: 381637,
   associatedClass: 'Rogue',
   icon: 'ability_rogue_nervesofsteel',
@@ -69,7 +69,7 @@ export const masterPoisoner: Ability = {
     {
       otherAbilityId: 381637, // Atrophic Poison
       field: 'damageDealtReduction',
-      value: 0.006,
+      value: 0.008,
     },
   ],
 }

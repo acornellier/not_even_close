@@ -9,7 +9,7 @@ const defensiveStance: Ability = {
 
 const defensiveStanceProt: Ability = {
   ...defensiveStance,
-  dr: 0.16,
+  dr: 0.18,
   id: defensiveStance.id + 1,
 }
 
@@ -56,7 +56,7 @@ const ignorePain: Ability = {
   name: 'Ignore Pain',
   id: 190456,
   absorb: {
-    apMultipler: 4.375,
+    apMultipler: 5.469,
     versAffected: true,
   },
   stacks: {
@@ -66,6 +66,30 @@ const ignorePain: Ability = {
   },
   icon: 'ability_warrior_renewedvigor',
   notes: 'This is slightly off due to weapon dps missing.',
+}
+
+const noStrangerToPain: Ability = {
+  name: 'No Stranger to Pain',
+  id: 440993,
+  passive: true,
+  icon: 'ability_warrior_renewedvigor',
+  heroTree: 'Colossus',
+  abilityAugmentations: [
+    {
+      otherAbilityId: ignorePain.id,
+      field: 'absorb',
+      absorbField: 'apMultipler',
+      value: 0.3,
+    },
+  ],
+}
+
+const dominanceOfTheColossus: Ability = {
+  name: 'Dominance of the Colossus',
+  id: 429636,
+  icon: 'ability_warrior_bloodfrenzy',
+  heroTree: 'Colossus',
+  damageDealtReduction: 0.2,
 }
 
 const punish: Ability = {
@@ -148,6 +172,8 @@ const mountainOfMuscleAndScars: Ability = {
 export const warriorArmsAbilities = [
   seasonedSoldier,
   mountainOfMuscleAndScars,
+  noStrangerToPain,
+  dominanceOfTheColossus,
   ignorePain,
   defensiveStance,
   spellReflection,
@@ -167,6 +193,8 @@ export const warriorFuryAbilities = [
 export const warriorProtAbilities = [
   steadfastAsThePeaks,
   mountainOfMuscleAndScars,
+  noStrangerToPain,
+  dominanceOfTheColossus,
   punish,
   ignorePain,
   impendingVictory,

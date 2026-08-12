@@ -9,6 +9,35 @@ const calmingPresence: Ability = {
   icon: 'inv_misc_orb_01',
 }
 
+const calmingPresenceWindwalker: Ability = {
+  ...calmingPresence,
+  id: calmingPresence.id + 1,
+  spellId: calmingPresence.id,
+  dr: 0.1,
+}
+
+const danceOfTheWind: Ability = {
+  name: 'Dance of the Wind',
+  id: 432181,
+  icon: 'ability_monk_standingkick',
+  dr: 0.1,
+  drType: 'physical',
+  stacks: {
+    type: 'stacks',
+    default: 1,
+    max: 4,
+  },
+}
+
+const combatWisdom: Ability = {
+  name: 'Combat Wisdom',
+  id: 121817,
+  icon: 'ability_monk_combatwisdom',
+  passive: true,
+  onByDefault: true,
+  staminaIncrease: 0.05,
+}
+
 export const jadefireTeachings: Ability = {
   name: 'Jadefire Teachings',
   id: 467293,
@@ -137,6 +166,7 @@ export const monkMistweaverAbilities = [
   ironshellBrew,
   niuzaosProtection,
   calmingPresence,
+  danceOfTheWind,
   martialInstincts,
   secretInfusion,
   jadefireTeachings,
@@ -148,7 +178,9 @@ export const monkMistweaverAbilities = [
 export const monkWindwalkerAbilities = [
   ironshellBrew,
   niuzaosProtection,
-  calmingPresence,
+  calmingPresenceWindwalker,
+  combatWisdom,
+  danceOfTheWind,
   martialInstinctsWindwalker,
   yulonsGraceWindwalker,
   jadeSanctuary,

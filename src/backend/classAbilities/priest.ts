@@ -43,7 +43,7 @@ const powerWordShieldShadow: Ability = {
   id: 17_1,
   absorb: {
     ...powerWordShield.absorb,
-    spMultipler: powerWordShield.absorb!.spMultipler!,
+    spMultipler: powerWordShield.absorb!.spMultipler! * 1.25,
   },
 }
 
@@ -52,7 +52,7 @@ const powerWordShieldDisc: Ability = {
   id: 17_2,
   absorb: {
     ...powerWordShield.absorb,
-    spMultipler: powerWordShield.absorb!.spMultipler! * 1.73,
+    spMultipler: powerWordShield.absorb!.spMultipler! * 1.73 * 1.1,
   },
 }
 

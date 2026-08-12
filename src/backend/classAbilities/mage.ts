@@ -40,12 +40,6 @@ const improvedIceBarrier: Ability = {
   abilityAugmentations: [
     {
       otherAbilityId: iceBarrier.id,
-      field: 'absorb',
-      absorbField: 'healthMultiplier',
-      value: 0.05,
-    },
-    {
-      otherAbilityId: iceBarrier.id,
       field: 'dr',
       value: 0.1,
     },
@@ -73,9 +67,27 @@ const improvedPrismaticBarrier: Ability = {
     {
       otherAbilityId: prismaticBarrier.id,
       field: 'dr',
-      value: 0.1,
+      value: 0.05,
     },
   ],
+}
+
+const improvedWarding: Ability = {
+  name: 'Improved Warding',
+  id: 1297073,
+  icon: 'spell_arcane_arcaneresilience',
+  passive: true,
+  onByDefault: true,
+  aoeDr: 0.04,
+}
+
+const refractiveImages: Ability = {
+  name: 'Refractive Images',
+  id: 1309497,
+  icon: 'spell_magic_lesserinvisibilty',
+  passive: true,
+  dr: 0.1,
+  notes: 'Damage is delayed over 8s, not prevented. 30% for 15s after Mirror Image',
 }
 
 const iceCold: Ability = {
@@ -109,15 +121,24 @@ const imbuedWarding: Ability = {
 
 export const mageArcaneAbilities = [
   arcaneWarding,
+  improvedWarding,
+  refractiveImages,
   prismaticBarrier,
   improvedPrismaticBarrier,
   iceCold,
 ]
 
-export const mageFireAbilities = [arcaneWarding, blazingBarrier, imbuedWarding, iceCold]
+export const mageFireAbilities = [
+  arcaneWarding,
+  improvedWarding,
+  blazingBarrier,
+  imbuedWarding,
+  iceCold,
+]
 
 export const mageFrostAbilities = [
   arcaneWarding,
+  improvedWarding,
   iceBarrier,
   improvedIceBarrier,
   imbuedWarding,

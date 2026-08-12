@@ -94,7 +94,7 @@ const ardentDefender: Ability = {
   name: 'Ardent Defender',
   id: 31850,
   icon: 'spell_holy_ardentdefender',
-  dr: 0.2,
+  dr: 0.3,
 }
 
 const improvedArdentDefender: Ability = {
@@ -105,10 +105,19 @@ const improvedArdentDefender: Ability = {
   abilityAugmentations: [
     {
       otherAbilityId: ardentDefender.id,
-      field: 'dr',
-      value: 0.1,
+      field: 'healthIncrease',
+      value: 0.2,
     },
   ],
+}
+
+const sealOfReprisal: Ability = {
+  name: 'Seal of Reprisal',
+  id: 377053,
+  icon: 'spell_holy_sealofmight',
+  passive: true,
+  onByDefault: true,
+  damageDealtReduction: 0.1,
 }
 
 const guardianOfAncientKings: Ability = {
@@ -130,7 +139,25 @@ export const shieldOfTheRighteous: Ability = {
   name: 'Shield of the Righteous',
   id: 53600,
   icon: 'ability_paladin_shieldofvengeance',
-  notes: '224% strength as armor',
+  notes: '192% strength as armor',
+}
+
+const imbuedShield: Ability = {
+  name: 'Imbued Shield',
+  id: 1276945,
+  icon: 'ability_paladin_shieldofthetemplar',
+  passive: true,
+  dr: 0.12,
+  drType: 'magic',
+}
+
+const consecration: Ability = {
+  name: 'Consecration',
+  id: 379021,
+  icon: 'spell_holy_innerfire',
+  passive: true,
+  onByDefault: true,
+  dr: 0.05,
 }
 
 const empyrealWard: Ability = {
@@ -154,7 +181,10 @@ export const paladinRetAbilities = [
 export const paladinProtAbilities = [
   sanctifiedPlatesRetProt,
   obduracy,
+  sealOfReprisal,
+  consecration,
   shieldOfTheRighteous,
+  imbuedShield,
   improvedArdentDefender,
   wrathfulDescent,
   sacrosanctCrusadeProt,

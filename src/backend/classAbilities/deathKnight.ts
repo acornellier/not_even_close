@@ -122,8 +122,22 @@ const bloodSoakedGround: Ability = {
   id: 434033,
   icon: 'ability_ironmaidens_corruptedblood',
   heroTree: "San'layn",
-  dr: 0.05,
+  dr: 0.08,
   drType: 'physical',
+}
+
+const perseveranceOfTheEbonBlade: Ability = {
+  name: 'Perseverance of the Ebon Blade',
+  id: 374747,
+  icon: 'spell_deathknight_deathstrike',
+  dr: 0.04,
+}
+
+const bloodshot: Ability = {
+  name: 'Bloodshot',
+  id: 391398,
+  icon: 'spell_deathknight_bloodpresence',
+  dr: 0.04,
 }
 
 const subduingGrasp: Ability = {
@@ -174,6 +188,8 @@ export const deathKnightBloodAbilities = [
   bloodSoakedGround,
   runeCarvedPlates,
   foulBulwark,
+  perseveranceOfTheEbonBlade,
+  bloodshot,
   subduingGrasp,
   antiMagicShell,
   iceboundFortitude,
