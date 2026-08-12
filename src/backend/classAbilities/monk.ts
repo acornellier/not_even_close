@@ -19,7 +19,7 @@ const calmingPresenceWindwalker: Ability = {
 const danceOfTheWind: Ability = {
   name: 'Dance of the Wind',
   id: 432181,
-  icon: 'ability_monk_standingkick',
+  icon: 'ability_monk_dematerialize',
   dr: 0.1,
   drType: 'physical',
   stacks: {
@@ -32,7 +32,7 @@ const danceOfTheWind: Ability = {
 const combatWisdom: Ability = {
   name: 'Combat Wisdom',
   id: 121817,
-  icon: 'ability_monk_combatwisdom',
+  icon: 'ability_monk_expelharm',
   passive: true,
   onByDefault: true,
   staminaIncrease: 0.05,

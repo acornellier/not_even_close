@@ -114,7 +114,7 @@ const improvedArdentDefender: Ability = {
 const sealOfReprisal: Ability = {
   name: 'Seal of Reprisal',
   id: 377053,
-  icon: 'spell_holy_sealofmight',
+  icon: 'spell_holy_sealoffury',
   passive: true,
   onByDefault: true,
   damageDealtReduction: 0.1,
@@ -145,7 +145,7 @@ export const shieldOfTheRighteous: Ability = {
 const imbuedShield: Ability = {
   name: 'Imbued Shield',
   id: 1276945,
-  icon: 'ability_paladin_shieldofthetemplar',
+  icon: 'inv_artifact_bulwarkoforder',
   passive: true,
   dr: 0.12,
   drType: 'magic',

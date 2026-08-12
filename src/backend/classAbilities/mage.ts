@@ -75,7 +75,7 @@ const improvedPrismaticBarrier: Ability = {
 const improvedWarding: Ability = {
   name: 'Improved Warding',
   id: 1297073,
-  icon: 'spell_arcane_arcaneresilience',
+  icon: 'inv_cloth_raidmage_p_01helm',
   passive: true,
   onByDefault: true,
   aoeDr: 0.04,
@@ -84,7 +84,7 @@ const improvedWarding: Ability = {
 const refractiveImages: Ability = {
   name: 'Refractive Images',
   id: 1309497,
-  icon: 'spell_magic_lesserinvisibilty',
+  icon: 'inv_112_arcane_buff',
   passive: true,
   dr: 0.1,
   notes: 'Damage is delayed over 8s, not prevented. 30% for 15s after Mirror Image',

@@ -129,14 +129,14 @@ const bloodSoakedGround: Ability = {
 const perseveranceOfTheEbonBlade: Ability = {
   name: 'Perseverance of the Ebon Blade',
   id: 374747,
-  icon: 'spell_deathknight_deathstrike',
+  icon: 'ability_deathknight_sanguinfortitude',
   dr: 0.04,
 }
 
 const bloodshot: Ability = {
   name: 'Bloodshot',
   id: 391398,
-  icon: 'spell_deathknight_bloodpresence',
+  icon: 'ability_warlock_baneofhavoc',
   dr: 0.04,
 }
 

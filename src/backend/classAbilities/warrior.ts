@@ -72,7 +72,7 @@ const noStrangerToPain: Ability = {
   name: 'No Stranger to Pain',
   id: 440993,
   passive: true,
-  icon: 'ability_warrior_renewedvigor',
+  icon: 'ability_hunter_harass',
   heroTree: 'Colossus',
   abilityAugmentations: [
     {
@@ -87,7 +87,7 @@ const noStrangerToPain: Ability = {
 const dominanceOfTheColossus: Ability = {
   name: 'Dominance of the Colossus',
   id: 429636,
-  icon: 'ability_warrior_bloodfrenzy',
+  icon: 'ability_warrior_titansgrip',
   heroTree: 'Colossus',
   damageDealtReduction: 0.2,
 }
