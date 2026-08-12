@@ -3,9 +3,9 @@ import { scalingTickingDamage } from '../grimoireConverter.ts'
 
 const shadowWhirlwind = trashSpell(1305945, { aoe: true })
 
-const shadowfrostBolt = trashSpell(1294815)
+const shadowfrostBolt = trashSpell(1294815, { avoidable: true })
 
-const necroticEnergy = trashSpell(1310758, { aoe: true })
+const necroticEnergy = trashSpell(1310758, { avoidable: true, aoe: true })
 
 const tailThrash = bossSpell(265910, { tankOnly: true })
 
@@ -27,17 +27,18 @@ const bloodDrain = trashSpell(1297970, () => ({
   aoe: true,
 }))
 
-const bladestorm = trashSpell(270928, { aoe: true })
+const bladestorm = trashSpell(270928, { avoidable: true, aoe: true })
 
 const huntingLeap270503 = bossSpell(270503, { aoe: true })
 
-const soulBolt = trashSpell(1294972)
+const soulBolt = trashSpell(1294972, { avoidable: true })
 
 const purificationStrike = trashSpell(270293, { aoe: true })
 
 const putridSeekers = trashSpell(1298104, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
   notes: 'Assumes full duration (12s); players typically took 1 of 13 ticks.',
+  avoidable: true,
   periodic: true,
   aoe: true,
 }))
@@ -49,7 +50,7 @@ const embalm = trashSpell(1312569, (spell) => ({
 
 const awakeningSlam = bossSpell(1312146, { aoe: true })
 
-const spectralBolt = trashSpell(1295125)
+const spectralBolt = trashSpell(1295125, { avoidable: true })
 
 const bloodthirstyAxe = trashSpell(1301851, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
@@ -60,6 +61,7 @@ const soulCrush = trashSpell(1302028, { tankOnly: true })
 
 const whirlingAxe = trashSpell(266191, (spell) => ({
   damage: spell.periodicDamage,
+  avoidable: true,
   periodic: true,
 }))
 
@@ -70,7 +72,7 @@ const severingAxe = trashSpell(266231, (spell) => ({
 
 const arcLightning = trashSpell(1305810)
 
-const torrent = trashSpell(267105, { aoe: true })
+const torrent = trashSpell(267105, { avoidable: true, aoe: true })
 
 const shadowBarrage = trashSpell(272388, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
@@ -103,7 +105,7 @@ const gildedDestruction = bossSpell(1303267, (spell) => ({
   aoe: true,
 }))
 
-const searingGold = bossSpell(1303374, { aoe: true })
+const searingGold = bossSpell(1303374, { avoidable: true, aoe: true })
 
 const bladeCombo = bossSpell(268587, () => ({
   damage: scalingTickingDamage(1, 59),
@@ -112,6 +114,7 @@ const bladeCombo = bossSpell(268587, () => ({
 
 const impalingSpear = bossSpell(1302945, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
+  avoidable: true,
   periodic: true,
   aoe: true,
 }))

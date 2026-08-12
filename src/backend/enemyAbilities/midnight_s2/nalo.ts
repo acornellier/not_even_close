@@ -5,7 +5,7 @@ const razorDive = trashSpell(1238439, (spell) => ({
   periodic: true,
 }))
 
-const earthBolt = trashSpell(1241214)
+const earthBolt = trashSpell(1241214, { avoidable: true })
 
 const ravenousBellow = bossSpell(1234681, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
@@ -18,6 +18,7 @@ const spoiledSupplies = bossSpell(1234734)
 const toxicSpores = bossSpell(1234846, (spell) => ({
   damage: spell.periodicDamage,
   notes: 'Assumes full duration (12s); players typically took 3 of 7 ticks.',
+  avoidable: true,
   periodic: true,
 }))
 
@@ -29,6 +30,7 @@ const heartyBellow = bossSpell(1235125, (spell) => ({
 
 const bonespiked = bossSpell(1235405, (spell) => ({
   damage: spell.damage * 6,
+  avoidable: true,
   periodic: true,
 }))
 
@@ -47,7 +49,7 @@ const wintersShroud = trashSpell(1235829, { aoe: true })
 
 const rimeDetonation = trashSpell(1263597, { aoe: true })
 
-const ragingSquall = bossSpell(1235635, { aoe: true })
+const ragingSquall = bossSpell(1235635, { avoidable: true, aoe: true })
 
 const shoot = trashSpell(1246847, { tankOnly: true })
 
@@ -57,15 +59,15 @@ const primalEcho = trashSpell(1246957, (spell) => ({
   aoe: true,
 }))
 
-const lightningBolt = trashSpell(1246687)
+const lightningBolt = trashSpell(1246687, { avoidable: true })
 
-const earthquake = trashSpell(1247366, { aoe: true })
+const earthquake = trashSpell(1247366, { avoidable: true, aoe: true })
 
-const echoingMaul = bossSpell(1242887, { aoe: true })
+const echoingMaul = bossSpell(1242887, { avoidable: true, aoe: true })
 
 const overwhelmingOnslaught = bossSpell(1297793, { aoe: true })
 
-const echoingFury = bossSpell(1243408)
+const echoingFury = bossSpell(1243408, { avoidable: true })
 
 const demoralizingScream = trashSpell(1262253, { aoe: true })
 

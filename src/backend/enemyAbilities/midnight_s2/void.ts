@@ -6,7 +6,7 @@ const savageLeap = trashSpell(1267894, (spell) => ({
   periodic: true,
 }))
 
-const lavaBolt = trashSpell(1228176)
+const lavaBolt = trashSpell(1228176, { avoidable: true })
 
 const insidiousAura = trashSpell(1250695, { aoe: true })
 
@@ -14,6 +14,7 @@ const headBash = trashSpell(1245186, { tankOnly: true })
 
 const netherDash = trashSpell(1222103, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
+  avoidable: true,
   periodic: true,
 }))
 
@@ -67,11 +68,13 @@ const brutalize = trashSpell(1300244, { tankOnly: true })
 
 const unstableSingularity = trashSpell(1264188, (spell) => ({
   damage: spell.damage * 82,
+  avoidable: true,
   periodic: true,
 }))
 
 const cosmicCrash = bossSpell(1300372, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
+  avoidable: true,
   periodic: true,
   aoe: true,
 }))

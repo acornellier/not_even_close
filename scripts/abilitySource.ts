@@ -3,6 +3,7 @@
  * Shared by reportAbilities.ts (shows it) and writeAbilities.ts (writes it).
  */
 import type { AbilityCandidate } from './guessAbilities.ts'
+import { spellOverrides } from './spellOverrides.ts'
 
 /** Grimoire multiples within this much of a whole number are treated as exact. */
 const CLEAN_MULTIPLE_TOLERANCE = 0.06
@@ -68,6 +69,15 @@ export function suggestedDeclaration(
       `notes: 'Assumes full duration (${Math.round(candidate.grimoireDuration / 1000)}s); players typically took ${candidate.medianTickEvents} of ${grimoireTicks} ticks.'`,
     )
   }
+
+  // Hand-made calls from spellOverrides.ts. Applied here rather than edited into the ability
+  // files so they survive --refresh, which regenerates declarations wholesale.
+  const override = candidate.spellIds
+    .map((spellId) => spellOverrides[spellId])
+    .find(Boolean)
+  if (override?.avoidable) options.push('avoidable: true')
+  if (override?.ignoresArmor) options.push('ignoresArmor: true')
+  if (override?.notes) options.push(`notes: ${JSON.stringify(override.notes)}`)
 
   if (candidate.tankOnly) options.push('tankOnly: true')
   if (ticks > 1) options.push('periodic: true')

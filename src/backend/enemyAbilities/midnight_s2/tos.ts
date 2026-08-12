@@ -13,7 +13,7 @@ const slitherStrike = trashSpell(1295635, (spell) => ({
 
 const sunderSlam = trashSpell(1291468, { tankOnly: true })
 
-const lightningBolt = trashSpell(1291262)
+const lightningBolt = trashSpell(1291262, { avoidable: true })
 
 const groundPound = trashSpell(265966, { aoe: true })
 
@@ -29,7 +29,7 @@ const overload = bossSpell(1288428, () => ({
   aoe: true,
 }))
 
-const volley = trashSpell(273225, { aoe: true })
+const volley = trashSpell(273225, { avoidable: true, aoe: true })
 
 const headButt = trashSpell(272654, { tankOnly: true })
 
@@ -40,10 +40,11 @@ const serpentsStormcall = trashSpell(1310402, () => ({
 
 const lingeringStorm = bossSpell(1293133, (spell) => ({
   damage: spell.damage * 2,
+  avoidable: true,
   periodic: true,
 }))
 
-const venomBolt = trashSpell(1310683)
+const venomBolt = trashSpell(1310683, { avoidable: true })
 
 const lightningBite = bossSpell(1290797, (spell) => ({
   damage: spell.periodicDamage,
@@ -75,12 +76,13 @@ const induction = bossSpell(1290531, { aoe: true })
 
 const inductionField = bossSpell(1291815, (spell) => ({
   damage: spell.damage * 2,
+  avoidable: true,
   periodic: true,
 }))
 
-const looseSparks = trashSpell(267483)
+const looseSparks = trashSpell(267483, { avoidable: true })
 
-const lightningSpire = bossSpell(1291598, { aoe: true })
+const lightningSpire = bossSpell(1291598, { avoidable: true, aoe: true })
 
 const siphonEnergy = trashSpell(1303596, (spell) => ({
   damage: spell.damage * 15,
@@ -99,7 +101,7 @@ const causticStomp = trashSpell(1303486, (spell) => ({
   aoe: true,
 }))
 
-const hexMuck = bossSpell(1300684)
+const hexMuck = bossSpell(1300684, { avoidable: true })
 
 const latentHex1311981 = bossSpell(1311981, (spell) => ({
   damage: spell.periodicDamage,
@@ -129,7 +131,7 @@ const latentHex1311979 = bossSpell(1311979, (spell) => ({
 
 const corruptionBurst = trashSpell(1302826, { aoe: true })
 
-const unstableCorruption = trashSpell(1302761, { aoe: true })
+const unstableCorruption = trashSpell(1302761, { avoidable: true, aoe: true })
 
 export const tosAbilities = [
   serratedCharge,

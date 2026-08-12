@@ -14,14 +14,15 @@ const earthruptureStrike = trashSpell(1237855, { tankOnly: true })
 
 const rupturedEarth = trashSpell(1237858, (spell) => ({
   damage: spell.damage * 2,
+  avoidable: true,
   periodic: true,
 }))
 
-const uproot = trashSpell(1255205, { aoe: true })
+const uproot = trashSpell(1255205, { avoidable: true, aoe: true })
 
 const spoutingFloret = trashSpell(1263628, { aoe: true })
 
-const lightBolt = bossSpell(1238063)
+const lightBolt = bossSpell(1238063, { avoidable: true })
 
 const lightBoltVolley = trashSpell(1301834, { aoe: true })
 
@@ -37,15 +38,17 @@ const bedrockSlam = bossSpell(1234753, { tankOnly: true })
 
 const fertileLoam = bossSpell(1234802, (spell) => ({
   damage: spell.damage * 3,
+  avoidable: true,
   periodic: true,
 }))
 
 const lightblossomBeam = bossSpell(1235574, (spell) => ({
   damage: spell.damage * 4,
+  avoidable: true,
   periodic: true,
 }))
 
-const lightscorchedEarth = bossSpell(1235828)
+const lightscorchedEarth = bossSpell(1235828, { avoidable: true })
 
 const huntingLeap = trashSpell(1303039, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
@@ -72,11 +75,12 @@ const seedShot = trashSpell(1238232)
 
 const lightfireBeams = bossSpell(1239919, (spell) => ({
   damage: spell.periodicDamage,
+  avoidable: true,
   periodic: true,
   aoe: true,
 }))
 
-const lightwardensBlight = trashSpell(1242200, { aoe: true })
+const lightwardensBlight = trashSpell(1242200, { avoidable: true, aoe: true })
 
 const lightfire = bossSpell(1239825, (spell) => ({
   damage: spell.periodicDamage,
@@ -100,6 +104,7 @@ const thornspike = bossSpell(1247685, (spell) => ({
 
 const concentratedLightbeam = bossSpell(1246751, (spell) => ({
   damage: spell.damage * 3,
+  avoidable: true,
   periodic: true,
 }))
 

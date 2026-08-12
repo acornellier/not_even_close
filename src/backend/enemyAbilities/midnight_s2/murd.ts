@@ -18,7 +18,7 @@ const heartstopPoison = bossSpell(1216590, (spell) => ({
   periodic: true,
 }))
 
-const felDetonation = trashSpell(1216538, { aoe: true })
+const felDetonation = trashSpell(1216538, { avoidable: true, aoe: true })
 
 const corrodingSpittle1217633 = trashSpell(1217633, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
@@ -48,7 +48,7 @@ const heartstopPoison474515 = bossSpell(474515, (spell) => ({
 
 const envenom = bossSpell(1223939, { tankOnly: true })
 
-const doomBolt = trashSpell(1258420)
+const doomBolt = trashSpell(1258420, { avoidable: true })
 
 const axeToss = bossSpell(1214663, { aoe: true })
 
@@ -59,6 +59,7 @@ const felLightning = trashSpell(1214650, (spell) => ({
 
 const infernalCrush = bossSpell(1295455, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
+  avoidable: true,
   periodic: true,
   aoe: true,
 }))
@@ -67,12 +68,13 @@ const demonicRage = bossSpell(474197, { aoe: true })
 
 const burningSteps = bossSpell(474234, (spell) => ({
   damage: spell.damage * 2,
+  avoidable: true,
   periodic: true,
 }))
 
 const defiledSlam = trashSpell(1294827, { aoe: true })
 
-const chaosBolt = bossSpell(474375)
+const chaosBolt = bossSpell(474375, { avoidable: true })
 
 export const murdAbilities = [
   cutpurse,

@@ -15,6 +15,29 @@ import { pctMaxHpAtKeyLevel } from './scaling.ts'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const outputDir = path.join(__dirname, 'output')
+const descriptionsPath = path.join(__dirname, 'spellDescriptions.json')
+
+/** Wowhead tooltips, fetched separately by `yarn descriptions`. Absent until that's run. */
+interface CachedDescription {
+  name: string
+  description: string
+  status: string
+}
+const descriptions: Record<string, Record<string, CachedDescription>> = fs.existsSync(
+  descriptionsPath,
+)
+  ? JSON.parse(fs.readFileSync(descriptionsPath, 'utf-8'))
+  : {}
+
+/** Prefer the `ptr` branch; `ptr-2` is a stale fallback for anything ptr lacks. */
+function descriptionFor(spellIds: number[]) {
+  for (const spellId of spellIds) {
+    const entry = descriptions[String(spellId)]
+    const text = entry?.ptr?.description || entry?.['ptr-2']?.description
+    if (text) return text
+  }
+  return null
+}
 
 /** Below this many observations, a tick-count disagreement isn't worth reporting. */
 const MIN_INSTANCES_TO_TRUST_TICKS = 20
@@ -83,6 +106,13 @@ function renderCandidate(candidate: AbilityCandidate, multiplier: number | null)
       .map((d) => `${d.name} x${d.count}`)
       .join(', ')
     lines.push(`survived with   ${top}`)
+  }
+
+  // The tooltip is what tells you whether a mechanic is dodgeable — none of the log-derived
+  // numbers can say that.
+  const description = descriptionFor(candidate.spellIds)
+  if (description) {
+    lines.push(`tooltip         ${description}`)
   }
 
   const traits = [

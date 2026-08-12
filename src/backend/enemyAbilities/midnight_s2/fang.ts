@@ -24,6 +24,7 @@ const piercingHiss = trashSpell(1294557, { aoe: true })
 
 const toxicBreath = trashSpell(1306669, (spell) => ({
   damage: spell.damage * 5,
+  avoidable: true,
   periodic: true,
 }))
 
@@ -42,7 +43,7 @@ const carrionBurst = bossSpell(1307700, (spell) => ({
   aoe: true,
 }))
 
-const messyEater = bossSpell(1306345, { aoe: true })
+const messyEater = bossSpell(1306345, { avoidable: true, aoe: true })
 
 const corrosiveFangs = trashSpell(1294845, { tankOnly: true })
 
@@ -71,6 +72,7 @@ const chopDown = bossSpell(1301353, { tankOnly: true })
 
 const boneslicer = bossSpell(1301508, (spell) => ({
   damage: spell.damage + spell.periodicDamage,
+  avoidable: true,
   periodic: true,
 }))
 
