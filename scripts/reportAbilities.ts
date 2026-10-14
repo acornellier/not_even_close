@@ -2,7 +2,7 @@
  * Renders the human-review report from scripts/output/<key>_abilities.json.
  *
  * This is the primary artifact: a ranked list of abilities that one-shot or nearly one-shot a
- * player, with the evidence behind each call and a suggested ability-file line to paste.
+ * player, with the evidence behind each call and the ability `yarn write` would generate.
  */
 import fs from 'fs'
 import path from 'path'
@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url'
 import type { AbilityCandidate } from './guessAbilities.ts'
 import { REFERENCE_KEY_LEVEL } from './guessAbilities.ts'
 import { getDamageMultiplier } from 'grimoire-wow'
-import { suggestedDeclaration } from './abilitySource.ts'
+import { describe, suggestedAbility } from './abilitySource.ts'
 import { pctMaxHpAtKeyLevel } from './scaling.ts'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -50,7 +50,11 @@ const short = (value: number) =>
       ? `${Math.round(value / 1000)}k`
       : String(Math.round(value))
 
-function renderCandidate(candidate: AbilityCandidate, multiplier: number | null) {
+function renderCandidate(
+  dungeonKey: string,
+  candidate: AbilityCandidate,
+  multiplier: number | null,
+) {
   const lines: string[] = []
   const tag = candidate.classification.toUpperCase()
 
@@ -145,8 +149,8 @@ function renderCandidate(candidate: AbilityCandidate, multiplier: number | null)
   )
   lines.push('```')
   lines.push('')
-  lines.push('```ts')
-  lines.push(suggestedDeclaration(candidate, multiplier).code)
+  lines.push('```')
+  lines.push(describe(suggestedAbility(dungeonKey, candidate, multiplier)))
   lines.push('```')
   lines.push('')
 
@@ -206,7 +210,7 @@ function renderReport(dungeonKey: string, candidates: AbilityCandidate[]) {
     lines.push('')
     lines.push(`_${blurb}_`)
     lines.push('')
-    for (const candidate of group) lines.push(renderCandidate(candidate, multiplier))
+    for (const candidate of group) lines.push(renderCandidate(dungeonKey, candidate, multiplier))
   }
 
   return lines.join('\n')

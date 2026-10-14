@@ -1,6 +1,5 @@
 import type { EnemyAbility } from './enemies.ts'
 import type { GrimoireSpell } from 'grimoire-wow'
-import { getDamageMultiplier } from 'grimoire-wow'
 
 /**
  * Pick the effect to read damage from.
@@ -47,8 +46,3 @@ export function grimoireToEnemyAbility(
     ticks,
   }
 }
-
-export const scalingTickingDamage = (ticks: number, baseDamage: number) =>
-  getDamageMultiplier() * baseDamage * ticks
-
-export const scaledDamage = (baseDamage: number) => getDamageMultiplier() * baseDamage

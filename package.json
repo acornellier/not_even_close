@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 3000",
-    "build": "tsc && vite build",
+    "build": "tsc && yarn check-abilities && vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .ts,.tsx src",
-    "diff": "tsx ./scripts/differ.ts",
     "guess": "tsx ./scripts/guessAbilities.ts",
     "report": "tsx ./scripts/reportAbilities.ts",
     "write": "tsx ./scripts/writeAbilities.ts",
+    "check-abilities": "tsx ./scripts/checkAbilities.ts",
     "descriptions": "tsx ./scripts/fetchDescriptions.ts"
   },
   "engines": {
@@ -44,7 +44,6 @@
     "prettier": "3.2.5",
     "tailwindcss": "3.4.3",
     "tsx": "4.7.2",
-    "vite": "5.2.14",
-    "vite-plugin-compile-time": "0.2.1"
+    "vite": "5.2.14"
   }
 }

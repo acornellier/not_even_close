@@ -1,6 +1,10 @@
-import type { EnemyAbility } from './enemies'
-import { getGrimoireSpell } from 'grimoire-wow'
-import { grimoireToEnemyAbility } from './grimoireConverter.ts'
+/**
+ * Resolves spell ids against grimoire-wow. Script-only: grimoire's spell table is tens of
+ * megabytes, so the app never imports it — `yarn write` bakes the values into the dungeon JSON.
+ */
+import type { EnemyAbility } from '../src/backend/enemyAbilities/enemies.ts'
+import { getDamageMultiplier, getGrimoireSpell } from 'grimoire-wow'
+import { grimoireToEnemyAbility } from '../src/backend/enemyAbilities/grimoireConverter.ts'
 
 type Options =
   | Partial<EnemyAbility>
@@ -38,3 +42,6 @@ export function trashSpell(
 ): EnemyAbility {
   return getEnemySpell(spellId, options, extraOptions, true)
 }
+
+export const scalingTickingDamage = (ticks: number, baseDamage: number) =>
+  getDamageMultiplier() * baseDamage * ticks

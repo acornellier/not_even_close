@@ -1,231 +1,41 @@
 /**
- * Merges scraped candidates into src/backend/enemyAbilities/<season>/<dungeon>.ts.
+ * Generates src/backend/enemyAbilities/<season>/<dungeon>.json from the scraped candidates.
  *
- * ADDITIVE: only spell ids not already in the file are appended, so hand-tuning survives a
- * re-run. Abilities already present are reported as a diff (e.g. "file says 5 ticks, logs show
- * 7") and left alone — the generator never overwrites a human's judgement.
+ * The JSON is pure output: every run rebuilds it from the scrape, grimoire and
+ * overrides/<dungeon>.ts, and overwrites the file. Review a run with `git diff`. Hand-made
+ * calls belong in the overrides, never in the JSON.
+ *
+ * Each file records the grimoire-wow version it was resolved against, so `yarn check-abilities`
+ * (run by `yarn build`) can fail when grimoire is bumped without re-running this.
  *
  * Usage:
  *   yarn write            # all dungeons
  *   yarn write murd       # one dungeon
- *   yarn write --dry      # report what would change, write nothing
- *   yarn write --prune    # also drop entries the scraper no longer rates lethal
- *   yarn write --refresh  # rewrite entries whose generated form has changed
+ *   yarn write --dry      # print what would change, write nothing
  */
 import { execFileSync } from 'child_process'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { getDamageMultiplier } from 'grimoire-wow'
+import type { EnemyAbility } from '../src/backend/enemyAbilities/enemies.ts'
 import type { AbilityCandidate } from './guessAbilities.ts'
-import type { Declaration } from './abilitySource.ts'
-import { spellIdsInSource, spellOverride, suggestedDeclaration } from './abilitySource.ts'
+import { describe, suggestedAbility } from './abilitySource.ts'
+import { spellOverride } from './overrides/index.ts'
+import {
+  abilitiesPath,
+  type DungeonAbilitiesFile,
+  installedGrimoireVersion,
+  readAbilitiesFile,
+  seasonDungeonKeys,
+} from './abilityFiles.ts'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const outputDir = path.join(__dirname, 'output')
-const abilitiesDir = path.resolve(__dirname, '../src/backend/enemyAbilities/midnight_s2')
-
-const allDungeonKeys = ['murd', 'nalo', 'vale', 'void', 'fang', 'rlp', 'tos', 'kr']
 
 /** Only these classifications are written; `avoidable` and `chip` are report-only. */
 const WRITTEN_CLASSIFICATIONS = new Set<AbilityCandidate['classification']>(['lethal'])
 
-function exportName(dungeonKey: string) {
-  return `${dungeonKey}Abilities`
-}
-
-function renderNewFile(
-  dungeonKey: string,
-  declarations: Array<{ varName: string; code: string }>,
-  needsScalingHelper: boolean,
-) {
-  if (declarations.length === 0) {
-    return `import type { EnemyAbility } from '../enemies'\n\nexport const ${exportName(dungeonKey)}: EnemyAbility[] = []\n`
-  }
-
-  const lines = [`import { bossSpell, trashSpell } from '../grimoire.ts'`]
-  if (needsScalingHelper) {
-    lines.push(`import { scalingTickingDamage } from '../grimoireConverter.ts'`)
-  }
-  lines.push('')
-
-  for (const declaration of declarations) {
-    lines.push(declaration.code)
-    lines.push('')
-  }
-
-  lines.push(`export const ${exportName(dungeonKey)} = [`)
-  for (const declaration of declarations) lines.push(`  ${declaration.varName},`)
-  lines.push(']')
-  lines.push('')
-
-  return lines.join('\n')
-}
-
-/** Splice new declarations into an existing file without disturbing what's already there. */
-function mergeIntoFile(
-  source: string,
-  dungeonKey: string,
-  declarations: Array<{ varName: string; code: string }>,
-  needsScalingHelper: boolean,
-) {
-  const arrayPattern = new RegExp(
-    `export const ${exportName(dungeonKey)}(?::\\s*EnemyAbility\\[\\])?\\s*=\\s*\\[([\\s\\S]*?)\\]`,
-  )
-  const match = source.match(arrayPattern)
-  if (!match) return null
-
-  let merged = source
-
-  // The empty stub imports a type it will no longer need once there are real abilities.
-  if (/export const \w+: EnemyAbility\[\] = \[\]/.test(merged)) {
-    merged = merged.replace(/import type \{ EnemyAbility \} from '\.\.\/enemies'\n\n?/, '')
-    merged = `import { bossSpell, trashSpell } from '../grimoire.ts'\n\n${merged}`
-  }
-
-  if (needsScalingHelper && !merged.includes('scalingTickingDamage')) {
-    merged = merged.replace(
-      /(import \{ bossSpell, trashSpell \} from '\.\.\/grimoire\.ts'\n)/,
-      `$1import { scalingTickingDamage } from '../grimoireConverter.ts'\n`,
-    )
-  }
-
-  const refreshed = merged.match(arrayPattern)!
-  const existingEntries = refreshed[1]!
-    .split('\n')
-    .map((line) => line.trim())
-    .filter((line) => line.length > 0 && line !== ',')
-
-  const entries = [
-    ...existingEntries,
-    ...declarations.map((declaration) => `${declaration.varName},`),
-  ]
-
-  const block =
-    `export const ${exportName(dungeonKey)} = [\n` +
-    entries.map((entry) => `  ${entry.replace(/,?$/, ',')}`).join('\n') +
-    `\n]`
-
-  const newCode = declarations.map((declaration) => `${declaration.code}\n`).join('\n')
-  return merged.replace(refreshed[0]!, `${newCode}\n${block}`)
-}
-
-/** Locate a declaration by spell id, returning its variable name and full source extent. */
-function findDeclaration(source: string, spellId: number) {
-  const pattern = new RegExp(
-    `^const (\\w+) = (?:boss|trash)Spell\\(\\s*${spellId}\\b`,
-    'm',
-  )
-  const match = source.match(pattern)
-  if (!match || match.index === undefined) return null
-
-  let depth = 0
-  let cursor = source.indexOf('(', match.index)
-  for (; cursor < source.length; ++cursor) {
-    if (source[cursor] === '(') depth++
-    else if (source[cursor] === ')' && --depth === 0) {
-      cursor++
-      break
-    }
-  }
-
-  return { varName: match[1]!, start: match.index, end: cursor }
-}
-
-/**
- * Rewrite declarations whose generated form has changed — e.g. an ability that was marked
- * periodic off a bad tick inference and no longer is.
- *
- * The existing variable name is kept so the export array still resolves. This overwrites hand
- * edits to the declarations it touches, which is why it needs an explicit flag.
- */
-function refreshDeclarations(
-  source: string,
-  candidates: AbilityCandidate[],
-  multiplier: number | null,
-) {
-  let result = source
-  const changes: Array<{ before: string; after: string }> = []
-
-  for (const candidate of candidates) {
-    const found = findDeclaration(result, candidate.primarySpellId)
-    if (!found) continue
-
-    const before = result.slice(found.start, found.end)
-    const generated = suggestedDeclaration(candidate, multiplier)
-    // Keep whatever the declaration is already called; the array refers to it by that name.
-    const after = generated.code.replace(
-      /^const \w+ =/,
-      `const ${found.varName} =`,
-    )
-
-    // Compare ignoring formatting: prettier reflows declarations across lines and adds
-    // trailing commas, neither of which is a real change. Without stripping those, every
-    // formatted file reports drift forever and --refresh fights the formatter.
-    const normalize = (text: string) =>
-      text
-        .replace(/,(\s*[}\])])/g, '$1')
-        .replace(/\s+/g, ' ')
-        .trim()
-    if (normalize(before) === normalize(after)) continue
-
-    result = result.slice(0, found.start) + after + result.slice(found.end)
-    changes.push({ before: normalize(before), after: normalize(after) })
-  }
-
-  return { result, changes }
-}
-
-/**
- * Drop `const x = ...Spell(<id>, ...)` declarations and their array entries.
- *
- * Declarations get prettier-formatted across several lines, so this scans forward from the
- * opening paren and balances parentheses to find the real end of the statement rather than
- * assuming one line.
- */
-function removeSpellIds(source: string, spellIds: number[]) {
-  let result = source
-
-  for (const spellId of spellIds) {
-    const declaration = new RegExp(
-      `^const (\\w+) = (?:boss|trash)Spell\\(\\s*${spellId}\\b`,
-      'm',
-    )
-    const match = result.match(declaration)
-    if (!match || match.index === undefined) continue
-
-    let depth = 0
-    let cursor = result.indexOf('(', match.index)
-    for (; cursor < result.length; ++cursor) {
-      if (result[cursor] === '(') depth++
-      else if (result[cursor] === ')' && --depth === 0) {
-        cursor++
-        break
-      }
-    }
-    while (result[cursor] === '\n') cursor++
-
-    result = result.slice(0, match.index) + result.slice(cursor)
-    result = result.replace(new RegExp(`^\\s*${match[1]},\\n`, 'm'), '')
-  }
-
-  return result
-}
-
-/** Drop helper imports the file no longer uses — refreshing a line can strip its last caller. */
-function pruneUnusedImports(source: string) {
-  if (source.includes('scalingTickingDamage(')) return source
-
-  return source.replace(
-    /import \{ scalingTickingDamage \} from '\.\.\/grimoireConverter\.ts'\n/,
-    '',
-  )
-}
-
-/**
- * Format the files we just wrote, so generated declarations match the repo's style rather
- * than arriving as one long line each. Uses the local prettier and its .prettierrc.yaml.
- */
 function formatFiles(filePaths: string[]) {
   if (filePaths.length === 0) return
 
@@ -244,249 +54,110 @@ function formatFiles(filePaths: string[]) {
   }
 }
 
-/**
- * Make variable names unique.
- *
- * Two spells can share a name while being distinct mechanics, and each gets its own
- * declaration — so the bare camel-cased name would collide. Colliding ones take the spell id
- * as a suffix; the first/most damaging keeps the clean name.
- */
-function deduplicateNames(declarations: Declaration[], existingSource: string | null) {
-  const taken = new Set<string>(
-    existingSource
-      ? [...existingSource.matchAll(/^const (\w+) =/gm)].map((m) => m[1]!)
-      : [],
-  )
+/** What changed between two versions of a dungeon's abilities, one line per ability. */
+function changes(before: EnemyAbility[], after: EnemyAbility[]) {
+  const lines: string[] = []
+  const beforeById = new Map(before.map((ability) => [ability.id, ability]))
+  const afterIds = new Set(after.map((ability) => ability.id))
 
-  return declarations.map((declaration) => {
-    if (!taken.has(declaration.varName)) {
-      taken.add(declaration.varName)
-      return declaration
+  for (const ability of after) {
+    const old = beforeById.get(ability.id)
+    if (!old) {
+      lines.push(`+ ${ability.name} (${ability.id})`)
+      continue
     }
-
-    const spellId = declaration.code.match(/Spell\(\s*(\d+)/)?.[1] ?? ''
-    const unique = `${declaration.varName}${spellId}`
-    taken.add(unique)
-    return {
-      ...declaration,
-      varName: unique,
-      code: declaration.code.replace(/^const \w+ =/, `const ${unique} =`),
-    }
-  })
-}
-
-/**
- * Rewrite the file with declarations and export entries in candidate (route) order.
- *
- * Existing declaration text is reused verbatim, so hand edits survive a reorder — only the
- * order changes. Declarations that don't correspond to a candidate are kept at the end rather
- * than dropped; removing things is prune's job, not this function's.
- */
-function reorderFile(
-  source: string,
-  dungeonKey: string,
-  candidates: AbilityCandidate[],
-): string | null {
-  const firstConst = source.search(/^const /m)
-  if (firstConst === -1) return null
-
-  const header = source.slice(0, firstConst).trimEnd()
-  const blocks: Array<{ varName: string; text: string }> = []
-  const claimed = new Set<number>()
-
-  for (const candidate of candidates) {
-    const found = findDeclaration(source, candidate.primarySpellId)
-    if (!found) continue
-    claimed.add(candidate.primarySpellId)
-    blocks.push({ varName: found.varName, text: source.slice(found.start, found.end) })
+    const keys = new Set([...Object.keys(old), ...Object.keys(ability)] as (keyof EnemyAbility)[])
+    const fields = [...keys]
+      .filter((key) => JSON.stringify(old[key]) !== JSON.stringify(ability[key]))
+      .map((key) => `${key} ${JSON.stringify(old[key])} -> ${JSON.stringify(ability[key])}`)
+    if (fields.length > 0) lines.push(`~ ${ability.name} (${ability.id}): ${fields.join(', ')}`)
+  }
+  for (const ability of before) {
+    if (!afterIds.has(ability.id)) lines.push(`- ${ability.name} (${ability.id})`)
   }
 
-  // Anything declared in the file that no candidate claimed — keep it, in its original order.
-  for (const match of source.matchAll(
-    /^const (\w+) = (?:boss|trash)Spell\(\s*(\d+)/gm,
-  )) {
-    const spellId = Number(match[2])
-    if (claimed.has(spellId)) continue
-    const found = findDeclaration(source, spellId)
-    if (!found) continue
-    blocks.push({ varName: found.varName, text: source.slice(found.start, found.end) })
-  }
+  const order = (abilities: EnemyAbility[]) =>
+    abilities
+      .map((ability) => ability.id)
+      .filter((id) => beforeById.has(id) && afterIds.has(id))
+      .join(',')
+  if (order(before) !== order(after)) lines.push('reordered to match dungeon route')
 
-  return (
-    `${header}\n\n` +
-    blocks.map((b) => b.text).join('\n\n') +
-    `\n\nexport const ${exportName(dungeonKey)} = [\n` +
-    blocks.map((b) => `  ${b.varName},`).join('\n') +
-    `\n]\n`
-  )
+  return lines
 }
 
 function main() {
   const args = process.argv.slice(2)
   const dryRun = args.includes('--dry')
-  const prune = args.includes('--prune')
-  const refresh = args.includes('--refresh')
   const requested = args.find((arg) => !arg.startsWith('--'))
-  const dungeonKeys = requested ? [requested] : allDungeonKeys
+  const dungeonKeys = requested ? [requested] : seasonDungeonKeys
 
   // grimoire-wow publishes the season's damage multiplier, so there's nothing to derive.
   const multiplier = getDamageMultiplier()
-  console.log(`Season damage multiplier: ${multiplier}\n`)
+  const grimoire = installedGrimoireVersion()
+  console.log(`grimoire-wow ${grimoire}, season damage multiplier ${multiplier}\n`)
 
   const writtenPaths: string[] = []
 
   for (const dungeonKey of dungeonKeys) {
     const inputPath = path.join(outputDir, `${dungeonKey}_abilities.json`)
     if (!fs.existsSync(inputPath)) {
-      console.log(`${dungeonKey}: no scraped data, skipping (run \`yarn guess ${dungeonKey}\`)`)
+      console.log(`${dungeonKey}: no scraped data, skipping (run \`yarn guess ${dungeonKey}\`)\n`)
       continue
     }
 
-    const scraped = (
+    // Candidates are already in route order — the order you meet them in the dungeon.
+    const candidates = (
       JSON.parse(fs.readFileSync(inputPath, 'utf-8')) as AbilityCandidate[]
-    ).filter(
-      (candidate) =>
-        WRITTEN_CLASSIFICATIONS.has(candidate.classification) ||
-        spellOverride(candidate)?.include,
+    ).filter((candidate) => {
+      const override = spellOverride(dungeonKey, candidate.spellIds)
+      if (override?.exclude) return false
+      return WRITTEN_CLASSIFICATIONS.has(candidate.classification) || override?.include
+    })
+
+    const suggested = candidates.map((candidate) =>
+      suggestedAbility(dungeonKey, candidate, multiplier),
     )
-    const candidates = scraped.filter((candidate) => !spellOverride(candidate)?.exclude)
-
-    const outPath = path.join(abilitiesDir, `${dungeonKey}.ts`)
-    const existingSource = fs.existsSync(outPath) ? fs.readFileSync(outPath, 'utf-8') : null
-    const known = existingSource ? spellIdsInSource(existingSource) : new Set<number>()
-
-    // Excluded by hand in spellOverrides.ts — removed outright, no --prune needed.
-    const excluded = scraped
-      .filter((candidate) => spellOverride(candidate)?.exclude)
-      .flatMap((candidate) => candidate.spellIds)
-      .filter((spellId) => known.has(spellId))
-
-    const fresh = candidates.filter(
-      (candidate) => !candidate.spellIds.some((spellId) => known.has(spellId)),
-    )
-    const alreadyPresent = candidates.filter((candidate) =>
-      candidate.spellIds.some((spellId) => known.has(spellId)),
-    )
-
-    const declarations = deduplicateNames(
-      fresh.map((candidate) => suggestedDeclaration(candidate, multiplier)),
-      existingSource,
-    )
-
-    // Entries written by an earlier run that the scraper no longer rates lethal — usually
-    // because a metric got better, e.g. an ability turning out to be avoidable after all.
-    const lethalIds = new Set(candidates.flatMap((candidate) => candidate.spellIds))
-    const stale = existingSource
-      ? [...spellIdsInSource(existingSource)].filter(
-          (spellId) => !lethalIds.has(spellId) && !excluded.includes(spellId),
-        )
-      : []
-    const needsScalingHelper = declarations.some((d) => d.needsScalingHelper)
-
-    console.log(
-      `${dungeonKey}: ${fresh.length} new, ${alreadyPresent.length} already present, ${candidates.length} lethal total`,
-    )
-
-    // Entries whose generated form has drifted from what's on disk.
-    const drift = existingSource
-      ? refreshDeclarations(existingSource, alreadyPresent, multiplier).changes
-      : []
-    if (drift.length > 0) {
-      const verb = refresh ? 'refreshing' : `stale (re-run with --refresh)`
-      console.log(`    ${drift.length} ${verb}:`)
-      for (const { before, after } of drift) {
-        console.log(`      - ${before}`)
-        console.log(`      + ${after}`)
-      }
+    const file: DungeonAbilitiesFile = {
+      grimoire,
+      abilities: suggested.map(({ ability }) => ability),
     }
 
-    for (const candidate of alreadyPresent) {
-      if (candidate.possiblyIgnoresArmor) {
+    const existing = readAbilitiesFile(dungeonKey)
+    const diff = existing
+      ? changes(existing.abilities, file.abilities)
+      : suggested.map((s) => `+ ${describe(s)}`)
+    if (existing && existing.grimoire !== grimoire) {
+      diff.unshift(`grimoire ${existing.grimoire} -> ${grimoire}`)
+    }
+
+    console.log(`${dungeonKey}: ${file.abilities.length} abilities`)
+    // Silenced by an explicit `ignoresArmor: true | false` override once someone has checked.
+    for (const candidate of candidates) {
+      const override = spellOverride(dungeonKey, candidate.spellIds)
+      if (candidate.possiblyIgnoresArmor && override?.ignoresArmor === undefined) {
         console.log(
           `    ${candidate.name}: armor sensitivity ${Math.round(candidate.armorSensitivity * 100)}pp — check ignoresArmor`,
         )
       }
     }
 
-    if (excluded.length > 0) console.log(`    excluding: ${excluded.join(', ')}`)
-
-    if (stale.length > 0) {
-      const verb = prune ? 'removing' : 'no longer lethal (re-run with --prune to remove)'
-      console.log(`    ${verb}: ${stale.join(', ')}`)
-    }
-
-    // Route order can change on its own when new log data shifts where an ability first
-    // appears, without any declaration text changing.
-    const fileOrder = existingSource
-      ? [...existingSource.matchAll(/^const \w+ = (?:boss|trash)Spell\(\s*(\d+)/gm)].map(
-          (m) => Number(m[1]),
-        )
-      : []
-    const wantedOrder = candidates
-      .map((c) => c.primarySpellId)
-      .filter((id) => fileOrder.includes(id))
-    const orderChanged =
-      fresh.length === 0 &&
-      wantedOrder.join(',') !== fileOrder.filter((id) => wantedOrder.includes(id)).join(',')
-
-    if (orderChanged) console.log(`    reordering to match dungeon route`)
-
-    if (
-      fresh.length === 0 &&
-      !orderChanged &&
-      excluded.length === 0 &&
-      !(prune && stale.length > 0) &&
-      !(refresh && drift.length > 0)
-    ) {
-      console.log(`    nothing to add\n`)
+    if (diff.length === 0) {
+      console.log(`    no changes\n`)
       continue
     }
-
-    for (const declaration of declarations) {
-      console.log(`    + ${declaration.code}`)
-    }
+    for (const line of diff) console.log(`    ${line}`)
 
     if (dryRun) {
       console.log(`    (dry run, not written)\n`)
       continue
     }
 
-    let source = existingSource
-    if (excluded.length > 0 && source) {
-      source = removeSpellIds(source, excluded)
-    }
-    if (prune && stale.length > 0 && source) {
-      source = removeSpellIds(source, stale)
-    }
-    if (refresh && drift.length > 0 && source) {
-      source = refreshDeclarations(source, alreadyPresent, multiplier).result
-    }
-
-    let content: string | null
-    if (source && known.size > 0) {
-      content = mergeIntoFile(source, dungeonKey, declarations, needsScalingHelper)
-      if (!content) {
-        console.log(
-          `    could not locate \`export const ${exportName(dungeonKey)}\` — leaving the file alone\n`,
-        )
-        continue
-      }
-    } else if (source) {
-      content =
-        mergeIntoFile(source, dungeonKey, declarations, needsScalingHelper) ??
-        renderNewFile(dungeonKey, declarations, needsScalingHelper)
-    } else {
-      content = renderNewFile(dungeonKey, declarations, needsScalingHelper)
-    }
-
-    // Abilities are listed in the order you meet them in the dungeon, so re-sort after any
-    // merge — appended declarations would otherwise sit at the end regardless of route order.
-    content = reorderFile(content, dungeonKey, candidates) ?? content
-
-    fs.mkdirSync(abilitiesDir, { recursive: true })
-    fs.writeFileSync(outPath, pruneUnusedImports(content))
+    const outPath = abilitiesPath(dungeonKey)
+    fs.mkdirSync(path.dirname(outPath), { recursive: true })
+    fs.writeFileSync(outPath, `${JSON.stringify(file, null, 2)}\n`)
     writtenPaths.push(outPath)
-    console.log(`    -> ${outPath}\n`)
+    console.log(`    -> ${path.relative(process.cwd(), outPath)}\n`)
   }
 
   formatFiles(writtenPaths)

@@ -13,7 +13,7 @@ export type EnemyAbility = Omit<EnemyAbilityDetails, 'damage'> & {
   periodic?: boolean
   /**
    * Full-duration total of the spell's periodic effect, from grimoire; 0 when it has no DoT.
-   * Always set by grimoireToEnemyAbility, so ability files can add it without a null check.
+   * Always set by grimoireToEnemyAbility, so damage recipes can add it without a null check.
    */
   periodicDamage: number
   /** DBC tick count of the periodic effect, including a tick-on-apply one. 0 when not periodic. */
