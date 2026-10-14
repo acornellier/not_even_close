@@ -31,13 +31,19 @@ export interface SpellOverride {
   exclude?: boolean
   /** Use only the direct hit, dropping the DoT that follows it. */
   initialHitOnly?: boolean
+  /** Write the direct hit and the DoT that follows it as two separate abilities. */
+  separateDot?: boolean
   /** Write the spell even when the scraper doesn't rate it lethal. */
   include?: boolean
+  /** Boss ability rather than trash, when the scraper got it wrong. */
+  boss?: boolean
   /** Tick count, for DoTs grimoire has no periodic data for. */
   ticks?: number
   /** Damage is shared between this many players; the ability takes one player's share. */
   splitBetween?: number
   ignoresArmor?: boolean
+  /** Tank buster, when the logs didn't show it hitting only tanks. */
+  tankOnly?: boolean
   notes?: string
   /** Why this call was made. Kept so the next person can disagree with it. */
   reason: string

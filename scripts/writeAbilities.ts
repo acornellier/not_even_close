@@ -20,7 +20,7 @@ import { fileURLToPath } from 'url'
 import { getDamageMultiplier } from 'grimoire-wow'
 import type { EnemyAbility } from '../src/backend/enemyAbilities/enemies.ts'
 import type { AbilityCandidate } from './guessAbilities.ts'
-import { describe, suggestedAbility } from './abilitySource.ts'
+import { describe, suggestedAbilities } from './abilitySource.ts'
 import { spellOverride } from './overrides/index.ts'
 import {
   abilitiesPath,
@@ -57,28 +57,36 @@ function formatFiles(filePaths: string[]) {
 /** What changed between two versions of a dungeon's abilities, one line per ability. */
 function changes(before: EnemyAbility[], after: EnemyAbility[]) {
   const lines: string[] = []
-  const beforeById = new Map(before.map((ability) => [ability.id, ability]))
-  const afterIds = new Set(after.map((ability) => ability.id))
+  // A spell split into a hit and its DoT shares an id, so the name is part of the identity.
+  const identity = (ability: EnemyAbility) => `${ability.id}:${ability.name}`
+  const beforeById = new Map(before.map((ability) => [identity(ability), ability]))
+  const afterIds = new Set(after.map(identity))
 
   for (const ability of after) {
-    const old = beforeById.get(ability.id)
+    const old = beforeById.get(identity(ability))
     if (!old) {
       lines.push(`+ ${ability.name} (${ability.id})`)
       continue
     }
-    const keys = new Set([...Object.keys(old), ...Object.keys(ability)] as (keyof EnemyAbility)[])
+    const keys = new Set([
+      ...Object.keys(old),
+      ...Object.keys(ability),
+    ] as (keyof EnemyAbility)[])
     const fields = [...keys]
       .filter((key) => JSON.stringify(old[key]) !== JSON.stringify(ability[key]))
-      .map((key) => `${key} ${JSON.stringify(old[key])} -> ${JSON.stringify(ability[key])}`)
-    if (fields.length > 0) lines.push(`~ ${ability.name} (${ability.id}): ${fields.join(', ')}`)
+      .map(
+        (key) => `${key} ${JSON.stringify(old[key])} -> ${JSON.stringify(ability[key])}`,
+      )
+    if (fields.length > 0)
+      lines.push(`~ ${ability.name} (${ability.id}): ${fields.join(', ')}`)
   }
   for (const ability of before) {
-    if (!afterIds.has(ability.id)) lines.push(`- ${ability.name} (${ability.id})`)
+    if (!afterIds.has(identity(ability))) lines.push(`- ${ability.name} (${ability.id})`)
   }
 
   const order = (abilities: EnemyAbility[]) =>
     abilities
-      .map((ability) => ability.id)
+      .map(identity)
       .filter((id) => beforeById.has(id) && afterIds.has(id))
       .join(',')
   if (order(before) !== order(after)) lines.push('reordered to match dungeon route')
@@ -102,7 +110,9 @@ function main() {
   for (const dungeonKey of dungeonKeys) {
     const inputPath = path.join(outputDir, `${dungeonKey}_abilities.json`)
     if (!fs.existsSync(inputPath)) {
-      console.log(`${dungeonKey}: no scraped data, skipping (run \`yarn guess ${dungeonKey}\`)\n`)
+      console.log(
+        `${dungeonKey}: no scraped data, skipping (run \`yarn guess ${dungeonKey}\`)\n`,
+      )
       continue
     }
 
@@ -115,8 +125,8 @@ function main() {
       return WRITTEN_CLASSIFICATIONS.has(candidate.classification) || override?.include
     })
 
-    const suggested = candidates.map((candidate) =>
-      suggestedAbility(dungeonKey, candidate, multiplier),
+    const suggested = candidates.flatMap((candidate) =>
+      suggestedAbilities(dungeonKey, candidate, multiplier),
     )
     const file: DungeonAbilitiesFile = {
       grimoire,

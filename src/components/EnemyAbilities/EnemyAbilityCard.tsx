@@ -34,6 +34,8 @@ export function EnemyAbilityCard({
 }: Props) {
   const cardColor = selected ? 'bg-teal-600' : 'bg-teal-900'
   const hoverColor = !selected && 'hover:bg-teal-800'
+  // One spell can be listed twice (a hit and its DoT), so the id alone isn't unique.
+  const tooltipKey = `${ability.id}-${ability.name.replace(/\W/g, '')}`
 
   return (
     <div
@@ -63,10 +65,10 @@ export function EnemyAbilityCard({
             {ability.notes && (
               <QuestionMarkCircleIcon
                 height={20}
-                data-tooltip-id={`enemy-ability-tooltip-${ability.id}`}
+                data-tooltip-id={`enemy-ability-tooltip-${tooltipKey}`}
               />
             )}
-            <TooltipStyled id={`enemy-ability-tooltip-${ability.id}`}>
+            <TooltipStyled id={`enemy-ability-tooltip-${tooltipKey}`}>
               {ability.notes}
             </TooltipStyled>
           </div>
@@ -76,12 +78,12 @@ export function EnemyAbilityCard({
             <AbilityDetailsChip
               color="bg-gray-500"
               className="hidden sm:block"
-              data-tooltip-id={`chip-damage-${ability.id}`}
+              data-tooltip-id={`chip-damage-${tooltipKey}`}
             >
               {shortRoundedNumber(scaleDamage(keyDetails, ability).scaledDamage)} dmg
             </AbilityDetailsChip>
             {ability.variance !== undefined && ability.variance !== 0 && (
-              <TooltipStyled id={`chip-damage-${ability.id}`}>
+              <TooltipStyled id={`chip-damage-${tooltipKey}`}>
                 <p>
                   This ability has {roundHundred(ability.variance)}% variance in its
                   damage.

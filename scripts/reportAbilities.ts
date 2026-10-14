@@ -10,7 +10,7 @@ import { fileURLToPath } from 'url'
 import type { AbilityCandidate } from './guessAbilities.ts'
 import { REFERENCE_KEY_LEVEL } from './guessAbilities.ts'
 import { getDamageMultiplier } from 'grimoire-wow'
-import { describe, suggestedAbility } from './abilitySource.ts'
+import { describe, suggestedAbilities } from './abilitySource.ts'
 import { pctMaxHpAtKeyLevel } from './scaling.ts'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -150,7 +150,9 @@ function renderCandidate(
   lines.push('```')
   lines.push('')
   lines.push('```')
-  lines.push(describe(suggestedAbility(dungeonKey, candidate, multiplier)))
+  for (const suggested of suggestedAbilities(dungeonKey, candidate, multiplier)) {
+    lines.push(describe(suggested))
+  }
   lines.push('```')
   lines.push('')
 
@@ -210,7 +212,8 @@ function renderReport(dungeonKey: string, candidates: AbilityCandidate[]) {
     lines.push('')
     lines.push(`_${blurb}_`)
     lines.push('')
-    for (const candidate of group) lines.push(renderCandidate(dungeonKey, candidate, multiplier))
+    for (const candidate of group)
+      lines.push(renderCandidate(dungeonKey, candidate, multiplier))
   }
 
   return lines.join('\n')

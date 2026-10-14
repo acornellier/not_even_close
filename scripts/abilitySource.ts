@@ -5,7 +5,7 @@
 import type { EnemyAbility } from '../src/backend/enemyAbilities/enemies.ts'
 import type { AbilityCandidate } from './guessAbilities.ts'
 import { bossSpell, scalingTickingDamage, trashSpell } from './grimoire.ts'
-import { spellOverride } from './overrides/index.ts'
+import { type SpellOverride, spellOverride } from './overrides/index.ts'
 
 /** Beyond this, a DoT is sustained damage rather than a burst to survive. */
 const LONG_DOT_MS = 6000
@@ -30,16 +30,19 @@ export function suggestedAbility(
   dungeonKey: string,
   candidate: AbilityCandidate,
   multiplier: number | null,
+  // Hand-made calls from overrides/<dungeon>.ts, applied on every run.
+  override: SpellOverride | undefined = spellOverride(dungeonKey, candidate.spellIds),
 ): SuggestedAbility {
   const options: Partial<EnemyAbility> = {}
 
-  // Hand-made calls from overrides/<dungeon>.ts, applied on every run.
-  const override = spellOverride(dungeonKey, candidate.spellIds)
-
   // Dropping the DoT leaves just the direct hit, which is grimoire's default damage.
-  const initialHitOnly = Boolean(override?.initialHitOnly && candidate.grimoireDirectDamage)
+  const initialHitOnly = Boolean(
+    override?.initialHitOnly && candidate.grimoireDirectDamage,
+  )
   const grimoireTicks = initialHitOnly ? null : candidate.grimoirePeriodicTicks
-  const ticks = initialHitOnly ? 1 : (override?.ticks ?? grimoireTicks ?? candidate.p95Ticks)
+  const ticks = initialHitOnly
+    ? 1
+    : override?.ticks ?? grimoireTicks ?? candidate.p95Ticks
 
   // The sim models one instantaneous hit, so a long DoT's full-duration total is damage spread
   // over many seconds of healing rather than something to survive at once. Authored at full
@@ -58,17 +61,22 @@ export function suggestedAbility(
   if (override?.ignoresArmor) options.ignoresArmor = true
   if (override?.notes) options.notes = override.notes
 
-  if (candidate.tankOnly) options.tankOnly = true
+  if (override?.tankOnly ?? candidate.tankOnly) options.tankOnly = true
   if (ticks > 1) options.periodic = true
   if (candidate.aoeFraction > 0.5) options.aoe = true
 
   const split = override?.splitBetween
 
   const resolve = (recipe: string, damage?: (spell: EnemyAbility) => number) => {
-    const spell = (candidate.isBoss ? bossSpell : trashSpell)(candidate.primarySpellId, (spell) => {
-      const total = damage ? damage(spell) : spell.damage
-      return split || damage ? { damage: split ? total / split : total, ...options } : options
-    })
+    const spell = (override?.boss ?? candidate.isBoss ? bossSpell : trashSpell)(
+      candidate.primarySpellId,
+      (spell) => {
+        const total = damage ? damage(spell) : spell.damage
+        return split || damage
+          ? { damage: split ? total / split : total, ...options }
+          : options
+      },
+    )
     return { ability: spell, recipe: split ? `(${recipe}) / ${split}` : recipe }
   }
 
@@ -110,6 +118,44 @@ export function suggestedAbility(
   }
   const observed = Math.round(perTick * ticks)
   return resolve(`${observed} (observed)`, () => observed)
+}
+
+/**
+ * Every ability a candidate becomes: usually one, but a `separateDot` override splits a hit
+ * plus DoT into the initial hit and the DoT as its own entry.
+ */
+export function suggestedAbilities(
+  dungeonKey: string,
+  candidate: AbilityCandidate,
+  multiplier: number | null,
+): SuggestedAbility[] {
+  const override = spellOverride(dungeonKey, candidate.spellIds)
+  if (
+    !override?.separateDot ||
+    !candidate.grimoireDirectDamage ||
+    !candidate.grimoirePeriodicDamage
+  ) {
+    return [suggestedAbility(dungeonKey, candidate, multiplier, override)]
+  }
+
+  const hit = suggestedAbility(dungeonKey, candidate, multiplier, {
+    ...override,
+    initialHitOnly: true,
+    notes: 'Initial hit only; the DoT is listed separately.',
+  })
+  // The full version already carries the DoT's flags (periodic, full-duration note).
+  const { ability } = suggestedAbility(dungeonKey, candidate, multiplier, override)
+  const dot: SuggestedAbility = {
+    // A distinct name keeps the two apart: the app tells abilities apart by name and id.
+    ability: {
+      ...ability,
+      name: `${ability.name} (DoT)`,
+      damage: ability.periodicDamage,
+      notes: ability.notes ?? 'The DoT left by the initial hit.',
+    },
+    recipe: 'spell.periodicDamage',
+  }
+  return [hit, dot]
 }
 
 /** One line describing a suggested ability, for logs and reports. */
