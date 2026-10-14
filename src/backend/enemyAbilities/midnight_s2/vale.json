@@ -2,20 +2,6 @@
   "grimoire": "12.1.5-70391",
   "abilities": [
     {
-      "id": 1238084,
-      "name": "Spore Spines",
-      "icon": "inv_misc_herb_04",
-      "damage": 77584,
-      "aoe": false,
-      "physical": false,
-      "schools": ["nature"],
-      "variance": 0,
-      "periodicDamage": 77584,
-      "ticks": 8,
-      "periodic": true,
-      "trashAbility": true
-    },
-    {
       "id": 1238071,
       "name": "Thornblade",
       "icon": "spell_nature_thorns",
@@ -72,19 +58,6 @@
       "trashAbility": true
     },
     {
-      "id": 1263628,
-      "name": "Spouting Floret",
-      "icon": "inv_enchant_essenceastrallarge",
-      "damage": 72737,
-      "aoe": true,
-      "physical": false,
-      "schools": ["holy"],
-      "variance": 0,
-      "periodicDamage": 0,
-      "ticks": 0,
-      "trashAbility": true
-    },
-    {
       "id": 1238063,
       "name": "Light Bolt",
       "icon": "inv_ability_holyfire_missile",
@@ -108,6 +81,7 @@
       "variance": 0,
       "periodicDamage": 0,
       "ticks": 0,
+      "avoidable": true,
       "trashAbility": true
     },
     {
@@ -191,33 +165,6 @@
       "avoidable": true
     },
     {
-      "id": 1303039,
-      "name": "Hunting Leap",
-      "icon": "ability_druid_ravage",
-      "damage": 223060,
-      "aoe": false,
-      "physical": true,
-      "schools": ["physical"],
-      "variance": 0,
-      "periodicDamage": 155172,
-      "ticks": 4,
-      "periodic": true,
-      "trashAbility": true
-    },
-    {
-      "id": 270503,
-      "name": "Hunting Leap",
-      "icon": "ability_druid_ravage",
-      "damage": 145473,
-      "aoe": true,
-      "physical": true,
-      "schools": ["physical"],
-      "variance": 0.07335907221,
-      "periodicDamage": 0,
-      "ticks": 0,
-      "trashAbility": true
-    },
-    {
       "id": 1236746,
       "name": "Verdant Stomp",
       "icon": "inv_raptortravelform",
@@ -228,19 +175,6 @@
       "variance": 0,
       "periodicDamage": 0,
       "ticks": 0
-    },
-    {
-      "id": 1237267,
-      "name": "Incise",
-      "icon": "inv_misc_monsterfang_02",
-      "damage": 581895,
-      "aoe": false,
-      "physical": true,
-      "schools": ["physical"],
-      "variance": 0,
-      "periodicDamage": 581895,
-      "ticks": 3,
-      "periodic": true
     },
     {
       "id": 1242135,
@@ -269,6 +203,7 @@
       "variance": 0,
       "periodicDamage": 0,
       "ticks": 0,
+      "avoidable": true,
       "trashAbility": true
     },
     {
@@ -316,15 +251,28 @@
       "id": 1241058,
       "name": "Grievous Thrash",
       "icon": "spell_druid_bloodythrash",
-      "damage": 921313,
+      "damage": 145473,
       "aoe": true,
       "physical": true,
       "schools": ["physical"],
       "variance": 0,
       "periodicDamage": 775840,
       "ticks": 40,
-      "notes": "Assumes full duration (40s); players typically took 1 of 40 ticks.",
-      "periodic": true
+      "ignoresArmor": true,
+      "notes": "Initial hit only."
+    },
+    {
+      "id": 1240257,
+      "name": "Pulverizing Strikes",
+      "icon": "ability_druid_swipe",
+      "damage": 145473,
+      "aoe": true,
+      "physical": true,
+      "schools": ["physical"],
+      "variance": 0,
+      "periodicDamage": 0,
+      "ticks": 0,
+      "ignoresArmor": true
     },
     {
       "id": 1250100,
@@ -337,6 +285,7 @@
       "variance": 0,
       "periodicDamage": 0,
       "ticks": 0,
+      "tankOnly": true,
       "trashAbility": true
     },
     {
@@ -366,18 +315,6 @@
       "ticks": 0,
       "avoidable": true,
       "periodic": true
-    },
-    {
-      "id": 1247039,
-      "name": "Fluorescent Outburst",
-      "icon": "spell_nature_wrathv2",
-      "damage": 96982,
-      "aoe": true,
-      "physical": false,
-      "schools": ["holy"],
-      "variance": 0,
-      "periodicDamage": 0,
-      "ticks": 0
     }
   ]
 }
