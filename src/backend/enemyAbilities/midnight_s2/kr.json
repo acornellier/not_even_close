@@ -56,16 +56,17 @@
       "tankOnly": true
     },
     {
-      "id": 265781,
+      "id": 1311988,
       "name": "Serpentine Gust",
       "icon": "ability_skyreach_four_wind",
-      "damage": 145473,
+      "damage": 349134,
       "aoe": true,
       "physical": false,
       "schools": ["nature"],
       "variance": 0,
       "periodicDamage": 0,
-      "ticks": 0
+      "ticks": 0,
+      "periodic": true
     },
     {
       "id": 1297781,
@@ -110,6 +111,19 @@
       "trashAbility": true
     },
     {
+      "id": 1306056,
+      "name": "Erupting Slam",
+      "icon": "spell_shaman_earthquake",
+      "damage": 174568,
+      "aoe": true,
+      "physical": true,
+      "schools": ["physical"],
+      "variance": 0,
+      "periodicDamage": 0,
+      "ticks": 0,
+      "trashAbility": true
+    },
+    {
       "id": 270928,
       "name": "Bladestorm",
       "icon": "ability_warrior_bladestorm",
@@ -122,18 +136,6 @@
       "ticks": 0,
       "avoidable": true,
       "trashAbility": true
-    },
-    {
-      "id": 270503,
-      "name": "Hunting Leap",
-      "icon": "ability_druid_ravage",
-      "damage": 145473,
-      "aoe": true,
-      "physical": true,
-      "schools": ["physical"],
-      "variance": 0.07335907221,
-      "periodicDamage": 0,
-      "ticks": 0
     },
     {
       "id": 1294972,
@@ -276,6 +278,21 @@
       "trashAbility": true
     },
     {
+      "id": 1310761,
+      "name": "Barrel Through",
+      "icon": "ability_monk_clashingoxcharge",
+      "damage": 174568.2,
+      "aoe": true,
+      "physical": true,
+      "schools": ["physical"],
+      "variance": 0,
+      "periodicDamage": 0,
+      "ticks": 0,
+      "ignoresArmor": true,
+      "notes": "Split between 5 players.",
+      "trashAbility": true
+    },
+    {
       "id": 1305810,
       "name": "Arc Lightning",
       "icon": "spell_nature_chainlightning",
@@ -315,19 +332,6 @@
       "ticks": 2,
       "periodic": true,
       "trashAbility": true
-    },
-    {
-      "id": 1303039,
-      "name": "Hunting Leap",
-      "icon": "ability_druid_ravage",
-      "damage": 223060,
-      "aoe": false,
-      "physical": true,
-      "schools": ["physical"],
-      "variance": 0,
-      "periodicDamage": 155172,
-      "ticks": 4,
-      "periodic": true
     },
     {
       "id": 268591,
@@ -372,27 +376,14 @@
       "id": 1303267,
       "name": "Gilded Destruction",
       "icon": "inv_sword_2h_zandalarquest_b_01",
-      "damage": 518862,
+      "damage": 155172,
       "aoe": true,
       "physical": false,
       "schools": ["fire"],
       "variance": 0,
       "periodicDamage": 363690,
       "ticks": 15,
-      "periodic": true
-    },
-    {
-      "id": 1303374,
-      "name": "Searing Gold",
-      "icon": "ability_creature_amber_01",
-      "damage": 96982,
-      "aoe": true,
-      "physical": false,
-      "schools": ["fire"],
-      "variance": 0,
-      "periodicDamage": 0,
-      "ticks": 0,
-      "avoidable": true
+      "notes": "Initial hit only."
     },
     {
       "id": 268587,
@@ -411,15 +402,14 @@
       "id": 1302945,
       "name": "Impaling Spear",
       "icon": "inv_spear_08",
-      "damage": 387928,
+      "damage": 145473,
       "aoe": true,
       "physical": true,
       "schools": ["physical"],
       "variance": 0,
       "periodicDamage": 242455,
       "ticks": 5,
-      "avoidable": true,
-      "periodic": true
+      "notes": "Initial hit only."
     },
     {
       "id": 1303490,

@@ -62,11 +62,14 @@ export function suggestedAbility(
   if (ticks > 1) options.periodic = true
   if (candidate.aoeFraction > 0.5) options.aoe = true
 
+  const split = override?.splitBetween
+
   const resolve = (recipe: string, damage?: (spell: EnemyAbility) => number) => {
-    const spell = (candidate.isBoss ? bossSpell : trashSpell)(candidate.primarySpellId, (spell) =>
-      damage ? { damage: damage(spell), ...options } : options,
-    )
-    return { ability: spell, recipe }
+    const spell = (candidate.isBoss ? bossSpell : trashSpell)(candidate.primarySpellId, (spell) => {
+      const total = damage ? damage(spell) : spell.damage
+      return split || damage ? { damage: split ? total / split : total, ...options } : options
+    })
+    return { ability: spell, recipe: split ? `(${recipe}) / ${split}` : recipe }
   }
 
   // Direct hit plus a DoT. Both halves come off the resolved spell, so the next grimoire bump

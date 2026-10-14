@@ -35,6 +35,8 @@ export interface SpellOverride {
   include?: boolean
   /** Tick count, for DoTs grimoire has no periodic data for. */
   ticks?: number
+  /** Damage is shared between this many players; the ability takes one player's share. */
+  splitBetween?: number
   ignoresArmor?: boolean
   notes?: string
   /** Why this call was made. Kept so the next person can disagree with it. */
