@@ -30,16 +30,45 @@
       "trashAbility": true
     },
     {
-      "id": 1250695,
-      "name": "Insidious Aura",
-      "icon": "ability_warlock_burningembersgreen",
-      "damage": 87284,
+      "id": 1299913,
+      "name": "Null Eruption",
+      "icon": "inv_cosmicvoid_orb",
+      "damage": 145473,
+      "aoe": true,
+      "physical": false,
+      "schools": ["shadow"],
+      "variance": 0,
+      "periodicDamage": 193965,
+      "ticks": 5,
+      "notes": "Initial hit only.",
+      "trashAbility": true
+    },
+    {
+      "id": 1299273,
+      "name": "Thundering Storm",
+      "icon": "spell_shaman_thunderstorm",
+      "damage": 387930,
       "aoe": true,
       "physical": false,
       "schools": ["nature"],
       "variance": 0,
       "periodicDamage": 0,
       "ticks": 0,
+      "periodic": true,
+      "trashAbility": true
+    },
+    {
+      "id": 1250695,
+      "name": "Insidious Aura",
+      "icon": "ability_warlock_burningembersgreen",
+      "damage": 349136,
+      "aoe": true,
+      "physical": false,
+      "schools": ["nature"],
+      "variance": 0,
+      "periodicDamage": 0,
+      "ticks": 0,
+      "periodic": true,
       "trashAbility": true
     },
     {
@@ -60,7 +89,22 @@
       "id": 1222103,
       "name": "Nether Dash",
       "icon": "ability_mount_voidelfstridermount",
-      "damage": 581899,
+      "damage": 116379,
+      "aoe": false,
+      "physical": false,
+      "schools": ["shadow"],
+      "variance": 0,
+      "periodicDamage": 465520,
+      "ticks": 16,
+      "avoidable": true,
+      "notes": "Initial hit only; the DoT is listed separately.",
+      "trashAbility": true
+    },
+    {
+      "id": 1222103,
+      "name": "Nether Dash (DoT)",
+      "icon": "ability_mount_voidelfstridermount",
+      "damage": 465520,
       "aoe": false,
       "physical": false,
       "schools": ["shadow"],
@@ -69,7 +113,8 @@
       "ticks": 16,
       "avoidable": true,
       "periodic": true,
-      "trashAbility": true
+      "trashAbility": true,
+      "notes": "The DoT left by the initial hit."
     },
     {
       "id": 1297017,
@@ -97,28 +142,17 @@
       "ticks": 0
     },
     {
-      "id": 1300262,
-      "name": "Dark Bloom",
-      "icon": "inv_ability_voidweaverpriest_entropicrift",
-      "damage": 242456,
-      "aoe": false,
-      "physical": false,
-      "schools": ["shadow"],
-      "variance": 0,
-      "periodicDamage": 0,
-      "ticks": 0
-    },
-    {
       "id": 1239855,
       "name": "Sky Strike",
       "icon": "ability_racial_wingbuffet",
-      "damage": 872841,
+      "damage": 174568.2,
       "aoe": true,
       "physical": false,
       "schools": ["nature"],
       "variance": 0,
       "periodicDamage": 0,
       "ticks": 0,
+      "notes": "Split between 5 players.",
       "trashAbility": true
     },
     {
@@ -189,7 +223,8 @@
       "schools": ["physical"],
       "variance": 0,
       "periodicDamage": 0,
-      "ticks": 0
+      "ticks": 0,
+      "ignoresArmor": true
     },
     {
       "id": 1222692,
