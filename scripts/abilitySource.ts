@@ -28,6 +28,10 @@ export function varName(name: string) {
   return /^[0-9]/.test(camel) ? `spell${camel}` : camel
 }
 
+export function spellOverride(candidate: AbilityCandidate) {
+  return candidate.spellIds.map((spellId) => spellOverrides[spellId]).find(Boolean)
+}
+
 export interface Declaration {
   varName: string
   /** The full `const x = bossSpell(...)` line. */
@@ -52,8 +56,14 @@ export function suggestedDeclaration(
   const fn = candidate.isBoss ? 'bossSpell' : 'trashSpell'
   const options: string[] = []
 
-  const grimoireTicks = candidate.grimoirePeriodicTicks
-  const ticks = grimoireTicks ?? candidate.p95Ticks
+  // Hand-made calls from spellOverrides.ts. Applied here rather than edited into the ability
+  // files so they survive --refresh, which regenerates declarations wholesale.
+  const override = spellOverride(candidate)
+
+  // Dropping the DoT leaves just the direct hit, which is grimoire's default damage.
+  const initialHitOnly = Boolean(override?.initialHitOnly && candidate.grimoireDirectDamage)
+  const grimoireTicks = initialHitOnly ? null : candidate.grimoirePeriodicTicks
+  const ticks = initialHitOnly ? 1 : (override?.ticks ?? grimoireTicks ?? candidate.p95Ticks)
 
   // The sim models one instantaneous hit, so a long DoT's full-duration total is damage spread
   // over many seconds of healing rather than something to survive at once. Authored at full
@@ -70,14 +80,9 @@ export function suggestedDeclaration(
     )
   }
 
-  // Hand-made calls from spellOverrides.ts. Applied here rather than edited into the ability
-  // files so they survive --refresh, which regenerates declarations wholesale.
-  const override = candidate.spellIds
-    .map((spellId) => spellOverrides[spellId])
-    .find(Boolean)
   if (override?.avoidable) options.push('avoidable: true')
   if (override?.ignoresArmor) options.push('ignoresArmor: true')
-  if (override?.notes) options.push(`notes: ${JSON.stringify(override.notes)}`)
+  if (override?.notes) options.push(`notes: '${override.notes.replace(/'/g, "\\'")}'`)
 
   if (candidate.tankOnly) options.push('tankOnly: true')
   if (ticks > 1) options.push('periodic: true')
@@ -90,6 +95,7 @@ export function suggestedDeclaration(
   // the tick count and per-tick damage, so hardcoding them here would only restate its data
   // and silently go stale the next time the spell is tuned.
   if (
+    !initialHitOnly &&
     candidate.grimoireDirectDamage &&
     candidate.grimoirePeriodicDamage &&
     grimoireTicks

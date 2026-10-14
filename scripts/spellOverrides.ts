@@ -18,6 +18,14 @@
 
 export interface SpellOverride {
   avoidable?: boolean
+  /** Leave the spell out of the ability file entirely; `yarn write` removes it if present. */
+  exclude?: boolean
+  /** Use only the direct hit, dropping the DoT that follows it. */
+  initialHitOnly?: boolean
+  /** Write the spell even when the scraper doesn't rate it lethal. */
+  include?: boolean
+  /** Tick count, for DoTs grimoire has no periodic data for. */
+  ticks?: number
   ignoresArmor?: boolean
   notes?: string
   /** Why this call was made. Kept so the next person can disagree with it. */
@@ -60,9 +68,31 @@ export const spellOverrides: Record<number, SpellOverride> = {
   1300372: { avoidable: true, reason: "Comets land at players' locations, 8yd impact" },
 
   // ---- Altar of Fangs ------------------------------------------------------------------
-  1306669: { avoidable: true, reason: 'Frontal breath — only hits players caught in it' },
-  1306345: { avoidable: true, reason: 'Meat chunks hit within 3.5yd of where they land' },
-  1301508: { avoidable: true, reason: 'Thrown axe hits players caught in its path' },
+  1306669: { exclude: true, reason: 'Removed by hand' },
+  1307269: {
+    initialHitOnly: true,
+    notes: 'Initial hit only.',
+    reason: 'Only the first shot is a burst to survive',
+  },
+  1294557: { exclude: true, reason: 'Removed by hand' },
+  1294859: {
+    include: true,
+    ignoresArmor: true,
+    ticks: 6,
+    reason: 'Added by hand; 6 ticks (tooltip says 5 sec, which undercounts), ignores armor',
+  },
+  1308518: { exclude: true, reason: 'Removed by hand' },
+  1294958: { exclude: true, reason: 'Removed by hand' },
+  1307571: { exclude: true, reason: 'Removed by hand' },
+  1306345: { reason: 'Chunks are meant to be caught — not something to dodge' },
+  1301508: {
+    initialHitOnly: true,
+    notes: 'Initial hit only.',
+    reason: 'Axe is aimed at a player, so not dodgeable; the bleed is healed through',
+  },
+  1307700: { exclude: true, reason: 'Stacking DoT from uncaught chunks, not a burst' },
+  1299189: { exclude: true, reason: 'Removed by hand' },
+  1310974: { exclude: true, reason: 'Damage/speed debuff, not damage taken' },
 
   // ---- Ruby Life Pools -----------------------------------------------------------------
   371984: { avoidable: true, reason: 'Bolt: single-target interruptible cast' },

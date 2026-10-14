@@ -19,7 +19,7 @@ import { fileURLToPath } from 'url'
 import { getDamageMultiplier } from 'grimoire-wow'
 import type { AbilityCandidate } from './guessAbilities.ts'
 import type { Declaration } from './abilitySource.ts'
-import { spellIdsInSource, suggestedDeclaration } from './abilitySource.ts'
+import { spellIdsInSource, spellOverride, suggestedDeclaration } from './abilitySource.ts'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const outputDir = path.join(__dirname, 'output')
@@ -342,13 +342,24 @@ function main() {
       continue
     }
 
-    const candidates = (
+    const scraped = (
       JSON.parse(fs.readFileSync(inputPath, 'utf-8')) as AbilityCandidate[]
-    ).filter((candidate) => WRITTEN_CLASSIFICATIONS.has(candidate.classification))
+    ).filter(
+      (candidate) =>
+        WRITTEN_CLASSIFICATIONS.has(candidate.classification) ||
+        spellOverride(candidate)?.include,
+    )
+    const candidates = scraped.filter((candidate) => !spellOverride(candidate)?.exclude)
 
     const outPath = path.join(abilitiesDir, `${dungeonKey}.ts`)
     const existingSource = fs.existsSync(outPath) ? fs.readFileSync(outPath, 'utf-8') : null
     const known = existingSource ? spellIdsInSource(existingSource) : new Set<number>()
+
+    // Excluded by hand in spellOverrides.ts — removed outright, no --prune needed.
+    const excluded = scraped
+      .filter((candidate) => spellOverride(candidate)?.exclude)
+      .flatMap((candidate) => candidate.spellIds)
+      .filter((spellId) => known.has(spellId))
 
     const fresh = candidates.filter(
       (candidate) => !candidate.spellIds.some((spellId) => known.has(spellId)),
@@ -366,7 +377,9 @@ function main() {
     // because a metric got better, e.g. an ability turning out to be avoidable after all.
     const lethalIds = new Set(candidates.flatMap((candidate) => candidate.spellIds))
     const stale = existingSource
-      ? [...spellIdsInSource(existingSource)].filter((spellId) => !lethalIds.has(spellId))
+      ? [...spellIdsInSource(existingSource)].filter(
+          (spellId) => !lethalIds.has(spellId) && !excluded.includes(spellId),
+        )
       : []
     const needsScalingHelper = declarations.some((d) => d.needsScalingHelper)
 
@@ -395,6 +408,8 @@ function main() {
       }
     }
 
+    if (excluded.length > 0) console.log(`    excluding: ${excluded.join(', ')}`)
+
     if (stale.length > 0) {
       const verb = prune ? 'removing' : 'no longer lethal (re-run with --prune to remove)'
       console.log(`    ${verb}: ${stale.join(', ')}`)
@@ -419,6 +434,7 @@ function main() {
     if (
       fresh.length === 0 &&
       !orderChanged &&
+      excluded.length === 0 &&
       !(prune && stale.length > 0) &&
       !(refresh && drift.length > 0)
     ) {
@@ -436,6 +452,9 @@ function main() {
     }
 
     let source = existingSource
+    if (excluded.length > 0 && source) {
+      source = removeSpellIds(source, excluded)
+    }
     if (prune && stale.length > 0 && source) {
       source = removeSpellIds(source, stale)
     }
