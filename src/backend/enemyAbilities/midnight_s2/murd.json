@@ -143,6 +143,18 @@
       "periodic": true
     },
     {
+      "id": 1214355,
+      "name": "Fire Bomb",
+      "icon": "inv_eng_bombfire",
+      "damage": 116379,
+      "aoe": true,
+      "physical": false,
+      "schools": ["fire"],
+      "variance": 0,
+      "periodicDamage": 0,
+      "ticks": 0
+    },
+    {
       "id": 1223939,
       "name": "Envenom",
       "icon": "ability_rogue_disembowel",
@@ -206,7 +218,6 @@
       "variance": 0,
       "periodicDamage": 232760,
       "ticks": 8,
-      "avoidable": true,
       "periodic": true
     },
     {
@@ -225,15 +236,14 @@
       "id": 474234,
       "name": "Burning Steps",
       "icon": "ability_bossfellord_felfissure",
-      "damage": 213362,
+      "damage": 106681,
       "aoe": false,
       "physical": false,
       "schools": ["fire"],
       "variance": 0,
       "periodicDamage": 0,
       "ticks": 0,
-      "avoidable": true,
-      "periodic": true
+      "avoidable": true
     },
     {
       "id": 1294827,
