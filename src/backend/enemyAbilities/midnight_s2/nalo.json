@@ -33,14 +33,15 @@
       "id": 1234681,
       "name": "Ravenous Bellow",
       "icon": "ability_druid_challangingroar",
-      "damage": 455820,
+      "damage": 164870,
       "aoe": true,
       "physical": true,
       "schools": ["physical"],
       "variance": 0.025000000375,
       "periodicDamage": 290950,
       "ticks": 10,
-      "periodic": true
+      "ignoresArmor": true,
+      "notes": "Initial hit only."
     },
     {
       "id": 1234734,
@@ -70,19 +71,6 @@
       "periodic": true
     },
     {
-      "id": 1235125,
-      "name": "Hearty Bellow",
-      "icon": "ability_warrior_battleshout",
-      "damage": 455820,
-      "aoe": true,
-      "physical": true,
-      "schools": ["physical"],
-      "variance": 0.025000000375,
-      "periodicDamage": 290950,
-      "ticks": 10,
-      "periodic": true
-    },
-    {
       "id": 1235405,
       "name": "Bonespiked",
       "icon": "ability_deathknight_brittlebones",
@@ -95,20 +83,6 @@
       "ticks": 0,
       "avoidable": true,
       "periodic": true
-    },
-    {
-      "id": 1241464,
-      "name": "Glacial Tomb",
-      "icon": "ability_mage_coldasice",
-      "damage": 193965,
-      "aoe": false,
-      "physical": false,
-      "schools": ["frost"],
-      "variance": 0,
-      "periodicDamage": 0,
-      "ticks": 0,
-      "periodic": true,
-      "trashAbility": true
     },
     {
       "id": 1235549,
@@ -129,19 +103,6 @@
       "name": "Winter's Shroud",
       "icon": "ability_deathknight_icygrip",
       "damage": 96982,
-      "aoe": true,
-      "physical": false,
-      "schools": ["frost"],
-      "variance": 0.025000000375,
-      "periodicDamage": 0,
-      "ticks": 0,
-      "trashAbility": true
-    },
-    {
-      "id": 1263597,
-      "name": "Rime Detonation",
-      "icon": "spell_fire_blueflamestrike",
-      "damage": 155172,
       "aoe": true,
       "physical": false,
       "schools": ["frost"],
@@ -229,19 +190,6 @@
       "schools": ["nature"],
       "variance": 0.025000000375,
       "periodicDamage": 0,
-      "ticks": 0,
-      "avoidable": true
-    },
-    {
-      "id": 1297793,
-      "name": "Overwhelming Onslaught",
-      "icon": "spell_druid_thrash",
-      "damage": 315193,
-      "aoe": true,
-      "physical": true,
-      "schools": ["physical"],
-      "variance": 0,
-      "periodicDamage": 0,
       "ticks": 0
     },
     {
@@ -254,8 +202,7 @@
       "schools": ["nature"],
       "variance": 0.025000000375,
       "periodicDamage": 0,
-      "ticks": 0,
-      "avoidable": true
+      "ticks": 0
     },
     {
       "id": 1262253,
@@ -268,6 +215,7 @@
       "variance": 0.025000000375,
       "periodicDamage": 0,
       "ticks": 0,
+      "avoidable": true,
       "trashAbility": true
     }
   ]
