@@ -26,4 +26,5 @@ dist-ssr
 
 # WCL scripts
 scripts/.cache/
-scripts/output/
+scripts/output/*
+!scripts/output/*_abilities.json
