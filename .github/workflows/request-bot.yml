@@ -66,17 +66,16 @@ jobs:
             ## Decide
 
             Accept only small, single-ability data changes:
-            - A dungeon ability's `ignoresArmor`, `avoidable`, `tankOnly` or `notes`, or removing
-              the ability (`exclude`).
+            - Any field of a dungeon ability's override (see `SpellOverride` in
+              scripts/overrides/index.ts), including removing it (`exclude`).
+            - Adding a missing dungeon ability, as long as grimoire has damage for the spell.
             - A value or flag on a class, group or external defensive in
               src/backend/classAbilities/ or src/backend/groupAbilities/ (DR, absorb amount,
               schools it applies to, and so on).
             - Adding a missing class, group or external defensive.
 
-            Reject everything else, including: sim or UI changes, new features, adding a missing
-            enemy ability, enemy damage, tick counts, `splitBetween`,
-            `separateDot`, `initialHitOnly`, boss/trash classification (these all need scraped
-            logs that only exist on the maintainer's machine), changes spanning many abilities,
+            Reject everything else, including: sim or UI changes, new features, setting an enemy
+            ability's damage directly (it comes from grimoire), changes spanning many abilities,
             requests too vague to pin to one ability and one change, and changes already in
             place.
 
@@ -87,16 +86,16 @@ jobs:
 
             ## Edit (accepted requests only)
 
-            Dungeon abilities live in src/backend/enemyAbilities/<season>/<dungeon>.json (the
-            current season directory is in scripts/abilityFiles.ts). That JSON is generated from
-            scripts/overrides/<dungeon>.ts, but the generator needs the scraped logs and can't run
-            here, so edit both, the same way commit 77378c5 did:
-            1. In scripts/overrides/<dungeon>.ts, add or update the entry keyed by spell id.
-               `reason` is required; write it as '<short justification> (#${{ github.event.issue.number }})'.
-            2. In the JSON, make the matching change to every entry with that id (a hit and its
-               DoT are two entries). A true flag adds the field, false removes it, `notes` sets
-               the field, `exclude` removes the entry. scripts/abilitySource.ts shows how each
-               override maps onto the ability.
+            Dungeon abilities: edit only scripts/overrides/<dungeon>.ts. The JSON in
+            src/backend/enemyAbilities/ is generated from it by `yarn write`, which runs after
+            you; never edit the JSON. Add or update the entry keyed by spell id. `reason` is
+            required; write it as '<short justification> (#${{ github.event.issue.number }})'.
+
+            To add a missing dungeon ability, add `include: true` keyed by its spell id. If the
+            scrape never saw it, it's built from grimoire alone, so also set `boss: true` for a
+            boss ability and `tankOnly: true` if it only hits tanks; it defaults to trash hitting
+            anyone. Grimoire has damage for a spell when its line has an `"effects"` entry with
+            `"damage"`; without that, reject.
 
             Class and group defensives are hand-written: edit the value in place. To add one,
             copy the shape of a similar ability in the same file, take its id, name and icon from
@@ -129,9 +128,10 @@ jobs:
           gh issue comment "$ISSUE" --body "$(printf '%s\n\nThis needs a maintainer, so the bot is leaving it here.' "$REASON")"
           gh issue edit "$ISSUE" --add-label needs-maintainer
 
+      # Regenerates the dungeon JSON from the overrides Claude edited and the committed scrape.
       - name: Build
         if: fromJSON(steps.claude.outputs.structured_output || '{}').decision == 'accept'
-        run: yarn build
+        run: yarn write && yarn build
 
       - name: Open PR
         if: fromJSON(steps.claude.outputs.structured_output || '{}').decision == 'accept'
