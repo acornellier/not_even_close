@@ -37,4 +37,5 @@ export const krOverrides: SpellOverrides = {
     reason: 'Damage is split among players within 7yd of impact; assumes the whole group soaks',
   },
   1306056: { include: true, reason: 'Added by hand' },
+  1297970: { ignoresArmor: true, reason: 'Drains blood — armor does not apply' },
 }

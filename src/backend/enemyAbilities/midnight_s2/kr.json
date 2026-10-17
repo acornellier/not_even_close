@@ -108,6 +108,7 @@
       "variance": 0,
       "periodicDamage": 0,
       "ticks": 0,
+      "ignoresArmor": true,
       "trashAbility": true
     },
     {
