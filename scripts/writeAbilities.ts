@@ -5,6 +5,10 @@
  * overrides/<dungeon>.ts, and overwrites the file. Review a run with `git diff`. Hand-made
  * calls belong in the overrides, never in the JSON.
  *
+ * The scrape (scripts/output/) is committed, so a run is reproducible on any machine. An
+ * `include` override for a spell the scrape never saw is built from grimoire alone and listed
+ * after the scraped abilities.
+ *
  * Each file records the grimoire-wow version it was resolved against, so `yarn check-abilities`
  * (run by `yarn build`) can fail when grimoire is bumped without re-running this.
  *
@@ -20,8 +24,8 @@ import { fileURLToPath } from 'url'
 import { getDamageMultiplier } from 'grimoire-wow'
 import type { EnemyAbility } from '../src/backend/enemyAbilities/enemies.ts'
 import type { AbilityCandidate } from './guessAbilities.ts'
-import { describe, suggestedAbilities } from './abilitySource.ts'
-import { spellOverride } from './overrides/index.ts'
+import { describe, grimoireOnlySource, suggestedAbilities } from './abilitySource.ts'
+import { dungeonOverrides, spellOverride } from './overrides/index.ts'
 import {
   abilitiesPath,
   type DungeonAbilitiesFile,
@@ -117,15 +121,31 @@ function main() {
     }
 
     // Candidates are already in route order — the order you meet them in the dungeon.
-    const candidates = (
-      JSON.parse(fs.readFileSync(inputPath, 'utf-8')) as AbilityCandidate[]
-    ).filter((candidate) => {
+    const scraped = JSON.parse(fs.readFileSync(inputPath, 'utf-8')) as AbilityCandidate[]
+    const candidates = scraped.filter((candidate) => {
       const override = spellOverride(dungeonKey, candidate.spellIds)
       if (override?.exclude) return false
       return WRITTEN_CLASSIFICATIONS.has(candidate.classification) || override?.include
     })
 
-    const suggested = candidates.flatMap((candidate) =>
+    // Added by hand: included, but never seen in the logs. These go after the route.
+    const scrapedSpellIds = new Set(scraped.flatMap((candidate) => candidate.spellIds))
+    const handAdded = Object.entries(dungeonOverrides(dungeonKey))
+      .filter(
+        ([spellId, override]) =>
+          override.include && !scrapedSpellIds.has(Number(spellId)),
+      )
+      .map(([spellId]) => {
+        const source = grimoireOnlySource(Number(spellId))
+        if (!source) {
+          throw new Error(
+            `${dungeonKey}: ${spellId} is included but wasn't scraped, and grimoire has no damage to build it from`,
+          )
+        }
+        return source
+      })
+
+    const suggested = [...candidates, ...handAdded].flatMap((candidate) =>
       suggestedAbilities(dungeonKey, candidate, multiplier),
     )
     const file: DungeonAbilitiesFile = {

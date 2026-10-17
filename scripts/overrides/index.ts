@@ -33,9 +33,12 @@ export interface SpellOverride {
   initialHitOnly?: boolean
   /** Write the direct hit and the DoT that follows it as two separate abilities. */
   separateDot?: boolean
-  /** Write the spell even when the scraper doesn't rate it lethal. */
+  /**
+   * Write the spell even when the scraper doesn't rate it lethal. A spell the scrape never saw
+   * at all is built from grimoire alone and listed after the scraped ones.
+   */
   include?: boolean
-  /** Boss ability rather than trash, when the scraper got it wrong. */
+  /** Boss ability rather than trash, when the scraper got it wrong or never saw it. */
   boss?: boolean
   /** Tick count, for DoTs grimoire has no periodic data for. */
   ticks?: number
@@ -62,8 +65,13 @@ const overridesByDungeon: Record<string, SpellOverrides> = {
   kr: krOverrides,
 }
 
+/** Every override made for a dungeon, keyed by spell id. */
+export function dungeonOverrides(dungeonKey: string): SpellOverrides {
+  return overridesByDungeon[dungeonKey] ?? {}
+}
+
 /** The override for any of a candidate's spell ids, if one was made. */
 export function spellOverride(dungeonKey: string, spellIds: number[]) {
-  const overrides = overridesByDungeon[dungeonKey] ?? {}
+  const overrides = dungeonOverrides(dungeonKey)
   return spellIds.map((spellId) => overrides[spellId]).find(Boolean)
 }

@@ -2,10 +2,68 @@
  * Turns a scraped candidate into the ability the app ships.
  * Shared by reportAbilities.ts (shows the recipe) and writeAbilities.ts (writes the ability).
  */
+import { getGrimoireSpell } from 'grimoire-wow'
 import type { EnemyAbility } from '../src/backend/enemyAbilities/enemies.ts'
 import type { AbilityCandidate } from './guessAbilities.ts'
 import { bossSpell, scalingTickingDamage, trashSpell } from './grimoire.ts'
 import { type SpellOverride, spellOverride } from './overrides/index.ts'
+
+/** The parts of a candidate an ability is built from. */
+export type AbilitySource = Pick<
+  AbilityCandidate,
+  | 'primarySpellId'
+  | 'spellIds'
+  | 'isBoss'
+  | 'tankOnly'
+  | 'aoeFraction'
+  | 'p95Ticks'
+  | 'medianTicks'
+  | 'medianTickEvents'
+  | 'baseDamageP50'
+  | 'grimoireDamage'
+  | 'grimoireDuration'
+  | 'grimoireDirectDamage'
+  | 'grimoirePeriodicDamage'
+  | 'grimoirePeriodicTicks'
+>
+
+/**
+ * A source for a spell the scrape never saw, from grimoire alone, so an `include` override can
+ * add it by hand. Fields the logs would have supplied take neutral values: trash unless the
+ * override says `boss`, not tank-only, AoE as grimoire flags it, and full duration with no
+ * note. Null when grimoire has no damage for the spell, as there's nothing to build from.
+ */
+export function grimoireOnlySource(spellId: number): AbilitySource | null {
+  let spell
+  try {
+    spell = getGrimoireSpell(spellId)
+  } catch {
+    return null
+  }
+
+  const direct = spell?.effects?.find((effect) => !effect.periodic && effect.damage > 0)
+  const periodic = spell?.effects?.find((effect) => effect.periodic && effect.damage > 0)
+  const damage = (direct ?? periodic)?.damage
+  if (!damage) return null
+
+  return {
+    primarySpellId: spellId,
+    spellIds: [spellId],
+    isBoss: false,
+    tankOnly: false,
+    aoeFraction: 0,
+    p95Ticks: 1,
+    medianTicks: 1,
+    // As many ticks as grimoire says, so the "players typically took fewer" note stays off.
+    medianTickEvents: periodic?.ticks ?? 0,
+    baseDamageP50: 0,
+    grimoireDamage: damage,
+    grimoireDuration: spell.duration ?? null,
+    grimoireDirectDamage: direct?.damage ?? null,
+    grimoirePeriodicDamage: periodic?.damage ?? null,
+    grimoirePeriodicTicks: periodic?.ticks ?? null,
+  }
+}
 
 /** Beyond this, a DoT is sustained damage rather than a burst to survive. */
 const LONG_DOT_MS = 6000
@@ -28,7 +86,7 @@ export interface SuggestedAbility {
  */
 export function suggestedAbility(
   dungeonKey: string,
-  candidate: AbilityCandidate,
+  candidate: AbilitySource,
   multiplier: number | null,
   // Hand-made calls from overrides/<dungeon>.ts, applied on every run.
   override: SpellOverride | undefined = spellOverride(dungeonKey, candidate.spellIds),
@@ -126,7 +184,7 @@ export function suggestedAbility(
  */
 export function suggestedAbilities(
   dungeonKey: string,
-  candidate: AbilityCandidate,
+  candidate: AbilitySource,
   multiplier: number | null,
 ): SuggestedAbility[] {
   const override = spellOverride(dungeonKey, candidate.spellIds)
