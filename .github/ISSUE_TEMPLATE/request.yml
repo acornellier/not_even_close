@@ -1,0 +1,36 @@
+name: Data correction
+description: Report a wrong flag or value on an ability. A bot evaluates it and opens a pull request for review.
+title: '[Request] '
+labels: ['bot-request']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For small data fixes only, e.g. "this ability ignores armor" or "this defensive is 15% DR, not 10%". Anything bigger gets passed to a maintainer instead.
+  - type: input
+    id: location
+    attributes:
+      label: Dungeon or class
+      placeholder: "Kings' Rest / Holy Priest"
+    validations:
+      required: true
+  - type: input
+    id: ability
+    attributes:
+      label: Ability
+      description: Name, spell ID, or Wowhead link
+      placeholder: Blood Drain
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: What's wrong and what it should be
+      placeholder: The site treats it as reduced by armor, but it ignores armor.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Logs, a Wowhead tooltip, patch notes, testing. Requests with evidence get merged faster.

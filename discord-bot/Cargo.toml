@@ -1,0 +1,21 @@
+[package]
+name = "nec-discord-bot"
+version = "0.1.0"
+edition = "2024"
+description = "Discord /request command that files Not Even Close data corrections as GitHub issues"
+
+[dependencies]
+reqwest = { version = "0.13", default-features = false, features = ["rustls-no-provider", "json"] }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+serde_json = "1"
+tokio = { version = "1", features = ["rt", "macros"] }
+twilight-gateway = { version = "0.17", default-features = false, features = ["rustls-platform-verifier", "twilight-http"] }
+twilight-http = { version = "0.17", default-features = false, features = ["rustls-platform-verifier"] }
+twilight-model = "0.17"
+twilight-util = { version = "0.17", features = ["builder"] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = true

@@ -1,0 +1,15 @@
+[Unit]
+Description=Not Even Close Discord /request bot
+After=network-online.target
+
+[Service]
+Type=simple
+# Source: discord-bot/ in the not_even_close repo. Rebuild and reinstall with:
+#   cargo build --release && install -m 755 target/release/nec-discord-bot ~/.local/bin/
+ExecStart=%h/.local/bin/nec-discord-bot
+EnvironmentFile=%h/.config/nec-discord-bot/env
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
