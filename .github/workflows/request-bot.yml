@@ -34,11 +34,15 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 24
           cache: yarn
 
-      # Also gives Claude grimoire-wow's spell data to check claims against.
       - run: yarn install --frozen-lockfile
+
+      # grimoire-wow ships its spells as one 81 MB line, which Claude can't search. One spell per
+      # line makes it greppable. Untracked, so the PR step never commits it.
+      - name: Index grimoire spells
+        run: jq -c '.spells[]' node_modules/grimoire-wow/dist/spells.json > grimoire-spells.jsonl
 
       - name: Evaluate and edit
         id: claude
@@ -61,23 +65,25 @@ jobs:
 
             ## Decide
 
-            Accept only small data corrections to an ability that already exists:
+            Accept only small, single-ability data changes:
             - A dungeon ability's `ignoresArmor`, `avoidable`, `tankOnly` or `notes`, or removing
               the ability (`exclude`).
             - A value or flag on a class, group or external defensive in
               src/backend/classAbilities/ or src/backend/groupAbilities/ (DR, absorb amount,
               schools it applies to, and so on).
+            - Adding a missing class, group or external defensive.
 
-            Reject everything else, including: sim or UI changes, new features, new abilities,
-            adding a missing enemy ability, enemy damage, tick counts, `splitBetween`,
+            Reject everything else, including: sim or UI changes, new features, adding a missing
+            enemy ability, enemy damage, tick counts, `splitBetween`,
             `separateDot`, `initialHitOnly`, boss/trash classification (these all need scraped
             logs that only exist on the maintainer's machine), changes spanning many abilities,
             requests too vague to pin to one ability and one change, and changes already in
             place.
 
             Don't reject because you can't verify a game mechanic; the maintainer checks that
-            before merging. Do check what you can: spell data is in node_modules/grimoire-wow.
-            If it contradicts the request, reject and say what it shows.
+            before merging. Do check what you can against grimoire-spells.jsonl, which has one
+            spell per line: Grep it for `"id":1297970,` or `"name":"Blood Drain"`. If it
+            contradicts the request, reject and say what it shows.
 
             ## Edit (accepted requests only)
 
@@ -92,9 +98,13 @@ jobs:
                the field, `exclude` removes the entry. scripts/abilitySource.ts shows how each
                override maps onto the ability.
 
-            Class and group defensives are hand-written: edit the value in place.
+            Class and group defensives are hand-written: edit the value in place. To add one,
+            copy the shape of a similar ability in the same file, take its id, name and icon from
+            grimoire-spells.jsonl, and add it to the right spec's exported list. Put values you
+            couldn't confirm in the summary so the maintainer checks them.
 
-            Change nothing else: no reformatting, no unrelated fixes, no new files.
+            Change nothing else: no reformatting, no unrelated fixes, no new files. Never edit
+            grimoire-spells.jsonl.
 
             ## Output
 
@@ -112,22 +122,22 @@ jobs:
             --json-schema '{"type":"object","properties":{"decision":{"type":"string","enum":["accept","reject"]},"reason":{"type":"string"},"title":{"type":"string"},"summary":{"type":"string"}},"required":["decision","reason"]}'
 
       - name: Pass to maintainer
-        if: fromJSON(steps.claude.outputs.structured_output).decision == 'reject'
+        if: fromJSON(steps.claude.outputs.structured_output || '{}').decision == 'reject'
         env:
-          REASON: ${{ fromJSON(steps.claude.outputs.structured_output).reason }}
+          REASON: ${{ fromJSON(steps.claude.outputs.structured_output || '{}').reason }}
         run: |
           gh issue comment "$ISSUE" --body "$(printf '%s\n\nThis needs a maintainer, so the bot is leaving it here.' "$REASON")"
           gh issue edit "$ISSUE" --add-label needs-maintainer
 
       - name: Build
-        if: fromJSON(steps.claude.outputs.structured_output).decision == 'accept'
+        if: fromJSON(steps.claude.outputs.structured_output || '{}').decision == 'accept'
         run: yarn build
 
       - name: Open PR
-        if: fromJSON(steps.claude.outputs.structured_output).decision == 'accept'
+        if: fromJSON(steps.claude.outputs.structured_output || '{}').decision == 'accept'
         env:
-          TITLE: ${{ fromJSON(steps.claude.outputs.structured_output).title }}
-          SUMMARY: ${{ fromJSON(steps.claude.outputs.structured_output).summary }}
+          TITLE: ${{ fromJSON(steps.claude.outputs.structured_output || '{}').title }}
+          SUMMARY: ${{ fromJSON(steps.claude.outputs.structured_output || '{}').summary }}
           BASE: ${{ github.event.repository.default_branch }}
         run: |
           if git diff --quiet; then

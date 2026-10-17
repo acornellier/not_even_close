@@ -15,7 +15,7 @@
     "descriptions": "tsx ./scripts/fetchDescriptions.ts"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "dependencies": {
     "@heroicons/react": "2.1.3",

@@ -66,7 +66,7 @@ const FIELDS: [Field; 4] = [
     },
     Field {
         id: "change",
-        label: "What's wrong and what it should be",
+        label: "What's wrong or missing",
         placeholder: "The site treats it as reduced by armor, but it ignores armor.",
         style: TextInputStyle::Paragraph,
         max_length: 1500,
@@ -115,7 +115,7 @@ async fn main() -> Result<(), BoxError> {
                 eprintln!("connected as {}", ready.user.name);
                 let command = CommandBuilder::new(
                     COMMAND_NAME,
-                    "Report a wrong flag or value on an ability",
+                    "Report a wrong or missing ability",
                     CommandType::ChatInput,
                 )
                 .contexts([InteractionContextType::Guild])
