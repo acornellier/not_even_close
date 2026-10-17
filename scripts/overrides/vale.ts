@@ -3,7 +3,7 @@ import type { SpellOverrides } from './index.ts'
 /** The Blinding Vale */
 export const valeOverrides: SpellOverrides = {
   1237858: { avoidable: true, reason: 'Ruptured ground left behind by the strike' },
-  1255205: { avoidable: true, reason: "Roots summoned at players' locations" },
+  1255205: { reason: 'Reported as not avoidable in a request (#17)' },
   1238063: { avoidable: true, reason: 'Bolt: single-target interruptible cast' },
   1234802: {
     avoidable: true,
