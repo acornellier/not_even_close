@@ -18,6 +18,7 @@ export const voidOverrides: SpellOverrides = {
     notes: 'Split between 5 players.',
     reason: 'Damage is split between the group',
   },
+  1263971: { avoidable: true, reason: 'Reported avoidable by requester (#22)' },
   1299913: {
     include: true,
     initialHitOnly: true,

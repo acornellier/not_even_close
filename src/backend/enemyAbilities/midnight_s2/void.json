@@ -251,6 +251,7 @@
       "variance": 0,
       "periodicDamage": 0,
       "ticks": 0,
+      "avoidable": true,
       "periodic": true
     },
     {
