@@ -197,6 +197,7 @@
       "variance": 0,
       "periodicDamage": 305494,
       "ticks": 7,
+      "ignoresArmor": true,
       "notes": "Initial hit only."
     }
   ]

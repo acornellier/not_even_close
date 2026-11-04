@@ -21,8 +21,9 @@ export const fangOverrides: SpellOverrides = {
   1306345: { reason: 'Chunks are meant to be caught — not something to dodge' },
   1301508: {
     initialHitOnly: true,
+    ignoresArmor: true,
     notes: 'Initial hit only.',
-    reason: 'Axe is aimed at a player, so not dodgeable; the bleed is healed through',
+    reason: 'Axe is aimed at a player, so not dodgeable; the bleed is healed through; ignores armor (#24)',
   },
   1307700: { exclude: true, reason: 'Stacking DoT from uncaught chunks, not a burst' },
   1299189: { exclude: true, reason: 'Removed by hand' },
