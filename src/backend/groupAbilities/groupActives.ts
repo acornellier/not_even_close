@@ -71,7 +71,7 @@ const powerWordBarrier: Ability = {
 const antiMagicZone: Ability = {
   name: 'Anti-Magic Zone',
   id: 51052,
-  dr: 0.2,
+  dr: 0.15,
   drType: 'magic',
   associatedClass: 'Death Knight',
   icon: 'spell_deathknight_antimagiczone',
