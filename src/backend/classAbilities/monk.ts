@@ -29,15 +29,6 @@ const danceOfTheWind: Ability = {
   },
 }
 
-const combatWisdom: Ability = {
-  name: 'Combat Wisdom',
-  id: 121817,
-  icon: 'ability_monk_expelharm',
-  passive: true,
-  onByDefault: true,
-  staminaIncrease: 0.05,
-}
-
 export const jadefireTeachings: Ability = {
   name: 'Jadefire Teachings',
   id: 467293,
@@ -179,7 +170,6 @@ export const monkWindwalkerAbilities = [
   ironshellBrew,
   niuzaosProtection,
   calmingPresenceWindwalker,
-  combatWisdom,
   danceOfTheWind,
   martialInstinctsWindwalker,
   yulonsGraceWindwalker,
