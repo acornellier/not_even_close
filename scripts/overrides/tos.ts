@@ -30,4 +30,5 @@ export const tosOverrides: SpellOverrides = {
   1303596: { exclude: true, reason: 'Removed by hand' },
   1288428: { exclude: true, reason: 'Removed by hand' },
   1302826: { exclude: true, reason: 'Removed by hand' },
+  265966: { ignoresArmor: true, reason: 'Ground Pound ignores armor per combat log (#28)' },
 }
